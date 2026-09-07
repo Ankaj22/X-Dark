@@ -2,23 +2,38 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>X Dark</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<title>X DARK</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
 
-html,body{
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html,
+body{
   width:100%;
   height:100%;
   background:#000;
   color:#fff;
-  font-family:Arial,sans-serif;
+  font-family:Arial,Helvetica,sans-serif;
 }
 
-body{overflow:hidden}
+body{
+  overflow:hidden;
+}
+
+button{
+  font-family:inherit;
+  cursor:pointer;
+}
 
 .app{
+  width:100%;
   max-width:600px;
   height:100vh;
   margin:auto;
@@ -26,31 +41,51 @@ body{overflow:hidden}
   background:#050505;
 }
 
+/* HEADER */
+
 header{
   height:65px;
   display:flex;
   align-items:center;
   justify-content:center;
-  border-bottom:1px solid #222;
   background:#050505;
+  border-bottom:1px solid #222;
+  position:relative;
+  z-index:30;
 }
 
-header h1{
-  font-size:22px;
-  letter-spacing:2px;
+.logo{
+  font-size:23px;
+  font-weight:900;
+  letter-spacing:3px;
 }
+
+.logo span{
+  color:#777;
+}
+
+/* FEED */
 
 .feed{
   height:calc(100vh - 130px);
   overflow-y:auto;
+  scroll-snap-type:y mandatory;
+  scrollbar-width:none;
 }
+
+.feed::-webkit-scrollbar{
+  display:none;
+}
+
+/* REEL */
 
 .reel{
   height:calc(100vh - 130px);
   min-height:500px;
   position:relative;
-  background:#151515;
+  background:#111;
   overflow:hidden;
+  scroll-snap-align:start;
 }
 
 .reel video{
@@ -58,115 +93,149 @@ header h1{
   height:100%;
   object-fit:cover;
   display:block;
-  background:#111;
+  background:#080808;
 }
 
-.empty-video{
+.video-overlay{
   position:absolute;
   inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  gap:15px;
-  color:#777;
-  font-size:50px;
+  background:linear-gradient(
+    to top,
+    rgba(0,0,0,.85),
+    transparent 45%,
+    rgba(0,0,0,.15)
+  );
+  pointer-events:none;
 }
 
-.empty-video span{
-  font-size:15px;
+/* EMPTY */
+
+.empty{
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  color:#777;
+  gap:12px;
 }
+
+.empty-icon{
+  font-size:55px;
+}
+
+.empty h2{
+  color:#fff;
+  font-size:22px;
+}
+
+.empty p{
+  font-size:14px;
+}
+
+/* INFO */
 
 .info{
   position:absolute;
-  left:15px;
-  right:80px;
+  left:16px;
+  right:85px;
   bottom:25px;
-  z-index:4;
-  text-shadow:0 2px 5px #000;
+  z-index:5;
+  text-shadow:0 2px 7px #000;
 }
 
 .username{
   font-size:18px;
   font-weight:bold;
-  margin-bottom:10px;
+  margin-bottom:9px;
 }
 
 .follow{
   color:#ff3158;
   margin-left:8px;
+  font-size:14px;
 }
 
 .caption{
   font-size:15px;
-  line-height:1.5;
+  line-height:1.45;
 }
+
+/* ACTIONS */
 
 .actions{
   position:absolute;
   right:12px;
-  bottom:25px;
-  z-index:5;
+  bottom:23px;
+  z-index:10;
   display:flex;
   flex-direction:column;
-  gap:18px;
+  align-items:center;
+  gap:17px;
 }
 
 .action{
   border:0;
   background:none;
   color:#fff;
-  font-size:28px;
+  font-size:29px;
+  text-shadow:0 2px 6px #000;
 }
 
 .action small{
   display:block;
   font-size:11px;
   margin-top:3px;
+  text-shadow:none;
 }
 
 .like.active{
   color:#ff3158;
 }
 
+/* BOTTOM NAV */
+
 .bottom{
   position:absolute;
-  bottom:0;
   left:0;
   right:0;
+  bottom:0;
   height:65px;
+  background:#050505;
+  border-top:1px solid #222;
   display:flex;
   align-items:center;
   justify-content:space-around;
-  background:#050505;
-  border-top:1px solid #222;
-  z-index:20;
+  z-index:50;
 }
 
 .bottom button{
   border:0;
   background:none;
-  color:#aaa;
+  color:#888;
   font-size:25px;
 }
 
-.bottom .active{
+.bottom button.active{
   color:#fff;
 }
 
 .add{
-  width:50px;
+  width:52px;
   height:40px;
-  border-radius:11px;
+  border-radius:12px;
   background:#fff !important;
   color:#000 !important;
   font-size:29px !important;
+  font-weight:bold;
 }
+
+/* MODAL */
 
 .modal{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.82);
+  background:rgba(0,0,0,.86);
   display:none;
   align-items:flex-end;
   justify-content:center;
@@ -180,31 +249,41 @@ header h1{
 .upload-box{
   width:100%;
   max-width:600px;
-  padding:22px;
+  max-height:92vh;
+  overflow-y:auto;
   background:#111;
-  border-radius:22px 22px 0 0;
   border-top:1px solid #333;
+  border-radius:23px 23px 0 0;
+  padding:22px;
 }
 
-.upload-box h2{
-  margin-bottom:18px;
+.upload-title{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:20px;
+}
+
+.upload-title h2{
+  font-size:22px;
 }
 
 .close{
-  float:right;
   border:0;
   background:none;
   color:#fff;
-  font-size:28px;
+  font-size:30px;
 }
+
+/* FILE */
 
 .file-label{
   display:block;
   padding:18px;
-  text-align:center;
   border:1px dashed #555;
   border-radius:14px;
-  color:#bbb;
+  text-align:center;
+  color:#ccc;
   margin-bottom:15px;
 }
 
@@ -212,30 +291,41 @@ input[type=file]{
   display:none;
 }
 
+/* PREVIEW */
+
 .preview{
   width:100%;
-  max-height:280px;
+  max-height:300px;
   object-fit:contain;
-  border-radius:12px;
   background:#000;
+  border-radius:14px;
   display:none;
   margin-bottom:15px;
 }
 
+/* INPUT */
+
 .caption-input{
   width:100%;
-  padding:14px;
+  padding:15px;
   border:1px solid #333;
-  border-radius:12px;
+  border-radius:13px;
   background:#080808;
   color:#fff;
   outline:none;
-  margin-bottom:12px;
+  margin-bottom:14px;
+  font-size:15px;
 }
+
+.caption-input:focus{
+  border-color:#777;
+}
+
+/* PUBLISH */
 
 .publish{
   width:100%;
-  padding:15px;
+  padding:16px;
   border:0;
   border-radius:13px;
   background:#fff;
@@ -243,6 +333,119 @@ input[type=file]{
   font-size:16px;
   font-weight:bold;
 }
+
+.publish:disabled{
+  opacity:.5;
+}
+
+/* PROGRESS */
+
+.progress-area{
+  display:none;
+  margin-bottom:15px;
+}
+
+.progress-text{
+  font-size:13px;
+  color:#aaa;
+  margin-bottom:7px;
+}
+
+.progress-bg{
+  width:100%;
+  height:8px;
+  border-radius:10px;
+  background:#292929;
+  overflow:hidden;
+}
+
+.progress-bar{
+  width:0%;
+  height:100%;
+  background:#fff;
+  transition:width .2s;
+}
+
+/* MESSAGE */
+
+.message{
+  display:none;
+  padding:13px;
+  border-radius:12px;
+  margin-bottom:14px;
+  background:#191919;
+  font-size:14px;
+}
+
+.message.show{
+  display:block;
+}
+
+/* COMMENTS */
+
+.comment-box{
+  display:none;
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  max-width:600px;
+  margin:auto;
+  background:#151515;
+  border-top:1px solid #333;
+  padding:18px;
+  z-index:120;
+}
+
+.comment-box.open{
+  display:block;
+}
+
+.comment-box h3{
+  margin-bottom:12px;
+}
+
+.comment-input{
+  width:100%;
+  padding:13px;
+  border:1px solid #333;
+  border-radius:10px;
+  background:#080808;
+  color:#fff;
+  margin-bottom:10px;
+}
+
+.comment-submit{
+  width:100%;
+  padding:12px;
+  border:0;
+  border-radius:10px;
+  background:#fff;
+  color:#000;
+  font-weight:bold;
+}
+
+/* TOAST */
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:85px;
+  transform:translateX(-50%);
+  background:#fff;
+  color:#000;
+  padding:12px 18px;
+  border-radius:20px;
+  font-size:14px;
+  font-weight:bold;
+  display:none;
+  z-index:200;
+}
+
+.toast.show{
+  display:block;
+}
+
 </style>
 </head>
 
@@ -251,45 +454,20 @@ input[type=file]{
 <div class="app">
 
 <header>
-  <h1>𝕏 DARK</h1>
+  <div class="logo">𝕏 DARK <span>VIDEO</span></div>
 </header>
 
 <main class="feed" id="feed">
 
 <section class="reel">
 
-<div class="empty-video">
-  🎬
-  <span>No videos yet</span>
-</div>
+<div class="empty">
 
-<div class="info">
-  <div class="username">
-    @xdark_official
-    <span class="follow">Follow</span>
-  </div>
+<div class="empty-icon">🎬</div>
 
-  <div class="caption">
-    Welcome to X Dark 🚀
-  </div>
-</div>
+<h2>No videos yet</h2>
 
-<div class="actions">
-
-<button class="action like" onclick="like(this)">
-  ♡
-  <small>0</small>
-</button>
-
-<button class="action">
-  💬
-  <small>0</small>
-</button>
-
-<button class="action" onclick="sharePage()">
-  ↗
-  <small>Share</small>
-</button>
+<p>Be the first to upload on X Dark</p>
 
 </div>
 
@@ -299,15 +477,15 @@ input[type=file]{
 
 <nav class="bottom">
 
-<button class="active">⌂</button>
-<button>⌕</button>
+<button class="active" onclick="goHome()">⌂</button>
 
-<button class="add" onclick="openUpload()">
-  +
-</button>
+<button onclick="showToast('Search coming soon 🔎')">⌕</button>
 
-<button>♡</button>
-<button>♙</button>
+<button class="add" onclick="openUpload()">+</button>
+
+<button onclick="showToast('Notifications coming soon ❤️')">♡</button>
+
+<button onclick="showToast('Profile coming soon 👤')">♙</button>
 
 </nav>
 
@@ -320,12 +498,22 @@ input[type=file]{
 
 <div class="upload-box">
 
+<div class="upload-title">
+
+<h2>🎬 Create Video</h2>
+
 <button class="close" onclick="closeUpload()">×</button>
 
-<h2>Create a video</h2>
+</div>
 
 <label class="file-label" for="videoInput">
-  🎬 Select video
+
+🎥 Select Video
+
+<br>
+
+<small>MP4 / MOV / WebM • Max 100 MB</small>
+
 </label>
 
 <input
@@ -349,249 +537,944 @@ input[type=file]{
   placeholder="Write a caption..."
 >
 
+<div class="message" id="message"></div>
+
+<div class="progress-area" id="progressArea">
+
+<div class="progress-text" id="progressText">
+Uploading 0%
+</div>
+
+<div class="progress-bg">
+
+<div
+  class="progress-bar"
+  id="progressBar">
+</div>
+
+</div>
+
+</div>
+
 <button
   class="publish"
+  id="publishButton"
   onclick="publishVideo()">
-  Publish Video
+
+Publish Video
+
 </button>
 
 </div>
 
 </div>
+
+
+<!-- COMMENT BOX -->
+
+<div class="comment-box" id="commentBox">
+
+<h3>💬 Add Comment</h3>
+
+<input
+  id="commentInput"
+  class="comment-input"
+  placeholder="Write a comment..."
+>
+
+<button
+  class="comment-submit"
+  onclick="submitComment()">
+
+Post Comment
+
+</button>
+
+</div>
+
+
+<div class="toast" id="toast"></div>
 
 
 <script>
 
+/* =========================
+   CLOUDINARY SETTINGS
+========================= */
+
+const CLOUD_NAME = "lrpb7uuy";
+
+const UPLOAD_PRESET = "x_dark_videos";
+
+const UPLOAD_URL =
+  `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/video/upload`;
+
+
+/* =========================
+   ELEMENTS
+========================= */
+
 const modal =
-document.getElementById("uploadModal");
+  document.getElementById("uploadModal");
 
 const videoInput =
-document.getElementById("videoInput");
+  document.getElementById("videoInput");
 
 const preview =
-document.getElementById("preview");
+  document.getElementById("preview");
+
+const captionInput =
+  document.getElementById("caption");
 
 const feed =
-document.getElementById("feed");
+  document.getElementById("feed");
+
+const publishButton =
+  document.getElementById("publishButton");
+
+const progressArea =
+  document.getElementById("progressArea");
+
+const progressBar =
+  document.getElementById("progressBar");
+
+const progressText =
+  document.getElementById("progressText");
+
+const message =
+  document.getElementById("message");
 
 let selectedVideo = null;
 
+let currentCommentReel = null;
 
-/* OPEN UPLOAD */
+
+/* =========================
+   LOCAL DATA
+========================= */
+
+let videos =
+  JSON.parse(
+    localStorage.getItem("xdark_videos") || "[]"
+  );
+
+
+/* =========================
+   OPEN UPLOAD
+========================= */
 
 function openUpload(){
 
-modal.classList.add("open");
+  modal.classList.add("open");
 
 }
 
 
-/* CLOSE UPLOAD */
+/* =========================
+   CLOSE UPLOAD
+========================= */
 
 function closeUpload(){
 
-modal.classList.remove("open");
+  modal.classList.remove("open");
+
+  resetUpload();
 
 }
 
 
-/* SELECT VIDEO */
+/* =========================
+   SELECT VIDEO
+========================= */
 
-videoInput.addEventListener("change",function(){
+videoInput.addEventListener(
+  "change",
+  function(){
 
-const file = this.files[0];
+    const file = this.files[0];
 
-if(!file) return;
+    if(!file){
+      return;
+    }
 
-if(!file.type.startsWith("video/")){
+    if(!file.type.startsWith("video/")){
 
-alert("Please select a video file.");
+      showMessage(
+        "Please select a video file."
+      );
 
-return;
+      return;
 
-}
+    }
 
-if(file.size > 100 * 1024 * 1024){
+    if(file.size > 100 * 1024 * 1024){
 
-alert("Video must be smaller than 100 MB.");
+      showMessage(
+        "Video must be smaller than 100 MB."
+      );
 
-videoInput.value="";
+      videoInput.value = "";
 
-return;
+      return;
 
-}
+    }
 
-selectedVideo = file;
+    selectedVideo = file;
 
-const url =
-URL.createObjectURL(file);
+    const localURL =
+      URL.createObjectURL(file);
 
-preview.src = url;
+    preview.src = localURL;
 
-preview.style.display="block";
+    preview.style.display = "block";
 
-});
+    message.classList.remove("show");
+
+  }
+);
 
 
-/* PUBLISH */
+/* =========================
+   PUBLISH VIDEO
+========================= */
 
 function publishVideo(){
 
-if(!selectedVideo){
+  if(!selectedVideo){
 
-alert("Please select a video first.");
+    showMessage(
+      "Please select a video first."
+    );
 
-return;
+    return;
 
-}
+  }
 
-const url =
-URL.createObjectURL(selectedVideo);
-
-const caption =
-document.getElementById("caption").value.trim();
-
-const reel =
-document.createElement("section");
-
-reel.className="reel";
-
-reel.innerHTML = `
-
-<video
-  src="${url}"
-  controls
-  playsinline
-  loop>
-</video>
-
-<div class="info">
-
-<div class="username">
-  @you
-  <span class="follow">Follow</span>
-</div>
-
-<div class="caption">
-  ${escapeHTML(caption || "My new X Dark video 🔥")}
-</div>
-
-</div>
-
-<div class="actions">
-
-<button
-class="action like"
-onclick="like(this)">
-♡
-<small>0</small>
-</button>
-
-<button class="action">
-💬
-<small>0</small>
-</button>
-
-<button
-class="action"
-onclick="sharePage()">
-↗
-<small>Share</small>
-</button>
-
-</div>
-`;
-
-feed.prepend(reel);
-
-closeUpload();
-
-videoInput.value="";
-
-preview.src="";
-
-preview.style.display="none";
-
-document.getElementById("caption").value="";
-
-selectedVideo=null;
+  uploadToCloudinary(selectedVideo);
 
 }
 
 
-/* LIKE */
+/* =========================
+   CLOUDINARY UPLOAD
+========================= */
 
-function like(button){
+function uploadToCloudinary(file){
 
-button.classList.toggle("active");
+  publishButton.disabled = true;
 
-const counter =
-button.querySelector("small");
+  progressArea.style.display = "block";
 
-let count =
-Number(counter.textContent) || 0;
+  progressBar.style.width = "0%";
 
-if(button.classList.contains("active")){
+  progressText.textContent =
+    "Uploading 0%";
 
-count++;
+  const formData =
+    new FormData();
 
-button.firstChild.textContent="♥";
+  formData.append(
+    "file",
+    file
+  );
 
-}else{
+  formData.append(
+    "upload_preset",
+    UPLOAD_PRESET
+  );
 
-count=Math.max(0,count-1);
 
-button.firstChild.textContent="♡";
+  const xhr =
+    new XMLHttpRequest();
+
+
+  xhr.open(
+    "POST",
+    UPLOAD_URL,
+    true
+  );
+
+
+  /* PROGRESS */
+
+  xhr.upload.onprogress =
+    function(event){
+
+      if(event.lengthComputable){
+
+        const percent =
+          Math.round(
+            (event.loaded / event.total) * 100
+          );
+
+        progressBar.style.width =
+          percent + "%";
+
+        progressText.textContent =
+          "Uploading " + percent + "%";
+
+      }
+
+    };
+
+
+  /* SUCCESS */
+
+  xhr.onload =
+    function(){
+
+      publishButton.disabled = false;
+
+
+      if(
+        xhr.status >= 200 &&
+        xhr.status < 300
+      ){
+
+        try{
+
+          const result =
+            JSON.parse(xhr.responseText);
+
+          const videoURL =
+            result.secure_url;
+
+          const caption =
+            escapeHTML(
+              captionInput.value.trim()
+            );
+
+
+          const videoData = {
+
+            id:
+              Date.now(),
+
+            url:
+              videoURL,
+
+            caption:
+              caption ||
+              "My new X Dark video 🔥",
+
+            username:
+              "@you",
+
+            likes:
+              0,
+
+            comments:
+              0,
+
+            created:
+              new Date().toISOString()
+
+          };
+
+
+          videos.unshift(videoData);
+
+          localStorage.setItem(
+            "xdark_videos",
+            JSON.stringify(videos)
+          );
+
+
+          addVideoToFeed(
+            videoData,
+            true
+          );
+
+
+          showMessage(
+            "✅ Video uploaded successfully!"
+          );
+
+
+          setTimeout(
+            function(){
+
+              closeUpload();
+
+            },
+            900
+          );
+
+
+        }catch(error){
+
+          showMessage(
+            "Upload completed, but response could not be read."
+          );
+
+        }
+
+      }else{
+
+        let errorText =
+          "Upload failed.";
+
+        try{
+
+          const error =
+            JSON.parse(
+              xhr.responseText
+            );
+
+          if(
+            error.error &&
+            error.error.message
+          ){
+
+            errorText =
+              error.error.message;
+
+          }
+
+        }catch(e){}
+
+        showMessage(
+          "❌ " + errorText
+        );
+
+      }
+
+    };
+
+
+  /* NETWORK ERROR */
+
+  xhr.onerror =
+    function(){
+
+      publishButton.disabled = false;
+
+      showMessage(
+        "❌ Network error. Check your internet connection."
+      );
+
+    };
+
+
+  xhr.send(formData);
 
 }
 
-counter.textContent=count;
+
+/* =========================
+   ADD VIDEO TO FEED
+========================= */
+
+function addVideoToFeed(
+  videoData,
+  atTop = false
+){
+
+  const reel =
+    document.createElement("section");
+
+  reel.className = "reel";
+
+  reel.dataset.id =
+    videoData.id;
+
+
+  reel.innerHTML = `
+
+    <video
+      src="${videoData.url}"
+      playsinline
+      loop
+      controls>
+    </video>
+
+    <div class="video-overlay"></div>
+
+    <div class="info">
+
+      <div class="username">
+
+        ${videoData.username}
+
+        <span
+          class="follow"
+          onclick="followUser(event)">
+
+          Follow
+
+        </span>
+
+      </div>
+
+      <div class="caption">
+
+        ${videoData.caption}
+
+      </div>
+
+    </div>
+
+    <div class="actions">
+
+      <button
+        class="action like"
+        onclick="likeVideo(this, ${videoData.id})">
+
+        ♡
+
+        <small>${videoData.likes}</small>
+
+      </button>
+
+      <button
+        class="action"
+        onclick="openComments(${videoData.id})">
+
+        💬
+
+        <small>${videoData.comments}</small>
+
+      </button>
+
+      <button
+        class="action"
+        onclick="shareVideo('${videoData.url}')">
+
+        ↗
+
+        <small>Share</small>
+
+      </button>
+
+      <button
+        class="action"
+        onclick="toggleMute(this)">
+
+        🔊
+
+        <small>Sound</small>
+
+      </button>
+
+    </div>
+
+  `;
+
+
+  if(atTop){
+
+    feed.prepend(reel);
+
+  }else{
+
+    feed.appendChild(reel);
+
+  }
 
 }
 
 
-/* SHARE */
+/* =========================
+   LOAD SAVED VIDEOS
+========================= */
 
-async function sharePage(){
+function loadVideos(){
 
-try{
+  videos
+    .slice()
+    .reverse()
+    .forEach(
+      function(video){
 
-if(navigator.share){
+        addVideoToFeed(
+          video,
+          false
+        );
 
-await navigator.share({
-
-title:"X Dark",
-text:"Check this video on X Dark",
-url:location.href
-
-});
-
-}else{
-
-await navigator.clipboard.writeText(location.href);
-
-alert("Link copied!");
-
-}
-
-}catch(e){}
+      }
+    );
 
 }
 
 
-/* SAFE TEXT */
+/* =========================
+   LIKE
+========================= */
+
+function likeVideo(
+  button,
+  id
+){
+
+  const video =
+    videos.find(
+      v => v.id === id
+    );
+
+  if(!video){
+    return;
+  }
+
+
+  const active =
+    button.classList.contains(
+      "active"
+    );
+
+
+  if(active){
+
+    video.likes =
+      Math.max(
+        0,
+        video.likes - 1
+      );
+
+    button.classList.remove(
+      "active"
+    );
+
+    button.firstChild.textContent =
+      "♡";
+
+  }else{
+
+    video.likes++;
+
+    button.classList.add(
+      "active"
+    );
+
+    button.firstChild.textContent =
+      "♥";
+
+  }
+
+
+  button.querySelector(
+    "small"
+  ).textContent =
+    video.likes;
+
+
+  localStorage.setItem(
+    "xdark_videos",
+    JSON.stringify(videos)
+  );
+
+}
+
+
+/* =========================
+   COMMENTS
+========================= */
+
+function openComments(id){
+
+  currentCommentReel = id;
+
+  document
+    .getElementById("commentBox")
+    .classList.add("open");
+
+  document
+    .getElementById("commentInput")
+    .focus();
+
+}
+
+
+function submitComment(){
+
+  const input =
+    document.getElementById(
+      "commentInput"
+    );
+
+  const text =
+    input.value.trim();
+
+  if(!text){
+
+    showToast(
+      "Write a comment first."
+    );
+
+    return;
+
+  }
+
+
+  const video =
+    videos.find(
+      v =>
+        v.id === currentCommentReel
+    );
+
+
+  if(video){
+
+    video.comments++;
+
+    localStorage.setItem(
+      "xdark_videos",
+      JSON.stringify(videos)
+    );
+
+  }
+
+
+  input.value = "";
+
+  document
+    .getElementById("commentBox")
+    .classList.remove("open");
+
+  showToast(
+    "Comment posted 💬"
+  );
+
+}
+
+
+/* =========================
+   SHARE
+========================= */
+
+async function shareVideo(url){
+
+  try{
+
+    if(navigator.share){
+
+      await navigator.share({
+
+        title:
+          "X Dark Video",
+
+        text:
+          "Check this video on X Dark 🔥",
+
+        url:url
+
+      });
+
+    }else{
+
+      await navigator.clipboard.writeText(
+        url
+      );
+
+      showToast(
+        "Video link copied!"
+      );
+
+    }
+
+  }catch(error){}
+
+}
+
+
+/* =========================
+   MUTE
+========================= */
+
+function toggleMute(button){
+
+  const reel =
+    button.closest(".reel");
+
+  const video =
+    reel.querySelector("video");
+
+  video.muted =
+    !video.muted;
+
+
+  button.firstChild.textContent =
+    video.muted
+      ? "🔇"
+      : "🔊";
+
+}
+
+
+/* =========================
+   FOLLOW
+========================= */
+
+function followUser(event){
+
+  event.stopPropagation();
+
+  const button =
+    event.target;
+
+  if(button.textContent.trim() === "Follow"){
+
+    button.textContent =
+      "Following";
+
+    button.style.color =
+      "#777";
+
+    showToast(
+      "Following ✓"
+    );
+
+  }else{
+
+    button.textContent =
+      "Follow";
+
+    button.style.color =
+      "#ff3158";
+
+  }
+
+}
+
+
+/* =========================
+   RESET UPLOAD
+========================= */
+
+function resetUpload(){
+
+  selectedVideo = null;
+
+  videoInput.value = "";
+
+  preview.src = "";
+
+  preview.style.display =
+    "none";
+
+  captionInput.value = "";
+
+  progressArea.style.display =
+    "none";
+
+  progressBar.style.width =
+    "0%";
+
+  publishButton.disabled =
+    false;
+
+  message.classList.remove(
+    "show"
+  );
+
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+function showMessage(text){
+
+  message.textContent =
+    text;
+
+  message.classList.add(
+    "show"
+  );
+
+}
+
+
+/* =========================
+   TOAST
+========================= */
+
+function showToast(text){
+
+  const toast =
+    document.getElementById(
+      "toast"
+    );
+
+  toast.textContent =
+    text;
+
+  toast.classList.add(
+    "show"
+  );
+
+  setTimeout(
+    function(){
+
+      toast.classList.remove(
+        "show"
+      );
+
+    },
+    2200
+  );
+
+}
+
+
+/* =========================
+   HOME
+========================= */
+
+function goHome(){
+
+  feed.scrollTo({
+
+    top:0,
+
+    behavior:"smooth"
+
+  });
+
+}
+
+
+/* =========================
+   SAFE TEXT
+========================= */
 
 function escapeHTML(text){
 
-return String(text)
+  return String(text)
 
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+
+    .replace(
+      /</g,
+      "&lt;"
+    )
+
+    .replace(
+      />/g,
+      "&gt;"
+    )
+
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+
+    .replace(
+      /'/g,
+      "&#039;"
+    );
 
 }
+
+
+/* =========================
+   START
+========================= */
+
+loadVideos();
 
 </script>
 
