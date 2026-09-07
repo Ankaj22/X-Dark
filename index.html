@@ -13,10 +13,14 @@
   font-family:Arial,sans-serif;
 }
 
-body{
+html,body{
   background:#050505;
-  color:white;
-  min-height:100vh;
+  color:#fff;
+  min-height:100%;
+}
+
+body{
+  overflow-x:hidden;
 }
 
 button{
@@ -29,27 +33,31 @@ button{
   margin:auto;
   min-height:100vh;
   background:#080808;
-  padding-bottom:75px;
+  padding-bottom:70px;
 }
+
+/* HEADER */
 
 header{
   position:fixed;
   top:0;
+  left:50%;
+  transform:translateX(-50%);
   width:100%;
   max-width:600px;
-  height:58px;
-  background:rgba(5,5,5,.92);
-  backdrop-filter:blur(12px);
-  z-index:20;
+  height:60px;
+  background:rgba(5,5,5,.94);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid #222;
   display:flex;
   align-items:center;
   justify-content:space-between;
   padding:0 16px;
-  border-bottom:1px solid #222;
+  z-index:50;
 }
 
 .logo{
-  font-size:24px;
+  font-size:25px;
   font-weight:900;
   letter-spacing:2px;
 }
@@ -60,11 +68,14 @@ header{
 
 .headerBtn{
   background:#151515;
-  color:white;
+  color:#fff;
   border:1px solid #333;
-  border-radius:20px;
-  padding:8px 13px;
+  padding:9px 16px;
+  border-radius:22px;
+  font-size:14px;
 }
+
+/* PAGES */
 
 main{
   padding-top:60px;
@@ -105,77 +116,84 @@ main{
 .videoOverlay{
   position:absolute;
   inset:0;
-  background:linear-gradient(
-    transparent 45%,
-    rgba(0,0,0,.15) 60%,
-    rgba(0,0,0,.9) 100%
-  );
+  background:
+    linear-gradient(
+      transparent 42%,
+      rgba(0,0,0,.1) 58%,
+      rgba(0,0,0,.92) 100%
+    );
   pointer-events:none;
 }
 
 .videoInfo{
   position:absolute;
-  left:15px;
-  bottom:25px;
-  right:80px;
+  left:16px;
+  right:90px;
+  bottom:28px;
   z-index:5;
 }
 
 .username{
   font-size:17px;
-  font-weight:bold;
+  font-weight:700;
   margin-bottom:9px;
 }
 
 .caption{
   font-size:14px;
-  line-height:1.4;
+  line-height:1.45;
   margin-bottom:12px;
 }
 
 .followBtn{
   background:#ff1744;
-  color:white;
-  padding:7px 15px;
-  border-radius:18px;
-  font-weight:bold;
+  color:#fff;
+  padding:8px 16px;
+  border-radius:20px;
+  font-weight:700;
 }
 
 .actions{
   position:absolute;
-  right:10px;
-  bottom:25px;
+  right:9px;
+  bottom:28px;
   display:flex;
   flex-direction:column;
-  gap:17px;
-  z-index:8;
+  gap:16px;
+  z-index:10;
 }
 
 .action{
-  width:52px;
-  color:white;
-  text-align:center;
+  width:55px;
+  min-height:50px;
+  color:#fff;
   background:transparent;
-  font-size:26px;
+  text-align:center;
+  font-size:27px;
 }
 
 .action small{
   display:block;
   font-size:11px;
+  color:#fff;
   margin-top:3px;
+}
+
+.likeBtn.liked{
+  transform:scale(1.05);
 }
 
 .muted{
   position:absolute;
-  top:18px;
+  top:16px;
   right:15px;
-  background:rgba(0,0,0,.55);
+  width:43px;
+  height:43px;
   border-radius:50%;
-  width:42px;
-  height:42px;
-  color:white;
+  background:rgba(0,0,0,.55);
+  color:#fff;
   font-size:20px;
-  z-index:8;
+  z-index:12;
 }
 
 /* AUTH */
@@ -196,51 +214,57 @@ main{
 
 .input{
   width:100%;
-  padding:15px;
+  padding:16px;
   margin-bottom:12px;
-  border-radius:12px;
+  border-radius:13px;
   border:1px solid #333;
   background:#151515;
-  color:white;
+  color:#fff;
   outline:none;
+  font-size:15px;
+}
+
+.input:focus{
+  border-color:#ff1744;
 }
 
 .primary{
   width:100%;
-  padding:15px;
+  padding:16px;
   background:#ff1744;
-  color:white;
-  border-radius:12px;
+  color:#fff;
+  border-radius:13px;
   font-size:16px;
-  font-weight:bold;
+  font-weight:700;
   margin-bottom:12px;
 }
 
 .google{
   width:100%;
-  padding:15px;
-  background:white;
+  padding:16px;
+  background:#fff;
   color:#111;
-  border-radius:12px;
-  font-weight:bold;
+  border-radius:13px;
+  font-size:15px;
+  font-weight:700;
 }
 
 .switch{
-  margin-top:20px;
+  margin-top:22px;
   text-align:center;
-  color:#aaa;
+  color:#999;
 }
 
 .switch span{
   color:#ff1744;
+  font-weight:700;
   cursor:pointer;
-  font-weight:bold;
 }
 
 /* UPLOAD */
 
 .uploadBox{
-  padding:25px 18px;
+  padding:28px 18px;
 }
 
 .uploadBox h2{
@@ -252,7 +276,7 @@ main{
   padding:15px;
   background:#151515;
   border:1px dashed #555;
-  color:white;
+  color:#fff;
   border-radius:12px;
   margin-bottom:15px;
 }
@@ -269,6 +293,7 @@ main{
   height:100%;
   width:0%;
   background:#ff1744;
+  transition:width .2s;
 }
 
 .status{
@@ -279,25 +304,25 @@ main{
 /* PROFILE */
 
 .profile{
-  padding:25px 18px;
+  padding:30px 18px;
   text-align:center;
 }
 
 .avatar{
-  width:85px;
-  height:85px;
+  width:90px;
+  height:90px;
   border-radius:50%;
   background:#ff1744;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:34px;
-  font-weight:bold;
-  margin:20px auto 12px;
+  font-size:36px;
+  font-weight:900;
+  margin:20px auto 14px;
 }
 
 .profile h2{
-  margin-bottom:5px;
+  margin-bottom:7px;
 }
 
 .profile p{
@@ -305,17 +330,15 @@ main{
 }
 
 .profileBtns{
-  display:flex;
-  gap:10px;
-  margin-top:25px;
+  margin-top:28px;
 }
 
 .profileBtns button{
-  flex:1;
-  padding:13px;
-  border-radius:10px;
+  width:100%;
+  padding:15px;
+  border-radius:12px;
   background:#191919;
-  color:white;
+  color:#fff;
   border:1px solid #333;
 }
 
@@ -324,32 +347,43 @@ main{
 nav{
   position:fixed;
   bottom:0;
+  left:50%;
+  transform:translateX(-50%);
   width:100%;
   max-width:600px;
-  height:68px;
-  background:rgba(5,5,5,.96);
+  height:70px;
+  background:rgba(5,5,5,.97);
   border-top:1px solid #222;
   display:flex;
   justify-content:space-around;
   align-items:center;
-  z-index:30;
+  z-index:60;
 }
 
 nav button{
   background:none;
   color:#888;
-  font-size:23px;
+  font-size:26px;
 }
 
 nav button.active{
   color:#ff1744;
 }
 
+/* EMPTY */
+
 .empty{
-  padding:80px 20px;
+  padding:100px 20px;
   text-align:center;
   color:#777;
 }
+
+.empty h2{
+  color:#aaa;
+  margin-bottom:8px;
+}
+
+/* TOAST */
 
 #toast{
   position:fixed;
@@ -357,12 +391,14 @@ nav button.active{
   bottom:90px;
   transform:translateX(-50%);
   background:#222;
-  color:white;
+  color:#fff;
   padding:12px 18px;
-  border-radius:20px;
+  border-radius:22px;
   display:none;
   z-index:100;
   font-size:13px;
+  max-width:85%;
+  text-align:center;
 }
 </style>
 </head>
@@ -379,53 +415,120 @@ nav button.active{
 <main>
 
 <!-- HOME -->
+
 <section id="homePage" class="page active">
+
   <div id="feed" class="feed">
-    <div class="empty">Loading X-Dark...</div>
+
+    <div class="empty">
+      Loading X-Dark...
+    </div>
+
   </div>
+
 </section>
 
+
 <!-- LOGIN -->
+
 <section id="loginPage" class="page">
+
   <div class="authBox">
+
     <h1>Welcome Back</h1>
     <p>Login to X-Dark</p>
 
-    <input id="loginEmail" class="input" type="email" placeholder="Email">
-    <input id="loginPassword" class="input" type="password" placeholder="Password">
+    <input
+      id="loginEmail"
+      class="input"
+      type="email"
+      placeholder="Email"
+    >
 
-    <button class="primary" id="loginBtn">Login</button>
-    <button class="google" id="googleBtn">🔵 Continue with Google</button>
+    <input
+      id="loginPassword"
+      class="input"
+      type="password"
+      placeholder="Password"
+    >
+
+    <button
+      class="primary"
+      id="loginBtn"
+    >
+      Login
+    </button>
+
+    <button
+      class="google"
+      id="googleBtn"
+    >
+      🔵 Continue with Google
+    </button>
 
     <div class="switch">
       Don't have an account?
       <span id="showSignup">Sign up</span>
     </div>
+
   </div>
+
 </section>
 
+
 <!-- SIGNUP -->
+
 <section id="signupPage" class="page">
+
   <div class="authBox">
+
     <h1>Create Account</h1>
     <p>Join X-Dark</p>
 
-    <input id="signupName" class="input" type="text" placeholder="Username">
-    <input id="signupEmail" class="input" type="email" placeholder="Email">
-    <input id="signupPassword" class="input" type="password" placeholder="Password">
+    <input
+      id="signupName"
+      class="input"
+      type="text"
+      placeholder="Username"
+    >
 
-    <button class="primary" id="signupBtn">Create Account</button>
+    <input
+      id="signupEmail"
+      class="input"
+      type="email"
+      placeholder="Email"
+    >
+
+    <input
+      id="signupPassword"
+      class="input"
+      type="password"
+      placeholder="Password"
+    >
+
+    <button
+      class="primary"
+      id="signupBtn"
+    >
+      Create Account
+    </button>
 
     <div class="switch">
       Already have an account?
       <span id="showLogin">Login</span>
     </div>
+
   </div>
+
 </section>
 
+
 <!-- UPLOAD -->
+
 <section id="uploadPage" class="page">
+
   <div class="uploadBox">
+
     <h2>Upload Video 🎬</h2>
 
     <input
@@ -443,56 +546,116 @@ nav button.active{
       placeholder="Write a caption..."
     >
 
-    <button class="primary" id="uploadBtn">
+    <button
+      class="primary"
+      id="uploadBtn"
+    >
       Upload to X-Dark
     </button>
 
     <div class="progress">
-      <div id="progressBar" class="progressBar"></div>
+      <div
+        id="progressBar"
+        class="progressBar"
+      ></div>
     </div>
 
-    <div id="uploadStatus" class="status">
+    <div
+      id="uploadStatus"
+      class="status"
+    >
       Maximum video size: 100 MB
     </div>
+
   </div>
+
 </section>
 
+
 <!-- PROFILE -->
+
 <section id="profilePage" class="page">
+
   <div class="profile">
 
-    <div id="avatar" class="avatar">?</div>
+    <div
+      id="avatar"
+      class="avatar"
+    >
+      ?
+    </div>
 
-    <h2 id="profileName">Guest</h2>
-    <p id="profileEmail">Not logged in</p>
+    <h2 id="profileName">
+      Guest
+    </h2>
+
+    <p id="profileEmail">
+      Not logged in
+    </p>
 
     <div class="profileBtns">
-      <button id="logoutBtn">Logout</button>
+
+      <button id="logoutBtn">
+        Logout
+      </button>
+
     </div>
 
   </div>
+
 </section>
 
 </main>
 
+
+<!-- BOTTOM NAV -->
+
 <nav>
-  <button class="navBtn active" data-page="homePage">⌂</button>
-  <button class="navBtn" data-page="uploadPage">＋</button>
-  <button class="navBtn" data-page="profilePage">♙</button>
+
+  <button
+    class="navBtn active"
+    data-page="homePage"
+  >
+    ⌂
+  </button>
+
+  <button
+    class="navBtn"
+    data-page="uploadPage"
+  >
+    ＋
+  </button>
+
+  <button
+    class="navBtn"
+    data-page="profilePage"
+  >
+    ♙
+  </button>
+
 </nav>
+
 
 <div id="toast"></div>
 
 </div>
 
+
 <script type="module">
 
-/* =========================
-   FIREBASE
-========================= */
+/* =====================================
+   FIREBASE APP
+===================================== */
 
-import { initializeApp }
+import {
+  initializeApp
+}
 from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+
+
+/* =====================================
+   FIREBASE AUTH
+===================================== */
 
 import {
   getAuth,
@@ -506,107 +669,190 @@ import {
 }
 from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 
+
+/* =====================================
+   FIRESTORE
+===================================== */
+
 import {
   getFirestore,
   collection,
   addDoc,
   getDocs,
+  getDoc,
   query,
   orderBy,
-  serverTimestamp
+  serverTimestamp,
+  doc,
+  setDoc,
+  deleteDoc
 }
 from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 
+/* =====================================
+   FIREBASE CONFIG
+===================================== */
+
 const firebaseConfig = {
-  apiKey: "AIzaSyC8Hfx0E7OpnfclF7UGYVcmdU38yuxtsBY",
-  authDomain: "darkwing-a717a.firebaseapp.com",
-  projectId: "darkwing-a717a",
-  storageBucket: "darkwing-a717a.firebasestorage.app",
-  messagingSenderId: "352453390196",
-  appId: "1:352453390196:web:7c375a26a823b5633a4621",
-  measurementId: "G-5RVX9NET3W"
+
+  apiKey:
+    "AIzaSyC8Hfx0E7OpnfclF7UGYVcmdU38yuxtsBY",
+
+  authDomain:
+    "darkwing-a717a.firebaseapp.com",
+
+  projectId:
+    "darkwing-a717a",
+
+  storageBucket:
+    "darkwing-a717a.firebasestorage.app",
+
+  messagingSenderId:
+    "352453390196",
+
+  appId:
+    "1:352453390196:web:7c375a26a823b5633a4621",
+
+  measurementId:
+    "G-5RVX9NET3W"
 };
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
+
+const app =
+  initializeApp(firebaseConfig);
+
+const auth =
+  getAuth(app);
+
+const db =
+  getFirestore(app);
 
 
-/* =========================
+/* =====================================
    CLOUDINARY
-========================= */
+===================================== */
 
-const CLOUD_NAME = "lrpb7uuy";
-const UPLOAD_PRESET = "x_dark_videos";
+const CLOUD_NAME =
+  "lrpb7uuy";
+
+const UPLOAD_PRESET =
+  "x_dark_videos";
 
 const CLOUDINARY_URL =
-`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/video/upload`;
+  `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/video/upload`;
 
 
-/* =========================
-   HELPERS
-========================= */
+/* =====================================
+   HELPER
+===================================== */
 
-const $ = id => document.getElementById(id);
+const $ = id =>
+  document.getElementById(id);
+
 
 function toast(message){
 
-  const box = $("toast");
+  const box =
+    $("toast");
 
-  box.textContent = message;
-  box.style.display = "block";
+  box.textContent =
+    message;
 
-  setTimeout(()=>{
-    box.style.display = "none";
-  },2500);
+  box.style.display =
+    "block";
+
+  clearTimeout(window.toastTimer);
+
+  window.toastTimer =
+    setTimeout(()=>{
+
+      box.style.display =
+        "none";
+
+    },2500);
 }
 
 
-/* =========================
+/* =====================================
    PAGE NAVIGATION
-========================= */
+===================================== */
 
 function showPage(pageId){
 
-  document.querySelectorAll(".page").forEach(page=>{
-    page.classList.remove("active");
-  });
+  document
+    .querySelectorAll(".page")
+    .forEach(page=>{
 
-  $(pageId).classList.add("active");
+      page.classList.remove("active");
 
-  document.querySelectorAll(".navBtn").forEach(btn=>{
-    btn.classList.toggle(
-      "active",
-      btn.dataset.page === pageId
-    );
-  });
+    });
+
+  $(pageId)
+    .classList.add("active");
+
+
+  document
+    .querySelectorAll(".navBtn")
+    .forEach(btn=>{
+
+      btn.classList.toggle(
+        "active",
+        btn.dataset.page === pageId
+      );
+
+    });
+
 
   window.scrollTo(0,0);
 }
 
-document.querySelectorAll(".navBtn").forEach(btn=>{
 
-  btn.addEventListener("click",()=>{
+/* =====================================
+   BOTTOM NAV
+===================================== */
 
-    const page = btn.dataset.page;
+document
+  .querySelectorAll(".navBtn")
+  .forEach(btn=>{
 
-    if(page === "uploadPage" && !auth.currentUser){
+    btn.addEventListener(
+      "click",
+      ()=>{
 
-      toast("Login required to upload");
+        const page =
+          btn.dataset.page;
 
-      showPage("loginPage");
 
-      return;
-    }
+        if(
+          page === "uploadPage" &&
+          !auth.currentUser
+        ){
 
-    showPage(page);
+          toast(
+            "Login required to upload"
+          );
+
+          showPage("loginPage");
+
+          return;
+        }
+
+
+        showPage(page);
+
+      }
+    );
+
   });
 
-});
 
+/* =====================================
+   HEADER AUTH BUTTON
+===================================== */
 
-$("authHeaderBtn").onclick = ()=>{
+$("authHeaderBtn").onclick =
+()=>{
 
   if(auth.currentUser){
 
@@ -621,29 +867,51 @@ $("authHeaderBtn").onclick = ()=>{
 };
 
 
-/* =========================
+/* =====================================
    SIGNUP
-========================= */
+===================================== */
 
-$("signupBtn").onclick = async ()=>{
+$("signupBtn").onclick =
+async ()=>{
 
-  const name = $("signupName").value.trim();
-  const email = $("signupEmail").value.trim();
-  const password = $("signupPassword").value;
+  const name =
+    $("signupName")
+      .value
+      .trim();
 
-  if(!name || !email || !password){
+  const email =
+    $("signupEmail")
+      .value
+      .trim();
 
-    toast("Fill all fields");
+  const password =
+    $("signupPassword")
+      .value;
+
+
+  if(
+    !name ||
+    !email ||
+    !password
+  ){
+
+    toast(
+      "Fill all fields"
+    );
 
     return;
   }
+
 
   if(password.length < 6){
 
-    toast("Password must be 6+ characters");
+    toast(
+      "Password must be 6+ characters"
+    );
 
     return;
   }
+
 
   try{
 
@@ -654,338 +922,639 @@ $("signupBtn").onclick = async ()=>{
         password
       );
 
-    await updateProfile(result.user,{
-      displayName:name
-    });
 
-    toast("Account created 🎉");
+    await updateProfile(
+      result.user,
+      {
+        displayName:name
+      }
+    );
+
+
+    toast(
+      "Account created 🎉"
+    );
+
+
+    updateProfileUI(
+      result.user
+    );
+
 
     showPage("homePage");
 
+
   }catch(error){
 
-    toast(error.message);
+    console.error(error);
+
+    toast(
+      getFriendlyError(error)
+    );
 
   }
 
 };
 
 
-/* =========================
+/* =====================================
    LOGIN
-========================= */
+===================================== */
 
-$("loginBtn").onclick = async ()=>{
+$("loginBtn").onclick =
+async ()=>{
 
-  const email = $("loginEmail").value.trim();
-  const password = $("loginPassword").value;
+  const email =
+    $("loginEmail")
+      .value
+      .trim();
 
-  if(!email || !password){
+  const password =
+    $("loginPassword")
+      .value;
 
-    toast("Enter email and password");
+
+  if(
+    !email ||
+    !password
+  ){
+
+    toast(
+      "Enter email and password"
+    );
 
     return;
   }
 
+
   try{
 
-    await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
+    const result =
+      await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+
+    updateProfileUI(
+      result.user
     );
 
-    toast("Login successful ✅");
+
+    toast(
+      "Login successful ✅"
+    );
+
 
     showPage("homePage");
 
+
   }catch(error){
 
-    toast(error.message);
+    console.error(error);
+
+    toast(
+      getFriendlyError(error)
+    );
 
   }
 
 };
 
 
-/* =========================
+/* =====================================
    GOOGLE LOGIN
-========================= */
+===================================== */
 
-$("googleBtn").onclick = async ()=>{
+$("googleBtn").onclick =
+async ()=>{
 
   try{
 
     const provider =
       new GoogleAuthProvider();
 
+
     await signInWithPopup(
       auth,
       provider
     );
 
-    toast("Google login successful ✅");
+
+    toast(
+      "Google login successful ✅"
+    );
+
 
     showPage("homePage");
 
+
   }catch(error){
 
-    toast(error.message);
+    console.error(error);
+
+    toast(
+      getFriendlyError(error)
+    );
 
   }
 
 };
 
 
-/* =========================
+/* =====================================
    LOGIN / SIGNUP SWITCH
-========================= */
+===================================== */
 
 $("showSignup").onclick =
-()=>showPage("signupPage");
+()=>{
+
+  showPage(
+    "signupPage"
+  );
+
+};
+
 
 $("showLogin").onclick =
-()=>showPage("loginPage");
+()=>{
+
+  showPage(
+    "loginPage"
+  );
+
+};
 
 
-/* =========================
+/* =====================================
+   FRIENDLY FIREBASE ERRORS
+===================================== */
+
+function getFriendlyError(error){
+
+  const code =
+    error?.code || "";
+
+
+  if(
+    code.includes(
+      "auth/invalid-credential"
+    )
+  ){
+
+    return "Email or password is incorrect";
+
+  }
+
+
+  if(
+    code.includes(
+      "auth/email-already-in-use"
+    )
+  ){
+
+    return "Email already registered";
+
+  }
+
+
+  if(
+    code.includes(
+      "auth/invalid-email"
+    )
+  ){
+
+    return "Invalid email";
+
+  }
+
+
+  if(
+    code.includes(
+      "auth/popup-closed-by-user"
+    )
+  ){
+
+    return "Google login cancelled";
+
+  }
+
+
+  return error?.message ||
+    "Something went wrong";
+
+}
+
+
+/* =====================================
    AUTH STATE
-========================= */
+===================================== */
 
-onAuthStateChanged(auth,user=>{
+onAuthStateChanged(
+  auth,
+  user=>{
+
+    updateProfileUI(user);
+
+  }
+);
+
+
+function updateProfileUI(user){
 
   if(user){
 
-    $("authHeaderBtn").textContent = "Profile";
+    $("authHeaderBtn")
+      .textContent =
+      "Profile";
 
-    $("profileName").textContent =
-      user.displayName || "X-Dark User";
 
-    $("profileEmail").textContent =
+    const name =
+      user.displayName ||
+      "X-Dark User";
+
+
+    $("profileName")
+      .textContent =
+      name;
+
+
+    $("profileEmail")
+      .textContent =
       user.email || "";
 
-    $("avatar").textContent =
-      (user.displayName || "X")
-      .charAt(0)
-      .toUpperCase();
+
+    $("avatar")
+      .textContent =
+      name
+        .charAt(0)
+        .toUpperCase();
+
 
   }else{
 
-    $("authHeaderBtn").textContent = "Login";
+    $("authHeaderBtn")
+      .textContent =
+      "Login";
 
-    $("profileName").textContent = "Guest";
 
-    $("profileEmail").textContent =
+    $("profileName")
+      .textContent =
+      "Guest";
+
+
+    $("profileEmail")
+      .textContent =
       "Not logged in";
 
-    $("avatar").textContent = "?";
+
+    $("avatar")
+      .textContent =
+      "?";
 
   }
 
-});
+}
 
 
-/* =========================
+/* =====================================
    LOGOUT
-========================= */
+===================================== */
 
-$("logoutBtn").onclick = async ()=>{
+$("logoutBtn").onclick =
+async ()=>{
 
-  await signOut(auth);
+  try{
 
-  toast("Logged out");
+    await signOut(auth);
 
-  showPage("homePage");
+    toast(
+      "Logged out"
+    );
+
+    showPage(
+      "homePage"
+    );
+
+  }catch(error){
+
+    toast(
+      "Logout failed"
+    );
+
+  }
 
 };
 
 
-/* =========================
+/* =====================================
    CLOUDINARY UPLOAD
-========================= */
+===================================== */
 
-$("uploadBtn").onclick = ()=>{
+$("uploadBtn").onclick =
+()=>{
 
   if(!auth.currentUser){
 
-    toast("Please login first");
+    toast(
+      "Please login first"
+    );
 
-    showPage("loginPage");
+    showPage(
+      "loginPage"
+    );
 
     return;
   }
 
+
   const file =
-    $("videoFile").files[0];
+    $("videoFile")
+      .files[0];
+
 
   const caption =
-    $("caption").value.trim();
+    $("caption")
+      .value
+      .trim();
+
 
   if(!file){
 
-    toast("Select a video");
+    toast(
+      "Select a video"
+    );
 
     return;
   }
 
-  if(file.size > 100 * 1024 * 1024){
 
-    toast("Video must be under 100 MB");
+  if(
+    file.size >
+    100 * 1024 * 1024
+  ){
+
+    toast(
+      "Video must be under 100 MB"
+    );
 
     return;
   }
 
-  const formData = new FormData();
+
+  const formData =
+    new FormData();
+
 
   formData.append(
     "file",
     file
   );
 
+
   formData.append(
     "upload_preset",
     UPLOAD_PRESET
   );
 
-  $("uploadStatus").textContent =
+
+  $("progressBar")
+    .style.width =
+    "0%";
+
+
+  $("uploadStatus")
+    .textContent =
     "Uploading video...";
 
-  const xhr = new XMLHttpRequest();
+
+  const xhr =
+    new XMLHttpRequest();
+
 
   xhr.open(
     "POST",
     CLOUDINARY_URL
   );
 
-  xhr.upload.onprogress = event =>{
 
-    if(event.lengthComputable){
+  xhr.upload.onprogress =
+    event=>{
 
-      const percent =
-        Math.round(
-          event.loaded / event.total * 100
-        );
+      if(
+        event.lengthComputable
+      ){
 
-      $("progressBar").style.width =
-        percent + "%";
-
-      $("uploadStatus").textContent =
-        `Uploading ${percent}%`;
-
-    }
-
-  };
+        const percent =
+          Math.round(
+            event.loaded /
+            event.total *
+            100
+          );
 
 
-  xhr.onload = async ()=>{
+        $("progressBar")
+          .style.width =
+          percent + "%";
 
-    if(xhr.status >= 200 && xhr.status < 300){
 
-      try{
-
-        const data =
-          JSON.parse(xhr.responseText);
-
-        const videoUrl =
-          data.secure_url;
-
-        $("uploadStatus").textContent =
-          "Saving video...";
-
-        await addDoc(
-          collection(db,"videos"),
-          {
-            videoUrl:videoUrl,
-            caption:caption,
-            username:
-              auth.currentUser.displayName ||
-              "X-Dark User",
-            userId:
-              auth.currentUser.uid,
-            likes:0,
-            comments:0,
-            createdAt:
-              serverTimestamp()
-          }
-        );
-
-        $("uploadStatus").textContent =
-          "Upload complete ✅";
-
-        $("progressBar").style.width =
-          "100%";
-
-        $("videoFile").value = "";
-        $("caption").value = "";
-
-        toast("Video uploaded 🎉");
-
-        await loadVideos();
-
-        setTimeout(()=>{
-          showPage("homePage");
-        },800);
-
-      }catch(error){
-
-        console.error(error);
-
-        $("uploadStatus").textContent =
-          "Firestore error";
-
-        toast(error.message);
+        $("uploadStatus")
+          .textContent =
+          `Uploading ${percent}%`;
 
       }
 
-    }else{
-
-      $("uploadStatus").textContent =
-        "Cloudinary upload failed";
-
-      toast("Upload failed");
-
-    }
-
-  };
+    };
 
 
-  xhr.onerror = ()=>{
+  xhr.onload =
+    async ()=>{
 
-    $("uploadStatus").textContent =
-      "Network error";
+      if(
+        xhr.status >= 200 &&
+        xhr.status < 300
+      ){
 
-    toast("Network error");
+        try{
 
-  };
+          const data =
+            JSON.parse(
+              xhr.responseText
+            );
 
 
-  xhr.send(formData);
+          const videoUrl =
+            data.secure_url;
+
+
+          $("uploadStatus")
+            .textContent =
+            "Saving video...";
+
+
+          await addDoc(
+            collection(
+              db,
+              "videos"
+            ),
+            {
+
+              videoUrl:
+                videoUrl,
+
+              caption:
+                caption,
+
+              username:
+                auth.currentUser
+                  .displayName ||
+                "X-Dark User",
+
+              userId:
+                auth.currentUser
+                  .uid,
+
+              likes:
+                0,
+
+              comments:
+                0,
+
+              createdAt:
+                serverTimestamp()
+
+            }
+          );
+
+
+          $("progressBar")
+            .style.width =
+            "100%";
+
+
+          $("uploadStatus")
+            .textContent =
+            "Upload complete ✅";
+
+
+          $("videoFile")
+            .value = "";
+
+
+          $("caption")
+            .value = "";
+
+
+          toast(
+            "Video uploaded 🎉"
+          );
+
+
+          await loadVideos();
+
+
+          setTimeout(
+            ()=>{
+              showPage(
+                "homePage"
+              );
+            },
+            800
+          );
+
+
+        }catch(error){
+
+          console.error(error);
+
+          $("uploadStatus")
+            .textContent =
+            "Firestore error";
+
+
+          toast(
+            getFriendlyError(error)
+          );
+
+        }
+
+
+      }else{
+
+        $("uploadStatus")
+          .textContent =
+          "Cloudinary upload failed";
+
+
+        toast(
+          "Cloudinary upload failed"
+        );
+
+      }
+
+    };
+
+
+  xhr.onerror =
+    ()=>{
+
+      $("uploadStatus")
+        .textContent =
+        "Network error";
+
+
+      toast(
+        "Network error"
+      );
+
+    };
+
+
+  xhr.send(
+    formData
+  );
 
 };
 
 
-/* =========================
+/* =====================================
    LOAD GLOBAL VIDEOS
-========================= */
+===================================== */
 
 async function loadVideos(){
 
   const feed =
     $("feed");
 
-  feed.innerHTML =
-    `<div class="empty">Loading videos...</div>`;
+
+  feed.innerHTML = `
+    <div class="empty">
+      Loading videos...
+    </div>
+  `;
+
 
   try{
 
     const videosQuery =
       query(
-        collection(db,"videos"),
-        orderBy("createdAt","desc")
+        collection(
+          db,
+          "videos"
+        ),
+        orderBy(
+          "createdAt",
+          "desc"
+        )
       );
 
+
     const snapshot =
-      await getDocs(videosQuery);
+      await getDocs(
+        videosQuery
+      );
+
 
     if(snapshot.empty){
 
@@ -999,21 +1568,28 @@ async function loadVideos(){
       return;
     }
 
+
     feed.innerHTML = "";
 
-    snapshot.forEach(docSnap=>{
+
+    for(
+      const docSnap of snapshot.docs
+    ){
 
       const data =
         docSnap.data();
 
-      createVideoCard(
+
+      await createVideoCard(
         data,
         docSnap.id
       );
 
-    });
+    }
+
 
     activateVideos();
+
 
   }catch(error){
 
@@ -1022,7 +1598,7 @@ async function loadVideos(){
     feed.innerHTML = `
       <div class="empty">
         <h2>Feed unavailable</h2>
-        <p>Firestore rules need to be configured.</p>
+        <p>Unable to load videos.</p>
       </div>
     `;
 
@@ -1031,164 +1607,600 @@ async function loadVideos(){
 }
 
 
-/* =========================
-   VIDEO CARD
-========================= */
+/* =====================================
+   CREATE VIDEO CARD
+===================================== */
 
-function createVideoCard(data,id){
+async function createVideoCard(
+  data,
+  id
+){
 
   const card =
-    document.createElement("div");
+    document.createElement(
+      "div"
+    );
+
 
   card.className =
     "videoCard";
 
-  card.innerHTML = `
-
-    <video
-      src="${data.videoUrl}"
-      playsinline
-      loop
-      muted
-      preload="metadata">
-    </video>
-
-    <div class="videoOverlay"></div>
-
-    <button class="muted">🔇</button>
-
-    <div class="videoInfo">
-
-      <div class="username">
-        @${escapeHtml(data.username || "user")}
-      </div>
-
-      <div class="caption">
-        ${escapeHtml(data.caption || "")}
-      </div>
-
-      <button class="followBtn">
-        Follow
-      </button>
-
-    </div>
-
-    <div class="actions">
-
-      <button class="action likeBtn">
-        ❤️
-        <small>${data.likes || 0}</small>
-      </button>
-
-      <button class="action commentBtn">
-        💬
-        <small>${data.comments || 0}</small>
-      </button>
-
-      <button class="action shareBtn">
-        ↗️
-        <small>Share</small>
-      </button>
-
-    </div>
-  `;
-
-  $("feed").appendChild(card);
 
   const video =
-    card.querySelector("video");
+    document.createElement(
+      "video"
+    );
+
+
+  video.src =
+    data.videoUrl || "";
+
+  video.playsInline =
+    true;
+
+  video.loop =
+    true;
+
+  video.muted =
+    true;
+
+  video.preload =
+    "metadata";
+
+
+  const overlay =
+    document.createElement(
+      "div"
+    );
+
+  overlay.className =
+    "videoOverlay";
+
 
   const mute =
-    card.querySelector(".muted");
+    document.createElement(
+      "button"
+    );
 
-  mute.onclick = ()=>{
+  mute.className =
+    "muted";
 
-    video.muted =
-      !video.muted;
-
-    mute.textContent =
-      video.muted ? "🔇" : "🔊";
-
-  };
+  mute.textContent =
+    "🔇";
 
 
-  card.querySelector(".likeBtn").onclick =
+  const info =
+    document.createElement(
+      "div"
+    );
+
+  info.className =
+    "videoInfo";
+
+
+  const username =
+    document.createElement(
+      "div"
+    );
+
+  username.className =
+    "username";
+
+  username.textContent =
+    "@" +
+    (data.username ||
+      "user");
+
+
+  const caption =
+    document.createElement(
+      "div"
+    );
+
+  caption.className =
+    "caption";
+
+  caption.textContent =
+    data.caption || "";
+
+
+  const follow =
+    document.createElement(
+      "button"
+    );
+
+  follow.className =
+    "followBtn";
+
+  follow.textContent =
+    "Follow";
+
+
+  info.append(
+    username,
+    caption,
+    follow
+  );
+
+
+  const actions =
+    document.createElement(
+      "div"
+    );
+
+  actions.className =
+    "actions";
+
+
+  /* LIKE BUTTON */
+
+  const likeBtn =
+    document.createElement(
+      "button"
+    );
+
+  likeBtn.className =
+    "action likeBtn";
+
+  likeBtn.innerHTML =
+    "🤍";
+
+
+  const likeCount =
+    document.createElement(
+      "small"
+    );
+
+  likeCount.textContent =
+    "0";
+
+
+  likeBtn.append(
+    likeCount
+  );
+
+
+  /* COMMENT */
+
+  const commentBtn =
+    document.createElement(
+      "button"
+    );
+
+  commentBtn.className =
+    "action commentBtn";
+
+  commentBtn.innerHTML =
+    "💬";
+
+
+  const commentCount =
+    document.createElement(
+      "small"
+    );
+
+  commentCount.textContent =
+    data.comments || 0;
+
+
+  commentBtn.append(
+    commentCount
+  );
+
+
+  /* SHARE */
+
+  const shareBtn =
+    document.createElement(
+      "button"
+    );
+
+  shareBtn.className =
+    "action shareBtn";
+
+  shareBtn.innerHTML =
+    "↗️";
+
+
+  const shareText =
+    document.createElement(
+      "small"
+    );
+
+  shareText.textContent =
+    "Share";
+
+
+  shareBtn.append(
+    shareText
+  );
+
+
+  actions.append(
+    likeBtn,
+    commentBtn,
+    shareBtn
+  );
+
+
+  card.append(
+    video,
+    overlay,
+    mute,
+    info,
+    actions
+  );
+
+
+  $("feed")
+    .appendChild(card);
+
+
+  /* =================================
+     MUTE
+  ================================= */
+
+  mute.onclick =
     ()=>{
 
-      const small =
-        card.querySelector(".likeBtn small");
+      video.muted =
+        !video.muted;
 
-      let count =
-        parseInt(small.textContent) || 0;
 
-      count++;
-
-      small.textContent =
-        count;
+      mute.textContent =
+        video.muted
+          ? "🔇"
+          : "🔊";
 
     };
 
 
-  card.querySelector(".shareBtn").onclick =
-    async ()=>{
+  /* =================================
+     LOAD REAL LIKES
+  ================================= */
 
-      try{
+  let liked =
+    false;
 
-        await navigator.clipboard.writeText(
-          data.videoUrl
+
+  try{
+
+    const likesSnapshot =
+      await getDocs(
+        collection(
+          db,
+          "videos",
+          id,
+          "likes"
+        )
+      );
+
+
+    likeCount.textContent =
+      likesSnapshot.size;
+
+
+    if(auth.currentUser){
+
+      liked =
+        likesSnapshot.docs.some(
+          likeDoc =>
+            likeDoc.id ===
+            auth.currentUser.uid
         );
 
-        toast("Video link copied 🔗");
-
-      }catch{
-
-        toast("Share unavailable");
-
-      }
-
-    };
+    }
 
 
-  card.querySelector(".commentBtn").onclick =
-    ()=>{
+    updateLikeUI(
+      likeBtn,
+      liked
+    );
+
+
+  }catch(error){
+
+    console.error(
+      "Like loading error:",
+      error
+    );
+
+  }
+
+
+  /* =================================
+     REAL LIKE / UNLIKE
+  ================================= */
+
+  likeBtn.onclick =
+    async ()=>{
 
       if(!auth.currentUser){
 
-        toast("Login to comment");
+        toast(
+          "Login to like ❤️"
+        );
+
+        showPage(
+          "loginPage"
+        );
 
         return;
       }
 
-      const text =
-        prompt("Write your comment:");
 
-      if(text){
+      const userId =
+        auth.currentUser.uid;
 
-        toast("Comment feature next step 💬");
+
+      const likeRef =
+        doc(
+          db,
+          "videos",
+          id,
+          "likes",
+          userId
+        );
+
+
+      likeBtn.disabled =
+        true;
+
+
+      try{
+
+        const currentLike =
+          await getDoc(
+            likeRef
+          );
+
+
+        if(
+          currentLike.exists()
+        ){
+
+          await deleteDoc(
+            likeRef
+          );
+
+
+          liked =
+            false;
+
+
+          let count =
+            parseInt(
+              likeCount.textContent
+            ) || 0;
+
+
+          likeCount.textContent =
+            Math.max(
+              0,
+              count - 1
+            );
+
+
+          updateLikeUI(
+            likeBtn,
+            false
+          );
+
+
+          toast(
+            "Like removed"
+          );
+
+
+        }else{
+
+          await setDoc(
+            likeRef,
+            {
+
+              userId:
+                userId,
+
+              createdAt:
+                serverTimestamp()
+
+            }
+          );
+
+
+          liked =
+            true;
+
+
+          let count =
+            parseInt(
+              likeCount.textContent
+            ) || 0;
+
+
+          likeCount.textContent =
+            count + 1;
+
+
+          updateLikeUI(
+            likeBtn,
+            true
+          );
+
+
+          toast(
+            "Liked ❤️"
+          );
+
+        }
+
+
+      }catch(error){
+
+        console.error(
+          "Like error:",
+          error
+        );
+
+
+        toast(
+          "Like failed"
+        );
 
       }
+
+
+      likeBtn.disabled =
+        false;
+
+    };
+
+
+  /* =================================
+     COMMENT BUTTON
+  ================================= */
+
+  commentBtn.onclick =
+    ()=>{
+
+      if(!auth.currentUser){
+
+        toast(
+          "Login to comment"
+        );
+
+        showPage(
+          "loginPage"
+        );
+
+        return;
+      }
+
+
+      toast(
+        "Comments coming next 💬"
+      );
+
+    };
+
+
+  /* =================================
+     SHARE
+  ================================= */
+
+  shareBtn.onclick =
+    async ()=>{
+
+      try{
+
+        if(
+          navigator.share
+        ){
+
+          await navigator.share({
+
+            title:
+              "X-Dark Video",
+
+            text:
+              data.caption ||
+              "Watch this on X-Dark",
+
+            url:
+              data.videoUrl
+
+          });
+
+        }else{
+
+          await navigator.clipboard
+            .writeText(
+              data.videoUrl
+            );
+
+
+          toast(
+            "Video link copied 🔗"
+          );
+
+        }
+
+      }catch(error){
+
+        console.log(
+          "Share cancelled"
+        );
+
+      }
+
+    };
+
+
+  /* =================================
+     FOLLOW
+  ================================= */
+
+  follow.onclick =
+    ()=>{
+
+      if(!auth.currentUser){
+
+        toast(
+          "Login to follow"
+        );
+
+        showPage(
+          "loginPage"
+        );
+
+        return;
+      }
+
+
+      toast(
+        "Follow system coming next 👥"
+      );
 
     };
 
 }
 
 
-function escapeHtml(text){
+/* =====================================
+   LIKE UI
+===================================== */
 
-  const div =
-    document.createElement("div");
+function updateLikeUI(
+  button,
+  liked
+){
 
-  div.textContent =
-    text;
+  if(liked){
 
-  return div.innerHTML;
+    button.innerHTML =
+      "❤️";
+
+    button.classList.add(
+      "liked"
+    );
+
+  }else{
+
+    button.innerHTML =
+      "🤍";
+
+    button.classList.remove(
+      "liked"
+    );
+
+  }
 
 }
 
 
-/* =========================
-   AUTO PLAY VIDEOS
-========================= */
+/* =====================================
+   AUTO PLAY
+===================================== */
 
 function activateVideos(){
 
@@ -1197,27 +2209,36 @@ function activateVideos(){
       ".videoCard video"
     );
 
+
   const observer =
     new IntersectionObserver(
       entries=>{
 
-        entries.forEach(entry=>{
+        entries.forEach(
+          entry=>{
 
-          const video =
-            entry.target;
+            const video =
+              entry.target;
 
-          if(entry.isIntersecting){
 
-            video.play()
-              .catch(()=>{});
+            if(
+              entry.isIntersecting
+            ){
 
-          }else{
+              video
+                .play()
+                .catch(
+                  ()=>{}
+                );
 
-            video.pause();
+            }else{
+
+              video.pause();
+
+            }
 
           }
-
-        });
+        );
 
       },
       {
@@ -1225,16 +2246,19 @@ function activateVideos(){
       }
     );
 
-  videos.forEach(video=>{
-    observer.observe(video);
-  });
+
+  videos.forEach(
+    video=>{
+      observer.observe(video);
+    }
+  );
 
 }
 
 
-/* =========================
-   START
-========================= */
+/* =====================================
+   START APP
+===================================== */
 
 loadVideos();
 
