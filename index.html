@@ -2,54 +2,54 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width,initial-scale=1,viewport-fit=cover">
-
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>X Dark</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 html,body{
   width:100%;
   height:100%;
-  overflow:hidden;
   background:#000;
   color:#fff;
   font-family:Arial,sans-serif;
 }
 
+body{overflow:hidden}
+
 .app{
-  width:100%;
-  height:100vh;
   max-width:600px;
+  height:100vh;
   margin:auto;
-  background:#000;
   position:relative;
+  background:#050505;
+}
+
+header{
+  height:65px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-bottom:1px solid #222;
+  background:#050505;
+}
+
+header h1{
+  font-size:22px;
+  letter-spacing:2px;
 }
 
 .feed{
-  width:100%;
-  height:100%;
+  height:calc(100vh - 130px);
   overflow-y:auto;
-  scroll-snap-type:y mandatory;
-  scrollbar-width:none;
-}
-
-.feed::-webkit-scrollbar{
-  display:none;
 }
 
 .reel{
-  width:100%;
-  height:100vh;
+  height:calc(100vh - 130px);
+  min-height:500px;
   position:relative;
-  scroll-snap-align:start;
-  background:#111;
+  background:#151515;
   overflow:hidden;
 }
 
@@ -57,156 +57,88 @@ html,body{
   width:100%;
   height:100%;
   object-fit:cover;
+  display:block;
   background:#111;
 }
 
-.overlay{
+.empty-video{
   position:absolute;
   inset:0;
-  pointer-events:none;
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(0,0,0,.45),
-      transparent 20%,
-      transparent 65%,
-      rgba(0,0,0,.75)
-    );
-}
-
-.top{
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  height:75px;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding-top:15px;
-  z-index:5;
+  flex-direction:column;
+  gap:15px;
+  color:#777;
+  font-size:50px;
 }
 
-.logo{
-  font-size:22px;
-  font-weight:900;
-  letter-spacing:2px;
-}
-
-.top button{
-  position:absolute;
-  right:15px;
-  border:0;
-  background:rgba(0,0,0,.35);
-  color:#fff;
-  font-size:25px;
-}
-
-.tabs{
-  position:absolute;
-  top:63px;
-  left:0;
-  right:0;
-  display:flex;
-  justify-content:center;
-  gap:25px;
-  z-index:5;
+.empty-video span{
   font-size:15px;
-  font-weight:bold;
-}
-
-.tabs span:first-child{
-  border-bottom:2px solid #fff;
-  padding-bottom:7px;
 }
 
 .info{
   position:absolute;
   left:15px;
-  right:85px;
-  bottom:95px;
+  right:80px;
+  bottom:25px;
   z-index:4;
+  text-shadow:0 2px 5px #000;
 }
 
-.user{
-  font-size:17px;
+.username{
+  font-size:18px;
   font-weight:bold;
   margin-bottom:10px;
 }
 
 .follow{
-  color:#ff3b5c;
+  color:#ff3158;
   margin-left:8px;
-  font-size:13px;
 }
 
 .caption{
   font-size:15px;
-  line-height:1.45;
-  margin-bottom:9px;
-}
-
-.music{
-  font-size:13px;
-  margin-top:8px;
+  line-height:1.5;
 }
 
 .actions{
   position:absolute;
   right:12px;
-  bottom:95px;
+  bottom:25px;
   z-index:5;
   display:flex;
   flex-direction:column;
-  align-items:center;
-  gap:19px;
+  gap:18px;
 }
 
 .action{
   border:0;
   background:none;
   color:#fff;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:4px;
-  font-size:27px;
-  text-shadow:0 2px 5px #000;
+  font-size:28px;
 }
 
 .action small{
+  display:block;
   font-size:11px;
-  font-weight:bold;
+  margin-top:3px;
 }
 
 .like.active{
   color:#ff3158;
 }
 
-.avatar{
-  width:48px;
-  height:48px;
-  border-radius:50%;
-  background:linear-gradient(135deg,#fff,#777);
-  color:#000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:900;
-  border:2px solid #fff;
-  font-size:18px;
-}
-
 .bottom{
   position:absolute;
+  bottom:0;
   left:0;
   right:0;
-  bottom:0;
   height:65px;
   display:flex;
   align-items:center;
   justify-content:space-around;
-  background:rgba(0,0,0,.92);
+  background:#050505;
   border-top:1px solid #222;
   z-index:20;
 }
@@ -218,53 +150,98 @@ html,body{
   font-size:25px;
 }
 
-.bottom button.active{
+.bottom .active{
   color:#fff;
 }
 
 .add{
-  width:48px;
-  height:38px;
-  border-radius:10px !important;
+  width:50px;
+  height:40px;
+  border-radius:11px;
   background:#fff !important;
   color:#000 !important;
-  font-size:28px !important;
+  font-size:29px !important;
 }
 
-.pause{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  width:70px;
-  height:70px;
-  border-radius:50%;
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.82);
+  display:none;
+  align-items:flex-end;
+  justify-content:center;
+  z-index:100;
+}
+
+.modal.open{
+  display:flex;
+}
+
+.upload-box{
+  width:100%;
+  max-width:600px;
+  padding:22px;
+  background:#111;
+  border-radius:22px 22px 0 0;
+  border-top:1px solid #333;
+}
+
+.upload-box h2{
+  margin-bottom:18px;
+}
+
+.close{
+  float:right;
   border:0;
-  background:rgba(0,0,0,.45);
+  background:none;
   color:#fff;
-  font-size:30px;
-  opacity:0;
-  transition:.2s;
-  z-index:6;
+  font-size:28px;
 }
 
-.reel.paused .pause{
-  opacity:1;
+.file-label{
+  display:block;
+  padding:18px;
+  text-align:center;
+  border:1px dashed #555;
+  border-radius:14px;
+  color:#bbb;
+  margin-bottom:15px;
 }
 
-@media(max-width:600px){
+input[type=file]{
+  display:none;
+}
 
-  .reel video{
-    object-fit:cover;
-  }
+.preview{
+  width:100%;
+  max-height:280px;
+  object-fit:contain;
+  border-radius:12px;
+  background:#000;
+  display:none;
+  margin-bottom:15px;
+}
 
-  .info{
-    bottom:105px;
-  }
+.caption-input{
+  width:100%;
+  padding:14px;
+  border:1px solid #333;
+  border-radius:12px;
+  background:#080808;
+  color:#fff;
+  outline:none;
+  margin-bottom:12px;
+}
 
-  .actions{
-    bottom:105px;
-  }
+.publish{
+  width:100%;
+  padding:15px;
+  border:0;
+  border-radius:13px;
+  background:#fff;
+  color:#000;
+  font-size:16px;
+  font-weight:bold;
 }
 </style>
 </head>
@@ -273,354 +250,278 @@ html,body{
 
 <div class="app">
 
-<main class="feed">
+<header>
+  <h1>𝕏 DARK</h1>
+</header>
 
-  <!-- REEL 1 -->
-  <section class="reel">
+<main class="feed" id="feed">
 
-    <video
-      src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-      loop
-      muted
-      playsinline
-      preload="metadata">
-    </video>
+<section class="reel">
 
-    <div class="overlay"></div>
+<div class="empty-video">
+  🎬
+  <span>No videos yet</span>
+</div>
 
-    <div class="top">
-      <div class="logo">𝕏 DARK</div>
-      <button onclick="toggleMute()">🔊</button>
-    </div>
+<div class="info">
+  <div class="username">
+    @xdark_official
+    <span class="follow">Follow</span>
+  </div>
 
-    <div class="tabs">
-      <span>For You</span>
-      <span>Following</span>
-    </div>
+  <div class="caption">
+    Welcome to X Dark 🚀
+  </div>
+</div>
 
-    <button class="pause" onclick="toggleVideo(this)">
-      ▶
-    </button>
+<div class="actions">
 
-    <div class="info">
+<button class="action like" onclick="like(this)">
+  ♡
+  <small>0</small>
+</button>
 
-      <div class="user">
-        @xdark_official
-        <span class="follow">Follow</span>
-      </div>
+<button class="action">
+  💬
+  <small>0</small>
+</button>
 
-      <div class="caption">
-        Welcome to X Dark 🚀
-        <br>
-        The next generation short-video platform.
-      </div>
+<button class="action" onclick="sharePage()">
+  ↗
+  <small>Share</small>
+</button>
 
-      <div class="music">
-        🎵 Original sound — X Dark
-      </div>
+</div>
 
-    </div>
-
-    <div class="actions">
-
-      <div class="avatar">X</div>
-
-      <button class="action like"
-              onclick="likeVideo(this)">
-        ♡
-        <small>0</small>
-      </button>
-
-      <button class="action">
-        💬
-        <small>0</small>
-      </button>
-
-      <button class="action"
-              onclick="shareVideo()">
-        ↗
-        <small>Share</small>
-      </button>
-
-      <button class="action">
-        ⋯
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <!-- REEL 2 -->
-  <section class="reel">
-
-    <video
-      src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-      loop
-      muted
-      playsinline
-      preload="metadata">
-    </video>
-
-    <div class="overlay"></div>
-
-    <div class="top">
-      <div class="logo">𝕏 DARK</div>
-      <button onclick="toggleMute()">🔊</button>
-    </div>
-
-    <div class="tabs">
-      <span>For You</span>
-      <span>Following</span>
-    </div>
-
-    <button class="pause" onclick="toggleVideo(this)">
-      ▶
-    </button>
-
-    <div class="info">
-
-      <div class="user">
-        @dark_creator
-        <span class="follow">Follow</span>
-      </div>
-
-      <div class="caption">
-        Create. Share. Discover. 🔥
-      </div>
-
-      <div class="music">
-        🎵 X Dark Sounds
-      </div>
-
-    </div>
-
-    <div class="actions">
-
-      <div class="avatar">D</div>
-
-      <button class="action like"
-              onclick="likeVideo(this)">
-        ♡
-        <small>0</small>
-      </button>
-
-      <button class="action">
-        💬
-        <small>0</small>
-      </button>
-
-      <button class="action"
-              onclick="shareVideo()">
-        ↗
-        <small>Share</small>
-      </button>
-
-      <button class="action">
-        ⋯
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <!-- REEL 3 -->
-  <section class="reel">
-
-    <video
-      src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-      loop
-      muted
-      playsinline
-      preload="metadata">
-    </video>
-
-    <div class="overlay"></div>
-
-    <div class="top">
-      <div class="logo">𝕏 DARK</div>
-      <button onclick="toggleMute()">🔊</button>
-    </div>
-
-    <div class="tabs">
-      <span>For You</span>
-      <span>Following</span>
-    </div>
-
-    <button class="pause" onclick="toggleVideo(this)">
-      ▶
-    </button>
-
-    <div class="info">
-
-      <div class="user">
-        @creator
-        <span class="follow">Follow</span>
-      </div>
-
-      <div class="caption">
-        Your feed. Your world. Your X Dark. 🖤
-      </div>
-
-      <div class="music">
-        🎵 Original sound
-      </div>
-
-    </div>
-
-    <div class="actions">
-
-      <div class="avatar">C</div>
-
-      <button class="action like"
-              onclick="likeVideo(this)">
-        ♡
-        <small>0</small>
-      </button>
-
-      <button class="action">
-        💬
-        <small>0</small>
-      </button>
-
-      <button class="action"
-              onclick="shareVideo()">
-        ↗
-        <small>Share</small>
-      </button>
-
-      <button class="action">
-        ⋯
-      </button>
-
-    </div>
-
-  </section>
+</section>
 
 </main>
 
-
 <nav class="bottom">
 
-  <button class="active">⌂</button>
+<button class="active">⌂</button>
+<button>⌕</button>
 
-  <button>⌕</button>
+<button class="add" onclick="openUpload()">
+  +
+</button>
 
-  <button class="add"
-          onclick="uploadComingSoon()">
-    +
-  </button>
-
-  <button>♡</button>
-
-  <button>♙</button>
+<button>♡</button>
+<button>♙</button>
 
 </nav>
 
 </div>
 
 
+<!-- UPLOAD MODAL -->
+
+<div class="modal" id="uploadModal">
+
+<div class="upload-box">
+
+<button class="close" onclick="closeUpload()">×</button>
+
+<h2>Create a video</h2>
+
+<label class="file-label" for="videoInput">
+  🎬 Select video
+</label>
+
+<input
+  id="videoInput"
+  type="file"
+  accept="video/*"
+>
+
+<video
+  id="preview"
+  class="preview"
+  controls
+  playsinline>
+</video>
+
+<input
+  id="caption"
+  class="caption-input"
+  type="text"
+  maxlength="150"
+  placeholder="Write a caption..."
+>
+
+<button
+  class="publish"
+  onclick="publishVideo()">
+  Publish Video
+</button>
+
+</div>
+
+</div>
+
+
 <script>
 
-const videos =
-document.querySelectorAll("video");
+const modal =
+document.getElementById("uploadModal");
 
-let muted = true;
+const videoInput =
+document.getElementById("videoInput");
+
+const preview =
+document.getElementById("preview");
+
+const feed =
+document.getElementById("feed");
+
+let selectedVideo = null;
 
 
-/* AUTO PLAY */
+/* OPEN UPLOAD */
 
-const observer =
-new IntersectionObserver(
-(entries)=>{
+function openUpload(){
 
-entries.forEach(entry=>{
-
-const video =
-entry.target;
-
-if(entry.isIntersecting){
-
-videos.forEach(v=>{
-
-if(v !== video){
-
-v.pause();
-
-v.currentTime=0;
-
-});
-
-});
-
-video.muted=muted;
-
-video.play().catch(()=>{});
-
-}else{
-
-video.pause();
+modal.classList.add("open");
 
 }
 
-});
 
-},
-{
-threshold:.65
+/* CLOSE UPLOAD */
+
+function closeUpload(){
+
+modal.classList.remove("open");
+
 }
-);
 
 
-videos.forEach(video=>{
-observer.observe(video);
+/* SELECT VIDEO */
+
+videoInput.addEventListener("change",function(){
+
+const file = this.files[0];
+
+if(!file) return;
+
+if(!file.type.startsWith("video/")){
+
+alert("Please select a video file.");
+
+return;
+
+}
+
+if(file.size > 100 * 1024 * 1024){
+
+alert("Video must be smaller than 100 MB.");
+
+videoInput.value="";
+
+return;
+
+}
+
+selectedVideo = file;
+
+const url =
+URL.createObjectURL(file);
+
+preview.src = url;
+
+preview.style.display="block";
+
 });
 
 
-/* PLAY / PAUSE */
+/* PUBLISH */
 
-function toggleVideo(button){
+function publishVideo(){
+
+if(!selectedVideo){
+
+alert("Please select a video first.");
+
+return;
+
+}
+
+const url =
+URL.createObjectURL(selectedVideo);
+
+const caption =
+document.getElementById("caption").value.trim();
 
 const reel =
-button.closest(".reel");
+document.createElement("section");
 
-const video =
-reel.querySelector("video");
+reel.className="reel";
 
-if(video.paused){
+reel.innerHTML = `
 
-video.play();
+<video
+  src="${url}"
+  controls
+  playsinline
+  loop>
+</video>
 
-reel.classList.remove("paused");
+<div class="info">
 
-}else{
+<div class="username">
+  @you
+  <span class="follow">Follow</span>
+</div>
 
-video.pause();
+<div class="caption">
+  ${escapeHTML(caption || "My new X Dark video 🔥")}
+</div>
 
-reel.classList.add("paused");
+</div>
 
-}
+<div class="actions">
 
-}
+<button
+class="action like"
+onclick="like(this)">
+♡
+<small>0</small>
+</button>
 
+<button class="action">
+💬
+<small>0</small>
+</button>
 
-/* MUTE */
+<button
+class="action"
+onclick="sharePage()">
+↗
+<small>Share</small>
+</button>
 
-function toggleMute(){
+</div>
+`;
 
-muted=!muted;
+feed.prepend(reel);
 
-videos.forEach(video=>{
-video.muted=muted;
-});
+closeUpload();
+
+videoInput.value="";
+
+preview.src="";
+
+preview.style.display="none";
+
+document.getElementById("caption").value="";
+
+selectedVideo=null;
 
 }
 
 
 /* LIKE */
 
-function likeVideo(button){
+function like(button){
 
 button.classList.toggle("active");
 
@@ -628,7 +529,7 @@ const counter =
 button.querySelector("small");
 
 let count =
-parseInt(counter.textContent)||0;
+Number(counter.textContent) || 0;
 
 if(button.classList.contains("active")){
 
@@ -651,7 +552,7 @@ counter.textContent=count;
 
 /* SHARE */
 
-async function shareVideo(){
+async function sharePage(){
 
 try{
 
@@ -660,54 +561,37 @@ if(navigator.share){
 await navigator.share({
 
 title:"X Dark",
-text:"Check this video on X Dark!",
+text:"Check this video on X Dark",
 url:location.href
 
 });
 
 }else{
 
-await navigator.clipboard.writeText(
-location.href
-);
+await navigator.clipboard.writeText(location.href);
 
 alert("Link copied!");
 
 }
 
-}catch(error){}
+}catch(e){}
 
 }
 
 
-/* UPLOAD */
+/* SAFE TEXT */
 
-function uploadComingSoon(){
+function escapeHTML(text){
 
-alert(
-"🔥 Video upload system is coming next!"
-);
+return String(text)
+
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
 
 }
-
-
-/* TAP VIDEO */
-
-videos.forEach(video=>{
-
-video.addEventListener("click",()=>{
-
-const reel =
-video.closest(".reel");
-
-const button =
-reel.querySelector(".pause");
-
-toggleVideo(button);
-
-});
-
-});
 
 </script>
 
