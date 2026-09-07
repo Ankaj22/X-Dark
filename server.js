@@ -2,63 +2,49 @@ const express = require("express");
 const path = require("path");
 
 const app = express();
-
 const PORT = process.env.PORT || 3000;
 
-/* -----------------------------
-   BASIC MIDDLEWARE
------------------------------ */
-
-app.use(express.json({
-  limit: "5mb"
-}));
-
+/* Body parser */
+app.use(express.json({ limit: "5mb" }));
 app.use(express.urlencoded({
   extended: true,
   limit: "5mb"
 }));
 
-/* -----------------------------
-   STATIC WEBSITE
------------------------------ */
+/* Security headers */
+app.use((req, res, next) => {
+  res.setHeader("X-Content-Type-Options", "nosniff");
+  res.setHeader("X-Frame-Options", "SAMEORIGIN");
+  res.setHeader(
+    "Referrer-Policy",
+    "strict-origin-when-cross-origin"
+  );
+  next();
+});
 
-app.use(
-  express.static(__dirname)
-);
+/* Static files */
+app.use(express.static(__dirname));
 
-/* -----------------------------
-   API STATUS
------------------------------ */
-
+/* API status */
 app.get("/api/status", (req, res) => {
-
   res.json({
     app: "X-Dark",
     version: "2.0.0",
     status: "online",
     serverTime: new Date().toISOString()
   });
-
 });
 
-/* -----------------------------
-   HEALTH CHECK
------------------------------ */
-
+/* Health check */
 app.get("/health", (req, res) => {
-
   res.status(200).json({
-    status: "ok"
+    status: "ok",
+    app: "X-Dark"
   });
-
 });
 
-/* -----------------------------
-   APP CONFIG
------------------------------ */
-
+/* App configuration */
 app.get("/api/config", (req, res) => {
-
   res.json({
     appName: "X-Dark",
     maxVideoSizeMB: 100,
@@ -70,6 +56,7 @@ app.get("/api/config", (req, res) => {
       comments: true,
       profiles: true,
       followers: true,
+      following: true,
       search: true,
       notifications: true,
       saved: true,
@@ -79,90 +66,37 @@ app.get("/api/config", (req, res) => {
       admin: true
     }
   });
-
 });
 
-/* -----------------------------
-   SECURITY HEADERS
------------------------------ */
-
-app.use((req, res, next) => {
-
-  res.setHeader(
-    "X-Content-Type-Options",
-    "nosniff"
-  );
-
-  res.setHeader(
-    "X-Frame-Options",
-    "SAMEORIGIN"
-  );
-
-  res.setHeader(
-    "Referrer-Policy",
-    "strict-origin-when-cross-origin"
-  );
-
-  next();
-
-});
-
-/* -----------------------------
-   404 API HANDLER
------------------------------ */
-
+/* API 404 */
 app.use("/api", (req, res) => {
-
   res.status(404).json({
     error: "API endpoint not found"
   });
-
 });
 
-/* -----------------------------
-   FRONTEND FALLBACK
------------------------------ */
-
-app.get("*", (req, res) => {
-
+/*
+  Express 5 compatible frontend fallback.
+  This catches all non-API routes.
+*/
+app.get("/{*splat}", (req, res) => {
   res.sendFile(
-    path.join(
-      __dirname,
-      "index.html"
-    )
+    path.join(__dirname, "index.html")
   );
-
 });
 
-/* -----------------------------
-   ERROR HANDLER
------------------------------ */
-
+/* Error handler */
 app.use((err, req, res, next) => {
-
-  console.error(
-    "X-Dark Error:",
-    err
-  );
+  console.error("X-Dark Error:", err);
 
   res.status(500).json({
     error: "Internal server error"
   });
-
 });
 
-/* -----------------------------
-   START SERVER
------------------------------ */
-
-app.listen(
-  PORT,
-  "0.0.0.0",
-  () => {
-
-    console.log(
-      `X-Dark server running on port ${PORT}`
-    );
-
-  }
-);
+/* Start */
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(
+    `X-Dark running on port ${PORT}`
+  );
+});
