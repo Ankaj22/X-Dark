@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>X-Dark</title>
 
 <style>
@@ -13,13 +13,9 @@
   font-family:Arial,sans-serif;
 }
 
-html,body{
+body{
   background:#050505;
   color:#fff;
-  min-height:100%;
-}
-
-body{
   overflow-x:hidden;
 }
 
@@ -46,14 +42,14 @@ header{
   width:100%;
   max-width:600px;
   height:60px;
-  background:rgba(5,5,5,.94);
-  backdrop-filter:blur(14px);
-  border-bottom:1px solid #222;
+  z-index:50;
   display:flex;
   align-items:center;
   justify-content:space-between;
   padding:0 16px;
-  z-index:50;
+  background:rgba(5,5,5,.95);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid #222;
 }
 
 .logo{
@@ -68,14 +64,14 @@ header{
 
 .headerBtn{
   background:#151515;
-  color:#fff;
   border:1px solid #333;
+  color:white;
   padding:9px 16px;
   border-radius:22px;
   font-size:14px;
 }
 
-/* PAGES */
+/* MAIN */
 
 main{
   padding-top:60px;
@@ -98,15 +94,17 @@ main{
 }
 
 .videoCard{
+  position:relative;
   height:calc(100vh - 60px);
   min-height:600px;
-  position:relative;
-  scroll-snap-align:start;
   background:#000;
   overflow:hidden;
+  scroll-snap-align:start;
 }
 
 .videoCard video{
+  position:absolute;
+  inset:0;
   width:100%;
   height:100%;
   object-fit:cover;
@@ -116,84 +114,110 @@ main{
 .videoOverlay{
   position:absolute;
   inset:0;
-  background:
-    linear-gradient(
-      transparent 42%,
-      rgba(0,0,0,.1) 58%,
-      rgba(0,0,0,.92) 100%
-    );
+  z-index:2;
   pointer-events:none;
+  background:linear-gradient(
+    transparent 40%,
+    rgba(0,0,0,.12) 58%,
+    rgba(0,0,0,.92) 100%
+  );
 }
+
+/* PLAY */
+
+.playBtn{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  z-index:8;
+  width:65px;
+  height:65px;
+  border-radius:50%;
+  background:rgba(0,0,0,.65);
+  color:white;
+  font-size:28px;
+  display:none;
+}
+
+/* SOUND */
+
+.muted{
+  position:absolute;
+  top:16px;
+  right:15px;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:rgba(0,0,0,.6);
+  color:white;
+  font-size:20px;
+  z-index:10;
+}
+
+/* VIDEO INFO */
 
 .videoInfo{
   position:absolute;
   left:16px;
   right:90px;
   bottom:28px;
-  z-index:5;
+  z-index:7;
 }
 
 .username{
-  font-size:17px;
-  font-weight:700;
+  font-size:18px;
+  font-weight:bold;
   margin-bottom:9px;
 }
 
 .caption{
   font-size:14px;
-  line-height:1.45;
+  line-height:1.4;
   margin-bottom:12px;
 }
 
 .followBtn{
   background:#ff1744;
-  color:#fff;
-  padding:8px 16px;
+  color:white;
+  padding:9px 17px;
   border-radius:20px;
-  font-weight:700;
+  font-weight:bold;
 }
+
+/* ACTIONS */
 
 .actions{
   position:absolute;
   right:9px;
   bottom:28px;
+  z-index:10;
   display:flex;
   flex-direction:column;
   gap:16px;
-  z-index:10;
 }
 
 .action{
   width:55px;
-  min-height:50px;
-  color:#fff;
+  min-height:52px;
   background:transparent;
+  color:white;
+  font-size:28px;
   text-align:center;
-  font-size:27px;
 }
 
 .action small{
   display:block;
   font-size:11px;
-  color:#fff;
   margin-top:3px;
 }
 
-.likeBtn.liked{
-  transform:scale(1.05);
+.likeBtn{
+  transition:transform .15s;
 }
 
-.muted{
-  position:absolute;
-  top:16px;
-  right:15px;
-  width:43px;
-  height:43px;
-  border-radius:50%;
-  background:rgba(0,0,0,.55);
-  color:#fff;
-  font-size:20px;
-  z-index:12;
+.likeBtn.liked{
+  transform:scale(1.08);
 }
 
 /* AUTH */
@@ -219,7 +243,7 @@ main{
   border-radius:13px;
   border:1px solid #333;
   background:#151515;
-  color:#fff;
+  color:white;
   outline:none;
   font-size:15px;
 }
@@ -231,34 +255,33 @@ main{
 .primary{
   width:100%;
   padding:16px;
-  background:#ff1744;
-  color:#fff;
   border-radius:13px;
+  background:#ff1744;
+  color:white;
   font-size:16px;
-  font-weight:700;
+  font-weight:bold;
   margin-bottom:12px;
 }
 
 .google{
   width:100%;
   padding:16px;
-  background:#fff;
-  color:#111;
   border-radius:13px;
+  background:white;
+  color:#111;
+  font-weight:bold;
   font-size:15px;
-  font-weight:700;
 }
 
 .switch{
-  margin-top:22px;
   text-align:center;
+  margin-top:22px;
   color:#999;
 }
 
 .switch span{
   color:#ff1744;
-  font-weight:700;
-  cursor:pointer;
+  font-weight:bold;
 }
 
 /* UPLOAD */
@@ -276,7 +299,7 @@ main{
   padding:15px;
   background:#151515;
   border:1px dashed #555;
-  color:#fff;
+  color:white;
   border-radius:12px;
   margin-bottom:15px;
 }
@@ -290,14 +313,13 @@ main{
 }
 
 .progressBar{
-  height:100%;
   width:0%;
+  height:100%;
   background:#ff1744;
-  transition:width .2s;
 }
 
 .status{
-  color:#aaa;
+  color:#999;
   font-size:13px;
 }
 
@@ -316,9 +338,9 @@ main{
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:36px;
-  font-weight:900;
   margin:20px auto 14px;
+  font-size:36px;
+  font-weight:bold;
 }
 
 .profile h2{
@@ -336,10 +358,10 @@ main{
 .profileBtns button{
   width:100%;
   padding:15px;
-  border-radius:12px;
   background:#191919;
-  color:#fff;
+  color:white;
   border:1px solid #333;
+  border-radius:12px;
 }
 
 /* NAV */
@@ -354,16 +376,16 @@ nav{
   height:70px;
   background:rgba(5,5,5,.97);
   border-top:1px solid #222;
+  z-index:60;
   display:flex;
   justify-content:space-around;
   align-items:center;
-  z-index:60;
 }
 
 nav button{
   background:none;
   color:#888;
-  font-size:26px;
+  font-size:27px;
 }
 
 nav button.active{
@@ -390,12 +412,12 @@ nav button.active{
   left:50%;
   bottom:90px;
   transform:translateX(-50%);
+  z-index:100;
+  display:none;
   background:#222;
-  color:#fff;
+  color:white;
   padding:12px 18px;
   border-radius:22px;
-  display:none;
-  z-index:100;
   font-size:13px;
   max-width:85%;
   text-align:center;
@@ -409,7 +431,7 @@ nav button.active{
 
 <header>
   <div class="logo">X-<span>DARK</span></div>
-  <button class="headerBtn" id="authHeaderBtn">Login</button>
+  <button id="authHeaderBtn" class="headerBtn">Login</button>
 </header>
 
 <main>
@@ -452,17 +474,11 @@ nav button.active{
       placeholder="Password"
     >
 
-    <button
-      class="primary"
-      id="loginBtn"
-    >
+    <button id="loginBtn" class="primary">
       Login
     </button>
 
-    <button
-      class="google"
-      id="googleBtn"
-    >
+    <button id="googleBtn" class="google">
       🔵 Continue with Google
     </button>
 
@@ -506,10 +522,7 @@ nav button.active{
       placeholder="Password"
     >
 
-    <button
-      class="primary"
-      id="signupBtn"
-    >
+    <button id="signupBtn" class="primary">
       Create Account
     </button>
 
@@ -546,24 +559,15 @@ nav button.active{
       placeholder="Write a caption..."
     >
 
-    <button
-      class="primary"
-      id="uploadBtn"
-    >
+    <button id="uploadBtn" class="primary">
       Upload to X-Dark
     </button>
 
     <div class="progress">
-      <div
-        id="progressBar"
-        class="progressBar"
-      ></div>
+      <div id="progressBar" class="progressBar"></div>
     </div>
 
-    <div
-      id="uploadStatus"
-      class="status"
-    >
+    <div id="uploadStatus" class="status">
       Maximum video size: 100 MB
     </div>
 
@@ -578,10 +582,7 @@ nav button.active{
 
   <div class="profile">
 
-    <div
-      id="avatar"
-      class="avatar"
-    >
+    <div id="avatar" class="avatar">
       ?
     </div>
 
@@ -594,11 +595,9 @@ nav button.active{
     </p>
 
     <div class="profileBtns">
-
       <button id="logoutBtn">
         Logout
       </button>
-
     </div>
 
   </div>
@@ -607,8 +606,6 @@ nav button.active{
 
 </main>
 
-
-<!-- BOTTOM NAV -->
 
 <nav>
 
@@ -635,7 +632,6 @@ nav button.active{
 
 </nav>
 
-
 <div id="toast"></div>
 
 </div>
@@ -643,19 +639,15 @@ nav button.active{
 
 <script type="module">
 
-/* =====================================
-   FIREBASE APP
-===================================== */
+/* ==============================
+   FIREBASE
+============================== */
 
 import {
   initializeApp
 }
 from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 
-
-/* =====================================
-   FIREBASE AUTH
-===================================== */
 
 import {
   getAuth,
@@ -669,10 +661,6 @@ import {
 }
 from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 
-
-/* =====================================
-   FIRESTORE
-===================================== */
 
 import {
   getFirestore,
@@ -690,9 +678,9 @@ import {
 from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 
-/* =====================================
+/* ==============================
    FIREBASE CONFIG
-===================================== */
+============================== */
 
 const firebaseConfig = {
 
@@ -729,9 +717,9 @@ const db =
   getFirestore(app);
 
 
-/* =====================================
+/* ==============================
    CLOUDINARY
-===================================== */
+============================== */
 
 const CLOUD_NAME =
   "lrpb7uuy";
@@ -743,12 +731,12 @@ const CLOUDINARY_URL =
   `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/video/upload`;
 
 
-/* =====================================
-   HELPER
-===================================== */
+/* ==============================
+   HELPERS
+============================== */
 
-const $ = id =>
-  document.getElementById(id);
+const $ =
+  id => document.getElementById(id);
 
 
 function toast(message){
@@ -762,34 +750,41 @@ function toast(message){
   box.style.display =
     "block";
 
-  clearTimeout(window.toastTimer);
+  clearTimeout(
+    window.toastTimer
+  );
 
   window.toastTimer =
-    setTimeout(()=>{
+    setTimeout(
+      ()=>{
+        box.style.display =
+          "none";
+      },
+      2500
+    );
 
-      box.style.display =
-        "none";
-
-    },2500);
 }
 
 
-/* =====================================
-   PAGE NAVIGATION
-===================================== */
+/* ==============================
+   PAGE SYSTEM
+============================== */
 
 function showPage(pageId){
 
   document
     .querySelectorAll(".page")
     .forEach(page=>{
-
-      page.classList.remove("active");
-
+      page.classList.remove(
+        "active"
+      );
     });
 
+
   $(pageId)
-    .classList.add("active");
+    .classList.add(
+      "active"
+    );
 
 
   document
@@ -798,26 +793,24 @@ function showPage(pageId){
 
       btn.classList.toggle(
         "active",
-        btn.dataset.page === pageId
+        btn.dataset.page ===
+        pageId
       );
 
     });
 
-
-  window.scrollTo(0,0);
 }
 
 
-/* =====================================
-   BOTTOM NAV
-===================================== */
+/* ==============================
+   NAVIGATION
+============================== */
 
 document
   .querySelectorAll(".navBtn")
   .forEach(btn=>{
 
-    btn.addEventListener(
-      "click",
+    btn.onclick =
       ()=>{
 
         const page =
@@ -833,7 +826,9 @@ document
             "Login required to upload"
           );
 
-          showPage("loginPage");
+          showPage(
+            "loginPage"
+          );
 
           return;
         }
@@ -841,35 +836,34 @@ document
 
         showPage(page);
 
-      }
-    );
+      };
 
   });
 
-
-/* =====================================
-   HEADER AUTH BUTTON
-===================================== */
 
 $("authHeaderBtn").onclick =
 ()=>{
 
   if(auth.currentUser){
 
-    showPage("profilePage");
+    showPage(
+      "profilePage"
+    );
 
   }else{
 
-    showPage("loginPage");
+    showPage(
+      "loginPage"
+    );
 
   }
 
 };
 
 
-/* =====================================
-   SIGNUP
-===================================== */
+/* ==============================
+   SIGN UP
+============================== */
 
 $("signupBtn").onclick =
 async ()=>{
@@ -903,7 +897,9 @@ async ()=>{
   }
 
 
-  if(password.length < 6){
+  if(
+    password.length < 6
+  ){
 
     toast(
       "Password must be 6+ characters"
@@ -936,12 +932,9 @@ async ()=>{
     );
 
 
-    updateProfileUI(
-      result.user
+    showPage(
+      "homePage"
     );
-
-
-    showPage("homePage");
 
 
   }catch(error){
@@ -949,7 +942,7 @@ async ()=>{
     console.error(error);
 
     toast(
-      getFriendlyError(error)
+      friendlyError(error)
     );
 
   }
@@ -957,9 +950,9 @@ async ()=>{
 };
 
 
-/* =====================================
+/* ==============================
    LOGIN
-===================================== */
+============================== */
 
 $("loginBtn").onclick =
 async ()=>{
@@ -989,16 +982,10 @@ async ()=>{
 
   try{
 
-    const result =
-      await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-
-
-    updateProfileUI(
-      result.user
+    await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
     );
 
 
@@ -1007,7 +994,9 @@ async ()=>{
     );
 
 
-    showPage("homePage");
+    showPage(
+      "homePage"
+    );
 
 
   }catch(error){
@@ -1015,7 +1004,7 @@ async ()=>{
     console.error(error);
 
     toast(
-      getFriendlyError(error)
+      friendlyError(error)
     );
 
   }
@@ -1023,9 +1012,9 @@ async ()=>{
 };
 
 
-/* =====================================
+/* ==============================
    GOOGLE LOGIN
-===================================== */
+============================== */
 
 $("googleBtn").onclick =
 async ()=>{
@@ -1047,7 +1036,9 @@ async ()=>{
     );
 
 
-    showPage("homePage");
+    showPage(
+      "homePage"
+    );
 
 
   }catch(error){
@@ -1055,7 +1046,7 @@ async ()=>{
     console.error(error);
 
     toast(
-      getFriendlyError(error)
+      friendlyError(error)
     );
 
   }
@@ -1063,35 +1054,27 @@ async ()=>{
 };
 
 
-/* =====================================
-   LOGIN / SIGNUP SWITCH
-===================================== */
+/* ==============================
+   AUTH SWITCH
+============================== */
 
 $("showSignup").onclick =
-()=>{
-
-  showPage(
-    "signupPage"
-  );
-
-};
+()=>showPage(
+  "signupPage"
+);
 
 
 $("showLogin").onclick =
-()=>{
-
-  showPage(
-    "loginPage"
-  );
-
-};
+()=>showPage(
+  "loginPage"
+);
 
 
-/* =====================================
-   FRIENDLY FIREBASE ERRORS
-===================================== */
+/* ==============================
+   FRIENDLY ERRORS
+============================== */
 
-function getFriendlyError(error){
+function friendlyError(error){
 
   const code =
     error?.code || "";
@@ -1141,86 +1124,80 @@ function getFriendlyError(error){
   }
 
 
-  return error?.message ||
-    "Something went wrong";
+  return (
+    error?.message ||
+    "Something went wrong"
+  );
 
 }
 
 
-/* =====================================
+/* ==============================
    AUTH STATE
-===================================== */
+============================== */
 
 onAuthStateChanged(
   auth,
   user=>{
 
-    updateProfileUI(user);
+    if(user){
+
+      $("authHeaderBtn")
+        .textContent =
+        "Profile";
+
+
+      const name =
+        user.displayName ||
+        "X-Dark User";
+
+
+      $("profileName")
+        .textContent =
+        name;
+
+
+      $("profileEmail")
+        .textContent =
+        user.email || "";
+
+
+      $("avatar")
+        .textContent =
+        name
+          .charAt(0)
+          .toUpperCase();
+
+    }else{
+
+      $("authHeaderBtn")
+        .textContent =
+        "Login";
+
+
+      $("profileName")
+        .textContent =
+        "Guest";
+
+
+      $("profileEmail")
+        .textContent =
+        "Not logged in";
+
+
+      $("avatar")
+        .textContent =
+        "?";
+
+    }
 
   }
 );
 
 
-function updateProfileUI(user){
-
-  if(user){
-
-    $("authHeaderBtn")
-      .textContent =
-      "Profile";
-
-
-    const name =
-      user.displayName ||
-      "X-Dark User";
-
-
-    $("profileName")
-      .textContent =
-      name;
-
-
-    $("profileEmail")
-      .textContent =
-      user.email || "";
-
-
-    $("avatar")
-      .textContent =
-      name
-        .charAt(0)
-        .toUpperCase();
-
-
-  }else{
-
-    $("authHeaderBtn")
-      .textContent =
-      "Login";
-
-
-    $("profileName")
-      .textContent =
-      "Guest";
-
-
-    $("profileEmail")
-      .textContent =
-      "Not logged in";
-
-
-    $("avatar")
-      .textContent =
-      "?";
-
-  }
-
-}
-
-
-/* =====================================
+/* ==============================
    LOGOUT
-===================================== */
+============================== */
 
 $("logoutBtn").onclick =
 async ()=>{
@@ -1248,9 +1225,9 @@ async ()=>{
 };
 
 
-/* =====================================
+/* ==============================
    CLOUDINARY UPLOAD
-===================================== */
+============================== */
 
 $("uploadBtn").onclick =
 ()=>{
@@ -1412,11 +1389,7 @@ $("uploadBtn").onclick =
                 "X-Dark User",
 
               userId:
-                auth.currentUser
-                  .uid,
-
-              likes:
-                0,
+                auth.currentUser.uid,
 
               comments:
                 0,
@@ -1460,7 +1433,7 @@ $("uploadBtn").onclick =
                 "homePage"
               );
             },
-            800
+            700
           );
 
 
@@ -1468,24 +1441,13 @@ $("uploadBtn").onclick =
 
           console.error(error);
 
-          $("uploadStatus")
-            .textContent =
-            "Firestore error";
-
-
           toast(
-            getFriendlyError(error)
+            "Firestore save failed"
           );
 
         }
 
-
       }else{
-
-        $("uploadStatus")
-          .textContent =
-          "Cloudinary upload failed";
-
 
         toast(
           "Cloudinary upload failed"
@@ -1498,11 +1460,6 @@ $("uploadBtn").onclick =
 
   xhr.onerror =
     ()=>{
-
-      $("uploadStatus")
-        .textContent =
-        "Network error";
-
 
       toast(
         "Network error"
@@ -1518,9 +1475,9 @@ $("uploadBtn").onclick =
 };
 
 
-/* =====================================
-   LOAD GLOBAL VIDEOS
-===================================== */
+/* ==============================
+   LOAD VIDEOS
+============================== */
 
 async function loadVideos(){
 
@@ -1537,7 +1494,7 @@ async function loadVideos(){
 
   try{
 
-    const videosQuery =
+    const q =
       query(
         collection(
           db,
@@ -1551,12 +1508,12 @@ async function loadVideos(){
 
 
     const snapshot =
-      await getDocs(
-        videosQuery
-      );
+      await getDocs(q);
 
 
-    if(snapshot.empty){
+    if(
+      snapshot.empty
+    ){
 
       feed.innerHTML = `
         <div class="empty">
@@ -1573,16 +1530,13 @@ async function loadVideos(){
 
 
     for(
-      const docSnap of snapshot.docs
+      const videoDoc
+      of snapshot.docs
     ){
 
-      const data =
-        docSnap.data();
-
-
       await createVideoCard(
-        data,
-        docSnap.id
+        videoDoc.data(),
+        videoDoc.id
       );
 
     }
@@ -1593,7 +1547,11 @@ async function loadVideos(){
 
   }catch(error){
 
-    console.error(error);
+    console.error(
+      "Feed error:",
+      error
+    );
+
 
     feed.innerHTML = `
       <div class="empty">
@@ -1607,13 +1565,13 @@ async function loadVideos(){
 }
 
 
-/* =====================================
-   CREATE VIDEO CARD
-===================================== */
+/* ==============================
+   VIDEO CARD
+============================== */
 
 async function createVideoCard(
   data,
-  id
+  videoId
 ){
 
   const card =
@@ -1621,16 +1579,16 @@ async function createVideoCard(
       "div"
     );
 
-
   card.className =
     "videoCard";
 
+
+  /* VIDEO */
 
   const video =
     document.createElement(
       "video"
     );
-
 
   video.src =
     data.videoUrl || "";
@@ -1648,6 +1606,8 @@ async function createVideoCard(
     "metadata";
 
 
+  /* OVERLAY */
+
   const overlay =
     document.createElement(
       "div"
@@ -1657,17 +1617,35 @@ async function createVideoCard(
     "videoOverlay";
 
 
-  const mute =
+  /* PLAY */
+
+  const playBtn =
     document.createElement(
       "button"
     );
 
-  mute.className =
+  playBtn.className =
+    "playBtn";
+
+  playBtn.textContent =
+    "▶";
+
+
+  /* SOUND */
+
+  const muteBtn =
+    document.createElement(
+      "button"
+    );
+
+  muteBtn.className =
     "muted";
 
-  mute.textContent =
+  muteBtn.textContent =
     "🔇";
 
+
+  /* INFO */
 
   const info =
     document.createElement(
@@ -1688,8 +1666,10 @@ async function createVideoCard(
 
   username.textContent =
     "@" +
-    (data.username ||
-      "user");
+    (
+      data.username ||
+      "user"
+    );
 
 
   const caption =
@@ -1723,6 +1703,8 @@ async function createVideoCard(
   );
 
 
+  /* ACTIONS */
+
   const actions =
     document.createElement(
       "div"
@@ -1732,7 +1714,7 @@ async function createVideoCard(
     "actions";
 
 
-  /* LIKE BUTTON */
+  /* LIKE */
 
   const likeBtn =
     document.createElement(
@@ -1742,7 +1724,13 @@ async function createVideoCard(
   likeBtn.className =
     "action likeBtn";
 
-  likeBtn.innerHTML =
+
+  const likeIcon =
+    document.createElement(
+      "span"
+    );
+
+  likeIcon.textContent =
     "🤍";
 
 
@@ -1756,6 +1744,7 @@ async function createVideoCard(
 
 
   likeBtn.append(
+    likeIcon,
     likeCount
   );
 
@@ -1770,7 +1759,13 @@ async function createVideoCard(
   commentBtn.className =
     "action commentBtn";
 
-  commentBtn.innerHTML =
+
+  const commentIcon =
+    document.createElement(
+      "span"
+    );
+
+  commentIcon.textContent =
     "💬";
 
 
@@ -1784,6 +1779,7 @@ async function createVideoCard(
 
 
   commentBtn.append(
+    commentIcon,
     commentCount
   );
 
@@ -1798,7 +1794,13 @@ async function createVideoCard(
   shareBtn.className =
     "action shareBtn";
 
-  shareBtn.innerHTML =
+
+  const shareIcon =
+    document.createElement(
+      "span"
+    );
+
+  shareIcon.textContent =
     "↗️";
 
 
@@ -1812,6 +1814,7 @@ async function createVideoCard(
 
 
   shareBtn.append(
+    shareIcon,
     shareText
   );
 
@@ -1826,7 +1829,8 @@ async function createVideoCard(
   card.append(
     video,
     overlay,
-    mute,
+    playBtn,
+    muteBtn,
     info,
     actions
   );
@@ -1836,18 +1840,72 @@ async function createVideoCard(
     .appendChild(card);
 
 
-  /* =================================
-     MUTE
-  ================================= */
+  /* ==========================
+     VIDEO EVENTS
+  ========================== */
 
-  mute.onclick =
+  video.addEventListener(
+    "click",
+    ()=>{
+
+      if(video.paused){
+
+        video.play()
+          .catch(()=>{});
+
+        playBtn.style.display =
+          "none";
+
+      }else{
+
+        video.pause();
+
+        playBtn.style.display =
+          "block";
+
+      }
+
+    }
+  );
+
+
+  playBtn.onclick =
+    ()=>{
+
+      video.play()
+        .then(()=>{
+          playBtn.style.display =
+            "none";
+        })
+        .catch(()=>{});
+
+    };
+
+
+  video.addEventListener(
+    "error",
+    ()=>{
+
+      playBtn.textContent =
+        "⚠️";
+
+      playBtn.style.display =
+        "block";
+
+    }
+  );
+
+
+  /* SOUND */
+
+  muteBtn.onclick =
     ()=>{
 
       video.muted =
         !video.muted;
 
 
-      mute.textContent =
+      muteBtn.textContent =
         video.muted
           ? "🔇"
           : "🔊";
@@ -1855,24 +1913,28 @@ async function createVideoCard(
     };
 
 
-  /* =================================
+  /* ==========================
      LOAD REAL LIKES
-  ================================= */
+  ========================== */
 
   let liked =
     false;
+
+
+  const likesRef =
+    collection(
+      db,
+      "videos",
+      videoId,
+      "likes"
+    );
 
 
   try{
 
     const likesSnapshot =
       await getDocs(
-        collection(
-          db,
-          "videos",
-          id,
-          "likes"
-        )
+        likesRef
       );
 
 
@@ -1892,7 +1954,8 @@ async function createVideoCard(
     }
 
 
-    updateLikeUI(
+    setLikeAppearance(
+      likeIcon,
       likeBtn,
       liked
     );
@@ -1901,16 +1964,16 @@ async function createVideoCard(
   }catch(error){
 
     console.error(
-      "Like loading error:",
+      "Like load error:",
       error
     );
 
   }
 
 
-  /* =================================
-     REAL LIKE / UNLIKE
-  ================================= */
+  /* ==========================
+     LIKE / UNLIKE
+  ========================== */
 
   likeBtn.onclick =
     async ()=>{
@@ -1929,7 +1992,7 @@ async function createVideoCard(
       }
 
 
-      const userId =
+      const uid =
         auth.currentUser.uid;
 
 
@@ -1937,9 +2000,9 @@ async function createVideoCard(
         doc(
           db,
           "videos",
-          id,
+          videoId,
           "likes",
-          userId
+          uid
         );
 
 
@@ -1949,14 +2012,14 @@ async function createVideoCard(
 
       try{
 
-        const currentLike =
+        const existing =
           await getDoc(
             likeRef
           );
 
 
         if(
-          currentLike.exists()
+          existing.exists()
         ){
 
           await deleteDoc(
@@ -1974,14 +2037,19 @@ async function createVideoCard(
             ) || 0;
 
 
-          likeCount.textContent =
+          count =
             Math.max(
               0,
               count - 1
             );
 
 
-          updateLikeUI(
+          likeCount.textContent =
+            count;
+
+
+          setLikeAppearance(
+            likeIcon,
             likeBtn,
             false
           );
@@ -1999,7 +2067,7 @@ async function createVideoCard(
             {
 
               userId:
-                userId,
+                uid,
 
               createdAt:
                 serverTimestamp()
@@ -2018,11 +2086,15 @@ async function createVideoCard(
             ) || 0;
 
 
+          count++;
+
+
           likeCount.textContent =
-            count + 1;
+            count;
 
 
-          updateLikeUI(
+          setLikeAppearance(
+            likeIcon,
             likeBtn,
             true
           );
@@ -2056,9 +2128,9 @@ async function createVideoCard(
     };
 
 
-  /* =================================
-     COMMENT BUTTON
-  ================================= */
+  /* ==========================
+     COMMENTS
+  ========================== */
 
   commentBtn.onclick =
     ()=>{
@@ -2078,15 +2150,15 @@ async function createVideoCard(
 
 
       toast(
-        "Comments coming next 💬"
+        "Comments will be added next 💬"
       );
 
     };
 
 
-  /* =================================
+  /* ==========================
      SHARE
-  ================================= */
+  ========================== */
 
   shareBtn.onclick =
     async ()=>{
@@ -2136,9 +2208,9 @@ async function createVideoCard(
     };
 
 
-  /* =================================
+  /* ==========================
      FOLLOW
-  ================================= */
+  ========================== */
 
   follow.onclick =
     ()=>{
@@ -2166,41 +2238,33 @@ async function createVideoCard(
 }
 
 
-/* =====================================
-   LIKE UI
-===================================== */
+/* ==============================
+   LIKE APPEARANCE
+============================== */
 
-function updateLikeUI(
+function setLikeAppearance(
+  icon,
   button,
   liked
 ){
 
-  if(liked){
+  icon.textContent =
+    liked
+      ? "❤️"
+      : "🤍";
 
-    button.innerHTML =
-      "❤️";
 
-    button.classList.add(
-      "liked"
-    );
-
-  }else{
-
-    button.innerHTML =
-      "🤍";
-
-    button.classList.remove(
-      "liked"
-    );
-
-  }
+  button.classList.toggle(
+    "liked",
+    liked
+  );
 
 }
 
 
-/* =====================================
-   AUTO PLAY
-===================================== */
+/* ==============================
+   AUTOPLAY
+============================== */
 
 function activateVideos(){
 
@@ -2220,20 +2284,41 @@ function activateVideos(){
             const video =
               entry.target;
 
+            const card =
+              video.closest(
+                ".videoCard"
+              );
+
+            const play =
+              card.querySelector(
+                ".playBtn"
+              );
+
 
             if(
               entry.isIntersecting
             ){
 
-              video
-                .play()
-                .catch(
-                  ()=>{}
-                );
+              video.play()
+                .then(()=>{
+
+                  play.style.display =
+                    "none";
+
+                })
+                .catch(()=>{
+
+                  play.style.display =
+                    "block";
+
+                });
 
             }else{
 
               video.pause();
+
+              play.style.display =
+                "none";
 
             }
 
@@ -2256,9 +2341,9 @@ function activateVideos(){
 }
 
 
-/* =====================================
-   START APP
-===================================== */
+/* ==============================
+   START
+============================== */
 
 loadVideos();
 
