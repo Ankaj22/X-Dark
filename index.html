@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>X Dark</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+
+    .app {
+      max-width: 500px;
+      margin: auto;
+      min-height: 100vh;
+      background: #080808;
+      position: relative;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,.92);
+      border-bottom: 1px solid #222;
+      backdrop-filter: blur(12px);
+    }
+
+    header h1 {
+      font-size: 22px;
+      letter-spacing: 1px;
+    }
+
+    .feed {
+      padding-bottom: 75px;
+    }
+
+    .post {
+      border-bottom: 1px solid #222;
+      padding-bottom: 15px;
+    }
+
+    .user {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg,#fff,#555);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000;
+      font-weight: bold;
+    }
+
+    .username {
+      font-weight: bold;
+    }
+
+    .video {
+      width: 100%;
+      height: 550px;
+      background: #151515;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 60px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 20px;
+      padding: 12px;
+    }
+
+    .actions button {
+      border: 0;
+      background: none;
+      color: #fff;
+      font-size: 25px;
+    }
+
+    .caption {
+      padding: 0 13px;
+      line-height: 1.5;
+    }
+
+    .bottom {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 500px;
+      height: 65px;
+      background: #090909;
+      border-top: 1px solid #222;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      z-index: 20;
+    }
+
+    .bottom button {
+      border: 0;
+      background: none;
+      color: #aaa;
+      font-size: 25px;
+    }
+
+    .bottom .add {
+      width: 48px;
+      height: 38px;
+      border-radius: 10px;
+      background: #fff;
+      color: #000;
+      font-size: 28px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="app">
+
+  <header>
+    <h1>𝕏 DARK</h1>
+  </header>
+
+  <main class="feed">
+
+    <article class="post">
+
+      <div class="user">
+        <div class="avatar">X</div>
+
+        <div>
+          <div class="username">@xdark_user</div>
+          <small>Just now</small>
+        </div>
+      </div>
+
+      <div class="video">
+        ▶
+      </div>
+
+      <div class="actions">
+        <button>♡</button>
+        <button>💬</button>
+        <button>↗</button>
+        <button>⋯</button>
+      </div>
+
+      <div class="caption">
+        <b>@xdark_user</b>
+        Welcome to X Dark 🚀
+      </div>
+
+    </article>
+
+  </main>
+
+  <nav class="bottom">
+    <button>⌂</button>
+    <button>⌕</button>
+    <button class="add">+</button>
+    <button>♡</button>
+    <button>♙</button>
+  </nav>
+
+</div>
+
+</body>
+</html>
