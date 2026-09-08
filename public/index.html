@@ -1,44 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 <title>X-DARK</title>
 
 <style>
-
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
-  font-family:Arial,Helvetica,sans-serif;
+  font-family:Arial,Helvetica,sans-serif
 }
 
 body{
   background:#07080c;
   color:#fff;
-  padding-bottom:78px;
+  padding-bottom:78px
 }
 
-button,input,textarea{
-  font-family:inherit;
+button,input{
+  font-family:inherit
 }
 
 button{
-  cursor:pointer;
+  cursor:pointer
 }
 
 .page{
-  display:none;
+  display:none
 }
 
 .page.active{
-  display:block;
+  display:block
 }
 
-/* ================= TOP ================= */
+/* TOP BAR */
 
 .topbar{
   height:78px;
@@ -50,18 +47,18 @@ button{
   background:#07080c;
   position:sticky;
   top:0;
-  z-index:500;
+  z-index:500
 }
 
 .logo{
   font-size:30px;
   font-weight:900;
-  letter-spacing:-1px;
+  letter-spacing:-1px
 }
 
 .top-icons{
   display:flex;
-  gap:24px;
+  gap:24px
 }
 
 .svg{
@@ -70,22 +67,43 @@ button{
   fill:none;
   stroke:#fff;
   stroke-width:1.8;
-  cursor:pointer;
+  cursor:pointer
 }
 
-/* ================= STORIES ================= */
+.badge-wrap{
+  position:relative
+}
+
+.badge{
+  position:absolute;
+  top:-8px;
+  right:-9px;
+  min-width:18px;
+  height:18px;
+  padding:0 5px;
+  border-radius:10px;
+  background:#7434ff;
+  color:#fff;
+  font-size:10px;
+  font-weight:bold;
+  display:flex;
+  align-items:center;
+  justify-content:center
+}
+
+/* STORIES */
 
 .stories{
   display:flex;
   gap:22px;
   padding:18px;
   overflow-x:auto;
-  border-bottom:1px solid #191b22;
+  border-bottom:1px solid #191b22
 }
 
 .story{
   min-width:78px;
-  text-align:center;
+  text-align:center
 }
 
 .story-ring{
@@ -98,7 +116,7 @@ button{
     #6825ff,
     #b45cff,
     #6825ff
-  );
+  )
 }
 
 .story-ring img{
@@ -106,25 +124,28 @@ button{
   height:100%;
   object-fit:cover;
   border-radius:50%;
-  border:3px solid #07080c;
+  border:3px solid #07080c
 }
 
 .story-name{
   color:#c9cad1;
   font-size:13px;
-  margin-top:8px;
+  margin-top:8px
 }
 
-/* ================= FEED ================= */
+/* FEED */
 
-.feed{
+.feed,
+.chat-page,
+.profile,
+.search-container{
   max-width:700px;
-  margin:auto;
+  margin:auto
 }
 
 .post{
   border-bottom:1px solid #292b34;
-  padding-bottom:15px;
+  padding-bottom:15px
 }
 
 .post-header{
@@ -132,13 +153,13 @@ button{
   padding:0 20px;
   display:flex;
   align-items:center;
-  justify-content:space-between;
+  justify-content:space-between
 }
 
 .user-info{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:12px
 }
 
 .avatar{
@@ -147,30 +168,30 @@ button{
   border-radius:50%;
   object-fit:cover;
   border:2px solid #7935ff;
-  padding:2px;
+  padding:2px
 }
 
 .username{
   font-size:17px;
-  font-weight:bold;
+  font-weight:bold
 }
 
 .location{
   color:#858792;
   font-size:12px;
-  margin-top:4px;
+  margin-top:4px
 }
 
 .more{
   font-size:22px;
-  letter-spacing:3px;
+  letter-spacing:3px
 }
 
 .post-image{
   width:100%;
   display:block;
   max-height:650px;
-  object-fit:cover;
+  object-fit:cover
 }
 
 .actions{
@@ -178,12 +199,12 @@ button{
   padding:0 20px;
   display:flex;
   align-items:center;
-  justify-content:space-between;
+  justify-content:space-between
 }
 
 .left-actions{
   display:flex;
-  gap:21px;
+  gap:21px
 }
 
 .post-icon{
@@ -192,42 +213,40 @@ button{
   fill:none;
   stroke:#eee;
   stroke-width:1.7;
-  cursor:pointer;
+  cursor:pointer
 }
 
 .like-btn.liked{
   fill:#ff3564;
-  stroke:#ff3564;
+  stroke:#ff3564
 }
 
 .save-btn.saved{
-  stroke:#9d5cff;
+  stroke:#9d5cff
 }
 
 .likes{
   padding:0 20px;
   font-weight:bold;
-  font-size:14px;
+  font-size:14px
 }
 
 .caption{
   padding:8px 20px;
-  font-size:14px;
+  font-size:14px
 }
 
 .comments-link{
   padding:5px 20px;
   display:block;
   color:#777b88;
-  font-size:14px;
+  font-size:14px
 }
 
-/* ================= SEARCH ================= */
+/* SEARCH */
 
 .search-container{
-  max-width:650px;
-  margin:auto;
-  padding:20px;
+  padding:20px
 }
 
 .search-box{
@@ -238,7 +257,7 @@ button{
   display:flex;
   align-items:center;
   gap:12px;
-  padding:0 15px;
+  padding:0 15px
 }
 
 .search-input{
@@ -247,7 +266,7 @@ button{
   border:0;
   outline:0;
   color:#fff;
-  font-size:16px;
+  font-size:16px
 }
 
 .search-result{
@@ -255,7 +274,7 @@ button{
   align-items:center;
   gap:14px;
   padding:15px 5px;
-  border-bottom:1px solid #1d1f27;
+  border-bottom:1px solid #1d1f27
 }
 
 .search-avatar{
@@ -264,29 +283,24 @@ button{
   border-radius:50%;
   border:2px solid #7134ff;
   padding:2px;
-  object-fit:cover;
+  object-fit:cover
 }
 
 .result-info{
-  flex:1;
+  flex:1
 }
 
 .result-name{
   font-size:17px;
-  font-weight:bold;
+  font-weight:bold
 }
 
 .result-handle{
   color:#858792;
-  margin-top:5px;
+  margin-top:5px
 }
 
-/* ================= CHAT LIST ================= */
-
-.chat-page{
-  max-width:700px;
-  margin:auto;
-}
+/* CHAT LIST */
 
 .chat-header{
   height:70px;
@@ -294,17 +308,16 @@ button{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  border-bottom:1px solid #292b34;
+  border-bottom:1px solid #292b34
 }
 
 .chat-title{
   font-size:23px;
-  font-weight:800;
+  font-weight:800
 }
 
 .chat-new{
-  color:#9c61ff;
-  cursor:pointer;
+  color:#9c61ff
 }
 
 .chat-search{
@@ -316,7 +329,7 @@ button{
   padding:0 14px;
   background:#12141b;
   border:1px solid #30323d;
-  border-radius:16px;
+  border-radius:16px
 }
 
 .chat-search input{
@@ -325,7 +338,7 @@ button{
   border:0;
   outline:0;
   color:#fff;
-  font-size:15px;
+  font-size:15px
 }
 
 .chat-row{
@@ -335,11 +348,11 @@ button{
   gap:13px;
   padding:10px 20px;
   border-bottom:1px solid #181a21;
-  cursor:pointer;
+  cursor:pointer
 }
 
 .chat-avatar-wrap{
-  position:relative;
+  position:relative
 }
 
 .chat-avatar{
@@ -348,7 +361,7 @@ button{
   border-radius:50%;
   border:2px solid #7434ff;
   padding:2px;
-  object-fit:cover;
+  object-fit:cover
 }
 
 .online{
@@ -359,17 +372,17 @@ button{
   bottom:2px;
   background:#35e58b;
   border:2px solid #07080c;
-  border-radius:50%;
+  border-radius:50%
 }
 
 .chat-info{
   flex:1;
-  min-width:0;
+  min-width:0
 }
 
 .chat-name{
   font-size:17px;
-  font-weight:bold;
+  font-weight:bold
 }
 
 .chat-last{
@@ -378,30 +391,16 @@ button{
   margin-top:5px;
   white-space:nowrap;
   overflow:hidden;
-  text-overflow:ellipsis;
+  text-overflow:ellipsis
 }
 
 .chat-right{
   text-align:right;
   color:#737783;
-  font-size:11px;
+  font-size:11px
 }
 
-.unread{
-  margin-top:7px;
-  margin-left:auto;
-  width:21px;
-  height:21px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:50%;
-  background:#7434ff;
-  color:#fff;
-  font-weight:bold;
-}
-
-/* ================= CONVERSATION ================= */
+/* CONVERSATION */
 
 .conversation{
   display:none;
@@ -409,11 +408,11 @@ button{
   inset:0;
   background:#07080c;
   z-index:2000;
-  flex-direction:column;
+  flex-direction:column
 }
 
 .conversation.active{
-  display:flex;
+  display:flex
 }
 
 .conversation-header{
@@ -423,7 +422,7 @@ button{
   align-items:center;
   gap:10px;
   border-bottom:1px solid #292b34;
-  background:#07080c;
+  background:#07080c
 }
 
 .back-btn{
@@ -432,7 +431,7 @@ button{
   background:transparent;
   border:0;
   color:#fff;
-  font-size:36px;
+  font-size:36px
 }
 
 .conversation-avatar{
@@ -441,22 +440,26 @@ button{
   object-fit:cover;
   border-radius:50%;
   border:2px solid #7434ff;
-  padding:2px;
+  padding:2px
 }
 
 .conversation-user{
-  flex:1;
+  flex:1
 }
 
 .conversation-name{
   font-weight:bold;
-  font-size:16px;
+  font-size:16px
 }
 
 .status{
   color:#35e58b;
   font-size:11px;
-  margin-top:4px;
+  margin-top:4px
+}
+
+.status.offline{
+  color:#777b88
 }
 
 .chat-action{
@@ -465,46 +468,46 @@ button{
   fill:none;
   stroke:#fff;
   stroke-width:1.7;
-  cursor:pointer;
+  cursor:pointer
 }
 
-/* ================= MESSAGES ================= */
+/* MESSAGES */
 
 .messages{
   flex:1;
   overflow-y:auto;
-  padding:18px 14px 20px;
+  padding:18px 14px 10px;
   display:flex;
   flex-direction:column;
-  gap:9px;
+  gap:9px
 }
 
 .date-divider{
   text-align:center;
   color:#666a76;
   font-size:11px;
-  margin:5px 0 10px;
+  margin:5px 0 10px
 }
 
 .message{
-  max-width:76%;
+  max-width:78%;
   padding:11px 14px;
   font-size:14px;
   line-height:20px;
   border-radius:19px;
-  word-break:break-word;
+  word-break:break-word
 }
 
 .received{
   align-self:flex-start;
   background:#191b23;
-  border-bottom-left-radius:5px;
+  border-bottom-left-radius:5px
 }
 
 .sent{
   align-self:flex-end;
   background:#7130ff;
-  border-bottom-right-radius:5px;
+  border-bottom-right-radius:5px
 }
 
 .msg-time{
@@ -512,17 +515,57 @@ button{
   text-align:right;
   font-size:9px;
   opacity:.65;
-  margin-top:3px;
+  margin-top:4px
+}
+
+.msg-ticks{
+  margin-left:4px;
+  font-size:11px
+}
+
+.seen{
+  color:#8fc8ff
 }
 
 .empty-chat{
   margin:auto;
   color:#666a76;
   font-size:13px;
-  text-align:center;
+  text-align:center
 }
 
-/* ================= TYPING ================= */
+/* MEDIA */
+
+.message-media{
+  display:block;
+  max-width:240px;
+  max-height:280px;
+  border-radius:13px;
+  object-fit:cover
+}
+
+.file-card{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:8px 0;
+  color:#fff;
+  text-decoration:none
+}
+
+.file-icon{
+  font-size:26px
+}
+
+.file-name{
+  font-size:13px;
+  max-width:180px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap
+}
+
+/* TYPING */
 
 .typing{
   display:none;
@@ -530,11 +573,11 @@ button{
   gap:5px;
   color:#777b88;
   font-size:11px;
-  padding:0 17px 7px;
+  padding:0 17px 7px
 }
 
 .typing.show{
-  display:flex;
+  display:flex
 }
 
 .dot{
@@ -542,25 +585,72 @@ button{
   height:5px;
   border-radius:50%;
   background:#777b88;
-  animation:bounce .8s infinite alternate;
+  animation:bounce .8s infinite alternate
 }
 
 .dot:nth-child(2){
-  animation-delay:.2s;
+  animation-delay:.2s
 }
 
 .dot:nth-child(3){
-  animation-delay:.4s;
+  animation-delay:.4s
 }
 
 @keyframes bounce{
   to{
     opacity:.2;
-    transform:translateY(-3px);
+    transform:translateY(-3px)
   }
 }
 
-/* ================= MESSAGE BAR ================= */
+/* ATTACHMENT PREVIEW */
+
+.attachment-preview{
+  display:none;
+  padding:8px 12px;
+  border-top:1px solid #292b34;
+  background:#101118;
+  align-items:center;
+  gap:10px
+}
+
+.attachment-preview.show{
+  display:flex
+}
+
+.preview-thumb{
+  width:48px;
+  height:48px;
+  border-radius:9px;
+  object-fit:cover
+}
+
+.preview-info{
+  flex:1;
+  min-width:0
+}
+
+.preview-name{
+  font-size:12px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis
+}
+
+.preview-size{
+  font-size:10px;
+  color:#777b88;
+  margin-top:3px
+}
+
+.remove-attach{
+  background:transparent;
+  border:0;
+  color:#aaa;
+  font-size:22px
+}
+
+/* MESSAGE BAR */
 
 .message-bar{
   min-height:70px;
@@ -569,7 +659,7 @@ button{
   gap:8px;
   padding:10px 11px;
   border-top:1px solid #292b34;
-  background:#07080c;
+  background:#07080c
 }
 
 .attach{
@@ -579,7 +669,7 @@ button{
   border-radius:50%;
   background:#181a22;
   color:#fff;
-  font-size:22px;
+  font-size:22px
 }
 
 .message-input{
@@ -591,11 +681,11 @@ button{
   border:1px solid #30323d;
   border-radius:23px;
   color:#fff;
-  outline:none;
+  outline:none
 }
 
 .message-input:focus{
-  border-color:#7434ff;
+  border-color:#7434ff
 }
 
 .emoji{
@@ -604,7 +694,7 @@ button{
   border:0;
   background:transparent;
   color:#aaa;
-  font-size:20px;
+  font-size:20px
 }
 
 .send{
@@ -614,10 +704,10 @@ button{
   border-radius:50%;
   background:#7434ff;
   color:#fff;
-  font-size:18px;
+  font-size:18px
 }
 
-/* ================= NOTIFICATIONS ================= */
+/* NOTIFICATIONS */
 
 .notification-head{
   height:70px;
@@ -625,18 +715,18 @@ button{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  border-bottom:1px solid #292b34;
+  border-bottom:1px solid #292b34
 }
 
 .notification-title{
   font-size:22px;
-  font-weight:800;
+  font-weight:800
 }
 
 .read-btn{
   background:transparent;
   border:0;
-  color:#9c61ff;
+  color:#9c61ff
 }
 
 .notification{
@@ -645,11 +735,11 @@ button{
   display:flex;
   align-items:center;
   gap:13px;
-  border-bottom:1px solid #181a21;
+  border-bottom:1px solid #181a21
 }
 
 .notification.unread-row{
-  background:#0d0e14;
+  background:#0d0e14
 }
 
 .notification-avatar{
@@ -658,37 +748,32 @@ button{
   border-radius:50%;
   border:2px solid #7434ff;
   padding:2px;
-  object-fit:cover;
+  object-fit:cover
 }
 
 .notification-content{
   flex:1;
-  font-size:14px;
+  font-size:14px
 }
 
 .notification-time{
   display:block;
   color:#777b88;
   margin-top:5px;
-  font-size:12px;
+  font-size:12px
 }
 
-/* ================= PROFILE ================= */
-
-.profile{
-  max-width:700px;
-  margin:auto;
-}
+/* PROFILE */
 
 .profile-top{
   padding:27px 20px;
-  border-bottom:1px solid #292b34;
+  border-bottom:1px solid #292b34
 }
 
 .profile-info{
   display:flex;
   align-items:center;
-  gap:20px;
+  gap:20px
 }
 
 .profile-photo{
@@ -697,44 +782,44 @@ button{
   border-radius:50%;
   object-fit:cover;
   border:3px solid #7935ff;
-  padding:3px;
+  padding:3px
 }
 
 .profile-name{
   font-size:23px;
-  font-weight:800;
+  font-weight:800
 }
 
 .handle{
   color:#858894;
-  margin-top:6px;
+  margin-top:6px
 }
 
 .profile-stats{
   display:flex;
   margin-top:25px;
-  text-align:center;
+  text-align:center
 }
 
 .stat{
-  flex:1;
+  flex:1
 }
 
 .stat-number{
   font-weight:800;
-  font-size:19px;
+  font-size:19px
 }
 
 .stat-label{
   color:#858894;
   font-size:12px;
-  margin-top:5px;
+  margin-top:5px
 }
 
 .bio{
   margin-top:19px;
   color:#d4d5da;
-  line-height:22px;
+  line-height:22px
 }
 
 .edit{
@@ -745,1365 +830,989 @@ button{
   border-radius:12px;
   background:#15171e;
   color:#fff;
-  font-weight:bold;
+  font-weight:bold
 }
 
-/* ================= CREATE ================= */
+/* BOTTOM NAV */
 
-.modal{
-  display:none;
+.bottom-nav{
   position:fixed;
-  inset:0;
-  z-index:2500;
-  background:rgba(0,0,0,.86);
-  align-items:flex-end;
-}
-
-.modal.active{
-  display:flex;
-}
-
-.modal-box{
-  width:100%;
-  max-width:700px;
-  margin:auto;
-  background:#101117;
-  border-radius:25px 25px 0 0;
-  padding:22px;
-}
-
-.modal-head{
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:20px;
-}
-
-.close{
-  border:0;
-  background:#20222a;
-  color:#fff;
-  width:35px;
-  height:35px;
-  border-radius:50%;
-  font-size:22px;
-}
-
-.upload{
-  height:180px;
-  border:1px dashed #555966;
-  border-radius:18px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#999da8;
-  overflow:hidden;
-}
-
-.preview{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  display:none;
-}
-
-.caption-input{
-  width:100%;
-  height:85px;
-  margin-top:14px;
-  padding:13px;
-  resize:none;
-  background:#0b0c11;
-  color:#fff;
-  border:1px solid #30323d;
-  border-radius:14px;
-  outline:none;
-}
-
-.publish{
-  width:100%;
-  height:50px;
-  margin-top:13px;
-  border:0;
-  border-radius:14px;
-  background:#7434ff;
-  color:#fff;
-  font-size:16px;
-  font-weight:bold;
-}
-
-/* ================= BOTTOM ================= */
-
-.bottom{
-  position:fixed;
+  bottom:0;
   left:0;
   right:0;
-  bottom:0;
-  height:78px;
-  background:#07080c;
+  height:70px;
+  background:#0b0c11;
   border-top:1px solid #292b34;
   display:flex;
   align-items:center;
   justify-content:space-around;
-  z-index:500;
+  z-index:1000
 }
 
-.nav{
-  width:30px;
-  height:30px;
-  fill:none;
-  stroke:#858894;
-  stroke-width:1.7;
-  cursor:pointer;
-}
-
-.nav.active{
-  stroke:#fff;
-}
-
-.plus{
-  color:#fff;
+.nav-btn{
   background:transparent;
   border:0;
-  font-size:39px;
-  font-weight:300;
+  color:#888;
+  width:20%;
+  font-size:23px
 }
 
-.bell-wrap{
-  position:relative;
-  width:38px;
-  height:38px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+.nav-btn.active{
+  color:#fff
 }
 
-.badge{
-  position:absolute;
-  right:-3px;
-  top:-5px;
-  min-width:21px;
-  height:21px;
-  padding:0 5px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:50%;
-  background:#7434ff;
-  border:2px solid #07080c;
-  color:#fff;
-  font-size:10px;
-  font-weight:bold;
+.plus-nav{
+  font-size:31px;
+  color:#fff
 }
+
+/* TOAST */
 
 .toast{
-  display:none;
   position:fixed;
-  z-index:4000;
-  bottom:95px;
   left:50%;
+  bottom:85px;
   transform:translateX(-50%);
-  background:#191b23;
-  border:1px solid #30323d;
-  padding:11px 19px;
-  border-radius:22px;
-  white-space:nowrap;
+  background:#1a1c24;
+  border:1px solid #383a46;
+  color:#fff;
+  padding:12px 18px;
+  border-radius:13px;
+  display:none;
+  z-index:4000;
+  font-size:13px
 }
 
+.toast.show{
+  display:block
+}
+
+input[type=file]{
+  display:none
+}
+
+@media(max-width:430px){
+
+  .message{
+    max-width:82%
+  }
+
+  .conversation-header{
+    height:76px
+  }
+
+  .chat-action{
+    margin-left:4px
+  }
+
+  .message-bar{
+    padding-left:10px;
+    padding-right:10px
+  }
+
+  .emoji{
+    display:block
+  }
+
+}
 </style>
 </head>
 
 <body>
 
-
-<!-- =====================================================
-     TOP BAR
-====================================================== -->
-
-<header class="topbar">
-
-  <div class="logo">
-    X-DARK
-  </div>
-
-  <div class="top-icons">
-
-    <svg
-      class="svg"
-      onclick="showPage('chat')"
-      viewBox="0 0 24 24">
-
-      <path d="M20 11.5a8 8 0 0 1-8 8
-      8.7 8.7 0 0 1-3.4-.7L4 20l1.2-3.5
-      A8 8 0 1 1 20 11.5Z"/>
-
-    </svg>
-
-
-    <svg
-      class="svg"
-      onclick="toast('Activity')"
-      viewBox="0 0 24 24">
-
-      <path d="M20.8 8.7c0 5.5-8.8 10.3-8.8 10.3
-      S3.2 14.2 3.2 8.7A4.7 4.7 0 0 1 12 6.1
-      a4.7 4.7 0 0 1 8.8 2.6Z"/>
-
-    </svg>
-
-
-    <svg
-      class="svg"
-      onclick="toast('Menu')"
-      viewBox="0 0 24 24">
-
-      <path d="M4 7h16"/>
-      <path d="M4 12h16"/>
-      <path d="M4 17h16"/>
-
-    </svg>
-
-  </div>
-
-</header>
-
-
-<!-- =====================================================
-     HOME
-====================================================== -->
+<!-- HOME -->
 
 <section id="homePage" class="page active">
 
-  <div class="stories">
+<div class="topbar">
 
-    <div class="story">
+<div class="logo">
+X-DARK
+</div>
 
-      <div class="story-ring">
-        <img src="https://i.pravatar.cc/150?img=12">
-      </div>
+<div class="top-icons">
 
-      <div class="story-name">
-        Your Story
-      </div>
+<span onclick="showPage('messagesPage')" title="Messages">
 
-    </div>
+<svg class="svg" viewBox="0 0 24 24">
+<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H11l-5 4v-4.5A2.5 2.5 0 0 1 4 13.5z"/>
+</svg>
 
+</span>
 
-    <div class="story">
+<span class="badge-wrap"
+onclick="showPage('notificationsPage')">
 
-      <div class="story-ring">
-        <img src="https://i.pravatar.cc/150?img=32">
-      </div>
+<svg class="svg" viewBox="0 0 24 24">
+<path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/>
+</svg>
 
-      <div class="story-name">
-        @User
-      </div>
+<span id="topBadge" class="badge">3</span>
 
-    </div>
+</span>
 
+<span onclick="showPage('profilePage')">
 
-    <div class="story">
+<svg class="svg" viewBox="0 0 24 24">
+<path d="M20 21a8 8 0 0 0-16 0M12 13a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/>
+</svg>
 
-      <div class="story-ring">
-        <img src="https://i.pravatar.cc/150?img=47">
-      </div>
+</span>
 
-      <div class="story-name">
-        @Darkwing
-      </div>
+</div>
 
-    </div>
+</div>
 
 
-    <div class="story">
+<div class="stories">
 
-      <div class="story-ring">
-        <img src="https://i.pravatar.cc/150?img=44">
-      </div>
+<div class="story">
+<div class="story-ring">
+<img src="https://i.pravatar.cc/150?img=47">
+</div>
+<div class="story-name">Darkwing</div>
+</div>
 
-      <div class="story-name">
-        @XDark
-      </div>
+<div class="story">
+<div class="story-ring">
+<img src="https://i.pravatar.cc/150?img=12">
+</div>
+<div class="story-name">Nova</div>
+</div>
 
-    </div>
+<div class="story">
+<div class="story-ring">
+<img src="https://i.pravatar.cc/150?img=32">
+</div>
+<div class="story-name">XDark</div>
+</div>
 
-  </div>
+</div>
 
 
-  <main class="feed">
+<div class="feed">
 
-    <article class="post">
+<article class="post">
 
-      <div class="post-header">
+<div class="post-header">
 
-        <div class="user-info">
+<div class="user-info">
 
-          <img
-            class="avatar"
-            src="https://i.pravatar.cc/150?img=12">
+<img class="avatar"
+src="https://i.pravatar.cc/150?img=47">
 
-          <div>
+<div>
 
-            <div class="username">
-              @Ankaj
-            </div>
+<div class="username">
+Darkwing
+</div>
 
-            <div class="location">
-              X-DARK
-            </div>
+<div class="location">
+X-DARK
+</div>
 
-          </div>
+</div>
 
-        </div>
+</div>
 
-        <div class="more">
-          •••
-        </div>
+<div class="more">
+•••
+</div>
 
-      </div>
+</div>
 
 
-      <img
-        class="post-image"
-        src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=90">
+<img class="post-image"
+src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1000&q=85">
 
 
-      <div class="actions">
+<div class="actions">
 
-        <div class="left-actions">
+<div class="left-actions">
 
-          <svg
-            class="post-icon like-btn"
-            onclick="like(this)"
-            viewBox="0 0 24 24">
+<span onclick="toggleLike(this)">
 
-            <path d="M20.8 8.7c0 5.5-8.8 10.3-8.8 10.3
-            S3.2 14.2 3.2 8.7A4.7 4.7 0 0 1 12 6.1
-            a4.7 4.7 0 0 1 8.8 2.6Z"/>
+<svg class="post-icon like-btn"
+viewBox="0 0 24 24">
 
-          </svg>
+<path d="M20.8 8.6c0 5.4-8.8 10.4-8.8 10.4S3.2 14 3.2 8.6A4.6 4.6 0 0 1 12 6.4a4.6 4.6 0 0 1 8.8 2.2z"/>
 
+</svg>
 
-          <svg
-            class="post-icon"
-            onclick="toast('Comments')"
-            viewBox="0 0 24 24">
+</span>
 
-            <path d="M20 11.5a8 8 0 0 1-8 8
-            8.7 8.7 0 0 1-3.4-.7L4 20l1.2-3.5
-            A8 8 0 1 1 20 11.5Z"/>
 
-          </svg>
+<span onclick="toast('Comments coming next')">
 
+<svg class="post-icon"
+viewBox="0 0 24 24">
 
-          <svg
-            class="post-icon"
-            onclick="sharePost()"
-            viewBox="0 0 24 24">
+<path d="M21 11.5a8.5 8.5 0 0 1-9 8.5 9.8 9.8 0 0 1-4.2-.9L3 21l1.8-4.3A8.3 8.3 0 0 1 3 11.5 8.5 8.5 0 0 1 12 3a8.5 8.5 0 0 1 9 8.5z"/>
 
-            <path d="M4 12 20 4l-5 16-7-1Z"/>
-            <path d="M11 13 20 4"/>
+</svg>
 
-          </svg>
+</span>
 
-        </div>
 
+<span onclick="toast('Share coming next')">
 
-        <svg
-          class="post-icon save-btn"
-          onclick="savePost(this)"
-          viewBox="0 0 24 24">
+<svg class="post-icon"
+viewBox="0 0 24 24">
 
-          <path d="M6 4h12v17l-6-4-6 4V4Z"/>
+<path d="M22 2 11 13"/>
+<path d="m22 2-7 20-4-9-9-4z"/>
 
-        </svg>
+</svg>
 
-      </div>
+</span>
 
+</div>
 
-      <div class="likes">
 
-        <span class="like-count">
-          128
-        </span>
+<span onclick="toggleSave(this)">
 
-        likes
+<svg class="post-icon save-btn"
+viewBox="0 0 24 24">
 
-      </div>
+<path d="M6 3h12v18l-6-4-6 4z"/>
 
+</svg>
 
-      <div class="caption">
+</span>
 
-        <b>@Ankaj</b>
-        Enjoying the beautiful Maldives 🌊
+</div>
 
-      </div>
 
+<div class="likes" id="likes1">
+0 likes
+</div>
 
-      <div class="comments-link">
-        View all comments
-      </div>
+<div class="caption">
+<b>Darkwing</b> Welcome to X-DARK.
+</div>
 
-    </article>
+<span class="comments-link">
+View all comments
+</span>
 
-  </main>
+</article>
+
+</div>
 
 </section>
 
 
-<!-- =====================================================
-     SEARCH
-====================================================== -->
+<!-- SEARCH -->
 
 <section id="searchPage" class="page">
 
-  <div class="search-container">
+<div class="search-container">
 
-    <div class="search-box">
+<div class="search-box">
 
-      <svg
-        class="svg"
-        viewBox="0 0 24 24">
+<span>⌕</span>
 
-        <circle
-          cx="10.8"
-          cy="10.8"
-          r="6.5"/>
+<input
+id="searchInput"
+class="search-input"
+placeholder="Search"
+oninput="searchUsers()">
 
-        <path d="m16 16 5 5"/>
+</div>
 
-      </svg>
+<div id="searchResults"></div>
 
-
-      <input
-        id="searchInput"
-        class="search-input"
-        placeholder="Search..."
-        oninput="searchUsers()">
-
-    </div>
-
-
-    <div
-      class="search-result"
-      data-name="Darkwing">
-
-      <img
-        class="search-avatar"
-        src="https://i.pravatar.cc/150?img=47">
-
-      <div class="result-info">
-
-        <div class="result-name">
-          Darkwing
-        </div>
-
-        <div class="result-handle">
-          @Darkwing
-        </div>
-
-      </div>
-
-      <b>›</b>
-
-    </div>
-
-
-    <div
-      class="search-result"
-      data-name="XDark">
-
-      <img
-        class="search-avatar"
-        src="https://i.pravatar.cc/150?img=44">
-
-      <div class="result-info">
-
-        <div class="result-name">
-          XDark
-        </div>
-
-        <div class="result-handle">
-          @XDark
-        </div>
-
-      </div>
-
-      <b>›</b>
-
-    </div>
-
-
-    <div
-      class="search-result"
-      data-name="Nova">
-
-      <img
-        class="search-avatar"
-        src="https://i.pravatar.cc/150?img=15">
-
-      <div class="result-info">
-
-        <div class="result-name">
-          Nova
-        </div>
-
-        <div class="result-handle">
-          @Nova
-        </div>
-
-      </div>
-
-      <b>›</b>
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 
 
-<!-- =====================================================
-     CHAT LIST
-====================================================== -->
+<!-- MESSAGES -->
 
-<section id="chatPage" class="page">
+<section id="messagesPage" class="page">
 
-  <div class="chat-page">
+<div class="chat-page">
 
-    <div class="chat-header">
+<div class="chat-header">
 
-      <div class="chat-title">
-        Messages
-      </div>
+<div class="chat-title">
+Messages
+</div>
 
-      <div
-        class="chat-new"
-        onclick="toast('New chat coming next')">
+<div
+class="chat-new"
+onclick="toast('New chat coming next')">
+New
+</div>
 
-        New
+</div>
 
-      </div>
 
-    </div>
+<div class="chat-search">
 
+<span>⌕</span>
 
-    <div class="chat-search">
+<input
+id="chatSearch"
+placeholder="Search messages"
+oninput="filterChats()">
 
-      <svg
-        class="svg"
-        viewBox="0 0 24 24">
+</div>
 
-        <circle
-          cx="10.8"
-          cy="10.8"
-          r="6.5"/>
 
-        <path d="m16 16 5 5"/>
+<div id="chatList">
 
-      </svg>
 
+<div
+class="chat-row"
+data-name="Darkwing"
+onclick="openChat('Darkwing','https://i.pravatar.cc/150?img=47')">
 
-      <input
-        id="chatSearch"
-        placeholder="Search messages..."
-        oninput="filterChats()">
+<div class="chat-avatar-wrap">
 
-    </div>
+<img
+class="chat-avatar"
+src="https://i.pravatar.cc/150?img=47">
 
+<span class="online"></span>
 
-    <div
-      class="chat-row"
-      data-name="Darkwing"
-      onclick="openChat(
-        'Darkwing',
-        'https://i.pravatar.cc/150?img=47'
-      )">
+</div>
 
-      <div class="chat-avatar-wrap">
+<div class="chat-info">
 
-        <img
-          class="chat-avatar"
-          src="https://i.pravatar.cc/150?img=47">
+<div class="chat-name">
+Darkwing
+</div>
 
-        <span class="online"></span>
+<div
+class="chat-last"
+id="last-Darkwing">
+Hello
+</div>
 
-      </div>
+</div>
 
+<div class="chat-right">
+8:11 PM
+</div>
 
-      <div class="chat-info">
+</div>
 
-        <div class="chat-name">
-          Darkwing
-        </div>
 
-        <div
-          id="last-Darkwing"
-          class="chat-last">
+<div
+class="chat-row"
+data-name="User"
+onclick="openChat('User','https://i.pravatar.cc/150?img=12')">
 
-          Start a conversation...
+<div class="chat-avatar-wrap">
 
-        </div>
+<img
+class="chat-avatar"
+src="https://i.pravatar.cc/150?img=12">
 
-      </div>
+</div>
 
+<div class="chat-info">
 
-      <div class="chat-right">
-        <span id="time-Darkwing"></span>
-      </div>
+<div class="chat-name">
+User
+</div>
 
-    </div>
+<div class="chat-last">
+Hey there
+</div>
 
+</div>
 
-    <div
-      class="chat-row"
-      data-name="User"
-      onclick="openChat(
-        'User',
-        'https://i.pravatar.cc/150?img=32'
-      )">
+<div class="chat-right">
+Yesterday
+</div>
 
-      <div class="chat-avatar-wrap">
+</div>
 
-        <img
-          class="chat-avatar"
-          src="https://i.pravatar.cc/150?img=32">
 
-      </div>
+<div
+class="chat-row"
+data-name="XDark"
+onclick="openChat('XDark','https://i.pravatar.cc/150?img=32')">
 
+<div class="chat-avatar-wrap">
 
-      <div class="chat-info">
+<img
+class="chat-avatar"
+src="https://i.pravatar.cc/150?img=32">
 
-        <div class="chat-name">
-          User
-        </div>
+<span class="online"></span>
 
-        <div
-          id="last-User"
-          class="chat-last">
+</div>
 
-          Start a conversation...
+<div class="chat-info">
 
-        </div>
+<div class="chat-name">
+XDark
+</div>
 
-      </div>
+<div class="chat-last">
+See you soon
+</div>
 
-    </div>
+</div>
 
+<div class="chat-right">
+Mon
+</div>
 
-    <div
-      class="chat-row"
-      data-name="XDark"
-      onclick="openChat(
-        'XDark',
-        'https://i.pravatar.cc/150?img=44'
-      )">
+</div>
 
-      <div class="chat-avatar-wrap">
 
-        <img
-          class="chat-avatar"
-          src="https://i.pravatar.cc/150?img=44">
+<div
+class="chat-row"
+data-name="Nova"
+onclick="openChat('Nova','https://i.pravatar.cc/150?img=5')">
 
-        <span class="online"></span>
+<div class="chat-avatar-wrap">
 
-      </div>
+<img
+class="chat-avatar"
+src="https://i.pravatar.cc/150?img=5">
 
+</div>
 
-      <div class="chat-info">
+<div class="chat-info">
 
-        <div class="chat-name">
-          XDark
-        </div>
+<div class="chat-name">
+Nova
+</div>
 
-        <div
-          id="last-XDark"
-          class="chat-last">
+<div class="chat-last">
+Nice post!
+</div>
 
-          Start a conversation...
+</div>
 
-        </div>
+<div class="chat-right">
+Sun
+</div>
 
-      </div>
+</div>
 
-    </div>
 
+</div>
 
-    <div
-      class="chat-row"
-      data-name="Nova"
-      onclick="openChat(
-        'Nova',
-        'https://i.pravatar.cc/150?img=15'
-      )">
-
-      <div class="chat-avatar-wrap">
-
-        <img
-          class="chat-avatar"
-          src="https://i.pravatar.cc/150?img=15">
-
-      </div>
-
-
-      <div class="chat-info">
-
-        <div class="chat-name">
-          Nova
-        </div>
-
-        <div
-          id="last-Nova"
-          class="chat-last">
-
-          Start a conversation...
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 
 
-<!-- =====================================================
-     NOTIFICATIONS
-====================================================== -->
+<!-- NOTIFICATIONS -->
 
-<section
-  id="notificationPage"
-  class="page">
+<section id="notificationsPage" class="page">
 
-  <div class="notification-head">
+<div class="notification-head">
 
-    <div class="notification-title">
-      Notifications
-    </div>
+<div class="notification-title">
+Notifications
+</div>
 
-    <button
-      class="read-btn"
-      onclick="markRead()">
+<button
+class="read-btn"
+onclick="markNotificationsRead()">
+Mark all read
+</button>
 
-      Mark all as read
-
-    </button>
-
-  </div>
+</div>
 
 
-  <div id="notifications">
+<div class="notification unread-row">
 
-    <div class="notification unread-row">
+<img
+class="notification-avatar"
+src="https://i.pravatar.cc/150?img=47">
 
-      <img
-        class="notification-avatar"
-        src="https://i.pravatar.cc/150?img=47">
+<div class="notification-content">
 
-      <div class="notification-content">
+<b>Darkwing</b>
+liked your post.
 
-        <b>Darkwing</b>
-        liked your post.
+<span class="notification-time">
+2 min ago
+</span>
 
-        <span class="notification-time">
-          2 min ago
-        </span>
+</div>
 
-      </div>
-
-    </div>
+</div>
 
 
-    <div class="notification unread-row">
+<div class="notification unread-row">
 
-      <img
-        class="notification-avatar"
-        src="https://i.pravatar.cc/150?img=32">
+<img
+class="notification-avatar"
+src="https://i.pravatar.cc/150?img=12">
 
-      <div class="notification-content">
+<div class="notification-content">
 
-        <b>User</b>
-        commented on your post.
+<b>User</b>
+sent you a message.
 
-        <span class="notification-time">
-          15 min ago
-        </span>
+<span class="notification-time">
+8 min ago
+</span>
 
-      </div>
+</div>
 
-    </div>
+</div>
 
 
-    <div class="notification unread-row">
+<div class="notification">
 
-      <img
-        class="notification-avatar"
-        src="https://i.pravatar.cc/150?img=44">
+<img
+class="notification-avatar"
+src="https://i.pravatar.cc/150?img=32">
 
-      <div class="notification-content">
+<div class="notification-content">
 
-        <b>XDark</b>
-        started following you.
+<b>XDark</b>
+started following you.
 
-        <span class="notification-time">
-          1 hour ago
-        </span>
+<span class="notification-time">
+1 hour ago
+</span>
 
-      </div>
+</div>
 
-    </div>
-
-  </div>
+</div>
 
 </section>
 
 
-<!-- =====================================================
-     PROFILE
-====================================================== -->
+<!-- PROFILE -->
 
 <section id="profilePage" class="page">
 
-  <div class="profile">
+<div class="profile">
 
-    <div class="profile-top">
+<div class="profile-top">
 
-      <div class="profile-info">
+<div class="profile-info">
 
-        <img
-          class="profile-photo"
-          src="https://i.pravatar.cc/150?img=12">
+<img
+class="profile-photo"
+src="https://i.pravatar.cc/150?img=68">
 
-        <div>
+<div>
 
-          <div class="profile-name">
-            Ankaj
-          </div>
+<div class="profile-name">
+Ankaj
+</div>
 
-          <div class="handle">
-            @Ankaj
-          </div>
+<div class="handle">
+@ankaj
+</div>
 
-        </div>
+</div>
 
-      </div>
-
-
-      <div class="profile-stats">
-
-        <div class="stat">
-
-          <div class="stat-number">
-            12
-          </div>
-
-          <div class="stat-label">
-            Posts
-          </div>
-
-        </div>
+</div>
 
 
-        <div class="stat">
+<div class="profile-stats">
 
-          <div class="stat-number">
-            248
-          </div>
+<div class="stat">
 
-          <div class="stat-label">
-            Followers
-          </div>
+<div class="stat-number">
+0
+</div>
 
-        </div>
+<div class="stat-label">
+Posts
+</div>
 
-
-        <div class="stat">
-
-          <div class="stat-number">
-            180
-          </div>
-
-          <div class="stat-label">
-            Following
-          </div>
-
-        </div>
-
-      </div>
+</div>
 
 
-      <div class="bio">
+<div class="stat">
 
-        Welcome to X-DARK ⚡
-        <br>
-        Dark social experience.
+<div class="stat-number">
+0
+</div>
 
-      </div>
+<div class="stat-label">
+Followers
+</div>
+
+</div>
 
 
-      <button
-        class="edit"
-        onclick="toast('Edit profile coming next')">
+<div class="stat">
 
-        Edit Profile
+<div class="stat-number">
+0
+</div>
 
-      </button>
+<div class="stat-label">
+Following
+</div>
 
-    </div>
+</div>
 
-  </div>
+</div>
+
+
+<div class="bio">
+Welcome to my X-DARK profile.
+</div>
+
+
+<button
+class="edit"
+onclick="toast('Profile editor coming next')">
+Edit Profile
+</button>
+
+</div>
+
+</div>
 
 </section>
 
 
-<!-- =====================================================
-     CONVERSATION
-====================================================== -->
+<!-- CONVERSATION -->
+
+<div id="conversation" class="conversation">
+
+
+<div class="conversation-header">
+
+<button
+class="back-btn"
+onclick="closeChat()">
+‹
+</button>
+
+
+<img
+id="conversationAvatar"
+class="conversation-avatar"
+src="">
+
+
+<div class="conversation-user">
 
 <div
-  id="conversation"
-  class="conversation">
+id="conversationName"
+class="conversation-name">
+Darkwing
+</div>
 
-
-  <div class="conversation-header">
-
-    <button
-      class="back-btn"
-      onclick="closeChat()">
-
-      ‹
-
-    </button>
-
-
-    <img
-      id="conversationAvatar"
-      class="conversation-avatar">
-
-
-    <div class="conversation-user">
-
-      <div
-        id="conversationName"
-        class="conversation-name">
-
-      </div>
-
-      <div class="status">
-        ● Active now
-      </div>
-
-    </div>
-
-
-    <svg
-      class="chat-action"
-      onclick="toast('Voice call coming next')"
-      viewBox="0 0 24 24">
-
-      <path d="M6 3h3l2 5-2 2
-      a14 14 0 0 0 5 5l2-2
-      5 2v3c0 1-1 2-2 2
-      C10 20 4 14 4 5
-      4 4 5 3 6 3Z"/>
-
-    </svg>
-
-
-    <svg
-      class="chat-action"
-      onclick="toast('Video call coming next')"
-      viewBox="0 0 24 24">
-
-      <rect
-        x="3"
-        y="6"
-        width="13"
-        height="12"
-        rx="2"/>
-
-      <path d="m16 10 5-3v10l-5-3"/>
-
-    </svg>
-
-  </div>
-
-
-  <div
-    id="messages"
-    class="messages">
-
-  </div>
-
-
-  <div
-    id="typing"
-    class="typing">
-
-    Darkwing is typing
-
-    <span class="dot"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-
-  </div>
-
-
-  <div class="message-bar">
-
-    <button
-      class="attach"
-      onclick="toast('Attachment coming next')">
-
-      +
-
-    </button>
-
-
-    <input
-      id="messageInput"
-      class="message-input"
-      placeholder="Message..."
-      autocomplete="off">
-
-
-    <button
-      class="emoji"
-      onclick="addEmoji()">
-
-      ☺
-
-    </button>
-
-
-    <button
-      class="send"
-      onclick="sendMessage()">
-
-      ➤
-
-    </button>
-
-  </div>
+<div
+id="conversationStatus"
+class="status offline">
+● Offline
+</div>
 
 </div>
 
 
-<!-- =====================================================
-     CREATE POST
-====================================================== -->
+<span onclick="toast('Voice call coming next')">
 
-<div
-  id="createModal"
-  class="modal">
+<svg
+class="chat-action"
+viewBox="0 0 24 24">
 
-  <div class="modal-box">
+<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7A2 2 0 0 1 22 16.9z"/>
 
-    <div class="modal-head">
+</svg>
 
-      <h2>
-        Create Post
-      </h2>
-
-      <button
-        class="close"
-        onclick="closeCreate()">
-
-        ×
-
-      </button>
-
-    </div>
+</span>
 
 
-    <label
-      class="upload"
-      for="mediaInput">
+<span onclick="toast('Video call coming next')">
 
-      <span id="uploadText">
-        📷 Choose photo or video
-      </span>
+<svg
+class="chat-action"
+viewBox="0 0 24 24">
 
-      <img
-        id="preview"
-        class="preview">
+<path d="m15 10 5-3v10l-5-3M3 6h12v12H3z"/>
 
-    </label>
+</svg>
 
-
-    <input
-      id="mediaInput"
-      type="file"
-      accept="image/*,video/*"
-      style="display:none"
-      onchange="previewMedia(this)">
-
-
-    <textarea
-      id="captionInput"
-      class="caption-input"
-      placeholder="Write a caption..."></textarea>
-
-
-    <button
-      class="publish"
-      onclick="publish()">
-
-      Publish
-
-    </button>
-
-  </div>
+</span>
 
 </div>
 
 
-<!-- =====================================================
-     BOTTOM NAV
-====================================================== -->
-
-<nav class="bottom">
-
-
-  <svg
-    id="homeNav"
-    class="nav active"
-    onclick="showPage('home')"
-    viewBox="0 0 24 24">
-
-    <path d="M3 10.5 12 3l9 7.5"/>
-    <path d="M5 9.5V21h14V9.5"/>
-
-  </svg>
+<div
+id="messages"
+class="messages">
+</div>
 
 
-  <svg
-    id="searchNav"
-    class="nav"
-    onclick="showPage('search')"
-    viewBox="0 0 24 24">
+<div
+id="typing"
+class="typing">
 
-    <circle
-      cx="10.8"
-      cy="10.8"
-      r="6.5"/>
+<span>Typing</span>
 
-    <path d="m16 16 5 5"/>
+<span class="dot"></span>
+<span class="dot"></span>
+<span class="dot"></span>
 
-  </svg>
+</div>
 
 
-  <button
-    class="plus"
-    onclick="openCreate()">
+<!-- ATTACHMENT PREVIEW -->
 
-    +
+<div
+id="attachmentPreview"
+class="attachment-preview">
 
-  </button>
+<img
+id="previewThumb"
+class="preview-thumb"
+style="display:none">
 
+<div class="preview-info">
 
-  <div class="bell-wrap">
+<div
+id="previewName"
+class="preview-name">
+</div>
 
-    <svg
-      id="notificationNav"
-      class="nav"
-      onclick="showPage('notification')"
-      viewBox="0 0 24 24">
+<div
+id="previewSize"
+class="preview-size">
+</div>
 
-      <path d="M18 9a6 6 0 0 0-12 0
-      c0 7-3 7-3 9h18c0-2-3-2-3-9Z"/>
+</div>
 
-      <path d="M10 21h4"/>
+<button
+class="remove-attach"
+onclick="clearAttachment()">
+×
+</button>
 
-    </svg>
-
-
-    <span
-      id="badge"
-      class="badge">
-
-      3
-
-    </span>
-
-  </div>
+</div>
 
 
-  <svg
-    id="profileNav"
-    class="nav"
-    onclick="showPage('profile')"
-    viewBox="0 0 24 24">
+<!-- MESSAGE BAR -->
 
-    <circle
-      cx="12"
-      cy="8"
-      r="3.5"/>
+<div class="message-bar">
 
-    <path d="M4.5 21c.7-4.2
-    3.1-6.5 7.5-6.5
-    s6.8 2.3 7.5 6.5"/>
 
-  </svg>
+<button
+class="attach"
+onclick="document.getElementById('fileInput').click()">
++
+</button>
+
+
+<input
+id="fileInput"
+type="file"
+accept="image/*,video/*,.pdf,.doc,.docx,.txt,.zip"
+onchange="selectAttachment(event)">
+
+
+<input
+id="messageInput"
+class="message-input"
+placeholder="Message..."
+autocomplete="off">
+
+
+<button
+class="emoji"
+onclick="addEmoji('😊')">
+☺
+</button>
+
+
+<button
+class="send"
+onclick="sendMessage()">
+➤
+</button>
+
+
+</div>
+
+</div>
+
+
+<!-- BOTTOM NAV -->
+
+<nav class="bottom-nav">
+
+<button
+class="nav-btn active"
+onclick="showPage('homePage',this)">
+⌂
+</button>
+
+<button
+class="nav-btn"
+onclick="showPage('searchPage',this)">
+⌕
+</button>
+
+<button
+class="nav-btn plus-nav"
+onclick="toast('Create post coming next')">
+＋
+</button>
+
+<button
+class="nav-btn"
+onclick="showPage('notificationsPage',this)">
+♡
+</button>
+
+<button
+class="nav-btn"
+onclick="showPage('profilePage',this)">
+◉
+</button>
 
 </nav>
 
 
-<div
-  id="toastBox"
-  class="toast">
-</div>
+<div id="toast" class="toast"></div>
 
-
-<!-- =====================================================
-     FIREBASE + APP JAVASCRIPT
-====================================================== -->
 
 <script type="module">
 
+/* ================= FIREBASE ================= */
+
 import {
   initializeApp
-} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+} from
+"https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+
 
 import {
   getAuth,
   signInAnonymously,
   onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+} from
+"https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+
 
 import {
   getFirestore,
   collection,
+  doc,
   addDoc,
   query,
   orderBy,
   onSnapshot,
-  serverTimestamp
-} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+  serverTimestamp,
+  updateDoc,
+  setDoc,
+  arrayUnion
+} from
+"https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 
-/* ================= FIREBASE CONFIG ================= */
+import {
+  getStorage,
+  ref,
+  uploadBytes,
+  getDownloadURL
+} from
+"https://www.gstatic.com/firebasejs/12.2.1/firebase-storage.js";
+
 
 const firebaseConfig = {
 
   apiKey:
-    "AIzaSyC8Hfx0E7OpnfclF7UGYVcmdU38yuxtsBY",
+  "AIzaC8S8Hfx0E7OpnfclF7UGYVcmdU38yuxtsBY",
 
   authDomain:
-    "darkwing-a717a.firebaseapp.com",
+  "darkwing-a717a.firebaseapp.com",
 
   projectId:
-    "darkwing-a717a",
+  "darkwing-a717a",
 
   storageBucket:
-    "darkwing-a717a.firebasestorage.app",
+  "darkwing-a717a.firebasestorage.app",
 
   messagingSenderId:
-    "352453390196",
+  "352453390196",
 
   appId:
-    "1:352453390196:web:7c375a26a823b5633a4621",
+  "1:352453390196:web:7c375a26a823b5633a4621",
 
   measurementId:
-    "G-5RVX9NET3W"
+  "G-5RVX9NET3W"
 
 };
 
 
-/* ================= INITIALIZE ================= */
-
 const app =
-  initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
+
 
 const auth =
-  getAuth(app);
+getAuth(app);
+
 
 const db =
-  getFirestore(app);
+getFirestore(app);
 
+
+const storage =
+getStorage(app);
+
+
+/* ================= VARIABLES ================= */
 
 let currentFirebaseUser = null;
 
-let currentChat = "";
+let currentChat = null;
 
-let unsubscribeChat = null;
+let unsubscribe = null;
 
+let presenceUnsub = null;
 
-/* ================= ANONYMOUS LOGIN ================= */
+let typingUnsub = null;
 
-signInAnonymously(auth)
-  .then(() => {
+let selectedFile = null;
 
-    console.log(
-      "🔥 X-DARK Firebase login started"
-    );
-
-  })
-  .catch((error) => {
-
-    console.error(
-      "Firebase login error:",
-      error
-    );
-
-    toast(
-      "Firebase login failed"
-    );
-
-  });
+let typingTimer = null;
 
 
-onAuthStateChanged(
-  auth,
-  (user) => {
-
-    if(user){
-
-      currentFirebaseUser =
-        user;
-
-      console.log(
-        "🔥 Firebase connected:",
-        user.uid
-      );
-
-    }
-
-  }
-);
-
-
-/* ================= CHAT ID ================= */
+/* ================= HELPERS ================= */
 
 function chatId(name){
 
-  return String(name)
-    .toLowerCase()
-    .replace(
-      /[^a-z0-9]+/g,
-      "_"
-    );
+  return name
+  .toLowerCase()
+  .replace(/[^a-z0-9]+/g,"_");
 
 }
 
 
-/* ================= TIME ================= */
+function esc(s){
 
-function messageTime(timestamp){
+  return String(s || "")
+  .replace(/[&<>"']/g,m=>({
 
-  if(!timestamp){
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#039;"
 
-    return "";
+  }[m]));
 
-  }
+}
 
-  try{
 
-    const d =
-      timestamp.toDate();
+function timeText(ts){
 
-    return d.toLocaleTimeString(
+  if(!ts){
+
+    return new Date()
+    .toLocaleTimeString(
       [],
       {
         hour:"2-digit",
@@ -2111,11 +1820,722 @@ function messageTime(timestamp){
       }
     );
 
-  }catch(e){
+  }
 
-    return "";
+  const d =
+  ts.toDate
+  ? ts.toDate()
+  : new Date(ts);
+
+  return d.toLocaleTimeString(
+    [],
+    {
+      hour:"2-digit",
+      minute:"2-digit"
+    }
+  );
+
+}
+
+
+/* ================= RENDER MESSAGE ================= */
+
+function renderMessage(m){
+
+  const box =
+  document.createElement("div");
+
+
+  const mine =
+  m.senderId ===
+  currentFirebaseUser?.uid;
+
+
+  box.className =
+  "message " +
+  (mine ? "sent" : "received");
+
+
+  let body = "";
+
+
+  if(m.type === "image"){
+
+    body =
+    `<img
+      class="message-media"
+      src="${esc(m.url)}"
+      alt="image"
+      loading="lazy">`;
 
   }
+
+
+  else if(m.type === "video"){
+
+    body =
+    `<video
+      class="message-media"
+      src="${esc(m.url)}"
+      controls
+      playsinline>
+    </video>`;
+
+  }
+
+
+  else if(m.type === "file"){
+
+    body =
+    `<a
+      class="file-card"
+      href="${esc(m.url)}"
+      target="_blank"
+      rel="noopener">
+
+      <span class="file-icon">
+        📄
+      </span>
+
+      <span class="file-name">
+        ${esc(m.fileName || "File")}
+      </span>
+
+    </a>`;
+
+  }
+
+
+  if(m.text){
+
+    body +=
+    `<div>
+      ${esc(m.text)}
+    </div>`;
+
+  }
+
+
+  const seen =
+  Array.isArray(m.seenBy) &&
+  m.seenBy.some(
+    id => id !== m.senderId
+  );
+
+
+  const ticks =
+  mine
+
+  ?
+
+  `<span
+    class="msg-ticks ${seen ? "seen" : ""}">
+    ${seen ? "✓✓" : "✓"}
+  </span>`
+
+  :
+
+  "";
+
+
+  box.innerHTML =
+  body +
+
+  `<span class="msg-time">
+    ${timeText(m.createdAt)}
+    ${ticks}
+  </span>`;
+
+
+  return box;
+
+}
+
+
+/* ================= SEEN ================= */
+
+async function markMessagesSeen(snapshot){
+
+  if(
+    !currentFirebaseUser ||
+    !currentChat
+  ){
+    return;
+  }
+
+
+  const jobs = [];
+
+
+  snapshot.forEach(s=>{
+
+    const m =
+    s.data();
+
+
+    if(
+
+      m.senderId !==
+      currentFirebaseUser.uid
+
+      &&
+
+      !(
+        Array.isArray(m.seenBy)
+        &&
+        m.seenBy.includes(
+          currentFirebaseUser.uid
+        )
+      )
+
+    ){
+
+      jobs.push(
+
+        updateDoc(
+
+          doc(
+            db,
+            "chats",
+            chatId(currentChat),
+            "messages",
+            s.id
+          ),
+
+          {
+            seenBy:
+            arrayUnion(
+              currentFirebaseUser.uid
+            )
+          }
+
+        ).catch(()=>{})
+
+      );
+
+    }
+
+  });
+
+
+  await Promise.all(jobs);
+
+}
+
+
+/* ================= ONLINE STATUS ================= */
+
+function startPresence(name){
+
+  if(presenceUnsub){
+
+    presenceUnsub();
+
+  }
+
+
+  if(!currentFirebaseUser){
+
+    return;
+
+  }
+
+
+  const myRef =
+  doc(
+    db,
+    "chats",
+    chatId(name),
+    "presence",
+    currentFirebaseUser.uid
+  );
+
+
+  const writePresence = () => {
+
+    setDoc(
+
+      myRef,
+
+      {
+        uid:
+        currentFirebaseUser.uid,
+
+        online:true,
+
+        updatedAt:
+        Date.now()
+
+      },
+
+      {
+        merge:true
+      }
+
+    ).catch(()=>{});
+
+  };
+
+
+  writePresence();
+
+
+  const q =
+  query(
+
+    collection(
+      db,
+      "chats",
+      chatId(name),
+      "presence"
+    )
+
+  );
+
+
+  presenceUnsub =
+  onSnapshot(
+
+    q,
+
+    snap=>{
+
+      let otherOnline =
+      false;
+
+
+      const now =
+      Date.now();
+
+
+      snap.forEach(s=>{
+
+        const p =
+        s.data();
+
+
+        if(
+
+          s.id !==
+          currentFirebaseUser.uid
+
+          &&
+
+          p.online === true
+
+          &&
+
+          now -
+          (p.updatedAt || 0)
+          < 90000
+
+        ){
+
+          otherOnline = true;
+
+        }
+
+      });
+
+
+      const status =
+      document.getElementById(
+        "conversationStatus"
+      );
+
+
+      status.textContent =
+      otherOnline
+      ? "● Active now"
+      : "● Offline";
+
+
+      status.classList.toggle(
+        "offline",
+        !otherOnline
+      );
+
+    },
+
+    ()=>{}
+
+  );
+
+
+  window.__presenceRef =
+  myRef;
+
+
+  window.__presenceInterval =
+  setInterval(
+    writePresence,
+    30000
+  );
+
+}
+
+
+/* ================= STOP PRESENCE ================= */
+
+function stopPresence(){
+
+  if(presenceUnsub){
+
+    presenceUnsub();
+    presenceUnsub = null;
+
+  }
+
+
+  if(window.__presenceInterval){
+
+    clearInterval(
+      window.__presenceInterval
+    );
+
+    window.__presenceInterval =
+    null;
+
+  }
+
+
+  if(window.__presenceRef){
+
+    updateDoc(
+
+      window.__presenceRef,
+
+      {
+        online:false,
+        updatedAt:Date.now()
+      }
+
+    ).catch(()=>{});
+
+  }
+
+
+  window.__presenceRef =
+  null;
+
+}
+
+
+/* ================= TYPING LISTENER ================= */
+
+function startTypingListener(name){
+
+  if(typingUnsub){
+
+    typingUnsub();
+
+  }
+
+
+  const typingBox =
+  document.getElementById(
+    "typing"
+  );
+
+
+  const q =
+  query(
+
+    collection(
+      db,
+      "chats",
+      chatId(name),
+      "typing"
+    )
+
+  );
+
+
+  typingUnsub =
+  onSnapshot(
+
+    q,
+
+    snap=>{
+
+      let otherTyping =
+      false;
+
+
+      const now =
+      Date.now();
+
+
+      snap.forEach(s=>{
+
+        const t =
+        s.data();
+
+
+        if(
+
+          s.id !==
+          currentFirebaseUser?.uid
+
+          &&
+
+          t.typing === true
+
+          &&
+
+          now -
+          (t.updatedAt || 0)
+          < 7000
+
+        ){
+
+          otherTyping =
+          true;
+
+        }
+
+      });
+
+
+      typingBox.classList.toggle(
+        "show",
+        otherTyping
+      );
+
+    },
+
+    ()=>{}
+
+  );
+
+}
+
+
+/* ================= UPDATE TYPING ================= */
+
+async function updateTyping(){
+
+  if(
+    !currentFirebaseUser ||
+    !currentChat
+  ){
+
+    return;
+
+  }
+
+
+  const r =
+  doc(
+    db,
+    "chats",
+    chatId(currentChat),
+    "typing",
+    currentFirebaseUser.uid
+  );
+
+
+  await setDoc(
+
+    r,
+
+    {
+      uid:
+      currentFirebaseUser.uid,
+
+      typing:true,
+
+      updatedAt:
+      Date.now()
+
+    },
+
+    {
+      merge:true
+    }
+
+  ).catch(()=>{});
+
+
+  clearTimeout(
+    typingTimer
+  );
+
+
+  typingTimer =
+  setTimeout(
+    stopTyping,
+    1800
+  );
+
+}
+
+
+/* ================= STOP TYPING ================= */
+
+async function stopTyping(){
+
+  if(
+    !currentFirebaseUser ||
+    !currentChat
+  ){
+
+    return;
+
+  }
+
+
+  const r =
+  doc(
+    db,
+    "chats",
+    chatId(currentChat),
+    "typing",
+    currentFirebaseUser.uid
+  );
+
+
+  await setDoc(
+
+    r,
+
+    {
+      uid:
+      currentFirebaseUser.uid,
+
+      typing:false,
+
+      updatedAt:
+      Date.now()
+
+    },
+
+    {
+      merge:true
+    }
+
+  ).catch(()=>{});
+
+}
+
+
+/* ================= LOAD CHAT ================= */
+
+function loadMessages(name){
+
+  if(unsubscribe){
+
+    unsubscribe();
+
+  }
+
+
+  const list =
+  document.getElementById(
+    "messages"
+  );
+
+
+  list.innerHTML =
+  `<div class="date-divider">
+    Today
+  </div>`;
+
+
+  if(!currentFirebaseUser){
+
+    return;
+
+  }
+
+
+  const q =
+  query(
+
+    collection(
+      db,
+      "chats",
+      chatId(name),
+      "messages"
+    ),
+
+    orderBy(
+      "createdAt",
+      "asc"
+    )
+
+  );
+
+
+  unsubscribe =
+  onSnapshot(
+
+    q,
+
+    async snap=>{
+
+      list.innerHTML =
+      `<div class="date-divider">
+        Today
+      </div>`;
+
+
+      if(snap.empty){
+
+        const e =
+        document.createElement(
+          "div"
+        );
+
+
+        e.className =
+        "empty-chat";
+
+
+        e.textContent =
+        "No messages yet";
+
+
+        list.appendChild(e);
+
+      }
+
+      else{
+
+        snap.forEach(d=>{
+
+          list.appendChild(
+            renderMessage(
+              d.data()
+            )
+          );
+
+        });
+
+
+        await markMessagesSeen(
+          snap
+        );
+
+      }
+
+
+      list.scrollTop =
+      list.scrollHeight;
+
+    },
+
+    err=>{
+
+      console.error(err);
+
+      toast(
+        "Could not load messages"
+      );
+
+    }
+
+  );
 
 }
 
@@ -2126,281 +2546,370 @@ window.openChat =
 function(name,photo){
 
   currentChat =
-    name;
+  name;
 
 
-  document
-    .getElementById("conversationName")
-    .textContent =
-    name;
+  document.getElementById(
+    "conversationName"
+  ).textContent =
+  name;
 
 
-  document
-    .getElementById("conversationAvatar")
-    .src =
-    photo;
+  document.getElementById(
+    "conversationAvatar"
+  ).src =
+  photo;
 
 
-  document
-    .getElementById("conversation")
-    .classList
-    .add("active");
+  document.getElementById(
+    "conversationStatus"
+  ).textContent =
+  "● Offline";
+
+
+  document.getElementById(
+    "conversationStatus"
+  ).classList.remove(
+    "offline"
+  );
+
+
+  document.getElementById(
+    "conversation"
+  ).classList.add(
+    "active"
+  );
 
 
   loadMessages(name);
 
 
-  setTimeout(
-    () => {
+  startPresence(name);
 
-      document
-        .getElementById("messageInput")
-        .focus();
 
-    },
-    200
+  startTypingListener(name);
+
+
+  document.getElementById(
+    "messageInput"
+  ).focus();
+
+};
+
+
+/* ================= CLOSE CHAT ================= */
+
+window.closeChat =
+function(){
+
+  stopTyping();
+
+  stopPresence();
+
+
+  if(typingUnsub){
+
+    typingUnsub();
+    typingUnsub = null;
+
+  }
+
+
+  document.getElementById(
+    "typing"
+  ).classList.remove(
+    "show"
+  );
+
+
+  document.getElementById(
+    "conversation"
+  ).classList.remove(
+    "active"
+  );
+
+
+  if(unsubscribe){
+
+    unsubscribe();
+    unsubscribe = null;
+
+  }
+
+
+  currentChat =
+  null;
+
+
+  clearAttachment();
+
+};
+
+
+/* ================= SELECT ATTACHMENT ================= */
+
+window.selectAttachment =
+function(e){
+
+  const file =
+  e.target.files?.[0];
+
+
+  if(!file){
+
+    return;
+
+  }
+
+
+  if(
+    file.size >
+    25 * 1024 * 1024
+  ){
+
+    toast(
+      "File must be under 25 MB"
+    );
+
+
+    e.target.value =
+    "";
+
+
+    return;
+
+  }
+
+
+  selectedFile =
+  file;
+
+
+  document.getElementById(
+    "previewName"
+  ).textContent =
+  file.name;
+
+
+  document.getElementById(
+    "previewSize"
+  ).textContent =
+  (
+    file.size /
+    1024 /
+    1024
+  ).toFixed(2)
+  + " MB";
+
+
+  const thumb =
+  document.getElementById(
+    "previewThumb"
+  );
+
+
+  if(
+    file.type.startsWith(
+      "image/"
+    )
+  ){
+
+    thumb.src =
+    URL.createObjectURL(
+      file
+    );
+
+    thumb.style.display =
+    "block";
+
+  }
+
+  else{
+
+    thumb.style.display =
+    "none";
+
+  }
+
+
+  document.getElementById(
+    "attachmentPreview"
+  ).classList.add(
+    "show"
   );
 
 };
 
 
-/* ================= LOAD MESSAGES ================= */
+/* ================= CLEAR ATTACHMENT ================= */
 
-function loadMessages(name){
+window.clearAttachment =
+function(){
 
-  if(unsubscribeChat){
-
-    unsubscribeChat();
-
-    unsubscribeChat =
-      null;
-
-  }
+  selectedFile =
+  null;
 
 
-  const messagesBox =
-    document.getElementById(
-      "messages"
-    );
+  document.getElementById(
+    "fileInput"
+  ).value =
+  "";
 
 
-  messagesBox.innerHTML = "";
-
-
-  const divider =
-    document.createElement(
-      "div"
-    );
-
-  divider.className =
-    "date-divider";
-
-  divider.textContent =
-    "Today";
-
-  messagesBox.appendChild(
-    divider
+  document.getElementById(
+    "attachmentPreview"
+  ).classList.remove(
+    "show"
   );
 
 
-  const ref =
-    collection(
-      db,
-      "chats",
-      chatId(name),
-      "messages"
-    );
+  document.getElementById(
+    "previewThumb"
+  ).style.display =
+  "none";
 
-
-  const q =
-    query(
-      ref,
-      orderBy(
-        "createdAt",
-        "asc"
-      )
-    );
-
-
-  unsubscribeChat =
-    onSnapshot(
-      q,
-      (snapshot) => {
-
-        messagesBox.innerHTML =
-          "";
-
-
-        const divider =
-          document.createElement(
-            "div"
-          );
-
-        divider.className =
-          "date-divider";
-
-        divider.textContent =
-          "Today";
-
-        messagesBox.appendChild(
-          divider
-        );
-
-
-        if(
-          snapshot.empty
-        ){
-
-          const empty =
-            document.createElement(
-              "div"
-            );
-
-          empty.className =
-            "empty-chat";
-
-          empty.textContent =
-            "No messages yet. Say hello 👋";
-
-          messagesBox.appendChild(
-            empty
-          );
-
-        }
-
-
-        snapshot.forEach(
-          (doc) => {
-
-            const data =
-              doc.data();
-
-
-            const type =
-              currentFirebaseUser &&
-              data.senderId ===
-              currentFirebaseUser.uid
-                ? "sent"
-                : "received";
-
-
-            const message =
-              document.createElement(
-                "div"
-              );
-
-            message.className =
-              "message " +
-              type;
-
-
-            const text =
-              document.createElement(
-                "span"
-              );
-
-            text.textContent =
-              data.text || "";
-
-
-            message.appendChild(
-              text
-            );
-
-
-            const time =
-              document.createElement(
-                "span"
-              );
-
-            time.className =
-              "msg-time";
-
-            time.textContent =
-              messageTime(
-                data.createdAt
-              );
-
-
-            message.appendChild(
-              time
-            );
-
-
-            messagesBox.appendChild(
-              message
-            );
-
-          }
-        );
-
-
-        messagesBox.scrollTop =
-          messagesBox.scrollHeight;
-
-      },
-
-
-      (error) => {
-
-        console.error(
-          "Firestore error:",
-          error
-        );
-
-
-        toast(
-          "Firestore permission error"
-        );
-
-      }
-
-    );
-
-}
+};
 
 
 /* ================= SEND MESSAGE ================= */
 
-window.sendMessage =
-async function(){
+async function sendMessage(){
+
+  if(
+    !currentFirebaseUser ||
+    !currentChat
+  ){
+
+    toast(
+      "Open a chat first"
+    );
+
+
+    return;
+
+  }
+
 
   const input =
-    document.getElementById(
-      "messageInput"
-    );
+  document.getElementById(
+    "messageInput"
+  );
 
 
   const text =
-    input.value.trim();
+  input.value.trim();
 
 
-  if(!text){
-
-    return;
-
-  }
-
-
-  if(!currentFirebaseUser){
-
-    toast(
-      "Connecting to Firebase..."
-    );
+  if(
+    !text &&
+    !selectedFile
+  ){
 
     return;
 
   }
 
 
-  if(!currentChat){
+  const btn =
+  document.querySelector(
+    ".send"
+  );
 
-    return;
 
-  }
+  btn.disabled =
+  true;
 
 
   try{
+
+    let data = {
+
+      text:text,
+
+      senderId:
+      currentFirebaseUser.uid,
+
+      senderName:
+      "Ankaj",
+
+      type:
+      "text",
+
+      seenBy:[
+        currentFirebaseUser.uid
+      ],
+
+      createdAt:
+      serverTimestamp()
+
+    };
+
+
+    /* ATTACHMENT */
+
+    if(selectedFile){
+
+      const safe =
+      selectedFile.name
+      .replace(
+        /[^a-zA-Z0-9._-]/g,
+        "_"
+      );
+
+
+      const path =
+      `chatUploads/${chatId(currentChat)}/${Date.now()}_${safe}`;
+
+
+      const storageRef =
+      ref(
+        storage,
+        path
+      );
+
+
+      await uploadBytes(
+        storageRef,
+        selectedFile
+      );
+
+
+      const url =
+      await getDownloadURL(
+        storageRef
+      );
+
+
+      const type =
+      selectedFile.type
+      .startsWith("image/")
+      ? "image"
+
+      : selectedFile.type
+      .startsWith("video/")
+      ? "video"
+
+      : "file";
+
+
+      data = {
+
+        ...data,
+
+        type:type,
+
+        url:url,
+
+        fileName:
+        selectedFile.name,
+
+        fileSize:
+        selectedFile.size
+
+      };
+
+    }
+
 
     await addDoc(
 
@@ -2411,103 +2920,67 @@ async function(){
         "messages"
       ),
 
-      {
-
-        text:
-          text,
-
-        senderId:
-          currentFirebaseUser.uid,
-
-        senderName:
-          "Ankaj",
-
-        createdAt:
-          serverTimestamp()
-
-      }
+      data
 
     );
 
 
     input.value =
-      "";
+    "";
 
 
-  }catch(error){
+    clearAttachment();
 
-    console.error(
-      "Send error:",
-      error
-    );
+
+    await stopTyping();
+
+  }
+
+
+  catch(err){
+
+    console.error(err);
 
 
     toast(
-      "Message send failed"
+      "Message failed. Check Firebase rules."
     );
 
   }
 
-};
+
+  finally{
+
+    btn.disabled =
+    false;
 
 
-/* ================= ENTER SEND ================= */
-
-document
-  .getElementById(
-    "messageInput"
-  )
-  .addEventListener(
-    "keydown",
-    function(e){
-
-      if(
-        e.key === "Enter"
-      ){
-
-        e.preventDefault();
-
-        sendMessage();
-
-      }
-
-    }
-  );
-
-
-/* ================= CLOSE CHAT ================= */
-
-window.closeChat =
-function(){
-
-  document
-    .getElementById(
-      "conversation"
-    )
-    .classList
-    .remove("active");
-
-
-  document
-    .getElementById(
-      "messageInput"
-    )
-    .value =
-    "";
-
-
-  if(unsubscribeChat){
-
-    unsubscribeChat();
-
-    unsubscribeChat =
-      null;
+    input.focus();
 
   }
 
+}
 
-  currentChat =
-    "";
+
+window.sendMessage =
+sendMessage;
+
+
+/* ================= EMOJI ================= */
+
+window.addEmoji =
+function(x){
+
+  const i =
+  document.getElementById(
+    "messageInput"
+  );
+
+
+  i.value += x;
+
+
+  i.focus();
 
 };
 
@@ -2515,383 +2988,269 @@ function(){
 /* ================= PAGE ================= */
 
 window.showPage =
-function(page){
+function(id,btn){
 
   document
+  .querySelectorAll(
+    ".page"
+  )
+  .forEach(
+    p =>
+    p.classList.remove(
+      "active"
+    )
+  );
+
+
+  document
+  .getElementById(id)
+  .classList.add(
+    "active"
+  );
+
+
+  if(btn){
+
+    document
     .querySelectorAll(
-      ".page"
+      ".nav-btn"
     )
     .forEach(
-      p =>
-        p.classList
-        .remove("active")
+      x =>
+      x.classList.remove(
+        "active"
+      )
     );
 
 
-  const target =
-    document.getElementById(
-      page + "Page"
+    btn.classList.add(
+      "active"
     );
-
-
-  if(target){
-
-    target.classList
-      .add("active");
 
   }
-
-
-  document
-    .querySelectorAll(
-      ".nav"
-    )
-    .forEach(
-      n =>
-        n.classList
-        .remove("active")
-    );
-
-
-  if(page === "home")
-    homeNav.classList.add(
-      "active"
-    );
-
-
-  if(page === "search")
-    searchNav.classList.add(
-      "active"
-    );
-
-
-  if(page === "notification")
-    notificationNav.classList.add(
-      "active"
-    );
-
-
-  if(page === "profile")
-    profileNav.classList.add(
-      "active"
-    );
-
-
-  window.scrollTo(
-    0,
-    0
-  );
 
 };
 
 
-/* ================= CHAT SEARCH ================= */
+/* ================= FILTER CHATS ================= */
 
 window.filterChats =
 function(){
 
   const q =
-    document
-      .getElementById(
-        "chatSearch"
-      )
-      .value
-      .toLowerCase()
-      .trim();
+  document.getElementById(
+    "chatSearch"
+  )
+  .value
+  .toLowerCase();
 
 
   document
-    .querySelectorAll(
-      ".chat-row"
-    )
-    .forEach(
-      row => {
+  .querySelectorAll(
+    ".chat-row"
+  )
+  .forEach(
+    r => {
 
-        const name =
-          row.dataset.name
-            .toLowerCase();
+      r.style.display =
+      r.dataset.name
+      .toLowerCase()
+      .includes(q)
+      ? "flex"
+      : "none";
 
-
-        row.style.display =
-          !q ||
-          name.includes(q)
-            ? "flex"
-            : "none";
-
-      }
-    );
+    }
+  );
 
 };
 
 
-/* ================= SEARCH ================= */
+/* ================= SEARCH USERS ================= */
+
+const users = [
+
+  {
+    name:"Darkwing",
+    handle:"@darkwing",
+    photo:
+    "https://i.pravatar.cc/150?img=47"
+  },
+
+  {
+    name:"User",
+    handle:"@user",
+    photo:
+    "https://i.pravatar.cc/150?img=12"
+  },
+
+  {
+    name:"XDark",
+    handle:"@xdark",
+    photo:
+    "https://i.pravatar.cc/150?img=32"
+  },
+
+  {
+    name:"Nova",
+    handle:"@nova",
+    photo:
+    "https://i.pravatar.cc/150?img=5"
+  }
+
+];
+
 
 window.searchUsers =
 function(){
 
   const q =
-    document
-      .getElementById(
-        "searchInput"
-      )
-      .value
-      .toLowerCase()
-      .trim();
+  document.getElementById(
+    "searchInput"
+  )
+  .value
+  .toLowerCase();
 
 
-  document
-    .querySelectorAll(
-      ".search-result"
-    )
-    .forEach(
-      row => {
+  document.getElementById(
+    "searchResults"
+  ).innerHTML =
 
-        const name =
-          row.dataset.name
-            .toLowerCase();
+  users
 
+  .filter(
+    u =>
+    u.name
+    .toLowerCase()
+    .includes(q)
 
-        row.style.display =
-          !q ||
-          name.includes(q)
-            ? "flex"
-            : "none";
+    ||
 
-      }
-    );
+    u.handle
+    .includes(q)
+  )
 
-};
+  .map(
 
+    u =>
 
-/* ================= EMOJI ================= */
+    `<div
+      class="search-result"
+      onclick="openChat('${u.name}','${u.photo}')">
 
-window.addEmoji =
-function(){
+      <img
+        class="search-avatar"
+        src="${u.photo}">
 
-  const input =
-    document.getElementById(
-      "messageInput"
-    );
+      <div class="result-info">
 
+        <div class="result-name">
+          ${u.name}
+        </div>
 
-  input.value +=
-    " 😊";
+        <div class="result-handle">
+          ${u.handle}
+        </div>
 
+      </div>
 
-  input.focus();
+    </div>`
+
+  )
+
+  .join("");
 
 };
 
 
 /* ================= LIKE ================= */
 
-window.like =
-function(button){
+window.toggleLike =
+function(el){
 
-  const post =
-    button.closest(
-      ".post"
-    );
-
-
-  const count =
-    post.querySelector(
-      ".like-count"
-    );
+  const svg =
+  el.querySelector(
+    "svg"
+  );
 
 
-  let number =
-    parseInt(
-      count.textContent
-    );
+  svg.classList.toggle(
+    "liked"
+  );
 
 
-  if(
-    button.classList
-      .contains("liked")
-  ){
-
-    button.classList
-      .remove("liked");
-
-    number--;
-
-  }else{
-
-    button.classList
-      .add("liked");
-
-    number++;
-
-  }
+  const n =
+  document.getElementById(
+    "likes1"
+  );
 
 
-  count.textContent =
-    number;
+  n.textContent =
+
+  (
+    svg.classList.contains(
+      "liked"
+    )
+    ? "1"
+    : "0"
+  )
+
+  + " likes";
 
 };
 
 
 /* ================= SAVE ================= */
 
-window.savePost =
-function(button){
+window.toggleSave =
+function(el){
 
-  button.classList
-    .toggle("saved");
+  const svg =
+  el.querySelector(
+    "svg"
+  );
+
+
+  svg.classList.toggle(
+    "saved"
+  );
 
 
   toast(
-    button.classList
-      .contains("saved")
-      ? "Post saved"
-      : "Post unsaved"
+
+    svg.classList.contains(
+      "saved"
+    )
+
+    ? "Saved"
+
+    : "Removed from saved"
+
   );
-
-};
-
-
-/* ================= SHARE ================= */
-
-window.sharePost =
-function(){
-
-  if(
-    navigator.share
-  ){
-
-    navigator.share({
-
-      title:
-        "X-DARK",
-
-      text:
-        "Check this post on X-DARK"
-
-    });
-
-  }else{
-
-    toast(
-      "Share ready"
-    );
-
-  }
 
 };
 
 
 /* ================= NOTIFICATIONS ================= */
 
-window.markRead =
+window.markNotificationsRead =
 function(){
 
   document
-    .querySelectorAll(
-      ".unread-row"
+  .querySelectorAll(
+    ".notification"
+  )
+  .forEach(
+    x =>
+    x.classList.remove(
+      "unread-row"
     )
-    .forEach(
-      row =>
-        row.classList
-          .remove(
-            "unread-row"
-          )
-    );
-
-
-  document
-    .getElementById(
-      "badge"
-    )
-    .style.display =
-    "none";
-
-
-  toast(
-    "All notifications read"
   );
 
-};
 
-
-/* ================= CREATE ================= */
-
-window.openCreate =
-function(){
-
-  document
-    .getElementById(
-      "createModal"
-    )
-    .classList
-    .add("active");
-
-};
-
-
-window.closeCreate =
-function(){
-
-  document
-    .getElementById(
-      "createModal"
-    )
-    .classList
-    .remove("active");
-
-};
-
-
-/* ================= PREVIEW ================= */
-
-window.previewMedia =
-function(input){
-
-  const file =
-    input.files[0];
-
-
-  if(!file){
-
-    return;
-
-  }
-
-
-  const preview =
-    document.getElementById(
-      "preview"
-    );
-
-
-  preview.src =
-    URL.createObjectURL(
-      file
-    );
-
-
-  preview.style.display =
-    "block";
-
-
-  document
-    .getElementById(
-      "uploadText"
-    )
-    .style.display =
-    "none";
-
-};
-
-
-/* ================= PUBLISH ================= */
-
-window.publish =
-function(){
-
-  toast(
-    "Post upload coming next"
-  );
+  document.getElementById(
+    "topBadge"
+  ).style.display =
+  "none";
 
 };
 
@@ -2899,39 +3258,227 @@ function(){
 /* ================= TOAST ================= */
 
 window.toast =
-function(text){
+function(msg){
 
-  const box =
-    document.getElementById(
-      "toastBox"
-    );
-
-
-  box.textContent =
-    text;
-
-
-  box.style.display =
-    "block";
-
-
-  clearTimeout(
-    window.toastTimer
+  const t =
+  document.getElementById(
+    "toast"
   );
 
 
-  window.toastTimer =
-    setTimeout(
-      () => {
+  t.textContent =
+  msg;
 
-        box.style.display =
-          "none";
 
-      },
-      2200
-    );
+  t.classList.add(
+    "show"
+  );
+
+
+  clearTimeout(
+    window.__toast
+  );
+
+
+  window.__toast =
+  setTimeout(
+    () =>
+    t.classList.remove(
+      "show"
+    ),
+    2200
+  );
 
 };
+
+
+/* ================= MESSAGE INPUT ================= */
+
+document
+.getElementById(
+  "messageInput"
+)
+.addEventListener(
+  "input",
+  ()=>{
+
+    const value =
+    document.getElementById(
+      "messageInput"
+    )
+    .value
+    .trim();
+
+
+    if(value){
+
+      updateTyping();
+
+    }
+
+    else{
+
+      stopTyping();
+
+    }
+
+  }
+);
+
+
+/* ================= ENTER SEND ================= */
+
+document
+.getElementById(
+  "messageInput"
+)
+.addEventListener(
+  "keydown",
+  e=>{
+
+    if(
+      e.key === "Enter" &&
+      !e.shiftKey
+    ){
+
+      e.preventDefault();
+
+      sendMessage();
+
+    }
+
+  }
+);
+
+
+/* ================= VISIBILITY ================= */
+
+document.addEventListener(
+  "visibilitychange",
+  ()=>{
+
+    if(
+      !currentFirebaseUser ||
+      !currentChat
+    ){
+
+      return;
+
+    }
+
+
+    if(
+      document.hidden
+    ){
+
+      const r =
+      doc(
+        db,
+        "chats",
+        chatId(currentChat),
+        "presence",
+        currentFirebaseUser.uid
+      );
+
+
+      setDoc(
+
+        r,
+
+        {
+          online:false,
+          updatedAt:Date.now()
+        },
+
+        {
+          merge:true
+        }
+
+      ).catch(()=>{});
+
+    }
+
+    else{
+
+      startPresence(
+        currentChat
+      );
+
+    }
+
+  }
+);
+
+
+/* ================= CLOSE APP ================= */
+
+window.addEventListener(
+  "beforeunload",
+  ()=>{
+
+    if(
+      currentFirebaseUser &&
+      currentChat
+    ){
+
+      const r =
+      doc(
+        db,
+        "chats",
+        chatId(currentChat),
+        "presence",
+        currentFirebaseUser.uid
+      );
+
+
+      setDoc(
+
+        r,
+
+        {
+          online:false,
+          updatedAt:Date.now()
+        },
+
+        {
+          merge:true
+        }
+
+      ).catch(()=>{});
+
+    }
+
+  }
+);
+
+
+/* ================= AUTH ================= */
+
+onAuthStateChanged(
+  auth,
+  user=>{
+
+    currentFirebaseUser =
+    user;
+
+  }
+);
+
+
+signInAnonymously(
+  auth
+)
+.catch(
+  e=>{
+
+    console.error(e);
+
+    toast(
+      "Firebase login failed"
+    );
+
+  }
+);
 
 </script>
 
