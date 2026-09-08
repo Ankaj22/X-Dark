@@ -6,6 +6,7 @@ const fs = require("fs");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const publicDir = path.join(__dirname, "public");
 const uploadDir = path.join(__dirname, "uploads");
 
 if (!fs.existsSync(uploadDir)) {
@@ -19,23 +20,24 @@ const storage = multer.diskStorage({
 
   filename: (req, file, cb) => {
     const ext = path.extname(file.originalname);
-    const name =
+    const filename =
       Date.now() + "-" +
-      Math.random().toString(36).slice(2) +
+      Math.random().toString(36).substring(2) +
       ext;
 
-    cb(null, name);
+    cb(null, filename);
   }
 });
 
 const upload = multer({
-  storage,
+  storage: storage,
 
   limits: {
     fileSize: 500 * 1024 * 1024
   },
 
   fileFilter: (req, file, cb) => {
+
     const allowed = [
       "video/mp4",
       "video/quicktime",
@@ -53,16 +55,25 @@ const upload = multer({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+/* Uploaded videos */
 app.use("/uploads", express.static(uploadDir));
 
-app.use(express.static(path.join(__dirname, "public")));
+/* Website files */
+app.use(express.static(publicDir));
 
+/* HOME */
+app.get("/", (req, res) => {
+  res.sendFile(path.join(publicDir, "index.html"));
+});
+
+/* POSTS */
 let posts = [];
 
 app.get("/api/posts", (req, res) => {
   res.json(posts);
 });
 
+/* VIDEO UPLOAD */
 app.post("/api/upload", upload.single("video"), (req, res) => {
 
   if (!req.file) {
@@ -99,55 +110,22 @@ app.post("/api/upload", upload.single("video"), (req, res) => {
 
   res.json({
     success: true,
-    message: "Video uploaded successfully.",
-    post
+    message: "Video uploaded successfully",
+    post: post
   });
 });
 
-app.delete("/api/posts/:id", (req, res) => {
-
-  const index =
-    posts.findIndex(p => p.id === req.params.id);
-
-  if (index === -1) {
-    return res.status(404).json({
-      message: "Post not found."
-    });
-  }
-
-  const post = posts[index];
-
-  const filePath =
-    path.join(
-      uploadDir,
-      path.basename(post.video)
-    );
-
-  if (fs.existsSync(filePath)) {
-    fs.unlinkSync(filePath);
-  }
-
-  posts.splice(index, 1);
-
-  res.json({
-    success: true
-  });
-});
-
+/* ERROR */
 app.use((err, req, res, next) => {
 
   console.error(err);
 
   res.status(400).json({
-    message:
-      err.message || "Upload failed."
+    message: err.message || "Something went wrong"
   });
+
 });
 
 app.listen(PORT, () => {
-
-  console.log(
-    `X-DARK running on port ${PORT}`
-  );
-
+  console.log(`X-DARK running on port ${PORT}`);
 });
