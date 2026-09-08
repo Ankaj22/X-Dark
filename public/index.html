@@ -2,955 +2,408 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>X-DARK</title>
 
 <style>
 *{
- box-sizing:border-box;
- margin:0;
- padding:0;
- font-family:Arial,Helvetica,sans-serif
+  box-sizing:border-box;
 }
 
 body{
- background:#07080c;
- color:#fff;
- padding-bottom:78px
-}
-
-button,input{
- font-family:inherit
+  margin:0;
+  background:#08080c;
+  color:#fff;
+  font-family:Arial,sans-serif;
 }
 
 button{
- cursor:pointer
+  font:inherit;
 }
 
-.page{
- display:none
+.app{
+  max-width:520px;
+  margin:auto;
+  min-height:100vh;
+  background:#0d0d12;
 }
 
-.page.active{
- display:block
-}
+/* HEADER */
 
-/* TOP */
-
-.topbar{
- height:78px;
- padding:0 22px;
- display:flex;
- align-items:center;
- justify-content:space-between;
- border-bottom:1px solid #292b34;
- background:#07080c;
- position:sticky;
- top:0;
- z-index:500
+.header{
+  height:62px;
+  padding:0 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid #22222b;
 }
 
 .logo{
- font-size:30px;
- font-weight:900
+  font-size:22px;
+  font-weight:900;
+  letter-spacing:2px;
 }
 
-.top-icons{
- display:flex;
- gap:24px
+.icon{
+  background:none;
+  border:0;
+  color:white;
+  font-size:24px;
+  cursor:pointer;
 }
 
-.svg{
- width:29px;
- height:29px;
- fill:none;
- stroke:#fff;
- stroke-width:1.8
+/* CHAT */
+
+.chat{
+  height:calc(100vh - 62px);
+  display:flex;
+  flex-direction:column;
 }
 
-.badge-wrap{
- position:relative
-}
-
-.badge{
- position:absolute;
- top:-8px;
- right:-9px;
- min-width:18px;
- height:18px;
- padding:0 5px;
- border-radius:10px;
- background:#7434ff;
- color:white;
- font-size:10px;
- font-weight:bold;
- display:flex;
- align-items:center;
- justify-content:center
-}
-
-/* STORIES */
-
-.stories{
- display:flex;
- gap:22px;
- padding:18px;
- overflow-x:auto;
- border-bottom:1px solid #191b22
-}
-
-.story{
- min-width:78px;
- text-align:center
-}
-
-.story-ring{
- width:74px;
- height:74px;
- padding:4px;
- border-radius:50%;
- background:linear-gradient(135deg,#6825ff,#b45cff,#6825ff)
-}
-
-.story-ring img{
- width:100%;
- height:100%;
- object-fit:cover;
- border-radius:50%;
- border:3px solid #07080c
-}
-
-.story-name{
- color:#c9cad1;
- font-size:13px;
- margin-top:8px
-}
-
-/* FEED */
-
-.feed,
-.chat-page,
-.profile,
-.search-container{
- max-width:700px;
- margin:auto
-}
-
-.post{
- border-bottom:1px solid #292b34;
- padding-bottom:15px
-}
-
-.post-header{
- height:85px;
- padding:0 20px;
- display:flex;
- align-items:center;
- justify-content:space-between
-}
-
-.user-info{
- display:flex;
- align-items:center;
- gap:12px
+.chat-head{
+  padding:10px 14px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border-bottom:1px solid #22222b;
 }
 
 .avatar{
- width:52px;
- height:52px;
- border-radius:50%;
- object-fit:cover;
- border:2px solid #7935ff;
- padding:2px
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:linear-gradient(
+    135deg,
+    #7434ff,
+    #c04cff
+  );
+  display:grid;
+  place-items:center;
+  font-weight:bold;
 }
 
-.username{
- font-size:17px;
- font-weight:bold
-}
-
-.location{
- color:#858792;
- font-size:12px;
- margin-top:4px
-}
-
-.more{
- font-size:22px
-}
-
-.post-image{
- width:100%;
- display:block;
- max-height:650px;
- object-fit:cover
-}
-
-.actions{
- height:60px;
- padding:0 20px;
- display:flex;
- align-items:center;
- justify-content:space-between
-}
-
-.left-actions{
- display:flex;
- gap:21px
-}
-
-.post-icon{
- width:29px;
- height:29px;
- fill:none;
- stroke:#eee;
- stroke-width:1.7
-}
-
-.like-btn.liked{
- fill:#ff3564;
- stroke:#ff3564
-}
-
-.save-btn.saved{
- stroke:#9d5cff
-}
-
-.likes{
- padding:0 20px;
- font-weight:bold;
- font-size:14px
-}
-
-.caption{
- padding:8px 20px;
- font-size:14px
-}
-
-.comments-link{
- padding:5px 20px;
- display:block;
- color:#777b88;
- font-size:14px
-}
-
-/* SEARCH */
-
-.search-container{
- padding:20px
-}
-
-.search-box{
- height:52px;
- background:#12141b;
- border:1px solid #30323d;
- border-radius:17px;
- display:flex;
- align-items:center;
- gap:12px;
- padding:0 15px
-}
-
-.search-input{
- flex:1;
- background:transparent;
- border:0;
- outline:0;
- color:#fff;
- font-size:16px
-}
-
-.search-result{
- display:flex;
- align-items:center;
- gap:14px;
- padding:15px 5px;
- border-bottom:1px solid #1d1f27
-}
-
-.search-avatar{
- width:54px;
- height:54px;
- border-radius:50%;
- border:2px solid #7134ff;
- padding:2px;
- object-fit:cover
-}
-
-.result-info{
- flex:1
-}
-
-.result-name{
- font-size:17px;
- font-weight:bold
-}
-
-.result-handle{
- color:#858792;
- margin-top:5px
-}
-
-/* CHAT LIST */
-
-.chat-header{
- height:70px;
- padding:0 20px;
- display:flex;
- align-items:center;
- justify-content:space-between;
- border-bottom:1px solid #292b34
-}
-
-.chat-title{
- font-size:23px;
- font-weight:800
-}
-
-.chat-new{
- color:#9c61ff
-}
-
-.chat-search{
- margin:16px 20px;
- height:50px;
- display:flex;
- align-items:center;
- gap:10px;
- padding:0 14px;
- background:#12141b;
- border:1px solid #30323d;
- border-radius:16px
-}
-
-.chat-search input{
- flex:1;
- background:transparent;
- border:0;
- outline:0;
- color:#fff
-}
-
-.chat-row{
- height:82px;
- display:flex;
- align-items:center;
- gap:13px;
- padding:10px 20px;
- border-bottom:1px solid #181a21;
- cursor:pointer
-}
-
-.chat-avatar-wrap{
- position:relative
-}
-
-.chat-avatar{
- width:57px;
- height:57px;
- border-radius:50%;
- border:2px solid #7434ff;
- padding:2px;
- object-fit:cover
-}
-
-.online{
- width:13px;
- height:13px;
- position:absolute;
- right:0;
- bottom:2px;
- background:#35e58b;
- border:2px solid #07080c;
- border-radius:50%
-}
-
-.chat-info{
- flex:1;
- min-width:0
-}
-
-.chat-name{
- font-size:17px;
- font-weight:bold
-}
-
-.chat-last{
- color:#858894;
- font-size:13px;
- margin-top:5px;
- white-space:nowrap;
- overflow:hidden;
- text-overflow:ellipsis
-}
-
-.chat-right{
- text-align:right;
- color:#737783;
- font-size:11px
-}
-
-/* CONVERSATION */
-
-.conversation{
- display:none;
- position:fixed;
- inset:0;
- background:#07080c;
- z-index:2000;
- flex-direction:column
-}
-
-.conversation.active{
- display:flex
-}
-
-.conversation-header{
- height:76px;
- padding:0 10px;
- display:flex;
- align-items:center;
- gap:10px;
- border-bottom:1px solid #292b34;
- background:#07080c
-}
-
-.back-btn{
- width:42px;
- height:42px;
- background:transparent;
- border:0;
- color:#fff;
- font-size:36px
-}
-
-.conversation-avatar{
- width:47px;
- height:47px;
- object-fit:cover;
- border-radius:50%;
- border:2px solid #7434ff;
- padding:2px
-}
-
-.conversation-user{
- flex:1
-}
-
-.conversation-name{
- font-weight:bold;
- font-size:16px
+.name{
+  font-weight:bold;
 }
 
 .status{
- color:#35e58b;
- font-size:11px;
- margin-top:4px
-}
-
-.status.offline{
- color:#777b88
-}
-
-.chat-action{
- width:26px;
- height:26px;
- fill:none;
- stroke:#fff;
- stroke-width:1.7
+  font-size:11px;
+  color:#777;
 }
 
 /* MESSAGES */
 
 .messages{
- flex:1;
- overflow-y:auto;
- padding:18px 14px 10px;
- display:flex;
- flex-direction:column;
- gap:9px
-}
-
-.date-divider{
- text-align:center;
- color:#666a76;
- font-size:11px;
- margin:5px 0 10px
+  flex:1;
+  overflow:auto;
+  padding:16px 12px 90px;
 }
 
 .message{
- max-width:78%;
- padding:11px 14px;
- font-size:14px;
- line-height:20px;
- border-radius:19px;
- word-break:break-word
+  display:flex;
+  margin:9px 0;
 }
 
-.received{
- align-self:flex-start;
- background:#191b23;
- border-bottom-left-radius:5px
+.message.sent{
+  justify-content:flex-end;
 }
 
-.sent{
- align-self:flex-end;
- background:#7130ff;
- border-bottom-right-radius:5px
+.bubble{
+  max-width:78%;
+  padding:10px 13px;
+  border-radius:18px;
+  background:#202027;
+  word-break:break-word;
 }
 
-.msg-time{
- display:block;
- text-align:right;
- font-size:9px;
- opacity:.65;
- margin-top:4px
+.sent .bubble{
+  background:#7434ff;
+  border-bottom-right-radius:5px;
 }
 
-.msg-ticks{
- margin-left:4px;
- font-size:11px
-}
-
-.seen{
- color:#8fc8ff
-}
-
-.empty-chat{
- margin:auto;
- color:#666a76;
- font-size:13px;
- text-align:center
-}
-
-/* MEDIA */
-
-.message-media{
- display:block;
- max-width:240px;
- max-height:280px;
- border-radius:13px;
- object-fit:cover
-}
-
-.file-card{
- display:flex;
- align-items:center;
- gap:10px;
- padding:8px 0;
- color:#fff;
- text-decoration:none
-}
-
-.file-icon{
- font-size:26px
-}
-
-.file-name{
- font-size:13px;
- max-width:180px;
- overflow:hidden;
- text-overflow:ellipsis;
- white-space:nowrap
-}
-
-/* TYPING */
-
-.typing{
- display:none;
- align-items:center;
- gap:5px;
- color:#777b88;
- font-size:11px;
- padding:0 17px 7px
-}
-
-.typing.show{
- display:flex
-}
-
-.dot{
- width:5px;
- height:5px;
- border-radius:50%;
- background:#777b88;
- animation:bounce .8s infinite alternate
-}
-
-.dot:nth-child(2){
- animation-delay:.2s
-}
-
-.dot:nth-child(3){
- animation-delay:.4s
-}
-
-@keyframes bounce{
- to{
-  opacity:.2;
-  transform:translateY(-3px)
- }
+.received .bubble{
+  border-bottom-left-radius:5px;
 }
 
 /* MESSAGE BAR */
 
-.message-area{
- position:relative
-}
-
-.attachment-preview{
- display:none;
- padding:8px 12px;
- border-top:1px solid #292b34;
- background:#101118;
- align-items:center;
- gap:10px
-}
-
-.attachment-preview.show{
- display:flex
-}
-
-.preview-thumb{
- width:48px;
- height:48px;
- border-radius:9px;
- object-fit:cover
-}
-
-.preview-info{
- flex:1;
- min-width:0
-}
-
-.preview-name{
- font-size:12px;
- white-space:nowrap;
- overflow:hidden;
- text-overflow:ellipsis
-}
-
-.preview-size{
- font-size:10px;
- color:#777b88;
- margin-top:3px
-}
-
-.remove-attach{
- background:transparent;
- border:0;
- color:#aaa;
- font-size:22px
+.message-bar-wrap{
+  position:relative;
+  padding:9px;
+  background:#101015;
+  border-top:1px solid #22222b;
 }
 
 .message-bar{
- min-height:70px;
- display:flex;
- align-items:center;
- gap:8px;
- padding:10px 11px;
- border-top:1px solid #292b34;
- background:#07080c
+  display:flex;
+  gap:7px;
+  align-items:center;
+  background:#1a1a21;
+  border-radius:25px;
+  padding:5px 7px;
 }
 
-.attach{
- width:38px;
- height:38px;
- border:0;
- border-radius:50%;
- background:#181a22;
- color:#fff;
- font-size:22px
+.message-bar input{
+  flex:1;
+  min-width:0;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:white;
+  padding:9px;
+  font-size:15px;
 }
 
-.message-input{
- flex:1;
- min-width:0;
- height:45px;
- padding:0 16px;
- background:#14161d;
- border:1px solid #30323d;
- border-radius:23px;
- color:#fff;
- outline:none
-}
-
-.message-input:focus{
- border-color:#7434ff
-}
-
-.emoji{
- width:38px;
- height:38px;
- border:0;
- background:transparent;
- color:#fff;
- font-size:21px
+.send,
+.emoji,
+.plus{
+  border:0;
+  background:none;
+  color:white;
+  cursor:pointer;
 }
 
 .send{
- width:43px;
- height:43px;
- border:0;
- border-radius:50%;
- background:#7434ff;
- color:#fff;
- font-size:18px
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:#7434ff;
+  font-size:17px;
 }
 
-/* EMOJI PICKER */
-
-.emoji-picker{
- display:none;
- position:absolute;
- right:10px;
- bottom:75px;
- width:310px;
- max-height:310px;
- padding:13px;
- background:#12141b;
- border:1px solid #30323d;
- border-radius:18px;
- box-shadow:0 10px 35px rgba(0,0,0,.7);
- z-index:3500;
- overflow-y:auto
+.emoji{
+  font-size:21px;
 }
 
-.emoji-picker.show{
- display:block
+.plus{
+  font-size:21px;
 }
 
-.emoji-title{
- color:#858894;
- font-size:12px;
- margin-bottom:10px
+/* PICKER */
+
+.picker{
+  position:absolute;
+  left:8px;
+  right:8px;
+  bottom:68px;
+  background:#111117;
+  border:1px solid #302044;
+  border-radius:20px;
+  padding:12px;
+  box-shadow:0 15px 45px #000;
+  display:none;
+  z-index:9999;
 }
+
+.picker.show{
+  display:block;
+}
+
+/* TABS */
+
+.tabs{
+  display:flex;
+  gap:7px;
+  border-bottom:1px solid #272731;
+  padding-bottom:10px;
+  margin-bottom:10px;
+}
+
+.tab{
+  width:48px;
+  height:38px;
+  border:0;
+  border-radius:11px;
+  background:#1c1c24;
+  color:#fff;
+  cursor:pointer;
+  font-size:20px;
+}
+
+.tab.active{
+  background:#7434ff;
+  box-shadow:0 0 15px #7434ff66;
+}
+
+/* PANELS */
+
+.panel{
+  display:none;
+}
+
+.panel.active{
+  display:block;
+}
+
+/* EMOJI */
 
 .emoji-grid{
- display:grid;
- grid-template-columns:repeat(7,1fr);
- gap:5px
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:3px;
+  max-height:220px;
+  overflow:auto;
 }
 
-.emoji-item{
- width:36px;
- height:36px;
- border:0;
- background:transparent;
- color:#fff;
- font-size:23px;
- border-radius:8px
+.emoji-grid button{
+  border:0;
+  background:none;
+  color:#fff;
+  font-size:25px;
+  padding:7px;
+  cursor:pointer;
+  border-radius:10px;
 }
 
-.emoji-item:active,
-.emoji-item:hover{
- background:#252833
+.emoji-grid button:hover{
+  background:#252530;
 }
 
-/* NOTIFICATIONS */
+/* STICKER HEADER */
 
-.notification-head{
- height:70px;
- padding:0 20px;
- display:flex;
- align-items:center;
- justify-content:space-between;
- border-bottom:1px solid #292b34
+.sticker-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
 }
 
-.notification-title{
- font-size:22px;
- font-weight:800
+.sticker-head b{
+  font-size:14px;
 }
 
-.read-btn{
- background:transparent;
- border:0;
- color:#9c61ff
+.sticker-head span{
+  font-size:10px;
+  color:#888;
 }
 
-.notification{
- min-height:80px;
- padding:12px 20px;
- display:flex;
- align-items:center;
- gap:13px;
- border-bottom:1px solid #181a21
+/* 3D STICKERS */
+
+.sticker-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:9px;
+  max-height:280px;
+  overflow:auto;
 }
 
-.notification.unread-row{
- background:#0d0e14
+.sticker{
+  height:105px;
+  border:1px solid #292934;
+  border-radius:18px;
+
+  background:
+    radial-gradient(
+      circle at 50% 30%,
+      #7434ff33,
+      transparent 62%
+    ),
+    #19191f;
+
+  color:white;
+  cursor:pointer;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  transition:.18s;
 }
 
-.notification-avatar{
- width:52px;
- height:52px;
- border-radius:50%;
- border:2px solid #7434ff;
- padding:2px;
- object-fit:cover
+.sticker:hover{
+  transform:translateY(-3px) scale(1.03);
+  border-color:#7434ff;
+  box-shadow:
+    0 8px 25px #7434ff33;
 }
 
-.notification-content{
- flex:1;
- font-size:14px
+.sticker:active{
+  transform:scale(.92);
 }
 
-.notification-time{
- display:block;
- color:#777b88;
- margin-top:5px;
- font-size:12px
+.sticker-art{
+  font-size:51px;
+  line-height:58px;
+
+  filter:
+    drop-shadow(0 7px 4px #000)
+    drop-shadow(0 0 8px #ffffff18);
+
+  animation:stickerFloat 3s ease-in-out infinite;
 }
 
-/* PROFILE */
-
-.profile-top{
- padding:27px 20px;
- border-bottom:1px solid #292b34
+.sticker label{
+  font-size:9px;
+  color:#aaa;
+  font-weight:bold;
+  letter-spacing:1px;
+  margin-top:4px;
 }
 
-.profile-info{
- display:flex;
- align-items:center;
- gap:20px
+@keyframes stickerFloat{
+
+  0%,100%{
+    transform:translateY(0) rotate(-2deg);
+  }
+
+  50%{
+    transform:translateY(-4px) rotate(2deg);
+  }
+
 }
 
-.profile-photo{
- width:100px;
- height:100px;
- border-radius:50%;
- object-fit:cover;
- border:3px solid #7935ff;
- padding:3px
+/* SENT STICKER */
+
+.chat-sticker{
+  font-size:82px;
+  line-height:1;
+
+  filter:
+    drop-shadow(0 9px 5px #000)
+    drop-shadow(0 0 10px #7434ff55);
+
+  animation:stickerPop .25s ease-out;
 }
 
-.profile-name{
- font-size:23px;
- font-weight:800
+@keyframes stickerPop{
+
+  from{
+    transform:scale(.4);
+    opacity:0;
+  }
+
+  to{
+    transform:scale(1);
+    opacity:1;
+  }
+
 }
 
-.handle{
- color:#858894;
- margin-top:6px
-}
+/* MOBILE */
 
-.profile-stats{
- display:flex;
- margin-top:25px;
- text-align:center
-}
+@media(max-width:400px){
 
-.stat{
- flex:1
-}
+  .emoji-grid{
+    grid-template-columns:repeat(6,1fr);
+  }
 
-.stat-number{
- font-weight:800;
- font-size:19px
-}
+  .sticker-grid{
+    gap:7px;
+  }
 
-.stat-label{
- color:#858894;
- font-size:12px;
- margin-top:5px
-}
+  .sticker{
+    height:94px;
+  }
 
-.bio{
- margin-top:19px;
- color:#d4d5da;
- line-height:22px
-}
+  .sticker-art{
+    font-size:44px;
+  }
 
-.edit{
- width:100%;
- height:45px;
- margin-top:18px;
- border:1px solid #3a3c47;
- border-radius:12px;
- background:#15171e;
- color:#fff;
- font-weight:bold
-}
-
-/* BOTTOM */
-
-.bottom-nav{
- position:fixed;
- bottom:0;
- left:0;
- right:0;
- height:70px;
- background:#0b0c11;
- border-top:1px solid #292b34;
- display:flex;
- align-items:center;
- justify-content:space-around;
- z-index:1000
-}
-
-.nav-btn{
- background:transparent;
- border:0;
- color:#888;
- width:20%;
- font-size:23px
-}
-
-.nav-btn.active{
- color:#fff
-}
-
-.plus-nav{
- font-size:31px;
- color:#fff
-}
-
-/* TOAST */
-
-.toast{
- position:fixed;
- left:50%;
- bottom:85px;
- transform:translateX(-50%);
- background:#1a1c24;
- border:1px solid #383a46;
- color:#fff;
- padding:12px 18px;
- border-radius:13px;
- display:none;
- z-index:4000;
- font-size:13px
-}
-
-.toast.show{
- display:block
-}
-
-input[type=file]{
- display:none
-}
-
-@media(max-width:430px){
-
- .emoji-picker{
-  width:calc(100vw - 20px);
-  right:10px;
-  max-height:300px
- }
-
- .emoji-grid{
-  grid-template-columns:repeat(7,1fr)
- }
-
- .emoji-item{
-  width:100%;
-  height:38px
- }
-
- .message{
-  max-width:82%
- }
+  .chat-sticker{
+    font-size:70px;
+  }
 
 }
 </style>
@@ -958,2558 +411,650 @@ input[type=file]{
 
 <body>
 
-<!-- HOME -->
+<div class="app">
 
-<section id="homePage" class="page active">
+<header class="header">
 
-<div class="topbar">
+  <div class="logo">
+    X-DARK
+  </div>
 
-<div class="logo">X-DARK</div>
+  <button class="icon">
+    ♡
+  </button>
 
-<div class="top-icons">
+</header>
 
-<span onclick="showPage('messagesPage')">
 
-<svg class="svg" viewBox="0 0 24 24">
-<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H11l-5 4v-4.5A2.5 2.5 0 0 1 4 13.5z"/>
-</svg>
+<section class="chat">
 
-</span>
+  <!-- CHAT HEADER -->
 
-<span
-class="badge-wrap"
-onclick="showPage('notificationsPage')">
+  <div class="chat-head">
 
-<svg class="svg" viewBox="0 0 24 24">
-<path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/>
-</svg>
+    <button
+      class="icon"
+      onclick="history.back()">
+      ‹
+    </button>
 
-<span
-id="topBadge"
-class="badge">
-3
-</span>
+    <div class="avatar">
+      D
+    </div>
 
-</span>
+    <div>
+      <div class="name">
+        Darkwing
+      </div>
 
-<span onclick="showPage('profilePage')">
+      <div class="status">
+        Online
+      </div>
+    </div>
 
-<svg class="svg" viewBox="0 0 24 24">
-<path d="M20 21a8 8 0 0 0-16 0M12 13a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/>
-</svg>
+  </div>
 
-</span>
 
-</div>
-</div>
+  <!-- MESSAGES -->
 
+  <div
+    id="messages"
+    class="messages">
 
-<div class="stories">
+    <div class="message received">
 
-<div class="story">
-<div class="story-ring">
-<img src="https://i.pravatar.cc/150?img=47">
-</div>
-<div class="story-name">Darkwing</div>
-</div>
+      <div class="bubble">
+        Welcome to X-DARK 👋
+      </div>
 
-<div class="story">
-<div class="story-ring">
-<img src="https://i.pravatar.cc/150?img=12">
-</div>
-<div class="story-name">Nova</div>
-</div>
+    </div>
 
-<div class="story">
-<div class="story-ring">
-<img src="https://i.pravatar.cc/150?img=32">
-</div>
-<div class="story-name">XDark</div>
-</div>
+  </div>
 
-</div>
 
+  <!-- MESSAGE AREA -->
 
-<div class="feed">
+  <div class="message-bar-wrap">
 
-<article class="post">
 
-<div class="post-header">
+    <!-- PICKER -->
 
-<div class="user-info">
+    <div
+      id="picker"
+      class="picker">
 
-<img
-class="avatar"
-src="https://i.pravatar.cc/150?img=47">
 
-<div>
+      <!-- TABS -->
 
-<div class="username">
-Darkwing
-</div>
+      <div class="tabs">
 
-<div class="location">
-X-DARK
-</div>
+        <button
+          id="emojiTab"
+          class="tab active"
+          onclick="openTab('emoji')">
+          😊
+        </button>
 
-</div>
+        <button
+          id="stickerTab"
+          class="tab"
+          onclick="openTab('sticker')">
+          ✨
+        </button>
 
-</div>
+      </div>
 
-<div class="more">
-•••
-</div>
 
-</div>
+      <!-- EMOJI PANEL -->
 
+      <div
+        id="emojiPanel"
+        class="panel active">
 
-<img
-class="post-image"
-src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1000&q=85">
+        <div class="emoji-grid">
 
+          <button onclick="insertEmoji('😀')">😀</button>
+          <button onclick="insertEmoji('😂')">😂</button>
+          <button onclick="insertEmoji('🤣')">🤣</button>
+          <button onclick="insertEmoji('😍')">😍</button>
+          <button onclick="insertEmoji('🥰')">🥰</button>
+          <button onclick="insertEmoji('😘')">😘</button>
+          <button onclick="insertEmoji('😎')">😎</button>
 
-<div class="actions">
+          <button onclick="insertEmoji('🤩')">🤩</button>
+          <button onclick="insertEmoji('🥳')">🥳</button>
+          <button onclick="insertEmoji('😏')">😏</button>
+          <button onclick="insertEmoji('😭')">😭</button>
+          <button onclick="insertEmoji('😡')">😡</button>
+          <button onclick="insertEmoji('😱')">😱</button>
+          <button onclick="insertEmoji('🤔')">🤔</button>
 
-<div class="left-actions">
+          <button onclick="insertEmoji('🙄')">🙄</button>
+          <button onclick="insertEmoji('❤️')">❤️</button>
+          <button onclick="insertEmoji('🖤')">🖤</button>
+          <button onclick="insertEmoji('💜')">💜</button>
+          <button onclick="insertEmoji('💙')">💙</button>
+          <button onclick="insertEmoji('🔥')">🔥</button>
+          <button onclick="insertEmoji('✨')">✨</button>
 
-<span onclick="toggleLike(this)">
+          <button onclick="insertEmoji('🎉')">🎉</button>
+          <button onclick="insertEmoji('💯')">💯</button>
+          <button onclick="insertEmoji('🚀')">🚀</button>
+          <button onclick="insertEmoji('⭐')">⭐</button>
+          <button onclick="insertEmoji('👍')">👍</button>
+          <button onclick="insertEmoji('👏')">👏</button>
+          <button onclick="insertEmoji('🙏')">🙏</button>
 
-<svg
-class="post-icon like-btn"
-viewBox="0 0 24 24">
+        </div>
 
-<path d="M20.8 8.6c0 5.4-8.8 10.4-8.8 10.4S3.2 14 3.2 8.6A4.6 4.6 0 0 1 12 6.4a4.6 4.6 0 0 1 8.8 2.2z"/>
+      </div>
 
-</svg>
 
-</span>
+      <!-- STICKER PANEL -->
 
-<span onclick="toast('Comments coming next')">
+      <div
+        id="stickerPanel"
+        class="panel">
 
-<svg
-class="post-icon"
-viewBox="0 0 24 24">
+        <div class="sticker-head">
 
-<path d="M21 11.5a8.5 8.5 0 0 1-9 8.5 9.8 9.8 0 0 1-4.2-.9L3 21l1.8-4.3A8.3 8.3 0 0 1 3 11.5 8.5 8.5 0 0 1 12 3a8.5 8.5 0 0 1 9 8.5z"/>
+          <b>
+            3D Stickers
+          </b>
 
-</svg>
+          <span>
+            MODERN PACK
+          </span>
 
-</span>
+        </div>
 
-<span onclick="toast('Share coming next')">
 
-<svg
-class="post-icon"
-viewBox="0 0 24 24">
+        <div class="sticker-grid">
 
-<path d="M22 2 11 13"/>
-<path d="m22 2-7 20-4-9-9-4z"/>
 
-</svg>
+          <button
+            class="sticker"
+            onclick="sendSticker('😎','COOL')">
 
-</span>
+            <div class="sticker-art">
+              😎
+            </div>
 
-</div>
+            <label>
+              COOL
+            </label>
 
-<span onclick="toggleSave(this)">
+          </button>
 
-<svg
-class="post-icon save-btn"
-viewBox="0 0 24 24">
 
-<path d="M6 3h12v18l-6-4-6 4z"/>
+          <button
+            class="sticker"
+            onclick="sendSticker('🥰','LOVE')">
 
-</svg>
+            <div class="sticker-art">
+              🥰
+            </div>
 
-</span>
+            <label>
+              LOVE
+            </label>
 
-</div>
+          </button>
 
 
-<div
-id="likes1"
-class="likes">
-0 likes
-</div>
+          <button
+            class="sticker"
+            onclick="sendSticker('😂','LOL')">
 
-<div class="caption">
-<b>Darkwing</b>
-Welcome to X-DARK.
-</div>
+            <div class="sticker-art">
+              😂
+            </div>
 
-<span class="comments-link">
-View all comments
-</span>
+            <label>
+              LOL
+            </label>
 
-</article>
+          </button>
 
-</div>
+
+          <button
+            class="sticker"
+            onclick="sendSticker('🔥','FIRE')">
+
+            <div class="sticker-art">
+              🔥
+            </div>
+
+            <label>
+              FIRE
+            </label>
+
+          </button>
+
+
+          <button
+            class="sticker"
+            onclick="sendSticker('🤩','WOW')">
+
+            <div class="sticker-art">
+              🤩
+            </div>
+
+            <label>
+              WOW
+            </label>
+
+          </button>
+
+
+          <button
+            class="sticker"
+            onclick="sendSticker('🥳','PARTY')">
+
+            <div class="sticker-art">
+              🥳
+            </div>
+
+            <label>
+              PARTY
+            </label>
+
+          </button>
+
+
+          <button
+            class="sticker"
+            onclick="sendSticker('😡','ANGRY')">
+
+            <div class="sticker-art">
+              😡
+            </div>
+
+            <label>
+              ANGRY
+            </label>
+
+          </button>
+
+
+          <button
+            class="sticker"
+            onclick="sendSticker('🚀','GO')">
+
+            <div class="sticker-art">
+              🚀
+            </div>
+
+            <label>
+              GO
+            </label>
+
+          </button>
+
+
+          <button
+            class="sticker"
+            onclick="sendSticker('❤️','HEART')">
+
+            <div class="sticker-art">
+              ❤️
+            </div>
+
+            <label>
+              HEART
+            </label>
+
+          </button>
+
+
+          <button
+            class="sticker"
+            onclick="sendSticker('🤑','MONEY')">
+
+            <div class="sticker-art">
+              🤑
+            </div>
+
+            <label>
+              MONEY
+            </label>
+
+          </button>
+
+
+          <button
+            class="sticker"
+            onclick="sendSticker('😱','OMG')">
+
+            <div class="sticker-art">
+              😱
+            </div>
+
+            <label>
+              OMG
+            </label>
+
+          </button>
+
+
+          <button
+            class="sticker"
+            onclick="sendSticker('👍','LIKE')">
+
+            <div class="sticker-art">
+              👍
+            </div>
+
+            <label>
+              LIKE
+            </label>
+
+          </button>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- INPUT -->
+
+    <div class="message-bar">
+
+      <button class="plus">
+        ＋
+      </button>
+
+      <input
+        id="messageInput"
+        type="text"
+        placeholder="Message...">
+
+      <button
+        class="emoji"
+        onclick="togglePicker()">
+        😊
+      </button>
+
+      <button
+        class="send"
+        onclick="sendMessage()">
+        ➤
+      </button>
+
+    </div>
+
+  </div>
 
 </section>
 
-
-<!-- SEARCH -->
-
-<section id="searchPage" class="page">
-
-<div class="search-container">
-
-<div class="search-box">
-
-<span>⌕</span>
-
-<input
-id="searchInput"
-class="search-input"
-placeholder="Search"
-oninput="searchUsers()">
-
-</div>
-
-<div id="searchResults"></div>
-
-</div>
-
-</section>
-
-
-<!-- MESSAGES -->
-
-<section id="messagesPage" class="page">
-
-<div class="chat-page">
-
-<div class="chat-header">
-
-<div class="chat-title">
-Messages
-</div>
-
-<div
-class="chat-new"
-onclick="toast('New chat coming next')">
-New
-</div>
-
-</div>
-
-
-<div class="chat-search">
-
-<span>⌕</span>
-
-<input
-id="chatSearch"
-placeholder="Search messages"
-oninput="filterChats()">
-
-</div>
-
-
-<div id="chatList">
-
-<div
-class="chat-row"
-data-name="Darkwing"
-onclick="openChat('Darkwing','https://i.pravatar.cc/150?img=47')">
-
-<div class="chat-avatar-wrap">
-
-<img
-class="chat-avatar"
-src="https://i.pravatar.cc/150?img=47">
-
-<span class="online"></span>
-
-</div>
-
-<div class="chat-info">
-
-<div class="chat-name">
-Darkwing
-</div>
-
-<div
-id="last-Darkwing"
-class="chat-last">
-Hello
-</div>
-
-</div>
-
-<div class="chat-right">
-8:11 PM
-</div>
-
-</div>
-
-
-<div
-class="chat-row"
-data-name="User"
-onclick="openChat('User','https://i.pravatar.cc/150?img=12')">
-
-<div class="chat-avatar-wrap">
-
-<img
-class="chat-avatar"
-src="https://i.pravatar.cc/150?img=12">
-
-</div>
-
-<div class="chat-info">
-
-<div class="chat-name">
-User
-</div>
-
-<div class="chat-last">
-Hey there
-</div>
-
-</div>
-
-<div class="chat-right">
-Yesterday
-</div>
-
-</div>
-
-
-<div
-class="chat-row"
-data-name="XDark"
-onclick="openChat('XDark','https://i.pravatar.cc/150?img=32')">
-
-<div class="chat-avatar-wrap">
-
-<img
-class="chat-avatar"
-src="https://i.pravatar.cc/150?img=32">
-
-<span class="online"></span>
-
-</div>
-
-<div class="chat-info">
-
-<div class="chat-name">
-XDark
-</div>
-
-<div class="chat-last">
-See you soon
-</div>
-
-</div>
-
-<div class="chat-right">
-Mon
-</div>
-
-</div>
-
-
-<div
-class="chat-row"
-data-name="Nova"
-onclick="openChat('Nova','https://i.pravatar.cc/150?img=5')">
-
-<div class="chat-avatar-wrap">
-
-<img
-class="chat-avatar"
-src="https://i.pravatar.cc/150?img=5">
-
-</div>
-
-<div class="chat-info">
-
-<div class="chat-name">
-Nova
-</div>
-
-<div class="chat-last">
-Nice post!
-</div>
-
-</div>
-
-<div class="chat-right">
-Sun
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- NOTIFICATIONS -->
-
-<section id="notificationsPage" class="page">
-
-<div class="notification-head">
-
-<div class="notification-title">
-Notifications
-</div>
-
-<button
-class="read-btn"
-onclick="markNotificationsRead()">
-Mark all read
-</button>
-
-</div>
-
-
-<div class="notification unread-row">
-
-<img
-class="notification-avatar"
-src="https://i.pravatar.cc/150?img=47">
-
-<div class="notification-content">
-
-<b>Darkwing</b>
-liked your post.
-
-<span class="notification-time">
-2 min ago
-</span>
-
-</div>
-
-</div>
-
-
-<div class="notification unread-row">
-
-<img
-class="notification-avatar"
-src="https://i.pravatar.cc/150?img=12">
-
-<div class="notification-content">
-
-<b>User</b>
-sent you a message.
-
-<span class="notification-time">
-8 min ago
-</span>
-
-</div>
-
-</div>
-
-
-<div class="notification">
-
-<img
-class="notification-avatar"
-src="https://i.pravatar.cc/150?img=32">
-
-<div class="notification-content">
-
-<b>XDark</b>
-started following you.
-
-<span class="notification-time">
-1 hour ago
-</span>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- PROFILE -->
-
-<section id="profilePage" class="page">
-
-<div class="profile">
-
-<div class="profile-top">
-
-<div class="profile-info">
-
-<img
-class="profile-photo"
-src="https://i.pravatar.cc/150?img=68">
-
-<div>
-
-<div class="profile-name">
-Ankaj
-</div>
-
-<div class="handle">
-@ankaj
 </div>
-
-</div>
-
-</div>
-
-
-<div class="profile-stats">
-
-<div class="stat">
-<div class="stat-number">0</div>
-<div class="stat-label">Posts</div>
-</div>
-
-<div class="stat">
-<div class="stat-number">0</div>
-<div class="stat-label">Followers</div>
-</div>
-
-<div class="stat">
-<div class="stat-number">0</div>
-<div class="stat-label">Following</div>
-</div>
-
-</div>
-
-
-<div class="bio">
-Welcome to my X-DARK profile.
-</div>
-
-
-<button
-class="edit"
-onclick="toast('Profile editor coming next')">
-Edit Profile
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- CONVERSATION -->
-
-<div
-id="conversation"
-class="conversation">
-
-
-<div class="conversation-header">
-
-<button
-class="back-btn"
-onclick="closeChat()">
-‹
-</button>
-
-
-<img
-id="conversationAvatar"
-class="conversation-avatar"
-src="">
-
-
-<div class="conversation-user">
-
-<div
-id="conversationName"
-class="conversation-name">
-Darkwing
-</div>
-
-<div
-id="conversationStatus"
-class="status offline">
-● Offline
-</div>
-
-</div>
-
-
-<span onclick="toast('Voice call coming next')">
-
-<svg
-class="chat-action"
-viewBox="0 0 24 24">
-
-<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7A2 2 0 0 1 22 16.9z"/>
-
-</svg>
-
-</span>
-
-
-<span onclick="toast('Video call coming next')">
-
-<svg
-class="chat-action"
-viewBox="0 0 24 24">
-
-<path d="m15 10 5-3v10l-5-3M3 6h12v12H3z"/>
-
-</svg>
-
-</span>
-
-</div>
-
-
-<div
-id="messages"
-class="messages">
-</div>
-
-
-<div
-id="typing"
-class="typing">
-
-<span>Typing</span>
-
-<span class="dot"></span>
-<span class="dot"></span>
-<span class="dot"></span>
-
-</div>
-
-
-<!-- MESSAGE AREA -->
-
-<div class="message-area">
-
-
-<!-- EMOJI PICKER -->
-
-<div
-id="emojiPicker"
-class="emoji-picker">
-
-<div class="emoji-title">
-Emojis
-</div>
-
-<div class="emoji-grid">
-
-<button class="emoji-item" onclick="addEmoji('😀')">😀</button>
-<button class="emoji-item" onclick="addEmoji('😃')">😃</button>
-<button class="emoji-item" onclick="addEmoji('😄')">😄</button>
-<button class="emoji-item" onclick="addEmoji('😁')">😁</button>
-<button class="emoji-item" onclick="addEmoji('😆')">😆</button>
-<button class="emoji-item" onclick="addEmoji('😅')">😅</button>
-<button class="emoji-item" onclick="addEmoji('😂')">😂</button>
-
-<button class="emoji-item" onclick="addEmoji('🤣')">🤣</button>
-<button class="emoji-item" onclick="addEmoji('😊')">😊</button>
-<button class="emoji-item" onclick="addEmoji('😇')">😇</button>
-<button class="emoji-item" onclick="addEmoji('🙂')">🙂</button>
-<button class="emoji-item" onclick="addEmoji('🙃')">🙃</button>
-<button class="emoji-item" onclick="addEmoji('😉')">😉</button>
-<button class="emoji-item" onclick="addEmoji('😍')">😍</button>
-
-<button class="emoji-item" onclick="addEmoji('🥰')">🥰</button>
-<button class="emoji-item" onclick="addEmoji('😘')">😘</button>
-<button class="emoji-item" onclick="addEmoji('😎')">😎</button>
-<button class="emoji-item" onclick="addEmoji('🤩')">🤩</button>
-<button class="emoji-item" onclick="addEmoji('🥳')">🥳</button>
-<button class="emoji-item" onclick="addEmoji('😏')">😏</button>
-<button class="emoji-item" onclick="addEmoji('😢')">😢</button>
-
-<button class="emoji-item" onclick="addEmoji('😭')">😭</button>
-<button class="emoji-item" onclick="addEmoji('😡')">😡</button>
-<button class="emoji-item" onclick="addEmoji('🤬')">🤬</button>
-<button class="emoji-item" onclick="addEmoji('😱')">😱</button>
-<button class="emoji-item" onclick="addEmoji('🤔')">🤔</button>
-<button class="emoji-item" onclick="addEmoji('🤫')">🤫</button>
-<button class="emoji-item" onclick="addEmoji('🙄')">🙄</button>
-
-<button class="emoji-item" onclick="addEmoji('❤️')">❤️</button>
-<button class="emoji-item" onclick="addEmoji('🖤')">🖤</button>
-<button class="emoji-item" onclick="addEmoji('💜')">💜</button>
-<button class="emoji-item" onclick="addEmoji('💙')">💙</button>
-<button class="emoji-item" onclick="addEmoji('💚')">💚</button>
-<button class="emoji-item" onclick="addEmoji('💛')">💛</button>
-<button class="emoji-item" onclick="addEmoji('💔')">💔</button>
-
-<button class="emoji-item" onclick="addEmoji('👍')">👍</button>
-<button class="emoji-item" onclick="addEmoji('👎')">👎</button>
-<button class="emoji-item" onclick="addEmoji('👏')">👏</button>
-<button class="emoji-item" onclick="addEmoji('🙏')">🙏</button>
-<button class="emoji-item" onclick="addEmoji('🔥')">🔥</button>
-<button class="emoji-item" onclick="addEmoji('✨')">✨</button>
-<button class="emoji-item" onclick="addEmoji('🎉')">🎉</button>
-
-<button class="emoji-item" onclick="addEmoji('💯')">💯</button>
-<button class="emoji-item" onclick="addEmoji('🚀')">🚀</button>
-<button class="emoji-item" onclick="addEmoji('⭐')">⭐</button>
-<button class="emoji-item" onclick="addEmoji('🌙')">🌙</button>
-<button class="emoji-item" onclick="addEmoji('☀️')">☀️</button>
-<button class="emoji-item" onclick="addEmoji('🎂')">🎂</button>
-<button class="emoji-item" onclick="addEmoji('🥂')">🥂</button>
-
-</div>
-</div>
-
-
-<!-- ATTACHMENT PREVIEW -->
-
-<div
-id="attachmentPreview"
-class="attachment-preview">
-
-<img
-id="previewThumb"
-class="preview-thumb"
-style="display:none">
-
-<div class="preview-info">
-
-<div
-id="previewName"
-class="preview-name">
-</div>
-
-<div
-id="previewSize"
-class="preview-size">
-</div>
-
-</div>
-
-<button
-class="remove-attach"
-onclick="clearAttachment()">
-×
-</button>
-
-</div>
-
-
-<!-- MESSAGE BAR -->
-
-<div class="message-bar">
-
-<button
-class="attach"
-onclick="document.getElementById('fileInput').click()">
-+
-</button>
-
-
-<input
-id="fileInput"
-type="file"
-accept="image/*,video/*,.pdf,.doc,.docx,.txt,.zip"
-onchange="selectAttachment(event)">
-
-
-<input
-id="messageInput"
-class="message-input"
-placeholder="Message..."
-autocomplete="off">
-
-
-<button
-class="emoji"
-onclick="toggleEmojiPicker()">
-😊
-</button>
-
-
-<button
-class="send"
-onclick="sendMessage()">
-➤
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- BOTTOM NAV -->
-
-<nav class="bottom-nav">
-
-<button
-class="nav-btn active"
-onclick="showPage('homePage',this)">
-⌂
-</button>
-
-<button
-class="nav-btn"
-onclick="showPage('searchPage',this)">
-⌕
-</button>
-
-<button
-class="nav-btn plus-nav"
-onclick="toast('Create post coming next')">
-＋
-</button>
-
-<button
-class="nav-btn"
-onclick="showPage('notificationsPage',this)">
-♡
-</button>
-
-<button
-class="nav-btn"
-onclick="showPage('profilePage',this)">
-◉
-</button>
-
-</nav>
-
-
-<div
-id="toast"
-class="toast">
-</div>
-
-
-<script type="module">
-
-/* FIREBASE */
-
-import {
- initializeApp
-}
-from
-"https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-
-
-import {
- getAuth,
- signInAnonymously,
- onAuthStateChanged
-}
-from
-"https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
-
-
-import {
- getFirestore,
- collection,
- doc,
- addDoc,
- query,
- orderBy,
- onSnapshot,
- serverTimestamp,
- updateDoc,
- setDoc,
- arrayUnion
-}
-from
-"https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
-
-
-import {
- getStorage,
- ref,
- uploadBytes,
- getDownloadURL
-}
-from
-"https://www.gstatic.com/firebasejs/12.2.1/firebase-storage.js";
-
-
-const firebaseConfig={
-
- apiKey:
- "AIzaC8S8Hfx0E7OpnfclF7UGYVcmdU38yuxtsBY",
-
- authDomain:
- "darkwing-a717a.firebaseapp.com",
-
- projectId:
- "darkwing-a717a",
-
- storageBucket:
- "darkwing-a717a.firebasestorage.app",
-
- messagingSenderId:
- "352453390196",
-
- appId:
- "1:352453390196:web:7c375a26a823b5633a4621",
-
- measurementId:
- "G-5RVX9NET3W"
-
-};
-
-
-const app=
-initializeApp(
- firebaseConfig
-);
-
-
-const auth=
-getAuth(app);
-
-
-const db=
-getFirestore(app);
-
-
-const storage=
-getStorage(app);
-
-
-/* VARIABLES */
-
-let currentFirebaseUser=null;
 
-let currentChat=null;
 
-let unsubscribe=null;
+<script>
 
-let presenceUnsub=null;
+/* ELEMENTS */
 
-let typingUnsub=null;
+const input =
+  document.getElementById("messageInput");
 
-let selectedFile=null;
+const messages =
+  document.getElementById("messages");
 
-let typingTimer=null;
+const picker =
+  document.getElementById("picker");
 
 
-/* HELPERS */
+/* OPEN / CLOSE PICKER */
 
-function chatId(name){
+function togglePicker(){
 
- return name
- .toLowerCase()
- .replace(
-  /[^a-z0-9]+/g,
-  "_"
- );
+  picker.classList.toggle("show");
 
 }
 
 
-function esc(s){
+/* SWITCH TAB */
 
- return String(s||"")
- .replace(
-  /[&<>"']/g,
-  m=>({
+function openTab(tab){
 
-   "&":"&amp;",
-   "<":"&lt;",
-   ">":"&gt;",
-   '"':"&quot;",
-   "'":"&#039;"
+  const emojiPanel =
+    document.getElementById("emojiPanel");
 
-  }[m])
- );
+  const stickerPanel =
+    document.getElementById("stickerPanel");
 
-}
+  const emojiTab =
+    document.getElementById("emojiTab");
 
+  const stickerTab =
+    document.getElementById("stickerTab");
 
-function timeText(ts){
 
- if(!ts){
+  if(tab === "emoji"){
 
-  return new Date()
-  .toLocaleTimeString(
-   [],
-   {
-    hour:"2-digit",
-    minute:"2-digit"
-   }
-  );
+    emojiPanel.classList.add("active");
 
- }
+    stickerPanel.classList.remove("active");
 
- const d=
- ts.toDate
- ?ts.toDate()
- :new Date(ts);
+    emojiTab.classList.add("active");
 
- return d.toLocaleTimeString(
-  [],
-  {
-   hour:"2-digit",
-   minute:"2-digit"
-  }
- );
-
-}
-
-
-/* RENDER MESSAGE */
-
-function renderMessage(m){
-
- const box=
- document.createElement(
-  "div"
- );
-
-
- const mine=
- m.senderId===
- currentFirebaseUser?.uid;
-
-
- box.className=
- "message "+
- (
-  mine
-  ?"sent"
-  :"received"
- );
-
-
- let body="";
-
-
- if(m.type==="image"){
-
-  body=
-  `<img
-   class="message-media"
-   src="${esc(m.url)}"
-   alt="image">`;
-
- }
-
-
- else if(m.type==="video"){
-
-  body=
-  `<video
-   class="message-media"
-   src="${esc(m.url)}"
-   controls
-   playsinline>
-  </video>`;
-
- }
-
-
- else if(m.type==="file"){
-
-  body=
-  `<a
-   class="file-card"
-   href="${esc(m.url)}"
-   target="_blank">
-
-   <span class="file-icon">
-   📄
-   </span>
-
-   <span class="file-name">
-   ${esc(m.fileName||"File")}
-   </span>
-
-  </a>`;
-
- }
-
-
- if(m.text){
-
-  body+=
-  `<div>
-   ${esc(m.text)}
-  </div>`;
-
- }
-
-
- const seen=
- Array.isArray(m.seenBy)&&
- m.seenBy.some(
-  id=>id!==m.senderId
- );
-
-
- const ticks=
- mine
-
- ?
-
- `<span
-  class="msg-ticks ${seen?"seen":""}">
-  ${seen?"✓✓":"✓"}
- </span>`
-
- :
-
- "";
-
-
- box.innerHTML=
- body+
-
- `<span class="msg-time">
-  ${timeText(m.createdAt)}
-  ${ticks}
- </span>`;
-
-
- return box;
-
-}
-
-
-/* SEEN */
-
-async function markMessagesSeen(snapshot){
-
- if(
-  !currentFirebaseUser||
-  !currentChat
- ){
-  return;
- }
-
-
- const jobs=[];
-
-
- snapshot.forEach(s=>{
-
-  const m=s.data();
-
-
-  if(
-   m.senderId!==currentFirebaseUser.uid&&
-   !(
-    Array.isArray(m.seenBy)&&
-    m.seenBy.includes(
-     currentFirebaseUser.uid
-    )
-   )
-  ){
-
-   jobs.push(
-
-    updateDoc(
-
-     doc(
-      db,
-      "chats",
-      chatId(currentChat),
-      "messages",
-      s.id
-     ),
-
-     {
-      seenBy:
-      arrayUnion(
-       currentFirebaseUser.uid
-      )
-     }
-
-    ).catch(()=>{})
-
-   );
+    stickerTab.classList.remove("active");
 
   }
 
- });
+  else{
 
+    emojiPanel.classList.remove("active");
 
- await Promise.all(jobs);
+    stickerPanel.classList.add("active");
 
-}
+    emojiTab.classList.remove("active");
 
-
-/* ONLINE */
-
-function startPresence(name){
-
- if(presenceUnsub){
-
-  presenceUnsub();
-
- }
-
-
- if(!currentFirebaseUser){
-
-  return;
-
- }
-
-
- const myRef=
- doc(
-  db,
-  "chats",
-  chatId(name),
-  "presence",
-  currentFirebaseUser.uid
- );
-
-
- const writePresence=()=>{
-
-  setDoc(
-   myRef,
-   {
-    uid:
-    currentFirebaseUser.uid,
-
-    online:true,
-
-    updatedAt:
-    Date.now()
-   },
-   {
-    merge:true
-   }
-  ).catch(()=>{});
-
- };
-
-
- writePresence();
-
-
- const q=
- query(
-  collection(
-   db,
-   "chats",
-   chatId(name),
-   "presence"
-  )
- );
-
-
- presenceUnsub=
- onSnapshot(
-  q,
-  snap=>{
-
-   let otherOnline=false;
-
-   const now=
-   Date.now();
-
-
-   snap.forEach(s=>{
-
-    const p=s.data();
-
-
-    if(
-     s.id!==currentFirebaseUser.uid&&
-     p.online===true&&
-     now-(p.updatedAt||0)<90000
-    ){
-
-     otherOnline=true;
-
-    }
-
-   });
-
-
-   const status=
-   document.getElementById(
-    "conversationStatus"
-   );
-
-
-   status.textContent=
-   otherOnline
-   ?"● Active now"
-   :"● Offline";
-
-
-   status.classList.toggle(
-    "offline",
-    !otherOnline
-   );
+    stickerTab.classList.add("active");
 
   }
- );
-
- window.__presenceRef=
- myRef;
-
-
- window.__presenceInterval=
- setInterval(
-  writePresence,
-  30000
- );
 
 }
 
 
-/* STOP ONLINE */
+/* INSERT EMOJI */
 
-function stopPresence(){
+function insertEmoji(emoji){
 
- if(presenceUnsub){
+  const start =
+    input.selectionStart ??
+    input.value.length;
 
-  presenceUnsub();
+  const end =
+    input.selectionEnd ??
+    input.value.length;
 
-  presenceUnsub=null;
+  const oldText =
+    input.value;
 
- }
 
+  input.value =
+    oldText.substring(0,start) +
+    emoji +
+    oldText.substring(end);
 
- if(window.__presenceInterval){
 
-  clearInterval(
-   window.__presenceInterval
-  );
+  const position =
+    start + emoji.length;
 
-  window.__presenceInterval=null;
-
- }
-
-
- if(window.__presenceRef){
-
-  updateDoc(
-   window.__presenceRef,
-   {
-    online:false,
-    updatedAt:Date.now()
-   }
-  ).catch(()=>{});
-
- }
-
- window.__presenceRef=null;
-
-}
-
-
-/* TYPING */
-
-function startTypingListener(name){
-
- if(typingUnsub){
-
-  typingUnsub();
-
- }
-
-
- const typingBox=
- document.getElementById(
-  "typing"
- );
-
-
- const q=
- query(
-  collection(
-   db,
-   "chats",
-   chatId(name),
-   "typing"
-  )
- );
-
-
- typingUnsub=
- onSnapshot(
-  q,
-  snap=>{
-
-   let otherTyping=false;
-
-   const now=
-   Date.now();
-
-
-   snap.forEach(s=>{
-
-    const t=s.data();
-
-
-    if(
-     s.id!==currentFirebaseUser?.uid&&
-     t.typing===true&&
-     now-(t.updatedAt||0)<7000
-    ){
-
-     otherTyping=true;
-
-    }
-
-   });
-
-
-   typingBox.classList.toggle(
-    "show",
-    otherTyping
-   );
-
-  }
- );
-
-}
-
-
-async function updateTyping(){
-
- if(
-  !currentFirebaseUser||
-  !currentChat
- ){
-  return;
- }
-
-
- const r=
- doc(
-  db,
-  "chats",
-  chatId(currentChat),
-  "typing",
-  currentFirebaseUser.uid
- );
-
-
- await setDoc(
-  r,
-  {
-   uid:
-   currentFirebaseUser.uid,
-
-   typing:true,
-
-   updatedAt:
-   Date.now()
-  },
-  {
-   merge:true
-  }
- ).catch(()=>{});
-
-
- clearTimeout(
-  typingTimer
- );
-
-
- typingTimer=
- setTimeout(
-  stopTyping,
-  1800
- );
-
-}
-
-
-async function stopTyping(){
-
- if(
-  !currentFirebaseUser||
-  !currentChat
- ){
-  return;
- }
-
-
- const r=
- doc(
-  db,
-  "chats",
-  chatId(currentChat),
-  "typing",
-  currentFirebaseUser.uid
- );
-
-
- await setDoc(
-  r,
-  {
-   uid:
-   currentFirebaseUser.uid,
-
-   typing:false,
-
-   updatedAt:
-   Date.now()
-  },
-  {
-   merge:true
-  }
- ).catch(()=>{});
-
-}
-
-
-/* LOAD CHAT */
-
-function loadMessages(name){
-
- if(unsubscribe){
-
-  unsubscribe();
-
- }
-
-
- const list=
- document.getElementById(
-  "messages"
- );
-
-
- list.innerHTML=
- `<div class="date-divider">
-  Today
- </div>`;
-
-
- if(!currentFirebaseUser){
-
-  return;
-
- }
-
-
- const q=
- query(
-  collection(
-   db,
-   "chats",
-   chatId(name),
-   "messages"
-  ),
-  orderBy(
-   "createdAt",
-   "asc"
-  )
- );
-
-
- unsubscribe=
- onSnapshot(
-  q,
-  async snap=>{
-
-   list.innerHTML=
-   `<div class="date-divider">
-    Today
-   </div>`;
-
-
-   if(snap.empty){
-
-    const e=
-    document.createElement(
-     "div"
-    );
-
-    e.className=
-    "empty-chat";
-
-    e.textContent=
-    "No messages yet";
-
-    list.appendChild(e);
-
-   }
-
-   else{
-
-    snap.forEach(d=>{
-
-     list.appendChild(
-      renderMessage(
-       d.data()
-      )
-     );
-
-    });
-
-
-    await markMessagesSeen(
-     snap
-    );
-
-   }
-
-
-   list.scrollTop=
-   list.scrollHeight;
-
-  },
-  err=>{
-
-   console.error(err);
-
-   toast(
-    "Could not load messages"
-   );
-
-  }
- );
-
-}
-
-
-/* OPEN */
-
-window.openChat=
-function(name,photo){
-
- currentChat=name;
-
-
- document.getElementById(
-  "conversationName"
- ).textContent=name;
-
-
- document.getElementById(
-  "conversationAvatar"
- ).src=photo;
-
-
- document.getElementById(
-  "conversation"
- ).classList.add(
-  "active"
- );
-
-
- loadMessages(name);
-
- startPresence(name);
-
- startTypingListener(name);
-
-
- document.getElementById(
-  "messageInput"
- ).focus();
-
-};
-
-
-/* CLOSE */
-
-window.closeChat=
-function(){
-
- stopTyping();
-
- stopPresence();
-
-
- if(typingUnsub){
-
-  typingUnsub();
-
-  typingUnsub=null;
-
- }
-
-
- document.getElementById(
-  "typing"
- ).classList.remove(
-  "show"
- );
-
-
- document.getElementById(
-  "conversation"
- ).classList.remove(
-  "active"
- );
-
-
- if(unsubscribe){
-
-  unsubscribe();
-
-  unsubscribe=null;
-
- }
-
-
- currentChat=null;
-
- clearAttachment();
-
- closeEmoji();
-
-};
-
-
-/* ATTACHMENT */
-
-window.selectAttachment=
-function(e){
-
- const file=
- e.target.files?.[0];
-
-
- if(!file){
-
-  return;
-
- }
-
-
- if(
-  file.size>
-  25*1024*1024
- ){
-
-  toast(
-   "File must be under 25 MB"
-  );
-
-  e.target.value="";
-
-  return;
-
- }
-
-
- selectedFile=file;
-
-
- document.getElementById(
-  "previewName"
- ).textContent=
- file.name;
-
-
- document.getElementById(
-  "previewSize"
- ).textContent=
- (
-  file.size/
-  1024/
-  1024
- ).toFixed(2)
- +" MB";
-
-
- const thumb=
- document.getElementById(
-  "previewThumb"
- );
-
-
- if(
-  file.type.startsWith(
-   "image/"
-  )
- ){
-
-  thumb.src=
-  URL.createObjectURL(
-   file
-  );
-
-  thumb.style.display=
-  "block";
-
- }
-
- else{
-
-  thumb.style.display=
-  "none";
-
- }
-
-
- document.getElementById(
-  "attachmentPreview"
- ).classList.add(
-  "show"
- );
-
-};
-
-
-/* CLEAR */
-
-window.clearAttachment=
-function(){
-
- selectedFile=null;
-
-
- document.getElementById(
-  "fileInput"
- ).value="";
-
-
- document.getElementById(
-  "attachmentPreview"
- ).classList.remove(
-  "show"
- );
-
-
- document.getElementById(
-  "previewThumb"
- ).style.display=
- "none";
-
-};
-
-
-/* SEND */
-
-async function sendMessage(){
-
- if(
-  !currentFirebaseUser||
-  !currentChat
- ){
-
-  toast(
-   "Open a chat first"
-  );
-
-  return;
-
- }
-
-
- const input=
- document.getElementById(
-  "messageInput"
- );
-
-
- const text=
- input.value.trim();
-
-
- if(
-  !text&&!selectedFile
- ){
-
-  return;
-
- }
-
-
- const btn=
- document.querySelector(
-  ".send"
- );
-
-
- btn.disabled=true;
-
-
- try{
-
-  let data={
-
-   text:text,
-
-   senderId:
-   currentFirebaseUser.uid,
-
-   senderName:
-   "Ankaj",
-
-   type:
-   "text",
-
-   seenBy:[
-    currentFirebaseUser.uid
-   ],
-
-   createdAt:
-   serverTimestamp()
-
-  };
-
-
-  if(selectedFile){
-
-   const safe=
-   selectedFile.name
-   .replace(
-    /[^a-zA-Z0-9._-]/g,
-    "_"
-   );
-
-
-   const path=
-   `chatUploads/${chatId(currentChat)}/${Date.now()}_${safe}`;
-
-
-   const storageRef=
-   ref(
-    storage,
-    path
-   );
-
-
-   await uploadBytes(
-    storageRef,
-    selectedFile
-   );
-
-
-   const url=
-   await getDownloadURL(
-    storageRef
-   );
-
-
-   const type=
-   selectedFile.type
-   .startsWith("image/")
-   ?"image"
-
-   :
-
-   selectedFile.type
-   .startsWith("video/")
-   ?"video"
-
-   :
-   "file";
-
-
-   data={
-
-    ...data,
-
-    type:type,
-
-    url:url,
-
-    fileName:
-    selectedFile.name,
-
-    fileSize:
-    selectedFile.size
-
-   };
-
-  }
-
-
-  await addDoc(
-
-   collection(
-    db,
-    "chats",
-    chatId(currentChat),
-    "messages"
-   ),
-
-   data
-
-  );
-
-
-  input.value="";
-
-  clearAttachment();
-
-  closeEmoji();
-
-  await stopTyping();
-
- }
-
- catch(err){
-
-  console.error(err);
-
-  toast(
-   "Message failed. Check Firebase rules."
-  );
-
- }
-
- finally{
-
-  btn.disabled=false;
 
   input.focus();
 
- }
+  input.setSelectionRange(
+    position,
+    position
+  );
 
 }
 
 
-window.sendMessage=
-sendMessage;
+/* SEND NORMAL MESSAGE */
+
+function sendMessage(){
+
+  const text =
+    input.value.trim();
 
 
-/* ================= EMOJI ================= */
-
-window.toggleEmojiPicker=
-function(){
-
- const picker=
- document.getElementById(
-  "emojiPicker"
- );
+  if(!text){
+    return;
+  }
 
 
- picker.classList.toggle(
-  "show"
- );
-
-};
-
-
-window.closeEmoji=
-function(){
-
- const picker=
- document.getElementById(
-  "emojiPicker"
- );
+  addTextMessage(
+    text,
+    true
+  );
 
 
- if(picker){
+  input.value = "";
+
+  picker.classList.remove("show");
+
+}
+
+
+/* ADD TEXT MESSAGE */
+
+function addTextMessage(
+  text,
+  sent
+){
+
+  const row =
+    document.createElement("div");
+
+
+  row.className =
+    "message " +
+    (sent ? "sent" : "received");
+
+
+  const bubble =
+    document.createElement("div");
+
+
+  bubble.className =
+    "bubble";
+
+
+  bubble.textContent =
+    text;
+
+
+  row.appendChild(
+    bubble
+  );
+
+
+  messages.appendChild(
+    row
+  );
+
+
+  messages.scrollTop =
+    messages.scrollHeight;
+
+}
+
+
+/* SEND STICKER */
+
+function sendSticker(
+  sticker,
+  name
+){
+
+  const row =
+    document.createElement("div");
+
+
+  row.className =
+    "message sent";
+
+
+  const stickerElement =
+    document.createElement("div");
+
+
+  stickerElement.className =
+    "chat-sticker";
+
+
+  stickerElement.textContent =
+    sticker;
+
+
+  stickerElement.title =
+    name;
+
+
+  row.appendChild(
+    stickerElement
+  );
+
+
+  messages.appendChild(
+    row
+  );
+
+
+  messages.scrollTop =
+    messages.scrollHeight;
+
 
   picker.classList.remove(
-   "show"
-  );
-
- }
-
-};
-
-
-window.addEmoji=
-function(emoji){
-
- const input=
- document.getElementById(
-  "messageInput"
- );
-
-
- const start=
- input.selectionStart ??
- input.value.length;
-
-
- const end=
- input.selectionEnd ??
- input.value.length;
-
-
- const text=
- input.value;
-
-
- input.value=
- text.substring(0,start)
- +
- emoji
- +
- text.substring(end);
-
-
- const position=
- start+
- emoji.length;
-
-
- input.focus();
-
-
- input.setSelectionRange(
-  position,
-  position
- );
-
-
- updateTyping();
-
-
- closeEmoji();
-
-};
-
-
-/* CLOSE EMOJI OUTSIDE */
-
-document.addEventListener(
- "click",
- e=>{
-
-  const picker=
-  document.getElementById(
-   "emojiPicker"
-  );
-
-
-  const button=
-  document.querySelector(
-   ".emoji"
-  );
-
-
-  if(
-   picker&&
-   button&&
-   !picker.contains(e.target)&&
-   !button.contains(e.target)
-  ){
-
-   picker.classList.remove(
     "show"
-   );
-
-  }
-
- });
-
-
-/* ENTER */
-
-document
-.getElementById(
- "messageInput"
-)
-.addEventListener(
- "input",
- ()=>{
-
-  const value=
-  document.getElementById(
-   "messageInput"
-  ).value.trim();
-
-
-  if(value){
-
-   updateTyping();
-
-  }
-
-  else{
-
-   stopTyping();
-
-  }
-
- });
-
-
-document
-.getElementById(
- "messageInput"
-)
-.addEventListener(
- "keydown",
- e=>{
-
-  if(
-   e.key==="Enter"&&
-   !e.shiftKey
-  ){
-
-   e.preventDefault();
-
-   sendMessage();
-
-  }
-
- });
-
-
-/* PAGES */
-
-window.showPage=
-function(id,btn){
-
- document
- .querySelectorAll(
-  ".page"
- )
- .forEach(
-  p=>
-  p.classList.remove(
-   "active"
-  )
- );
-
-
- document
- .getElementById(id)
- .classList.add(
-  "active"
- );
-
-
- if(btn){
-
-  document
-  .querySelectorAll(
-   ".nav-btn"
-  )
-  .forEach(
-   x=>
-   x.classList.remove(
-    "active"
-   )
   );
 
+}
 
-  btn.classList.add(
-   "active"
-  );
 
- }
+/* ENTER TO SEND */
 
-};
+input.addEventListener(
+  "keydown",
+  function(e){
 
+    if(e.key === "Enter"){
 
-/* CHAT SEARCH */
+      e.preventDefault();
 
-window.filterChats=
-function(){
+      sendMessage();
 
- const q=
- document.getElementById(
-  "chatSearch"
- )
- .value
- .toLowerCase();
-
-
- document
- .querySelectorAll(
-  ".chat-row"
- )
- .forEach(
-  r=>{
-
-   r.style.display=
-   r.dataset.name
-   .toLowerCase()
-   .includes(q)
-   ?"flex"
-   :"none";
-
-  }
- );
-
-};
-
-
-/* SEARCH */
-
-const users=[
-
- {
-  name:"Darkwing",
-  handle:"@darkwing",
-  photo:
-  "https://i.pravatar.cc/150?img=47"
- },
-
- {
-  name:"User",
-  handle:"@user",
-  photo:
-  "https://i.pravatar.cc/150?img=12"
- },
-
- {
-  name:"XDark",
-  handle:"@xdark",
-  photo:
-  "https://i.pravatar.cc/150?img=32"
- },
-
- {
-  name:"Nova",
-  handle:"@nova",
-  photo:
-  "https://i.pravatar.cc/150?img=5"
- }
-
-];
-
-
-window.searchUsers=
-function(){
-
- const q=
- document.getElementById(
-  "searchInput"
- )
- .value
- .toLowerCase();
-
-
- document.getElementById(
-  "searchResults"
- ).innerHTML=
-
- users
- .filter(
-  u=>
-  u.name
-  .toLowerCase()
-  .includes(q)
-  ||
-  u.handle
-  .includes(q)
- )
- .map(
-  u=>
-  `<div
-   class="search-result"
-   onclick="openChat('${u.name}','${u.photo}')">
-
-   <img
-    class="search-avatar"
-    src="${u.photo}">
-
-   <div class="result-info">
-
-    <div class="result-name">
-     ${u.name}
-    </div>
-
-    <div class="result-handle">
-     ${u.handle}
-    </div>
-
-   </div>
-
-  </div>`
- )
- .join("");
-
-};
-
-
-/* LIKE */
-
-window.toggleLike=
-function(el){
-
- const svg=
- el.querySelector("svg");
-
-
- svg.classList.toggle(
-  "liked"
- );
-
-
- document.getElementById(
-  "likes1"
- ).textContent=
-
- (
-  svg.classList.contains(
-   "liked"
-  )
-  ?"1"
-  :"0"
- )
- +" likes";
-
-};
-
-
-/* SAVE */
-
-window.toggleSave=
-function(el){
-
- const svg=
- el.querySelector("svg");
-
-
- svg.classList.toggle(
-  "saved"
- );
-
-
- toast(
-  svg.classList.contains(
-   "saved"
-  )
-  ?"Saved"
-  :"Removed from saved"
- );
-
-};
-
-
-/* NOTIFICATIONS */
-
-window.markNotificationsRead=
-function(){
-
- document
- .querySelectorAll(
-  ".notification"
- )
- .forEach(
-  x=>
-  x.classList.remove(
-   "unread-row"
-  )
- );
-
-
- document.getElementById(
-  "topBadge"
- ).style.display=
- "none";
-
-};
-
-
-/* TOAST */
-
-window.toast=
-function(msg){
-
- const t=
- document.getElementById(
-  "toast"
- );
-
-
- t.textContent=
- msg;
-
-
- t.classList.add(
-  "show"
- );
-
-
- clearTimeout(
-  window.__toast
- );
-
-
- window.__toast=
- setTimeout(
-  ()=>{
-   t.classList.remove(
-    "show"
-   );
-  },
-  2200
- );
-
-};
-
-
-/* VISIBILITY */
-
-document.addEventListener(
- "visibilitychange",
- ()=>{
-
-  if(
-   !currentFirebaseUser||
-   !currentChat
-  ){
-
-   return;
-
-  }
-
-
-  if(
-   document.hidden
-  ){
-
-   const r=
-   doc(
-    db,
-    "chats",
-    chatId(currentChat),
-    "presence",
-    currentFirebaseUser.uid
-   );
-
-
-   setDoc(
-    r,
-    {
-     online:false,
-     updatedAt:Date.now()
-    },
-    {
-     merge:true
     }
-   ).catch(()=>{});
 
   }
+);
 
-  else{
 
-   startPresence(
-    currentChat
-   );
+/* CLOSE PICKER WHEN CLICKING OUTSIDE */
+
+document.addEventListener(
+  "click",
+  function(e){
+
+    if(
+      !picker.contains(e.target) &&
+      !e.target.closest(".emoji")
+    ){
+
+      picker.classList.remove(
+        "show"
+      );
+
+    }
 
   }
-
- });
-
-
-/* AUTH */
-
-onAuthStateChanged(
- auth,
- user=>{
-
-  currentFirebaseUser=
-  user;
-
- });
-
-
-signInAnonymously(
- auth
-)
-.catch(
- err=>{
-
-  console.error(err);
-
-  toast(
-   "Firebase login failed"
-  );
-
- });
-
+);
 
 </script>
 
