@@ -3,40 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>X-DARK</title>
+<title>X-DARK Chat</title>
 
 <style>
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
   margin:0;
-  background:#08080c;
+  background:#07070b;
   color:#fff;
   font-family:Arial,sans-serif;
 }
 
-button{
-  font:inherit;
-}
-
 .app{
+  width:100%;
   max-width:520px;
+  height:100vh;
   margin:auto;
-  min-height:100vh;
   background:#0d0d12;
+  display:flex;
+  flex-direction:column;
 }
 
 /* HEADER */
 
 .header{
   height:62px;
-  padding:0 16px;
+  flex-shrink:0;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  border-bottom:1px solid #22222b;
+  padding:0 16px;
+  border-bottom:1px solid #24242d;
 }
 
 .logo{
@@ -45,59 +43,58 @@ button{
   letter-spacing:2px;
 }
 
-.icon{
-  background:none;
+.header-btn{
   border:0;
+  background:none;
   color:white;
-  font-size:24px;
-  cursor:pointer;
+  font-size:23px;
 }
 
-/* CHAT */
+/* CHAT HEADER */
 
-.chat{
-  height:calc(100vh - 62px);
-  display:flex;
-  flex-direction:column;
-}
-
-.chat-head{
-  padding:10px 14px;
+.chat-header{
+  height:62px;
   display:flex;
   align-items:center;
   gap:10px;
-  border-bottom:1px solid #22222b;
+  padding:8px 13px;
+  border-bottom:1px solid #24242d;
+}
+
+.back{
+  border:0;
+  background:none;
+  color:white;
+  font-size:32px;
 }
 
 .avatar{
   width:42px;
   height:42px;
   border-radius:50%;
-  background:linear-gradient(
-    135deg,
-    #7434ff,
-    #c04cff
-  );
   display:grid;
   place-items:center;
-  font-weight:bold;
+  background:linear-gradient(135deg,#7434ff,#c54cff);
+  font-weight:900;
 }
 
-.name{
-  font-weight:bold;
+.user-name{
+  font-size:15px;
+  font-weight:800;
 }
 
-.status{
+.online{
   font-size:11px;
-  color:#777;
+  color:#51e28a;
+  margin-top:3px;
 }
 
 /* MESSAGES */
 
 .messages{
   flex:1;
-  overflow:auto;
-  padding:16px 12px 90px;
+  overflow-y:auto;
+  padding:15px 12px 100px;
 }
 
 .message{
@@ -105,7 +102,7 @@ button{
   margin:9px 0;
 }
 
-.message.sent{
+.sent{
   justify-content:flex-end;
 }
 
@@ -126,41 +123,71 @@ button{
   border-bottom-left-radius:5px;
 }
 
-/* MESSAGE BAR */
+/* REAL STICKER MESSAGE */
 
-.message-bar-wrap{
+.sticker-message{
+  max-width:170px;
+  padding:5px;
+}
+
+.chat-sticker{
+  width:145px;
+  height:145px;
+  object-fit:contain;
+  display:block;
+  filter:
+    drop-shadow(0 10px 7px rgba(0,0,0,.7))
+    drop-shadow(0 0 14px rgba(116,52,255,.22));
+
+  animation:stickerIn .22s ease-out;
+}
+
+@keyframes stickerIn{
+  from{
+    transform:scale(.45) rotate(-8deg);
+    opacity:0;
+  }
+  to{
+    transform:scale(1) rotate(0);
+    opacity:1;
+  }
+}
+
+/* INPUT AREA */
+
+.input-area{
   position:relative;
+  flex-shrink:0;
   padding:9px;
   background:#101015;
-  border-top:1px solid #22222b;
+  border-top:1px solid #24242d;
 }
 
-.message-bar{
+.input-box{
+  height:50px;
   display:flex;
-  gap:7px;
   align-items:center;
-  background:#1a1a21;
-  border-radius:25px;
+  gap:5px;
   padding:5px 7px;
+  border-radius:28px;
+  background:#1a1a21;
 }
 
-.message-bar input{
+.input-box input{
   flex:1;
   min-width:0;
   border:0;
   outline:0;
   background:transparent;
   color:white;
-  padding:9px;
   font-size:15px;
 }
 
-.send,
-.emoji,
-.plus{
+.input-btn{
   border:0;
   background:none;
   color:white;
+  font-size:21px;
   cursor:pointer;
 }
 
@@ -168,16 +195,10 @@ button{
   width:38px;
   height:38px;
   border-radius:50%;
+  border:0;
   background:#7434ff;
-  font-size:17px;
-}
-
-.emoji{
-  font-size:21px;
-}
-
-.plus{
-  font-size:21px;
+  color:white;
+  cursor:pointer;
 }
 
 /* PICKER */
@@ -187,13 +208,18 @@ button{
   left:8px;
   right:8px;
   bottom:68px;
+
   background:#111117;
   border:1px solid #302044;
   border-radius:20px;
+
   padding:12px;
-  box-shadow:0 15px 45px #000;
+
+  box-shadow:
+    0 20px 55px rgba(0,0,0,.8);
+
   display:none;
-  z-index:9999;
+  z-index:999;
 }
 
 .picker.show{
@@ -204,26 +230,26 @@ button{
 
 .tabs{
   display:flex;
-  gap:7px;
-  border-bottom:1px solid #272731;
+  gap:8px;
+  border-bottom:1px solid #292931;
   padding-bottom:10px;
-  margin-bottom:10px;
+  margin-bottom:12px;
 }
 
 .tab{
   width:48px;
-  height:38px;
+  height:39px;
   border:0;
-  border-radius:11px;
+  border-radius:12px;
   background:#1c1c24;
-  color:#fff;
+  color:white;
   cursor:pointer;
   font-size:20px;
 }
 
 .tab.active{
   background:#7434ff;
-  box-shadow:0 0 15px #7434ff66;
+  box-shadow:0 0 18px rgba(116,52,255,.45);
 }
 
 /* PANELS */
@@ -243,142 +269,109 @@ button{
   grid-template-columns:repeat(7,1fr);
   gap:3px;
   max-height:220px;
-  overflow:auto;
+  overflow-y:auto;
 }
 
 .emoji-grid button{
   border:0;
   background:none;
-  color:#fff;
+  color:white;
   font-size:25px;
   padding:7px;
-  cursor:pointer;
   border-radius:10px;
+  cursor:pointer;
 }
 
 .emoji-grid button:hover{
-  background:#252530;
+  background:#25252e;
 }
 
 /* STICKER HEADER */
 
-.sticker-head{
+.sticker-top{
   display:flex;
   justify-content:space-between;
   align-items:center;
   margin-bottom:10px;
 }
 
-.sticker-head b{
+.sticker-top strong{
   font-size:14px;
 }
 
-.sticker-head span{
-  font-size:10px;
-  color:#888;
+.sticker-top span{
+  font-size:9px;
+  color:#8c8c99;
+  letter-spacing:1px;
 }
 
-/* 3D STICKERS */
+/* REAL 3D STICKER GRID */
 
 .sticker-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:9px;
-  max-height:280px;
-  overflow:auto;
+  max-height:310px;
+  overflow-y:auto;
 }
 
-.sticker{
-  height:105px;
-  border:1px solid #292934;
+.sticker-card{
+  position:relative;
+  min-height:108px;
+
+  border:1px solid #2b2b35;
   border-radius:18px;
 
   background:
     radial-gradient(
       circle at 50% 30%,
-      #7434ff33,
-      transparent 62%
+      rgba(116,52,255,.22),
+      transparent 65%
     ),
     #19191f;
 
-  color:white;
   cursor:pointer;
-
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
+  padding:7px;
 
   transition:.18s;
 }
 
-.sticker:hover{
+.sticker-card:hover{
   transform:translateY(-3px) scale(1.03);
   border-color:#7434ff;
-  box-shadow:
-    0 8px 25px #7434ff33;
+  box-shadow:0 9px 25px rgba(116,52,255,.25);
 }
 
-.sticker:active{
-  transform:scale(.92);
+.sticker-card:active{
+  transform:scale(.9);
 }
 
-.sticker-art{
-  font-size:51px;
-  line-height:58px;
+.sticker-card img{
+  width:72px;
+  height:72px;
+  object-fit:contain;
 
   filter:
-    drop-shadow(0 7px 4px #000)
-    drop-shadow(0 0 8px #ffffff18);
-
-  animation:stickerFloat 3s ease-in-out infinite;
+    drop-shadow(0 7px 5px rgba(0,0,0,.8))
+    drop-shadow(0 0 10px rgba(255,255,255,.08));
 }
 
-.sticker label{
-  font-size:9px;
+.sticker-card .title{
+  display:block;
+  margin-top:3px;
   color:#aaa;
-  font-weight:bold;
+  font-size:8px;
+  font-weight:900;
   letter-spacing:1px;
-  margin-top:4px;
 }
 
-@keyframes stickerFloat{
+/* STICKER PREVIEW */
 
-  0%,100%{
-    transform:translateY(0) rotate(-2deg);
-  }
-
-  50%{
-    transform:translateY(-4px) rotate(2deg);
-  }
-
-}
-
-/* SENT STICKER */
-
-.chat-sticker{
-  font-size:82px;
-  line-height:1;
-
-  filter:
-    drop-shadow(0 9px 5px #000)
-    drop-shadow(0 0 10px #7434ff55);
-
-  animation:stickerPop .25s ease-out;
-}
-
-@keyframes stickerPop{
-
-  from{
-    transform:scale(.4);
-    opacity:0;
-  }
-
-  to{
-    transform:scale(1);
-    opacity:1;
-  }
-
+.empty-sticker{
+  padding:25px 10px;
+  text-align:center;
+  color:#777;
+  font-size:12px;
 }
 
 /* MOBILE */
@@ -393,18 +386,19 @@ button{
     gap:7px;
   }
 
-  .sticker{
-    height:94px;
+  .sticker-card{
+    min-height:98px;
   }
 
-  .sticker-art{
-    font-size:44px;
+  .sticker-card img{
+    width:64px;
+    height:64px;
   }
 
   .chat-sticker{
-    font-size:70px;
+    width:125px;
+    height:125px;
   }
-
 }
 </style>
 </head>
@@ -413,27 +407,20 @@ button{
 
 <div class="app">
 
-<header class="header">
+  <!-- TOP HEADER -->
 
-  <div class="logo">
-    X-DARK
-  </div>
+  <header class="header">
+    <div class="logo">X-DARK</div>
+    <button class="header-btn">♡</button>
+  </header>
 
-  <button class="icon">
-    ♡
-  </button>
-
-</header>
-
-
-<section class="chat">
 
   <!-- CHAT HEADER -->
 
-  <div class="chat-head">
+  <div class="chat-header">
 
     <button
-      class="icon"
+      class="back"
       onclick="history.back()">
       ‹
     </button>
@@ -443,12 +430,12 @@ button{
     </div>
 
     <div>
-      <div class="name">
+      <div class="user-name">
         Darkwing
       </div>
 
-      <div class="status">
-        Online
+      <div class="online">
+        ● Online
       </div>
     </div>
 
@@ -462,19 +449,17 @@ button{
     class="messages">
 
     <div class="message received">
-
       <div class="bubble">
         Welcome to X-DARK 👋
       </div>
-
     </div>
 
   </div>
 
 
-  <!-- MESSAGE AREA -->
+  <!-- INPUT -->
 
-  <div class="message-bar-wrap">
+  <div class="input-area">
 
 
     <!-- PICKER -->
@@ -556,14 +541,14 @@ button{
         id="stickerPanel"
         class="panel">
 
-        <div class="sticker-head">
+        <div class="sticker-top">
 
-          <b>
-            3D Stickers
-          </b>
+          <strong>
+            3D STICKERS
+          </strong>
 
           <span>
-            MODERN PACK
+            X-DARK PACK
           </span>
 
         </div>
@@ -573,184 +558,183 @@ button{
 
 
           <button
-            class="sticker"
-            onclick="sendSticker('😎','COOL')">
+            class="sticker-card"
+            onclick="sendSticker('cool')">
 
-            <div class="sticker-art">
-              😎
-            </div>
+            <img
+              src="stickers/cool.webp"
+              alt="Cool">
 
-            <label>
+            <span class="title">
               COOL
-            </label>
+            </span>
 
           </button>
 
 
           <button
-            class="sticker"
-            onclick="sendSticker('🥰','LOVE')">
+            class="sticker-card"
+            onclick="sendSticker('love')">
 
-            <div class="sticker-art">
-              🥰
-            </div>
+            <img
+              src="stickers/love.webp"
+              alt="Love">
 
-            <label>
+            <span class="title">
               LOVE
-            </label>
+            </span>
 
           </button>
 
 
           <button
-            class="sticker"
-            onclick="sendSticker('😂','LOL')">
+            class="sticker-card"
+            onclick="sendSticker('laugh')">
 
-            <div class="sticker-art">
-              😂
-            </div>
+            <img
+              src="stickers/laugh.webp"
+              alt="Laugh">
 
-            <label>
+            <span class="title">
               LOL
-            </label>
+            </span>
 
           </button>
 
 
           <button
-            class="sticker"
-            onclick="sendSticker('🔥','FIRE')">
+            class="sticker-card"
+            onclick="sendSticker('fire')">
 
-            <div class="sticker-art">
-              🔥
-            </div>
+            <img
+              src="stickers/fire.webp"
+              alt="Fire">
 
-            <label>
+            <span class="title">
               FIRE
-            </label>
+            </span>
 
           </button>
 
 
           <button
-            class="sticker"
-            onclick="sendSticker('🤩','WOW')">
+            class="sticker-card"
+            onclick="sendSticker('wow')">
 
-            <div class="sticker-art">
-              🤩
-            </div>
+            <img
+              src="stickers/wow.webp"
+              alt="Wow">
 
-            <label>
+            <span class="title">
               WOW
-            </label>
+            </span>
 
           </button>
 
 
           <button
-            class="sticker"
-            onclick="sendSticker('🥳','PARTY')">
+            class="sticker-card"
+            onclick="sendSticker('party')">
 
-            <div class="sticker-art">
-              🥳
-            </div>
+            <img
+              src="stickers/party.webp"
+              alt="Party">
 
-            <label>
+            <span class="title">
               PARTY
-            </label>
+            </span>
 
           </button>
 
 
           <button
-            class="sticker"
-            onclick="sendSticker('😡','ANGRY')">
+            class="sticker-card"
+            onclick="sendSticker('angry')">
 
-            <div class="sticker-art">
-              😡
-            </div>
+            <img
+              src="stickers/angry.webp"
+              alt="Angry">
 
-            <label>
+            <span class="title">
               ANGRY
-            </label>
+            </span>
 
           </button>
 
 
           <button
-            class="sticker"
-            onclick="sendSticker('🚀','GO')">
+            class="sticker-card"
+            onclick="sendSticker('rocket')">
 
-            <div class="sticker-art">
-              🚀
-            </div>
+            <img
+              src="stickers/rocket.webp"
+              alt="Rocket">
 
-            <label>
+            <span class="title">
               GO
-            </label>
+            </span>
 
           </button>
 
 
           <button
-            class="sticker"
-            onclick="sendSticker('❤️','HEART')">
+            class="sticker-card"
+            onclick="sendSticker('heart')">
 
-            <div class="sticker-art">
-              ❤️
-            </div>
+            <img
+              src="stickers/heart.webp"
+              alt="Heart">
 
-            <label>
+            <span class="title">
               HEART
-            </label>
+            </span>
 
           </button>
 
 
           <button
-            class="sticker"
-            onclick="sendSticker('🤑','MONEY')">
+            class="sticker-card"
+            onclick="sendSticker('money')">
 
-            <div class="sticker-art">
-              🤑
-            </div>
+            <img
+              src="stickers/money.webp"
+              alt="Money">
 
-            <label>
+            <span class="title">
               MONEY
-            </label>
+            </span>
 
           </button>
 
 
           <button
-            class="sticker"
-            onclick="sendSticker('😱','OMG')">
+            class="sticker-card"
+            onclick="sendSticker('omg')">
 
-            <div class="sticker-art">
-              😱
-            </div>
+            <img
+              src="stickers/omg.webp"
+              alt="OMG">
 
-            <label>
+            <span class="title">
               OMG
-            </label>
+            </span>
 
           </button>
 
 
           <button
-            class="sticker"
-            onclick="sendSticker('👍','LIKE')">
+            class="sticker-card"
+            onclick="sendSticker('like')">
 
-            <div class="sticker-art">
-              👍
-            </div>
+            <img
+              src="stickers/like.webp"
+              alt="Like">
 
-            <label>
+            <span class="title">
               LIKE
-            </label>
+            </span>
 
           </button>
-
 
         </div>
 
@@ -759,21 +743,21 @@ button{
     </div>
 
 
-    <!-- INPUT -->
+    <!-- MESSAGE BAR -->
 
-    <div class="message-bar">
+    <div class="input-box">
 
-      <button class="plus">
+      <button class="input-btn">
         ＋
       </button>
 
       <input
         id="messageInput"
-        type="text"
-        placeholder="Message...">
+        placeholder="Message..."
+        autocomplete="off">
 
       <button
-        class="emoji"
+        class="input-btn emoji-button"
         onclick="togglePicker()">
         😊
       </button>
@@ -787,8 +771,6 @@ button{
     </div>
 
   </div>
-
-</section>
 
 </div>
 
@@ -807,7 +789,7 @@ const picker =
   document.getElementById("picker");
 
 
-/* OPEN / CLOSE PICKER */
+/* PICKER */
 
 function togglePicker(){
 
@@ -816,7 +798,7 @@ function togglePicker(){
 }
 
 
-/* SWITCH TAB */
+/* TABS */
 
 function openTab(tab){
 
@@ -836,23 +818,17 @@ function openTab(tab){
   if(tab === "emoji"){
 
     emojiPanel.classList.add("active");
-
     stickerPanel.classList.remove("active");
 
     emojiTab.classList.add("active");
-
     stickerTab.classList.remove("active");
 
-  }
-
-  else{
+  }else{
 
     emojiPanel.classList.remove("active");
-
     stickerPanel.classList.add("active");
 
     emojiTab.classList.remove("active");
-
     stickerTab.classList.add("active");
 
   }
@@ -860,7 +836,7 @@ function openTab(tab){
 }
 
 
-/* INSERT EMOJI */
+/* EMOJI */
 
 function insertEmoji(emoji){
 
@@ -872,19 +848,13 @@ function insertEmoji(emoji){
     input.selectionEnd ??
     input.value.length;
 
-  const oldText =
-    input.value;
-
-
   input.value =
-    oldText.substring(0,start) +
+    input.value.substring(0,start) +
     emoji +
-    oldText.substring(end);
-
+    input.value.substring(end);
 
   const position =
     start + emoji.length;
-
 
   input.focus();
 
@@ -896,69 +866,48 @@ function insertEmoji(emoji){
 }
 
 
-/* SEND NORMAL MESSAGE */
+/* TEXT MESSAGE */
 
 function sendMessage(){
 
   const text =
     input.value.trim();
 
-
   if(!text){
     return;
   }
 
+  addMessage(text);
 
-  addTextMessage(
-    text,
-    true
-  );
-
-
-  input.value = "";
+  input.value="";
 
   picker.classList.remove("show");
 
 }
 
 
-/* ADD TEXT MESSAGE */
+/* ADD TEXT */
 
-function addTextMessage(
-  text,
-  sent
-){
+function addMessage(text){
 
   const row =
     document.createElement("div");
 
-
   row.className =
-    "message " +
-    (sent ? "sent" : "received");
-
+    "message sent";
 
   const bubble =
     document.createElement("div");
 
-
   bubble.className =
     "bubble";
-
 
   bubble.textContent =
     text;
 
+  row.appendChild(bubble);
 
-  row.appendChild(
-    bubble
-  );
-
-
-  messages.appendChild(
-    row
-  );
-
+  messages.appendChild(row);
 
   messages.scrollTop =
     messages.scrollHeight;
@@ -966,59 +915,68 @@ function addTextMessage(
 }
 
 
-/* SEND STICKER */
+/* SEND REAL STICKER */
 
-function sendSticker(
-  sticker,
-  name
-){
+function sendSticker(name){
 
   const row =
     document.createElement("div");
-
 
   row.className =
     "message sent";
 
 
-  const stickerElement =
+  const wrapper =
     document.createElement("div");
 
+  wrapper.className =
+    "sticker-message";
 
-  stickerElement.className =
+
+  const image =
+    document.createElement("img");
+
+  image.className =
     "chat-sticker";
 
+  image.src =
+    "stickers/" +
+    name +
+    ".webp";
 
-  stickerElement.textContent =
-    sticker;
-
-
-  stickerElement.title =
+  image.alt =
     name;
 
 
-  row.appendChild(
-    stickerElement
-  );
+  image.onerror =
+    function(){
+
+      wrapper.innerHTML =
+        "<div style='color:#aaa;font-size:12px;padding:10px'>" +
+        "Sticker image missing: " +
+        name +
+        ".webp" +
+        "</div>";
+
+    };
 
 
-  messages.appendChild(
-    row
-  );
+  wrapper.appendChild(image);
 
+  row.appendChild(wrapper);
+
+  messages.appendChild(row);
 
   messages.scrollTop =
     messages.scrollHeight;
 
 
-  picker.classList.remove(
-    "show"
-  );
+  picker.classList.remove("show");
 
 }
 
 
-/* ENTER TO SEND */
+/* ENTER */
 
 input.addEventListener(
   "keydown",
@@ -1036,7 +994,7 @@ input.addEventListener(
 );
 
 
-/* CLOSE PICKER WHEN CLICKING OUTSIDE */
+/* OUTSIDE CLICK */
 
 document.addEventListener(
   "click",
@@ -1044,12 +1002,10 @@ document.addEventListener(
 
     if(
       !picker.contains(e.target) &&
-      !e.target.closest(".emoji")
+      !e.target.closest(".emoji-button")
     ){
 
-      picker.classList.remove(
-        "show"
-      );
+      picker.classList.remove("show");
 
     }
 
