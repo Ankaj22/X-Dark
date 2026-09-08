@@ -2,13 +2,23 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width,initial-scale=1.0,viewport-fit=cover">
-<meta name="theme-color" content="#000000">
-
-<title>X-DARK | Social</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#050505">
+<title>X-DARK</title>
 
 <style>
+:root{
+  --bg:#050505;
+  --panel:#0d0d12;
+  --panel2:#14141b;
+  --line:rgba(255,255,255,.09);
+  --muted:#8b8b98;
+  --white:#fff;
+  --purple:#8b5cf6;
+  --purple2:#b06cff;
+  --pink:#ff3d81;
+}
+
 *{
   box-sizing:border-box;
   margin:0;
@@ -19,9 +29,9 @@
 html,body{
   width:100%;
   height:100%;
-  background:#000;
-  color:#fff;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  background:var(--bg);
+  color:white;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
 }
 
 body{
@@ -33,347 +43,423 @@ button,input,textarea{
 }
 
 button{
-  cursor:pointer;
+  border:0;
+  color:white;
+}
+
+svg{
+  display:block;
 }
 
 /* =========================
-   APP
+APP
 ========================= */
 
 .app{
   width:100%;
-  height:100vh;
-  background:#000;
+  height:100dvh;
   position:relative;
   overflow:hidden;
+  background:
+    radial-gradient(
+      circle at 80% -10%,
+      rgba(139,92,246,.18),
+      transparent 34%
+    ),
+    #050505;
 }
 
 /* =========================
-   TOP BAR
+TOP BAR
 ========================= */
 
-.top{
-  position:fixed;
+.topbar{
+  position:absolute;
   top:0;
   left:0;
   right:0;
-  height:70px;
-  z-index:50;
+  height:76px;
+  z-index:100;
 
   display:flex;
   align-items:center;
   justify-content:space-between;
 
-  padding:0 17px;
+  padding:0 18px;
 
   background:linear-gradient(
     to bottom,
-    rgba(0,0,0,.75),
+    rgba(5,5,5,.94),
+    rgba(5,5,5,.35),
     transparent
   );
 }
 
 .logo{
-  font-size:27px;
+  font-size:28px;
   font-weight:950;
-  letter-spacing:-1px;
+  letter-spacing:-1.5px;
 }
 
 .logo span{
-  color:#8b4dff;
+  color:var(--purple2);
 }
 
-.top-right{
+.top-actions{
   display:flex;
   gap:9px;
 }
 
-.top-btn{
+.circle-btn{
   width:43px;
   height:43px;
-
-  border:1px solid rgba(255,255,255,.15);
   border-radius:50%;
 
-  background:rgba(20,20,20,.65);
-  color:#fff;
+  background:rgba(18,18,23,.72);
+  border:1px solid var(--line);
 
   display:flex;
   align-items:center;
   justify-content:center;
 
-  backdrop-filter:blur(15px);
+  backdrop-filter:blur(20px);
 }
 
-.top-btn svg{
-  width:22px;
-  height:22px;
-  stroke:currentColor;
+.circle-btn svg{
+  width:21px;
+  height:21px;
+  stroke:white;
   fill:none;
-  stroke-width:2;
+  stroke-width:1.9;
   stroke-linecap:round;
   stroke-linejoin:round;
 }
 
 /* =========================
-   FEED
+HOME
 ========================= */
 
-.feed{
-  width:100%;
-  height:100vh;
-
+.home{
+  height:100%;
   overflow-y:auto;
-  scroll-snap-type:y mandatory;
-
+  padding-bottom:85px;
   scrollbar-width:none;
 }
 
-.feed::-webkit-scrollbar{
+.home::-webkit-scrollbar{
   display:none;
 }
 
-.reel{
-  position:relative;
-
-  width:100%;
-  height:100vh;
-
-  scroll-snap-align:start;
-  scroll-snap-stop:always;
-
-  overflow:hidden;
-
-  background:#090909;
-}
-
-.reel video{
-  position:absolute;
-
-  width:100%;
-  height:100%;
-
-  object-fit:cover;
-
-  background:#111;
-}
-
-/* dark gradient */
-
-.reel::after{
-  content:"";
-
-  position:absolute;
-  inset:0;
-
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(0,0,0,.55),
-      transparent 25%,
-      transparent 55%,
-      rgba(0,0,0,.8)
-    );
-
-  pointer-events:none;
-}
-
 /* =========================
-   REEL INFO
+STORIES
 ========================= */
 
-.reel-info{
-  position:absolute;
-
-  left:17px;
-  right:90px;
-  bottom:95px;
-
-  z-index:10;
+.stories-wrap{
+  padding-top:73px;
+  padding-left:15px;
+  padding-right:15px;
 }
 
-.creator{
+.stories{
   display:flex;
-  align-items:center;
-  gap:10px;
-
-  margin-bottom:13px;
+  gap:13px;
+  overflow-x:auto;
+  scrollbar-width:none;
 }
 
-.creator-avatar{
-  width:43px;
-  height:43px;
+.stories::-webkit-scrollbar{
+  display:none;
+}
 
+.story{
+  min-width:63px;
+  text-align:center;
+  color:#b9b9c2;
+  font-size:11px;
+  font-weight:650;
+}
+
+.story-ring{
+  width:61px;
+  height:61px;
   border-radius:50%;
-
+  padding:2px;
+  margin:auto;
   background:linear-gradient(
     135deg,
-    #6f35ff,
-    #bd72ff
+    #ffcf40,
+    #ff387f,
+    #853cff
   );
+}
+
+.story-inner{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  background:#16161c;
+  border:2px solid #08080a;
 
   display:flex;
   align-items:center;
   justify-content:center;
+
+  font-size:20px;
+  font-weight:900;
+}
+
+.story-name{
+  margin-top:6px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+/* =========================
+SECTION TITLE
+========================= */
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:25px 18px 13px;
+}
+
+.section-head h2{
+  font-size:22px;
+  letter-spacing:-.5px;
+}
+
+.section-head button{
+  background:none;
+  color:#a77cff;
+  font-size:13px;
+  font-weight:750;
+}
+
+/* =========================
+POST CARD
+========================= */
+
+.post{
+  margin:0 13px 18px;
+  border-radius:27px;
+
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.055),
+      rgba(255,255,255,.015)
+    );
+
+  border:1px solid var(--line);
+
+  box-shadow:
+    0 20px 70px rgba(0,0,0,.38);
+}
+
+.post-head{
+  height:66px;
+  display:flex;
+  align-items:center;
+  padding:0 14px;
+  gap:11px;
+}
+
+.avatar{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6e39ff,
+      #bb70ff
+    );
 
   font-weight:900;
 }
 
-.creator-name{
-  font-size:17px;
-  font-weight:850;
+.post-user{
+  flex:1;
 }
 
-.follow-mini{
-  padding:6px 12px;
-
-  border:1px solid #fff;
-  border-radius:9px;
-
-  background:rgba(0,0,0,.35);
-  color:#fff;
-
-  font-size:12px;
-  font-weight:800;
-}
-
-.caption{
-  font-size:15px;
-  line-height:1.45;
-
-  margin-bottom:10px;
-}
-
-.tags{
-  color:#ddd;
+.post-user strong{
   font-size:14px;
 }
 
-/* =========================
-   RIGHT ACTIONS
-========================= */
-
-.actions{
-  position:absolute;
-
-  right:13px;
-  bottom:88px;
-
-  z-index:15;
-
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:19px;
+.post-user small{
+  display:block;
+  color:#777783;
+  margin-top:2px;
+  font-size:11px;
 }
 
-.action{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:4px;
-
-  color:#fff;
-
+.more{
+  width:35px;
+  height:35px;
+  border-radius:50%;
   background:none;
-  border:0;
-
-  font-size:12px;
-  font-weight:750;
-
-  text-shadow:0 2px 5px #000;
+  color:#aaa;
+  font-size:20px;
 }
 
-.action svg{
-  width:31px;
-  height:31px;
+/* MEDIA */
 
-  stroke:#fff;
+.media{
+  position:relative;
+  width:100%;
+  aspect-ratio:4/5;
+  background:#111;
+  overflow:hidden;
+}
+
+.media video,
+.media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.media::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent 55%,
+      rgba(0,0,0,.42)
+    );
+}
+
+.reel-badge{
+  position:absolute;
+  top:12px;
+  left:12px;
+  z-index:5;
+
+  padding:7px 10px;
+  border-radius:10px;
+
+  background:rgba(0,0,0,.45);
+  backdrop-filter:blur(15px);
+
+  font-size:10px;
+  font-weight:800;
+}
+
+/* POST ACTIONS */
+
+.post-actions{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  padding:14px 14px 5px;
+}
+
+.action-btn{
+  background:none;
+  display:flex;
+  align-items:center;
+  gap:5px;
+  color:#aaa;
+}
+
+.action-btn svg{
+  width:23px;
+  height:23px;
+  stroke:currentColor;
   fill:none;
-
-  stroke-width:2;
-
+  stroke-width:1.8;
   stroke-linecap:round;
   stroke-linejoin:round;
 }
 
-.action.like.active svg{
-  fill:#ff3158;
-  stroke:#ff3158;
+.action-btn.active{
+  color:var(--pink);
 }
 
-.action.like.active{
-  color:#ff3158;
+.action-btn.active svg{
+  fill:currentColor;
 }
 
-.action.save.active svg{
-  fill:#fff;
+.save-btn{
+  margin-left:auto;
 }
 
-/* =========================
-   MUSIC
-========================= */
+.post-body{
+  padding:7px 15px 17px;
+}
 
-.music{
-  display:flex;
-  align-items:center;
-  gap:7px;
+.likes{
+  font-size:13px;
+  font-weight:800;
+  margin-bottom:7px;
+}
 
-  margin-top:12px;
+.caption{
+  font-size:14px;
+  line-height:1.45;
+  color:#dedee4;
+}
 
+.caption b{
+  color:white;
+}
+
+.tags{
+  color:#9870e9;
+  margin-top:6px;
   font-size:13px;
 }
 
-.music-disc{
-  width:23px;
-  height:23px;
-
-  border-radius:50%;
-
-  border:2px solid #fff;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  font-size:10px;
-}
-
 /* =========================
-   BOTTOM NAV
+BOTTOM NAV
 ========================= */
 
-.nav{
-  position:fixed;
-
-  bottom:0;
+.bottom{
+  position:absolute;
   left:0;
   right:0;
+  bottom:0;
+  z-index:150;
 
-  height:72px;
-
-  z-index:60;
+  height:75px;
 
   display:flex;
-  justify-content:space-around;
   align-items:center;
+  justify-content:space-around;
 
-  background:linear-gradient(
-    to top,
-    rgba(0,0,0,.95),
-    rgba(0,0,0,.65)
-  );
+  background:
+    linear-gradient(
+      to top,
+      rgba(5,5,5,.98),
+      rgba(5,5,5,.86)
+    );
 
-  backdrop-filter:blur(15px);
+  border-top:1px solid var(--line);
+
+  backdrop-filter:blur(25px);
 
   padding-bottom:env(safe-area-inset-bottom);
 }
 
 .nav-btn{
-  color:#aaa;
-
-  border:0;
+  min-width:55px;
   background:none;
+  color:#777783;
 
   display:flex;
   flex-direction:column;
@@ -381,232 +467,175 @@ button{
   gap:4px;
 
   font-size:10px;
-  font-weight:750;
+  font-weight:700;
 }
 
 .nav-btn svg{
-  width:24px;
-  height:24px;
-
+  width:23px;
+  height:23px;
   stroke:currentColor;
   fill:none;
-
-  stroke-width:2;
-
+  stroke-width:1.8;
   stroke-linecap:round;
   stroke-linejoin:round;
 }
 
 .nav-btn.active{
-  color:#fff;
+  color:white;
 }
 
-.create-nav{
+.nav-btn.active svg{
+  stroke:var(--purple2);
+}
+
+.create-button{
   width:45px;
-  height:31px;
-
+  height:32px;
   border-radius:10px;
-
-  background:#fff;
-  color:#000!important;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.create-nav svg{
-  width:22px;
-}
-
-/* =========================
-   STORIES
-========================= */
-
-.story-bar{
-  position:absolute;
-
-  top:70px;
-  left:0;
-  right:0;
-
-  z-index:30;
-
-  display:flex;
-  gap:14px;
-
-  padding:8px 15px;
-
-  overflow-x:auto;
-
-  scrollbar-width:none;
-}
-
-.story-bar::-webkit-scrollbar{
-  display:none;
-}
-
-.story{
-  flex:none;
-
-  width:58px;
-
-  text-align:center;
-
-  font-size:10px;
-  font-weight:700;
-}
-
-.story-ring{
-  width:56px;
-  height:56px;
-
-  border-radius:50%;
-
-  padding:2px;
 
   background:
     linear-gradient(
       135deg,
-      #ffcc00,
-      #ff0055,
-      #8b3dff
+      #fff,
+      #dcdcdc
     );
-}
 
-.story-ring div{
-  width:100%;
-  height:100%;
-
-  border-radius:50%;
-
-  background:#171717;
+  color:#000;
 
   display:flex;
   align-items:center;
   justify-content:center;
 
-  font-weight:900;
-  font-size:19px;
+  box-shadow:
+    0 0 25px rgba(139,92,246,.22);
+}
+
+.create-button svg{
+  stroke:#000;
 }
 
 /* =========================
-   PANELS
+FULLSCREEN DRAWER
 ========================= */
 
-.panel{
+.drawer{
   position:absolute;
-
   inset:0;
+  z-index:300;
 
-  z-index:100;
+  background:
+    radial-gradient(
+      circle at 80% 0%,
+      rgba(139,92,246,.14),
+      transparent 35%
+    ),
+    #060608;
 
-  background:#050505;
-
-  transform:translateY(100%);
-
-  transition:.3s ease;
+  transform:translateX(100%);
+  transition:transform .32s cubic-bezier(.2,.8,.2,1);
 
   overflow-y:auto;
-
-  padding-bottom:90px;
 }
 
-.panel.open{
-  transform:translateY(0);
+.drawer.open{
+  transform:translateX(0);
 }
 
-.panel-header{
+.drawer-header{
   position:sticky;
   top:0;
+  z-index:5;
 
-  height:65px;
+  height:68px;
 
   display:flex;
   align-items:center;
 
-  padding:0 17px;
+  padding:0 15px;
 
-  background:rgba(5,5,5,.94);
+  background:rgba(6,6,8,.86);
+  backdrop-filter:blur(22px);
 
-  backdrop-filter:blur(18px);
-
-  border-bottom:1px solid #202027;
-
-  z-index:5;
+  border-bottom:1px solid var(--line);
 }
 
-.panel-header h2{
-  flex:1;
-
-  text-align:center;
-
-  font-size:20px;
-}
-
-.back{
+.back-btn{
   width:40px;
   height:40px;
-
   border-radius:50%;
 
-  border:1px solid #292930;
-
-  background:#111117;
-  color:#fff;
+  background:#14141a;
+  border:1px solid var(--line);
 
   display:flex;
   align-items:center;
   justify-content:center;
 }
 
+.back-btn svg{
+  width:21px;
+  stroke:white;
+  fill:none;
+  stroke-width:2;
+}
+
+.drawer-title{
+  flex:1;
+  text-align:center;
+  font-size:19px;
+  font-weight:850;
+}
+
+.header-space{
+  width:40px;
+}
+
 /* =========================
-   EXPLORE
+EXPLORE
 ========================= */
 
-.explore-search{
-  margin:15px;
+.search{
+  margin:16px;
 
-  height:50px;
-
-  background:#15151b;
-
-  border:1px solid #292930;
-
-  border-radius:14px;
+  height:51px;
 
   display:flex;
   align-items:center;
+  gap:10px;
 
-  padding:0 14px;
+  padding:0 15px;
 
-  gap:9px;
+  border-radius:17px;
+
+  background:#121218;
+  border:1px solid var(--line);
 }
 
-.explore-search input{
-  flex:1;
+.search svg{
+  width:20px;
+  stroke:#858590;
+  fill:none;
+  stroke-width:2;
+}
 
+.search input{
+  flex:1;
   background:none;
   border:0;
   outline:0;
-
-  color:#fff;
+  color:white;
 }
 
 .explore-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:2px;
+  gap:3px;
 }
 
 .explore-item{
-  aspect-ratio:1/1;
-
-  background:#151515;
-
+  aspect-ratio:1;
   overflow:hidden;
-
-  position:relative;
+  background:#111;
 }
 
 .explore-item video{
@@ -616,24 +645,37 @@ button{
 }
 
 /* =========================
-   PROFILE
+PROFILE
 ========================= */
 
 .profile{
-  padding:28px 18px;
+  padding:25px 18px;
 }
 
-.profile-top{
+.profile-main{
   text-align:center;
 }
 
 .profile-avatar{
-  width:100px;
-  height:100px;
-
+  width:105px;
+  height:105px;
   border-radius:50%;
-
+  padding:3px;
   margin:auto;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff3c87,
+      #7a45ff
+    );
+}
+
+.profile-avatar-inner{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  background:#17131d;
 
   display:flex;
   align-items:center;
@@ -641,30 +683,23 @@ button{
 
   font-size:42px;
   font-weight:950;
-
-  background:
-    linear-gradient(
-      135deg,
-      #6e38ff,
-      #b86aff
-    );
 }
 
-.profile-top h2{
-  margin-top:13px;
+.profile-main h2{
+  margin-top:14px;
+  font-size:22px;
 }
 
-.profile-top p{
-  color:#85858e;
+.profile-main p{
+  color:#777783;
+  font-size:13px;
   margin-top:4px;
 }
 
 .stats{
   display:flex;
   justify-content:center;
-
-  gap:35px;
-
+  gap:42px;
   margin:25px 0;
 }
 
@@ -674,58 +709,291 @@ button{
 
 .stat strong{
   display:block;
-  font-size:19px;
+  font-size:18px;
 }
 
 .stat span{
-  color:#888;
-  font-size:12px;
+  color:#777783;
+  font-size:11px;
 }
 
 .profile-actions{
   display:flex;
-  gap:10px;
+  gap:9px;
 }
 
-.profile-btn{
+.profile-action{
   flex:1;
-
   height:43px;
+  border-radius:13px;
 
-  border-radius:12px;
+  background:#15151b;
+  border:1px solid var(--line);
 
-  background:#17171d;
-  border:1px solid #303039;
-
-  color:#fff;
-
+  font-size:13px;
   font-weight:800;
 }
 
+.profile-tabs{
+  display:flex;
+  border-top:1px solid var(--line);
+  margin-top:28px;
+}
+
+.profile-tab{
+  flex:1;
+  height:50px;
+  background:none;
+  color:#777783;
+}
+
+.profile-tab.active{
+  color:white;
+  border-bottom:2px solid var(--purple2);
+}
+
 /* =========================
-   COMMENTS
+SETTINGS
+========================= */
+
+.setting{
+  margin:13px 15px;
+
+  min-height:67px;
+
+  border-radius:17px;
+
+  background:#111117;
+  border:1px solid var(--line);
+
+  display:flex;
+  align-items:center;
+
+  padding:0 16px;
+
+  gap:12px;
+}
+
+.setting-icon{
+  width:39px;
+  height:39px;
+  border-radius:12px;
+
+  background:#1a1525;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.setting-icon svg{
+  width:19px;
+  stroke:#a87cff;
+  fill:none;
+  stroke-width:2;
+}
+
+.setting-text{
+  flex:1;
+}
+
+.setting-text strong{
+  font-size:14px;
+}
+
+.setting-text small{
+  display:block;
+  color:#777783;
+  margin-top:3px;
+  font-size:11px;
+}
+
+.chevron{
+  color:#666;
+  font-size:20px;
+}
+
+/* =========================
+MESSAGES
+========================= */
+
+.message{
+  margin:10px 15px;
+  padding:14px;
+
+  border-radius:18px;
+
+  background:#111117;
+  border:1px solid var(--line);
+
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.message-info{
+  flex:1;
+}
+
+.message-info strong{
+  font-size:14px;
+}
+
+.message-info small{
+  display:block;
+  color:#777783;
+  margin-top:3px;
+}
+
+/* =========================
+CREATE
+========================= */
+
+.create-area{
+  padding:17px;
+}
+
+.upload-box{
+  min-height:190px;
+
+  border:1px dashed #4a4655;
+
+  border-radius:22px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(139,92,246,.09),
+      transparent 65%
+    );
+}
+
+.upload-box input{
+  display:none;
+}
+
+.upload-label{
+  cursor:pointer;
+}
+
+.upload-icon{
+  width:58px;
+  height:58px;
+  margin:auto;
+
+  border-radius:18px;
+
+  background:#17131f;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.upload-icon svg{
+  width:27px;
+  stroke:#a97cff;
+  fill:none;
+  stroke-width:1.8;
+}
+
+.upload-label strong{
+  display:block;
+  margin-top:12px;
+}
+
+.upload-label small{
+  display:block;
+  color:#777783;
+  margin-top:5px;
+}
+
+.preview{
+  display:none;
+
+  width:100%;
+  aspect-ratio:4/5;
+
+  border-radius:20px;
+  overflow:hidden;
+
+  background:#111;
+  margin-bottom:14px;
+}
+
+.preview video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.caption-box{
+  width:100%;
+  min-height:110px;
+
+  margin-top:15px;
+
+  border-radius:17px;
+
+  background:#111117;
+  border:1px solid var(--line);
+
+  color:white;
+
+  padding:14px;
+
+  resize:none;
+  outline:none;
+}
+
+.publish{
+  width:100%;
+  height:50px;
+
+  margin-top:12px;
+
+  border-radius:15px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #713cff,
+      #a964ff
+    );
+
+  font-weight:900;
+
+  box-shadow:
+    0 10px 30px rgba(126,67,255,.2);
+}
+
+/* =========================
+COMMENTS
 ========================= */
 
 .comments{
-  position:fixed;
-
+  position:absolute;
   left:0;
   right:0;
   bottom:0;
 
-  z-index:200;
+  z-index:500;
 
-  background:#111116;
+  background:#101015;
 
-  border-radius:25px 25px 0 0;
+  border-radius:26px 26px 0 0;
 
   transform:translateY(100%);
 
   transition:.3s;
 
-  max-height:75vh;
-
-  padding-bottom:10px;
+  box-shadow:0 -20px 60px rgba(0,0,0,.55);
 }
 
 .comments.open{
@@ -733,246 +1001,105 @@ button{
 }
 
 .comment-head{
+  height:56px;
+
   display:flex;
   align-items:center;
-
   justify-content:center;
 
-  height:55px;
-
-  border-bottom:1px solid #292930;
+  border-bottom:1px solid var(--line);
 
   font-weight:850;
 }
 
 .comment-list{
-  height:45vh;
-
+  height:42vh;
   overflow-y:auto;
-
   padding:15px;
 }
 
 .comment{
   display:flex;
   gap:10px;
-
   margin-bottom:17px;
 }
 
 .comment-avatar{
   width:35px;
   height:35px;
-
   border-radius:50%;
 
-  background:#6331ca;
+  background:#6736d4;
 
   display:flex;
   align-items:center;
   justify-content:center;
 
-  font-size:13px;
-  font-weight:800;
+  font-size:12px;
+  font-weight:900;
 }
 
-.comment-text{
+.comment-body{
   flex:1;
-
-  color:#ddd;
-
-  font-size:14px;
-
-  line-height:1.4;
+  font-size:13px;
+  line-height:1.45;
 }
 
-.comment-text strong{
-  color:#fff;
+.comment-body span{
+  color:#888;
 }
 
 .comment-input{
+  padding:10px 14px;
   display:flex;
   gap:8px;
-
-  padding:10px 14px;
 }
 
 .comment-input input{
   flex:1;
+  height:43px;
 
-  background:#202027;
+  background:#1b1b22;
+  border:1px solid var(--line);
 
-  border:1px solid #303039;
+  border-radius:22px;
 
-  border-radius:20px;
-
-  padding:11px 15px;
-
-  color:#fff;
-
+  color:white;
   outline:none;
+
+  padding:0 15px;
 }
 
 .comment-input button{
   width:43px;
-
   border-radius:50%;
-
-  background:#884cff;
-
-  color:#fff;
+  background:#8b5cf6;
 }
 
 /* =========================
-   CREATE
-========================= */
-
-.create-box{
-  padding:18px;
-}
-
-.preview{
-  width:100%;
-  aspect-ratio:9/16;
-
-  max-height:55vh;
-
-  background:#111;
-
-  border-radius:18px;
-
-  overflow:hidden;
-
-  display:none;
-
-  margin-bottom:15px;
-}
-
-.preview video,
-.preview img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.upload{
-  border:1px dashed #45454e;
-
-  border-radius:18px;
-
-  min-height:150px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  text-align:center;
-
-  color:#888;
-
-  padding:20px;
-
-  margin-bottom:15px;
-}
-
-.upload input{
-  display:none;
-}
-
-.upload label{
-  cursor:pointer;
-}
-
-.caption-input{
-  width:100%;
-
-  min-height:100px;
-
-  resize:none;
-
-  background:#111117;
-
-  color:#fff;
-
-  border:1px solid #292930;
-
-  border-radius:15px;
-
-  padding:14px;
-
-  outline:none;
-}
-
-.publish{
-  width:100%;
-
-  height:50px;
-
-  border-radius:15px;
-
-  margin-top:13px;
-
-  background:#884cff;
-
-  color:#fff;
-
-  font-weight:900;
-}
-
-/* =========================
-   SETTINGS
-========================= */
-
-.setting{
-  margin:15px;
-
-  background:#111117;
-
-  border:1px solid #292930;
-
-  border-radius:17px;
-
-  padding:18px;
-
-  display:flex;
-
-  justify-content:space-between;
-  align-items:center;
-}
-
-.setting small{
-  color:#777;
-  display:block;
-  margin-top:4px;
-}
-
-/* =========================
-   TOAST
+TOAST
 ========================= */
 
 .toast{
-  position:fixed;
+  position:absolute;
 
   left:50%;
   bottom:90px;
 
   transform:translateX(-50%);
 
-  z-index:500;
-
-  background:#24242c;
-
-  border:1px solid #3b3b47;
-
-  border-radius:14px;
-
-  padding:13px 19px;
-
-  font-size:14px;
+  z-index:700;
 
   max-width:90%;
 
-  text-align:center;
+  padding:13px 18px;
+
+  border-radius:14px;
+
+  background:#25252e;
+  border:1px solid #3b3b48;
+
+  font-size:13px;
 
   display:none;
 }
@@ -982,32 +1109,16 @@ button{
 }
 
 /* =========================
-   DESKTOP
+DESKTOP
 ========================= */
 
 @media(min-width:700px){
 
-  .feed{
-    max-width:500px;
+  .app{
+    max-width:520px;
     margin:auto;
-
-    border-left:1px solid #181818;
-    border-right:1px solid #181818;
-  }
-
-  .top{
-    max-width:500px;
-    margin:auto;
-  }
-
-  .nav{
-    max-width:500px;
-    left:50%;
-    right:auto;
-
-    width:500px;
-
-    transform:translateX(-50%);
+    border-left:1px solid #17171b;
+    border-right:1px solid #17171b;
   }
 
 }
@@ -1020,26 +1131,29 @@ button{
 
 <!-- ================= TOP ================= -->
 
-<header class="top">
+<header class="topbar">
 
   <div class="logo">
     X-<span>DARK</span>
   </div>
 
-  <div class="top-right">
+  <div class="top-actions">
 
-    <!-- Messages -->
-    <button class="top-btn" onclick="openPanel('messages')">
+    <button class="circle-btn"
+      onclick="openDrawer('messages')">
+
       <svg viewBox="0 0 24 24">
         <path d="M20 11.5a7.5 7.5 0 0 1-8 7.5
         8.5 8.5 0 0 1-3.5-.8L4 20l1.8-3.5
         A7.2 7.2 0 0 1 4.5 12
         7.5 7.5 0 0 1 12 4.5a7.5 7.5 0 0 1 8 7z"/>
       </svg>
+
     </button>
 
-    <!-- Settings -->
-    <button class="top-btn" onclick="openPanel('settings')">
+    <button class="circle-btn"
+      onclick="openDrawer('settings')">
+
       <svg viewBox="0 0 24 24">
         <circle cx="12" cy="12" r="3"/>
         <path d="M19.4 15a1.7 1.7 0 0 0
@@ -1060,6 +1174,7 @@ button{
         1.7 1.7 0 0 0 1.5 1h.1V14h-.1
         a1.7 1.7 0 0 0-1.5 1z"/>
       </svg>
+
     </button>
 
   </div>
@@ -1067,387 +1182,298 @@ button{
 </header>
 
 
-<!-- ================= STORIES ================= -->
+<!-- ================= HOME ================= -->
 
-<div class="story-bar">
+<main class="home">
 
-  <div class="story">
-    <div class="story-ring">
-      <div>+</div>
-    </div>
-    You
-  </div>
+  <!-- STORIES -->
 
-  <div class="story">
-    <div class="story-ring">
-      <div>D</div>
-    </div>
-    Darkwing
-  </div>
+  <div class="stories-wrap">
 
-  <div class="story">
-    <div class="story-ring">
-      <div>N</div>
-    </div>
-    Nova
-  </div>
+    <div class="stories">
 
-  <div class="story">
-    <div class="story-ring">
-      <div>A</div>
-    </div>
-    Alex
-  </div>
-
-  <div class="story">
-    <div class="story-ring">
-      <div>X</div>
-    </div>
-    XUser
-  </div>
-
-</div>
-
-
-<!-- ================= FEED ================= -->
-
-<main class="feed" id="feed">
-
-
-<!-- REEL 1 -->
-
-<section class="reel">
-
-  <video
-    src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-    loop
-    muted
-    playsinline
-    autoplay>
-  </video>
-
-  <div class="reel-info">
-
-    <div class="creator">
-
-      <div class="creator-avatar">
-        D
+      <div class="story">
+        <div class="story-ring">
+          <div class="story-inner">+</div>
+        </div>
+        <div class="story-name">Your story</div>
       </div>
 
-      <div class="creator-name">
-        Darkwing
+      <div class="story">
+        <div class="story-ring">
+          <div class="story-inner">D</div>
+        </div>
+        <div class="story-name">Darkwing</div>
       </div>
 
-      <button class="follow-mini"
-        onclick="follow(this)">
-        Follow
+      <div class="story">
+        <div class="story-ring">
+          <div class="story-inner">N</div>
+        </div>
+        <div class="story-name">Nova</div>
+      </div>
+
+      <div class="story">
+        <div class="story-ring">
+          <div class="story-inner">A</div>
+        </div>
+        <div class="story-name">Alex</div>
+      </div>
+
+      <div class="story">
+        <div class="story-ring">
+          <div class="story-inner">X</div>
+        </div>
+        <div class="story-name">XUser</div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- SECTION -->
+
+  <div class="section-head">
+
+    <h2>For you</h2>
+
+    <button onclick="openDrawer('explore')">
+      Explore
+    </button>
+
+  </div>
+
+
+  <!-- POST 1 -->
+
+  <article class="post">
+
+    <div class="post-head">
+
+      <div class="avatar">D</div>
+
+      <div class="post-user">
+        <strong>Darkwing</strong>
+        <small>2 min ago · Original audio</small>
+      </div>
+
+      <button class="more">•••</button>
+
+    </div>
+
+
+    <div class="media">
+
+      <span class="reel-badge">
+        REEL
+      </span>
+
+      <video
+        src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+        muted
+        loop
+        autoplay
+        playsinline>
+      </video>
+
+    </div>
+
+
+    <div class="post-actions">
+
+      <button class="action-btn like"
+        onclick="like(this)">
+
+        <svg viewBox="0 0 24 24">
+          <path d="M20.8 8.6c0 5.5-8.8 10.2-8.8 10.2
+          S3.2 14.1 3.2 8.6
+          A4.6 4.6 0 0 1 12 6.3
+          a4.6 4.6 0 0 1 8.8 2.3z"/>
+        </svg>
+
+        <span>12.4K</span>
+
+      </button>
+
+
+      <button class="action-btn"
+        onclick="openComments()">
+
+        <svg viewBox="0 0 24 24">
+          <path d="M20 11.5a7.5 7.5 0 0 1-8 7.5
+          8.5 8.5 0 0 1-3.5-.8L4 20l1.8-3.5
+          A7.2 7.2 0 0 1 4.5 12
+          7.5 7.5 0 0 1 12 4.5a7.5 7.5 0 0 1 8 7z"/>
+        </svg>
+
+        <span>842</span>
+
+      </button>
+
+
+      <button class="action-btn"
+        onclick="share()">
+
+        <svg viewBox="0 0 24 24">
+          <path d="M12 16V3"/>
+          <path d="m7 8 5-5 5 5"/>
+          <path d="M5 13v6a2 2 0 0 0 2 2h10
+          a2 2 0 0 0 2-2v-6"/>
+        </svg>
+
+      </button>
+
+
+      <button class="action-btn save-btn"
+        onclick="save(this)">
+
+        <svg viewBox="0 0 24 24">
+          <path d="M6 3h12v18l-6-4-6 4z"/>
+        </svg>
+
       </button>
 
     </div>
 
-    <div class="caption">
-      Welcome to X-DARK 🔥
-      The new dark social experience.
+
+    <div class="post-body">
+
+      <div class="likes">
+        Liked by Ankaj and 12,399 others
+      </div>
+
+      <div class="caption">
+        <b>Darkwing</b>
+        Welcome to the new generation of social.
+        Clean. Dark. Private. ⚡
+      </div>
+
+      <div class="tags">
+        #XDARK #Social #Reels #DarkMode
+      </div>
+
     </div>
 
-    <div class="tags">
-      #xdark #reels #viral #dark
-    </div>
-
-    <div class="music">
-      <div class="music-disc">♪</div>
-      Original sound • Darkwing
-    </div>
-
-  </div>
+  </article>
 
 
-  <div class="actions">
+  <!-- POST 2 -->
 
-    <button class="action like"
-      onclick="likePost(this)">
+  <article class="post">
 
-      <svg viewBox="0 0 24 24">
-        <path d="M20.8 8.6c0 5.5-8.8 10.2-8.8 10.2
-        S3.2 14.1 3.2 8.6
-        A4.6 4.6 0 0 1 12 6.3
-        a4.6 4.6 0 0 1 8.8 2.3z"/>
-      </svg>
+    <div class="post-head">
 
-      <span>12.4K</span>
-    </button>
-
-
-    <button class="action"
-      onclick="openComments()">
-
-      <svg viewBox="0 0 24 24">
-        <path d="M20 11.5a7.5 7.5 0 0 1-8 7.5
-        8.5 8.5 0 0 1-3.5-.8L4 20l1.8-3.5
-        A7.2 7.2 0 0 1 4.5 12
-        7.5 7.5 0 0 1 12 4.5a7.5 7.5 0 0 1 8 7z"/>
-      </svg>
-
-      <span>842</span>
-
-    </button>
-
-
-    <button class="action"
-      onclick="sharePost()">
-
-      <svg viewBox="0 0 24 24">
-        <path d="M12 16V3"/>
-        <path d="m7 8 5-5 5 5"/>
-        <path d="M5 13v6a2 2 0 0 0 2 2h10
-        a2 2 0 0 0 2-2v-6"/>
-      </svg>
-
-      <span>Share</span>
-
-    </button>
-
-
-    <button class="action save"
-      onclick="savePost(this)">
-
-      <svg viewBox="0 0 24 24">
-        <path d="M6 3h12v18l-6-4-6 4z"/>
-      </svg>
-
-      <span>Save</span>
-
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- REEL 2 -->
-
-<section class="reel">
-
-  <video
-    src="https://www.w3schools.com/html/mov_bbb.mp4"
-    loop
-    muted
-    playsinline>
-  </video>
-
-  <div class="reel-info">
-
-    <div class="creator">
-
-      <div class="creator-avatar">
+      <div class="avatar"
+        style="background:linear-gradient(135deg,#ff4c87,#754cff)">
         N
       </div>
 
-      <div class="creator-name">
-        Nova
+      <div class="post-user">
+        <strong>Nova</strong>
+        <small>18 min ago</small>
       </div>
 
-      <button class="follow-mini"
-        onclick="follow(this)">
-        Follow
+      <button class="more">•••</button>
+
+    </div>
+
+
+    <div class="media">
+
+      <video
+        src="https://www.w3schools.com/html/mov_bbb.mp4"
+        muted
+        loop
+        autoplay
+        playsinline>
+      </video>
+
+    </div>
+
+
+    <div class="post-actions">
+
+      <button class="action-btn like"
+        onclick="like(this)">
+
+        <svg viewBox="0 0 24 24">
+          <path d="M20.8 8.6c0 5.5-8.8 10.2-8.8 10.2
+          S3.2 14.1 3.2 8.6
+          A4.6 4.6 0 0 1 12 6.3
+          a4.6 4.6 0 0 1 8.8 2.3z"/>
+        </svg>
+
+        <span>8.1K</span>
+
+      </button>
+
+      <button class="action-btn"
+        onclick="openComments()">
+
+        <svg viewBox="0 0 24 24">
+          <path d="M20 11.5a7.5 7.5 0 0 1-8 7.5
+          8.5 8.5 0 0 1-3.5-.8L4 20l1.8-3.5
+          A7.2 7.2 0 0 1 4.5 12
+          7.5 7.5 0 0 1 12 4.5a7.5 7.5 0 0 1 8 7z"/>
+        </svg>
+
+        <span>421</span>
+
+      </button>
+
+      <button class="action-btn"
+        onclick="share()">
+
+        <svg viewBox="0 0 24 24">
+          <path d="M12 16V3"/>
+          <path d="m7 8 5-5 5 5"/>
+          <path d="M5 13v6a2 2 0 0 0 2 2h10
+          a2 2 0 0 0 2-2v-6"/>
+        </svg>
+
+      </button>
+
+      <button class="action-btn save-btn"
+        onclick="save(this)">
+
+        <svg viewBox="0 0 24 24">
+          <path d="M6 3h12v18l-6-4-6 4z"/>
+        </svg>
+
       </button>
 
     </div>
 
-    <div class="caption">
-      Create. Explore. Connect. ✨
-    </div>
 
-    <div class="tags">
-      #nova #xdark #explore
-    </div>
+    <div class="post-body">
 
-    <div class="music">
-      <div class="music-disc">♪</div>
-      Original sound • Nova
-    </div>
-
-  </div>
-
-
-  <div class="actions">
-
-    <button class="action like"
-      onclick="likePost(this)">
-
-      <svg viewBox="0 0 24 24">
-        <path d="M20.8 8.6c0 5.5-8.8 10.2-8.8 10.2
-        S3.2 14.1 3.2 8.6
-        A4.6 4.6 0 0 1 12 6.3
-        a4.6 4.6 0 0 1 8.8 2.3z"/>
-      </svg>
-
-      <span>8.7K</span>
-    </button>
-
-
-    <button class="action"
-      onclick="openComments()">
-
-      <svg viewBox="0 0 24 24">
-        <path d="M20 11.5a7.5 7.5 0 0 1-8 7.5
-        8.5 8.5 0 0 1-3.5-.8L4 20l1.8-3.5
-        A7.2 7.2 0 0 1 4.5 12
-        7.5 7.5 0 0 1 12 4.5a7.5 7.5 0 0 1 8 7z"/>
-      </svg>
-
-      <span>315</span>
-
-    </button>
-
-
-    <button class="action"
-      onclick="sharePost()">
-
-      <svg viewBox="0 0 24 24">
-        <path d="M12 16V3"/>
-        <path d="m7 8 5-5 5 5"/>
-        <path d="M5 13v6a2 2 0 0 0 2 2h10
-        a2 2 0 0 0 2-2v-6"/>
-      </svg>
-
-      <span>Share</span>
-
-    </button>
-
-
-    <button class="action save"
-      onclick="savePost(this)">
-
-      <svg viewBox="0 0 24 24">
-        <path d="M6 3h12v18l-6-4-6 4z"/>
-      </svg>
-
-      <span>Save</span>
-
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- REEL 3 -->
-
-<section class="reel">
-
-  <video
-    src="https://media.w3.org/2010/05/sintel/trailer.mp4"
-    loop
-    muted
-    playsinline>
-  </video>
-
-  <div class="reel-info">
-
-    <div class="creator">
-
-      <div class="creator-avatar">
-        A
+      <div class="likes">
+        Liked by Nova and 8,100 others
       </div>
 
-      <div class="creator-name">
-        Alex
+      <div class="caption">
+        <b>Nova</b>
+        Sometimes simple is better. ✨
       </div>
 
-      <button class="follow-mini"
-        onclick="follow(this)">
-        Follow
-      </button>
+      <div class="tags">
+        #Nova #Explore #XDARK
+      </div>
 
     </div>
 
-    <div class="caption">
-      Welcome to the next generation of social media.
-    </div>
-
-    <div class="tags">
-      #social #video #xdark
-    </div>
-
-    <div class="music">
-      <div class="music-disc">♪</div>
-      Original sound • Alex
-    </div>
-
-  </div>
-
-
-  <div class="actions">
-
-    <button class="action like"
-      onclick="likePost(this)">
-
-      <svg viewBox="0 0 24 24">
-        <path d="M20.8 8.6c0 5.5-8.8 10.2-8.8 10.2
-        S3.2 14.1 3.2 8.6
-        A4.6 4.6 0 0 1 12 6.3
-        a4.6 4.6 0 0 1 8.8 2.3z"/>
-      </svg>
-
-      <span>21K</span>
-    </button>
-
-
-    <button class="action"
-      onclick="openComments()">
-
-      <svg viewBox="0 0 24 24">
-        <path d="M20 11.5a7.5 7.5 0 0 1-8 7.5
-        8.5 8.5 0 0 1-3.5-.8L4 20l1.8-3.5
-        A7.2 7.2 0 0 1 4.5 12
-        7.5 7.5 0 0 1 12 4.5a7.5 7.5 0 0 1 8 7z"/>
-      </svg>
-
-      <span>1.2K</span>
-
-    </button>
-
-
-    <button class="action"
-      onclick="sharePost()">
-
-      <svg viewBox="0 0 24 24">
-        <path d="M12 16V3"/>
-        <path d="m7 8 5-5 5 5"/>
-        <path d="M5 13v6a2 2 0 0 0 2 2h10
-        a2 2 0 0 0 2-2v-6"/>
-      </svg>
-
-      <span>Share</span>
-
-    </button>
-
-
-    <button class="action save"
-      onclick="savePost(this)">
-
-      <svg viewBox="0 0 24 24">
-        <path d="M6 3h12v18l-6-4-6 4z"/>
-      </svg>
-
-      <span>Save</span>
-
-    </button>
-
-  </div>
-
-</section>
+  </article>
 
 </main>
 
 
-<!-- ================= BOTTOM NAV ================= -->
+<!-- ================= BOTTOM ================= -->
 
-<nav class="nav">
+<nav class="bottom">
 
   <button class="nav-btn active"
-    onclick="goHome()">
+    onclick="home()">
 
     <svg viewBox="0 0 24 24">
       <path d="m3 10 9-7 9 7v10
@@ -1461,7 +1487,7 @@ button{
 
 
   <button class="nav-btn"
-    onclick="openPanel('explore')">
+    onclick="openDrawer('explore')">
 
     <svg viewBox="0 0 24 24">
       <circle cx="11" cy="11" r="7"/>
@@ -1474,27 +1500,25 @@ button{
 
 
   <button class="nav-btn"
-    onclick="openPanel('create')">
+    onclick="openDrawer('create')">
 
-    <span class="create-nav">
+    <span class="create-button">
 
-      <svg viewBox="0 0 24 24">
-        <path d="M12 5v14M5 12h14"
-          stroke="currentColor"
-          fill="none"
-          stroke-width="2"
-          stroke-linecap="round"/>
+      <svg viewBox="0 0 24 24"
+        width="21"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2">
+        <path d="M12 5v14M5 12h14"/>
       </svg>
 
     </span>
-
-    Create
 
   </button>
 
 
   <button class="nav-btn"
-    onclick="openPanel('notifications')">
+    onclick="openDrawer('activity')">
 
     <svg viewBox="0 0 24 24">
       <path d="M18 8a6 6 0 0 0-12 0
@@ -1508,7 +1532,7 @@ button{
 
 
   <button class="nav-btn"
-    onclick="openPanel('profile')">
+    onclick="openDrawer('profile')">
 
     <svg viewBox="0 0 24 24">
       <circle cx="12" cy="8" r="4"/>
@@ -1525,80 +1549,83 @@ button{
 <!-- ================= EXPLORE ================= -->
 
 <section id="explore"
-  class="panel">
+  class="drawer">
 
-  <div class="panel-header">
+  <div class="drawer-header">
 
-    <button class="back"
-      onclick="closePanels()">
-      ←
+    <button class="back-btn"
+      onclick="closeDrawers()">
+
+      <svg viewBox="0 0 24 24">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+
     </button>
 
-    <h2>Explore</h2>
+    <div class="drawer-title">
+      Explore
+    </div>
 
-    <div style="width:40px"></div>
+    <div class="header-space"></div>
 
   </div>
 
-  <div class="explore-search">
 
-    <svg width="20" viewBox="0 0 24 24"
-      fill="none" stroke="#888"
-      stroke-width="2">
+  <div class="search">
+
+    <svg viewBox="0 0 24 24">
       <circle cx="11" cy="11" r="7"/>
       <path d="m20 20-4-4"/>
     </svg>
 
     <input
-      placeholder="Search X-DARK"
-      oninput="searchExplore(this.value)"
-    >
+      placeholder="Search creators, reels..."
+      oninput="search(this.value)">
 
   </div>
 
 
-  <div class="explore-grid"
-    id="exploreGrid">
+  <div class="explore-grid">
 
     <div class="explore-item">
       <video
         src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-        muted loop autoplay playsinline>
+        muted autoplay loop playsinline>
       </video>
     </div>
 
     <div class="explore-item">
       <video
         src="https://www.w3schools.com/html/mov_bbb.mp4"
-        muted loop autoplay playsinline>
+        muted autoplay loop playsinline>
       </video>
     </div>
 
     <div class="explore-item">
       <video
         src="https://media.w3.org/2010/05/sintel/trailer.mp4"
-        muted loop autoplay playsinline>
+        muted autoplay loop playsinline>
       </video>
     </div>
 
     <div class="explore-item">
       <video
         src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-        muted loop autoplay playsinline>
+        muted autoplay loop playsinline>
       </video>
     </div>
 
     <div class="explore-item">
       <video
         src="https://www.w3schools.com/html/mov_bbb.mp4"
-        muted loop autoplay playsinline>
+        muted autoplay loop playsinline>
       </video>
     </div>
 
     <div class="explore-item">
       <video
         src="https://media.w3.org/2010/05/sintel/trailer.mp4"
-        muted loop autoplay playsinline>
+        muted autoplay loop playsinline>
       </video>
     </div>
 
@@ -1610,44 +1637,64 @@ button{
 <!-- ================= CREATE ================= -->
 
 <section id="create"
-  class="panel">
+  class="drawer">
 
-  <div class="panel-header">
+  <div class="drawer-header">
 
-    <button class="back"
-      onclick="closePanels()">
-      ←
+    <button class="back-btn"
+      onclick="closeDrawers()">
+
+      <svg viewBox="0 0 24 24">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+
     </button>
 
-    <h2>Create</h2>
+    <div class="drawer-title">
+      Create
+    </div>
 
-    <div style="width:40px"></div>
+    <div class="header-space"></div>
 
   </div>
 
 
-  <div class="create-box">
+  <div class="create-area">
 
     <div class="preview"
       id="preview">
 
-      <video id="previewVideo"
-        controls></video>
+      <video
+        id="previewVideo"
+        controls>
+      </video>
 
     </div>
 
 
-    <div class="upload">
+    <div class="upload-box">
 
-      <label for="videoInput">
+      <label
+        class="upload-label"
+        for="videoInput">
 
-        <div style="font-size:38px">
-          +
+        <div class="upload-icon">
+
+          <svg viewBox="0 0 24 24">
+            <path d="M12 16V4"/>
+            <path d="m7 9 5-5 5 5"/>
+            <path d="M5 20h14"/>
+          </svg>
+
         </div>
 
-        <div>
-          Select a video from your phone
-        </div>
+        <strong>
+          Upload a Reel
+        </strong>
+
+        <small>
+          MP4, MOV up to 100MB
+        </small>
 
       </label>
 
@@ -1655,21 +1702,20 @@ button{
         id="videoInput"
         type="file"
         accept="video/*"
-        onchange="previewVideo(this)"
-      >
+        onchange="previewVideo(this)">
 
     </div>
 
 
     <textarea
-      id="newCaption"
-      class="caption-input"
-      placeholder="Write a caption... #xdark #reels">
+      id="captionInput"
+      class="caption-box"
+      placeholder="Write something about your Reel...">
     </textarea>
 
 
     <button class="publish"
-      onclick="publishVideo()">
+      onclick="publish()">
 
       Publish Reel
 
@@ -1683,33 +1729,45 @@ button{
 <!-- ================= PROFILE ================= -->
 
 <section id="profile"
-  class="panel">
+  class="drawer">
 
-  <div class="panel-header">
+  <div class="drawer-header">
 
-    <button class="back"
-      onclick="closePanels()">
-      ←
+    <button class="back-btn"
+      onclick="closeDrawers()">
+
+      <svg viewBox="0 0 24 24">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+
     </button>
 
-    <h2>Profile</h2>
+    <div class="drawer-title">
+      Profile
+    </div>
 
-    <div style="width:40px"></div>
+    <div class="header-space"></div>
 
   </div>
 
 
   <div class="profile">
 
-    <div class="profile-top">
+    <div class="profile-main">
 
       <div class="profile-avatar">
-        A
+
+        <div class="profile-avatar-inner">
+          A
+        </div>
+
       </div>
 
       <h2>Ankaj</h2>
 
-      <p>@x_dark_user</p>
+      <p>
+        @x_dark_user
+      </p>
 
     </div>
 
@@ -1717,7 +1775,7 @@ button{
     <div class="stats">
 
       <div class="stat">
-        <strong id="postCount">3</strong>
+        <strong>24</strong>
         <span>Posts</span>
       </div>
 
@@ -1736,25 +1794,59 @@ button{
 
     <div class="profile-actions">
 
-      <button class="profile-btn">
+      <button class="profile-action"
+        onclick="toast('Edit profile coming soon')">
         Edit profile
       </button>
 
-      <button class="profile-btn"
-        onclick="openPanel('settings')">
+      <button class="profile-action"
+        onclick="openDrawer('settings')">
         Settings
       </button>
 
     </div>
 
 
-    <div style="
-      margin-top:25px;
-      border-top:1px solid #222;
-      padding-top:20px;
-    ">
+    <div class="profile-tabs">
 
-      <h3>My Reels</h3>
+      <button class="profile-tab active">
+        Reels
+      </button>
+
+      <button class="profile-tab">
+        Posts
+      </button>
+
+      <button class="profile-tab">
+        Saved
+      </button>
+
+    </div>
+
+
+    <div class="explore-grid"
+      style="margin-top:2px">
+
+      <div class="explore-item">
+        <video
+          src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+          muted loop autoplay playsinline>
+        </video>
+      </div>
+
+      <div class="explore-item">
+        <video
+          src="https://www.w3schools.com/html/mov_bbb.mp4"
+          muted loop autoplay playsinline>
+        </video>
+      </div>
+
+      <div class="explore-item">
+        <video
+          src="https://media.w3.org/2010/05/sintel/trailer.mp4"
+          muted loop autoplay playsinline>
+        </video>
+      </div>
 
     </div>
 
@@ -1766,30 +1858,51 @@ button{
 <!-- ================= SETTINGS ================= -->
 
 <section id="settings"
-  class="panel">
+  class="drawer">
 
-  <div class="panel-header">
+  <div class="drawer-header">
 
-    <button class="back"
-      onclick="closePanels()">
-      ←
+    <button class="back-btn"
+      onclick="closeDrawers()">
+
+      <svg viewBox="0 0 24 24">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+
     </button>
 
-    <h2>Settings</h2>
+    <div class="drawer-title">
+      Settings
+    </div>
 
-    <div style="width:40px"></div>
+    <div class="header-space"></div>
 
   </div>
 
 
   <div class="setting">
 
-    <div>
-      <strong>Dark Mode</strong>
-      <small>X-DARK black theme</small>
+    <div class="setting-icon">
+
+      <svg viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19 12a7 7 0 0 0-.2-1.7l2-1.5-2-3.4-2.4 1
+        A7 7 0 0 0 14.8 5L14.5 2h-5l-.3 3
+        a7 7 0 0 0-1.6.9l-2.4-1-2 3.4
+        2 1.5A7 7 0 0 0 5 12
+        l-2 1.5 2 3.4 2.4-1
+        a7 7 0 0 0 1.6.9l.3 3h5l.3-3
+        a7 7 0 0 0 1.6-.9l2.4 1 2-3.4z"/>
+      </svg>
+
     </div>
 
-    <strong>ON</strong>
+    <div class="setting-text">
+      <strong>Appearance</strong>
+      <small>Dark theme · Purple accent</small>
+    </div>
+
+    <span class="chevron">›</span>
 
   </div>
 
@@ -1797,25 +1910,44 @@ button{
   <div class="setting"
     onclick="toast('Privacy settings coming soon')">
 
-    <div>
-      <strong>Privacy</strong>
-      <small>Control your account privacy</small>
+    <div class="setting-icon">
+
+      <svg viewBox="0 0 24 24">
+        <rect x="5" y="10" width="14" height="10" rx="2"/>
+        <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
+      </svg>
+
     </div>
 
-    <span>›</span>
+    <div class="setting-text">
+      <strong>Privacy</strong>
+      <small>Control who can see your content</small>
+    </div>
+
+    <span class="chevron">›</span>
 
   </div>
 
 
   <div class="setting"
-    onclick="toast('Notifications settings coming soon')">
+    onclick="toast('Notifications coming soon')">
 
-    <div>
-      <strong>Notifications</strong>
-      <small>Manage your alerts</small>
+    <div class="setting-icon">
+
+      <svg viewBox="0 0 24 24">
+        <path d="M18 8a6 6 0 0 0-12 0
+        c0 7-3 7-3 9h18c0-2-3-2-3-9"/>
+        <path d="M10 21h4"/>
+      </svg>
+
     </div>
 
-    <span>›</span>
+    <div class="setting-text">
+      <strong>Notifications</strong>
+      <small>Manage your activity alerts</small>
+    </div>
+
+    <span class="chevron">›</span>
 
   </div>
 
@@ -1823,12 +1955,21 @@ button{
   <div class="setting"
     onclick="toast('Account settings coming soon')">
 
-    <div>
+    <div class="setting-icon">
+
+      <svg viewBox="0 0 24 24">
+        <circle cx="12" cy="8" r="4"/>
+        <path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/>
+      </svg>
+
+    </div>
+
+    <div class="setting-text">
       <strong>Account</strong>
       <small>Manage your X-DARK account</small>
     </div>
 
-    <span>›</span>
+    <span class="chevron">›</span>
 
   </div>
 
@@ -1838,133 +1979,147 @@ button{
 <!-- ================= MESSAGES ================= -->
 
 <section id="messages"
-  class="panel">
+  class="drawer">
 
-  <div class="panel-header">
+  <div class="drawer-header">
 
-    <button class="back"
-      onclick="closePanels()">
-      ←
+    <button class="back-btn"
+      onclick="closeDrawers()">
+
+      <svg viewBox="0 0 24 24">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+
     </button>
 
-    <h2>Messages</h2>
+    <div class="drawer-title">
+      Messages
+    </div>
 
-    <div style="width:40px"></div>
+    <div class="header-space"></div>
 
   </div>
 
 
-  <div style="padding:15px">
+  <div class="message">
 
-    <div class="setting"
-      onclick="openChat('Darkwing')">
+    <div class="avatar">D</div>
 
-      <div style="
-        display:flex;
-        align-items:center;
-        gap:12px;
-      ">
-
-        <div class="creator-avatar">
-          D
-        </div>
-
-        <div>
-          <strong>Darkwing</strong>
-          <small>Welcome to X-DARK</small>
-        </div>
-
-      </div>
-
-      <span>›</span>
-
+    <div class="message-info">
+      <strong>Darkwing</strong>
+      <small>Welcome to X-DARK</small>
     </div>
 
+    <span>›</span>
 
-    <div class="setting"
-      onclick="openChat('Nova')">
+  </div>
 
-      <div style="
-        display:flex;
-        align-items:center;
-        gap:12px;
-      ">
 
-        <div class="creator-avatar">
-          N
-        </div>
+  <div class="message">
 
-        <div>
-          <strong>Nova</strong>
-          <small>Start a conversation</small>
-        </div>
-
-      </div>
-
-      <span>›</span>
-
+    <div class="avatar"
+      style="background:linear-gradient(135deg,#ff4383,#754cff)">
+      N
     </div>
+
+    <div class="message-info">
+      <strong>Nova</strong>
+      <small>Start a conversation</small>
+    </div>
+
+    <span>›</span>
+
+  </div>
+
+
+  <div class="message">
+
+    <div class="avatar"
+      style="background:linear-gradient(135deg,#2b9cff,#7a5cff)">
+      A
+    </div>
+
+    <div class="message-info">
+      <strong>Alex</strong>
+      <small>Hey 👋</small>
+    </div>
+
+    <span>›</span>
 
   </div>
 
 </section>
 
 
-<!-- ================= NOTIFICATIONS ================= -->
+<!-- ================= ACTIVITY ================= -->
 
-<section id="notifications"
-  class="panel">
+<section id="activity"
+  class="drawer">
 
-  <div class="panel-header">
+  <div class="drawer-header">
 
-    <button class="back"
-      onclick="closePanels()">
-      ←
+    <button class="back-btn"
+      onclick="closeDrawers()">
+
+      <svg viewBox="0 0 24 24">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+
     </button>
 
-    <h2>Activity</h2>
+    <div class="drawer-title">
+      Activity
+    </div>
 
-    <div style="width:40px"></div>
+    <div class="header-space"></div>
 
   </div>
 
 
-  <div style="padding:15px">
+  <div class="setting">
 
-    <div class="setting">
-
-      <div>
-        <strong>Darkwing liked your Reel</strong>
-        <small>2 minutes ago</small>
-      </div>
-
-      ❤️
-
+    <div class="avatar">
+      D
     </div>
 
-
-    <div class="setting">
-
-      <div>
-        <strong>Nova started following you</strong>
-        <small>10 minutes ago</small>
-      </div>
-
-      <span>+</span>
-
+    <div class="setting-text">
+      <strong>Darkwing liked your Reel</strong>
+      <small>2 minutes ago</small>
     </div>
 
+    ❤️
 
-    <div class="setting">
+  </div>
 
-      <div>
-        <strong>Your Reel reached 1K views</strong>
-        <small>1 hour ago</small>
-      </div>
 
-      🔥
+  <div class="setting">
 
+    <div class="avatar">
+      N
     </div>
+
+    <div class="setting-text">
+      <strong>Nova started following you</strong>
+      <small>18 minutes ago</small>
+    </div>
+
+    +
+
+  </div>
+
+
+  <div class="setting">
+
+    <div class="avatar">
+      A
+    </div>
+
+    <div class="setting-text">
+      <strong>Alex commented on your post</strong>
+      <small>1 hour ago</small>
+    </div>
+
+    💬
 
   </div>
 
@@ -1980,19 +2135,18 @@ button{
     Comments
   </div>
 
-
   <div class="comment-list"
     id="commentList">
 
     <div class="comment">
 
-      <div class="comment-avatar">
-        D
-      </div>
+      <div class="comment-avatar">D</div>
 
-      <div class="comment-text">
-        <strong>Darkwing</strong><br>
+      <div class="comment-body">
+        <b>Darkwing</b><br>
         This looks amazing 🔥
+        <br>
+        <span>2m</span>
       </div>
 
     </div>
@@ -2000,27 +2154,13 @@ button{
 
     <div class="comment">
 
-      <div class="comment-avatar">
-        N
-      </div>
+      <div class="comment-avatar">N</div>
 
-      <div class="comment-text">
-        <strong>Nova</strong><br>
-        Welcome to X-DARK!
-      </div>
-
-    </div>
-
-
-    <div class="comment">
-
-      <div class="comment-avatar">
-        A
-      </div>
-
-      <div class="comment-text">
-        <strong>Alex</strong><br>
-        Nice reel 👀
+      <div class="comment-body">
+        <b>Nova</b><br>
+        X-DARK is looking clean!
+        <br>
+        <span>5m</span>
       </div>
 
     </div>
@@ -2033,8 +2173,7 @@ button{
     <input
       id="commentInput"
       placeholder="Add a comment..."
-      onkeydown="commentKey(event)"
-    >
+      onkeydown="commentKey(event)">
 
     <button onclick="addComment()">
       ↑
@@ -2055,7 +2194,51 @@ button{
 <script>
 
 /* =========================
-   BASIC
+DRAWERS
+========================= */
+
+function openDrawer(id){
+
+  closeDrawers();
+
+  const drawer =
+    document.getElementById(id);
+
+  if(drawer){
+    drawer.classList.add("open");
+  }
+
+}
+
+function closeDrawers(){
+
+  document
+    .querySelectorAll(".drawer")
+    .forEach(d=>{
+      d.classList.remove("open");
+    });
+
+}
+
+function home(){
+
+  closeDrawers();
+
+  document
+    .querySelectorAll(".nav-btn")
+    .forEach(n=>{
+      n.classList.remove("active");
+    });
+
+  document
+    .querySelector(".nav-btn")
+    .classList.add("active");
+
+}
+
+
+/* =========================
+TOAST
 ========================= */
 
 function toast(text){
@@ -2069,61 +2252,16 @@ function toast(text){
 
   setTimeout(()=>{
     t.classList.remove("show");
-  },3000);
+  },2800);
 
 }
 
 
 /* =========================
-   PANELS
+LIKE
 ========================= */
 
-function openPanel(id){
-
-  closePanels();
-
-  const panel =
-    document.getElementById(id);
-
-  if(panel){
-
-    panel.classList.add("open");
-
-  }
-
-}
-
-
-function closePanels(){
-
-  document
-    .querySelectorAll(".panel")
-    .forEach(p=>{
-      p.classList.remove("open");
-    });
-
-}
-
-
-function goHome(){
-
-  closePanels();
-
-  document
-    .getElementById("feed")
-    .scrollTo({
-      top:0,
-      behavior:"smooth"
-    });
-
-}
-
-
-/* =========================
-   LIKE
-========================= */
-
-function likePost(button){
+function like(button){
 
   button.classList.toggle("active");
 
@@ -2132,15 +2270,11 @@ function likePost(button){
 
   if(button.classList.contains("active")){
 
-    span.dataset.old =
-      span.textContent;
-
     span.textContent="Liked";
 
   }else{
 
-    span.textContent =
-      span.dataset.old || "Like";
+    span.textContent="Like";
 
   }
 
@@ -2148,65 +2282,37 @@ function likePost(button){
 
 
 /* =========================
-   SAVE
+SAVE
 ========================= */
 
-function savePost(button){
+function save(button){
 
   button.classList.toggle("active");
 
-  if(button.classList.contains("active")){
-
-    toast("Saved to your collection");
-
-  }else{
-
-    toast("Removed from saved");
-
-  }
+  toast(
+    button.classList.contains("active")
+    ? "Saved"
+    : "Removed from saved"
+  );
 
 }
 
 
 /* =========================
-   FOLLOW
+SHARE
 ========================= */
 
-function follow(button){
-
-  if(button.textContent==="Follow"){
-
-    button.textContent="Following";
-
-    toast("Following");
-
-  }else{
-
-    button.textContent="Follow";
-
-    toast("Unfollowed");
-
-  }
-
-}
-
-
-/* =========================
-   SHARE
-========================= */
-
-async function sharePost(){
-
-  const data={
-    title:"X-DARK Reel",
-    text:"Check this Reel on X-DARK"
-  };
+async function share(){
 
   try{
 
     if(navigator.share){
 
-      await navigator.share(data);
+      await navigator.share({
+        title:"X-DARK",
+        text:"Check this out on X-DARK",
+        url:location.href
+      });
 
     }else{
 
@@ -2224,7 +2330,7 @@ async function sharePost(){
 
 
 /* =========================
-   COMMENTS
+COMMENTS
 ========================= */
 
 function openComments(){
@@ -2235,7 +2341,6 @@ function openComments(){
 
 }
 
-
 function closeComments(){
 
   document
@@ -2244,17 +2349,13 @@ function closeComments(){
 
 }
 
-
 function commentKey(e){
 
   if(e.key==="Enter"){
-
     addComment();
-
   }
 
 }
-
 
 function addComment(){
 
@@ -2265,13 +2366,8 @@ function addComment(){
     input.value.trim();
 
   if(!text){
-
     return;
-
   }
-
-  const list =
-    document.getElementById("commentList");
 
   const div =
     document.createElement("div");
@@ -2284,26 +2380,27 @@ function addComment(){
       A
     </div>
 
-    <div class="comment-text">
-      <strong>Ankaj</strong><br>
+    <div class="comment-body">
+      <b>Ankaj</b><br>
       ${escapeHTML(text)}
+      <br>
+      <span>now</span>
     </div>
 
   `;
 
-  list.appendChild(div);
+  document
+    .getElementById("commentList")
+    .appendChild(div);
 
   input.value="";
 
-  list.scrollTop =
-    list.scrollHeight;
+  const list =
+    document.getElementById("commentList");
+
+  list.scrollTop=list.scrollHeight;
 
 }
-
-
-/* =========================
-   ESCAPE
-========================= */
 
 function escapeHTML(text){
 
@@ -2318,7 +2415,7 @@ function escapeHTML(text){
 
 
 /* =========================
-   VIDEO PREVIEW
+VIDEO PREVIEW
 ========================= */
 
 function previewVideo(input){
@@ -2327,9 +2424,7 @@ function previewVideo(input){
     input.files[0];
 
   if(!file){
-
     return;
-
   }
 
   const preview =
@@ -2347,46 +2442,39 @@ function previewVideo(input){
 
 
 /* =========================
-   PUBLISH
+PUBLISH
 ========================= */
 
-function publishVideo(){
+function publish(){
 
   const input =
     document.getElementById("videoInput");
 
-  const caption =
-    document.getElementById("newCaption");
-
   if(!input.files.length){
 
-    toast("Please select a video first");
+    toast("Select a video first");
 
     return;
 
   }
 
   toast(
-    "Reel ready! Backend upload will be connected next."
+    "Reel ready — backend upload next"
   );
-
-  caption.value="";
 
 }
 
 
 /* =========================
-   SEARCH
+SEARCH
 ========================= */
 
-function searchExplore(value){
+function search(value){
 
-  value=value.toLowerCase();
-
-  if(value){
+  if(value.trim()){
 
     toast(
-      "Searching X-DARK for: "+value
+      "Searching for " + value
     );
 
   }
@@ -2395,27 +2483,13 @@ function searchExplore(value){
 
 
 /* =========================
-   CHAT DEMO
-========================= */
-
-function openChat(name){
-
-  closePanels();
-
-  toast(
-    "Opening chat with "+name
-  );
-
-}
-
-
-/* =========================
-   VIDEO AUTOPLAY
+AUTO VIDEO
 ========================= */
 
 const videos =
-  document.querySelectorAll(".reel video");
-
+  document.querySelectorAll(
+    ".media video"
+  );
 
 const observer =
   new IntersectionObserver(
@@ -2423,17 +2497,15 @@ const observer =
 
       entries.forEach(entry=>{
 
-        const video =
-          entry.target;
-
         if(entry.isIntersecting){
 
-          video.play()
+          entry.target
+            .play()
             .catch(()=>{});
 
         }else{
 
-          video.pause();
+          entry.target.pause();
 
         }
 
@@ -2441,42 +2513,52 @@ const observer =
 
     },
     {
-      threshold:.65
+      threshold:.55
     }
   );
 
-
-videos.forEach(video=>{
-
-  observer.observe(video);
-
+videos.forEach(v=>{
+  observer.observe(v);
 });
 
 
 /* =========================
-   DOUBLE TAP LIKE
+DOUBLE TAP
 ========================= */
 
 document
-  .querySelectorAll(".reel")
-  .forEach(reel=>{
+  .querySelectorAll(".media")
+  .forEach(media=>{
 
-    let lastTap=0;
+    let last=0;
 
-    reel.addEventListener(
-      "dblclick",
+    media.addEventListener(
+      "click",
       ()=>{
 
-        const like =
-          reel.querySelector(".like");
+        const now=Date.now();
 
-        if(like){
+        if(now-last<320){
 
-          like.classList.add("active");
+          const likeBtn =
+            media
+              .closest(".post")
+              .querySelector(".like");
 
-          toast("❤️ Liked");
+          if(
+            likeBtn &&
+            !likeBtn.classList.contains("active")
+          ){
+
+            like(likeBtn);
+
+            toast("❤️ Liked");
+
+          }
 
         }
+
+        last=now;
 
       }
     );
@@ -2485,34 +2567,21 @@ document
 
 
 /* =========================
-   SWIPE/SCROLL
+CLICK OUTSIDE COMMENTS
 ========================= */
 
 document
-  .getElementById("feed")
+  .getElementById("comments")
   .addEventListener(
-    "scroll",
-    ()=>{}
-  );
+    "click",
+    e=>{
 
-
-/* =========================
-   ESC KEY
-========================= */
-
-document.addEventListener(
-  "keydown",
-  e=>{
-
-    if(e.key==="Escape"){
-
-      closePanels();
-      closeComments();
+      if(e.target.id==="comments"){
+        closeComments();
+      }
 
     }
-
-  }
-);
+  );
 
 </script>
 
