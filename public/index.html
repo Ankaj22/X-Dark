@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+<title>X-DARK</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+body{
+
+margin:0;
+
+background:#08090d;
+
+color:white;
+
+font-family:
+Arial,
+Helvetica,
+sans-serif;
+
+padding-bottom:85px;
+
+}
+
+header{
+
+height:80px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:0 25px;
+
+border-bottom:
+1px solid #292b35;
+
+position:sticky;
+
+top:0;
+
+background:#08090d;
+
+z-index:20;
+
+}
+
+.logo{
+
+font-size:27px;
+
+font-weight:900;
+
+}
+
+.top-icons{
+
+display:flex;
+
+gap:24px;
+
+font-size:25px;
+
+}
+
+.top-icons span{
+
+cursor:pointer;
+
+}
+
+
+/* STORIES */
+
+.stories{
+
+display:flex;
+
+gap:18px;
+
+overflow-x:auto;
+
+padding:25px 20px;
+
+}
+
+.story{
+
+min-width:85px;
+
+text-align:center;
+
+color:#ccc;
+
+}
+
+.story img{
+
+width:75px;
+
+height:75px;
+
+object-fit:cover;
+
+border-radius:50%;
+
+border:
+3px solid #8c52ff;
+
+padding:3px;
+
+}
+
+.story p{
+
+margin:
+
+7px 0 0;
+
+font-size:13px;
+
+}
+
+
+/* FEED */
+
+.feed{
+
+max-width:650px;
+
+margin:auto;
+
+padding:0 15px;
+
+}
+
+.post{
+
+background:#111219;
+
+border:
+1px solid #292b35;
+
+border-radius:20px;
+
+overflow:hidden;
+
+margin-bottom:22px;
+
+}
+
+.post-header{
+
+display:flex;
+
+align-items:center;
+
+padding:15px;
+
+gap:12px;
+
+}
+
+.post-avatar{
+
+width:48px;
+
+height:48px;
+
+border-radius:50%;
+
+object-fit:cover;
+
+}
+
+.post-user{
+
+font-size:17px;
+
+font-weight:bold;
+
+}
+
+.post-handle{
+
+color:#858895;
+
+font-size:13px;
+
+margin-top:3px;
+
+}
+
+.post-video{
+
+display:block;
+
+width:100%;
+
+max-height:600px;
+
+background:black;
+
+}
+
+
+/* ACTIONS */
+
+.actions{
+
+display:flex;
+
+justify-content:space-between;
+
+padding:15px 18px;
+
+font-size:25px;
+
+}
+
+.actions span{
+
+cursor:pointer;
+
+}
+
+.caption{
+
+padding:
+0 18px 18px;
+
+font-size:16px;
+
+line-height:1.5;
+
+}
+
+.tags{
+
+color:#9d73ff;
+
+margin-top:6px;
+
+}
+
+.empty{
+
+text-align:center;
+
+color:#777b87;
+
+padding:80px 20px;
+
+}
+
+
+/* BOTTOM NAV */
+
+.bottom-nav{
+
+position:fixed;
+
+bottom:0;
+
+left:0;
+
+right:0;
+
+height:75px;
+
+background:#090a0e;
+
+border-top:
+1px solid #292b35;
+
+display:flex;
+
+align-items:center;
+
+justify-content:
+space-around;
+
+z-index:50;
+
+}
+
+.nav{
+
+font-size:27px;
+
+color:#858895;
+
+cursor:pointer;
+
+}
+
+.home{
+
+color:white;
+
+}
+
+.create{
+
+width:60px;
+
+height:50px;
+
+border-radius:16px;
+
+background:white;
+
+color:black;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:32px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="logo">
+X-DARK
+</div>
+
+
+<div class="top-icons">
+
+<span>⌕</span>
+
+<span>♡</span>
+
+<span>☰</span>
+
+</div>
+
+</header>
+
+
+<section class="stories">
+
+
+<div class="story">
+
+<img
+src="https://i.pravatar.cc/150?img=12">
+
+<p>Your Story</p>
+
+</div>
+
+
+<div class="story">
+
+<img
+src="https://i.pravatar.cc/150?img=32">
+
+<p>@User</p>
+
+</div>
+
+
+<div class="story">
+
+<img
+src="https://i.pravatar.cc/150?img=47">
+
+<p>@Darkwing</p>
+
+</div>
+
+
+<div class="story">
+
+<img
+src="https://i.pravatar.cc/150?img=44">
+
+<p>@XDark</p>
+
+</div>
+
+
+</section>
+
+
+<main
+class="feed"
+id="feed">
+
+<div class="empty">
+
+Loading X-DARK...
+
+</div>
+
+</main>
+
+
+<div class="bottom-nav">
+
+<div
+class="nav home">
+⌂
+</div>
+
+
+<div class="nav">
+⌕
+</div>
+
+
+<div
+class="create"
+onclick="
+window.location.href=
+'create-post.html'
+">
++
+</div>
+
+
+<div class="nav">
+♡
+</div>
+
+
+<div
+class="nav"
+onclick="
+window.location.href=
+'profile.html'
+">
+◉
+</div>
+
+</div>
+
+
+<script>
+
+
+const feed =
+document.getElementById(
+"feed"
+);
+
+
+async function loadPosts(){
+
+try{
+
+
+const response =
+await fetch(
+"/api/posts"
+);
+
+
+if(!response.ok){
+
+throw new Error(
+"Unable to load posts"
+);
+
+}
+
+
+const posts =
+await response.json();
+
+
+feed.innerHTML = "";
+
+
+if(posts.length === 0){
+
+feed.innerHTML = `
+
+<div class="empty">
+
+No videos yet 🎬
+
+<br><br>
+
+Tap the + button to upload your first X-DARK video.
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+posts.forEach(
+function(post){
+
+
+const article =
+document.createElement(
+"article"
+);
+
+
+article.className =
+"post";
+
+
+article.innerHTML = `
+
+<div class="post-header">
+
+<img
+class="post-avatar"
+src="https://i.pravatar.cc/100?img=12">
+
+<div>
+
+<div class="post-user">
+
+${escapeHTML(
+post.username
+)}
+
+</div>
+
+<div class="post-handle">
+
+${escapeHTML(
+post.handle
+)}
+
+</div>
+
+</div>
+
+</div>
+
+
+<video
+class="post-video"
+src="${post.video}"
+controls
+playsinline
+preload="metadata">
+</video>
+
+
+<div class="actions">
+
+<span
+onclick="toggleLike(this)">
+♡
+</span>
+
+<span
+onclick="addComment()">
+💬
+</span>
+
+<span
+onclick="sharePost()">
+↗
+</span>
+
+<span
+onclick="toggleSave(this)">
+🔖
+</span>
+
+</div>
+
+
+<div class="caption">
+
+${escapeHTML(
+post.caption
+)}
+
+
+<div class="tags">
+
+${escapeHTML(
+post.tags || ""
+)}
+
+</div>
+
+</div>
+
+`;
+
+
+feed.appendChild(
+article
+);
+
+
+});
+
+}
+
+catch(error){
+
+console.error(error);
+
+
+feed.innerHTML = `
+
+<div class="empty">
+
+Could not load X-DARK posts.
+
+</div>
+
+`;
+
+}
+
+}
+
+
+function escapeHTML(value){
+
+return String(
+value || ""
+)
+
+.replaceAll(
+"&",
+"&amp;"
+)
+
+.replaceAll(
+"<",
+"&lt;"
+)
+
+.replaceAll(
+">",
+"&gt;"
+)
+
+.replaceAll(
+'"',
+"&quot;"
+)
+
+.replaceAll(
+"'",
+"&#039;"
+);
+
+}
+
+
+function toggleLike(button){
+
+if(
+button.innerText === "♡"
+){
+
+button.innerText =
+"♥";
+
+}
+
+else{
+
+button.innerText =
+"♡";
+
+}
+
+}
+
+
+function toggleSave(button){
+
+if(
+button.innerText === "🔖"
+){
+
+button.innerText =
+"📌";
+
+}
+
+else{
+
+button.innerText =
+"🔖";
+
+}
+
+}
+
+
+function addComment(){
+
+const comment =
+prompt(
+"Write your comment"
+);
+
+
+if(comment){
+
+alert(
+"Comment added ✓"
+);
+
+}
+
+}
+
+
+async function sharePost(){
+
+try{
+
+if(
+navigator.share
+){
+
+await navigator.share({
+
+title:
+"X-DARK",
+
+text:
+"Check out this X-DARK video 🚀",
+
+url:
+window.location.href
+
+});
+
+}
+
+else{
+
+alert(
+"Sharing is not supported on this browser."
+);
+
+}
+
+}
+
+catch(error){
+
+console.log(error);
+
+}
+
+}
+
+
+loadPosts();
+
+
+</script>
+
+
+</body>
+
+</html>
