@@ -22,7 +22,8 @@ body{
 .page{display:none}
 .page.active{display:block}
 
-/* TOP */
+/* ================= TOP ================= */
+
 .topbar{
   height:88px;
   border-bottom:1px solid #292b34;
@@ -32,8 +33,8 @@ body{
   padding:0 22px;
   position:sticky;
   top:0;
-  background:#07080c;
   z-index:100;
+  background:#07080c;
 }
 
 .logo{
@@ -46,7 +47,7 @@ body{
   gap:25px;
 }
 
-.svg-icon{
+.icon{
   width:28px;
   height:28px;
   stroke:#fff;
@@ -55,7 +56,8 @@ body{
   cursor:pointer;
 }
 
-/* STORIES */
+/* ================= STORIES ================= */
+
 .stories{
   display:flex;
   gap:24px;
@@ -93,7 +95,8 @@ body{
   font-size:13px;
 }
 
-/* FEED */
+/* ================= FEED ================= */
+
 .feed{
   max-width:650px;
   margin:auto;
@@ -229,7 +232,115 @@ body{
   padding:0 15px;
 }
 
-/* PROFILE */
+/* ================= SEARCH ================= */
+
+.search-page{
+  max-width:650px;
+  margin:auto;
+}
+
+.search-container{
+  padding:22px;
+}
+
+.search-box{
+  height:52px;
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:0 16px;
+  background:#12141b;
+  border:1px solid #30323d;
+  border-radius:16px;
+}
+
+.search-svg{
+  width:24px;
+  height:24px;
+  stroke:#9699a5;
+  stroke-width:1.8;
+  fill:none;
+}
+
+.search-input{
+  flex:1;
+  height:100%;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:#fff;
+  font-size:16px;
+}
+
+.search-input::placeholder{
+  color:#737681;
+}
+
+.clear-search{
+  display:none;
+  color:#aaa;
+  font-size:20px;
+  cursor:pointer;
+}
+
+.search-title{
+  margin:28px 0 14px;
+  font-size:18px;
+  font-weight:700;
+}
+
+.search-result{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:14px 5px;
+  border-bottom:1px solid #1d1f27;
+  cursor:pointer;
+}
+
+.search-result:hover{
+  background:#101219;
+}
+
+.search-avatar{
+  width:55px;
+  height:55px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid #7134ff;
+  padding:2px;
+}
+
+.result-info{
+  flex:1;
+}
+
+.result-name{
+  font-size:16px;
+  font-weight:700;
+}
+
+.result-handle{
+  color:#858792;
+  margin-top:5px;
+  font-size:13px;
+}
+
+.result-arrow{
+  color:#777b88;
+  font-size:22px;
+}
+
+.no-results{
+  text-align:center;
+  color:#777b88;
+  padding:50px 10px;
+  display:none;
+}
+
+/* ================= PROFILE ================= */
+
 .profile{
   max-width:650px;
   margin:auto;
@@ -307,7 +418,6 @@ body{
   color:#fff;
   font-size:14px;
   font-weight:700;
-  cursor:pointer;
 }
 
 .profile-tabs{
@@ -356,48 +466,8 @@ body{
   object-fit:cover;
 }
 
-/* BOTTOM */
-.bottom-nav{
-  position:fixed;
-  left:0;
-  right:0;
-  bottom:0;
-  height:76px;
-  background:#07080c;
-  border-top:1px solid #292b34;
-  display:flex;
-  align-items:center;
-  justify-content:space-around;
-  z-index:500;
-}
+/* ================= MODAL ================= */
 
-.nav-icon{
-  width:32px;
-  height:32px;
-  stroke:#858894;
-  stroke-width:1.7;
-  fill:none;
-  cursor:pointer;
-}
-
-.nav-icon.active{
-  stroke:#fff;
-}
-
-.create-btn{
-  width:38px;
-  height:38px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:transparent;
-  color:#fff;
-  font-size:38px;
-  font-weight:300;
-  cursor:pointer;
-}
-
-/* MODALS */
 .modal{
   position:fixed;
   inset:0;
@@ -446,7 +516,6 @@ body{
   font-size:24px;
 }
 
-/* CREATE */
 .upload-area{
   min-height:190px;
   border:1px dashed #555966;
@@ -457,7 +526,6 @@ body{
   justify-content:center;
   flex-direction:column;
   overflow:hidden;
-  cursor:pointer;
 }
 
 .upload-text{
@@ -498,7 +566,6 @@ body{
   font-weight:700;
 }
 
-/* EDIT PROFILE */
 .edit-photo-wrap{
   text-align:center;
   margin-bottom:22px;
@@ -515,10 +582,9 @@ body{
 
 .change-photo{
   display:block;
-  margin:12px auto 0;
+  margin-top:12px;
   color:#9c65ff;
   font-size:14px;
-  cursor:pointer;
 }
 
 .form-label{
@@ -546,7 +612,49 @@ body{
   resize:none;
 }
 
+/* ================= BOTTOM ================= */
+
+.bottom-nav{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  height:76px;
+  background:#07080c;
+  border-top:1px solid #292b34;
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+  z-index:500;
+}
+
+.nav-icon{
+  width:32px;
+  height:32px;
+  stroke:#858894;
+  stroke-width:1.7;
+  fill:none;
+  cursor:pointer;
+}
+
+.nav-icon.active{
+  stroke:#fff;
+}
+
+.create-btn{
+  width:38px;
+  height:38px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:transparent;
+  color:#fff;
+  font-size:38px;
+  font-weight:300;
+}
+
 /* TOAST */
+
 .toast{
   position:fixed;
   left:50%;
@@ -561,18 +669,14 @@ body{
   z-index:2000;
   white-space:nowrap;
 }
-
-@media(max-width:500px){
-  .profile-info{gap:18px}
-  .profile-photo{width:90px;height:90px}
-  .profile-username{font-size:20px}
-}
 </style>
 </head>
 
 <body>
 
-<!-- TOP BAR -->
+
+<!-- ================= TOP BAR ================= -->
+
 <header class="topbar">
 
   <div class="logo">X-DARK</div>
@@ -580,43 +684,59 @@ body{
   <div class="top-icons">
 
     <!-- CHAT -->
-    <svg class="svg-icon"
+
+    <svg class="icon"
          onclick="showToast('Chat coming next')"
          viewBox="0 0 24 24">
+
       <path d="M20 11.5a8 8 0 0 1-8 8
       8.7 8.7 0 0 1-3.4-.7
       L4 20l1.2-3.5
       A8 8 0 1 1 20 11.5Z"/>
+
       <path d="M8 11.5h.01"/>
       <path d="M12 11.5h.01"/>
       <path d="M16 11.5h.01"/>
+
     </svg>
 
-    <!-- ACTIVITY -->
-    <svg class="svg-icon"
+
+    <!-- HEART -->
+
+    <svg class="icon"
          onclick="showToast('Activity')"
          viewBox="0 0 24 24">
+
       <path d="M20.8 8.7c0 5.5-8.8 10.3-8.8 10.3
       S3.2 14.2 3.2 8.7A4.7 4.7 0 0 1 12 6.1
       a4.7 4.7 0 0 1 8.8 2.6Z"/>
+
     </svg>
 
+
     <!-- MENU -->
-    <svg class="svg-icon"
+
+    <svg class="icon"
          onclick="showToast('Menu')"
          viewBox="0 0 24 24">
+
       <path d="M4 7h16"/>
       <path d="M4 12h16"/>
       <path d="M4 17h16"/>
+
     </svg>
 
   </div>
+
 </header>
 
 
-<!-- ================= HOME ================= -->
+<!-- ==================================================
+                         HOME
+================================================== -->
 
 <section id="homePage" class="page active">
+
 
   <div class="stories">
 
@@ -664,17 +784,22 @@ body{
             src="https://i.pravatar.cc/150?img=12">
 
           <div>
+
             <div class="username profile-name-display">
               @Ankaj
             </div>
+
             <div class="location">
               X-DARK
             </div>
+
           </div>
 
         </div>
 
-        <div class="more">•••</div>
+        <div class="more">
+          •••
+        </div>
 
       </div>
 
@@ -691,32 +816,43 @@ body{
           <svg class="post-icon like-btn"
                onclick="likePost(this)"
                viewBox="0 0 24 24">
+
             <path d="M20.8 8.7c0 5.5-8.8 10.3-8.8 10.3
             S3.2 14.2 3.2 8.7A4.7 4.7 0 0 1 12 6.1
             a4.7 4.7 0 0 1 8.8 2.6Z"/>
+
           </svg>
+
 
           <svg class="post-icon"
                onclick="toggleComments(this)"
                viewBox="0 0 24 24">
+
             <path d="M20 11.5a8 8 0 0 1-8 8
             8.7 8.7 0 0 1-3.4-.7L4 20l1.2-3.5
             A8 8 0 1 1 20 11.5Z"/>
+
           </svg>
+
 
           <svg class="post-icon"
                onclick="sharePost()"
                viewBox="0 0 24 24">
+
             <path d="M4 12 20 4l-5 16-7-1Z"/>
             <path d="M11 13 20 4"/>
+
           </svg>
 
         </div>
 
+
         <svg class="post-icon save-btn"
              onclick="savePost(this)"
              viewBox="0 0 24 24">
+
           <path d="M6 4h12v17l-6-4-6 4V4Z"/>
+
         </svg>
 
       </div>
@@ -760,7 +896,194 @@ body{
 </section>
 
 
-<!-- ================= PROFILE ================= -->
+<!-- ==================================================
+                         SEARCH
+================================================== -->
+
+<section id="searchPage" class="page">
+
+  <div class="search-page">
+
+    <div class="search-container">
+
+      <div class="search-box">
+
+        <svg class="search-svg"
+             viewBox="0 0 24 24">
+
+          <circle
+            cx="10.8"
+            cy="10.8"
+            r="6.5"/>
+
+          <path d="m16 16 5 5"/>
+
+        </svg>
+
+
+        <input
+          id="searchInput"
+          class="search-input"
+          type="text"
+          placeholder="Search X-DARK..."
+          oninput="searchUsers()">
+
+
+        <span
+          id="clearSearch"
+          class="clear-search"
+          onclick="clearSearch()">
+          ×
+        </span>
+
+      </div>
+
+
+      <div
+        id="searchTitle"
+        class="search-title">
+        Discover people
+      </div>
+
+
+      <div id="searchResults">
+
+        <!-- USER 1 -->
+
+        <div
+          class="search-result"
+          onclick="openUser('Ankaj','@Ankaj','https://i.pravatar.cc/150?img=12')">
+
+          <img
+            class="search-avatar"
+            src="https://i.pravatar.cc/150?img=12">
+
+          <div class="result-info">
+
+            <div class="result-name">
+              Ankaj
+            </div>
+
+            <div class="result-handle">
+              @Ankaj
+            </div>
+
+          </div>
+
+          <div class="result-arrow">
+            ›
+          </div>
+
+        </div>
+
+
+        <!-- USER 2 -->
+
+        <div
+          class="search-result"
+          onclick="openUser('Darkwing','@Darkwing','https://i.pravatar.cc/150?img=32')">
+
+          <img
+            class="search-avatar"
+            src="https://i.pravatar.cc/150?img=32">
+
+          <div class="result-info">
+
+            <div class="result-name">
+              Darkwing
+            </div>
+
+            <div class="result-handle">
+              @Darkwing
+            </div>
+
+          </div>
+
+          <div class="result-arrow">
+            ›
+          </div>
+
+        </div>
+
+
+        <!-- USER 3 -->
+
+        <div
+          class="search-result"
+          onclick="openUser('XDark','@XDark','https://i.pravatar.cc/150?img=44')">
+
+          <img
+            class="search-avatar"
+            src="https://i.pravatar.cc/150?img=44">
+
+          <div class="result-info">
+
+            <div class="result-name">
+              XDark
+            </div>
+
+            <div class="result-handle">
+              @XDark
+            </div>
+
+          </div>
+
+          <div class="result-arrow">
+            ›
+          </div>
+
+        </div>
+
+
+        <!-- USER 4 -->
+
+        <div
+          class="search-result"
+          onclick="openUser('Nova','@Nova','https://i.pravatar.cc/150?img=15')">
+
+          <img
+            class="search-avatar"
+            src="https://i.pravatar.cc/150?img=15">
+
+          <div class="result-info">
+
+            <div class="result-name">
+              Nova
+            </div>
+
+            <div class="result-handle">
+              @Nova
+            </div>
+
+          </div>
+
+          <div class="result-arrow">
+            ›
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div
+        id="noResults"
+        class="no-results">
+
+        No users found
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ==================================================
+                         PROFILE
+================================================== -->
 
 <section id="profilePage" class="page">
 
@@ -777,13 +1100,15 @@ body{
 
         <div class="profile-details">
 
-          <div id="profileName"
-               class="profile-username">
+          <div
+            id="profileName"
+            class="profile-username">
             Ankaj
           </div>
 
-          <div id="profileHandle"
-               class="profile-handle">
+          <div
+            id="profileHandle"
+            class="profile-handle">
             @Ankaj
           </div>
 
@@ -812,18 +1137,23 @@ body{
       </div>
 
 
-      <div id="profileBio"
-           class="profile-bio">
+      <div
+        id="profileBio"
+        class="profile-bio">
+
         X-DARK creator ⚡<br>
         Create • Connect • Explore<br>
         🌊 Maldives
+
       </div>
 
 
       <button
         class="edit-profile"
         onclick="openEditProfile()">
+
         Edit Profile
+
       </button>
 
     </div>
@@ -832,24 +1162,60 @@ body{
     <div class="profile-tabs">
 
       <div class="profile-tab active">
-        <svg class="tab-icon" viewBox="0 0 24 24">
-          <rect x="3" y="3" width="18" height="18" rx="2"/>
-          <circle cx="8" cy="8" r="1.5"/>
-          <path d="m4 17 5-5 3 3 2-2 6 5"/>
+
+        <svg class="tab-icon"
+             viewBox="0 0 24 24">
+
+          <rect
+            x="3"
+            y="3"
+            width="18"
+            height="18"
+            rx="2"/>
+
+          <circle
+            cx="8"
+            cy="8"
+            r="1.5"/>
+
+          <path
+            d="m4 17 5-5 3 3 2-2 6 5"/>
+
         </svg>
+
       </div>
 
-      <div class="profile-tab">
-        <svg class="tab-icon" viewBox="0 0 24 24">
-          <rect x="3" y="5" width="18" height="14" rx="2"/>
-          <path d="m10 9 5 3-5 3V9Z"/>
-        </svg>
-      </div>
 
       <div class="profile-tab">
-        <svg class="tab-icon" viewBox="0 0 24 24">
-          <path d="M6 4h12v17l-6-4-6 4V4Z"/>
+
+        <svg class="tab-icon"
+             viewBox="0 0 24 24">
+
+          <rect
+            x="3"
+            y="5"
+            width="18"
+            height="14"
+            rx="2"/>
+
+          <path
+            d="m10 9 5 3-5 3V9Z"/>
+
         </svg>
+
+      </div>
+
+
+      <div class="profile-tab">
+
+        <svg class="tab-icon"
+             viewBox="0 0 24 24">
+
+          <path
+            d="M6 4h12v17l-6-4-6 4V4Z"/>
+
+        </svg>
+
       </div>
 
     </div>
@@ -888,9 +1254,13 @@ body{
 </section>
 
 
-<!-- ================= CREATE POST MODAL ================= -->
+<!-- ==================================================
+                     CREATE POST
+================================================== -->
 
-<div id="createModal" class="modal">
+<div
+  id="createModal"
+  class="modal">
 
   <div class="modal-box">
 
@@ -909,17 +1279,22 @@ body{
     </div>
 
 
-    <label class="upload-area" for="mediaInput">
+    <label
+      class="upload-area"
+      for="mediaInput">
 
       <div class="upload-text">
         📷 Choose photo or video
       </div>
 
-      <img id="previewImage" class="preview">
+      <img
+        id="previewImage"
+        class="preview">
 
-      <video id="previewVideo"
-             class="preview"
-             controls>
+      <video
+        id="previewVideo"
+        class="preview"
+        controls>
       </video>
 
     </label>
@@ -951,9 +1326,13 @@ body{
 </div>
 
 
-<!-- ================= EDIT PROFILE MODAL ================= -->
+<!-- ==================================================
+                     EDIT PROFILE
+================================================== -->
 
-<div id="editModal" class="modal">
+<div
+  id="editModal"
+  class="modal">
 
   <div class="modal-box">
 
@@ -979,11 +1358,15 @@ body{
         class="edit-photo"
         src="https://i.pravatar.cc/300?img=12">
 
+
       <label
         class="change-photo"
         for="profilePhotoInput">
+
         Change Profile Photo
+
       </label>
+
 
       <input
         id="profilePhotoInput"
@@ -1002,8 +1385,7 @@ body{
     <input
       id="editName"
       class="form-input"
-      type="text"
-      placeholder="Your name">
+      type="text">
 
 
     <label class="form-label">
@@ -1013,8 +1395,7 @@ body{
     <input
       id="editUsername"
       class="form-input"
-      type="text"
-      placeholder="@username">
+      type="text">
 
 
     <label class="form-label">
@@ -1023,15 +1404,16 @@ body{
 
     <textarea
       id="editBio"
-      class="form-input form-bio"
-      placeholder="Write your bio...">
+      class="form-input form-bio">
     </textarea>
 
 
     <button
       class="save-changes"
       onclick="saveProfile()">
+
       Save Changes
+
     </button>
 
   </div>
@@ -1039,9 +1421,12 @@ body{
 </div>
 
 
-<!-- ================= BOTTOM NAV ================= -->
+<!-- ==================================================
+                       BOTTOM NAV
+================================================== -->
 
 <nav class="bottom-nav">
+
 
   <!-- HOME -->
 
@@ -1060,11 +1445,16 @@ body{
   <!-- SEARCH -->
 
   <svg
+    id="searchNav"
     class="nav-icon"
-    onclick="showToast('Search coming next')"
+    onclick="showPage('search')"
     viewBox="0 0 24 24">
 
-    <circle cx="10.8" cy="10.8" r="6.5"/>
+    <circle
+      cx="10.8"
+      cy="10.8"
+      r="6.5"/>
+
     <path d="m16 16 5 5"/>
 
   </svg>
@@ -1075,7 +1465,9 @@ body{
   <div
     class="create-btn"
     onclick="openCreatePost()">
+
     +
+
   </div>
 
 
@@ -1086,8 +1478,9 @@ body{
     onclick="showToast('Notifications coming next')"
     viewBox="0 0 24 24">
 
-    <path d="M18 9a6 6 0 0 0-12 0
-    c0 7-3 7-3 9h18c0-2-3-2-3-9Z"/>
+    <path
+      d="M18 9a6 6 0 0 0-12 0
+      c0 7-3 7-3 9h18c0-2-3-2-3-9Z"/>
 
     <path d="M10 21h4"/>
 
@@ -1102,11 +1495,15 @@ body{
     onclick="showPage('profile')"
     viewBox="0 0 24 24">
 
-    <circle cx="12" cy="8" r="3.5"/>
+    <circle
+      cx="12"
+      cy="8"
+      r="3.5"/>
 
-    <path d="M4.5 21c.7-4.2
-    3.1-6.5 7.5-6.5
-    s6.8 2.3 7.5 6.5"/>
+    <path
+      d="M4.5 21c.7-4.2
+      3.1-6.5 7.5-6.5
+      s6.8 2.3 7.5 6.5"/>
 
   </svg>
 
@@ -1118,49 +1515,200 @@ body{
 
 <script>
 
-/* ================= PAGE SWITCH ================= */
+/* ==================================================
+                     PAGE SWITCH
+================================================== */
 
 function showPage(page){
 
-  const home =
-    document.getElementById("homePage");
+  const pages = document.querySelectorAll(".page");
 
-  const profile =
-    document.getElementById("profilePage");
+  pages.forEach(function(p){
+    p.classList.remove("active");
+  });
 
-  const homeNav =
-    document.getElementById("homeNav");
 
-  const profileNav =
-    document.getElementById("profileNav");
+  document
+    .getElementById(page + "Page")
+    .classList.add("active");
+
+
+  document
+    .querySelectorAll(".nav-icon")
+    .forEach(function(icon){
+      icon.classList.remove("active");
+    });
 
 
   if(page === "home"){
 
-    home.classList.add("active");
-    profile.classList.remove("active");
+    document
+      .getElementById("homeNav")
+      .classList.add("active");
 
-    homeNav.classList.add("active");
-    profileNav.classList.remove("active");
+  }
 
-    window.scrollTo(0,0);
+
+  if(page === "search"){
+
+    document
+      .getElementById("searchNav")
+      .classList.add("active");
+
+    setTimeout(function(){
+
+      document
+        .getElementById("searchInput")
+        .focus();
+
+    },100);
+
   }
 
 
   if(page === "profile"){
 
-    profile.classList.add("active");
-    home.classList.remove("active");
+    document
+      .getElementById("profileNav")
+      .classList.add("active");
 
-    profileNav.classList.add("active");
-    homeNav.classList.remove("active");
-
-    window.scrollTo(0,0);
   }
+
+
+  window.scrollTo(0,0);
 }
 
 
-/* ================= EDIT PROFILE ================= */
+/* ==================================================
+                       SEARCH
+================================================== */
+
+function searchUsers(){
+
+  const input =
+    document
+      .getElementById("searchInput")
+      .value
+      .toLowerCase()
+      .trim();
+
+
+  const results =
+    document.querySelectorAll(".search-result");
+
+  const noResults =
+    document.getElementById("noResults");
+
+  const title =
+    document.getElementById("searchTitle");
+
+  const clear =
+    document.getElementById("clearSearch");
+
+
+  if(input.length > 0){
+
+    clear.style.display="block";
+
+    title.textContent="Search results";
+
+  }else{
+
+    clear.style.display="none";
+
+    title.textContent="Discover people";
+
+  }
+
+
+  let found=0;
+
+
+  results.forEach(function(result){
+
+    const name =
+      result
+        .querySelector(".result-name")
+        .textContent
+        .toLowerCase();
+
+    const handle =
+      result
+        .querySelector(".result-handle")
+        .textContent
+        .toLowerCase();
+
+
+    if(
+      name.includes(input) ||
+      handle.includes(input)
+    ){
+
+      result.style.display="flex";
+
+      found++;
+
+    }else{
+
+      result.style.display="none";
+
+    }
+
+  });
+
+
+  if(found === 0 && input.length > 0){
+
+    noResults.style.display="block";
+
+  }else{
+
+    noResults.style.display="none";
+
+  }
+
+}
+
+
+function clearSearch(){
+
+  const input =
+    document.getElementById("searchInput");
+
+  input.value="";
+
+  searchUsers();
+
+  input.focus();
+
+}
+
+
+/* ==================================================
+                  SEARCH USER PROFILE
+================================================== */
+
+function openUser(name,handle,photo){
+
+  document.getElementById("profileName")
+    .textContent=name;
+
+  document.getElementById("profileHandle")
+    .textContent=handle;
+
+  document.getElementById("profilePhoto")
+    .src=photo;
+
+  showPage("profile");
+
+  showToast("Profile opened");
+
+}
+
+
+/* ==================================================
+                     EDIT PROFILE
+================================================== */
 
 function openEditProfile(){
 
@@ -1176,6 +1724,7 @@ function openEditProfile(){
   document.getElementById("editPhoto").src =
     document.getElementById("profilePhoto").src;
 
+
   document
     .getElementById("editModal")
     .classList.add("active");
@@ -1187,42 +1736,50 @@ function closeEditProfile(){
   document
     .getElementById("editModal")
     .classList.remove("active");
+
 }
 
 
-/* ================= PROFILE PHOTO ================= */
-
 function previewProfilePhoto(input){
 
-  const file = input.files[0];
+  const file=input.files[0];
 
-  if(!file) return;
+  if(!file)return;
 
   const url =
     URL.createObjectURL(file);
 
-  document.getElementById("editPhoto").src = url;
+  document
+    .getElementById("editPhoto")
+    .src=url;
 }
 
-
-/* ================= SAVE PROFILE ================= */
 
 function saveProfile(){
 
   let name =
-    document.getElementById("editName").value.trim();
+    document
+      .getElementById("editName")
+      .value.trim();
+
 
   let username =
-    document.getElementById("editUsername").value.trim();
+    document
+      .getElementById("editUsername")
+      .value.trim();
+
 
   let bio =
-    document.getElementById("editBio").value.trim();
+    document
+      .getElementById("editBio")
+      .value.trim();
 
 
   if(!name){
 
     showToast("Enter your name");
     return;
+
   }
 
 
@@ -1230,65 +1787,89 @@ function saveProfile(){
 
     showToast("Enter username");
     return;
+
   }
 
 
   if(!username.startsWith("@")){
 
-    username = "@" + username;
+    username="@"+username;
+
   }
 
 
-  document.getElementById("profileName").textContent =
-    name;
+  document
+    .getElementById("profileName")
+    .textContent=name;
 
-  document.getElementById("profileHandle").textContent =
-    username;
 
-  document.getElementById("profileBio").innerHTML =
-    escapeHTML(bio).replace(/\n/g,"<br>");
+  document
+    .getElementById("profileHandle")
+    .textContent=username;
+
+
+  document
+    .getElementById("profileBio")
+    .innerHTML=
+      escapeHTML(bio)
+      .replace(/\n/g,"<br>");
 
 
   const photo =
-    document.getElementById("editPhoto").src;
+    document
+      .getElementById("editPhoto")
+      .src;
 
-  document.getElementById("profilePhoto").src =
-    photo;
+
+  document
+    .getElementById("profilePhoto")
+    .src=photo;
 
 
-  /* UPDATE HOME USER */
-
-  document.querySelectorAll(".profile-avatar")
+  document
+    .querySelectorAll(".profile-avatar")
     .forEach(function(img){
-      img.src = photo;
+
+      img.src=photo;
+
     });
 
 
-  document.querySelectorAll(".profile-name-display")
+  document
+    .querySelectorAll(".profile-name-display")
     .forEach(function(el){
-      el.textContent = username;
+
+      el.textContent=username;
+
     });
 
 
-  document.querySelectorAll(".caption-name")
+  document
+    .querySelectorAll(".caption-name")
     .forEach(function(el){
-      el.textContent = username;
+
+      el.textContent=username;
+
     });
 
 
   closeEditProfile();
 
-  showToast("Profile updated successfully");
+  showToast("Profile updated");
+
 }
 
 
-/* ================= CREATE POST ================= */
+/* ==================================================
+                    CREATE POST
+================================================== */
 
 function openCreatePost(){
 
   document
     .getElementById("createModal")
     .classList.add("active");
+
 }
 
 
@@ -1297,16 +1878,15 @@ function closeCreatePost(){
   document
     .getElementById("createModal")
     .classList.remove("active");
+
 }
 
 
-/* ================= MEDIA PREVIEW ================= */
-
 function previewMedia(input){
 
-  const file = input.files[0];
+  const file=input.files[0];
 
-  if(!file) return;
+  if(!file)return;
 
 
   const image =
@@ -1319,46 +1899,50 @@ function previewMedia(input){
     URL.createObjectURL(file);
 
 
-  image.style.display = "none";
-  video.style.display = "none";
+  image.style.display="none";
+
+  video.style.display="none";
 
 
   if(file.type.startsWith("image/")){
 
-    image.src = url;
-    image.style.display = "block";
+    image.src=url;
+
+    image.style.display="block";
 
   }
 
 
   if(file.type.startsWith("video/")){
 
-    video.src = url;
-    video.style.display = "block";
+    video.src=url;
+
+    video.style.display="block";
 
   }
+
 }
 
-
-/* ================= PUBLISH POST ================= */
 
 function publishPost(){
 
   const input =
     document.getElementById("mediaInput");
 
-  const file =
-    input.files[0];
+  const file=input.files[0];
 
   const caption =
-    document.getElementById("captionInput")
-    .value.trim();
+    document
+      .getElementById("captionInput")
+      .value.trim();
 
 
   if(!file){
 
     showToast("Choose a photo or video");
+
     return;
+
   }
 
 
@@ -1366,18 +1950,30 @@ function publishPost(){
     URL.createObjectURL(file);
 
 
+  const username =
+    document
+      .getElementById("profileHandle")
+      .textContent;
+
+
+  const photo =
+    document
+      .getElementById("profilePhoto")
+      .src;
+
+
   const post =
     document.createElement("article");
 
-  post.className = "post";
+  post.className="post";
 
 
-  let media = "";
+  let media="";
 
 
   if(file.type.startsWith("image/")){
 
-    media = `
+    media=`
       <img
         class="post-image"
         src="${url}">
@@ -1385,7 +1981,7 @@ function publishPost(){
 
   }else{
 
-    media = `
+    media=`
       <video
         class="post-image"
         src="${url}"
@@ -1393,20 +1989,11 @@ function publishPost(){
         playsinline>
       </video>
     `;
+
   }
 
 
-  const username =
-    document.getElementById("profileHandle")
-    .textContent;
-
-
-  const photo =
-    document.getElementById("profilePhoto")
-    .src;
-
-
-  post.innerHTML = `
+  post.innerHTML=`
 
     <div class="post-header">
 
@@ -1451,8 +2038,7 @@ function publishPost(){
 
           <path
             d="M20.8 8.7c0 5.5-8.8 10.3-8.8 10.3
-            S3.2 14.2 3.2 8.7
-            A4.7 4.7 0 0 1 12 6.1
+            S3.2 14.2 3.2 8.7A4.7 4.7 0 0 1 12 6.1
             a4.7 4.7 0 0 1 8.8 2.6Z"/>
 
         </svg>
@@ -1541,6 +2127,7 @@ function publishPost(){
       </button>
 
     </div>
+
   `;
 
 
@@ -1549,28 +2136,33 @@ function publishPost(){
     .prepend(post);
 
 
-  input.value = "";
+  input.value="";
 
   document
     .getElementById("captionInput")
-    .value = "";
+    .value="";
+
 
   document
     .getElementById("previewImage")
-    .style.display = "none";
+    .style.display="none";
+
 
   document
     .getElementById("previewVideo")
-    .style.display = "none";
+    .style.display="none";
 
 
   closeCreatePost();
 
   showToast("Post published");
+
 }
 
 
-/* ================= LIKE ================= */
+/* ==================================================
+                       LIKE
+================================================== */
 
 function likePost(button){
 
@@ -1579,6 +2171,7 @@ function likePost(button){
 
   const count =
     post.querySelector(".like-count");
+
 
   let number =
     parseInt(
@@ -1589,11 +2182,13 @@ function likePost(button){
   if(button.classList.contains("liked")){
 
     button.classList.remove("liked");
+
     number--;
 
   }else{
 
     button.classList.add("liked");
+
     number++;
 
   }
@@ -1601,10 +2196,13 @@ function likePost(button){
 
   count.textContent =
     number.toLocaleString();
+
 }
 
 
-/* ================= SAVE ================= */
+/* ==================================================
+                       SAVE
+================================================== */
 
 function savePost(button){
 
@@ -1615,10 +2213,13 @@ function savePost(button){
     ? "Post saved"
     : "Post unsaved"
   );
+
 }
 
 
-/* ================= COMMENTS ================= */
+/* ==================================================
+                     COMMENTS
+================================================== */
 
 function toggleComments(element){
 
@@ -1629,6 +2230,7 @@ function toggleComments(element){
     post.querySelector(".comment-area");
 
   area.classList.toggle("active");
+
 }
 
 
@@ -1644,64 +2246,80 @@ function addComment(button){
   if(!input.value.trim()){
 
     showToast("Write a comment first");
+
     return;
+
   }
 
 
-  input.value = "";
+  input.value="";
 
   showToast("Comment posted");
+
 }
 
 
-/* ================= SHARE ================= */
+/* ==================================================
+                       SHARE
+================================================== */
 
 function sharePost(){
 
   if(navigator.share){
 
     navigator.share({
+
       title:"X-DARK",
+
       text:"Check this post on X-DARK"
+
     });
 
   }else{
 
     showToast("Share ready");
+
   }
+
 }
 
 
-/* ================= ESCAPE ================= */
+/* ==================================================
+                     ESCAPE
+================================================== */
 
 function escapeHTML(text){
 
   const div =
     document.createElement("div");
 
-  div.textContent = text;
+  div.textContent=text;
 
   return div.innerHTML;
+
 }
 
 
-/* ================= TOAST ================= */
+/* ==================================================
+                       TOAST
+================================================== */
 
 function showToast(message){
 
   const toast =
     document.getElementById("toast");
 
-  toast.textContent = message;
+  toast.textContent=message;
 
-  toast.style.display = "block";
+  toast.style.display="block";
 
 
   setTimeout(function(){
 
-    toast.style.display = "none";
+    toast.style.display="none";
 
   },1800);
+
 }
 
 </script>
