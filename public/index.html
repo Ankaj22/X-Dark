@@ -2,13 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#050507">
 <title>X-DARK — The Next Level</title>
 
 <style>
-
 :root{
   --bg:#050507;
   --panel:#0b0b10;
@@ -17,7 +15,6 @@
   --muted:#858592;
   --purple:#7d3cff;
   --purple2:#a66cff;
-  --green:#48e58a;
 }
 
 *{
@@ -25,8 +22,7 @@
   -webkit-tap-highlight-color:transparent;
 }
 
-html,
-body{
+html,body{
   margin:0;
   width:100%;
   height:100%;
@@ -41,9 +37,7 @@ body{
   overscroll-behavior:none;
 }
 
-button,
-input,
-textarea{
+button,input,textarea{
   font:inherit;
 }
 
@@ -105,7 +99,7 @@ button{
     linear-gradient(
       180deg,
       rgba(0,0,0,.72),
-      rgba(0,0,0,.04) 40%,
+      rgba(0,0,0,.05) 42%,
       rgba(0,0,0,.20) 65%,
       rgba(0,0,0,.96)
     );
@@ -134,75 +128,38 @@ button{
   align-items:flex-start;
 }
 
-/* X-DARK LOGO */
+/* ORIGINAL X-DARK LOGO */
 
 .logo{
   position:absolute;
 
   left:15px;
-  top:calc(env(safe-area-inset-top) + 8px);
+  top:calc(env(safe-area-inset-top) + 7px);
 
   width:48px;
   height:48px;
 
   object-fit:cover;
-
   border-radius:50%;
-
-  background:#09090d;
 
   border:1px solid rgba(255,255,255,.18);
 
+  background:#050507;
+
   box-shadow:
     0 0 8px rgba(126,61,255,.65),
-    0 0 22px rgba(126,61,255,.28);
+    0 0 20px rgba(126,61,255,.30);
 
   filter:
-    drop-shadow(0 0 6px rgba(126,61,255,.6));
+    drop-shadow(0 0 7px rgba(126,61,255,.60));
 
-  z-index:10;
+  z-index:20;
 
-  transition:.2s;
+  transition:transform .2s ease;
 }
 
 .logo:active{
-  transform:scale(.9);
-}
-
-/* fallback logo */
-
-.logo-fallback{
-  position:absolute;
-
-  left:15px;
-  top:calc(env(safe-area-inset-top) + 8px);
-
-  width:48px;
-  height:48px;
-
-  display:none;
-
-  align-items:center;
-  justify-content:center;
-
-  border-radius:50%;
-
-  background:
-    linear-gradient(
-      145deg,
-      #15151d,
-      #07070a
-    );
-
-  border:1px solid #6f43ff;
-
-  box-shadow:
-    0 0 12px rgba(126,61,255,.7);
-
-  font-size:12px;
-  font-weight:1000;
-
-  z-index:9;
+  transform:scale(.90);
 }
 
 .top-actions{
@@ -260,11 +217,9 @@ button{
 
   border-radius:17px;
 
-  background:
-    rgba(8,8,12,.52);
+  background:rgba(8,8,12,.52);
 
-  border:
-    1px solid rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.14);
 
   backdrop-filter:blur(17px);
 
@@ -424,7 +379,6 @@ button{
 
 .bottom{
   position:absolute;
-
   z-index:100;
 
   left:9px;
@@ -456,7 +410,6 @@ button{
 
   display:flex;
   flex-direction:column;
-
   align-items:center;
   justify-content:center;
 
@@ -518,7 +471,6 @@ button{
 
 .panel{
   position:absolute;
-
   z-index:300;
 
   inset:0;
@@ -608,7 +560,8 @@ button{
    CARDS
 ========================= */
 
-.card{
+.card,
+.chat-card{
   margin:10px 14px;
 
   padding:13px;
@@ -625,53 +578,17 @@ button{
   gap:11px;
 }
 
-.card-info{
-  flex:1;
-}
-
-.card-info strong{
-  font-size:14px;
-}
-
-.card-info small{
-  display:block;
-
-  margin-top:4px;
-
-  color:#777781;
-
-  font-size:10px;
-}
-
-/* =========================
-   CHAT LIST
-========================= */
-
-.chat-card{
-  margin:9px 14px;
-
-  padding:12px;
-
-  border-radius:18px;
-
-  background:#111117;
-
-  border:1px solid var(--line);
-
-  display:flex;
-  align-items:center;
-
-  gap:11px;
-}
-
+.card-info,
 .chat-info{
   flex:1;
 }
 
+.card-info strong,
 .chat-info strong{
   font-size:14px;
 }
 
+.card-info small,
 .chat-info small{
   display:block;
 
@@ -713,21 +630,18 @@ button{
 
   padding:10px 13px;
 
-  border-radius:
-    17px 17px 17px 5px;
+  border-radius:17px 17px 17px 5px;
 
   background:#17171e;
 
   border:1px solid var(--line);
 
   font-size:13px;
-
   line-height:1.42;
 }
 
 .msg.me .bubble{
-  border-radius:
-    17px 17px 5px 17px;
+  border-radius:17px 17px 5px 17px;
 
   background:
     linear-gradient(
@@ -767,7 +681,6 @@ button{
   height:43px;
 
   background:none;
-
   border:0;
   outline:0;
 
@@ -819,8 +732,7 @@ button{
 
   background:#111116;
 
-  border-radius:
-    27px 27px 0 0;
+  border-radius:27px 27px 0 0;
 
   transform:translateY(100%);
 
@@ -1004,7 +916,6 @@ button{
 .search svg{
   width:19px;
   height:19px;
-
   color:#777781;
 }
 
@@ -1012,7 +923,6 @@ button{
   flex:1;
 
   background:none;
-
   border:0;
   outline:0;
 
@@ -1025,6 +935,7 @@ button{
 
 .profile{
   text-align:center;
+
   padding:27px 16px;
 }
 
@@ -1093,6 +1004,7 @@ button{
 .mode-tabs{
   display:flex;
   gap:7px;
+
   margin-bottom:13px;
 }
 
@@ -1181,7 +1093,6 @@ button{
   border:1px solid #40315a;
 
   display:flex;
-
   align-items:center;
   justify-content:center;
 
@@ -1193,11 +1104,8 @@ button{
   height:30px;
 
   fill:none;
-
   stroke:currentColor;
-
   stroke-width:1.8;
-
   stroke-linecap:round;
   stroke-linejoin:round;
 }
@@ -1235,8 +1143,7 @@ button{
 
   border-radius:14px;
 
-  background:
-    rgba(7,7,11,.72);
+  background:rgba(7,7,11,.72);
 
   border:1px solid rgba(255,255,255,.14);
 
@@ -1252,11 +1159,8 @@ button{
   height:20px;
 
   fill:none;
-
   stroke:currentColor;
-
   stroke-width:1.8;
-
   stroke-linecap:round;
   stroke-linejoin:round;
 }
@@ -1270,15 +1174,13 @@ button{
 
   left:8px;
   right:8px;
-
   bottom:61px;
 
   padding:10px;
 
   border-radius:17px;
 
-  background:
-    rgba(8,8,12,.95);
+  background:rgba(8,8,12,.95);
 
   border:1px solid var(--line);
 
@@ -1352,8 +1254,7 @@ button{
 
   border-radius:14px;
 
-  background:
-    rgba(5,5,8,.76);
+  background:rgba(5,5,8,.76);
 
   border:1px solid rgba(255,255,255,.13);
 
@@ -1435,13 +1336,11 @@ button{
   z-index:1000;
 
   left:50%;
-
   bottom:91px;
 
   max-width:88%;
 
-  transform:
-    translate(-50%,15px);
+  transform:translate(-50%,15px);
 
   opacity:0;
 
@@ -1456,7 +1355,6 @@ button{
   border:1px solid #42424d;
 
   font-size:11px;
-
   font-weight:750;
 
   text-align:center;
@@ -1467,31 +1365,26 @@ button{
 .toast.show{
   opacity:1;
 
-  transform:
-    translate(-50%,0);
+  transform:translate(-50%,0);
 }
 
 @media(min-width:700px){
 
-  .app{
-    width:520px;
+.app{
+  width:520px;
+  margin:auto;
 
-    margin:auto;
-
-    border-left:1px solid #15151a;
-    border-right:1px solid #15151a;
-  }
-
+  border-left:1px solid #15151a;
+  border-right:1px solid #15151a;
 }
 
+}
 </style>
 </head>
-
 
 <body>
 
 <div class="app">
-
 
 <!-- =====================================================
      HOME FEED
@@ -1499,46 +1392,35 @@ button{
 
 <main id="feed" class="feed">
 
-
-<!-- ================= POST 1 ================= -->
-
 <section class="reel">
 
 <video
-  class="reel-media"
-  src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-  muted
-  loop
-  autoplay
-  playsinline>
+class="reel-media"
+src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+muted
+loop
+autoplay
+playsinline>
 </video>
 
-
-<!-- TOP -->
+<!-- TOP BAR -->
 
 <header class="topbar">
 
+<!-- ORIGINAL X-DARK LOGO -->
 <img
-  class="logo"
-  src="x-dark-logo.png"
-  alt="X-DARK"
-  onerror="this.style.display='none';document.getElementById('logoFallback').style.display='flex';"
->
-
-<div
-  id="logoFallback"
-  class="logo-fallback">
-  X
-</div>
-
+class="logo"
+src="x-dark-logo.png"
+alt="X-DARK — The Next Level"
+onclick="openPanel('profile')">
 
 <div class="top-actions">
 
 <!-- MESSAGES -->
 
 <button
-  class="icon-btn"
-  onclick="openPanel('messages')">
+class="icon-btn"
+onclick="openPanel('messages')">
 
 <svg viewBox="0 0 24 24">
 
@@ -1556,19 +1438,18 @@ a7.5 7.5 0 0 1 8-7.5
 
 </button>
 
-
 <!-- SETTINGS -->
 
 <button
-  class="icon-btn"
-  onclick="openPanel('settings')">
+class="icon-btn"
+onclick="openPanel('settings')">
 
 <svg viewBox="0 0 24 24">
 
 <circle
-  cx="12"
-  cy="12"
-  r="3"/>
+cx="12"
+cy="12"
+r="3"/>
 
 <path d="
 M19 12
@@ -1591,8 +1472,8 @@ l-2 1.5
 a7 7 0 0 0 1.6.9
 l.3 3
 h5
-l.3-3
-a7 7 0 0 0 1.6-.9
+l-.3-3
+a7 7 0 0 0-1.6-.9
 l2.4 1
 2-3.4
 -2-1.5
@@ -1607,13 +1488,13 @@ A7 7 0 0 0 19 12z"/>
 </header>
 
 
-<!-- ACTIONS -->
+<!-- RIGHT ACTIONS -->
 
 <div class="actions">
 
 <button
-  class="action"
-  onclick="toggleLike(this)">
+class="action"
+onclick="toggleLike(this)">
 
 <svg viewBox="0 0 24 24">
 
@@ -1632,8 +1513,8 @@ a4.6 4.6 0 0 1 8.8 2.3z"/>
 
 
 <button
-  class="action"
-  onclick="openComments()">
+class="action"
+onclick="openComments()">
 
 <svg viewBox="0 0 24 24">
 
@@ -1655,15 +1536,13 @@ a7.5 7.5 0 0 1 8-7.5
 
 
 <button
-  class="action"
-  onclick="sharePost()">
+class="action"
+onclick="sharePost()">
 
 <svg viewBox="0 0 24 24">
 
 <path d="M12 16V3"/>
-
 <path d="m7 8 5-5 5 5"/>
-
 <path d="
 M5 13
 v6
@@ -1680,8 +1559,8 @@ v-6"/>
 
 
 <button
-  class="action"
-  onclick="toggleSave(this)">
+class="action"
+onclick="toggleSave(this)">
 
 <svg viewBox="0 0 24 24">
 
@@ -1722,8 +1601,8 @@ Darkwing
 </div>
 
 <button
-  class="follow"
-  onclick="toggleFollow(this)">
+class="follow"
+onclick="toggleFollow(this)">
 Follow
 </button>
 
@@ -1734,11 +1613,9 @@ Follow
 Welcome to X-DARK 🔥 The new dark social experience.
 </div>
 
-
 <div class="hashtags">
 #xdark #reels #viral #dark
 </div>
-
 
 <div class="audio">
 
@@ -1755,40 +1632,35 @@ Original sound · Darkwing
 </section>
 
 
-<!-- ================= POST 2 ================= -->
+<!-- =====================================================
+     SECOND REEL
+===================================================== -->
 
 <section class="reel">
 
 <video
-  class="reel-media"
-  src="https://www.w3schools.com/html/mov_bbb.mp4"
-  muted
-  loop
-  playsinline>
+class="reel-media"
+src="https://www.w3schools.com/html/mov_bbb.mp4"
+muted
+loop
+playsinline>
 </video>
 
 
 <header class="topbar">
 
 <img
-  class="logo"
-  src="x-dark-logo.png"
-  alt="X-DARK"
-  onerror="this.style.display='none';document.getElementById('logoFallback2').style.display='flex';"
->
-
-<div
-  id="logoFallback2"
-  class="logo-fallback">
-X
-</div>
+class="logo"
+src="x-dark-logo.png"
+alt="X-DARK — The Next Level"
+onclick="openPanel('profile')">
 
 
 <div class="top-actions">
 
 <button
-  class="icon-btn"
-  onclick="openPanel('messages')">
+class="icon-btn"
+onclick="openPanel('messages')">
 
 <svg viewBox="0 0 24 24">
 
@@ -1808,8 +1680,8 @@ a7.5 7.5 0 0 1 8-7.5
 
 
 <button
-  class="icon-btn"
-  onclick="openPanel('settings')">
+class="icon-btn"
+onclick="openPanel('settings')">
 
 <svg viewBox="0 0 24 24">
 
@@ -1836,8 +1708,8 @@ l-2 1.5
 a7 7 0 0 0 1.6.9
 l.3 3
 h5
-l.3-3
-a7 7 0 0 0 1.6-.9
+l-.3-3
+a7 7 0 0 0-1.6-.9
 l2.4 1
 2-3.4
 -2-1.5
@@ -1855,8 +1727,8 @@ A7 7 0 0 0 19 12z"/>
 <div class="actions">
 
 <button
-  class="action"
-  onclick="toggleLike(this)">
+class="action"
+onclick="toggleLike(this)">
 
 <svg viewBox="0 0 24 24">
 
@@ -1875,8 +1747,8 @@ a4.6 4.6 0 0 1 8.8 2.3z"/>
 
 
 <button
-  class="action"
-  onclick="openComments()">
+class="action"
+onclick="openComments()">
 
 <svg viewBox="0 0 24 24">
 
@@ -1898,14 +1770,13 @@ a7.5 7.5 0 0 1 8-7.5
 
 
 <button
-  class="action"
-  onclick="sharePost()">
+class="action"
+onclick="sharePost()">
 
 <svg viewBox="0 0 24 24">
 
 <path d="M12 16V3"/>
 <path d="m7 8 5-5 5 5"/>
-
 <path d="
 M5 13
 v6
@@ -1942,13 +1813,12 @@ Nova
 </div>
 
 <button
-  class="follow"
-  onclick="toggleFollow(this)">
+class="follow"
+onclick="toggleFollow(this)">
 Follow
 </button>
 
 </div>
-
 
 <div class="caption">
 Create. Explore. Connect. ✨
@@ -1982,8 +1852,8 @@ Original sound · Nova
 <nav class="bottom">
 
 <button
-  class="nav active"
-  onclick="goHome()">
+class="nav active"
+onclick="goHome()">
 
 <svg viewBox="0 0 24 24">
 
@@ -2008,16 +1878,14 @@ a1 1 0 0 1-1-1z"/>
 
 
 <button
-  class="nav"
-  onclick="openPanel('explore')">
+class="nav"
+onclick="openPanel('explore')">
 
 <svg viewBox="0 0 24 24">
 
 <circle cx="11" cy="11" r="7"/>
 
-<path d="
-m20 20
--4-4"/>
+<path d="m20 20-4-4"/>
 
 </svg>
 
@@ -2027,8 +1895,8 @@ m20 20
 
 
 <button
-  class="nav"
-  onclick="openStudio()">
+class="nav"
+onclick="openStudio()">
 
 <div class="create">
 
@@ -2045,8 +1913,8 @@ m20 20
 
 
 <button
-  class="nav"
-  onclick="openPanel('activity')">
+class="nav"
+onclick="openPanel('activity')">
 
 <svg viewBox="0 0 24 24">
 
@@ -2067,8 +1935,8 @@ c0-2-3-2-3-9"/>
 
 
 <button
-  class="nav"
-  onclick="openPanel('profile')">
+class="nav"
+onclick="openPanel('profile')">
 
 <svg viewBox="0 0 24 24">
 
@@ -2092,15 +1960,13 @@ s8 3 8 7"/>
      MESSAGES
 ===================================================== -->
 
-<section
-  id="messages"
-  class="panel">
+<section id="messages" class="panel">
 
 <div class="panel-head">
 
 <button
-  class="back"
-  onclick="closePanels()">
+class="back"
+onclick="closePanels()">
 
 <svg viewBox="0 0 24 24">
 
@@ -2120,8 +1986,8 @@ Messages
 
 
 <div
-  class="chat-card"
-  onclick="openChat('Darkwing','D')">
+class="chat-card"
+onclick="openChat('Darkwing','D')">
 
 <div class="avatar">D</div>
 
@@ -2143,8 +2009,8 @@ Now
 
 
 <div
-  class="chat-card"
-  onclick="openChat('Nova','N')">
+class="chat-card"
+onclick="openChat('Nova','N')">
 
 <div class="avatar">N</div>
 
@@ -2166,8 +2032,8 @@ Let's create something ✨
 
 
 <div
-  class="chat-card"
-  onclick="openChat('Alex','A')">
+class="chat-card"
+onclick="openChat('Alex','A')">
 
 <div class="avatar">A</div>
 
@@ -2194,15 +2060,13 @@ Hey 👋
      CHAT
 ===================================================== -->
 
-<section
-  id="chatPanel"
-  class="panel">
+<section id="chatPanel" class="panel">
 
 <div class="panel-head">
 
 <button
-  class="back"
-  onclick="closeChat()">
+class="back"
+onclick="closeChat()">
 
 <svg viewBox="0 0 24 24">
 
@@ -2214,9 +2078,9 @@ Hey 👋
 
 
 <div
-  id="chatAvatar"
-  class="avatar"
-  style="width:42px;height:42px;">
+id="chatAvatar"
+class="avatar"
+style="width:42px;height:42px;">
 D
 </div>
 
@@ -2228,11 +2092,11 @@ Darkwing
 </strong>
 
 <div
-  style="
-  font-size:9px;
-  color:#48e58a;
-  margin-top:3px;
-  ">
+style="
+font-size:9px;
+color:#48e58a;
+margin-top:3px;
+">
 
 ● Online
 
@@ -2242,8 +2106,8 @@ Darkwing
 
 
 <button
-  class="icon-btn"
-  onclick="toast('Voice call feature ready')">
+class="icon-btn"
+onclick="toast('Voice call feature ready')">
 
 <svg viewBox="0 0 24 24">
 
@@ -2268,36 +2132,34 @@ c0-2 1-3 2-3z"/>
 
 
 <div
-  id="messagesBox"
-  class="messages">
+id="messagesBox"
+class="messages">
 </div>
 
 
 <div class="chat-input">
 
 <button
-  class="icon-btn"
-  style="width:40px;height:40px"
-  onclick="toast('Emoji picker ready')">
-
+class="icon-btn"
+style="width:40px;height:40px"
+onclick="toast('Emoji picker ready')">
 ☺
-
 </button>
 
 
 <input
-  id="chatInput"
-  placeholder="Message..."
-  onkeydown="
-  if(event.key==='Enter'){
-    event.preventDefault();
-    sendMessage();
-  }">
+id="chatInput"
+placeholder="Message..."
+onkeydown="
+if(event.key==='Enter'){
+event.preventDefault();
+sendMessage();
+}">
 
 
 <button
-  class="send"
-  onclick="sendMessage()">
+class="send"
+onclick="sendMessage()">
 
 <svg viewBox="0 0 24 24">
 
@@ -2322,15 +2184,13 @@ m22 2
      EXPLORE
 ===================================================== -->
 
-<section
-  id="explore"
-  class="panel">
+<section id="explore" class="panel">
 
 <div class="panel-head">
 
 <button
-  class="back"
-  onclick="closePanels()">
+class="back"
+onclick="closePanels()">
 
 <svg viewBox="0 0 24 24">
 
@@ -2361,9 +2221,9 @@ Explore
 
 
 <input
-  id="searchInput"
-  placeholder="Search X-DARK"
-  oninput="searchExplore()">
+id="searchInput"
+placeholder="Search X-DARK"
+oninput="searchExplore()">
 
 </div>
 
@@ -2412,15 +2272,13 @@ Find new people and reels
      ACTIVITY
 ===================================================== -->
 
-<section
-  id="activity"
-  class="panel">
+<section id="activity" class="panel">
 
 <div class="panel-head">
 
 <button
-  class="back"
-  onclick="closePanels()">
+class="back"
+onclick="closePanels()">
 
 <svg viewBox="0 0 24 24">
 
@@ -2502,15 +2360,13 @@ Alex commented on your Reel
      PROFILE
 ===================================================== -->
 
-<section
-  id="profile"
-  class="panel">
+<section id="profile" class="panel">
 
 <div class="panel-head">
 
 <button
-  class="back"
-  onclick="closePanels()">
+class="back"
+onclick="closePanels()">
 
 <svg viewBox="0 0 24 24">
 
@@ -2546,10 +2402,10 @@ Ankaj
 
 
 <div
-  style="
-  color:#777781;
-  font-size:11px;
-  ">
+style="
+color:#777781;
+font-size:11px;
+">
 
 @x_dark_user
 
@@ -2585,8 +2441,8 @@ Ankaj
 
 
 <button
-  class="follow"
-  onclick="toast('Profile editing ready')">
+class="follow"
+onclick="toast('Profile editing ready')">
 
 Edit profile
 
@@ -2601,15 +2457,13 @@ Edit profile
      SETTINGS
 ===================================================== -->
 
-<section
-  id="settings"
-  class="panel">
+<section id="settings" class="panel">
 
 <div class="panel-head">
 
 <button
-  class="back"
-  onclick="closePanels()">
+class="back"
+onclick="closePanels()">
 
 <svg viewBox="0 0 24 24">
 
@@ -2634,7 +2488,9 @@ Settings
 
 <div class="card-info">
 
-<strong>Premium Dark UI</strong>
+<strong>
+Premium Dark UI
+</strong>
 
 <small>
 Glass + neon X-DARK experience
@@ -2651,7 +2507,9 @@ Glass + neon X-DARK experience
 
 <div class="card-info">
 
-<strong>Privacy</strong>
+<strong>
+Privacy
+</strong>
 
 <small>
 Manage privacy and account visibility
@@ -2668,7 +2526,9 @@ Manage privacy and account visibility
 
 <div class="card-info">
 
-<strong>Notifications</strong>
+<strong>
+Notifications
+</strong>
 
 <small>
 Activity and message alerts
@@ -2685,15 +2545,13 @@ Activity and message alerts
      CREATE
 ===================================================== -->
 
-<section
-  id="studio"
-  class="panel">
+<section id="studio" class="panel">
 
 <div class="panel-head">
 
 <button
-  class="back"
-  onclick="closePanels()">
+class="back"
+onclick="closePanels()">
 
 <svg viewBox="0 0 24 24">
 
@@ -2714,24 +2572,23 @@ Create
 
 <div class="create-wrap">
 
-
 <div class="mode-tabs">
 
 <button
-  class="mode active"
-  onclick="setMode(this,'Story')">
+class="mode active"
+onclick="setMode(this,'Story')">
 Story
 </button>
 
 <button
-  class="mode"
-  onclick="setMode(this,'Post')">
+class="mode"
+onclick="setMode(this,'Post')">
 Post
 </button>
 
 <button
-  class="mode"
-  onclick="setMode(this,'Reel')">
+class="mode"
+onclick="setMode(this,'Reel')">
 Reel
 </button>
 
@@ -2741,19 +2598,19 @@ Reel
 <div class="editor">
 
 <div
-  id="emptyEditor"
-  class="empty-editor">
+id="emptyEditor"
+class="empty-editor">
 
 <div class="camera-icon">
 
 <svg viewBox="0 0 24 24">
 
 <rect
-  x="3"
-  y="7"
-  width="18"
-  height="13"
-  rx="3"/>
+x="3"
+y="7"
+width="18"
+height="13"
+rx="3"/>
 
 <path d="
 M8 7
@@ -2762,9 +2619,9 @@ h5
 L16 7"/>
 
 <circle
-  cx="12"
-  cy="13.5"
-  r="3.5"/>
+cx="12"
+cy="13.5"
+r="3.5"/>
 
 </svg>
 
@@ -2783,22 +2640,22 @@ Camera ya Gallery se media select karo
 
 
 <img
-  id="editImage"
-  alt="">
+id="editImage"
+alt="">
 
 
 <video
-  id="editVideo"
-  controls
-  playsinline>
+id="editVideo"
+controls
+playsinline>
 </video>
 
 
 <div class="edit-menu">
 
 <button
-  class="edit-btn"
-  onclick="toggleFilters()">
+class="edit-btn"
+onclick="toggleFilters()">
 
 <svg viewBox="0 0 24 24">
 
@@ -2816,8 +2673,8 @@ Camera ya Gallery se media select karo
 
 
 <button
-  class="edit-btn"
-  onclick="toggleAdjust()">
+class="edit-btn"
+onclick="toggleAdjust()">
 
 <svg viewBox="0 0 24 24">
 
@@ -2832,8 +2689,8 @@ Camera ya Gallery se media select karo
 
 
 <button
-  class="edit-btn"
-  onclick="rotateMedia()">
+class="edit-btn"
+onclick="rotateMedia()">
 
 <svg viewBox="0 0 24 24">
 
@@ -2857,8 +2714,8 @@ l3-3"/>
 
 
 <button
-  class="edit-btn"
-  onclick="resetEditor()">
+class="edit-btn"
+onclick="resetEditor()">
 
 <svg viewBox="0 0 24 24">
 
@@ -2876,44 +2733,44 @@ a8 8 0 1 0 2.3-5.7"/>
 
 
 <div
-  id="filterPanel"
-  class="tool-panel">
+id="filterPanel"
+class="tool-panel">
 
 <div class="filter-row">
 
 <button
-  class="filter"
-  onclick="applyFilter('none')">
+class="filter"
+onclick="applyFilter('none')">
 Original
 </button>
 
 <button
-  class="filter"
-  onclick="applyFilter('saturate(1.6) contrast(1.12)')">
+class="filter"
+onclick="applyFilter('saturate(1.6) contrast(1.12)')">
 Vivid
 </button>
 
 <button
-  class="filter"
-  onclick="applyFilter('contrast(1.3) saturate(.82) brightness(.92)')">
+class="filter"
+onclick="applyFilter('contrast(1.3) saturate(.82) brightness(.92)')">
 Cinema
 </button>
 
 <button
-  class="filter"
-  onclick="applyFilter('hue-rotate(18deg) saturate(1.25)')">
+class="filter"
+onclick="applyFilter('hue-rotate(18deg) saturate(1.25)')">
 Cool
 </button>
 
 <button
-  class="filter"
-  onclick="applyFilter('sepia(.28) saturate(1.45)')">
+class="filter"
+onclick="applyFilter('sepia(.28) saturate(1.45)')">
 Warm
 </button>
 
 <button
-  class="filter"
-  onclick="applyFilter('brightness(.68) contrast(1.35)')">
+class="filter"
+onclick="applyFilter('brightness(.68) contrast(1.35)')">
 Night
 </button>
 
@@ -2923,20 +2780,20 @@ Night
 
 
 <div
-  id="adjustPanel"
-  class="tool-panel">
+id="adjustPanel"
+class="tool-panel">
 
 <div class="slider">
 
 <label>Brightness</label>
 
 <input
-  id="brightness"
-  type="range"
-  min="50"
-  max="150"
-  value="100"
-  oninput="adjustMedia()">
+id="brightness"
+type="range"
+min="50"
+max="150"
+value="100"
+oninput="adjustMedia()">
 
 </div>
 
@@ -2946,12 +2803,12 @@ Night
 <label>Contrast</label>
 
 <input
-  id="contrast"
-  type="range"
-  min="50"
-  max="150"
-  value="100"
-  oninput="adjustMedia()">
+id="contrast"
+type="range"
+min="50"
+max="150"
+value="100"
+oninput="adjustMedia()">
 
 </div>
 
@@ -2961,12 +2818,12 @@ Night
 <label>Saturation</label>
 
 <input
-  id="saturation"
-  type="range"
-  min="0"
-  max="200"
-  value="100"
-  oninput="adjustMedia()">
+id="saturation"
+type="range"
+min="0"
+max="200"
+value="100"
+oninput="adjustMedia()">
 
 </div>
 
@@ -2976,13 +2833,13 @@ Night
 <label>Blur</label>
 
 <input
-  id="blur"
-  type="range"
-  min="0"
-  max="5"
-  value="0"
-  step=".1"
-  oninput="adjustMedia()">
+id="blur"
+type="range"
+min="0"
+max="5"
+value="0"
+step=".1"
+oninput="adjustMedia()">
 
 </div>
 
@@ -2992,14 +2849,14 @@ Night
 <div class="editor-actions">
 
 <button
-  class="editor-btn"
-  onclick="openCamera()">
+class="editor-btn"
+onclick="openCamera()">
 Camera
 </button>
 
 <button
-  class="editor-btn"
-  onclick="openGallery()">
+class="editor-btn"
+onclick="openGallery()">
 Gallery
 </button>
 
@@ -3009,39 +2866,39 @@ Gallery
 
 
 <input
-  id="cameraInput"
-  type="file"
-  accept="image/*,video/*"
-  capture="environment"
-  hidden
-  onchange="loadMedia(this)">
+id="cameraInput"
+type="file"
+accept="image/*,video/*"
+capture="environment"
+hidden
+onchange="loadMedia(this)">
 
 
 <input
-  id="galleryInput"
-  type="file"
-  accept="image/*,video/*"
-  hidden
-  onchange="loadMedia(this)">
+id="galleryInput"
+type="file"
+accept="image/*,video/*"
+hidden
+onchange="loadMedia(this)">
 
 
 <textarea
-  id="studioCaption"
-  class="caption-box"
-  placeholder="Write a caption..."></textarea>
+id="studioCaption"
+class="caption-box"
+placeholder="Write a caption..."></textarea>
 
 
 <div class="publish-row">
 
 <button
-  class="cancel"
-  onclick="closePanels()">
+class="cancel"
+onclick="closePanels()">
 Cancel
 </button>
 
 <button
-  class="publish"
-  onclick="publishMedia()">
+class="publish"
+onclick="publishMedia()">
 Publish
 </button>
 
@@ -3056,15 +2913,13 @@ Publish
      COMMENTS
 ===================================================== -->
 
-<div
-  id="comments"
-  class="comments">
+<div id="comments" class="comments">
 
 <div class="comment-head">
 
 <button
-  class="comment-back"
-  onclick="closeComments()">
+class="comment-back"
+onclick="closeComments()">
 
 <svg viewBox="0 0 24 24">
 
@@ -3080,8 +2935,8 @@ Comments
 
 
 <div
-  id="commentList"
-  class="comment-list">
+id="commentList"
+class="comment-list">
 
 <div class="comment">
 
@@ -3134,18 +2989,18 @@ X-DARK is looking clean!
 <div class="comment-input">
 
 <input
-  id="commentInput"
-  placeholder="Add a comment..."
-  onkeydown="
-  if(event.key==='Enter'){
-    event.preventDefault();
-    addComment();
-  }">
+id="commentInput"
+placeholder="Add a comment..."
+onkeydown="
+if(event.key==='Enter'){
+event.preventDefault();
+addComment();
+}">
 
 
 <button
-  class="comment-send"
-  onclick="addComment()">
+class="comment-send"
+onclick="addComment()">
 
 <svg viewBox="0 0 24 24">
 
@@ -3161,57 +3016,48 @@ X-DARK is looking clean!
 </div>
 
 
-<div
-  id="toast"
-  class="toast">
-</div>
+<div id="toast" class="toast"></div>
 
 </div>
 
-
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
 
 <script type="module">
 
+/* =====================================================
+   FIREBASE
+===================================================== */
+
 import {
-  initializeApp
+initializeApp
 }
 from
 "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 
-
 import {
-  getAuth,
-  signInAnonymously,
-  onAuthStateChanged
+getAuth,
+signInAnonymously,
+onAuthStateChanged
 }
 from
 "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 
-
 import {
-  getFirestore,
-  collection,
-  addDoc,
-  query,
-  orderBy,
-  onSnapshot,
-  serverTimestamp
+getFirestore,
+collection,
+addDoc,
+query,
+orderBy,
+onSnapshot,
+serverTimestamp
 }
 from
 "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 
-/* =========================
-   FIREBASE CONFIG
-========================= */
-
 const firebaseConfig={
 
 apiKey:
-"AIzaC8Hfxcl0E7OpnfclF7UGYVcmdU38yuxtsBY",
+"AIzaC8HfxclF7UGYVcmdU38yuxtsBY",
 
 authDomain:
 "darkwing-a717a.firebaseapp.com",
@@ -3239,21 +3085,13 @@ let auth;
 let db;
 
 let currentUser=null;
-
 let currentChat="";
-
 let stopChat=null;
 
 
-/* =========================
-   FIREBASE START
-========================= */
-
 try{
 
-app=initializeApp(
-firebaseConfig
-);
+app=initializeApp(firebaseConfig);
 
 auth=getAuth(app);
 
@@ -3266,14 +3104,10 @@ user=>{
 
 currentUser=user;
 
-if(user){
-
 console.log(
-"X-DARK Firebase connected",
-user.uid
+"X-DARK Firebase:",
+user ? "connected" : "signed out"
 );
-
-}
 
 });
 
@@ -3282,13 +3116,13 @@ signInAnonymously(auth)
 .catch(error=>{
 
 console.error(
-"Firebase Auth:",
+"Firebase Auth Error:",
 error
 );
 
 toast(
 "Firebase: "+
-(error.code || "authentication error")
+(error.code || "auth error")
 );
 
 });
@@ -3298,9 +3132,7 @@ catch(error){
 
 console.error(error);
 
-toast(
-"Firebase setup error"
-);
+toast("Firebase setup error");
 
 }
 
@@ -3317,9 +3149,7 @@ const panel=
 document.getElementById(id);
 
 if(panel){
-
 panel.classList.add("open");
-
 }
 
 };
@@ -3330,9 +3160,7 @@ window.closePanels=function(){
 document
 .querySelectorAll(".panel")
 .forEach(panel=>{
-
 panel.classList.remove("open");
-
 });
 
 };
@@ -3353,7 +3181,7 @@ behavior:"smooth"
 
 
 /* =========================
-   STUDIO
+   CREATE
 ========================= */
 
 window.openStudio=function(){
@@ -3376,15 +3204,11 @@ box.textContent=message;
 
 box.classList.add("show");
 
-clearTimeout(
-window.toastTimer
-);
+clearTimeout(window.toastTimer);
 
 window.toastTimer=setTimeout(
 ()=>{
-
 box.classList.remove("show");
-
 },
 2200
 );
@@ -3403,18 +3227,10 @@ button.classList.toggle("liked");
 const span=
 button.querySelector("span");
 
-if(
+span.textContent=
 button.classList.contains("liked")
-){
-
-span.textContent="12.5K";
-
-}
-else{
-
-span.textContent="12.4K";
-
-}
+?"12.5K"
+:"12.4K";
 
 };
 
@@ -3514,9 +3330,7 @@ document
 window.addComment=function(){
 
 const input=
-document.getElementById(
-"commentInput"
-);
+document.getElementById("commentInput");
 
 const text=
 input.value.trim();
@@ -3556,7 +3370,6 @@ ${escapeHTML(text)}
 document
 .getElementById("commentList")
 .appendChild(item);
-
 
 input.value="";
 
@@ -3651,9 +3464,7 @@ return name
 function listenChat(){
 
 if(stopChat){
-
 stopChat();
-
 }
 
 
@@ -3683,9 +3494,7 @@ messageQuery,
 snapshot=>{
 
 const box=
-document.getElementById(
-"messagesBox"
-);
+document.getElementById("messagesBox");
 
 box.innerHTML="";
 
@@ -3697,12 +3506,9 @@ const message=
 doc.data();
 
 addBubble(
-
 message.text,
-
 message.senderId===
 currentUser.uid
-
 );
 
 });
@@ -3781,9 +3587,7 @@ document
 window.sendMessage=async function(){
 
 const input=
-document.getElementById(
-"chatInput"
-);
+document.getElementById("chatInput");
 
 const text=
 input.value.trim();
@@ -3793,9 +3597,7 @@ if(!text)return;
 
 if(!currentUser){
 
-toast(
-"Firebase not connected"
-);
+toast("Firebase not connected");
 
 return;
 
@@ -3870,9 +3672,7 @@ document
 
 
 const results=
-document.getElementById(
-"exploreResults"
-);
+document.getElementById("exploreResults");
 
 
 if(!value){
@@ -3940,11 +3740,10 @@ Search results on X-DARK
 
 
 /* =========================
-   CREATE
+   EDITOR
 ========================= */
 
 let mode="Story";
-
 let rotation=0;
 
 
@@ -3956,9 +3755,7 @@ newMode
 document
 .querySelectorAll(".mode")
 .forEach(item=>{
-
 item.classList.remove("active");
-
 });
 
 
@@ -4004,14 +3801,10 @@ URL.createObjectURL(file);
 
 
 const image=
-document.getElementById(
-"editImage"
-);
+document.getElementById("editImage");
 
 const video=
-document.getElementById(
-"editVideo"
-);
+document.getElementById("editVideo");
 
 
 document
@@ -4020,7 +3813,6 @@ document
 
 
 image.style.display="none";
-
 video.style.display="none";
 
 
@@ -4091,7 +3883,6 @@ document
 .getElementById("editVideo")
 .style.filter=filter;
 
-
 toast("Filter applied ✨");
 
 };
@@ -4104,24 +3895,16 @@ toast("Filter applied ✨");
 window.adjustMedia=function(){
 
 const brightness=
-document.getElementById(
-"brightness"
-).value;
+document.getElementById("brightness").value;
 
 const contrast=
-document.getElementById(
-"contrast"
-).value;
+document.getElementById("contrast").value;
 
 const saturation=
-document.getElementById(
-"saturation"
-).value;
+document.getElementById("saturation").value;
 
 const blur=
-document.getElementById(
-"blur"
-).value;
+document.getElementById("blur").value;
 
 
 const filter=`
@@ -4179,40 +3962,24 @@ window.resetEditor=function(){
 rotation=0;
 
 
-document
-.getElementById("brightness")
-.value=100;
+document.getElementById("brightness").value=100;
 
-document
-.getElementById("contrast")
-.value=100;
+document.getElementById("contrast").value=100;
 
-document
-.getElementById("saturation")
-.value=100;
+document.getElementById("saturation").value=100;
 
-document
-.getElementById("blur")
-.value=0;
+document.getElementById("blur").value=0;
 
 
-document
-.getElementById("editImage")
-.style.filter="none";
+document.getElementById("editImage").style.filter="none";
 
-document
-.getElementById("editVideo")
-.style.filter="none";
+document.getElementById("editVideo").style.filter="none";
 
 
-document
-.getElementById("editImage")
-.style.transform=
+document.getElementById("editImage").style.transform=
 "rotate(0deg)";
 
-document
-.getElementById("editVideo")
-.style.transform=
+document.getElementById("editVideo").style.transform=
 "rotate(0deg)";
 
 
@@ -4258,7 +4025,7 @@ mode.toLowerCase()+
 
 
 /* =========================
-   VIDEO AUTOPLAY
+   VIDEO
 ========================= */
 
 const observer=
