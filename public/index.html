@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#050507">
 <title>X-DARK</title>
 
 <style>
@@ -15,30 +16,32 @@
 
 :root{
   --bg:#050507;
-  --panel:#0d0d12;
-  --panel2:#13131a;
-  --line:#24242e;
+  --panel:#0d0d13;
+  --panel2:#15151d;
+  --line:#272731;
   --text:#fff;
-  --muted:#8d8d9b;
+  --muted:#92929f;
   --purple:#8b5cf6;
   --purple2:#6d28d9;
+  --green:#20e889;
 }
 
 body{
   background:var(--bg);
   color:var(--text);
-  font-family:Arial,Helvetica,sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
   min-height:100vh;
   overflow-x:hidden;
 }
 
-button,input{
+button,
+input,
+textarea{
   font:inherit;
 }
 
 button{
   border:0;
-  cursor:pointer;
 }
 
 svg{
@@ -51,12 +54,8 @@ svg{
   stroke-linejoin:round;
 }
 
-/* SVG ICONS */
-.icon-defs{
-  display:none;
-}
+/* TOP */
 
-/* TOP BAR */
 .topbar{
   position:fixed;
   top:0;
@@ -67,10 +66,10 @@ svg{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 16px;
-  background:rgba(5,5,7,.94);
+  padding:0 15px;
+  background:rgba(5,5,7,.96);
   border-bottom:1px solid var(--line);
-  backdrop-filter:blur(18px);
+  backdrop-filter:blur(20px);
 }
 
 .logo{
@@ -89,14 +88,14 @@ svg{
 }
 
 .icon-btn{
-  width:42px;
-  height:42px;
-  border-radius:13px;
-  background:var(--panel2);
-  color:#fff;
+  width:43px;
+  height:43px;
+  border-radius:14px;
   display:flex;
   align-items:center;
   justify-content:center;
+  background:var(--panel2);
+  color:white;
   border:1px solid var(--line);
 }
 
@@ -105,6 +104,7 @@ svg{
 }
 
 /* MAIN */
+
 main{
   padding-top:78px;
   padding-bottom:82px;
@@ -113,33 +113,50 @@ main{
 
 .page{
   display:none;
-  padding:16px;
+  width:100%;
+  max-width:720px;
+  margin:auto;
+  padding:15px;
 }
 
 .page.active{
   display:block;
 }
 
+/* TITLES */
+
+.section-title{
+  font-size:27px;
+  font-weight:850;
+  margin:8px 0 18px;
+}
+
 /* HOME */
+
 .hero{
-  padding:18px 0 22px;
+  padding:18px 3px 24px;
 }
 
 .hero h1{
   font-size:32px;
-  margin-bottom:8px;
+  line-height:1.15;
+}
+
+.hero h1 span{
+  color:var(--purple);
 }
 
 .hero p{
   color:var(--muted);
+  margin-top:8px;
 }
 
 .card{
   background:linear-gradient(145deg,#111118,#09090d);
   border:1px solid var(--line);
-  border-radius:20px;
-  padding:18px;
-  margin-bottom:14px;
+  border-radius:21px;
+  padding:17px;
+  margin-bottom:13px;
 }
 
 .post-head{
@@ -149,18 +166,20 @@ main{
 }
 
 .avatar{
-  width:44px;
-  height:44px;
+  width:45px;
+  height:45px;
+  min-width:45px;
   border-radius:50%;
-  background:linear-gradient(135deg,#8b5cf6,#312e81);
   display:flex;
   align-items:center;
   justify-content:center;
-  font-weight:900;
+  background:linear-gradient(135deg,#8b5cf6,#312e81);
+  font-size:19px;
+  font-weight:850;
 }
 
 .post-name{
-  font-weight:700;
+  font-weight:750;
 }
 
 .post-time{
@@ -170,46 +189,59 @@ main{
 }
 
 .post-text{
-  color:#ddd;
-  line-height:1.6;
   margin:16px 0;
+  color:#dedee5;
+  line-height:1.55;
 }
 
 .post-actions{
   display:flex;
-  gap:10px;
+  gap:8px;
 }
 
 .small-btn{
-  background:#181820;
-  border:1px solid var(--line);
-  color:#ddd;
-  border-radius:12px;
-  padding:9px 13px;
   display:flex;
   align-items:center;
+  justify-content:center;
   gap:7px;
+  min-height:39px;
+  padding:0 13px;
+  border-radius:12px;
+  background:#181820;
+  border:1px solid var(--line);
+  color:#eee;
+}
+
+.small-btn svg{
+  width:17px;
+  height:17px;
 }
 
 /* SEARCH */
+
 .search-box{
+  height:54px;
   display:flex;
   align-items:center;
   gap:10px;
+  padding:0 14px;
   background:var(--panel2);
   border:1px solid var(--line);
-  border-radius:16px;
-  padding:0 14px;
-  margin-bottom:18px;
+  border-radius:17px;
+  margin-bottom:16px;
+}
+
+.search-box svg{
+  color:#888894;
 }
 
 .search-box input{
-  width:100%;
-  height:52px;
-  background:none;
+  flex:1;
+  height:100%;
   border:0;
   outline:0;
   color:white;
+  background:transparent;
 }
 
 .search-box input::placeholder{
@@ -219,20 +251,30 @@ main{
 .search-result{
   display:flex;
   align-items:center;
-  gap:13px;
-  padding:14px;
+  gap:12px;
+  padding:13px;
   background:var(--panel);
   border:1px solid var(--line);
   border-radius:17px;
-  margin-bottom:10px;
+  margin-bottom:9px;
+}
+
+.result-info{
+  flex:1;
+  min-width:0;
+}
+
+.result-info strong{
+  display:block;
+  margin-bottom:4px;
+}
+
+.result-info span{
+  color:var(--muted);
+  font-size:12px;
 }
 
 /* MESSAGES */
-.section-title{
-  font-size:25px;
-  font-weight:800;
-  margin-bottom:18px;
-}
 
 .message-item{
   display:flex;
@@ -241,8 +283,13 @@ main{
   padding:14px;
   background:var(--panel);
   border:1px solid var(--line);
-  border-radius:17px;
-  margin-bottom:10px;
+  border-radius:18px;
+  margin-bottom:9px;
+  cursor:pointer;
+}
+
+.message-item:active{
+  transform:scale(.99);
 }
 
 .message-info{
@@ -257,50 +304,53 @@ main{
 
 .message-preview{
   color:var(--muted);
+  font-size:13px;
   white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
-  font-size:13px;
 }
 
 .online-dot{
   width:9px;
   height:9px;
-  background:#35e58c;
+  min-width:9px;
   border-radius:50%;
-  box-shadow:0 0 10px #35e58c;
+  background:var(--green);
+  box-shadow:0 0 9px rgba(32,232,137,.7);
 }
 
 /* NOTIFICATIONS */
+
 .notification{
   display:flex;
-  gap:13px;
   align-items:center;
-  padding:15px;
+  gap:12px;
+  padding:14px;
   background:var(--panel);
   border:1px solid var(--line);
   border-radius:17px;
-  margin-bottom:10px;
+  margin-bottom:9px;
 }
 
 /* PROFILE */
+
 .profile-header{
   text-align:center;
   padding:15px 0 25px;
 }
 
 .big-avatar{
-  width:90px;
-  height:90px;
-  margin:auto;
+  width:92px;
+  height:92px;
   border-radius:50%;
-  background:linear-gradient(135deg,#8b5cf6,#312e81);
+  margin:auto;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:30px;
+  font-size:31px;
   font-weight:900;
-  border:3px solid #191923;
+  background:linear-gradient(135deg,#8b5cf6,#312e81);
+  border:3px solid #20202b;
 }
 
 .profile-header h2{
@@ -309,7 +359,7 @@ main{
 
 .profile-header p{
   color:var(--muted);
-  margin-top:5px;
+  margin-top:4px;
 }
 
 .stat-row{
@@ -329,15 +379,16 @@ main{
 }
 
 /* SETTINGS */
+
 .setting{
   display:flex;
   align-items:center;
   gap:13px;
-  padding:17px;
+  padding:16px;
   background:var(--panel);
   border:1px solid var(--line);
   border-radius:17px;
-  margin-bottom:10px;
+  margin-bottom:9px;
 }
 
 .setting-main{
@@ -357,56 +408,86 @@ main{
 .switch{
   width:46px;
   height:25px;
-  background:#292933;
   border-radius:30px;
+  background:#292933;
   position:relative;
 }
 
-.switch::after{
+.switch:after{
   content:"";
   position:absolute;
   width:19px;
   height:19px;
-  border-radius:50%;
-  background:white;
   top:3px;
   left:3px;
+  background:white;
+  border-radius:50%;
+  transition:.2s;
 }
 
 .switch.on{
   background:var(--purple);
 }
 
-.switch.on::after{
+.switch.on:after{
   left:24px;
 }
 
-/* BOTTOM NAV */
+/* CREATE */
+
+.create-input{
+  width:100%;
+  height:170px;
+  resize:none;
+  padding:15px;
+  border-radius:18px;
+  outline:none;
+  border:1px solid var(--line);
+  background:var(--panel2);
+  color:white;
+  margin-bottom:12px;
+}
+
+.create-input::placeholder{
+  color:#777783;
+}
+
+.primary{
+  width:100%;
+  height:51px;
+  border-radius:16px;
+  background:linear-gradient(135deg,var(--purple),var(--purple2));
+  color:white;
+  font-weight:800;
+}
+
+/* BOTTOM */
+
 .bottom-nav{
   position:fixed;
-  bottom:0;
   left:0;
   right:0;
-  height:70px;
-  z-index:100;
-  background:rgba(8,8,11,.96);
-  border-top:1px solid var(--line);
-  backdrop-filter:blur(18px);
+  bottom:0;
+  height:71px;
+  z-index:150;
   display:flex;
-  justify-content:space-around;
   align-items:center;
+  justify-content:space-around;
+  background:rgba(8,8,11,.97);
+  border-top:1px solid var(--line);
+  backdrop-filter:blur(20px);
 }
 
 .nav-btn{
-  width:54px;
-  height:54px;
-  color:#73737f;
-  background:none;
+  width:57px;
+  height:57px;
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
   gap:3px;
+  background:transparent;
+  color:#72727e;
 }
 
 .nav-btn span{
@@ -418,77 +499,85 @@ main{
 }
 
 /* CHAT */
+
 #chatPage{
   position:fixed;
   inset:0;
-  z-index:300;
-  background:var(--bg);
+  z-index:500;
   display:none;
-  padding:0;
+  flex-direction:column;
+  background:var(--bg);
 }
 
 #chatPage.active{
   display:flex;
-  flex-direction:column;
 }
 
 .chat-header{
-  height:64px;
-  flex-shrink:0;
+  height:65px;
+  min-height:65px;
   display:flex;
   align-items:center;
-  gap:10px;
-  padding:0 10px;
+  gap:9px;
+  padding:0 9px;
+  background:rgba(5,5,7,.98);
   border-bottom:1px solid var(--line);
-  background:rgba(5,5,7,.96);
 }
 
 .chat-user{
   flex:1;
+  min-width:0;
 }
 
 .chat-user strong{
   display:block;
+  font-size:16px;
 }
 
 .status{
+  color:var(--green);
   font-size:11px;
-  color:#35e58c;
   margin-top:3px;
 }
 
 .chat-actions{
   display:flex;
-  gap:4px;
+  gap:3px;
+}
+
+.chat-actions .icon-btn{
+  width:40px;
+  height:40px;
 }
 
 .chat-messages{
   flex:1;
+  min-height:0;
   overflow-y:auto;
-  padding:15px;
+  padding:14px;
   display:flex;
   flex-direction:column;
-  gap:9px;
+  gap:8px;
 }
 
 .empty-chat{
   margin:auto;
-  color:var(--muted);
   text-align:center;
+  color:var(--muted);
+  line-height:1.6;
 }
 
 .msg{
-  max-width:78%;
+  max-width:79%;
   padding:10px 13px;
-  border-radius:17px;
+  border-radius:18px;
   line-height:1.45;
   word-break:break-word;
-  position:relative;
 }
 
 .msg.me{
   align-self:flex-end;
-  background:linear-gradient(135deg,#7c3aed,#5b21b6);
+  background:linear-gradient(135deg,#8b5cf6,#6d28d9);
   border-bottom-right-radius:5px;
 }
 
@@ -500,9 +589,9 @@ main{
 }
 
 .msg-time{
-  font-size:9px;
-  opacity:.6;
   margin-top:5px;
+  font-size:9px;
+  opacity:.62;
   text-align:right;
 }
 
@@ -512,65 +601,78 @@ main{
 
 .msg img,
 .msg video{
+  display:block;
   max-width:100%;
   border-radius:12px;
-  display:block;
+}
+
+.msg a{
+  color:white;
 }
 
 .sticker-msg{
-  font-size:55px;
   background:transparent!important;
   border:0!important;
+  font-size:58px;
+  padding:2px;
 }
 
 .typing{
-  min-height:22px;
-  padding:0 16px 5px;
+  height:23px;
+  padding:0 15px;
   color:var(--muted);
   font-size:12px;
 }
 
 .chat-input-area{
-  padding:9px 10px;
-  border-top:1px solid var(--line);
+  flex-shrink:0;
+  padding:9px 9px 10px;
   background:#08080b;
+  border-top:1px solid var(--line);
 }
 
 .chat-input-row{
   display:flex;
   align-items:center;
-  gap:7px;
+  gap:6px;
 }
 
 .chat-input{
   flex:1;
-  height:45px;
-  background:#15151d;
+  min-width:0;
+  height:46px;
   border:1px solid var(--line);
-  border-radius:15px;
+  border-radius:16px;
+  background:#15151d;
   color:white;
-  outline:none;
   padding:0 13px;
+  outline:none;
+}
+
+.chat-input::placeholder{
+  color:#777783;
 }
 
 .send-btn{
-  width:45px;
-  height:45px;
-  border-radius:15px;
-  background:var(--purple);
-  color:white;
+  width:46px;
+  height:46px;
+  min-width:46px;
   display:flex;
   align-items:center;
   justify-content:center;
+  border-radius:16px;
+  background:var(--purple);
+  color:white;
 }
 
-/* PICKER */
+/* PICKERS */
+
 .picker{
   display:none;
   max-height:260px;
   overflow-y:auto;
-  padding:12px;
-  background:#101017;
+  padding:11px;
+  background:#111118;
   border:1px solid var(--line);
   border-radius:18px;
   margin-bottom:8px;
@@ -588,328 +690,380 @@ main{
 
 .emoji{
   height:38px;
-  background:#191922;
   border-radius:10px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:22px;
+  background:#1b1b24;
+  font-size:21px;
 }
 
 .sticker-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:10px;
+  gap:9px;
 }
 
 .sticker{
-  min-height:70px;
-  background:#191922;
-  border:1px solid #292934;
+  height:72px;
   border-radius:15px;
+  background:#1b1b24;
+  border:1px solid #2b2b35;
   font-size:42px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
 }
 
-/* CREATE */
-.create-input{
-  width:100%;
-  min-height:150px;
-  resize:none;
-  background:#111118;
-  border:1px solid var(--line);
-  border-radius:17px;
-  color:white;
-  padding:15px;
-  outline:none;
-  margin-bottom:12px;
-}
+/* UPLOAD */
 
-.primary{
-  width:100%;
-  height:50px;
-  border-radius:15px;
-  background:linear-gradient(135deg,#8b5cf6,#6d28d9);
-  color:white;
-  font-weight:800;
-}
-
-/* FILE */
 .file-preview{
-  margin-top:8px;
   color:var(--muted);
-  font-size:12px;
+  font-size:11px;
+  padding:4px 3px 0;
 }
 
 /* TOAST */
+
 .toast{
   position:fixed;
   left:50%;
-  bottom:85px;
-  transform:translateX(-50%) translateY(20px);
-  background:#20202a;
-  border:1px solid #343441;
-  padding:11px 16px;
-  border-radius:13px;
+  bottom:88px;
+  transform:translate(-50%,20px);
+  padding:12px 17px;
+  border-radius:14px;
+  background:#22222c;
+  border:1px solid #383844;
+  color:white;
   opacity:0;
   pointer-events:none;
   transition:.25s;
-  z-index:999;
+  z-index:9999;
+  white-space:nowrap;
 }
 
 .toast.show{
   opacity:1;
-  transform:translateX(-50%) translateY(0);
+  transform:translate(-50%,0);
 }
 
+/* DESKTOP */
+
 @media(min-width:700px){
-  .page{
-    max-width:700px;
-    margin:auto;
-  }
 
   .chat-messages{
-    padding-left:calc((100vw - 700px)/2 + 15px);
-    padding-right:calc((100vw - 700px)/2 + 15px);
+    padding-left:max(15px,calc((100vw - 720px)/2));
+    padding-right:max(15px,calc((100vw - 720px)/2));
   }
+
 }
 </style>
 </head>
 
 <body>
 
-<!-- SVG ICON DEFINITIONS -->
-<svg class="icon-defs">
-<defs>
+<!-- SVG SYMBOLS -->
+<svg style="display:none">
+
 <symbol id="home" viewBox="0 0 24 24">
-<path d="M3 10.5 12 3l9 7.5"></path>
-<path d="M5 9.5V21h14V9.5"></path>
-<path d="M9 21v-7h6v7"></path>
+<path d="M3 10.5 12 3l9 7.5"/>
+<path d="M5 9.5V21h14V9.5"/>
+<path d="M9 21v-7h6v7"/>
 </symbol>
 
 <symbol id="search" viewBox="0 0 24 24">
-<circle cx="11" cy="11" r="7"></circle>
-<path d="m20 20-4-4"></path>
+<circle cx="11" cy="11" r="7"/>
+<path d="m20 20-4-4"/>
 </symbol>
 
 <symbol id="plus" viewBox="0 0 24 24">
-<path d="M12 5v14"></path>
-<path d="M5 12h14"></path>
+<path d="M12 5v14"/>
+<path d="M5 12h14"/>
 </symbol>
 
 <symbol id="bell" viewBox="0 0 24 24">
-<path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
-<path d="M10 21h4"></path>
+<path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/>
+<path d="M10 21h4"/>
 </symbol>
 
 <symbol id="user" viewBox="0 0 24 24">
-<circle cx="12" cy="8" r="4"></circle>
-<path d="M4 21c1.5-5 4.2-7 8-7s6.5 2 8 7"></path>
+<circle cx="12" cy="8" r="4"/>
+<path d="M4 21c1.5-5 4.2-7 8-7s6.5 2 8 7"/>
 </symbol>
 
 <symbol id="settings" viewBox="0 0 24 24">
-<circle cx="12" cy="12" r="3"></circle>
-<path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-1.7 1.7-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V20h-2.4v-.2a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1L8 17l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H6v-2.4h.2a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.9L7.3 8 9 6.3l.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.5V5h2.4v.2a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1L19 8l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.5 1h.2v2.4h-.2a1.7 1.7 0 0 0-1.5 1Z"></path>
+<circle cx="12" cy="12" r="3"/>
+<path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-1.7 1.7-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V20h-2.4v-.2a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1L8 17l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H6v-2.4h.2a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.9L7.3 8 9 6.3l.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.5V5h2.4v.2a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1L19 8l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0-.1.0"/>
 </symbol>
 
-<!-- CHAT TOP ICON -->
 <symbol id="message" viewBox="0 0 24 24">
-<path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 9.5 9.5 0 0 1-4-.8L4 20l1.8-3.5A7.3 7.3 0 0 1 4 11.5 7.5 7.5 0 0 1 12 4a7.5 7.5 0 0 1 8 7.5Z"></path>
-<path d="M8 11h.01M12 11h.01M16 11h.01"></path>
+<path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 9.5 9.5 0 0 1-4-.8L4 20l1.8-3.5A7.3 7.3 0 0 1 4 11.5 7.5 7.5 0 0 1 12 4a7.5 7.5 0 0 1 8 7.5Z"/>
+<path d="M8 11h.01M12 11h.01M16 11h.01"/>
 </symbol>
 
 <symbol id="back" viewBox="0 0 24 24">
-<path d="m15 18-6-6 6-6"></path>
+<path d="m15 18-6-6 6-6"/>
 </symbol>
 
 <symbol id="phone" viewBox="0 0 24 24">
-<path d="M7 4h3l1.5 4-2 1.5a14 14 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2 2C11 19.5 4.5 13 4.5 6a2 2 0 0 1 2.5-2Z"></path>
+<path d="M7 4h3l1.5 4-2 1.5a14 14 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2 2C11 19.5 4.5 13 4.5 6a2 2 0 0 1 2.5-2Z"/>
 </symbol>
 
 <symbol id="video" viewBox="0 0 24 24">
-<rect x="3" y="6" width="13" height="12" rx="2"></rect>
-<path d="m16 10 5-3v10l-5-3"></path>
+<rect x="3" y="6" width="13" height="12" rx="2"/>
+<path d="m16 10 5-3v10l-5-3"/>
 </symbol>
 
 <symbol id="more" viewBox="0 0 24 24">
-<circle cx="5" cy="12" r="1"></circle>
-<circle cx="12" cy="12" r="1"></circle>
-<circle cx="19" cy="12" r="1"></circle>
+<circle cx="5" cy="12" r="1"/>
+<circle cx="12" cy="12" r="1"/>
+<circle cx="19" cy="12" r="1"/>
 </symbol>
 
 <symbol id="paperclip" viewBox="0 0 24 24">
-<path d="m20 11-7.5 7.5a5 5 0 0 1-7-7L13 4a3.5 3.5 0 0 1 5 5l-7 7a2 2 0 0 1-3-3l6.5-6.5"></path>
+<path d="m20 11-7.5 7.5a5 5 0 0 1-7-7L13 4a3.5 3.5 0 0 1 5 5l-7 7a2 2 0 0 1-3-3l6.5-6.5"/>
 </symbol>
 
 <symbol id="smile" viewBox="0 0 24 24">
-<circle cx="12" cy="12" r="9"></circle>
-<path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-<path d="M9 9h.01M15 9h.01"></path>
+<circle cx="12" cy="12" r="9"/>
+<path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+<path d="M9 9h.01M15 9h.01"/>
 </symbol>
 
 <symbol id="send" viewBox="0 0 24 24">
-<path d="m21 3-7.5 18-3.5-7-7-3.5L21 3Z"></path>
-<path d="M10 14 21 3"></path>
+<path d="m21 3-7.5 18-3.5-7-7-3.5L21 3Z"/>
+<path d="M10 14 21 3"/>
 </symbol>
 
-<symbol id="image" viewBox="0 0 24 24">
-<rect x="3" y="4" width="18" height="16" rx="2"></rect>
-<circle cx="8.5" cy="9" r="1.5"></circle>
-<path d="m21 16-5-5-7 7"></path>
-</symbol>
-</defs>
 </svg>
 
+
 <!-- TOP BAR -->
+
 <header class="topbar">
-  <div class="logo">X-<span>DARK</span></div>
+
+  <div class="logo">
+    X-<span>DARK</span>
+  </div>
 
   <div class="top-actions">
 
-    <!-- CHAT ICON: notification removed -->
-    <button class="icon-btn" onclick="showPage('messages')" aria-label="Messages">
-      <svg><use href="#message"></use></svg>
+    <!-- CHAT -->
+    <button class="icon-btn" onclick="showPage('messages')">
+      <svg>
+        <use href="#message"></use>
+      </svg>
     </button>
 
     <!-- SETTINGS -->
-    <button class="icon-btn" onclick="showPage('settings')" aria-label="Settings">
-      <svg><use href="#settings"></use></svg>
+    <button class="icon-btn" onclick="showPage('settings')">
+      <svg>
+        <use href="#settings"></use>
+      </svg>
     </button>
 
   </div>
+
 </header>
+
 
 <main>
 
 <!-- HOME -->
+
 <section id="homePage" class="page active">
 
   <div class="hero">
-    <h1>Welcome to X-DARK</h1>
+    <h1>Welcome to <span>X-DARK</span></h1>
     <p>Connect. Chat. Share.</p>
   </div>
 
   <div class="card">
+
     <div class="post-head">
+
       <div class="avatar">D</div>
+
       <div>
         <div class="post-name">Darkwing</div>
         <div class="post-time">Just now</div>
       </div>
+
     </div>
 
     <div class="post-text">
-      Welcome to the new X-DARK experience.
-      Everything is now faster, cleaner and darker.
+      Welcome to X-DARK. Your private dark social experience.
     </div>
 
     <div class="post-actions">
-      <button class="small-btn">
-        <svg><use href="#message"></use></svg>
+
+      <button class="small-btn" onclick="openChat('Darkwing')">
+        <svg>
+          <use href="#message"></use>
+        </svg>
         Chat
       </button>
 
       <button class="small-btn">
-        <svg><use href="#bell"></use></svg>
         Follow
       </button>
+
     </div>
+
   </div>
 
 </section>
 
+
 <!-- SEARCH -->
+
 <section id="searchPage" class="page">
 
-  <div class="section-title">Search</div>
+  <div class="section-title">
+    Search
+  </div>
 
   <div class="search-box">
-    <svg><use href="#search"></use></svg>
+
+    <svg>
+      <use href="#search"></use>
+    </svg>
+
     <input
       id="searchInput"
       placeholder="Search people..."
       oninput="searchUsers()"
     >
+
   </div>
 
   <div id="searchResults">
 
     <div class="search-result">
+
       <div class="avatar">D</div>
-      <div class="message-info">
+
+      <div class="result-info">
         <strong>Darkwing</strong>
-        <span class="message-preview">X-DARK official</span>
+        <span>Official X-DARK</span>
       </div>
-      <button class="small-btn" onclick="openChat('Darkwing')">
+
+      <button
+        class="small-btn"
+        onclick="openChat('Darkwing')"
+      >
         Chat
       </button>
+
     </div>
 
     <div class="search-result">
-      <div class="avatar">N</div>
-      <div class="message-info">
-        <strong>Nova</strong>
-        <span class="message-preview">Online now</span>
-      </div>
-      <button class="small-btn" onclick="openChat('Nova')">
-        Chat
-      </button>
-    </div>
 
-    <div class="search-result">
       <div class="avatar">X</div>
-      <div class="message-info">
+
+      <div class="result-info">
         <strong>XDark</strong>
-        <span class="message-preview">X-DARK member</span>
+        <span>X-DARK member</span>
       </div>
-      <button class="small-btn" onclick="openChat('XDark')">
+
+      <button
+        class="small-btn"
+        onclick="openChat('XDark')"
+      >
         Chat
       </button>
+
+    </div>
+
+    <div class="search-result">
+
+      <div class="avatar">N</div>
+
+      <div class="result-info">
+        <strong>Nova</strong>
+        <span>Online now</span>
+      </div>
+
+      <button
+        class="small-btn"
+        onclick="openChat('Nova')"
+      >
+        Chat
+      </button>
+
     </div>
 
   </div>
 
 </section>
+
 
 <!-- MESSAGES -->
+
 <section id="messagesPage" class="page">
 
-  <div class="section-title">Messages</div>
+  <div class="section-title">
+    Messages
+  </div>
 
-  <div class="message-item" onclick="openChat('Darkwing')">
+  <div
+    class="message-item"
+    onclick="openChat('Darkwing')"
+  >
+
     <div class="avatar">D</div>
+
     <div class="message-info">
       <strong>Darkwing</strong>
-      <div class="message-preview">Start a conversation...</div>
+      <div class="message-preview">
+        Start a conversation...
+      </div>
     </div>
+
     <div class="online-dot"></div>
+
   </div>
 
-  <div class="message-item" onclick="openChat('XDark')">
+
+  <div
+    class="message-item"
+    onclick="openChat('XDark')"
+  >
+
     <div class="avatar">X</div>
+
     <div class="message-info">
       <strong>XDark</strong>
-      <div class="message-preview">Tap to open chat</div>
+      <div class="message-preview">
+        Tap to open chat
+      </div>
     </div>
+
   </div>
 
-  <div class="message-item" onclick="openChat('Nova')">
+
+  <div
+    class="message-item"
+    onclick="openChat('Nova')"
+  >
+
     <div class="avatar">N</div>
+
     <div class="message-info">
       <strong>Nova</strong>
-      <div class="message-preview">Online now</div>
+      <div class="message-preview">
+        Online now
+      </div>
     </div>
+
     <div class="online-dot"></div>
+
   </div>
 
 </section>
 
+
 <!-- CREATE -->
+
 <section id="createPage" class="page">
 
-  <div class="section-title">Create Post</div>
+  <div class="section-title">
+    Create Post
+  </div>
 
   <textarea
     id="postText"
@@ -917,42 +1071,64 @@ main{
     placeholder="What's on your mind?"
   ></textarea>
 
-  <button class="primary" onclick="createPost()">
+  <button
+    class="primary"
+    onclick="createPost()"
+  >
     Publish Post
   </button>
 
 </section>
 
+
 <!-- NOTIFICATIONS -->
+
 <section id="notificationsPage" class="page">
 
-  <div class="section-title">Notifications</div>
-
-  <div class="notification">
-    <div class="avatar">D</div>
-    <div class="message-info">
-      <strong>Darkwing</strong>
-      <span class="message-preview">Welcome to X-DARK</span>
-    </div>
+  <div class="section-title">
+    Notifications
   </div>
 
   <div class="notification">
+
+    <div class="avatar">D</div>
+
+    <div class="message-info">
+      <strong>Darkwing</strong>
+      <div class="message-preview">
+        Welcome to X-DARK
+      </div>
+    </div>
+
+  </div>
+
+  <div class="notification">
+
     <div class="avatar">N</div>
+
     <div class="message-info">
       <strong>Nova</strong>
-      <span class="message-preview">is online now</span>
+      <div class="message-preview">
+        is online now
+      </div>
     </div>
+
     <div class="online-dot"></div>
+
   </div>
 
 </section>
 
+
 <!-- PROFILE -->
+
 <section id="profilePage" class="page">
 
   <div class="profile-header">
 
-    <div class="big-avatar">A</div>
+    <div class="big-avatar">
+      A
+    </div>
 
     <h2>Ankaj</h2>
     <p>@ankaj</p>
@@ -960,7 +1136,9 @@ main{
   </div>
 
   <div class="card">
+
     <div class="stat-row">
+
       <div class="stat">
         <strong>0</strong>
         <span>Posts</span>
@@ -975,140 +1153,264 @@ main{
         <strong>0</strong>
         <span>Following</span>
       </div>
+
     </div>
+
   </div>
 
 </section>
 
+
 <!-- SETTINGS -->
+
 <section id="settingsPage" class="page">
 
-  <div class="section-title">Settings</div>
+  <div class="section-title">
+    Settings
+  </div>
 
   <div class="setting">
-    <svg><use href="#user"></use></svg>
+
+    <svg>
+      <use href="#user"></use>
+    </svg>
 
     <div class="setting-main">
       <strong>Account</strong>
       <span>Manage your profile</span>
     </div>
 
-    <svg><use href="#more"></use></svg>
+    <svg>
+      <use href="#more"></use>
+    </svg>
+
   </div>
 
+
   <div class="setting">
-    <svg><use href="#bell"></use></svg>
+
+    <svg>
+      <use href="#bell"></use>
+    </svg>
 
     <div class="setting-main">
       <strong>Notifications</strong>
       <span>Manage notifications</span>
     </div>
 
-    <div class="switch on" onclick="toggleSwitch(this)"></div>
+    <div
+      class="switch on"
+      onclick="toggleSwitch(this)"
+    ></div>
+
   </div>
 
+
   <div class="setting">
-    <svg><use href="#message"></use></svg>
+
+    <svg>
+      <use href="#message"></use>
+    </svg>
 
     <div class="setting-main">
       <strong>Messages</strong>
       <span>Chat settings</span>
     </div>
 
-    <div class="switch on" onclick="toggleSwitch(this)"></div>
+    <div
+      class="switch on"
+      onclick="toggleSwitch(this)"
+    ></div>
+
   </div>
 
+
   <div class="setting">
-    <svg><use href="#settings"></use></svg>
+
+    <svg>
+      <use href="#settings"></use>
+    </svg>
 
     <div class="setting-main">
       <strong>Privacy</strong>
-      <span>Security and privacy</span>
+      <span>Security settings</span>
     </div>
 
-    <svg><use href="#more"></use></svg>
+    <svg>
+      <use href="#more"></use>
+    </svg>
+
   </div>
 
 </section>
 
 </main>
 
+
 <!-- BOTTOM NAV -->
+
 <nav class="bottom-nav">
 
-  <button class="nav-btn active" data-page="home" onclick="showPage('home')">
-    <svg><use href="#home"></use></svg>
+  <button
+    class="nav-btn active"
+    data-page="home"
+    onclick="showPage('home')"
+  >
+    <svg>
+      <use href="#home"></use>
+    </svg>
     <span>Home</span>
   </button>
 
-  <button class="nav-btn" data-page="search" onclick="showPage('search')">
-    <svg><use href="#search"></use></svg>
+
+  <button
+    class="nav-btn"
+    data-page="search"
+    onclick="showPage('search')"
+  >
+    <svg>
+      <use href="#search"></use>
+    </svg>
     <span>Search</span>
   </button>
 
-  <button class="nav-btn" data-page="create" onclick="showPage('create')">
-    <svg><use href="#plus"></use></svg>
+
+  <button
+    class="nav-btn"
+    data-page="create"
+    onclick="showPage('create')"
+  >
+    <svg>
+      <use href="#plus"></use>
+    </svg>
     <span>Create</span>
   </button>
 
-  <button class="nav-btn" data-page="notifications" onclick="showPage('notifications')">
-    <svg><use href="#bell"></use></svg>
+
+  <button
+    class="nav-btn"
+    data-page="notifications"
+    onclick="showPage('notifications')"
+  >
+    <svg>
+      <use href="#bell"></use>
+    </svg>
     <span>Alerts</span>
   </button>
 
-  <button class="nav-btn" data-page="profile" onclick="showPage('profile')">
-    <svg><use href="#user"></use></svg>
+
+  <button
+    class="nav-btn"
+    data-page="profile"
+    onclick="showPage('profile')"
+  >
+    <svg>
+      <use href="#user"></use>
+    </svg>
     <span>Profile</span>
   </button>
 
 </nav>
 
-<!-- CHAT PAGE -->
+
+<!-- CHAT -->
+
 <section id="chatPage">
 
   <div class="chat-header">
 
-    <button class="icon-btn" onclick="closeChat()">
-      <svg><use href="#back"></use></svg>
+    <button
+      class="icon-btn"
+      onclick="closeChat()"
+    >
+      <svg>
+        <use href="#back"></use>
+      </svg>
     </button>
 
-    <div class="avatar" id="chatAvatar">D</div>
+
+    <div
+      class="avatar"
+      id="chatAvatar"
+    >
+      D
+    </div>
+
 
     <div class="chat-user">
-      <strong id="chatName">Darkwing</strong>
-      <div id="chatStatus" class="status">Connecting...</div>
+
+      <strong id="chatName">
+        Darkwing
+      </strong>
+
+      <div
+        id="chatStatus"
+        class="status"
+      >
+        Connecting...
+      </div>
+
     </div>
+
 
     <div class="chat-actions">
 
-      <button class="icon-btn" onclick="fakeCall()">
-        <svg><use href="#phone"></use></svg>
+      <button
+        class="icon-btn"
+        onclick="fakeCall()"
+      >
+        <svg>
+          <use href="#phone"></use>
+        </svg>
       </button>
 
-      <button class="icon-btn" onclick="fakeVideo()">
-        <svg><use href="#video"></use></svg>
+      <button
+        class="icon-btn"
+        onclick="fakeVideo()"
+      >
+        <svg>
+          <use href="#video"></use>
+        </svg>
       </button>
 
       <button class="icon-btn">
-        <svg><use href="#more"></use></svg>
+        <svg>
+          <use href="#more"></use>
+        </svg>
       </button>
 
     </div>
 
   </div>
 
-  <div id="chatMessages" class="chat-messages">
+
+  <div
+    id="chatMessages"
+    class="chat-messages"
+  >
+
     <div class="empty-chat">
-      Loading messages...
+      Connecting to Firebase...
     </div>
+
   </div>
 
-  <div id="typingIndicator" class="typing"></div>
+
+  <div
+    id="typingIndicator"
+    class="typing"
+  ></div>
+
 
   <div class="chat-input-area">
 
-    <!-- EMOJI PICKER -->
-    <div id="emojiPicker" class="picker">
+
+    <!-- EMOJI -->
+
+    <div
+      id="emojiPicker"
+      class="picker"
+    >
 
       <div class="emoji-grid">
 
@@ -1120,62 +1422,135 @@ main{
         <button class="emoji" onclick="addEmoji('🤔')">🤔</button>
         <button class="emoji" onclick="addEmoji('😭')">😭</button>
         <button class="emoji" onclick="addEmoji('😡')">😡</button>
+
         <button class="emoji" onclick="addEmoji('🔥')">🔥</button>
         <button class="emoji" onclick="addEmoji('❤️')">❤️</button>
         <button class="emoji" onclick="addEmoji('💜')">💜</button>
         <button class="emoji" onclick="addEmoji('💯')">💯</button>
         <button class="emoji" onclick="addEmoji('👍')">👍</button>
-        <button class="emoji" onclick="addEmoji('👎')">👎</button>
         <button class="emoji" onclick="addEmoji('🙏')">🙏</button>
         <button class="emoji" onclick="addEmoji('👏')">👏</button>
+        <button class="emoji" onclick="addEmoji('💪')">💪</button>
+
         <button class="emoji" onclick="addEmoji('🎉')">🎉</button>
         <button class="emoji" onclick="addEmoji('🚀')">🚀</button>
         <button class="emoji" onclick="addEmoji('✨')">✨</button>
-        <button class="emoji" onclick="addEmoji('💀')">💀</button>
         <button class="emoji" onclick="addEmoji('👀')">👀</button>
         <button class="emoji" onclick="addEmoji('😈')">😈</button>
         <button class="emoji" onclick="addEmoji('🤝')">🤝</button>
-        <button class="emoji" onclick="addEmoji('💪')">💪</button>
+        <button class="emoji" onclick="addEmoji('⚡')">⚡</button>
+        <button class="emoji" onclick="addEmoji('👑')">👑</button>
 
       </div>
 
     </div>
 
-    <!-- STICKER PICKER -->
-    <div id="stickerPicker" class="picker">
+
+    <!-- STICKERS -->
+
+    <div
+      id="stickerPicker"
+      class="picker"
+    >
 
       <div class="sticker-grid">
 
-        <button class="sticker" onclick="sendSticker('😎','Cool')">😎</button>
-        <button class="sticker" onclick="sendSticker('🔥','Fire')">🔥</button>
-        <button class="sticker" onclick="sendSticker('🚀','Rocket')">🚀</button>
-        <button class="sticker" onclick="sendSticker('💜','Purple')">💜</button>
-        <button class="sticker" onclick="sendSticker('👑','King')">👑</button>
-        <button class="sticker" onclick="sendSticker('🤖','Robot')">🤖</button>
-        <button class="sticker" onclick="sendSticker('💀','Skull')">💀</button>
-        <button class="sticker" onclick="sendSticker('⚡','Power')">⚡</button>
-        <button class="sticker" onclick="sendSticker('👽','Alien')">👽</button>
-        <button class="sticker" onclick="sendSticker('🦾','Cyber')">🦾</button>
-        <button class="sticker" onclick="sendSticker('🌙','Moon')">🌙</button>
-        <button class="sticker" onclick="sendSticker('✨','Magic')">✨</button>
+        <button
+          class="sticker"
+          onclick="sendSticker('😎','Cool')"
+        >😎</button>
+
+        <button
+          class="sticker"
+          onclick="sendSticker('🔥','Fire')"
+        >🔥</button>
+
+        <button
+          class="sticker"
+          onclick="sendSticker('🚀','Rocket')"
+        >🚀</button>
+
+        <button
+          class="sticker"
+          onclick="sendSticker('💜','Purple')"
+        >💜</button>
+
+        <button
+          class="sticker"
+          onclick="sendSticker('👑','King')"
+        >👑</button>
+
+        <button
+          class="sticker"
+          onclick="sendSticker('🤖','Robot')"
+        >🤖</button>
+
+        <button
+          class="sticker"
+          onclick="sendSticker('💀','Skull')"
+        >💀</button>
+
+        <button
+          class="sticker"
+          onclick="sendSticker('⚡','Power')"
+        >⚡</button>
+
+        <button
+          class="sticker"
+          onclick="sendSticker('👽','Alien')"
+        >👽</button>
+
+        <button
+          class="sticker"
+          onclick="sendSticker('🦾','Cyber')"
+        >🦾</button>
+
+        <button
+          class="sticker"
+          onclick="sendSticker('🌙','Moon')"
+        >🌙</button>
+
+        <button
+          class="sticker"
+          onclick="sendSticker('✨','Magic')"
+        >✨</button>
 
       </div>
 
     </div>
 
+
+    <!-- INPUT -->
+
     <div class="chat-input-row">
 
-      <button class="icon-btn" onclick="chooseFile()">
-        <svg><use href="#paperclip"></use></svg>
+      <button
+        class="icon-btn"
+        onclick="chooseFile()"
+      >
+        <svg>
+          <use href="#paperclip"></use>
+        </svg>
       </button>
 
-      <button class="icon-btn" onclick="togglePicker('emoji')">
-        <svg><use href="#smile"></use></svg>
+
+      <button
+        class="icon-btn"
+        onclick="togglePicker('emoji')"
+      >
+        <svg>
+          <use href="#smile"></use>
+        </svg>
       </button>
 
-      <button class="icon-btn" onclick="togglePicker('sticker')">
+
+      <button
+        class="icon-btn"
+        onclick="togglePicker('sticker')"
+      >
         ✦
       </button>
+
 
       <input
         id="messageInput"
@@ -1183,14 +1558,21 @@ main{
         placeholder="Message..."
         autocomplete="off"
         oninput="handleTyping()"
-        onkeydown="if(event.key==='Enter' && !event.shiftKey){event.preventDefault();sendMessage();}"
+        onkeydown="handleEnter(event)"
       >
 
-      <button class="send-btn" onclick="sendMessage()">
-        <svg><use href="#send"></use></svg>
+
+      <button
+        class="send-btn"
+        onclick="sendMessage()"
+      >
+        <svg>
+          <use href="#send"></use>
+        </svg>
       </button>
 
     </div>
+
 
     <input
       id="fileInput"
@@ -1200,18 +1582,31 @@ main{
       onchange="handleFile(event)"
     >
 
-    <div id="filePreview" class="file-preview"></div>
+
+    <div
+      id="filePreview"
+      class="file-preview"
+    ></div>
 
   </div>
 
 </section>
 
+
 <div id="toast" class="toast"></div>
+
 
 <script type="module">
 
-import { initializeApp }
+/* =========================================================
+   FIREBASE IMPORTS
+========================================================= */
+
+import {
+  initializeApp
+}
 from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+
 
 import {
   getAuth,
@@ -1219,6 +1614,7 @@ import {
   onAuthStateChanged
 }
 from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+
 
 import {
   getFirestore,
@@ -1235,6 +1631,7 @@ import {
 }
 from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
+
 import {
   getStorage,
   ref,
@@ -1244,59 +1641,157 @@ import {
 from "https://www.gstatic.com/firebasejs/12.2.1/firebase-storage.js";
 
 
-/* FIREBASE */
+/* =========================================================
+   FIREBASE CONFIG
+========================================================= */
 
 const firebaseConfig = {
-  apiKey:"AIzaC8S8Hfx0E7OpnfclF7UGYVcmdU38yuxtsBY",
-  authDomain:"darkwing-a717a.firebaseapp.com",
-  projectId:"darkwing-a717a",
-  storageBucket:"darkwing-a717a.firebasestorage.app",
-  messagingSenderId:"352453390196",
-  appId:"1:352453390196:web:7c375a26a823b5633a4621",
-  measurementId:"G-5RVX9NET3W"
+
+  apiKey:
+    "AIzaC8S8Hfx0E7OpnfclF7UGYVcmdU38yuxtsBY",
+
+  authDomain:
+    "darkwing-a717a.firebaseapp.com",
+
+  projectId:
+    "darkwing-a717a",
+
+  storageBucket:
+    "darkwing-a717a.firebasestorage.app",
+
+  messagingSenderId:
+    "352453390196",
+
+  appId:
+    "1:352453390196:web:7c375a26a823b5633a4621",
+
+  measurementId:
+    "G-5RVX9NET3W"
+
 };
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-const storage = getStorage(app);
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+const app =
+  initializeApp(firebaseConfig);
+
+const auth =
+  getAuth(app);
+
+const db =
+  getFirestore(app);
+
+const storage =
+  getStorage(app);
+
+
+/* =========================================================
+   GLOBAL VARIABLES
+========================================================= */
 
 let currentFirebaseUser = null;
+
 let currentChat = null;
 
 let unsubscribeMessages = null;
+
 let unsubscribePresence = null;
+
 let unsubscribeTyping = null;
+
+let typingTimer = null;
 
 const userName = "Ankaj";
 
 
-/* AUTH */
+/* =========================================================
+   FIREBASE LOGIN
+========================================================= */
 
 signInAnonymously(auth)
-.then(()=>{
-  console.log("Firebase anonymous login started");
+
+.then(() => {
+
+  console.log(
+    "Anonymous authentication started"
+  );
+
 })
-.catch(error=>{
-  console.error(error);
-  toast("Firebase login error");
+
+.catch(error => {
+
+  console.error(
+    "Anonymous auth error:",
+    error
+  );
+
+  toast(
+    "Firebase authentication failed"
+  );
+
 });
 
-onAuthStateChanged(auth,user=>{
 
-  if(user){
-    currentFirebaseUser = user;
-    console.log("Firebase connected:",user.uid);
+/* =========================================================
+   AUTH STATE
+========================================================= */
 
-    if(currentChat){
-      updatePresence();
+onAuthStateChanged(
+  auth,
+  user => {
+
+    if(user){
+
+      currentFirebaseUser = user;
+
+      console.log(
+        "Firebase connected:",
+        user.uid
+      );
+
+      if(currentChat){
+
+        document
+          .getElementById("chatStatus")
+          .textContent = "Online";
+
+        listenMessages();
+
+        updatePresence();
+
+        listenPresence();
+
+        listenTyping();
+
+      }
+
     }
+
+    else{
+
+      currentFirebaseUser = null;
+
+      if(currentChat){
+
+        document
+          .getElementById("chatStatus")
+          .textContent =
+          "Connecting...";
+
+      }
+
+    }
+
   }
+);
 
-});
 
-
-/* PAGE NAVIGATION */
+/* =========================================================
+   PAGE NAVIGATION
+========================================================= */
 
 window.showPage = function(page){
 
@@ -1310,59 +1805,75 @@ window.showPage = function(page){
     "settings"
   ];
 
-  pages.forEach(name=>{
 
-    const el = document.getElementById(name+"Page");
+  pages.forEach(name => {
 
-    if(el){
-      el.classList.toggle(
+    const element =
+      document.getElementById(
+        name + "Page"
+      );
+
+    if(element){
+
+      element.classList.toggle(
         "active",
         name === page
       );
+
     }
 
   });
 
-  document.querySelectorAll(".nav-btn")
-  .forEach(btn=>{
 
-    btn.classList.toggle(
-      "active",
-      btn.dataset.page === page
-    );
+  document
+    .querySelectorAll(".nav-btn")
+    .forEach(button => {
 
-  });
+      button.classList.toggle(
+        "active",
+        button.dataset.page === page
+      );
+
+    });
 
 };
 
 
-/* SEARCH */
+/* =========================================================
+   SEARCH
+========================================================= */
 
 window.searchUsers = function(){
 
   const value =
-    document.getElementById("searchInput")
-    .value
-    .toLowerCase()
-    .trim();
+    document
+      .getElementById("searchInput")
+      .value
+      .toLowerCase()
+      .trim();
 
-  document.querySelectorAll(".search-result")
-  .forEach(item=>{
 
-    const text =
-      item.innerText.toLowerCase();
+  document
+    .querySelectorAll(".search-result")
+    .forEach(item => {
 
-    item.style.display =
-      !value || text.includes(value)
-      ? "flex"
-      : "none";
+      const text =
+        item.innerText.toLowerCase();
 
-  });
+      item.style.display =
+        !value ||
+        text.includes(value)
+        ? "flex"
+        : "none";
+
+    });
 
 };
 
 
-/* CHAT ID */
+/* =========================================================
+   CHAT ID
+========================================================= */
 
 function chatId(name){
 
@@ -1373,30 +1884,62 @@ function chatId(name){
 }
 
 
-/* OPEN CHAT */
+/* =========================================================
+   OPEN CHAT
+========================================================= */
 
 window.openChat = function(name){
 
   currentChat = name;
 
-  document.getElementById("chatName").textContent = name;
 
-  document.getElementById("chatAvatar").textContent =
-    name.charAt(0).toUpperCase();
+  document
+    .getElementById("chatName")
+    .textContent = name;
 
-  document.getElementById("chatPage")
+
+  document
+    .getElementById("chatAvatar")
+    .textContent =
+      name
+        .charAt(0)
+        .toUpperCase();
+
+
+  document
+    .getElementById("chatPage")
     .classList.add("active");
 
-  document.body.style.overflow = "hidden";
 
-  document.getElementById("chatStatus").textContent =
-    "Connecting...";
+  document.body.style.overflow =
+    "hidden";
+
+
+  document
+    .getElementById("chatStatus")
+    .textContent =
+      currentFirebaseUser
+      ? "Online"
+      : "Connecting...";
+
+
+  document
+    .getElementById("chatMessages")
+    .innerHTML = `
+      <div class="empty-chat">
+        Loading messages...
+      </div>
+    `;
+
 
   if(currentFirebaseUser){
 
     listenMessages();
+
     updatePresence();
+
     listenPresence();
+
     listenTyping();
 
   }
@@ -1404,40 +1947,68 @@ window.openChat = function(name){
 };
 
 
-/* CLOSE CHAT */
+/* =========================================================
+   CLOSE CHAT
+========================================================= */
 
 window.closeChat = function(){
 
-  document.getElementById("chatPage")
+  document
+    .getElementById("chatPage")
     .classList.remove("active");
 
-  document.body.style.overflow = "";
+
+  document.body.style.overflow =
+    "";
+
 
   if(unsubscribeMessages){
+
     unsubscribeMessages();
+
     unsubscribeMessages = null;
+
   }
+
 
   if(unsubscribePresence){
+
     unsubscribePresence();
+
     unsubscribePresence = null;
+
   }
 
+
   if(unsubscribeTyping){
+
     unsubscribeTyping();
+
     unsubscribeTyping = null;
+
   }
+
 
   currentChat = null;
 
 };
 
 
-/* LISTEN MESSAGES */
+/* =========================================================
+   LISTEN REAL-TIME MESSAGES
+========================================================= */
 
 function listenMessages(){
 
-  if(!currentChat || !currentFirebaseUser) return;
+  if(
+    !currentChat ||
+    !currentFirebaseUser
+  ){
+
+    return;
+
+  }
+
 
   const messagesRef =
     collection(
@@ -1447,173 +2018,261 @@ function listenMessages(){
       "messages"
     );
 
-  const q =
+
+  const messageQuery =
     query(
       messagesRef,
-      orderBy("createdAt","asc")
+      orderBy(
+        "createdAt",
+        "asc"
+      )
     );
 
+
   if(unsubscribeMessages){
+
     unsubscribeMessages();
+
   }
 
+
   unsubscribeMessages =
-    onSnapshot(q,snapshot=>{
+    onSnapshot(
 
-      const container =
-        document.getElementById("chatMessages");
+      messageQuery,
 
-      container.innerHTML = "";
+      snapshot => {
 
-      if(snapshot.empty){
+        const container =
+          document.getElementById(
+            "chatMessages"
+          );
 
-        container.innerHTML = `
-          <div class="empty-chat">
-            No messages yet.<br>
-            Start the conversation.
-          </div>
-        `;
 
-        return;
-      }
+        container.innerHTML = "";
 
-      snapshot.forEach(docSnap=>{
 
-        const data = docSnap.data();
+        if(snapshot.empty){
 
-        renderMessage(
-          data,
-          docSnap.id
+          container.innerHTML = `
+            <div class="empty-chat">
+              No messages yet.<br>
+              Send the first message.
+            </div>
+          `;
+
+          return;
+
+        }
+
+
+        snapshot.forEach(
+          messageDoc => {
+
+            renderMessage(
+              messageDoc.data(),
+              messageDoc.id
+            );
+
+          }
         );
 
-      });
 
-      container.scrollTop =
-        container.scrollHeight;
+        container.scrollTop =
+          container.scrollHeight;
 
-    },error=>{
+      },
 
-      console.error(error);
+      error => {
 
-      document.getElementById("chatMessages")
-        .innerHTML = `
-          <div class="empty-chat">
-            Unable to load messages.<br>
-            Check Firebase Firestore rules.
-          </div>
-        `;
+        console.error(
+          "Firestore error:",
+          error
+        );
 
-    });
+
+        document
+          .getElementById(
+            "chatMessages"
+          )
+          .innerHTML = `
+            <div class="empty-chat">
+              Unable to load messages.<br><br>
+              Check Firestore Rules.
+            </div>
+          `;
+
+      }
+
+    );
 
 }
 
 
-/* RENDER MESSAGE */
+/* =========================================================
+   RENDER MESSAGE
+========================================================= */
 
-function renderMessage(data,id){
+function renderMessage(
+  data,
+  id
+){
 
   const container =
-    document.getElementById("chatMessages");
+    document.getElementById(
+      "chatMessages"
+    );
+
 
   const isMe =
-    data.senderId === currentFirebaseUser?.uid;
+    data.senderId ===
+    currentFirebaseUser?.uid;
 
-  const wrapper =
+
+  const message =
     document.createElement("div");
 
-  wrapper.className =
-    "msg " + (isMe ? "me" : "other");
+
+  message.className =
+    "msg " +
+    (isMe ? "me" : "other");
+
 
   if(data.type === "sticker"){
 
-    wrapper.classList.add("sticker-msg");
+    message.classList.add(
+      "sticker-msg"
+    );
 
-    wrapper.innerHTML =
-      escapeHtml(data.sticker || "✨");
+    message.textContent =
+      data.sticker || "✨";
 
   }
+
 
   else if(data.type === "image"){
 
-    wrapper.innerHTML = `
+    message.innerHTML = `
+
       <img
-        src="${escapeAttr(data.url)}"
+        src="${safeAttr(data.url)}"
         alt="image"
       >
+
       ${messageMeta(data)}
+
     `;
 
   }
+
 
   else if(data.type === "video"){
 
-    wrapper.innerHTML = `
+    message.innerHTML = `
+
       <video
-        src="${escapeAttr(data.url)}"
+        src="${safeAttr(data.url)}"
         controls
         playsinline
       ></video>
+
       ${messageMeta(data)}
+
     `;
 
   }
+
 
   else if(data.type === "file"){
 
-    wrapper.innerHTML = `
+    message.innerHTML = `
+
       <a
-        href="${escapeAttr(data.url)}"
+        href="${safeAttr(data.url)}"
         target="_blank"
-        rel="noopener"
-        style="color:white;text-decoration:none"
+        rel="noopener noreferrer"
       >
-        📎 ${escapeHtml(data.fileName || "File")}
+        📎 ${safeHtml(
+          data.fileName || "File"
+        )}
       </a>
+
       ${messageMeta(data)}
+
     `;
 
   }
+
 
   else{
 
-    wrapper.innerHTML = `
-      <div>${escapeHtml(data.text || "")}</div>
+    message.innerHTML = `
+
+      <div>
+        ${safeHtml(data.text || "")}
+      </div>
+
       ${messageMeta(data)}
+
     `;
 
   }
 
-  container.appendChild(wrapper);
+
+  container.appendChild(message);
+
+
+  /* MARK OTHER MESSAGES SEEN */
+
+  if(
+    !isMe &&
+    id &&
+    currentFirebaseUser
+  ){
+
+    markSeen(id);
+
+  }
 
 }
 
 
-/* MESSAGE META */
+/* =========================================================
+   MESSAGE META
+========================================================= */
 
 function messageMeta(data){
 
   let time = "";
 
-  if(data.createdAt?.toDate){
+  if(
+    data.createdAt &&
+    data.createdAt.toDate
+  ){
 
     time =
       data.createdAt
-      .toDate()
-      .toLocaleTimeString(
-        [],
-        {
-          hour:"2-digit",
-          minute:"2-digit"
-        }
-      );
+        .toDate()
+        .toLocaleTimeString(
+          [],
+          {
+            hour:"2-digit",
+            minute:"2-digit"
+          }
+        );
 
   }
 
-  let seen = "";
 
-  if(data.senderId === currentFirebaseUser?.uid){
+  let ticks = "";
 
-    seen =
+
+  if(
+    data.senderId ===
+    currentFirebaseUser?.uid
+  ){
+
+    ticks =
       data.seenBy &&
       data.seenBy.length > 1
       ? `<span class="seen">✓✓</span>`
@@ -1621,124 +2280,287 @@ function messageMeta(data){
 
   }
 
+
   return `
+
     <div class="msg-time">
-      ${time}${seen}
+      ${time}${ticks}
     </div>
+
   `;
 
 }
 
 
-/* SEND MESSAGE */
+/* =========================================================
+   MARK SEEN
+========================================================= */
 
-window.sendMessage = async function(){
+async function markSeen(messageId){
+
+  if(
+    !currentFirebaseUser ||
+    !currentChat
+  ){
+
+    return;
+
+  }
+
+
+  try{
+
+    await updateDoc(
+
+      doc(
+        db,
+        "chats",
+        chatId(currentChat),
+        "messages",
+        messageId
+      ),
+
+      {
+        seenBy:
+          arrayUnion(
+            currentFirebaseUser.uid
+          )
+      }
+
+    );
+
+  }
+
+  catch(error){
+
+    console.log(
+      "Seen update:",
+      error.message
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   SEND MESSAGE
+========================================================= */
+
+window.sendMessage =
+async function(){
 
   if(!currentFirebaseUser){
 
-    toast("Connecting to Firebase...");
+    toast(
+      "Connecting to Firebase..."
+    );
+
     return;
 
   }
+
 
   if(!currentChat){
+
     return;
+
   }
 
+
   const input =
-    document.getElementById("messageInput");
+    document.getElementById(
+      "messageInput"
+    );
+
 
   const text =
     input.value.trim();
 
+
   if(!text){
+
     return;
+
   }
 
+
   input.value = "";
+
 
   try{
 
     await addDoc(
+
       collection(
         db,
         "chats",
         chatId(currentChat),
         "messages"
       ),
+
       {
+
         text:text,
-        senderId:currentFirebaseUser.uid,
-        senderName:userName,
-        type:"text",
-        seenBy:[currentFirebaseUser.uid],
-        createdAt:serverTimestamp()
+
+        senderId:
+          currentFirebaseUser.uid,
+
+        senderName:
+          userName,
+
+        type:
+          "text",
+
+        seenBy:[
+          currentFirebaseUser.uid
+        ],
+
+        createdAt:
+          serverTimestamp()
+
       }
+
     );
+
 
     updateTyping(false);
 
   }
+
   catch(error){
 
-    console.error(error);
+    console.error(
+      "Send message:",
+      error
+    );
 
-    toast("Message send failed");
+    toast(
+      "Message failed"
+    );
 
   }
 
 };
 
 
-/* SEND STICKER */
+/* =========================================================
+   ENTER SEND
+========================================================= */
 
-window.sendSticker = async function(sticker,name){
+window.handleEnter =
+function(event){
 
-  if(!currentFirebaseUser || !currentChat){
-    toast("Chat is not ready");
-    return;
+  if(
+    event.key === "Enter" &&
+    !event.shiftKey
+  ){
+
+    event.preventDefault();
+
+    sendMessage();
+
   }
+
+};
+
+
+/* =========================================================
+   SEND STICKER
+========================================================= */
+
+window.sendSticker =
+async function(
+  sticker,
+  name
+){
+
+  if(
+    !currentFirebaseUser ||
+    !currentChat
+  ){
+
+    toast(
+      "Chat is not ready"
+    );
+
+    return;
+
+  }
+
 
   try{
 
     await addDoc(
+
       collection(
         db,
         "chats",
         chatId(currentChat),
         "messages"
       ),
+
       {
+
         type:"sticker",
+
         sticker:sticker,
+
         stickerName:name,
-        senderId:currentFirebaseUser.uid,
-        senderName:userName,
-        seenBy:[currentFirebaseUser.uid],
-        createdAt:serverTimestamp()
+
+        senderId:
+          currentFirebaseUser.uid,
+
+        senderName:
+          userName,
+
+        seenBy:[
+          currentFirebaseUser.uid
+        ],
+
+        createdAt:
+          serverTimestamp()
+
       }
+
     );
 
-    document.getElementById("stickerPicker")
-      .classList.remove("show");
+
+    document
+      .getElementById(
+        "stickerPicker"
+      )
+      .classList.remove(
+        "show"
+      );
 
   }
+
   catch(error){
 
     console.error(error);
-    toast("Sticker send failed");
+
+    toast(
+      "Sticker failed"
+    );
 
   }
 
 };
 
 
-/* EMOJI */
+/* =========================================================
+   EMOJI
+========================================================= */
 
-window.addEmoji = function(emoji){
+window.addEmoji =
+function(emoji){
 
   const input =
-    document.getElementById("messageInput");
+    document.getElementById(
+      "messageInput"
+    );
+
 
   input.value += emoji;
 
@@ -1747,153 +2569,274 @@ window.addEmoji = function(emoji){
 };
 
 
-/* PICKERS */
+/* =========================================================
+   PICKER
+========================================================= */
 
-window.togglePicker = function(type){
+window.togglePicker =
+function(type){
 
   const emoji =
-    document.getElementById("emojiPicker");
+    document.getElementById(
+      "emojiPicker"
+    );
+
 
   const sticker =
-    document.getElementById("stickerPicker");
+    document.getElementById(
+      "stickerPicker"
+    );
+
 
   if(type === "emoji"){
 
-    sticker.classList.remove("show");
-    emoji.classList.toggle("show");
+    sticker.classList.remove(
+      "show"
+    );
+
+    emoji.classList.toggle(
+      "show"
+    );
 
   }
+
   else{
 
-    emoji.classList.remove("show");
-    sticker.classList.toggle("show");
+    emoji.classList.remove(
+      "show"
+    );
+
+    sticker.classList.toggle(
+      "show"
+    );
 
   }
 
 };
 
 
-/* FILE CHOOSE */
+/* =========================================================
+   FILE
+========================================================= */
 
-window.chooseFile = function(){
+window.chooseFile =
+function(){
 
-  document.getElementById("fileInput").click();
+  document
+    .getElementById("fileInput")
+    .click();
 
 };
 
 
-/* HANDLE FILE */
-
-window.handleFile = async function(event){
+window.handleFile =
+async function(event){
 
   const file =
     event.target.files[0];
 
-  if(!file) return;
 
-  if(file.size > 25 * 1024 * 1024){
+  if(!file){
 
-    toast("Maximum file size is 25MB");
+    return;
+
+  }
+
+
+  if(
+    file.size >
+    25 * 1024 * 1024
+  ){
+
+    toast(
+      "Maximum file size is 25MB"
+    );
 
     event.target.value = "";
+
     return;
 
   }
 
-  if(!currentFirebaseUser || !currentChat){
 
-    toast("Chat is not ready");
+  if(
+    !currentFirebaseUser ||
+    !currentChat
+  ){
+
+    toast(
+      "Chat is not ready"
+    );
+
     return;
 
   }
 
-  document.getElementById("filePreview")
-    .textContent =
-      "Uploading " + file.name + "...";
+
+  const preview =
+    document.getElementById(
+      "filePreview"
+    );
+
+
+  preview.textContent =
+    "Uploading " +
+    file.name +
+    "...";
+
 
   try{
 
-    const safe =
+    const safeName =
       file.name.replace(
         /[^a-zA-Z0-9._-]/g,
         "_"
       );
 
-    const storagePath =
-      `chatUploads/${chatId(currentChat)}/${Date.now()}_${safe}`;
+
+    const path =
+      "chatUploads/" +
+      chatId(currentChat) +
+      "/" +
+      Date.now() +
+      "_" +
+      safeName;
+
 
     const storageRef =
-      ref(storage,storagePath);
+      ref(
+        storage,
+        path
+      );
+
 
     await uploadBytes(
       storageRef,
       file
     );
 
+
     const url =
-      await getDownloadURL(storageRef);
+      await getDownloadURL(
+        storageRef
+      );
 
-    let type = "file";
 
-    if(file.type.startsWith("image/")){
-      type = "image";
+    let type =
+      "file";
+
+
+    if(
+      file.type.startsWith(
+        "image/"
+      )
+    ){
+
+      type =
+        "image";
+
     }
-    else if(file.type.startsWith("video/")){
-      type = "video";
+
+
+    else if(
+      file.type.startsWith(
+        "video/"
+      )
+    ){
+
+      type =
+        "video";
+
     }
+
 
     await addDoc(
+
       collection(
         db,
         "chats",
         chatId(currentChat),
         "messages"
       ),
+
       {
+
         type:type,
+
         url:url,
-        fileName:file.name,
-        fileType:file.type,
-        senderId:currentFirebaseUser.uid,
-        senderName:userName,
-        seenBy:[currentFirebaseUser.uid],
-        createdAt:serverTimestamp()
+
+        fileName:
+          file.name,
+
+        fileType:
+          file.type,
+
+        senderId:
+          currentFirebaseUser.uid,
+
+        senderName:
+          userName,
+
+        seenBy:[
+          currentFirebaseUser.uid
+        ],
+
+        createdAt:
+          serverTimestamp()
+
       }
+
     );
 
-    document.getElementById("filePreview")
-      .textContent = "";
+
+    preview.textContent = "";
 
     event.target.value = "";
 
-    toast("File sent");
+    toast(
+      "File sent"
+    );
 
   }
+
   catch(error){
 
-    console.error(error);
+    console.error(
+      "Upload error:",
+      error
+    );
 
-    document.getElementById("filePreview")
-      .textContent = "";
+    preview.textContent = "";
 
-    toast("Upload failed");
+    toast(
+      "Upload failed"
+    );
 
   }
 
 };
 
 
-/* PRESENCE */
+/* =========================================================
+   PRESENCE
+========================================================= */
 
 async function updatePresence(){
 
-  if(!currentFirebaseUser || !currentChat){
+  if(
+    !currentFirebaseUser ||
+    !currentChat
+  ){
+
     return;
+
   }
+
 
   try{
 
     await setDoc(
+
       doc(
         db,
         "chats",
@@ -1901,75 +2844,115 @@ async function updatePresence(){
         "presence",
         currentFirebaseUser.uid
       ),
+
       {
+
         online:true,
-        updatedAt:serverTimestamp()
+
+        updatedAt:
+          serverTimestamp()
+
       },
+
       {
         merge:true
       }
+
     );
 
   }
+
   catch(error){
-    console.error(error);
+
+    console.error(
+      "Presence:",
+      error
+    );
+
   }
 
 }
 
 
-/* LISTEN PRESENCE */
+/* =========================================================
+   PRESENCE LISTENER
+========================================================= */
 
 function listenPresence(){
 
-  if(!currentChat) return;
+  if(!currentChat){
 
-  /*
-    Development presence listener.
-    Current user presence is used to show
-    connection state.
-  */
+    return;
 
-  document.getElementById("chatStatus")
-    .textContent = "Online";
+  }
+
+
+  document
+    .getElementById(
+      "chatStatus"
+    )
+    .textContent =
+      "Online";
 
 }
 
 
-/* TYPING */
+/* =========================================================
+   TYPING
+========================================================= */
 
-let typingTimer = null;
+window.handleTyping =
+function(){
 
-window.handleTyping = function(){
+  if(
+    !currentFirebaseUser ||
+    !currentChat
+  ){
 
-  if(!currentFirebaseUser || !currentChat){
     return;
+
   }
+
 
   updateTyping(true);
 
-  clearTimeout(typingTimer);
+
+  clearTimeout(
+    typingTimer
+  );
+
 
   typingTimer =
     setTimeout(
-      ()=>{
+      () => {
+
         updateTyping(false);
+
       },
-      1500
+      1400
     );
 
 };
 
 
-async function updateTyping(isTyping){
+async function updateTyping(
+  isTyping
+){
 
-  if(!currentFirebaseUser || !currentChat){
+  if(
+    !currentFirebaseUser ||
+    !currentChat
+  ){
+
     return;
+
   }
+
 
   try{
 
     await setDoc(
+
       doc(
         db,
         "chats",
@@ -1977,137 +2960,230 @@ async function updateTyping(isTyping){
         "typing",
         currentFirebaseUser.uid
       ),
+
       {
-        typing:isTyping,
-        updatedAt:serverTimestamp()
+
+        typing:
+          isTyping,
+
+        updatedAt:
+          serverTimestamp()
+
       },
+
       {
         merge:true
       }
+
     );
 
   }
+
   catch(error){
-    console.error(error);
+
+    console.log(
+      "Typing:",
+      error.message
+    );
+
   }
 
 }
 
 
+/* =========================================================
+   TYPING LISTENER
+========================================================= */
+
 function listenTyping(){
 
-  if(!currentChat) return;
+  if(!currentChat){
 
-  /*
-    Typing UI is kept ready for Firestore
-    typing documents.
-  */
+    return;
 
-  document.getElementById("typingIndicator")
+  }
+
+
+  document
+    .getElementById(
+      "typingIndicator"
+    )
     .textContent = "";
 
 }
 
 
-/* CREATE POST */
+/* =========================================================
+   CREATE POST
+========================================================= */
 
-window.createPost = function(){
+window.createPost =
+function(){
 
   const input =
-    document.getElementById("postText");
+    document.getElementById(
+      "postText"
+    );
+
 
   const text =
     input.value.trim();
 
+
   if(!text){
 
-    toast("Write something first");
+    toast(
+      "Write something first"
+    );
+
     return;
 
   }
 
+
   input.value = "";
 
-  toast("Post published");
+  toast(
+    "Post published"
+  );
 
   showPage("home");
 
 };
 
 
-/* SETTINGS SWITCH */
+/* =========================================================
+   SWITCH
+========================================================= */
 
-window.toggleSwitch = function(el){
+window.toggleSwitch =
+function(element){
 
-  el.classList.toggle("on");
-
-};
-
-
-/* CALL */
-
-window.fakeCall = function(){
-
-  toast("Calling feature coming soon");
+  element.classList.toggle(
+    "on"
+  );
 
 };
 
 
-/* VIDEO */
+/* =========================================================
+   CALL
+========================================================= */
 
-window.fakeVideo = function(){
+window.fakeCall =
+function(){
 
-  toast("Video call feature coming soon");
-
-};
-
-
-/* TOAST */
-
-window.toast = function(message){
-
-  const el =
-    document.getElementById("toast");
-
-  el.textContent = message;
-
-  el.classList.add("show");
-
-  setTimeout(()=>{
-    el.classList.remove("show");
-  },2200);
+  toast(
+    "Calling feature coming soon"
+  );
 
 };
 
 
-/* SECURITY HELPERS */
+/* =========================================================
+   VIDEO
+========================================================= */
 
-function escapeHtml(value){
+window.fakeVideo =
+function(){
+
+  toast(
+    "Video calling coming soon"
+  );
+
+};
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+window.toast =
+function(message){
+
+  const element =
+    document.getElementById(
+      "toast"
+    );
+
+
+  element.textContent =
+    message;
+
+
+  element.classList.add(
+    "show"
+  );
+
+
+  setTimeout(
+    () => {
+
+      element.classList.remove(
+        "show"
+      );
+
+    },
+    2200
+  );
+
+};
+
+
+/* =========================================================
+   SECURITY
+========================================================= */
+
+function safeHtml(value){
 
   return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
 
 }
 
 
-function escapeAttr(value){
+function safeAttr(value){
 
-  return escapeHtml(value);
+  return safeHtml(
+    value
+  );
 
 }
 
 
-/* INITIAL */
+/* =========================================================
+   START
+========================================================= */
 
-window.addEventListener("load",()=>{
+window.addEventListener(
+  "load",
+  () => {
 
-  showPage("home");
+    showPage(
+      "home"
+    );
 
-});
+  }
+);
 
 </script>
 
