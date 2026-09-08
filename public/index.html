@@ -2,1577 +2,1118 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>X-DARK</title>
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,Helvetica,sans-serif;
-}
-
-html,body{
-    background:#07080c;
-    color:#fff;
-    min-height:100%;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
-    padding-bottom:78px;
+  background:#07080c;
+  color:#fff;
+  padding-bottom:80px;
 }
 
-/* ================= TOP BAR ================= */
+.page{display:none}
+.page.active{display:block}
 
+/* TOP */
 .topbar{
-    height:88px;
-    background:#07080c;
-    border-bottom:1px solid #292b34;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    padding:0 22px;
-
-    position:sticky;
-    top:0;
-    z-index:100;
+  height:88px;
+  border-bottom:1px solid #292b34;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 22px;
+  position:sticky;
+  top:0;
+  background:#07080c;
+  z-index:100;
 }
 
 .logo{
-    font-size:30px;
-    font-weight:800;
-    letter-spacing:-1px;
+  font-size:30px;
+  font-weight:800;
 }
 
 .top-icons{
-    display:flex;
-    align-items:center;
-    gap:25px;
+  display:flex;
+  gap:25px;
 }
 
 .svg-icon{
-    width:27px;
-    height:27px;
-
-    stroke:#f4f4f7;
-    stroke-width:1.8;
-    fill:none;
-
-    cursor:pointer;
+  width:28px;
+  height:28px;
+  stroke:#fff;
+  stroke-width:1.8;
+  fill:none;
+  cursor:pointer;
 }
 
-
-/* ================= PAGES ================= */
-
-.page{
-    display:none;
-}
-
-.page.active{
-    display:block;
-}
-
-
-/* ================= STORIES ================= */
-
+/* STORIES */
 .stories{
-    display:flex;
-    gap:25px;
-
-    padding:18px;
-
-    overflow-x:auto;
-
-    border-bottom:1px solid #191b22;
+  display:flex;
+  gap:24px;
+  padding:18px;
+  overflow-x:auto;
+  border-bottom:1px solid #191b22;
 }
 
-.stories::-webkit-scrollbar{
-    display:none;
-}
+.stories::-webkit-scrollbar{display:none}
 
 .story{
-    min-width:78px;
-    text-align:center;
+  min-width:78px;
+  text-align:center;
 }
 
 .story-ring{
-    width:76px;
-    height:76px;
-
-    padding:4px;
-
-    border-radius:50%;
-
-    background:linear-gradient(
-        135deg,
-        #6825ff,
-        #a64cff,
-        #6825ff
-    );
-
-    margin:auto;
+  width:76px;
+  height:76px;
+  padding:4px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#6825ff,#a64cff,#6825ff);
 }
 
 .story-ring img{
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-
-    border-radius:50%;
-
-    border:3px solid #07080c;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:50%;
+  border:3px solid #07080c;
 }
 
 .story-name{
-    margin-top:8px;
-
-    color:#c9cad1;
-
-    font-size:13px;
-
-    white-space:nowrap;
+  margin-top:8px;
+  color:#c9cad1;
+  font-size:13px;
 }
 
-
-/* ================= FEED ================= */
-
+/* FEED */
 .feed{
-    width:100%;
-    max-width:650px;
-    margin:auto;
+  max-width:650px;
+  margin:auto;
 }
 
 .post{
-    width:100%;
-
-    border-bottom:1px solid #292b34;
-
-    padding-bottom:15px;
+  border-bottom:1px solid #292b34;
+  padding-bottom:15px;
 }
 
 .post-header{
-    height:95px;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    padding:0 22px;
+  height:95px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 22px;
 }
 
 .user-info{
-    display:flex;
-    align-items:center;
-    gap:12px;
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
 
 .avatar{
-    width:52px;
-    height:52px;
-
-    border-radius:50%;
-
-    object-fit:cover;
-
-    border:2px solid #7935ff;
-
-    padding:2px;
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid #7935ff;
+  padding:2px;
 }
 
 .username{
-    font-size:18px;
-    font-weight:700;
+  font-size:18px;
+  font-weight:700;
 }
 
 .location{
-    color:#858792;
-    font-size:13px;
-    margin-top:4px;
+  color:#858792;
+  font-size:13px;
+  margin-top:4px;
 }
 
 .more{
-    color:#ddd;
-    font-size:22px;
-    letter-spacing:3px;
+  font-size:22px;
+  letter-spacing:3px;
 }
 
 .post-image{
-    width:100%;
-    display:block;
-    max-height:700px;
-    object-fit:cover;
+  width:100%;
+  display:block;
+  max-height:700px;
+  object-fit:cover;
 }
 
 .actions{
-    height:62px;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    padding:0 22px;
+  height:62px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 22px;
 }
 
 .left-actions{
-    display:flex;
-    align-items:center;
-    gap:21px;
+  display:flex;
+  gap:21px;
 }
 
 .post-icon{
-    width:29px;
-    height:29px;
-
-    stroke:#eee;
-    stroke-width:1.7;
-    fill:none;
-
-    cursor:pointer;
+  width:29px;
+  height:29px;
+  stroke:#eee;
+  stroke-width:1.7;
+  fill:none;
+  cursor:pointer;
 }
 
 .like-btn.liked{
-    stroke:#ff3564;
-    fill:#ff3564;
+  stroke:#ff3564;
+  fill:#ff3564;
 }
 
 .save-btn.saved{
-    stroke:#9d5cff;
+  stroke:#9d5cff;
 }
 
 .likes{
-    padding:0 22px;
-
-    font-size:14px;
-    font-weight:700;
+  padding:0 22px;
+  font-size:14px;
+  font-weight:700;
 }
 
 .caption{
-    padding:8px 22px 0;
-
-    line-height:22px;
-
-    font-size:14px;
+  padding:8px 22px 0;
+  line-height:22px;
+  font-size:14px;
 }
 
 .comments-link{
-    display:block;
-
-    padding:8px 22px 14px;
-
-    color:#777b88;
-
-    font-size:14px;
-
-    cursor:pointer;
+  display:block;
+  padding:8px 22px 14px;
+  color:#777b88;
+  font-size:14px;
 }
 
 .comment-area{
-    display:none;
-
-    padding:0 22px 15px;
-
-    gap:8px;
+  display:none;
+  padding:0 22px 15px;
+  gap:8px;
 }
 
 .comment-area.active{
-    display:flex;
+  display:flex;
 }
 
 .comment-input{
-    flex:1;
-
-    height:40px;
-
-    background:#15171e;
-
-    border:1px solid #30323c;
-
-    color:#fff;
-
-    border-radius:20px;
-
-    padding:0 14px;
-
-    outline:none;
+  flex:1;
+  height:40px;
+  background:#15171e;
+  border:1px solid #30323c;
+  color:#fff;
+  border-radius:20px;
+  padding:0 14px;
+  outline:none;
 }
 
 .comment-send{
-    border:0;
-
-    background:#7130ff;
-
-    color:#fff;
-
-    border-radius:20px;
-
-    padding:0 15px;
+  border:0;
+  background:#7130ff;
+  color:#fff;
+  border-radius:20px;
+  padding:0 15px;
 }
 
-
-/* ==================================================
-                     PROFILE
-================================================== */
-
+/* PROFILE */
 .profile{
-    max-width:650px;
-    margin:auto;
+  max-width:650px;
+  margin:auto;
 }
-
-
-/* PROFILE HEADER */
 
 .profile-top{
-    padding:28px 22px 24px;
-
-    border-bottom:1px solid #292b34;
+  padding:28px 22px 24px;
+  border-bottom:1px solid #292b34;
 }
-
-
-/* PROFILE INFO */
 
 .profile-info{
-    display:flex;
-    align-items:center;
-
-    gap:25px;
+  display:flex;
+  align-items:center;
+  gap:25px;
 }
-
-
-/* PROFILE PHOTO */
 
 .profile-photo{
-    width:100px;
-    height:100px;
-
-    border-radius:50%;
-
-    object-fit:cover;
-
-    border:3px solid #7b36ff;
-
-    padding:3px;
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px solid #7b36ff;
+  padding:3px;
 }
 
-
-/* PROFILE DETAILS */
-
 .profile-details{
-    flex:1;
+  flex:1;
 }
 
 .profile-username{
-    font-size:23px;
-    font-weight:800;
-
-    margin-bottom:5px;
+  font-size:23px;
+  font-weight:800;
 }
 
 .profile-handle{
-    color:#8b8e9a;
-    font-size:14px;
+  color:#8b8e9a;
+  margin-top:5px;
 }
 
-
-/* STATS */
-
 .profile-stats{
-    display:flex;
-
-    justify-content:space-between;
-
-    margin-top:28px;
-
-    text-align:center;
+  display:flex;
+  margin-top:28px;
+  text-align:center;
 }
 
 .stat{
-    flex:1;
+  flex:1;
 }
 
 .stat-number{
-    font-size:18px;
-    font-weight:800;
+  font-size:18px;
+  font-weight:800;
 }
 
 .stat-label{
-    margin-top:5px;
-
-    color:#858792;
-
-    font-size:12px;
+  margin-top:5px;
+  color:#858792;
+  font-size:12px;
 }
-
-
-/* BIO */
 
 .profile-bio{
-    margin-top:20px;
-
-    color:#d6d7dc;
-
-    font-size:14px;
-
-    line-height:21px;
+  margin-top:20px;
+  color:#d6d7dc;
+  font-size:14px;
+  line-height:21px;
 }
-
-
-/* EDIT BUTTON */
 
 .edit-profile{
-    width:100%;
-
-    height:44px;
-
-    margin-top:18px;
-
-    border:1px solid #3a3c47;
-
-    border-radius:12px;
-
-    background:#15171e;
-
-    color:#fff;
-
-    font-size:14px;
-
-    font-weight:700;
-
-    cursor:pointer;
+  width:100%;
+  height:44px;
+  margin-top:18px;
+  border:1px solid #3a3c47;
+  border-radius:12px;
+  background:#15171e;
+  color:#fff;
+  font-size:14px;
+  font-weight:700;
+  cursor:pointer;
 }
 
-
-/* PROFILE TABS */
-
 .profile-tabs{
-    height:58px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-around;
-
-    border-bottom:1px solid #292b34;
+  height:58px;
+  display:flex;
+  border-bottom:1px solid #292b34;
 }
 
 .profile-tab{
-    width:33.33%;
-
-    height:58px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    cursor:pointer;
+  width:33.33%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 .profile-tab.active{
-    border-bottom:2px solid #fff;
+  border-bottom:2px solid #fff;
 }
 
 .tab-icon{
-    width:23px;
-    height:23px;
-
-    stroke:#aaaeba;
-
-    stroke-width:1.6;
-
-    fill:none;
+  width:23px;
+  height:23px;
+  stroke:#aaaeba;
+  stroke-width:1.6;
+  fill:none;
 }
 
 .profile-tab.active .tab-icon{
-    stroke:#fff;
+  stroke:#fff;
 }
 
-
-/* PROFILE GRID */
-
 .profile-grid{
-    display:grid;
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:2px;
-
-    background:#07080c;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2px;
 }
 
 .grid-item{
-    aspect-ratio:1/1;
-
-    overflow:hidden;
-
-    background:#11131a;
-
-    cursor:pointer;
+  aspect-ratio:1/1;
+  overflow:hidden;
 }
 
 .grid-item img{
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-
-    display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
-
-/* ================= CREATE MODAL ================= */
-
-.create-modal{
-    position:fixed;
-
-    inset:0;
-
-    background:rgba(0,0,0,.82);
-
-    backdrop-filter:blur(8px);
-
-    display:none;
-
-    align-items:flex-end;
-
-    justify-content:center;
-
-    z-index:1000;
-}
-
-.create-modal.active{
-    display:flex;
-}
-
-.create-box{
-    width:100%;
-    max-width:650px;
-
-    background:#101117;
-
-    border:1px solid #30323d;
-
-    border-radius:28px 28px 0 0;
-
-    padding:22px;
-}
-
-.create-head{
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    margin-bottom:20px;
-}
-
-.create-title{
-    font-size:22px;
-    font-weight:700;
-}
-
-.close-btn{
-    width:35px;
-    height:35px;
-
-    border:0;
-
-    border-radius:50%;
-
-    background:#20222b;
-
-    color:#fff;
-
-    font-size:22px;
-
-    cursor:pointer;
-}
-
-.upload-area{
-    border:1px dashed #555966;
-
-    border-radius:20px;
-
-    min-height:200px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    justify-content:center;
-
-    cursor:pointer;
-
-    overflow:hidden;
-
-    background:#0b0c11;
-}
-
-.upload-text{
-    margin-top:12px;
-
-    color:#aaaeba;
-
-    font-size:14px;
-}
-
-.preview{
-    width:100%;
-
-    max-height:350px;
-
-    object-fit:contain;
-
-    display:none;
-}
-
-.caption-input{
-    width:100%;
-
-    height:90px;
-
-    margin-top:15px;
-
-    resize:none;
-
-    outline:none;
-
-    border:1px solid #30323d;
-
-    border-radius:15px;
-
-    background:#0b0c11;
-
-    color:#fff;
-
-    padding:14px;
-
-    font-size:15px;
-}
-
-.publish-btn{
-    width:100%;
-
-    height:52px;
-
-    margin-top:14px;
-
-    border:0;
-
-    border-radius:15px;
-
-    background:#7434ff;
-
-    color:#fff;
-
-    font-size:16px;
-
-    font-weight:700;
-}
-
-
-/* ================= BOTTOM NAV ================= */
-
+/* BOTTOM */
 .bottom-nav{
-    position:fixed;
-
-    left:0;
-    right:0;
-    bottom:0;
-
-    height:76px;
-
-    background:#07080c;
-
-    border-top:1px solid #292b34;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-around;
-
-    padding:0 18px;
-
-    z-index:500;
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  height:76px;
+  background:#07080c;
+  border-top:1px solid #292b34;
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+  z-index:500;
 }
 
 .nav-icon{
-    width:32px;
-    height:32px;
-
-    stroke:#858894;
-
-    stroke-width:1.7;
-
-    fill:none;
-
-    cursor:pointer;
+  width:32px;
+  height:32px;
+  stroke:#858894;
+  stroke-width:1.7;
+  fill:none;
+  cursor:pointer;
 }
 
 .nav-icon.active{
-    stroke:#fff;
+  stroke:#fff;
 }
-
-
-/* PLUS */
 
 .create-btn{
-    width:38px;
-    height:38px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    background:transparent;
-
-    color:#fff;
-
-    font-size:38px;
-
-    font-weight:300;
-
-    cursor:pointer;
+  width:38px;
+  height:38px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:transparent;
+  color:#fff;
+  font-size:38px;
+  font-weight:300;
+  cursor:pointer;
 }
 
+/* MODALS */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.84);
+  backdrop-filter:blur(8px);
+  display:none;
+  align-items:flex-end;
+  justify-content:center;
+  z-index:1000;
+}
 
-/* ================= TOAST ================= */
+.modal.active{
+  display:flex;
+}
 
+.modal-box{
+  width:100%;
+  max-width:650px;
+  background:#101117;
+  border:1px solid #30323d;
+  border-radius:28px 28px 0 0;
+  padding:22px;
+  max-height:90vh;
+  overflow-y:auto;
+}
+
+.modal-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:22px;
+}
+
+.modal-title{
+  font-size:22px;
+  font-weight:700;
+}
+
+.close-btn{
+  width:36px;
+  height:36px;
+  border:0;
+  border-radius:50%;
+  background:#20222b;
+  color:#fff;
+  font-size:24px;
+}
+
+/* CREATE */
+.upload-area{
+  min-height:190px;
+  border:1px dashed #555966;
+  border-radius:20px;
+  background:#0b0c11;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  overflow:hidden;
+  cursor:pointer;
+}
+
+.upload-text{
+  color:#aaaeba;
+  font-size:14px;
+}
+
+.preview{
+  width:100%;
+  max-height:350px;
+  object-fit:contain;
+  display:none;
+}
+
+.caption-input{
+  width:100%;
+  height:90px;
+  margin-top:15px;
+  background:#0b0c11;
+  color:#fff;
+  border:1px solid #30323d;
+  border-radius:15px;
+  padding:14px;
+  resize:none;
+  outline:none;
+}
+
+.publish-btn,
+.save-changes{
+  width:100%;
+  height:52px;
+  margin-top:14px;
+  border:0;
+  border-radius:15px;
+  background:#7434ff;
+  color:#fff;
+  font-size:16px;
+  font-weight:700;
+}
+
+/* EDIT PROFILE */
+.edit-photo-wrap{
+  text-align:center;
+  margin-bottom:22px;
+}
+
+.edit-photo{
+  width:105px;
+  height:105px;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px solid #7b36ff;
+  padding:3px;
+}
+
+.change-photo{
+  display:block;
+  margin:12px auto 0;
+  color:#9c65ff;
+  font-size:14px;
+  cursor:pointer;
+}
+
+.form-label{
+  display:block;
+  margin:15px 0 7px;
+  color:#9699a5;
+  font-size:13px;
+}
+
+.form-input{
+  width:100%;
+  height:48px;
+  background:#0b0c11;
+  border:1px solid #30323d;
+  border-radius:13px;
+  color:#fff;
+  padding:0 14px;
+  font-size:15px;
+  outline:none;
+}
+
+.form-bio{
+  height:90px;
+  padding-top:13px;
+  resize:none;
+}
+
+/* TOAST */
 .toast{
-    position:fixed;
-
-    left:50%;
-    bottom:95px;
-
-    transform:translateX(-50%);
-
-    background:#191b23;
-
-    border:1px solid #30323d;
-
-    color:#fff;
-
-    padding:11px 19px;
-
-    border-radius:22px;
-
-    display:none;
-
-    z-index:2000;
-
-    white-space:nowrap;
+  position:fixed;
+  left:50%;
+  bottom:95px;
+  transform:translateX(-50%);
+  background:#191b23;
+  border:1px solid #30323d;
+  color:#fff;
+  padding:11px 19px;
+  border-radius:22px;
+  display:none;
+  z-index:2000;
+  white-space:nowrap;
 }
-
-
-/* ================= MOBILE ================= */
 
 @media(max-width:500px){
-
-    .profile-info{
-        gap:18px;
-    }
-
-    .profile-photo{
-        width:90px;
-        height:90px;
-    }
-
-    .profile-username{
-        font-size:20px;
-    }
-
+  .profile-info{gap:18px}
+  .profile-photo{width:90px;height:90px}
+  .profile-username{font-size:20px}
 }
 </style>
 </head>
 
-
 <body>
 
-
-<!-- ==================================================
-                      TOP BAR
-================================================== -->
-
+<!-- TOP BAR -->
 <header class="topbar">
 
-    <div class="logo">
-        X-DARK
-    </div>
+  <div class="logo">X-DARK</div>
 
+  <div class="top-icons">
 
-    <div class="top-icons">
+    <!-- CHAT -->
+    <svg class="svg-icon"
+         onclick="showToast('Chat coming next')"
+         viewBox="0 0 24 24">
+      <path d="M20 11.5a8 8 0 0 1-8 8
+      8.7 8.7 0 0 1-3.4-.7
+      L4 20l1.2-3.5
+      A8 8 0 1 1 20 11.5Z"/>
+      <path d="M8 11.5h.01"/>
+      <path d="M12 11.5h.01"/>
+      <path d="M16 11.5h.01"/>
+    </svg>
 
-        <!-- CHAT -->
+    <!-- ACTIVITY -->
+    <svg class="svg-icon"
+         onclick="showToast('Activity')"
+         viewBox="0 0 24 24">
+      <path d="M20.8 8.7c0 5.5-8.8 10.3-8.8 10.3
+      S3.2 14.2 3.2 8.7A4.7 4.7 0 0 1 12 6.1
+      a4.7 4.7 0 0 1 8.8 2.6Z"/>
+    </svg>
 
-        <svg
-            class="svg-icon"
-            onclick="showToast('Chat coming next')"
-            viewBox="0 0 24 24">
+    <!-- MENU -->
+    <svg class="svg-icon"
+         onclick="showToast('Menu')"
+         viewBox="0 0 24 24">
+      <path d="M4 7h16"/>
+      <path d="M4 12h16"/>
+      <path d="M4 17h16"/>
+    </svg>
 
-            <path
-                d="M20 11.5a8 8 0 0 1-8 8
-                8.7 8.7 0 0 1-3.4-.7
-                L4 20l1.2-3.5
-                A8 8 0 1 1 20 11.5Z"
-            />
-
-            <path d="M8 11.5h.01"/>
-            <path d="M12 11.5h.01"/>
-            <path d="M16 11.5h.01"/>
-
-        </svg>
-
-
-        <!-- HEART -->
-
-        <svg
-            class="svg-icon"
-            onclick="showToast('Activity')"
-            viewBox="0 0 24 24">
-
-            <path
-                d="M20.8 8.7
-                c0 5.5-8.8 10.3-8.8 10.3
-                S3.2 14.2 3.2 8.7
-                A4.7 4.7 0 0 1 12 6.1
-                a4.7 4.7 0 0 1 8.8 2.6Z"
-            />
-
-        </svg>
-
-
-        <!-- MENU -->
-
-        <svg
-            class="svg-icon"
-            onclick="showToast('Menu')"
-            viewBox="0 0 24 24">
-
-            <path d="M4 7h16"/>
-            <path d="M4 12h16"/>
-            <path d="M4 17h16"/>
-
-        </svg>
-
-    </div>
-
+  </div>
 </header>
 
 
+<!-- ================= HOME ================= -->
 
-<!-- ==================================================
-                       HOME PAGE
-================================================== -->
+<section id="homePage" class="page active">
 
-<section
-    id="homePage"
-    class="page active">
+  <div class="stories">
 
-
-    <!-- STORIES -->
-
-    <div class="stories">
-
-        <div class="story">
-
-            <div class="story-ring">
-
-                <img src="https://i.pravatar.cc/150?img=12">
-
-            </div>
-
-            <div class="story-name">
-                Your Story
-            </div>
-
-        </div>
-
-
-        <div class="story">
-
-            <div class="story-ring">
-
-                <img src="https://i.pravatar.cc/150?img=47">
-
-            </div>
-
-            <div class="story-name">
-                @User
-            </div>
-
-        </div>
-
-
-        <div class="story">
-
-            <div class="story-ring">
-
-                <img src="https://i.pravatar.cc/150?img=32">
-
-            </div>
-
-            <div class="story-name">
-                @Darkwing
-            </div>
-
-        </div>
-
-
-        <div class="story">
-
-            <div class="story-ring">
-
-                <img src="https://i.pravatar.cc/150?img=44">
-
-            </div>
-
-            <div class="story-name">
-                @XDark
-            </div>
-
-        </div>
-
+    <div class="story">
+      <div class="story-ring">
+        <img src="https://i.pravatar.cc/150?img=12">
+      </div>
+      <div class="story-name">Your Story</div>
     </div>
 
-
-
-    <!-- FEED -->
-
-    <main
-        class="feed"
-        id="feed">
-
-
-        <!-- POST -->
-
-        <article class="post">
-
-            <div class="post-header">
-
-                <div class="user-info">
-
-                    <img
-                        class="avatar"
-                        src="https://i.pravatar.cc/150?img=12"
-                    >
-
-                    <div>
-
-                        <div class="username">
-                            @Ankaj
-                        </div>
-
-                        <div class="location">
-                            X-DARK
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="more">
-                    •••
-                </div>
-
-            </div>
-
-
-            <img
-                class="post-image"
-                src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=90"
-            >
-
-
-            <div class="actions">
-
-                <div class="left-actions">
-
-                    <!-- LIKE -->
-
-                    <svg
-                        class="post-icon like-btn"
-                        onclick="likePost(this)"
-                        viewBox="0 0 24 24">
-
-                        <path
-                            d="M20.8 8.7
-                            c0 5.5-8.8 10.3-8.8 10.3
-                            S3.2 14.2 3.2 8.7
-                            A4.7 4.7 0 0 1 12 6.1
-                            a4.7 4.7 0 0 1 8.8 2.6Z"
-                        />
-
-                    </svg>
-
-
-                    <!-- COMMENT -->
-
-                    <svg
-                        class="post-icon"
-                        onclick="toggleComments(this)"
-                        viewBox="0 0 24 24">
-
-                        <path
-                            d="M20 11.5a8 8 0 0 1-8 8
-                            8.7 8.7 0 0 1-3.4-.7
-                            L4 20l1.2-3.5
-                            A8 8 0 1 1 20 11.5Z"
-                        />
-
-                    </svg>
-
-
-                    <!-- SHARE -->
-
-                    <svg
-                        class="post-icon"
-                        onclick="sharePost()"
-                        viewBox="0 0 24 24">
-
-                        <path d="M4 12 20 4l-5 16-7-1Z"/>
-                        <path d="M11 13 20 4"/>
-
-                    </svg>
-
-                </div>
-
-
-                <!-- SAVE -->
-
-                <svg
-                    class="post-icon save-btn"
-                    onclick="savePost(this)"
-                    viewBox="0 0 24 24">
-
-                    <path d="M6 4h12v17l-6-4-6 4V4Z"/>
-
-                </svg>
-
-            </div>
-
-
-            <div class="likes">
-
-                <span class="like-count">
-                    128
-                </span>
-
-                likes
-
-            </div>
-
-
-            <div class="caption">
-
-                <b>@Ankaj</b>
-
-                Enjoying the beautiful Maldives 🌊✨
-
-            </div>
-
-
-            <span
-                class="comments-link"
-                onclick="toggleComments(this)">
-
-                View all 24 comments
-
-            </span>
-
-
-            <div class="comment-area">
-
-                <input
-                    class="comment-input"
-                    placeholder="Add a comment..."
-                >
-
-                <button
-                    class="comment-send"
-                    onclick="addComment(this)">
-
-                    Post
-
-                </button>
-
-            </div>
-
-        </article>
-
-
-    </main>
-
-</section>
-
-
-
-<!-- ==================================================
-                     PROFILE PAGE
-================================================== -->
-
-<section
-    id="profilePage"
-    class="page">
-
-
-    <div class="profile">
-
-
-        <!-- PROFILE TOP -->
-
-        <div class="profile-top">
-
-
-            <div class="profile-info">
-
-
-                <img
-                    class="profile-photo"
-                    src="https://i.pravatar.cc/300?img=12"
-                >
-
-
-                <div class="profile-details">
-
-                    <div class="profile-username">
-                        Ankaj
-                    </div>
-
-                    <div class="profile-handle">
-                        @Ankaj
-                    </div>
-
-                </div>
-
-
-            </div>
-
-
-            <!-- STATS -->
-
-            <div class="profile-stats">
-
-
-                <div class="stat">
-
-                    <div class="stat-number">
-                        12
-                    </div>
-
-                    <div class="stat-label">
-                        Posts
-                    </div>
-
-                </div>
-
-
-                <div class="stat">
-
-                    <div class="stat-number">
-                        1.2K
-                    </div>
-
-                    <div class="stat-label">
-                        Followers
-                    </div>
-
-                </div>
-
-
-                <div class="stat">
-
-                    <div class="stat-number">
-                        348
-                    </div>
-
-                    <div class="stat-label">
-                        Following
-                    </div>
-
-                </div>
-
-
-            </div>
-
-
-            <!-- BIO -->
-
-            <div class="profile-bio">
-
-                X-DARK creator ⚡<br>
-                Create • Connect • Explore<br>
-                🌊 Maldives
-
-            </div>
-
-
-            <!-- EDIT -->
-
-            <button
-                class="edit-profile"
-                onclick="showToast('Edit Profile coming next')">
-
-                Edit Profile
-
-            </button>
-
-
-        </div>
-
-
-        <!-- PROFILE TABS -->
-
-        <div class="profile-tabs">
-
-
-            <!-- POSTS -->
-
-            <div
-                class="profile-tab active">
-
-                <svg
-                    class="tab-icon"
-                    viewBox="0 0 24 24">
-
-                    <rect
-                        x="3"
-                        y="3"
-                        width="18"
-                        height="18"
-                        rx="2"
-                    />
-
-                    <circle
-                        cx="8"
-                        cy="8"
-                        r="1.5"
-                    />
-
-                    <path
-                        d="m4 17 5-5 3 3 2-2 6 5"
-                    />
-
-                </svg>
-
-            </div>
-
-
-            <!-- VIDEOS -->
-
-            <div class="profile-tab">
-
-                <svg
-                    class="tab-icon"
-                    viewBox="0 0 24 24">
-
-                    <rect
-                        x="3"
-                        y="5"
-                        width="18"
-                        height="14"
-                        rx="2"
-                    />
-
-                    <path
-                        d="m10 9 5 3-5 3V9Z"
-                    />
-
-                </svg>
-
-            </div>
-
-
-            <!-- SAVED -->
-
-            <div class="profile-tab">
-
-                <svg
-                    class="tab-icon"
-                    viewBox="0 0 24 24">
-
-                    <path
-                        d="M6 4h12v17l-6-4-6 4V4Z"
-                    />
-
-                </svg>
-
-            </div>
-
-
-        </div>
-
-
-        <!-- PROFILE GRID -->
-
-        <div class="profile-grid">
-
-
-            <div class="grid-item">
-
-                <img
-                    src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80"
-                >
-
-            </div>
-
-
-            <div class="grid-item">
-
-                <img
-                    src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=600&q=80"
-                >
-
-            </div>
-
-
-            <div class="grid-item">
-
-                <img
-                    src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80"
-                >
-
-            </div>
-
-
-            <div class="grid-item">
-
-                <img
-                    src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=600&q=80"
-                >
-
-            </div>
-
-
-            <div class="grid-item">
-
-                <img
-                    src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=80"
-                >
-
-            </div>
-
-
-            <div class="grid-item">
-
-                <img
-                    src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=600&q=80"
-                >
-
-            </div>
-
-
-        </div>
-
-
+    <div class="story">
+      <div class="story-ring">
+        <img src="https://i.pravatar.cc/150?img=47">
+      </div>
+      <div class="story-name">@User</div>
     </div>
 
-</section>
+    <div class="story">
+      <div class="story-ring">
+        <img src="https://i.pravatar.cc/150?img=32">
+      </div>
+      <div class="story-name">@Darkwing</div>
+    </div>
+
+    <div class="story">
+      <div class="story-ring">
+        <img src="https://i.pravatar.cc/150?img=44">
+      </div>
+      <div class="story-name">@XDark</div>
+    </div>
+
+  </div>
 
 
+  <main class="feed" id="feed">
 
-<!-- ==================================================
-                    CREATE POST MODAL
-================================================== -->
+    <article class="post">
 
-<div
-    class="create-modal"
-    id="createModal">
+      <div class="post-header">
 
+        <div class="user-info">
 
-    <div class="create-box">
+          <img
+            class="avatar profile-avatar"
+            src="https://i.pravatar.cc/150?img=12">
 
-
-        <div class="create-head">
-
-            <div class="create-title">
-                Create Post
+          <div>
+            <div class="username profile-name-display">
+              @Ankaj
             </div>
-
-            <button
-                class="close-btn"
-                onclick="closeCreatePost()">
-
-                ×
-
-            </button>
+            <div class="location">
+              X-DARK
+            </div>
+          </div>
 
         </div>
 
+        <div class="more">•••</div>
 
-        <label
-            class="upload-area"
-            for="mediaInput">
-
-
-            <div class="upload-text">
-                📷 Choose photo or video
-            </div>
+      </div>
 
 
-            <img
-                id="previewImage"
-                class="preview"
-            >
+      <img
+        class="post-image"
+        src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=90">
 
 
-            <video
-                id="previewVideo"
-                class="preview"
-                controls>
-            </video>
+      <div class="actions">
+
+        <div class="left-actions">
+
+          <svg class="post-icon like-btn"
+               onclick="likePost(this)"
+               viewBox="0 0 24 24">
+            <path d="M20.8 8.7c0 5.5-8.8 10.3-8.8 10.3
+            S3.2 14.2 3.2 8.7A4.7 4.7 0 0 1 12 6.1
+            a4.7 4.7 0 0 1 8.8 2.6Z"/>
+          </svg>
+
+          <svg class="post-icon"
+               onclick="toggleComments(this)"
+               viewBox="0 0 24 24">
+            <path d="M20 11.5a8 8 0 0 1-8 8
+            8.7 8.7 0 0 1-3.4-.7L4 20l1.2-3.5
+            A8 8 0 1 1 20 11.5Z"/>
+          </svg>
+
+          <svg class="post-icon"
+               onclick="sharePost()"
+               viewBox="0 0 24 24">
+            <path d="M4 12 20 4l-5 16-7-1Z"/>
+            <path d="M11 13 20 4"/>
+          </svg>
+
+        </div>
+
+        <svg class="post-icon save-btn"
+             onclick="savePost(this)"
+             viewBox="0 0 24 24">
+          <path d="M6 4h12v17l-6-4-6 4V4Z"/>
+        </svg>
+
+      </div>
 
 
-        </label>
+      <div class="likes">
+        <span class="like-count">128</span> likes
+      </div>
 
+
+      <div class="caption">
+        <b class="caption-name">@Ankaj</b>
+        Enjoying the beautiful Maldives 🌊✨
+      </div>
+
+
+      <span class="comments-link"
+            onclick="toggleComments(this)">
+        View all 24 comments
+      </span>
+
+
+      <div class="comment-area">
 
         <input
-            id="mediaInput"
-            type="file"
-            accept="image/*,video/*"
-            style="display:none"
-            onchange="previewMedia(this)"
-        >
-
-
-        <textarea
-            id="captionInput"
-            class="caption-input"
-            placeholder="Write a caption...">
-        </textarea>
-
+          class="comment-input"
+          placeholder="Add a comment...">
 
         <button
-            class="publish-btn"
-            onclick="publishPost()">
-
-            Post
-
+          class="comment-send"
+          onclick="addComment(this)">
+          Post
         </button>
 
+      </div>
+
+    </article>
+
+  </main>
+
+</section>
+
+
+<!-- ================= PROFILE ================= -->
+
+<section id="profilePage" class="page">
+
+  <div class="profile">
+
+    <div class="profile-top">
+
+      <div class="profile-info">
+
+        <img
+          id="profilePhoto"
+          class="profile-photo"
+          src="https://i.pravatar.cc/300?img=12">
+
+        <div class="profile-details">
+
+          <div id="profileName"
+               class="profile-username">
+            Ankaj
+          </div>
+
+          <div id="profileHandle"
+               class="profile-handle">
+            @Ankaj
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="profile-stats">
+
+        <div class="stat">
+          <div class="stat-number">12</div>
+          <div class="stat-label">Posts</div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-number">1.2K</div>
+          <div class="stat-label">Followers</div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-number">348</div>
+          <div class="stat-label">Following</div>
+        </div>
+
+      </div>
+
+
+      <div id="profileBio"
+           class="profile-bio">
+        X-DARK creator ⚡<br>
+        Create • Connect • Explore<br>
+        🌊 Maldives
+      </div>
+
+
+      <button
+        class="edit-profile"
+        onclick="openEditProfile()">
+        Edit Profile
+      </button>
 
     </div>
+
+
+    <div class="profile-tabs">
+
+      <div class="profile-tab active">
+        <svg class="tab-icon" viewBox="0 0 24 24">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <circle cx="8" cy="8" r="1.5"/>
+          <path d="m4 17 5-5 3 3 2-2 6 5"/>
+        </svg>
+      </div>
+
+      <div class="profile-tab">
+        <svg class="tab-icon" viewBox="0 0 24 24">
+          <rect x="3" y="5" width="18" height="14" rx="2"/>
+          <path d="m10 9 5 3-5 3V9Z"/>
+        </svg>
+      </div>
+
+      <div class="profile-tab">
+        <svg class="tab-icon" viewBox="0 0 24 24">
+          <path d="M6 4h12v17l-6-4-6 4V4Z"/>
+        </svg>
+      </div>
+
+    </div>
+
+
+    <div class="profile-grid">
+
+      <div class="grid-item">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80">
+      </div>
+
+      <div class="grid-item">
+        <img src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=600&q=80">
+      </div>
+
+      <div class="grid-item">
+        <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80">
+      </div>
+
+      <div class="grid-item">
+        <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=600&q=80">
+      </div>
+
+      <div class="grid-item">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=80">
+      </div>
+
+      <div class="grid-item">
+        <img src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=600&q=80">
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= CREATE POST MODAL ================= -->
+
+<div id="createModal" class="modal">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+
+      <div class="modal-title">
+        Create Post
+      </div>
+
+      <button
+        class="close-btn"
+        onclick="closeCreatePost()">
+        ×
+      </button>
+
+    </div>
+
+
+    <label class="upload-area" for="mediaInput">
+
+      <div class="upload-text">
+        📷 Choose photo or video
+      </div>
+
+      <img id="previewImage" class="preview">
+
+      <video id="previewVideo"
+             class="preview"
+             controls>
+      </video>
+
+    </label>
+
+
+    <input
+      id="mediaInput"
+      type="file"
+      accept="image/*,video/*"
+      style="display:none"
+      onchange="previewMedia(this)">
+
+
+    <textarea
+      id="captionInput"
+      class="caption-input"
+      placeholder="Write a caption...">
+    </textarea>
+
+
+    <button
+      class="publish-btn"
+      onclick="publishPost()">
+      Post
+    </button>
+
+  </div>
 
 </div>
 
 
+<!-- ================= EDIT PROFILE MODAL ================= -->
 
-<!-- ==================================================
-                    BOTTOM NAV
-================================================== -->
+<div id="editModal" class="modal">
 
-<nav class="bottom-nav">
+  <div class="modal-box">
 
+    <div class="modal-head">
 
-    <!-- HOME -->
+      <div class="modal-title">
+        Edit Profile
+      </div>
 
-    <svg
-        id="homeNav"
-        class="nav-icon active"
-        onclick="showPage('home')"
-        viewBox="0 0 24 24">
-
-        <path d="M3 10.5 12 3l9 7.5"/>
-        <path d="M5 9.5V21h14V9.5"/>
-
-    </svg>
-
-
-    <!-- SEARCH -->
-
-    <svg
-        class="nav-icon"
-        onclick="showToast('Search coming next')"
-        viewBox="0 0 24 24">
-
-        <circle
-            cx="10.8"
-            cy="10.8"
-            r="6.5"
-        />
-
-        <path d="m16 16 5 5"/>
-
-    </svg>
-
-
-    <!-- PLUS -->
-
-    <div
-        class="create-btn"
-        onclick="openCreatePost()">
-
-        +
+      <button
+        class="close-btn"
+        onclick="closeEditProfile()">
+        ×
+      </button>
 
     </div>
 
 
-    <!-- NOTIFICATION -->
+    <div class="edit-photo-wrap">
 
-    <svg
-        class="nav-icon"
-        onclick="showToast('Notifications coming next')"
-        viewBox="0 0 24 24">
+      <img
+        id="editPhoto"
+        class="edit-photo"
+        src="https://i.pravatar.cc/300?img=12">
 
-        <path
-            d="M18 9
-            a6 6 0 0 0-12 0
-            c0 7-3 7-3 9
-            h18
-            c0-2-3-2-3-9Z"
-        />
+      <label
+        class="change-photo"
+        for="profilePhotoInput">
+        Change Profile Photo
+      </label>
 
-        <path d="M10 21h4"/>
+      <input
+        id="profilePhotoInput"
+        type="file"
+        accept="image/*"
+        style="display:none"
+        onchange="previewProfilePhoto(this)">
 
-    </svg>
+    </div>
 
 
-    <!-- PROFILE -->
+    <label class="form-label">
+      Name
+    </label>
 
-    <svg
-        id="profileNav"
-        class="nav-icon"
-        onclick="showPage('profile')"
-        viewBox="0 0 24 24">
+    <input
+      id="editName"
+      class="form-input"
+      type="text"
+      placeholder="Your name">
 
-        <circle
-            cx="12"
-            cy="8"
-            r="3.5"
-        />
 
-        <path
-            d="M4.5 21
-            c.7-4.2
-            3.1-6.5
-            7.5-6.5
-            s6.8 2.3
-            7.5 6.5"
-        />
+    <label class="form-label">
+      Username
+    </label>
 
-    </svg>
+    <input
+      id="editUsername"
+      class="form-input"
+      type="text"
+      placeholder="@username">
+
+
+    <label class="form-label">
+      Bio
+    </label>
+
+    <textarea
+      id="editBio"
+      class="form-input form-bio"
+      placeholder="Write your bio...">
+    </textarea>
+
+
+    <button
+      class="save-changes"
+      onclick="saveProfile()">
+      Save Changes
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- ================= BOTTOM NAV ================= -->
+
+<nav class="bottom-nav">
+
+  <!-- HOME -->
+
+  <svg
+    id="homeNav"
+    class="nav-icon active"
+    onclick="showPage('home')"
+    viewBox="0 0 24 24">
+
+    <path d="M3 10.5 12 3l9 7.5"/>
+    <path d="M5 9.5V21h14V9.5"/>
+
+  </svg>
+
+
+  <!-- SEARCH -->
+
+  <svg
+    class="nav-icon"
+    onclick="showToast('Search coming next')"
+    viewBox="0 0 24 24">
+
+    <circle cx="10.8" cy="10.8" r="6.5"/>
+    <path d="m16 16 5 5"/>
+
+  </svg>
+
+
+  <!-- PLUS -->
+
+  <div
+    class="create-btn"
+    onclick="openCreatePost()">
+    +
+  </div>
+
+
+  <!-- NOTIFICATION -->
+
+  <svg
+    class="nav-icon"
+    onclick="showToast('Notifications coming next')"
+    viewBox="0 0 24 24">
+
+    <path d="M18 9a6 6 0 0 0-12 0
+    c0 7-3 7-3 9h18c0-2-3-2-3-9Z"/>
+
+    <path d="M10 21h4"/>
+
+  </svg>
+
+
+  <!-- PROFILE -->
+
+  <svg
+    id="profileNav"
+    class="nav-icon"
+    onclick="showPage('profile')"
+    viewBox="0 0 24 24">
+
+    <circle cx="12" cy="8" r="3.5"/>
+
+    <path d="M4.5 21c.7-4.2
+    3.1-6.5 7.5-6.5
+    s6.8 2.3 7.5 6.5"/>
+
+  </svg>
 
 </nav>
 
 
-
-<!-- TOAST -->
-
-<div
-    class="toast"
-    id="toast">
-</div>
-
+<div id="toast" class="toast"></div>
 
 
 <script>
@@ -1581,48 +1122,163 @@ body{
 
 function showPage(page){
 
-    const home =
-        document.getElementById("homePage");
+  const home =
+    document.getElementById("homePage");
 
-    const profile =
-        document.getElementById("profilePage");
+  const profile =
+    document.getElementById("profilePage");
 
-    const homeNav =
-        document.getElementById("homeNav");
+  const homeNav =
+    document.getElementById("homeNav");
 
-    const profileNav =
-        document.getElementById("profileNav");
-
-
-    if(page === "home"){
-
-        home.classList.add("active");
-
-        profile.classList.remove("active");
-
-        homeNav.classList.add("active");
-
-        profileNav.classList.remove("active");
-
-        window.scrollTo(0,0);
-
-    }
+  const profileNav =
+    document.getElementById("profileNav");
 
 
-    if(page === "profile"){
+  if(page === "home"){
 
-        profile.classList.add("active");
+    home.classList.add("active");
+    profile.classList.remove("active");
 
-        home.classList.remove("active");
+    homeNav.classList.add("active");
+    profileNav.classList.remove("active");
 
-        profileNav.classList.add("active");
+    window.scrollTo(0,0);
+  }
 
-        homeNav.classList.remove("active");
 
-        window.scrollTo(0,0);
+  if(page === "profile"){
 
-    }
+    profile.classList.add("active");
+    home.classList.remove("active");
 
+    profileNav.classList.add("active");
+    homeNav.classList.remove("active");
+
+    window.scrollTo(0,0);
+  }
+}
+
+
+/* ================= EDIT PROFILE ================= */
+
+function openEditProfile(){
+
+  document.getElementById("editName").value =
+    document.getElementById("profileName").textContent;
+
+  document.getElementById("editUsername").value =
+    document.getElementById("profileHandle").textContent;
+
+  document.getElementById("editBio").value =
+    document.getElementById("profileBio").innerText;
+
+  document.getElementById("editPhoto").src =
+    document.getElementById("profilePhoto").src;
+
+  document
+    .getElementById("editModal")
+    .classList.add("active");
+}
+
+
+function closeEditProfile(){
+
+  document
+    .getElementById("editModal")
+    .classList.remove("active");
+}
+
+
+/* ================= PROFILE PHOTO ================= */
+
+function previewProfilePhoto(input){
+
+  const file = input.files[0];
+
+  if(!file) return;
+
+  const url =
+    URL.createObjectURL(file);
+
+  document.getElementById("editPhoto").src = url;
+}
+
+
+/* ================= SAVE PROFILE ================= */
+
+function saveProfile(){
+
+  let name =
+    document.getElementById("editName").value.trim();
+
+  let username =
+    document.getElementById("editUsername").value.trim();
+
+  let bio =
+    document.getElementById("editBio").value.trim();
+
+
+  if(!name){
+
+    showToast("Enter your name");
+    return;
+  }
+
+
+  if(!username){
+
+    showToast("Enter username");
+    return;
+  }
+
+
+  if(!username.startsWith("@")){
+
+    username = "@" + username;
+  }
+
+
+  document.getElementById("profileName").textContent =
+    name;
+
+  document.getElementById("profileHandle").textContent =
+    username;
+
+  document.getElementById("profileBio").innerHTML =
+    escapeHTML(bio).replace(/\n/g,"<br>");
+
+
+  const photo =
+    document.getElementById("editPhoto").src;
+
+  document.getElementById("profilePhoto").src =
+    photo;
+
+
+  /* UPDATE HOME USER */
+
+  document.querySelectorAll(".profile-avatar")
+    .forEach(function(img){
+      img.src = photo;
+    });
+
+
+  document.querySelectorAll(".profile-name-display")
+    .forEach(function(el){
+      el.textContent = username;
+    });
+
+
+  document.querySelectorAll(".caption-name")
+    .forEach(function(el){
+      el.textContent = username;
+    });
+
+
+  closeEditProfile();
+
+  showToast("Profile updated successfully");
 }
 
 
@@ -1630,19 +1286,17 @@ function showPage(page){
 
 function openCreatePost(){
 
-    document
-        .getElementById("createModal")
-        .classList.add("active");
-
+  document
+    .getElementById("createModal")
+    .classList.add("active");
 }
 
 
 function closeCreatePost(){
 
-    document
-        .getElementById("createModal")
-        .classList.remove("active");
-
+  document
+    .getElementById("createModal")
+    .classList.remove("active");
 }
 
 
@@ -1650,298 +1304,269 @@ function closeCreatePost(){
 
 function previewMedia(input){
 
-    const file =
-        input.files[0];
+  const file = input.files[0];
 
-    if(!file){
-        return;
-    }
+  if(!file) return;
 
 
-    const image =
-        document.getElementById("previewImage");
+  const image =
+    document.getElementById("previewImage");
 
-    const video =
-        document.getElementById("previewVideo");
+  const video =
+    document.getElementById("previewVideo");
 
-    const url =
-        URL.createObjectURL(file);
-
-
-    image.style.display="none";
-
-    video.style.display="none";
+  const url =
+    URL.createObjectURL(file);
 
 
-    if(file.type.startsWith("image/")){
-
-        image.src=url;
-
-        image.style.display="block";
-
-    }
+  image.style.display = "none";
+  video.style.display = "none";
 
 
-    if(file.type.startsWith("video/")){
+  if(file.type.startsWith("image/")){
 
-        video.src=url;
+    image.src = url;
+    image.style.display = "block";
 
-        video.style.display="block";
+  }
 
-    }
 
+  if(file.type.startsWith("video/")){
+
+    video.src = url;
+    video.style.display = "block";
+
+  }
 }
 
 
-/* ================= PUBLISH ================= */
+/* ================= PUBLISH POST ================= */
 
 function publishPost(){
 
-    const input =
-        document.getElementById("mediaInput");
+  const input =
+    document.getElementById("mediaInput");
 
-    const caption =
-        document
-        .getElementById("captionInput")
-        .value
-        .trim();
+  const file =
+    input.files[0];
 
+  const caption =
+    document.getElementById("captionInput")
+    .value.trim();
 
-    const file =
-        input.files[0];
 
+  if(!file){
 
-    if(!file){
+    showToast("Choose a photo or video");
+    return;
+  }
 
-        showToast("Choose a photo or video");
 
-        return;
+  const url =
+    URL.createObjectURL(file);
 
-    }
 
+  const post =
+    document.createElement("article");
 
-    const url =
-        URL.createObjectURL(file);
+  post.className = "post";
 
 
-    const post =
-        document.createElement("article");
+  let media = "";
 
-    post.className="post";
 
+  if(file.type.startsWith("image/")){
 
-    let media="";
-
-
-    if(file.type.startsWith("image/")){
-
-        media=`
-            <img
-                class="post-image"
-                src="${url}"
-            >
-        `;
-
-    }
-
-
-    if(file.type.startsWith("video/")){
-
-        media=`
-            <video
-                class="post-image"
-                src="${url}"
-                controls
-                playsinline>
-            </video>
-        `;
-
-    }
-
-
-    post.innerHTML=`
-
-        <div class="post-header">
-
-            <div class="user-info">
-
-                <img
-                    class="avatar"
-                    src="https://i.pravatar.cc/150?img=12"
-                >
-
-                <div>
-
-                    <div class="username">
-                        @Ankaj
-                    </div>
-
-                    <div class="location">
-                        X-DARK
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="more">
-                •••
-            </div>
-
-        </div>
-
-
-        ${media}
-
-
-        <div class="actions">
-
-            <div class="left-actions">
-
-                <svg
-                    class="post-icon like-btn"
-                    onclick="likePost(this)"
-                    viewBox="0 0 24 24">
-
-                    <path
-                        d="M20.8 8.7
-                        c0 5.5-8.8 10.3-8.8 10.3
-                        S3.2 14.2 3.2 8.7
-                        A4.7 4.7 0 0 1 12 6.1
-                        a4.7 4.7 0 0 1 8.8 2.6Z"
-                    />
-
-                </svg>
-
-
-                <svg
-                    class="post-icon"
-                    onclick="toggleComments(this)"
-                    viewBox="0 0 24 24">
-
-                    <path
-                        d="M20 11.5a8 8 0 0 1-8 8
-                        8.7 8.7 0 0 1-3.4-.7
-                        L4 20l1.2-3.5
-                        A8 8 0 1 1 20 11.5Z"
-                    />
-
-                </svg>
-
-
-                <svg
-                    class="post-icon"
-                    onclick="sharePost()"
-                    viewBox="0 0 24 24">
-
-                    <path d="M4 12 20 4l-5 16-7-1Z"/>
-                    <path d="M11 13 20 4"/>
-
-                </svg>
-
-            </div>
-
-
-            <svg
-                class="post-icon save-btn"
-                onclick="savePost(this)"
-                viewBox="0 0 24 24">
-
-                <path d="M6 4h12v17l-6-4-6 4V4Z"/>
-
-            </svg>
-
-        </div>
-
-
-        <div class="likes">
-
-            <span class="like-count">
-                0
-            </span>
-
-            likes
-
-        </div>
-
-
-        <div class="caption">
-
-            <b>@Ankaj</b>
-            ${escapeHTML(caption)}
-
-        </div>
-
-
-        <span
-            class="comments-link"
-            onclick="toggleComments(this)">
-
-            Add a comment
-
-        </span>
-
-
-        <div class="comment-area">
-
-            <input
-                class="comment-input"
-                placeholder="Add a comment..."
-            >
-
-            <button
-                class="comment-send"
-                onclick="addComment(this)">
-
-                Post
-
-            </button>
-
-        </div>
-
+    media = `
+      <img
+        class="post-image"
+        src="${url}">
     `;
 
+  }else{
 
-    document
-        .getElementById("feed")
-        .prepend(post);
-
-
-    input.value="";
-
-    document
-        .getElementById("captionInput")
-        .value="";
-
-
-    document
-        .getElementById("previewImage")
-        .style.display="none";
+    media = `
+      <video
+        class="post-image"
+        src="${url}"
+        controls
+        playsinline>
+      </video>
+    `;
+  }
 
 
-    document
-        .getElementById("previewVideo")
-        .style.display="none";
+  const username =
+    document.getElementById("profileHandle")
+    .textContent;
 
 
-    closeCreatePost();
-
-    showToast("Post published");
-
-}
+  const photo =
+    document.getElementById("profilePhoto")
+    .src;
 
 
-/* ================= ESCAPE ================= */
+  post.innerHTML = `
 
-function escapeHTML(text){
+    <div class="post-header">
 
-    const div =
-        document.createElement("div");
+      <div class="user-info">
 
-    div.textContent=text;
+        <img
+          class="avatar"
+          src="${photo}">
 
-    return div.innerHTML;
+        <div>
 
+          <div class="username">
+            ${escapeHTML(username)}
+          </div>
+
+          <div class="location">
+            X-DARK
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="more">
+        •••
+      </div>
+
+    </div>
+
+
+    ${media}
+
+
+    <div class="actions">
+
+      <div class="left-actions">
+
+        <svg
+          class="post-icon like-btn"
+          onclick="likePost(this)"
+          viewBox="0 0 24 24">
+
+          <path
+            d="M20.8 8.7c0 5.5-8.8 10.3-8.8 10.3
+            S3.2 14.2 3.2 8.7
+            A4.7 4.7 0 0 1 12 6.1
+            a4.7 4.7 0 0 1 8.8 2.6Z"/>
+
+        </svg>
+
+
+        <svg
+          class="post-icon"
+          onclick="toggleComments(this)"
+          viewBox="0 0 24 24">
+
+          <path
+            d="M20 11.5a8 8 0 0 1-8 8
+            8.7 8.7 0 0 1-3.4-.7
+            L4 20l1.2-3.5
+            A8 8 0 1 1 20 11.5Z"/>
+
+        </svg>
+
+
+        <svg
+          class="post-icon"
+          onclick="sharePost()"
+          viewBox="0 0 24 24">
+
+          <path d="M4 12 20 4l-5 16-7-1Z"/>
+          <path d="M11 13 20 4"/>
+
+        </svg>
+
+      </div>
+
+
+      <svg
+        class="post-icon save-btn"
+        onclick="savePost(this)"
+        viewBox="0 0 24 24">
+
+        <path d="M6 4h12v17l-6-4-6 4V4Z"/>
+
+      </svg>
+
+    </div>
+
+
+    <div class="likes">
+
+      <span class="like-count">
+        0
+      </span>
+
+      likes
+
+    </div>
+
+
+    <div class="caption">
+
+      <b class="caption-name">
+        ${escapeHTML(username)}
+      </b>
+
+      ${escapeHTML(caption)}
+
+    </div>
+
+
+    <span
+      class="comments-link"
+      onclick="toggleComments(this)">
+
+      Add a comment
+
+    </span>
+
+
+    <div class="comment-area">
+
+      <input
+        class="comment-input"
+        placeholder="Add a comment...">
+
+      <button
+        class="comment-send"
+        onclick="addComment(this)">
+        Post
+      </button>
+
+    </div>
+  `;
+
+
+  document
+    .getElementById("feed")
+    .prepend(post);
+
+
+  input.value = "";
+
+  document
+    .getElementById("captionInput")
+    .value = "";
+
+  document
+    .getElementById("previewImage")
+    .style.display = "none";
+
+  document
+    .getElementById("previewVideo")
+    .style.display = "none";
+
+
+  closeCreatePost();
+
+  showToast("Post published");
 }
 
 
@@ -1949,37 +1574,33 @@ function escapeHTML(text){
 
 function likePost(button){
 
-    const post =
-        button.closest(".post");
+  const post =
+    button.closest(".post");
 
-    const count =
-        post.querySelector(".like-count");
+  const count =
+    post.querySelector(".like-count");
 
-
-    let number =
-        parseInt(
-            count.textContent.replace(/,/g,"")
-        );
-
-
-    if(button.classList.contains("liked")){
-
-        button.classList.remove("liked");
-
-        number--;
-
-    }else{
-
-        button.classList.add("liked");
-
-        number++;
-
-    }
+  let number =
+    parseInt(
+      count.textContent.replace(/,/g,"")
+    );
 
 
-    count.textContent =
-        number.toLocaleString();
+  if(button.classList.contains("liked")){
 
+    button.classList.remove("liked");
+    number--;
+
+  }else{
+
+    button.classList.add("liked");
+    number++;
+
+  }
+
+
+  count.textContent =
+    number.toLocaleString();
 }
 
 
@@ -1987,14 +1608,13 @@ function likePost(button){
 
 function savePost(button){
 
-    button.classList.toggle("saved");
+  button.classList.toggle("saved");
 
-    showToast(
-        button.classList.contains("saved")
-        ? "Post saved"
-        : "Post unsaved"
-    );
-
+  showToast(
+    button.classList.contains("saved")
+    ? "Post saved"
+    : "Post unsaved"
+  );
 }
 
 
@@ -2002,41 +1622,35 @@ function savePost(button){
 
 function toggleComments(element){
 
-    const post =
-        element.closest(".post");
+  const post =
+    element.closest(".post");
 
-    const area =
-        post.querySelector(".comment-area");
+  const area =
+    post.querySelector(".comment-area");
 
-    area.classList.toggle("active");
-
+  area.classList.toggle("active");
 }
 
 
-/* ================= COMMENT ================= */
-
 function addComment(button){
 
-    const area =
-        button.closest(".comment-area");
+  const area =
+    button.closest(".comment-area");
 
-    const input =
-        area.querySelector(".comment-input");
-
-
-    if(!input.value.trim()){
-
-        showToast("Write a comment first");
-
-        return;
-
-    }
+  const input =
+    area.querySelector(".comment-input");
 
 
-    input.value="";
+  if(!input.value.trim()){
 
-    showToast("Comment posted");
+    showToast("Write a comment first");
+    return;
+  }
 
+
+  input.value = "";
+
+  showToast("Comment posted");
 }
 
 
@@ -2044,22 +1658,30 @@ function addComment(button){
 
 function sharePost(){
 
-    if(navigator.share){
+  if(navigator.share){
 
-        navigator.share({
+    navigator.share({
+      title:"X-DARK",
+      text:"Check this post on X-DARK"
+    });
 
-            title:"X-DARK",
+  }else{
 
-            text:"Check this post on X-DARK"
+    showToast("Share ready");
+  }
+}
 
-        });
 
-    }else{
+/* ================= ESCAPE ================= */
 
-        showToast("Share ready");
+function escapeHTML(text){
 
-    }
+  const div =
+    document.createElement("div");
 
+  div.textContent = text;
+
+  return div.innerHTML;
 }
 
 
@@ -2067,20 +1689,19 @@ function sharePost(){
 
 function showToast(message){
 
-    const toast =
-        document.getElementById("toast");
+  const toast =
+    document.getElementById("toast");
 
-    toast.textContent=message;
+  toast.textContent = message;
 
-    toast.style.display="block";
+  toast.style.display = "block";
 
 
-    setTimeout(function(){
+  setTimeout(function(){
 
-        toast.style.display="none";
+    toast.style.display = "none";
 
-    },1800);
-
+  },1800);
 }
 
 </script>
