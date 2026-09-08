@@ -16,11 +16,12 @@
 
 body{
   background:#08090d;
-  color:white;
+  color:#fff;
   min-height:100vh;
 }
 
-/* TOP BAR */
+/* ================= TOP BAR ================= */
+
 .topbar{
   height:90px;
   border-bottom:1px solid #292b35;
@@ -49,9 +50,11 @@ body{
 .icon{
   font-size:29px;
   cursor:pointer;
+  user-select:none;
 }
 
-/* STORIES */
+/* ================= STORIES ================= */
+
 .stories{
   display:flex;
   gap:25px;
@@ -92,11 +95,12 @@ body{
   font-size:13px;
 }
 
-/* FEED */
+/* ================= FEED ================= */
+
 .feed{
   max-width:620px;
   margin:auto;
-  padding-bottom:110px;
+  padding-bottom:95px;
 }
 
 .post{
@@ -106,6 +110,7 @@ body{
 }
 
 /* POST HEADER */
+
 .post-header{
   display:flex;
   align-items:center;
@@ -145,6 +150,7 @@ body{
 }
 
 /* POST IMAGE */
+
 .post-image{
   width:100%;
   display:block;
@@ -152,7 +158,8 @@ body{
   object-fit:cover;
 }
 
-/* ACTIONS */
+/* ================= ACTIONS ================= */
+
 .actions{
   display:flex;
   align-items:center;
@@ -169,6 +176,7 @@ body{
   font-size:27px;
   cursor:pointer;
   transition:.2s;
+  user-select:none;
 }
 
 .action:active{
@@ -183,7 +191,8 @@ body{
   color:#a66cff;
 }
 
-/* POST TEXT */
+/* ================= POST TEXT ================= */
+
 .likes{
   padding:0 14px;
   font-weight:bold;
@@ -198,7 +207,7 @@ body{
 }
 
 .caption b{
-  color:white;
+  color:#fff;
 }
 
 .comments-link{
@@ -209,15 +218,16 @@ body{
   cursor:pointer;
 }
 
-/* COMMENTS */
+/* ================= COMMENTS ================= */
+
 .comment-area{
   display:none;
   padding:5px 14px 0;
+  gap:8px;
 }
 
 .comment-area.active{
   display:flex;
-  gap:8px;
 }
 
 .comment-input{
@@ -239,158 +249,262 @@ body{
   cursor:pointer;
 }
 
-/* CREATE BUTTON */
-.create-btn{
-  position:fixed;
-  bottom:77px;
-  left:50%;
-  transform:translateX(-50%);
-  width:78px;
-  height:62px;
-  border-radius:25px;
-  background:white;
-  color:black;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:39px;
-  font-weight:bold;
-  box-shadow:0 5px 30px rgba(0,0,0,.5);
-  z-index:30;
-  cursor:pointer;
-}
+/* ================= BOTTOM NAV ================= */
 
-/* BOTTOM NAV */
 .bottom-nav{
   position:fixed;
   bottom:0;
   left:0;
   right:0;
-  height:74px;
+  height:76px;
+
   background:#08090d;
   border-top:1px solid #292b35;
+
   display:flex;
   align-items:center;
   justify-content:space-around;
-  z-index:25;
+
+  padding:0 18px;
+
+  z-index:50;
 }
 
 .nav-icon{
-  font-size:27px;
+  width:45px;
+  height:55px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:29px;
   color:#8d909c;
+
   cursor:pointer;
+  user-select:none;
 }
 
 .nav-icon.active{
-  color:white;
+  color:#fff;
 }
 
-/* TOAST */
+/* ================= CENTER PLUS ================= */
+
+.create-btn{
+  width:62px;
+  height:62px;
+
+  border-radius:20px;
+
+  background:#fff;
+  color:#000;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:38px;
+  font-weight:bold;
+
+  cursor:pointer;
+  flex-shrink:0;
+
+  box-shadow:0 3px 15px rgba(0,0,0,.35);
+}
+
+.create-btn:active{
+  transform:scale(.92);
+}
+
+/* ================= TOAST ================= */
+
 .toast{
   position:fixed;
+
   left:50%;
-  bottom:150px;
+  bottom:100px;
+
   transform:translateX(-50%);
+
   background:#20222c;
+
   padding:12px 20px;
+
   border-radius:25px;
+
   display:none;
+
   z-index:100;
+
   font-size:14px;
+
+  white-space:nowrap;
 }
 
-/* DESKTOP */
+/* ================= DESKTOP ================= */
+
 @media(min-width:700px){
+
   .topbar{
-    padding:0 calc((100% - 620px)/2);
+    padding-left:calc((100% - 620px)/2);
+    padding-right:calc((100% - 620px)/2);
   }
 
   .stories{
     max-width:620px;
     margin:auto;
   }
+
 }
 </style>
 </head>
 
+
 <body>
 
-<!-- TOP BAR -->
+<!-- ================= TOP BAR ================= -->
+
 <header class="topbar">
 
-  <div class="logo">X-DARK</div>
+  <div class="logo">
+    X-DARK
+  </div>
 
   <div class="top-icons">
-    <div class="icon" onclick="showToast('Search coming next 🔍')">⌕</div>
-    <div class="icon" onclick="showToast('Your likes ❤️')">♡</div>
-    <div class="icon" onclick="showToast('Menu coming next ☰')">☰</div>
+
+    <div
+      class="icon"
+      onclick="showToast('Search coming next 🔍')">
+      ⌕
+    </div>
+
+    <div
+      class="icon"
+      onclick="showToast('Likes ❤️')">
+      ♡
+    </div>
+
+    <div
+      class="icon"
+      onclick="showToast('Menu coming next ☰')">
+      ☰
+    </div>
+
   </div>
 
 </header>
 
 
-<!-- STORIES -->
+<!-- ================= STORIES ================= -->
+
 <section class="stories">
 
   <div class="story">
+
     <div class="story-ring">
       <img src="https://i.pravatar.cc/150?img=12">
     </div>
-    <div class="story-name">Your Story</div>
+
+    <div class="story-name">
+      Your Story
+    </div>
+
   </div>
 
+
   <div class="story">
+
     <div class="story-ring">
       <img src="https://i.pravatar.cc/150?img=47">
     </div>
-    <div class="story-name">@User</div>
+
+    <div class="story-name">
+      @User
+    </div>
+
   </div>
 
+
   <div class="story">
+
     <div class="story-ring">
       <img src="https://i.pravatar.cc/150?img=32">
     </div>
-    <div class="story-name">@Darkwing</div>
+
+    <div class="story-name">
+      @Darkwing
+    </div>
+
   </div>
 
+
   <div class="story">
+
     <div class="story-ring">
       <img src="https://i.pravatar.cc/150?img=44">
     </div>
-    <div class="story-name">@XDark</div>
+
+    <div class="story-name">
+      @XDark
+    </div>
+
   </div>
 
+
   <div class="story">
+
     <div class="story-ring">
       <img src="https://i.pravatar.cc/150?img=15">
     </div>
-    <div class="story-name">@Nova</div>
+
+    <div class="story-name">
+      @Nova
+    </div>
+
   </div>
 
 </section>
 
 
-<!-- HOME FEED -->
+<!-- ================= HOME FEED ================= -->
+
 <main class="feed">
 
 
-<!-- POST 1 -->
+<!-- ================= POST 1 ================= -->
+
 <article class="post">
 
   <div class="post-header">
 
     <div class="user-info">
-      <img class="avatar" src="https://i.pravatar.cc/150?img=12">
+
+      <img
+        class="avatar"
+        src="https://i.pravatar.cc/150?img=12"
+      >
 
       <div>
-        <div class="username">@Ankaj</div>
-        <div class="location">Maldives</div>
+
+        <div class="username">
+          @Ankaj
+        </div>
+
+        <div class="location">
+          Maldives
+        </div>
+
       </div>
+
     </div>
 
-    <div class="more">•••</div>
+    <div class="more">
+      •••
+    </div>
 
   </div>
+
 
   <img
     class="post-image"
@@ -398,82 +512,113 @@ body{
     alt="Beach"
   >
 
+
   <div class="actions">
 
     <div class="left-actions">
 
       <span
         class="action like-btn"
-        onclick="likePost(this)"
-      >♡</span>
+        onclick="likePost(this)">
+        ♡
+      </span>
 
       <span
         class="action"
-        onclick="toggleComments(this)"
-      >♡̲</span>
+        onclick="toggleComments(this)">
+        ♡̲
+      </span>
 
       <span
         class="action"
-        onclick="sharePost()"
-      >↗</span>
+        onclick="sharePost()">
+        ↗
+      </span>
 
     </div>
 
+
     <span
       class="action save-btn"
-      onclick="savePost(this)"
-    >♧</span>
+      onclick="savePost(this)">
+      ♧
+    </span>
 
   </div>
+
 
   <div class="likes">
-    <span class="like-count">128</span> likes
+    <span class="like-count">
+      128
+    </span>
+    likes
   </div>
 
+
   <div class="caption">
-    <b>@Ankaj</b> Enjoying the beautiful Maldives 🌊✨
+    <b>@Ankaj</b>
+    Enjoying the beautiful Maldives 🌊✨
   </div>
+
 
   <span
     class="comments-link"
-    onclick="toggleComments(this)"
-  >
+    onclick="toggleComments(this)">
     View all 24 comments
   </span>
 
+
   <div class="comment-area">
+
     <input
       class="comment-input"
       placeholder="Add a comment..."
     >
+
     <button
       class="comment-send"
-      onclick="addComment(this)"
-    >
+      onclick="addComment(this)">
       Post
     </button>
+
   </div>
 
 </article>
 
 
-<!-- POST 2 -->
+<!-- ================= POST 2 ================= -->
+
 <article class="post">
 
   <div class="post-header">
 
     <div class="user-info">
-      <img class="avatar" src="https://i.pravatar.cc/150?img=47">
+
+      <img
+        class="avatar"
+        src="https://i.pravatar.cc/150?img=47"
+      >
 
       <div>
-        <div class="username">@Darkwing</div>
-        <div class="location">X-DARK</div>
+
+        <div class="username">
+          @Darkwing
+        </div>
+
+        <div class="location">
+          X-DARK
+        </div>
+
       </div>
+
     </div>
 
-    <div class="more">•••</div>
+    <div class="more">
+      •••
+    </div>
 
   </div>
+
 
   <img
     class="post-image"
@@ -481,66 +626,90 @@ body{
     alt="Night sky"
   >
 
+
   <div class="actions">
 
     <div class="left-actions">
 
       <span
         class="action like-btn"
-        onclick="likePost(this)"
-      >♡</span>
+        onclick="likePost(this)">
+        ♡
+      </span>
 
       <span
         class="action"
-        onclick="toggleComments(this)"
-      >♡̲</span>
+        onclick="toggleComments(this)">
+        ♡̲
+      </span>
 
       <span
         class="action"
-        onclick="sharePost()"
-      >↗</span>
+        onclick="sharePost()">
+        ↗
+      </span>
 
     </div>
 
+
     <span
       class="action save-btn"
-      onclick="savePost(this)"
-    >♧</span>
+      onclick="savePost(this)">
+      ♧
+    </span>
 
   </div>
+
 
   <div class="likes">
-    <span class="like-count">864</span> likes
+
+    <span class="like-count">
+      864
+    </span>
+
+    likes
+
   </div>
 
+
   <div class="caption">
-    <b>@Darkwing</b> Welcome to the dark side. 🖤
+
+    <b>@Darkwing</b>
+
+    Welcome to the dark side. 🖤
+
   </div>
+
 
   <span
     class="comments-link"
-    onclick="toggleComments(this)"
-  >
+    onclick="toggleComments(this)">
+
     View all 56 comments
+
   </span>
 
+
   <div class="comment-area">
+
     <input
       class="comment-input"
       placeholder="Add a comment..."
     >
+
     <button
       class="comment-send"
-      onclick="addComment(this)"
-    >
+      onclick="addComment(this)">
       Post
     </button>
+
   </div>
 
 </article>
 
 
-<!-- POST 3 -->
+<!-- ================= POST 3 ================= -->
+
 <article class="post">
 
   <div class="post-header">
@@ -553,15 +722,25 @@ body{
       >
 
       <div>
-        <div class="username">@XDark</div>
-        <div class="location">X-DARK Community</div>
+
+        <div class="username">
+          @XDark
+        </div>
+
+        <div class="location">
+          X-DARK Community
+        </div>
+
       </div>
 
     </div>
 
-    <div class="more">•••</div>
+    <div class="more">
+      •••
+    </div>
 
   </div>
+
 
   <img
     class="post-image"
@@ -569,48 +748,69 @@ body{
     alt="Dark landscape"
   >
 
+
   <div class="actions">
 
     <div class="left-actions">
 
       <span
         class="action like-btn"
-        onclick="likePost(this)"
-      >♡</span>
+        onclick="likePost(this)">
+        ♡
+      </span>
 
       <span
         class="action"
-        onclick="toggleComments(this)"
-      >♡̲</span>
+        onclick="toggleComments(this)">
+        ♡̲
+      </span>
 
       <span
         class="action"
-        onclick="sharePost()"
-      >↗</span>
+        onclick="sharePost()">
+        ↗
+      </span>
 
     </div>
 
+
     <span
       class="action save-btn"
-      onclick="savePost(this)"
-    >♧</span>
+      onclick="savePost(this)">
+      ♧
+    </span>
 
   </div>
+
 
   <div class="likes">
-    <span class="like-count">2,431</span> likes
+
+    <span class="like-count">
+      2431
+    </span>
+
+    likes
+
   </div>
 
+
   <div class="caption">
-    <b>@XDark</b> Create. Connect. Explore. Welcome to X-DARK 🔥
+
+    <b>@XDark</b>
+
+    Create. Connect. Explore. Welcome to X-DARK 🔥
+
   </div>
+
 
   <span
     class="comments-link"
-    onclick="toggleComments(this)"
-  >
+    onclick="toggleComments(this)">
+
     View all 103 comments
+
   </span>
+
 
   <div class="comment-area">
 
@@ -621,8 +821,7 @@ body{
 
     <button
       class="comment-send"
-      onclick="addComment(this)"
-    >
+      onclick="addComment(this)">
       Post
     </button>
 
@@ -634,97 +833,139 @@ body{
 </main>
 
 
-<!-- CREATE -->
-<div
-  class="create-btn"
-  onclick="showToast('Create Post coming next ➕')"
->
-  +
-</div>
+<!-- ================= BOTTOM NAVIGATION ================= -->
 
-
-<!-- BOTTOM NAV -->
 <nav class="bottom-nav">
+
+  <!-- HOME -->
 
   <div
     class="nav-icon active"
-    onclick="showToast('Home')"
-  >
+    onclick="showToast('Home')">
+
     ⌂
+
   </div>
+
+
+  <!-- SEARCH -->
 
   <div
     class="nav-icon"
-    onclick="showToast('Search coming next 🔍')"
-  >
+    onclick="showToast('Search coming next 🔍')">
+
     ⌕
+
   </div>
 
-  <div style="width:75px"></div>
+
+  <!-- CENTER PLUS -->
+
+  <div
+    class="create-btn"
+    onclick="showToast('Create Post coming next ➕')">
+
+    +
+
+  </div>
+
+
+  <!-- LIKES -->
 
   <div
     class="nav-icon"
-    onclick="showToast('Activity ❤️')"
-  >
+    onclick="showToast('Activity ❤️')">
+
     ♡
+
   </div>
+
+
+  <!-- PROFILE -->
 
   <div
     class="nav-icon"
-    onclick="showToast('Profile coming next 👤')"
-  >
+    onclick="showToast('Profile coming next 👤')">
+
     ◉
+
   </div>
 
 </nav>
 
 
-<div class="toast" id="toast"></div>
+<!-- ================= TOAST ================= -->
+
+<div
+  class="toast"
+  id="toast">
+</div>
 
 
 <script>
 
-/* LIKE */
+/* ================= LIKE ================= */
+
 function likePost(button){
 
   const post = button.closest(".post");
-  const count = post.querySelector(".like-count");
 
-  let number = parseInt(
-    count.textContent.replace(",","")
-  );
+  const count =
+    post.querySelector(".like-count");
+
+  let number =
+    parseInt(
+      count.textContent.replace(/,/g,"")
+    );
+
 
   if(button.classList.contains("liked")){
 
     button.classList.remove("liked");
+
     button.textContent = "♡";
+
     number--;
 
-  }else{
+  }
+
+  else{
 
     button.classList.add("liked");
+
     button.textContent = "♥";
+
     number++;
 
   }
 
-  count.textContent = number.toLocaleString();
+
+  count.textContent =
+    number.toLocaleString();
+
 }
 
 
-/* SAVE */
+/* ================= SAVE ================= */
+
 function savePost(button){
 
   if(button.classList.contains("saved")){
 
     button.classList.remove("saved");
+
     button.textContent = "♧";
+
     showToast("Removed from saved");
 
-  }else{
+  }
+
+  else{
 
     button.classList.add("saved");
+
     button.textContent = "♣";
+
     showToast("Post saved 🔖");
 
   }
@@ -732,31 +973,43 @@ function savePost(button){
 }
 
 
-/* COMMENTS */
+/* ================= COMMENTS ================= */
+
 function toggleComments(element){
 
-  const post = element.closest(".post");
-  const area = post.querySelector(".comment-area");
+  const post =
+    element.closest(".post");
+
+  const area =
+    post.querySelector(".comment-area");
 
   area.classList.toggle("active");
 
 }
 
 
-/* ADD COMMENT */
+/* ================= ADD COMMENT ================= */
+
 function addComment(button){
 
-  const area = button.closest(".comment-area");
-  const input = area.querySelector(".comment-input");
+  const area =
+    button.closest(".comment-area");
 
-  const text = input.value.trim();
+  const input =
+    area.querySelector(".comment-input");
+
+  const text =
+    input.value.trim();
+
 
   if(!text){
 
     showToast("Write a comment first");
+
     return;
 
   }
+
 
   input.value = "";
 
@@ -765,19 +1018,23 @@ function addComment(button){
 }
 
 
-/* SHARE */
+/* ================= SHARE ================= */
+
 function sharePost(){
 
-  if(
-    navigator.share
-  ){
+  if(navigator.share){
 
     navigator.share({
+
       title:"X-DARK",
+
       text:"Check this post on X-DARK"
+
     });
 
-  }else{
+  }
+
+  else{
 
     showToast("Post link copied 🔗");
 
@@ -786,19 +1043,24 @@ function sharePost(){
 }
 
 
-/* TOAST */
+/* ================= TOAST ================= */
+
 function showToast(message){
 
   const toast =
     document.getElementById("toast");
 
-  toast.textContent = message;
+  toast.textContent =
+    message;
 
-  toast.style.display = "block";
+  toast.style.display =
+    "block";
+
 
   setTimeout(function(){
 
-    toast.style.display = "none";
+    toast.style.display =
+      "none";
 
   },2000);
 
