@@ -3,1604 +3,1834 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport"
-      content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 
 <meta name="theme-color" content="#050507">
 
 <title>X-DARK</title>
 
 <style>
-/* =========================================================
-   X-DARK PREMIUM UI
-========================================================= */
 
 :root{
-  --bg:#050507;
-  --black:#000;
-  --white:#fff;
-  --muted:#858592;
-  --purple:#783cff;
-  --purple2:#a56cff;
-  --pink:#ff3982;
-  --green:#43e58a;
-  --border:rgba(255,255,255,.12);
-  --glass:rgba(13,13,18,.72);
+--bg:#050507;
+--panel:rgba(14,14,20,.82);
+--panel2:#111117;
+--line:rgba(255,255,255,.11);
+--muted:#858590;
+--white:#fff;
+--purple:#763cff;
+--purple2:#a96dff;
+--pink:#ff287c;
+--cyan:#55c8ff;
 }
 
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  -webkit-tap-highlight-color:transparent;
+margin:0;
+padding:0;
+box-sizing:border-box;
+-webkit-tap-highlight-color:transparent;
 }
 
-html,
-body{
-  width:100%;
-  height:100%;
-  overflow:hidden;
-  background:#000;
-  color:#fff;
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "SF Pro Display",
-    "Segoe UI",
-    Arial,
-    sans-serif;
+html,body{
+width:100%;
+height:100%;
+overflow:hidden;
+background:#000;
+color:white;
+font-family:
+-apple-system,
+BlinkMacSystemFont,
+"SF Pro Display",
+"Segoe UI",
+Arial,sans-serif;
 }
 
-button,
-input,
-textarea{
-  font:inherit;
+button,input,textarea{
+font:inherit;
 }
 
 button{
-  color:#fff;
-  border:0;
-  cursor:pointer;
+border:0;
+color:white;
+cursor:pointer;
 }
 
 svg{
-  display:block;
+display:block;
 }
-
-/* =========================================================
-   APP
-========================================================= */
 
 .app{
-  position:relative;
-  width:100%;
-  height:100dvh;
-  overflow:hidden;
-  background:#050507;
+position:relative;
+width:100%;
+height:100dvh;
+overflow:hidden;
+background:#050507;
 }
 
-/* =========================================================
+/* =====================================
    FEED
-========================================================= */
+===================================== */
 
 .feed{
-  width:100%;
-  height:100%;
-  overflow-y:auto;
-  scroll-snap-type:y mandatory;
-  scrollbar-width:none;
+height:100%;
+width:100%;
+overflow-y:auto;
+scroll-snap-type:y mandatory;
+scrollbar-width:none;
 }
 
 .feed::-webkit-scrollbar{
-  display:none;
+display:none;
 }
 
 .reel{
-  position:relative;
-  width:100%;
-  height:100dvh;
-  overflow:hidden;
-  scroll-snap-align:start;
-  background:#09090c;
+position:relative;
+width:100%;
+height:100dvh;
+overflow:hidden;
+scroll-snap-align:start;
+background:#08080b;
 }
 
 .reel-video{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
+position:absolute;
+inset:0;
+width:100%;
+height:100%;
+object-fit:cover;
 }
 
-.reel::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:2;
-  pointer-events:none;
+.reel:after{
+content:"";
+position:absolute;
+inset:0;
+z-index:2;
+pointer-events:none;
 
-  background:
-    linear-gradient(
-      180deg,
-      rgba(0,0,0,.72) 0%,
-      rgba(0,0,0,.04) 35%,
-      rgba(0,0,0,.08) 58%,
-      rgba(0,0,0,.90) 100%
-    );
+background:
+linear-gradient(
+180deg,
+rgba(0,0,0,.78),
+rgba(0,0,0,.05) 34%,
+rgba(0,0,0,.15) 58%,
+rgba(0,0,0,.92)
+);
 }
 
-/* =========================================================
+/* =====================================
    TOP BAR
-========================================================= */
+===================================== */
 
 .topbar{
-  position:absolute;
-  z-index:30;
+position:absolute;
+z-index:40;
 
-  top:0;
-  left:0;
-  right:0;
+top:0;
+left:0;
+right:0;
 
-  height:95px;
+height:91px;
 
-  padding:
-    calc(env(safe-area-inset-top) + 8px)
-    16px
-    0;
+padding:
+calc(env(safe-area-inset-top) + 7px)
+14px
+0;
 
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+display:flex;
+align-items:center;
+justify-content:space-between;
 }
 
-/*
-   IMPORTANT:
-   YOU IS BEFORE X-DARK
-*/
+/* Centered brand group */
 
-.brand-row{
-  display:flex;
-  align-items:center;
-  gap:11px;
+.brand{
+position:absolute;
+
+left:50%;
+
+transform:translateX(-50%);
+
+display:flex;
+align-items:center;
+
+gap:8px;
+
+white-space:nowrap;
 }
 
 /* YOU */
 
-.you-story{
-  width:54px;
-  height:54px;
-  padding:2px;
+.you-camera{
+width:44px;
+height:44px;
 
-  flex:none;
+padding:2px;
 
-  border-radius:50%;
+border-radius:50%;
 
-  background:
-    conic-gradient(
-      #ff493e,
-      #ff2d82,
-      #743dff,
-      #ff493e
-    );
+background:
+conic-gradient(
+#ff463d,
+#ff2b82,
+#743cff,
+#55b8ff,
+#ff463d
+);
 
-  box-shadow:
-    0 0 22px rgba(119,60,255,.35);
+box-shadow:
+0 0 24px rgba(124,60,255,.38);
 
-  transition:.2s;
+transition:.2s;
 }
 
-.you-story:active{
-  transform:scale(.92);
+.you-camera:active{
+transform:scale(.91);
 }
 
-.you-inner{
-  width:100%;
-  height:100%;
+.you-camera-inner{
+width:100%;
+height:100%;
 
-  border-radius:50%;
+border-radius:50%;
 
-  background:#101015;
+background:#0c0c11;
 
-  border:2px solid #050507;
+border:2px solid #08080b;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+display:flex;
+align-items:center;
+justify-content:center;
 
-  font-size:23px;
-  font-weight:950;
+position:relative;
+}
+
+.you-camera-inner svg{
+width:20px;
+height:20px;
+
+fill:none;
+stroke:white;
+
+stroke-width:1.7;
+
+stroke-linecap:round;
+stroke-linejoin:round;
+}
+
+.camera-dot{
+position:absolute;
+
+right:7px;
+top:6px;
+
+width:5px;
+height:5px;
+
+border-radius:50%;
+
+background:#ff3c7e;
+
+box-shadow:
+0 0 8px #ff3c7e;
 }
 
 /* LOGO */
 
 .logo{
-  font-size:30px;
-  font-weight:950;
+font-size:23px;
 
-  letter-spacing:-1.8px;
+font-weight:800;
 
-  text-shadow:
-    0 4px 20px rgba(0,0,0,.8);
+letter-spacing:-1.5px;
+
+line-height:1;
+
+text-shadow:
+0 3px 18px rgba(0,0,0,.8);
 }
 
-.logo span{
-  color:#985aff;
+.logo .xdark{
+color:#fff;
 }
 
-/* TOP BUTTONS */
+.logo .dark{
+background:
+linear-gradient(
+100deg,
+#713cff,
+#a86cff,
+#ff3e91
+);
+
+-webkit-background-clip:text;
+background-clip:text;
+color:transparent;
+}
+
+/* RIGHT TOP */
 
 .top-actions{
-  display:flex;
-  gap:9px;
+display:flex;
+gap:8px;
+
+margin-left:auto;
 }
 
-.icon-btn{
-  width:44px;
-  height:44px;
+.top-btn{
+width:42px;
+height:42px;
 
-  border-radius:50%;
+border-radius:50%;
 
-  background:
-    rgba(10,10,15,.62);
+background:
+rgba(10,10,15,.58);
 
-  border:1px solid var(--border);
+border:1px solid var(--line);
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+backdrop-filter:blur(18px);
 
-  backdrop-filter:blur(18px);
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
-.icon-btn:active{
-  transform:scale(.94);
+.top-btn:active{
+transform:scale(.93);
 }
 
-.icon-btn svg{
-  width:22px;
-  height:22px;
+.top-btn svg{
+width:20px;
+height:20px;
 
-  fill:none;
-  stroke:#fff;
+fill:none;
+stroke:#fff;
 
-  stroke-width:1.8;
-  stroke-linecap:round;
-  stroke-linejoin:round;
+stroke-width:1.7;
+
+stroke-linecap:round;
+stroke-linejoin:round;
 }
 
-/* =========================================================
+/* =====================================
    RIGHT ACTIONS
-========================================================= */
+===================================== */
 
-.action-rail{
-  position:absolute;
+.actions{
+position:absolute;
 
-  right:10px;
-  bottom:122px;
+z-index:20;
 
-  z-index:25;
+right:9px;
+bottom:122px;
 
-  display:flex;
-  flex-direction:column;
-  align-items:center;
+display:flex;
+flex-direction:column;
 
-  gap:10px;
+gap:9px;
 }
 
 .action{
-  width:55px;
-  min-height:58px;
+width:54px;
+min-height:56px;
 
-  border-radius:18px;
+border-radius:17px;
 
-  background:
-    rgba(10,10,14,.42);
+background:
+rgba(10,10,14,.45);
 
-  border:1px solid rgba(255,255,255,.12);
+border:1px solid rgba(255,255,255,.12);
 
-  backdrop-filter:blur(16px);
+backdrop-filter:blur(17px);
 
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
 
-  gap:4px;
+gap:4px;
 
-  text-shadow:
-    0 2px 8px #000;
+text-shadow:
+0 2px 8px #000;
 }
 
 .action:active{
-  transform:scale(.94);
+transform:scale(.93);
 }
 
 .action svg{
-  width:27px;
-  height:27px;
+width:25px;
+height:25px;
 
-  fill:none;
-  stroke:#fff;
+fill:none;
+stroke:#fff;
 
-  stroke-width:1.8;
-  stroke-linecap:round;
-  stroke-linejoin:round;
+stroke-width:1.8;
+
+stroke-linecap:round;
+stroke-linejoin:round;
 }
 
 .action span{
-  font-size:10px;
-  font-weight:900;
+font-size:9px;
+font-weight:850;
 }
 
 .action.liked svg{
-  fill:#ff397f;
-  stroke:#ff397f;
+fill:#ff347e;
+stroke:#ff347e;
 }
 
-.action.liked span{
-  color:#ff397f;
-}
-
-/* =========================================================
+/* =====================================
    REEL CONTENT
-========================================================= */
+===================================== */
 
 .content{
-  position:absolute;
+position:absolute;
 
-  left:18px;
-  right:78px;
-  bottom:103px;
+z-index:20;
 
-  z-index:20;
+left:18px;
+right:75px;
+
+bottom:102px;
 }
 
 .creator{
-  display:flex;
-  align-items:center;
+display:flex;
+align-items:center;
 
-  gap:9px;
+gap:8px;
 
-  margin-bottom:13px;
+margin-bottom:12px;
 }
 
 .avatar{
-  width:49px;
-  height:49px;
+width:45px;
+height:45px;
 
-  flex:none;
+border-radius:50%;
 
-  border-radius:50%;
+background:
+linear-gradient(
+135deg,
+#6e35ff,
+#a76aff
+);
 
-  background:
-    linear-gradient(
-      135deg,
-      #6631ff,
-      #a76aff
-    );
+display:flex;
+align-items:center;
+justify-content:center;
 
-  border:2px solid rgba(255,255,255,.25);
+font-weight:950;
+font-size:17px;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  font-size:18px;
-  font-weight:950;
+border:2px solid rgba(255,255,255,.22);
 }
 
 .creator-info{
-  min-width:0;
+min-width:0;
 }
 
 .creator-name{
-  font-size:18px;
-  font-weight:900;
+font-size:17px;
+font-weight:900;
 }
 
 .followers{
-  margin-top:2px;
-
-  color:#d0d0d7;
-
-  font-size:10px;
+font-size:9px;
+color:#d0d0d7;
+margin-top:2px;
 }
 
 .follow{
-  margin-left:4px;
+padding:8px 13px;
 
-  padding:9px 14px;
+border-radius:12px;
 
-  border-radius:13px;
+background:
+rgba(255,255,255,.08);
 
-  background:
-    rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.75);
 
-  border:1px solid rgba(255,255,255,.75);
+font-size:10px;
+font-weight:900;
 
-  font-size:11px;
-  font-weight:900;
-
-  backdrop-filter:blur(12px);
+backdrop-filter:blur(10px);
 }
 
 .caption{
-  font-size:16px;
-  line-height:1.42;
+font-size:16px;
+font-weight:700;
+line-height:1.42;
 
-  font-weight:700;
-
-  text-shadow:
-    0 2px 8px #000;
+text-shadow:
+0 2px 8px #000;
 }
 
 .hashtags{
-  margin-top:8px;
+margin-top:7px;
 
-  color:#ded1ff;
+font-size:12px;
+font-weight:750;
 
-  font-size:13px;
-  font-weight:800;
+color:#ded3ff;
 }
 
 .audio{
-  margin-top:10px;
+display:flex;
+align-items:center;
 
-  display:flex;
-  align-items:center;
+gap:7px;
 
-  gap:8px;
+margin-top:9px;
 
-  font-size:12px;
-  font-weight:650;
+font-size:11px;
 }
 
-.audio-icon{
-  width:24px;
-  height:24px;
+.audio-circle{
+width:23px;
+height:23px;
 
-  border:1px solid #fff;
-  border-radius:50%;
+border:1px solid white;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+border-radius:50%;
+
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
-/* =========================================================
-   BOTTOM NAV
-========================================================= */
+/* =====================================
+   BOTTOM
+===================================== */
 
 .bottom{
-  position:absolute;
+position:absolute;
 
-  z-index:100;
+z-index:100;
 
-  left:10px;
-  right:10px;
-  bottom:8px;
+left:9px;
+right:9px;
+bottom:8px;
 
-  height:71px;
+height:69px;
 
-  border-radius:25px;
+border-radius:24px;
 
-  background:
-    rgba(10,10,14,.88);
+background:
+rgba(9,9,13,.88);
 
-  border:1px solid rgba(255,255,255,.11);
+border:1px solid var(--line);
 
-  backdrop-filter:blur(25px);
+backdrop-filter:blur(25px);
 
-  box-shadow:
-    0 -15px 50px rgba(0,0,0,.42);
-
-  display:flex;
-  align-items:center;
-  justify-content:space-around;
+display:flex;
+align-items:center;
+justify-content:space-around;
 }
 
 .nav{
-  width:62px;
-  height:60px;
+width:62px;
+height:60px;
 
-  background:none;
+background:none;
 
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
+color:#777781;
 
-  gap:4px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
 
-  color:#777781;
+gap:4px;
 }
 
 .nav svg{
-  width:24px;
-  height:24px;
+width:23px;
+height:23px;
 
-  fill:none;
-  stroke:currentColor;
+fill:none;
+stroke:currentColor;
 
-  stroke-width:1.8;
-  stroke-linecap:round;
-  stroke-linejoin:round;
+stroke-width:1.8;
+
+stroke-linecap:round;
+stroke-linejoin:round;
 }
 
 .nav span{
-  font-size:9px;
-  font-weight:850;
+font-size:9px;
+font-weight:850;
 }
 
 .nav.active{
-  color:#fff;
+color:#fff;
 }
 
 .nav.active svg{
-  stroke:#9b61ff;
+stroke:#9a5cff;
 }
 
-.create-btn{
-  width:50px;
-  height:40px;
+.create{
+width:49px;
+height:40px;
 
-  border-radius:14px;
+border-radius:14px;
 
-  background:#fff;
-  color:#050507;
+background:
+linear-gradient(
+145deg,
+#fff,
+#d9d9de
+);
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+color:#08080a;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+box-shadow:
+0 5px 20px rgba(255,255,255,.12);
 }
 
-/* =========================================================
-   FULL SCREEN PANELS
-========================================================= */
+/* =====================================
+   PANELS
+===================================== */
 
 .panel{
-  position:absolute;
-  inset:0;
+position:absolute;
+inset:0;
 
-  z-index:300;
+z-index:300;
 
-  overflow-y:auto;
+background:
+radial-gradient(
+circle at 85% 0%,
+rgba(116,59,255,.20),
+transparent 33%
+),
+#07070a;
 
-  background:
-    radial-gradient(
-      circle at 80% 0%,
-      rgba(120,60,255,.18),
-      transparent 34%
-    ),
-    #07070a;
+transform:translateX(100%);
 
-  transform:translateX(100%);
+transition:
+transform .35s cubic-bezier(.2,.8,.2,1);
 
-  transition:
-    transform .34s cubic-bezier(.2,.8,.2,1);
+overflow-y:auto;
 }
 
 .panel.open{
-  transform:translateX(0);
+transform:translateX(0);
 }
 
 .panel-head{
-  position:sticky;
-  top:0;
+position:sticky;
+top:0;
 
-  z-index:20;
+z-index:30;
 
-  height:74px;
+height:74px;
 
-  padding:
-    calc(env(safe-area-inset-top) + 5px)
-    14px
-    0;
+padding:
+calc(env(safe-area-inset-top) + 5px)
+14px
+0;
 
-  display:flex;
-  align-items:center;
+display:flex;
+align-items:center;
 
-  background:
-    rgba(7,7,10,.88);
+background:
+rgba(7,7,10,.90);
 
-  border-bottom:1px solid var(--border);
+border-bottom:1px solid var(--line);
 
-  backdrop-filter:blur(22px);
+backdrop-filter:blur(23px);
 }
 
 .back{
-  width:43px;
-  height:43px;
+width:42px;
+height:42px;
 
-  border-radius:50%;
+border-radius:50%;
 
-  background:#15151b;
+background:#17171d;
 
-  border:1px solid var(--border);
+border:1px solid var(--line);
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
 .back svg{
-  width:22px;
-  height:22px;
+width:21px;
+height:21px;
 
-  fill:none;
-  stroke:#fff;
+fill:none;
+stroke:#fff;
 
-  stroke-width:2;
-  stroke-linecap:round;
-  stroke-linejoin:round;
+stroke-width:2;
+
+stroke-linecap:round;
+stroke-linejoin:round;
 }
 
 .panel-title{
-  flex:1;
+flex:1;
 
-  text-align:center;
+text-align:center;
 
-  font-size:19px;
-  font-weight:950;
+font-size:18px;
+font-weight:900;
 }
 
-/* =========================================================
+/* =====================================
    MESSAGES
-========================================================= */
+===================================== */
 
-.chat-top-users{
-  display:flex;
+.chat-users{
+display:flex;
+gap:17px;
 
-  gap:19px;
+padding:17px;
 
-  padding:18px 16px 12px;
+overflow-x:auto;
 
-  overflow-x:auto;
-
-  scrollbar-width:none;
+scrollbar-width:none;
 }
 
-.chat-top-users::-webkit-scrollbar{
-  display:none;
+.chat-users::-webkit-scrollbar{
+display:none;
 }
 
 .person{
-  min-width:65px;
-
-  text-align:center;
+min-width:61px;
+text-align:center;
 }
 
 .person-avatar{
-  position:relative;
+position:relative;
 
-  width:60px;
-  height:60px;
+width:57px;
+height:57px;
 
-  padding:2px;
+padding:2px;
 
-  margin:auto;
+margin:auto;
 
-  border-radius:50%;
+border-radius:50%;
 
-  background:
-    conic-gradient(
-      #ff493d,
-      #ff2780,
-      #773cff,
-      #ff493d
-    );
+background:
+conic-gradient(
+#ff473e,
+#ff2780,
+#763cff,
+#55c8ff,
+#ff473e
+);
 }
 
 .person-inner{
-  width:100%;
-  height:100%;
+width:100%;
+height:100%;
 
-  border-radius:50%;
+border-radius:50%;
 
-  background:#15151c;
+background:#15151c;
 
-  border:2px solid #07070a;
+border:2px solid #08080b;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+display:flex;
+align-items:center;
+justify-content:center;
 
-  font-size:19px;
-  font-weight:950;
+font-size:18px;
+font-weight:900;
 }
 
 .online{
-  position:absolute;
+position:absolute;
 
-  right:0;
-  bottom:1px;
+right:0;
+bottom:0;
 
-  width:14px;
-  height:14px;
+width:13px;
+height:13px;
 
-  border-radius:50%;
+border-radius:50%;
 
-  background:#45e58a;
+background:#42e58a;
 
-  border:2px solid #08080b;
+border:2px solid #08080b;
 }
 
 .person-name{
-  margin-top:7px;
+margin-top:6px;
 
-  font-size:10px;
-  font-weight:850;
-}
-
-.chat-search{
-  height:51px;
-
-  margin:7px 15px 14px;
-
-  padding:0 15px;
-
-  border-radius:17px;
-
-  background:#121218;
-
-  border:1px solid var(--border);
-
-  display:flex;
-  align-items:center;
-
-  gap:10px;
-}
-
-.chat-search svg{
-  width:20px;
-
-  fill:none;
-  stroke:#858590;
-
-  stroke-width:2;
-}
-
-.chat-search input{
-  flex:1;
-
-  border:0;
-  outline:0;
-
-  background:none;
-
-  color:#fff;
+font-size:10px;
+font-weight:850;
 }
 
 .chat-card{
-  min-height:76px;
+margin:9px 14px;
 
-  margin:9px 15px;
+padding:12px;
 
-  padding:12px;
+min-height:73px;
 
-  border-radius:19px;
+border-radius:18px;
 
-  background:#111117;
+background:#111117;
 
-  border:1px solid var(--border);
+border:1px solid var(--line);
 
-  display:flex;
-  align-items:center;
+display:flex;
+align-items:center;
 
-  gap:12px;
-}
-
-.chat-card:active{
-  background:#181820;
+gap:11px;
 }
 
 .chat-info{
-  flex:1;
-  min-width:0;
+flex:1;
 }
 
 .chat-info strong{
-  font-size:14px;
+font-size:14px;
 }
 
 .chat-info small{
-  display:block;
+display:block;
 
-  margin-top:4px;
+margin-top:4px;
 
-  color:#777781;
+color:#777781;
 
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
+font-size:10px;
 }
 
-.chat-time{
-  color:#777781;
-
-  font-size:9px;
-}
-
-/* =========================================================
-   CHAT SCREEN
-========================================================= */
+/* =====================================
+   CHAT
+===================================== */
 
 .chat-messages{
-  height:calc(100dvh - 136px);
+height:calc(100dvh - 137px);
 
-  overflow-y:auto;
+overflow-y:auto;
 
-  padding:18px 15px 90px;
-}
-
-.day{
-  text-align:center;
-
-  color:#777781;
-
-  font-size:10px;
-
-  margin:10px 0 24px;
+padding:17px 14px 85px;
 }
 
 .message-row{
-  display:flex;
+display:flex;
 
-  margin-bottom:12px;
+margin-bottom:11px;
 }
 
 .message-row.me{
-  justify-content:flex-end;
+justify-content:flex-end;
 }
 
 .bubble{
-  max-width:76%;
+max-width:78%;
 
-  padding:11px 14px;
+padding:10px 13px;
 
-  border-radius:
-    18px
-    18px
-    18px
-    5px;
+border-radius:
+17px 17px 17px 5px;
 
-  background:#17171f;
+background:#17171e;
 
-  border:1px solid rgba(255,255,255,.08);
+border:1px solid var(--line);
 
-  font-size:13px;
-  line-height:1.4;
+font-size:13px;
+line-height:1.4;
 }
 
 .message-row.me .bubble{
-  border-radius:
-    18px
-    18px
-    5px
-    18px;
+border-radius:
+17px 17px 5px 17px;
 
-  background:
-    linear-gradient(
-      135deg,
-      #6032d5,
-      #884dff
-    );
+background:
+linear-gradient(
+135deg,
+#6132d7,
+#8b4dff
+);
 }
 
-.seen{
-  margin-top:4px;
+.chat-input{
+position:absolute;
 
-  text-align:right;
+left:9px;
+right:9px;
+bottom:8px;
 
-  font-size:9px;
+height:60px;
 
-  opacity:.7;
+border-radius:21px;
+
+background:
+rgba(15,15,20,.95);
+
+border:1px solid var(--line);
+
+display:flex;
+align-items:center;
+
+padding:7px;
+
+gap:7px;
+
+backdrop-filter:blur(20px);
 }
 
-.chat-input-bar{
-  position:absolute;
+.chat-input input{
+flex:1;
 
-  left:10px;
-  right:10px;
-  bottom:8px;
+height:43px;
 
-  height:61px;
+background:none;
+border:0;
+outline:0;
 
-  padding:7px 8px;
+color:#fff;
 
-  border-radius:22px;
-
-  background:
-    rgba(15,15,20,.94);
-
-  border:1px solid var(--border);
-
-  backdrop-filter:blur(20px);
-
-  display:flex;
-  align-items:center;
-  gap:7px;
-}
-
-.chat-input-bar input{
-  flex:1;
-
-  height:43px;
-
-  border:0;
-  outline:0;
-
-  color:#fff;
-
-  background:none;
-
-  padding:0 5px;
+padding:0 7px;
 }
 
 .send{
-  width:43px;
-  height:43px;
+width:43px;
+height:43px;
 
-  border-radius:50%;
+border-radius:50%;
 
-  background:
-    linear-gradient(
-      135deg,
-      #713cff,
-      #a66cff
-    );
+background:
+linear-gradient(
+135deg,
+#713cff,
+#a76cff
+);
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
 .send svg{
-  width:20px;
-  height:20px;
+width:20px;
+height:20px;
 
-  fill:none;
-  stroke:#fff;
+fill:none;
+stroke:#fff;
 
-  stroke-width:2;
+stroke-width:2;
 }
 
-/* =========================================================
-   EXPLORE
-========================================================= */
-
-.search-box{
-  height:52px;
-
-  margin:16px;
-
-  padding:0 15px;
-
-  border-radius:17px;
-
-  background:#121218;
-
-  border:1px solid var(--border);
-
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.search-box svg{
-  width:20px;
-
-  fill:none;
-  stroke:#858590;
-
-  stroke-width:2;
-}
-
-.search-box input{
-  flex:1;
-
-  background:none;
-
-  border:0;
-  outline:0;
-
-  color:#fff;
-}
-
-.grid{
-  display:grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
-
-  gap:3px;
-}
-
-.grid-item{
-  aspect-ratio:1;
-
-  background:#111;
-
-  overflow:hidden;
-}
-
-.grid-item video{
-  width:100%;
-  height:100%;
-
-  object-fit:cover;
-}
-
-/* =========================================================
-   CREATE
-========================================================= */
-
-.create-area{
-  padding:17px;
-}
-
-.upload-box{
-  min-height:190px;
-
-  border-radius:23px;
-
-  border:1px dashed #514b61;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(119,60,255,.13),
-      transparent 65%
-    );
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  text-align:center;
-}
-
-.upload-box input{
-  display:none;
-}
-
-.upload-icon{
-  width:62px;
-  height:62px;
-
-  margin:auto;
-
-  border-radius:19px;
-
-  background:#191421;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.upload-icon svg{
-  width:29px;
-
-  fill:none;
-  stroke:#a970ff;
-
-  stroke-width:1.8;
-}
-
-.upload-box strong{
-  display:block;
-
-  margin-top:12px;
-}
-
-.upload-box small{
-  display:block;
-
-  margin-top:5px;
-
-  color:#777781;
-}
-
-.preview{
-  display:none;
-
-  width:100%;
-  aspect-ratio:4/5;
-
-  margin-bottom:15px;
-
-  border-radius:21px;
-
-  overflow:hidden;
-
-  background:#111;
-}
-
-.preview video{
-  width:100%;
-  height:100%;
-
-  object-fit:cover;
-}
-
-.caption-input{
-  width:100%;
-
-  min-height:110px;
-
-  margin-top:15px;
-
-  padding:14px;
-
-  resize:none;
-
-  border-radius:17px;
-
-  background:#111117;
-
-  border:1px solid var(--border);
-
-  color:#fff;
-
-  outline:0;
-}
-
-.publish{
-  width:100%;
-
-  height:52px;
-
-  margin-top:12px;
-
-  border-radius:15px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #713cff,
-      #a66cff
-    );
-
-  font-weight:900;
-}
-
-/* =========================================================
-   ACTIVITY / SETTINGS
-========================================================= */
-
-.setting{
-  min-height:72px;
-
-  margin:11px 15px;
-
-  padding:12px 14px;
-
-  border-radius:18px;
-
-  background:#111117;
-
-  border:1px solid var(--border);
-
-  display:flex;
-  align-items:center;
-
-  gap:12px;
-}
-
-.setting-icon{
-  width:42px;
-  height:42px;
-
-  border-radius:14px;
-
-  background:#1b1627;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.setting-icon svg{
-  width:21px;
-
-  fill:none;
-  stroke:#aa76ff;
-
-  stroke-width:1.8;
-}
-
-.setting-text{
-  flex:1;
-}
-
-.setting-text strong{
-  font-size:14px;
-}
-
-.setting-text small{
-  display:block;
-
-  margin-top:4px;
-
-  color:#777781;
-
-  font-size:10px;
-}
-
-/* =========================================================
-   PROFILE
-========================================================= */
-
-.profile{
-  padding:27px 17px;
-}
-
-.profile-center{
-  text-align:center;
-}
-
-.big-avatar{
-  width:108px;
-  height:108px;
-
-  padding:3px;
-
-  margin:auto;
-
-  border-radius:50%;
-
-  background:
-    conic-gradient(
-      #ff3e82,
-      #743dff,
-      #aa6cff,
-      #ff3e82
-    );
-}
-
-.big-avatar-inner{
-  width:100%;
-  height:100%;
-
-  border-radius:50%;
-
-  background:#16131e;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  font-size:42px;
-  font-weight:950;
-}
-
-.profile h2{
-  margin-top:14px;
-
-  font-size:23px;
-}
-
-.username{
-  margin-top:4px;
-
-  color:#777781;
-
-  font-size:12px;
-}
-
-.stats{
-  display:flex;
-
-  justify-content:center;
-
-  gap:42px;
-
-  margin:25px 0;
-}
-
-.stat{
-  text-align:center;
-}
-
-.stat strong{
-  display:block;
-
-  font-size:19px;
-}
-
-.stat span{
-  color:#777781;
-
-  font-size:10px;
-}
-
-.profile-actions{
-  display:flex;
-
-  gap:9px;
-}
-
-.profile-button{
-  flex:1;
-
-  height:45px;
-
-  border-radius:14px;
-
-  background:#15151b;
-
-  border:1px solid var(--border);
-
-  font-size:12px;
-  font-weight:850;
-}
-
-/* =========================================================
+/* =====================================
    COMMENTS
-========================================================= */
+===================================== */
 
 .comments{
-  position:absolute;
+position:absolute;
 
-  left:0;
-  right:0;
-  bottom:0;
+z-index:700;
 
-  z-index:600;
+left:0;
+right:0;
+bottom:0;
 
-  background:#111116;
+background:#111116;
 
-  border-radius:
-    28px
-    28px
-    0
-    0;
+border-radius:
+27px 27px 0 0;
 
-  transform:translateY(100%);
+transform:translateY(100%);
 
-  transition:
-    transform .34s
-    cubic-bezier(.2,.8,.2,1);
+transition:
+transform .35s cubic-bezier(.2,.8,.2,1);
 
-  box-shadow:
-    0 -25px 80px rgba(0,0,0,.65);
+box-shadow:
+0 -25px 80px rgba(0,0,0,.65);
 }
 
 .comments.open{
-  transform:translateY(0);
+transform:translateY(0);
 }
 
-.comment-header{
-  position:relative;
+.comment-head{
+height:62px;
 
-  height:63px;
+position:relative;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+display:flex;
+align-items:center;
+justify-content:center;
 
-  border-bottom:1px solid var(--border);
+border-bottom:1px solid var(--line);
 }
 
 .comment-back{
-  position:absolute;
+position:absolute;
 
-  left:13px;
+left:12px;
 
-  width:43px;
-  height:43px;
+width:42px;
+height:42px;
 
-  border-radius:50%;
+border-radius:50%;
 
-  background:#19191f;
+background:#1a1a20;
 
-  border:1px solid var(--border);
+border:1px solid var(--line);
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
 .comment-back svg{
-  width:22px;
-  height:22px;
+width:21px;
+height:21px;
 
-  fill:none;
-  stroke:#fff;
+fill:none;
+stroke:white;
 
-  stroke-width:2;
-
-  stroke-linecap:round;
-  stroke-linejoin:round;
-}
-
-.comment-title{
-  font-size:17px;
-  font-weight:950;
+stroke-width:2;
 }
 
 .comment-list{
-  height:41vh;
+height:42vh;
 
-  overflow-y:auto;
+overflow-y:auto;
 
-  padding:16px;
+padding:15px;
 }
 
 .comment{
-  display:flex;
+display:flex;
 
-  gap:10px;
+gap:9px;
 
-  margin-bottom:18px;
+margin-bottom:17px;
 }
 
 .comment-avatar{
-  width:37px;
-  height:37px;
+width:37px;
+height:37px;
 
-  flex:none;
+flex:none;
 
-  border-radius:50%;
+border-radius:50%;
 
-  background:
-    linear-gradient(
-      135deg,
-      #6834e8,
-      #a76aff
-    );
+background:
+linear-gradient(
+135deg,
+#743cff,
+#a56cff
+);
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+display:flex;
+align-items:center;
+justify-content:center;
 
-  font-size:12px;
-  font-weight:900;
+font-size:12px;
+font-weight:900;
 }
 
 .comment-body{
-  flex:1;
-
-  font-size:13px;
-
-  line-height:1.45;
+font-size:12px;
+line-height:1.5;
 }
 
 .comment-body small{
-  color:#777781;
+color:#777781;
 }
 
 .comment-input{
-  padding:
-    10px
-    14px
-    calc(10px + env(safe-area-inset-bottom));
+display:flex;
 
-  display:flex;
+gap:7px;
 
-  gap:8px;
+padding:
+9px
+13px
+calc(9px + env(safe-area-inset-bottom));
 }
 
 .comment-input input{
-  flex:1;
+flex:1;
 
-  height:45px;
+height:44px;
 
-  border-radius:23px;
+border-radius:22px;
 
-  background:#1c1c23;
+background:#1b1b22;
 
-  border:1px solid var(--border);
+border:1px solid var(--line);
 
-  color:#fff;
+outline:0;
 
-  outline:0;
+color:#fff;
 
-  padding:0 15px;
+padding:0 14px;
 }
 
 .comment-send{
-  width:45px;
-  height:45px;
+width:44px;
+height:44px;
 
-  border-radius:50%;
+border-radius:50%;
 
-  background:#8145ff;
+background:#8146ff;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
 .comment-send svg{
-  width:20px;
-  height:20px;
+width:20px;
+height:20px;
 
-  fill:none;
-  stroke:#fff;
+fill:none;
+stroke:#fff;
 
-  stroke-width:2;
+stroke-width:2;
 }
 
-/* =========================================================
+/* =====================================
+   CREATE STUDIO
+===================================== */
+
+.studio{
+padding:14px;
+
+min-height:calc(100dvh - 74px);
+
+display:flex;
+flex-direction:column;
+}
+
+.mode-tabs{
+display:flex;
+
+gap:7px;
+
+margin-bottom:13px;
+}
+
+.mode-tab{
+flex:1;
+
+height:41px;
+
+border-radius:13px;
+
+background:#121218;
+
+border:1px solid var(--line);
+
+font-size:11px;
+font-weight:850;
+
+color:#858590;
+}
+
+.mode-tab.active{
+background:
+linear-gradient(
+135deg,
+#6634dc,
+#914fff
+);
+
+color:#fff;
+
+border-color:transparent;
+}
+
+.editor{
+position:relative;
+
+width:100%;
+
+height:58vh;
+
+min-height:390px;
+
+border-radius:24px;
+
+overflow:hidden;
+
+background:#0e0e13;
+
+border:1px solid var(--line);
+
+box-shadow:
+0 20px 60px rgba(0,0,0,.45);
+}
+
+.editor video,
+.editor img{
+position:absolute;
+
+inset:0;
+
+width:100%;
+height:100%;
+
+object-fit:cover;
+
+display:none;
+
+transition:
+filter .2s,
+transform .2s;
+}
+
+.editor.empty{
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.empty-editor{
+text-align:center;
+}
+
+.empty-camera{
+width:65px;
+height:65px;
+
+margin:auto;
+
+border-radius:21px;
+
+background:
+linear-gradient(
+135deg,
+#1c1530,
+#171720
+);
+
+border:1px solid #3a3150;
+
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.empty-camera svg{
+width:30px;
+height:30px;
+
+fill:none;
+stroke:#aa70ff;
+
+stroke-width:1.7;
+}
+
+.empty-editor strong{
+display:block;
+
+margin-top:13px;
+
+font-size:15px;
+}
+
+.empty-editor small{
+display:block;
+
+margin-top:5px;
+
+color:#777781;
+
+font-size:10px;
+}
+
+.editor-controls{
+position:absolute;
+
+left:10px;
+bottom:10px;
+
+right:10px;
+
+display:flex;
+
+gap:7px;
+
+z-index:10;
+}
+
+.editor-main-btn{
+flex:1;
+
+height:44px;
+
+border-radius:14px;
+
+background:
+rgba(5,5,8,.74);
+
+border:1px solid rgba(255,255,255,.13);
+
+backdrop-filter:blur(15px);
+
+font-size:11px;
+font-weight:850;
+}
+
+/* SIDE EDIT MENU */
+
+.edit-menu{
+position:absolute;
+
+right:9px;
+top:10px;
+
+z-index:20;
+
+display:flex;
+flex-direction:column;
+
+gap:7px;
+}
+
+.edit-btn{
+width:43px;
+height:43px;
+
+border-radius:14px;
+
+background:
+rgba(7,7,11,.72);
+
+border:1px solid rgba(255,255,255,.14);
+
+backdrop-filter:blur(15px);
+
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.edit-btn.active{
+background:
+linear-gradient(
+135deg,
+#6e38e8,
+#914dff
+);
+}
+
+.edit-btn svg{
+width:19px;
+height:19px;
+
+fill:none;
+stroke:white;
+
+stroke-width:1.7;
+
+stroke-linecap:round;
+stroke-linejoin:round;
+}
+
+/* FILTERS */
+
+.filter-panel{
+display:none;
+
+position:absolute;
+
+left:8px;
+right:8px;
+bottom:61px;
+
+z-index:30;
+
+padding:10px;
+
+border-radius:17px;
+
+background:
+rgba(8,8,12,.91);
+
+border:1px solid var(--line);
+
+backdrop-filter:blur(20px);
+}
+
+.filter-panel.show{
+display:block;
+}
+
+.filter-row{
+display:flex;
+
+gap:8px;
+
+overflow-x:auto;
+
+scrollbar-width:none;
+}
+
+.filter-row::-webkit-scrollbar{
+display:none;
+}
+
+.filter{
+min-width:57px;
+
+height:57px;
+
+border-radius:13px;
+
+border:1px solid rgba(255,255,255,.12);
+
+overflow:hidden;
+
+position:relative;
+}
+
+.filter span{
+position:absolute;
+
+left:0;
+right:0;
+bottom:0;
+
+padding:4px;
+
+font-size:7px;
+
+font-weight:850;
+
+text-align:center;
+
+background:rgba(0,0,0,.55);
+}
+
+.f-normal{
+filter:none;
+}
+
+.f-vivid{
+filter:saturate(1.6) contrast(1.12);
+}
+
+.f-cinema{
+filter:contrast(1.3) saturate(.82) brightness(.92);
+}
+
+.f-cool{
+filter:
+hue-rotate(18deg)
+saturate(1.25)
+contrast(1.1);
+}
+
+.f-warm{
+filter:
+sepia(.28)
+saturate(1.45)
+contrast(1.05);
+}
+
+.f-night{
+filter:
+brightness(.68)
+contrast(1.35)
+saturate(1.2);
+}
+
+.f-dream{
+filter:
+brightness(1.08)
+saturate(.75)
+blur(.25px);
+}
+
+/* SLIDERS */
+
+.adjust-panel{
+display:none;
+
+position:absolute;
+
+left:9px;
+right:9px;
+bottom:61px;
+
+z-index:31;
+
+padding:13px;
+
+border-radius:18px;
+
+background:
+rgba(8,8,12,.94);
+
+border:1px solid var(--line);
+
+backdrop-filter:blur(20px);
+}
+
+.adjust-panel.show{
+display:block;
+}
+
+.adjust-line{
+display:flex;
+
+align-items:center;
+
+gap:9px;
+
+margin-bottom:10px;
+}
+
+.adjust-line label{
+width:70px;
+
+font-size:9px;
+font-weight:800;
+}
+
+.adjust-line input{
+flex:1;
+}
+
+.publish-row{
+display:flex;
+
+gap:8px;
+
+margin-top:12px;
+}
+
+.publish{
+flex:1;
+
+height:49px;
+
+border-radius:15px;
+
+background:
+linear-gradient(
+135deg,
+#713cff,
+#a66cff
+);
+
+font-weight:900;
+}
+
+.cancel{
+width:85px;
+
+height:49px;
+
+border-radius:15px;
+
+background:#17171d;
+
+border:1px solid var(--line);
+
+font-size:11px;
+font-weight:850;
+}
+
+/* =====================================
+   EXPLORE
+===================================== */
+
+.search{
+height:50px;
+
+margin:14px;
+
+padding:0 14px;
+
+border-radius:16px;
+
+background:#121218;
+
+border:1px solid var(--line);
+
+display:flex;
+align-items:center;
+gap:9px;
+}
+
+.search svg{
+width:19px;
+
+fill:none;
+stroke:#858590;
+
+stroke-width:2;
+}
+
+.search input{
+flex:1;
+
+background:none;
+border:0;
+outline:0;
+
+color:#fff;
+}
+
+.grid{
+display:grid;
+
+grid-template-columns:
+repeat(3,1fr);
+
+gap:3px;
+}
+
+.grid-item{
+aspect-ratio:1;
+
+background:#111;
+
+overflow:hidden;
+}
+
+.grid-item video{
+width:100%;
+height:100%;
+
+object-fit:cover;
+}
+
+/* =====================================
+   PROFILE
+===================================== */
+
+.profile{
+padding:27px 16px;
+}
+
+.profile-center{
+text-align:center;
+}
+
+.big-avatar{
+width:102px;
+height:102px;
+
+margin:auto;
+
+padding:3px;
+
+border-radius:50%;
+
+background:
+conic-gradient(
+#ff3b82,
+#743cff,
+#5fc7ff,
+#ff3b82
+);
+}
+
+.big-avatar-inner{
+width:100%;
+height:100%;
+
+border-radius:50%;
+
+background:#15131d;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:38px;
+font-weight:950;
+}
+
+.profile h2{
+margin-top:13px;
+
+font-size:22px;
+}
+
+.username{
+color:#777781;
+
+font-size:11px;
+
+margin-top:3px;
+}
+
+.stats{
+display:flex;
+
+justify-content:center;
+
+gap:38px;
+
+margin:23px 0;
+}
+
+.stat strong{
+display:block;
+
+font-size:18px;
+}
+
+.stat span{
+font-size:9px;
+
+color:#777781;
+}
+
+/* =====================================
+   SETTINGS
+===================================== */
+
+.setting{
+display:flex;
+align-items:center;
+
+gap:11px;
+
+margin:10px 14px;
+
+padding:12px;
+
+min-height:69px;
+
+border-radius:17px;
+
+background:#111117;
+
+border:1px solid var(--line);
+}
+
+.setting-icon{
+width:41px;
+height:41px;
+
+border-radius:13px;
+
+background:#1b1628;
+
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.setting-icon svg{
+width:20px;
+
+fill:none;
+stroke:#aa70ff;
+
+stroke-width:1.7;
+}
+
+.setting-text{
+flex:1;
+}
+
+.setting-text strong{
+font-size:13px;
+}
+
+.setting-text small{
+display:block;
+
+margin-top:4px;
+
+color:#777781;
+
+font-size:9px;
+}
+
+/* =====================================
    TOAST
-========================================================= */
+===================================== */
 
 .toast{
-  position:absolute;
+position:absolute;
 
-  z-index:1000;
+z-index:1000;
 
-  left:50%;
-  bottom:92px;
+left:50%;
+bottom:91px;
 
-  transform:
-    translateX(-50%)
-    translateY(10px);
+transform:
+translateX(-50%)
+translateY(15px);
 
-  opacity:0;
+opacity:0;
 
-  pointer-events:none;
+pointer-events:none;
 
-  max-width:88%;
+max-width:88%;
 
-  padding:12px 17px;
+padding:11px 16px;
 
-  border-radius:15px;
+border-radius:14px;
 
-  background:#25252e;
+background:#24242d;
 
-  border:1px solid #41414d;
+border:1px solid #42424d;
 
-  text-align:center;
+font-size:11px;
+font-weight:750;
 
-  font-size:12px;
-  font-weight:700;
+text-align:center;
 
-  transition:.25s;
+transition:.25s;
 }
 
 .toast.show{
-  opacity:1;
+opacity:1;
 
-  transform:
-    translateX(-50%)
-    translateY(0);
+transform:
+translateX(-50%)
+translateY(0);
 }
 
-/* =========================================================
+/* =====================================
    DESKTOP
-========================================================= */
+===================================== */
 
 @media(min-width:700px){
 
-  .app{
-    width:520px;
+.app{
+width:520px;
 
-    margin:auto;
+margin:auto;
 
-    border-left:1px solid #17171b;
-    border-right:1px solid #17171b;
-  }
+border-left:1px solid #15151a;
+border-right:1px solid #15151a;
+}
 
 }
+
 </style>
 </head>
-
 
 <body>
 
 <div class="app">
 
 
-<!-- =======================================================
+<!-- ====================================================
      FEED
-======================================================= -->
+==================================================== -->
 
 <main class="feed">
 
-
-<!-- ================= REEL 1 ================= -->
 
 <section class="reel">
 
@@ -1614,46 +1844,66 @@ playsinline>
 </video>
 
 
-<!-- TOP BAR -->
+<!-- TOP -->
 
 <header class="topbar">
 
-<div class="brand-row">
+
+<!-- CENTERED BRAND
+     YOU BEFORE X-DARK
+-->
+
+<div class="brand">
 
 
-<!-- =================================================
-     IMPORTANT:
-     YOU IS BEFORE X-DARK
-================================================== -->
+<button
+class="you-camera"
+onclick="openStudio()">
 
-<div
-class="you-story"
-onclick="openPanel('profile')">
+<div class="you-camera-inner">
 
-<div class="you-inner">
-+
+<svg viewBox="0 0 24 24">
+
+<rect
+x="3"
+y="7"
+width="18"
+height="13"
+rx="3"/>
+
+<path
+d="M8 7l1.5-3h5L16 7"/>
+
+<circle
+cx="12"
+cy="13.5"
+r="3.5"/>
+
+</svg>
+
+<div class="camera-dot"></div>
+
 </div>
 
-</div>
+</button>
 
-
-<!-- X-DARK -->
 
 <div class="logo">
-X-<span>DARK</span>
+
+<span class="xdark">X-</span><span class="dark">DARK</span>
+
+</div>
+
 </div>
 
 
-</div>
-
+<!-- RIGHT -->
 
 <div class="top-actions">
 
 
-<!-- MESSAGES -->
-
 <button
-class="icon-btn"
+class="top-btn"
 onclick="openPanel('messages')">
 
 <svg viewBox="0 0 24 24">
@@ -1669,15 +1919,16 @@ A7.2 7.2 0 0 1 4.5 12
 </button>
 
 
-<!-- SETTINGS -->
-
 <button
-class="icon-btn"
+class="top-btn"
 onclick="openPanel('settings')">
 
 <svg viewBox="0 0 24 24">
 
-<circle cx="12" cy="12" r="3"/>
+<circle
+cx="12"
+cy="12"
+r="3"/>
 
 <path
 d="M19 12a7 7 0 0 0-.2-1.7
@@ -1699,9 +1950,9 @@ l.3-3a7 7 0 0 0 1.6-.9l2.4 1
 </header>
 
 
-<!-- RIGHT ACTIONS -->
+<!-- ACTIONS -->
 
-<div class="action-rail">
+<div class="actions">
 
 
 <button
@@ -1787,11 +2038,9 @@ onclick="toggleSave(this)">
 
 <div class="creator">
 
-
 <div class="avatar">
 D
 </div>
-
 
 <div class="creator-info">
 
@@ -1805,7 +2054,6 @@ Darkwing
 
 </div>
 
-
 <button
 class="follow"
 onclick="toggleFollow(this)">
@@ -1814,14 +2062,12 @@ Follow
 
 </button>
 
-
 </div>
 
 
 <div class="caption">
 
-Welcome to X-DARK 🔥
-The new dark social experience.
+Welcome to X-DARK 🔥 The new dark social experience.
 
 </div>
 
@@ -1835,9 +2081,9 @@ The new dark social experience.
 
 <div class="audio">
 
-<span class="audio-icon">
+<div class="audio-circle">
 ♪
-</span>
+</div>
 
 Original sound · Darkwing
 
@@ -1848,7 +2094,7 @@ Original sound · Darkwing
 </section>
 
 
-<!-- ================= REEL 2 ================= -->
+<!-- SECOND -->
 
 <section class="reel">
 
@@ -1863,20 +2109,41 @@ playsinline>
 
 <div class="topbar">
 
-<div class="brand-row">
+<div class="brand">
 
-<div
-class="you-story"
-onclick="openPanel('profile')">
+<button
+class="you-camera"
+onclick="openStudio()">
 
-<div class="you-inner">
-+
+<div class="you-camera-inner">
+
+<svg viewBox="0 0 24 24">
+
+<rect
+x="3"
+y="7"
+width="18"
+height="13"
+rx="3"/>
+
+<path
+d="M8 7l1.5-3h5L16 7"/>
+
+<circle
+cx="12"
+cy="13.5"
+r="3.5"/>
+
+</svg>
+
 </div>
 
-</div>
+</button>
 
 <div class="logo">
-X-<span>DARK</span>
+
+<span class="xdark">X-</span><span class="dark">DARK</span>
+
 </div>
 
 </div>
@@ -1885,7 +2152,7 @@ X-<span>DARK</span>
 <div class="top-actions">
 
 <button
-class="icon-btn"
+class="top-btn"
 onclick="openPanel('messages')">
 
 <svg viewBox="0 0 24 24">
@@ -1900,9 +2167,8 @@ A7.2 7.2 0 0 1 4.5 12
 
 </button>
 
-
 <button
-class="icon-btn"
+class="top-btn"
 onclick="openPanel('settings')">
 
 <svg viewBox="0 0 24 24">
@@ -1929,11 +2195,10 @@ l.3-3a7 7 0 0 0 1.6-.9l2.4 1
 </div>
 
 
-<div class="action-rail">
-
+<div class="actions">
 
 <button
-class="action like-button"
+class="action"
 onclick="toggleLike(this)">
 
 <svg viewBox="0 0 24 24">
@@ -1949,7 +2214,6 @@ a4.6 4.6 0 0 1 8.8 2.3z"/>
 <span>8.7K</span>
 
 </button>
-
 
 <button
 class="action"
@@ -1968,7 +2232,6 @@ A7.2 7.2 0 0 1 4.5 12
 <span>315</span>
 
 </button>
-
 
 <button
 class="action"
@@ -1990,21 +2253,6 @@ a2 2 0 0 0 2-2v-6"/>
 
 </button>
 
-
-<button
-class="action"
-onclick="toggleSave(this)">
-
-<svg viewBox="0 0 24 24">
-
-<path d="M6 3h12v18l-6-4-6 4z"/>
-
-</svg>
-
-<span>Save</span>
-
-</button>
-
 </div>
 
 
@@ -2012,18 +2260,8 @@ onclick="toggleSave(this)">
 
 <div class="creator">
 
-<div
-class="avatar"
-style="
-background:
-linear-gradient(
-135deg,
-#ff3b82,
-#733cff
-)">
-
+<div class="avatar">
 N
-
 </div>
 
 <div class="creator-info">
@@ -2041,31 +2279,22 @@ Nova
 <button
 class="follow"
 onclick="toggleFollow(this)">
-
 Follow
-
 </button>
 
 </div>
 
-
 <div class="caption">
-
 Create. Explore. Connect. ✨
-
 </div>
-
 
 <div class="hashtags">
 #nova #explore #xdark
 </div>
 
-
 <div class="audio">
 
-<span class="audio-icon">
-♪
-</span>
+<div class="audio-circle">♪</div>
 
 Original sound · Nova
 
@@ -2078,12 +2307,11 @@ Original sound · Nova
 </main>
 
 
-<!-- =======================================================
+<!-- ====================================================
      BOTTOM NAV
-======================================================= -->
+==================================================== -->
 
 <nav class="bottom">
-
 
 <button
 class="nav active"
@@ -2098,9 +2326,7 @@ a1 1 0 0 1-1-1z"/>
 
 </svg>
 
-<span>
-Home
-</span>
+<span>Home</span>
 
 </button>
 
@@ -2117,23 +2343,21 @@ onclick="openPanel('explore')">
 
 </svg>
 
-<span>
-Explore
-</span>
+<span>Explore</span>
 
 </button>
 
 
 <button
 class="nav"
-onclick="openPanel('create')">
+onclick="openStudio()">
 
-<div class="create-btn">
+<div class="create">
 
 <svg
 viewBox="0 0 24 24"
-width="24"
-height="24">
+width="23"
+height="23">
 
 <path
 d="M12 5v14M5 12h14"
@@ -2163,9 +2387,7 @@ c0 7-3 7-3 9h18c0-2-3-2-3-9"/>
 
 </svg>
 
-<span>
-Activity
-</span>
+<span>Activity</span>
 
 </button>
 
@@ -2183,18 +2405,472 @@ d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/>
 
 </svg>
 
-<span>
-Profile
-</span>
+<span>Profile</span>
 
 </button>
 
 </nav>
 
 
-<!-- =======================================================
+<!-- ====================================================
+     CREATE STUDIO
+==================================================== -->
+
+<section
+id="studio"
+class="panel">
+
+
+<div class="panel-head">
+
+<button
+class="back"
+onclick="closePanels()">
+
+<svg viewBox="0 0 24 24">
+
+<path d="M15 18L9 12L15 6"/>
+
+</svg>
+
+</button>
+
+<div class="panel-title">
+Create
+</div>
+
+<div style="width:42px"></div>
+
+</div>
+
+
+<div class="studio">
+
+
+<div class="mode-tabs">
+
+<button
+class="mode-tab active"
+onclick="setMode(this,'Story')">
+Story
+</button>
+
+<button
+class="mode-tab"
+onclick="setMode(this,'Post')">
+Post
+</button>
+
+<button
+class="mode-tab"
+onclick="setMode(this,'Reel')">
+Reel
+</button>
+
+</div>
+
+
+<div
+id="editor"
+class="editor empty">
+
+
+<div
+id="emptyEditor"
+class="empty-editor">
+
+<div class="empty-camera">
+
+<svg viewBox="0 0 24 24">
+
+<rect
+x="3"
+y="7"
+width="18"
+height="13"
+rx="3"/>
+
+<path
+d="M8 7l1.5-3h5L16 7"/>
+
+<circle
+cx="12"
+cy="13.5"
+r="3.5"/>
+
+</svg>
+
+</div>
+
+<strong>
+Create something
+</strong>
+
+<small>
+Camera ya gallery se media select karo
+</small>
+
+</div>
+
+
+<img
+id="editImage"
+alt="">
+
+
+<video
+id="editVideo"
+controls
+playsinline>
+</video>
+
+
+<!-- SIDE EDIT MENU -->
+
+<div class="edit-menu">
+
+
+<button
+class="edit-btn"
+onclick="toggleFilters()"
+title="Filters">
+
+<svg viewBox="0 0 24 24">
+
+<circle cx="12" cy="12" r="3"/>
+
+<path
+d="M19 5 5 19"/>
+
+<path
+d="M7 5h.01M19 17h.01"/>
+
+</svg>
+
+</button>
+
+
+<button
+class="edit-btn"
+onclick="toggleAdjust()"
+title="Adjust">
+
+<svg viewBox="0 0 24 24">
+
+<path d="M4 6h16M4 12h16M4 18h16"/>
+
+<circle cx="8" cy="6" r="2"/>
+
+<circle cx="15" cy="12" r="2"/>
+
+<circle cx="10" cy="18" r="2"/>
+
+</svg>
+
+</button>
+
+
+<button
+class="edit-btn"
+onclick="rotateMedia()"
+title="Rotate">
+
+<svg viewBox="0 0 24 24">
+
+<path
+d="M20 11a8 8 0 0 0-14-5L3 9"/>
+
+<path d="M3 4v5h5"/>
+
+<path
+d="M4 13a8 8 0 0 0 14 5l3-3"/>
+
+<path d="M21 20v-5h-5"/>
+
+</svg>
+
+</button>
+
+
+<button
+class="edit-btn"
+onclick="resetEditor()"
+title="Reset">
+
+<svg viewBox="0 0 24 24">
+
+<path
+d="M4 12a8 8 0 1 0 2.3-5.7"/>
+
+<path d="M4 5v5h5"/>
+
+</svg>
+
+</button>
+
+</div>
+
+
+<!-- FILTER PANEL -->
+
+<div
+id="filterPanel"
+class="filter-panel">
+
+
+<div class="filter-row">
+
+
+<button
+class="filter f-normal"
+onclick="applyFilter('none')">
+
+<span>
+Original
+</span>
+
+</button>
+
+
+<button
+class="filter f-vivid"
+onclick="applyFilter('saturate(1.6) contrast(1.12)')">
+
+<span>
+Vivid
+</span>
+
+</button>
+
+
+<button
+class="filter f-cinema"
+onclick="applyFilter('contrast(1.3) saturate(.82) brightness(.92)')">
+
+<span>
+Cinema
+</span>
+
+</button>
+
+
+<button
+class="filter f-cool"
+onclick="applyFilter('hue-rotate(18deg) saturate(1.25) contrast(1.1)')">
+
+<span>
+Cool
+</span>
+
+</button>
+
+
+<button
+class="filter f-warm"
+onclick="applyFilter('sepia(.28) saturate(1.45) contrast(1.05)')">
+
+<span>
+Warm
+</span>
+
+</button>
+
+
+<button
+class="filter f-night"
+onclick="applyFilter('brightness(.68) contrast(1.35) saturate(1.2)')">
+
+<span>
+Night
+</span>
+
+</button>
+
+
+<button
+class="filter f-dream"
+onclick="applyFilter('brightness(1.08) saturate(.75) blur(.25px)')">
+
+<span>
+Dream
+</span>
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ADJUST -->
+
+<div
+id="adjustPanel"
+class="adjust-panel">
+
+
+<div class="adjust-line">
+
+<label>
+Brightness
+</label>
+
+<input
+id="brightness"
+type="range"
+min="50"
+max="150"
+value="100"
+oninput="adjustMedia()">
+
+</div>
+
+
+<div class="adjust-line">
+
+<label>
+Contrast
+</label>
+
+<input
+id="contrast"
+type="range"
+min="50"
+max="150"
+value="100"
+oninput="adjustMedia()">
+
+</div>
+
+
+<div class="adjust-line">
+
+<label>
+Saturation
+</label>
+
+<input
+id="saturation"
+type="range"
+min="0"
+max="200"
+value="100"
+oninput="adjustMedia()">
+
+</div>
+
+
+<div class="adjust-line">
+
+<label>
+Blur
+</label>
+
+<input
+id="blur"
+type="range"
+min="0"
+max="5"
+value="0"
+step=".1"
+oninput="adjustMedia()">
+
+</div>
+
+</div>
+
+
+<!-- BOTTOM EDIT BUTTONS -->
+
+<div class="editor-controls">
+
+
+<button
+class="editor-main-btn"
+onclick="openCamera()">
+
+Camera
+
+</button>
+
+
+<button
+class="editor-main-btn"
+onclick="openGallery()">
+
+Gallery
+
+</button>
+
+</div>
+
+</div>
+
+
+<input
+id="mediaInput"
+type="file"
+accept="image/*,video/*"
+capture="environment"
+hidden
+onchange="loadMedia(this)">
+
+
+<input
+id="galleryInput"
+type="file"
+accept="image/*,video/*"
+hidden
+onchange="loadMedia(this)">
+
+
+<textarea
+id="studioCaption"
+style="
+width:100%;
+height:82px;
+margin-top:12px;
+padding:13px;
+border-radius:17px;
+background:#111117;
+border:1px solid var(--line);
+outline:0;
+color:white;
+resize:none;
+"
+placeholder="Write something...">
+</textarea>
+
+
+<div class="publish-row">
+
+<button
+class="cancel"
+onclick="closePanels()">
+
+Cancel
+
+</button>
+
+<button
+class="publish"
+onclick="publishMedia()">
+
+Publish
+
+</button>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- ====================================================
      MESSAGES
-======================================================= -->
+==================================================== -->
 
 <section
 id="messages"
@@ -2215,20 +2891,16 @@ onclick="closePanels()">
 
 </button>
 
-
 <div class="panel-title">
 Messages
 </div>
 
-
-<div style="width:43px"></div>
+<div style="width:42px"></div>
 
 </div>
 
 
-<!-- ONLY 3 USERS HERE -->
-
-<div class="chat-top-users">
+<div class="chat-users">
 
 
 <div class="person">
@@ -2276,9 +2948,9 @@ class="person-avatar"
 style="
 background:
 conic-gradient(
-#743dff,
-#35a5ff,
-#743dff
+#763cff,
+#45b9ff,
+#763cff
 )">
 
 <div class="person-inner">
@@ -2292,22 +2964,6 @@ Alex
 </div>
 
 </div>
-
-</div>
-
-
-<div class="chat-search">
-
-<svg viewBox="0 0 24 24">
-
-<circle cx="11" cy="11" r="7"/>
-
-<path d="m20 20-4-4"/>
-
-</svg>
-
-<input
-placeholder="Search messages">
 
 </div>
 
@@ -2332,10 +2988,6 @@ Welcome to X-DARK 🔥
 
 </div>
 
-<div class="chat-time">
-Now
-</div>
-
 </div>
 
 
@@ -2343,18 +2995,8 @@ Now
 class="chat-card"
 onclick="openChat('Nova')">
 
-<div
-class="avatar"
-style="
-background:
-linear-gradient(
-135deg,
-#ff3c81,
-#713cff
-)">
-
+<div class="avatar">
 N
-
 </div>
 
 <div class="chat-info">
@@ -2369,10 +3011,6 @@ Start a conversation
 
 </div>
 
-<div class="chat-time">
-5m
-</div>
-
 </div>
 
 
@@ -2380,18 +3018,8 @@ Start a conversation
 class="chat-card"
 onclick="openChat('Alex')">
 
-<div
-class="avatar"
-style="
-background:
-linear-gradient(
-135deg,
-#269cff,
-#754cff
-)">
-
+<div class="avatar">
 A
-
 </div>
 
 <div class="chat-info">
@@ -2406,18 +3034,14 @@ Hey 👋
 
 </div>
 
-<div class="chat-time">
-1h
-</div>
-
 </div>
 
 </section>
 
 
-<!-- =======================================================
+<!-- ====================================================
      CHAT
-======================================================= -->
+==================================================== -->
 
 <section
 id="chatScreen"
@@ -2443,9 +3067,7 @@ onclick="closeChat()">
 <div
 id="chatAvatar"
 class="avatar"
-style="
-width:42px;
-height:42px">
+style="width:42px;height:42px">
 
 D
 
@@ -2455,46 +3077,25 @@ D
 <div
 style="
 flex:1;
-margin-left:9px">
+margin-left:8px">
 
 <strong
 id="chatName">
-
 Darkwing
-
 </strong>
 
 <div
 style="
-font-size:10px;
+font-size:9px;
 color:#43e58a;
-margin-top:2px">
-
+margin-top:3px">
 Online
-
 </div>
 
 </div>
 
 
-<button
-class="icon-btn"
-onclick="toast('Voice call coming soon')">
-
-<svg viewBox="0 0 24 24">
-
-<path
-d="M22 16.9v3a2 2 0 0 1-2.2 2
-A19.8 19.8 0 0 1 3.1 5.2
-A2 2 0 0 1 5 3h3a2 2 0 0 1 2 1.7
-c.1 1 .4 2 .7 2.8a2 2 0 0 1-.5 2.1
-L9 10.9a16 16 0 0 0 4.1 4.1l1.3-1.3
-a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7
-A2 2 0 0 1 22 16.9z"/>
-
-</svg>
-
-</button>
+<div style="width:42px"></div>
 
 </div>
 
@@ -2502,31 +3103,10 @@ A2 2 0 0 1 22 16.9z"/>
 <div
 id="chatMessages"
 class="chat-messages">
-
 </div>
 
 
-<div class="chat-input-bar">
-
-
-<button
-class="icon-btn"
-style="
-width:40px;
-height:40px"
-onclick="toast('Attachment coming soon')">
-
-<svg viewBox="0 0 24 24">
-
-<path
-d="m21.4 11.6-8.8 8.8
-a6 6 0 0 1-8.5-8.5l8.8-8.8
-a4 4 0 0 1 5.7 5.7l-8.8 8.8
-a2 2 0 0 1-2.8-2.8l8.1-8.1"/>
-
-</svg>
-
-</button>
+<div class="chat-input">
 
 
 <input
@@ -2553,9 +3133,9 @@ onclick="sendMessage()">
 </section>
 
 
-<!-- =======================================================
+<!-- ====================================================
      EXPLORE
-======================================================= -->
+==================================================== -->
 
 <section
 id="explore"
@@ -2576,18 +3156,16 @@ onclick="closePanels()">
 
 </button>
 
-
 <div class="panel-title">
 Explore
 </div>
 
-
-<div style="width:43px"></div>
+<div style="width:42px"></div>
 
 </div>
 
 
-<div class="search-box">
+<div class="search">
 
 <svg viewBox="0 0 24 24">
 
@@ -2605,8 +3183,8 @@ placeholder="Search X-DARK">
 
 <div class="grid">
 
-
 <div class="grid-item">
+
 <video
 src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
 muted
@@ -2614,10 +3192,12 @@ loop
 autoplay
 playsinline>
 </video>
+
 </div>
 
 
 <div class="grid-item">
+
 <video
 src="https://www.w3schools.com/html/mov_bbb.mp4"
 muted
@@ -2625,10 +3205,12 @@ loop
 autoplay
 playsinline>
 </video>
+
 </div>
 
 
 <div class="grid-item">
+
 <video
 src="https://media.w3.org/2010/05/sintel/trailer.mp4"
 muted
@@ -2636,10 +3218,12 @@ loop
 autoplay
 playsinline>
 </video>
+
 </div>
 
 
 <div class="grid-item">
+
 <video
 src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
 muted
@@ -2647,10 +3231,12 @@ loop
 autoplay
 playsinline>
 </video>
+
 </div>
 
 
 <div class="grid-item">
+
 <video
 src="https://www.w3schools.com/html/mov_bbb.mp4"
 muted
@@ -2658,10 +3244,12 @@ loop
 autoplay
 playsinline>
 </video>
+
 </div>
 
 
 <div class="grid-item">
+
 <video
 src="https://media.w3.org/2010/05/sintel/trailer.mp4"
 muted
@@ -2669,130 +3257,17 @@ loop
 autoplay
 playsinline>
 </video>
-</div>
-
 
 </div>
-
-</section>
-
-
-<!-- =======================================================
-     CREATE
-======================================================= -->
-
-<section
-id="create"
-class="panel">
-
-
-<div class="panel-head">
-
-<button
-class="back"
-onclick="closePanels()">
-
-<svg viewBox="0 0 24 24">
-
-<path d="M15 18L9 12L15 6"/>
-
-</svg>
-
-</button>
-
-
-<div class="panel-title">
-Create Reel
-</div>
-
-
-<div style="width:43px"></div>
-
-</div>
-
-
-<div class="create-area">
-
-
-<div
-id="preview"
-class="preview">
-
-<video
-id="previewVideo"
-controls>
-</video>
-
-</div>
-
-
-<div class="upload-box">
-
-<label
-for="videoInput"
-style="cursor:pointer">
-
-
-<div class="upload-icon">
-
-<svg viewBox="0 0 24 24">
-
-<path d="M12 16V4"/>
-
-<path d="m7 9 5-5 5 5"/>
-
-<path d="M5 20h14"/>
-
-</svg>
-
-</div>
-
-
-<strong>
-Upload Reel
-</strong>
-
-
-<small>
-MP4 / MOV video
-</small>
-
-
-</label>
-
-
-<input
-id="videoInput"
-type="file"
-accept="video/*"
-onchange="previewVideo(this)">
-
-</div>
-
-
-<textarea
-id="captionInput"
-class="caption-input"
-placeholder="Write a caption...">
-</textarea>
-
-
-<button
-class="publish"
-onclick="publishReel()">
-
-Publish Reel
-
-</button>
 
 </div>
 
 </section>
 
 
-<!-- =======================================================
+<!-- ====================================================
      ACTIVITY
-======================================================= -->
+==================================================== -->
 
 <section
 id="activity"
@@ -2813,13 +3288,11 @@ onclick="closePanels()">
 
 </button>
 
-
 <div class="panel-title">
 Activity
 </div>
 
-
-<div style="width:43px"></div>
+<div style="width:42px"></div>
 
 </div>
 
@@ -2842,8 +3315,6 @@ Darkwing liked your Reel
 
 </div>
 
-<span>♥</span>
-
 </div>
 
 
@@ -2856,7 +3327,7 @@ N
 <div class="setting-text">
 
 <strong>
-Nova started following you
+Nova followed you
 </strong>
 
 <small>
@@ -2864,8 +3335,6 @@ Nova started following you
 </small>
 
 </div>
-
-<span>＋</span>
 
 </div>
 
@@ -2888,16 +3357,14 @@ Alex commented on your Reel
 
 </div>
 
-<span>💬</span>
-
 </div>
 
 </section>
 
 
-<!-- =======================================================
+<!-- ====================================================
      PROFILE
-======================================================= -->
+==================================================== -->
 
 <section
 id="profile"
@@ -2918,22 +3385,18 @@ onclick="closePanels()">
 
 </button>
 
-
 <div class="panel-title">
 Profile
 </div>
 
-
-<div style="width:43px"></div>
+<div style="width:42px"></div>
 
 </div>
 
 
 <div class="profile">
 
-
 <div class="profile-center">
-
 
 <div class="big-avatar">
 
@@ -2948,7 +3411,6 @@ A
 Ankaj
 </h2>
 
-
 <div class="username">
 @x_dark_user
 </div>
@@ -2956,123 +3418,28 @@ Ankaj
 
 <div class="stats">
 
+<div class="stat">
+
+<strong>24</strong>
+<span>Posts</span>
+
+</div>
 
 <div class="stat">
 
-<strong>
-24
-</strong>
-
-<span>
-Posts
-</span>
+<strong>12.4K</strong>
+<span>Followers</span>
 
 </div>
-
 
 <div class="stat">
 
-<strong>
-12.4K
-</strong>
-
-<span>
-Followers
-</span>
+<strong>287</strong>
+<span>Following</span>
 
 </div>
 
-
-<div class="stat">
-
-<strong>
-287
-</strong>
-
-<span>
-Following
-</span>
-
 </div>
-
-
-</div>
-
-
-<div class="profile-actions">
-
-<button
-class="profile-button"
-onclick="toast('Edit profile coming soon')">
-
-Edit Profile
-
-</button>
-
-
-<button
-class="profile-button"
-onclick="openPanel('settings')">
-
-Settings
-
-</button>
-
-</div>
-
-
-</div>
-
-
-<div
-style="
-margin-top:28px;
-padding-top:20px;
-border-top:1px solid var(--border);
-font-weight:900">
-
-Your Reels
-
-</div>
-
-
-<div
-class="grid"
-style="margin-top:15px">
-
-
-<div class="grid-item">
-<video
-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-muted
-loop
-autoplay
-playsinline>
-</video>
-</div>
-
-
-<div class="grid-item">
-<video
-src="https://www.w3schools.com/html/mov_bbb.mp4"
-muted
-loop
-autoplay
-playsinline>
-</video>
-</div>
-
-
-<div class="grid-item">
-<video
-src="https://media.w3.org/2010/05/sintel/trailer.mp4"
-muted
-loop
-autoplay
-playsinline>
-</video>
-</div>
-
 
 </div>
 
@@ -3081,9 +3448,9 @@ playsinline>
 </section>
 
 
-<!-- =======================================================
+<!-- ====================================================
      SETTINGS
-======================================================= -->
+==================================================== -->
 
 <section
 id="settings"
@@ -3104,13 +3471,11 @@ onclick="closePanels()">
 
 </button>
 
-
 <div class="panel-title">
 Settings
 </div>
 
-
-<div style="width:43px"></div>
+<div style="width:42px"></div>
 
 </div>
 
@@ -3129,7 +3494,6 @@ Settings
 
 </div>
 
-
 <div class="setting-text">
 
 <strong>
@@ -3137,12 +3501,10 @@ Appearance
 </strong>
 
 <small>
-Dark · Premium Purple
+Premium Dark UI
 </small>
 
 </div>
-
-<span>›</span>
 
 </div>
 
@@ -3167,7 +3529,6 @@ d="M8 10V7a4 4 0 0 1 8 0v3"/>
 
 </div>
 
-
 <div class="setting-text">
 
 <strong>
@@ -3175,12 +3536,10 @@ Privacy
 </strong>
 
 <small>
-Manage privacy
+Manage privacy settings
 </small>
 
 </div>
-
-<span>›</span>
 
 </div>
 
@@ -3201,7 +3560,6 @@ c0 7-3 7-3 9h18c0-2-3-2-3-9"/>
 
 </div>
 
-
 <div class="setting-text">
 
 <strong>
@@ -3209,61 +3567,26 @@ Notifications
 </strong>
 
 <small>
-Manage alerts
+Activity and message alerts
 </small>
 
 </div>
-
-<span>›</span>
-
-</div>
-
-
-<div class="setting">
-
-<div class="setting-icon">
-
-<svg viewBox="0 0 24 24">
-
-<circle cx="12" cy="8" r="4"/>
-
-<path
-d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/>
-
-</svg>
-
-</div>
-
-
-<div class="setting-text">
-
-<strong>
-Account
-</strong>
-
-<small>
-Account preferences
-</small>
-
-</div>
-
-<span>›</span>
 
 </div>
 
 </section>
 
 
-<!-- =======================================================
+<!-- ====================================================
      COMMENTS
-======================================================= -->
+==================================================== -->
 
 <div
 id="comments"
 class="comments">
 
 
-<div class="comment-header">
+<div class="comment-head">
 
 
 <!-- BACK ARROW -->
@@ -3281,7 +3604,7 @@ onclick="closeComments()">
 </button>
 
 
-<div class="comment-title">
+<div>
 Comments
 </div>
 
@@ -3301,9 +3624,7 @@ D
 
 <div class="comment-body">
 
-<b>
-Darkwing
-</b>
+<b>Darkwing</b>
 
 <br>
 
@@ -3328,9 +3649,7 @@ N
 
 <div class="comment-body">
 
-<b>
-Nova
-</b>
+<b>Nova</b>
 
 <br>
 
@@ -3345,7 +3664,6 @@ X-DARK is looking clean!
 </div>
 
 </div>
-
 
 </div>
 
@@ -3377,8 +3695,6 @@ onclick="addComment()">
 </div>
 
 
-<!-- TOAST -->
-
 <div
 id="toast"
 class="toast">
@@ -3387,667 +3703,834 @@ class="toast">
 
 <script>
 
-/* =========================================================
-   PANEL SYSTEM
-========================================================= */
+/* =====================================================
+   PANEL
+===================================================== */
 
 function openPanel(id){
 
-  closePanels();
+closePanels();
 
-  const panel =
-    document.getElementById(id);
+const panel=
+document.getElementById(id);
 
-  if(panel){
-    panel.classList.add("open");
-  }
+if(panel){
+panel.classList.add("open");
+}
 
 }
 
 
 function closePanels(){
 
-  document
-    .querySelectorAll(".panel")
-    .forEach(panel=>{
-      panel.classList.remove("open");
-    });
+document
+.querySelectorAll(".panel")
+.forEach(p=>{
+p.classList.remove("open");
+});
 
 }
 
 
-/* =========================================================
+/* =====================================================
+   CREATE
+===================================================== */
+
+function openStudio(){
+
+closePanels();
+
+document
+.getElementById("studio")
+.classList.add("open");
+
+}
+
+
+function openCamera(){
+
+document
+.getElementById("mediaInput")
+.click();
+
+}
+
+
+function openGallery(){
+
+document
+.getElementById("galleryInput")
+.click();
+
+}
+
+
+let mediaType="";
+
+
+function loadMedia(input){
+
+const file=input.files[0];
+
+if(!file)return;
+
+const editor=
+document.getElementById("editor");
+
+const empty=
+document.getElementById("emptyEditor");
+
+const image=
+document.getElementById("editImage");
+
+const video=
+document.getElementById("editVideo");
+
+const url=
+URL.createObjectURL(file);
+
+editor.classList.remove("empty");
+
+empty.style.display="none";
+
+image.style.display="none";
+
+video.style.display="none";
+
+image.src="";
+video.src="";
+
+if(file.type.startsWith("video/")){
+
+mediaType="video";
+
+video.src=url;
+
+video.style.display="block";
+
+}else{
+
+mediaType="image";
+
+image.src=url;
+
+image.style.display="block";
+
+}
+
+toast("Media loaded — now edit it 🔥");
+
+}
+
+
+/* =====================================================
+   MODE
+===================================================== */
+
+function setMode(button,mode){
+
+document
+.querySelectorAll(".mode-tab")
+.forEach(b=>{
+b.classList.remove("active");
+});
+
+button.classList.add("active");
+
+toast(mode+" mode selected");
+
+}
+
+
+/* =====================================================
+   FILTERS
+===================================================== */
+
+function toggleFilters(){
+
+document
+.getElementById("filterPanel")
+.classList.toggle("show");
+
+document
+.getElementById("adjustPanel")
+.classList.remove("show");
+
+}
+
+
+function applyFilter(filter){
+
+const image=
+document.getElementById("editImage");
+
+const video=
+document.getElementById("editVideo");
+
+if(image.style.display!=="none"){
+
+image.style.filter=filter;
+
+}
+
+if(video.style.display!=="none"){
+
+video.style.filter=filter;
+
+}
+
+toast("Filter applied ✨");
+
+}
+
+
+/* =====================================================
+   ADJUST
+===================================================== */
+
+function toggleAdjust(){
+
+document
+.getElementById("adjustPanel")
+.classList.toggle("show");
+
+document
+.getElementById("filterPanel")
+.classList.remove("show");
+
+}
+
+
+function adjustMedia(){
+
+const b=
+document.getElementById("brightness").value;
+
+const c=
+document.getElementById("contrast").value;
+
+const s=
+document.getElementById("saturation").value;
+
+const bl=
+document.getElementById("blur").value;
+
+
+const filter=
+`
+brightness(${b}%)
+contrast(${c}%)
+saturate(${s}%)
+blur(${bl}px)
+`;
+
+
+const image=
+document.getElementById("editImage");
+
+const video=
+document.getElementById("editVideo");
+
+if(image.style.display!=="none"){
+
+image.style.filter=filter;
+
+}
+
+if(video.style.display!=="none"){
+
+video.style.filter=filter;
+
+}
+
+}
+
+
+/* =====================================================
+   ROTATE
+===================================================== */
+
+let rotation=0;
+
+function rotateMedia(){
+
+rotation+=90;
+
+if(rotation>=360){
+rotation=0;
+}
+
+const image=
+document.getElementById("editImage");
+
+const video=
+document.getElementById("editVideo");
+
+if(image.style.display!=="none"){
+
+image.style.transform=
+`rotate(${rotation}deg)`;
+
+}
+
+if(video.style.display!=="none"){
+
+video.style.transform=
+`rotate(${rotation}deg)`;
+
+}
+
+toast("Rotated");
+
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+function resetEditor(){
+
+rotation=0;
+
+document
+.getElementById("brightness")
+.value=100;
+
+document
+.getElementById("contrast")
+.value=100;
+
+document
+.getElementById("saturation")
+.value=100;
+
+document
+.getElementById("blur")
+.value=0;
+
+
+const image=
+document.getElementById("editImage");
+
+const video=
+document.getElementById("editVideo");
+
+image.style.filter="none";
+video.style.filter="none";
+
+image.style.transform="rotate(0deg)";
+video.style.transform="rotate(0deg)";
+
+toast("Editor reset");
+
+}
+
+
+/* =====================================================
+   PUBLISH
+===================================================== */
+
+function publishMedia(){
+
+const image=
+document.getElementById("editImage");
+
+const video=
+document.getElementById("editVideo");
+
+if(
+image.style.display==="none" &&
+video.style.display==="none"
+){
+
+toast("Pehle photo ya video select karo");
+
+return;
+
+}
+
+toast("Your "+mediaType+" is ready to publish 🔥");
+
+}
+
+
+/* =====================================================
    HOME
-========================================================= */
+===================================================== */
 
 function goHome(){
 
-  closePanels();
+closePanels();
 
-  const feed =
-    document.querySelector(".feed");
+const feed=
+document.querySelector(".feed");
 
-  if(feed){
-
-    feed.scrollTo({
-      top:0,
-      behavior:"smooth"
-    });
-
-  }
+feed.scrollTo({
+top:0,
+behavior:"smooth"
+});
 
 }
 
 
-/* =========================================================
+/* =====================================================
    CHAT
-========================================================= */
-
-let currentChat="Darkwing";
-
+===================================================== */
 
 function openChat(name){
 
-  currentChat=name;
+closePanels();
 
-  const messages =
-    document.getElementById("messages");
+document
+.getElementById("chatScreen")
+.classList.add("open");
 
-  const chat =
-    document.getElementById("chatScreen");
+document
+.getElementById("chatName")
+.textContent=name;
 
-  messages.classList.remove("open");
+document
+.getElementById("chatAvatar")
+.textContent=name[0];
 
-  chat.classList.add("open");
+const box=
+document.getElementById("chatMessages");
 
-  document
-    .getElementById("chatName")
-    .textContent=name;
+box.innerHTML="";
 
-  document
-    .getElementById("chatAvatar")
-    .textContent=
-      name.charAt(0);
+addBubble(
+box,
+name,
+"Welcome to X-DARK 🔥",
+false
+);
 
-  loadDemoMessages(name);
+addBubble(
+box,
+"You",
+"Hey "+name+" 👋",
+true
+);
 
 }
 
 
 function closeChat(){
 
-  document
-    .getElementById("chatScreen")
-    .classList.remove("open");
-
-}
-
-
-function loadDemoMessages(name){
-
-  const box =
-    document.getElementById("chatMessages");
-
-  box.innerHTML="";
-
-
-  const day =
-    document.createElement("div");
-
-  day.className="day";
-
-  day.textContent="Today";
-
-  box.appendChild(day);
-
-
-  addBubble(
-    box,
-    name,
-    "Welcome to X-DARK 🔥",
-    false
-  );
-
-
-  addBubble(
-    box,
-    "You",
-    "Hey "+name+" 👋",
-    true
-  );
+document
+.getElementById("chatScreen")
+.classList.remove("open");
 
 }
 
 
 function addBubble(
-  box,
-  sender,
-  text,
-  me
+box,
+name,
+text,
+me
 ){
 
-  const row =
-    document.createElement("div");
+const row=
+document.createElement("div");
 
-  row.className =
-    "message-row" +
-    (me ? " me" : "");
+row.className=
+"message-row"+
+(me?" me":"");
 
+const bubble=
+document.createElement("div");
 
-  const bubble =
-    document.createElement("div");
+bubble.className="bubble";
 
-  bubble.className="bubble";
+bubble.textContent=text;
 
-  bubble.innerHTML =
-    escapeHTML(text);
+row.appendChild(bubble);
 
+box.appendChild(row);
 
-  if(me){
-
-    bubble.innerHTML +=
-      '<div class="seen">✓✓ Seen</div>';
-
-  }
-
-
-  row.appendChild(bubble);
-
-  box.appendChild(row);
+box.scrollTop=
+box.scrollHeight;
 
 }
 
 
-/* =========================================================
-   SEND CHAT MESSAGE
-========================================================= */
-
 function sendMessage(){
 
-  const input =
-    document.getElementById("chatInput");
+const input=
+document.getElementById("chatInput");
 
-  const text =
-    input.value.trim();
+const text=
+input.value.trim();
 
-  if(!text){
-    return;
-  }
+if(!text)return;
 
+addBubble(
+document.getElementById("chatMessages"),
+"You",
+text,
+true
+);
 
-  const box =
-    document.getElementById("chatMessages");
-
-  addBubble(
-    box,
-    "You",
-    text,
-    true
-  );
-
-
-  input.value="";
-
-  box.scrollTop =
-    box.scrollHeight;
+input.value="";
 
 }
 
 
 document
-  .getElementById("chatInput")
-  .addEventListener(
-    "keydown",
-    function(e){
+.getElementById("chatInput")
+.addEventListener(
+"keydown",
+e=>{
 
-      if(e.key==="Enter"){
+if(e.key==="Enter"){
 
-        e.preventDefault();
+e.preventDefault();
 
-        sendMessage();
-
-      }
-
-    }
-  );
-
-
-/* =========================================================
-   LIKE
-========================================================= */
-
-function toggleLike(button){
-
-  button.classList.toggle("liked");
-
-  const span =
-    button.querySelector("span");
-
-  if(
-    button.classList.contains("liked")
-  ){
-
-    span.textContent="12.5K";
-
-  }else{
-
-    span.textContent="12.4K";
-
-  }
+sendMessage();
 
 }
 
-
-/* =========================================================
-   SAVE
-========================================================= */
-
-function toggleSave(button){
-
-  button.classList.toggle("liked");
-
-  const span =
-    button.querySelector("span");
-
-  if(
-    button.classList.contains("liked")
-  ){
-
-    span.textContent="Saved";
-
-    toast("Saved to your collection");
-
-  }else{
-
-    span.textContent="Save";
-
-    toast("Removed from saved");
-
-  }
-
-}
+});
 
 
-/* =========================================================
-   FOLLOW
-========================================================= */
-
-function toggleFollow(button){
-
-  if(
-    button.textContent.trim()==="Follow"
-  ){
-
-    button.textContent="Following";
-
-    toast("Following");
-
-  }else{
-
-    button.textContent="Follow";
-
-    toast("Unfollowed");
-
-  }
-
-}
-
-
-/* =========================================================
-   SHARE
-========================================================= */
-
-async function sharePost(){
-
-  try{
-
-    if(navigator.share){
-
-      await navigator.share({
-        title:"X-DARK",
-        text:"Check this Reel on X-DARK",
-        url:location.href
-      });
-
-    }else{
-
-      await navigator.clipboard.writeText(
-        location.href
-      );
-
-      toast("Link copied");
-
-    }
-
-  }catch(error){
-
-    console.log(error);
-
-  }
-
-}
-
-
-/* =========================================================
+/* =====================================================
    COMMENTS
-========================================================= */
+===================================================== */
 
 function openComments(){
 
-  document
-    .getElementById("comments")
-    .classList.add("open");
+document
+.getElementById("comments")
+.classList.add("open");
 
 }
 
 
 function closeComments(){
 
-  document
-    .getElementById("comments")
-    .classList.remove("open");
+document
+.getElementById("comments")
+.classList.remove("open");
 
 }
 
 
 function commentKey(e){
 
-  if(e.key==="Enter"){
+if(e.key==="Enter"){
 
-    e.preventDefault();
+e.preventDefault();
 
-    addComment();
+addComment();
 
-  }
+}
 
 }
 
 
 function addComment(){
 
-  const input =
-    document.getElementById(
-      "commentInput"
-    );
+const input=
+document.getElementById("commentInput");
 
-  const text =
-    input.value.trim();
+const text=
+input.value.trim();
 
-  if(!text){
-    return;
-  }
+if(!text)return;
 
 
-  const comment =
-    document.createElement("div");
+const item=
+document.createElement("div");
 
-  comment.className="comment";
+item.className="comment";
 
+item.innerHTML=`
 
-  comment.innerHTML=`
+<div class="comment-avatar">
+A
+</div>
 
-    <div class="comment-avatar">
-      A
-    </div>
+<div class="comment-body">
 
-    <div class="comment-body">
+<b>Ankaj</b>
 
-      <b>Ankaj</b>
+<br>
 
-      <br>
+${escapeHTML(text)}
 
-      ${escapeHTML(text)}
+<br>
 
-      <br>
+<small>
+now
+</small>
 
-      <small>
-        now
-      </small>
+</div>
 
-    </div>
+`;
 
-  `;
+document
+.getElementById("commentList")
+.appendChild(item);
 
+input.value="";
 
-  document
-    .getElementById("commentList")
-    .appendChild(comment);
+const list=
+document.getElementById("commentList");
 
-
-  input.value="";
-
-
-  const list =
-    document.getElementById(
-      "commentList"
-    );
-
-  list.scrollTop =
-    list.scrollHeight;
+list.scrollTop=
+list.scrollHeight;
 
 }
 
 
-/* =========================================================
-   VIDEO PREVIEW
-========================================================= */
+/* =====================================================
+   LIKE
+===================================================== */
 
-function previewVideo(input){
+function toggleLike(button){
 
-  const file =
-    input.files[0];
+button.classList.toggle("liked");
 
-  if(!file){
-    return;
-  }
+const span=
+button.querySelector("span");
 
+if(
+button.classList.contains("liked")
+){
 
-  const preview =
-    document.getElementById("preview");
+span.textContent="12.5K";
 
-  const video =
-    document.getElementById(
-      "previewVideo"
-    );
+}else{
 
+span.textContent="12.4K";
 
-  video.src =
-    URL.createObjectURL(file);
-
-  preview.style.display="block";
+}
 
 }
 
 
-function publishReel(){
+/* =====================================================
+   SAVE
+===================================================== */
 
-  const input =
-    document.getElementById(
-      "videoInput"
-    );
+function toggleSave(button){
 
-  if(!input.files.length){
+button.classList.toggle("liked");
 
-    toast("Select a video first");
+const span=
+button.querySelector("span");
 
-    return;
+if(
+button.classList.contains("liked")
+){
 
-  }
+span.textContent="Saved";
 
+toast("Saved 🔖");
 
-  toast(
-    "Reel selected successfully"
-  );
+}else{
+
+span.textContent="Save";
+
+}
 
 }
 
 
-/* =========================================================
+/* =====================================================
+   FOLLOW
+===================================================== */
+
+function toggleFollow(button){
+
+if(
+button.textContent.trim()==="Follow"
+){
+
+button.textContent="Following";
+
+toast("Following");
+
+}else{
+
+button.textContent="Follow";
+
+toast("Unfollowed");
+
+}
+
+}
+
+
+/* =====================================================
+   SHARE
+===================================================== */
+
+async function sharePost(){
+
+try{
+
+if(navigator.share){
+
+await navigator.share({
+
+title:"X-DARK",
+
+text:"Check this on X-DARK",
+
+url:location.href
+
+});
+
+}else{
+
+await navigator.clipboard.writeText(
+location.href
+);
+
+toast("Link copied");
+
+}
+
+}catch(e){
+
+console.log(e);
+
+}
+
+}
+
+
+/* =====================================================
    TOAST
-========================================================= */
+===================================================== */
 
 function toast(message){
 
-  const box =
-    document.getElementById("toast");
+const box=
+document.getElementById("toast");
 
-  box.textContent=message;
+box.textContent=message;
 
-  box.classList.add("show");
+box.classList.add("show");
 
-  clearTimeout(
-    window.xDarkToast
-  );
+clearTimeout(window.xt);
 
-  window.xDarkToast =
-    setTimeout(
-      ()=>{
-        box.classList.remove("show");
-      },
-      2200
-    );
+window.xt=
+setTimeout(()=>{
+
+box.classList.remove("show");
+
+},2200);
 
 }
 
 
-/* =========================================================
-   HTML ESCAPE
-========================================================= */
+/* =====================================================
+   ESCAPE
+===================================================== */
 
 function escapeHTML(text){
 
-  return text
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+return text
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
 
 }
 
 
-/* =========================================================
-   REEL VIDEO AUTOPLAY
-========================================================= */
+/* =====================================================
+   VIDEO AUTO PLAY
+===================================================== */
 
-const videos =
-  document.querySelectorAll(
-    ".reel-video"
-  );
+const observer=
+new IntersectionObserver(
+entries=>{
 
+entries.forEach(entry=>{
 
-const observer =
-  new IntersectionObserver(
-    entries=>{
+const video=
+entry.target;
 
-      entries.forEach(entry=>{
+if(entry.isIntersecting){
 
-        if(entry.isIntersecting){
+video.play().catch(()=>{});
 
-          entry.target
-            .play()
-            .catch(()=>{});
+}else{
 
-        }else{
+video.pause();
 
-          entry.target.pause();
+}
 
-        }
+});
 
-      });
-
-    },
-    {
-      threshold:.65
-    }
-  );
+},
+{
+threshold:.65
+}
+);
 
 
-videos.forEach(video=>{
-  observer.observe(video);
+document
+.querySelectorAll(".reel-video")
+.forEach(video=>{
+observer.observe(video);
 });
 
 
-/* =========================================================
-   DOUBLE TAP LIKE
-========================================================= */
+/* =====================================================
+   DOUBLE TAP
+===================================================== */
 
 document
-  .querySelectorAll(".reel")
-  .forEach(reel=>{
+.querySelectorAll(".reel")
+.forEach(reel=>{
 
-    let lastTap=0;
+let last=0;
 
+reel.addEventListener(
+"click",
+e=>{
 
-    reel.addEventListener(
-      "click",
-      function(e){
+if(
+e.target.closest(
+".action,.top-btn,.you-camera,.follow"
+)
+)return;
 
-        if(
-          e.target.closest(
-            ".action,.icon-btn,.follow,.you-story"
-          )
-        ){
-          return;
-        }
+const now=Date.now();
 
+if(now-last<300){
 
-        const now =
-          Date.now();
+const like=
+reel.querySelector(".like-button");
 
+if(like){
 
-        if(
-          now-lastTap<300
-        ){
+if(
+!like.classList.contains("liked")
+){
 
-          const like =
-            reel.querySelector(
-              ".like-button"
-            );
+toggleLike(like);
 
+toast("❤️ Liked");
 
-          if(
-            like &&
-            !like.classList.contains(
-              "liked"
-            )
-          ){
+}
 
-            toggleLike(like);
+}
 
-            toast("❤️ Liked");
+}
 
-          }
+last=now;
 
-        }
+});
 
-
-        lastTap=now;
-
-      }
-    );
-
-  });
-
-
-/* =========================================================
-   SWIPE / ESC BACK
-========================================================= */
-
-document.addEventListener(
-  "keydown",
-  function(e){
-
-    if(e.key==="Escape"){
-
-      closeComments();
-      closeChat();
-      closePanels();
-
-    }
-
-  }
-);
+});
 
 </script>
 
