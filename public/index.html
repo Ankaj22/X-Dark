@@ -2,1821 +2,1629 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width,initial-scale=1.0,viewport-fit=cover">
-
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#050507">
-
-<title>X-DARK</title>
+<title>X-DARK — The Next Level</title>
 
 <style>
-
 :root{
---bg:#050507;
---panel:rgba(14,14,20,.82);
---panel2:#111117;
---line:rgba(255,255,255,.11);
---muted:#858590;
---white:#fff;
---purple:#763cff;
---purple2:#a96dff;
---pink:#ff287c;
---cyan:#55c8ff;
+  --bg:#050507;
+  --panel:#0b0b10;
+  --card:#121219;
+  --card2:#181820;
+  --line:rgba(255,255,255,.13);
+  --muted:#858592;
+  --purple:#7d3cff;
+  --purple2:#a66cff;
+  --green:#48e58a;
 }
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
--webkit-tap-highlight-color:transparent;
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
 }
 
 html,body{
-width:100%;
-height:100%;
-overflow:hidden;
-background:#000;
-color:white;
-font-family:
--apple-system,
-BlinkMacSystemFont,
-"SF Pro Display",
-"Segoe UI",
-Arial,sans-serif;
+  margin:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  background:#000;
+  color:#fff;
+  font-family:-apple-system,BlinkMacSystemFont,
+  "SF Pro Display","Segoe UI",Arial,sans-serif;
+}
+
+body{
+  overscroll-behavior:none;
 }
 
 button,input,textarea{
-font:inherit;
+  font:inherit;
 }
 
 button{
-border:0;
-color:white;
-cursor:pointer;
-}
-
-svg{
-display:block;
+  border:0;
+  color:#fff;
+  cursor:pointer;
 }
 
 .app{
-position:relative;
-width:100%;
-height:100dvh;
-overflow:hidden;
-background:#050507;
+  position:relative;
+  width:100%;
+  height:100dvh;
+  overflow:hidden;
+  background:#050507;
 }
 
-/* =====================================
-   FEED
-===================================== */
-
 .feed{
-height:100%;
-width:100%;
-overflow-y:auto;
-scroll-snap-type:y mandatory;
-scrollbar-width:none;
+  width:100%;
+  height:100%;
+  overflow-y:auto;
+  scroll-snap-type:y mandatory;
+  scrollbar-width:none;
 }
 
 .feed::-webkit-scrollbar{
-display:none;
+  display:none;
 }
 
 .reel{
-position:relative;
-width:100%;
-height:100dvh;
-overflow:hidden;
-scroll-snap-align:start;
-background:#08080b;
+  position:relative;
+  width:100%;
+  height:100dvh;
+  overflow:hidden;
+  scroll-snap-align:start;
+  background:#07070a;
 }
 
-.reel-video{
-position:absolute;
-inset:0;
-width:100%;
-height:100%;
-object-fit:cover;
+.reel-media{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
 .reel:after{
-content:"";
-position:absolute;
-inset:0;
-z-index:2;
-pointer-events:none;
-
-background:
-linear-gradient(
-180deg,
-rgba(0,0,0,.78),
-rgba(0,0,0,.05) 34%,
-rgba(0,0,0,.15) 58%,
-rgba(0,0,0,.92)
-);
+  content:"";
+  position:absolute;
+  z-index:2;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,.78),
+      rgba(0,0,0,.08) 38%,
+      rgba(0,0,0,.18) 60%,
+      rgba(0,0,0,.96)
+    );
 }
 
-/* =====================================
+/* =========================
    TOP BAR
-===================================== */
+========================= */
 
 .topbar{
-position:absolute;
-z-index:40;
-
-top:0;
-left:0;
-right:0;
-
-height:91px;
-
-padding:
-calc(env(safe-area-inset-top) + 7px)
-14px
-0;
-
-display:flex;
-align-items:center;
-justify-content:space-between;
+  position:absolute;
+  z-index:50;
+  top:0;
+  left:0;
+  right:0;
+  height:82px;
+  padding:
+    calc(env(safe-area-inset-top) + 5px)
+    12px 0;
+  display:flex;
+  align-items:flex-start;
+  justify-content:flex-end;
 }
 
-/* Centered brand group */
-
-.brand{
-position:absolute;
-
-left:50%;
-
-transform:translateX(-50%);
-
-display:flex;
-align-items:center;
-
-gap:8px;
-
-white-space:nowrap;
-}
-
-/* YOU */
-
-.you-camera{
-width:44px;
-height:44px;
-
-padding:2px;
-
-border-radius:50%;
-
-background:
-conic-gradient(
-#ff463d,
-#ff2b82,
-#743cff,
-#55b8ff,
-#ff463d
-);
-
-box-shadow:
-0 0 24px rgba(124,60,255,.38);
-
-transition:.2s;
-}
-
-.you-camera:active{
-transform:scale(.91);
-}
-
-.you-camera-inner{
-width:100%;
-height:100%;
-
-border-radius:50%;
-
-background:#0c0c11;
-
-border:2px solid #08080b;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-position:relative;
-}
-
-.you-camera-inner svg{
-width:20px;
-height:20px;
-
-fill:none;
-stroke:white;
-
-stroke-width:1.7;
-
-stroke-linecap:round;
-stroke-linejoin:round;
-}
-
-.camera-dot{
-position:absolute;
-
-right:7px;
-top:6px;
-
-width:5px;
-height:5px;
-
-border-radius:50%;
-
-background:#ff3c7e;
-
-box-shadow:
-0 0 8px #ff3c7e;
-}
-
-/* LOGO */
+/* LEFT LOGO */
 
 .logo{
-font-size:23px;
+  position:absolute;
+  left:16px;
+  right:auto;
+  top:calc(env(safe-area-inset-top) + 7px);
 
-font-weight:800;
+  width:48px;
+  height:48px;
 
-letter-spacing:-1.5px;
+  object-fit:cover;
+  border-radius:50%;
 
-line-height:1;
+  border:1px solid rgba(255,255,255,.16);
 
-text-shadow:
-0 3px 18px rgba(0,0,0,.8);
+  filter:
+    drop-shadow(0 0 7px rgba(126,61,255,.62))
+    drop-shadow(0 0 15px rgba(126,61,255,.28));
+
+  z-index:10;
+
+  transition:
+    transform .2s ease,
+    filter .2s ease;
 }
 
-.logo .xdark{
-color:#fff;
+.logo:active{
+  transform:scale(.90);
 }
 
-.logo .dark{
-background:
-linear-gradient(
-100deg,
-#713cff,
-#a86cff,
-#ff3e91
-);
-
--webkit-background-clip:text;
-background-clip:text;
-color:transparent;
-}
-
-/* RIGHT TOP */
+/* RIGHT BUTTONS */
 
 .top-actions{
-display:flex;
-gap:8px;
-
-margin-left:auto;
+  display:flex;
+  gap:7px;
 }
 
-.top-btn{
-width:42px;
-height:42px;
+.icon-btn{
+  width:43px;
+  height:43px;
+  border-radius:50%;
 
-border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-background:
-rgba(10,10,15,.58);
+  background:rgba(5,5,9,.68);
 
-border:1px solid var(--line);
+  border:1px solid var(--line);
 
-backdrop-filter:blur(18px);
-
-display:flex;
-align-items:center;
-justify-content:center;
+  backdrop-filter:blur(18px);
 }
 
-.top-btn:active{
-transform:scale(.93);
+.icon-btn svg{
+  width:21px;
+  height:21px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
 }
 
-.top-btn svg{
-width:20px;
-height:20px;
+/* =========================
+   STORIES
+========================= */
 
-fill:none;
-stroke:#fff;
+.story-row{
+  position:absolute;
+  z-index:25;
 
-stroke-width:1.7;
+  top:88px;
+  left:0;
+  right:0;
 
-stroke-linecap:round;
-stroke-linejoin:round;
+  display:flex;
+  gap:14px;
+
+  padding:
+    0 18px;
+
+  overflow-x:auto;
+
+  scrollbar-width:none;
 }
 
-/* =====================================
-   RIGHT ACTIONS
-===================================== */
-
-.actions{
-position:absolute;
-
-z-index:20;
-
-right:9px;
-bottom:122px;
-
-display:flex;
-flex-direction:column;
-
-gap:9px;
+.story-row::-webkit-scrollbar{
+  display:none;
 }
 
-.action{
-width:54px;
-min-height:56px;
-
-border-radius:17px;
-
-background:
-rgba(10,10,14,.45);
-
-border:1px solid rgba(255,255,255,.12);
-
-backdrop-filter:blur(17px);
-
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-
-gap:4px;
-
-text-shadow:
-0 2px 8px #000;
+.story{
+  min-width:61px;
+  text-align:center;
 }
 
-.action:active{
-transform:scale(.93);
+.story-ring-wrap{
+  position:relative;
 }
 
-.action svg{
-width:25px;
-height:25px;
+.story-ring{
+  width:58px;
+  height:58px;
+  padding:2px;
 
-fill:none;
-stroke:#fff;
+  border-radius:50%;
 
-stroke-width:1.8;
-
-stroke-linecap:round;
-stroke-linejoin:round;
+  background:
+    conic-gradient(
+      #ff493e,
+      #ff2780,
+      #763cff,
+      #55c8ff,
+      #ff493e
+    );
 }
 
-.action span{
-font-size:9px;
-font-weight:850;
+.story-inner{
+  width:100%;
+  height:100%;
+
+  border-radius:50%;
+
+  background:#15151d;
+
+  border:
+    2px solid #07070a;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-weight:900;
 }
 
-.action.liked svg{
-fill:#ff347e;
-stroke:#ff347e;
-}
-
-/* =====================================
-   REEL CONTENT
-===================================== */
-
-.content{
-position:absolute;
-
-z-index:20;
-
-left:18px;
-right:75px;
-
-bottom:102px;
-}
-
-.creator{
-display:flex;
-align-items:center;
-
-gap:8px;
-
-margin-bottom:12px;
-}
-
-.avatar{
-width:45px;
-height:45px;
-
-border-radius:50%;
-
-background:
-linear-gradient(
-135deg,
-#6e35ff,
-#a76aff
-);
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-font-weight:950;
-font-size:17px;
-
-border:2px solid rgba(255,255,255,.22);
-}
-
-.creator-info{
-min-width:0;
-}
-
-.creator-name{
-font-size:17px;
-font-weight:900;
-}
-
-.followers{
-font-size:9px;
-color:#d0d0d7;
-margin-top:2px;
-}
-
-.follow{
-padding:8px 13px;
-
-border-radius:12px;
-
-background:
-rgba(255,255,255,.08);
-
-border:1px solid rgba(255,255,255,.75);
-
-font-size:10px;
-font-weight:900;
-
-backdrop-filter:blur(10px);
-}
-
-.caption{
-font-size:16px;
-font-weight:700;
-line-height:1.42;
-
-text-shadow:
-0 2px 8px #000;
-}
-
-.hashtags{
-margin-top:7px;
-
-font-size:12px;
-font-weight:750;
-
-color:#ded3ff;
-}
-
-.audio{
-display:flex;
-align-items:center;
-
-gap:7px;
-
-margin-top:9px;
-
-font-size:11px;
-}
-
-.audio-circle{
-width:23px;
-height:23px;
-
-border:1px solid white;
-
-border-radius:50%;
-
-display:flex;
-align-items:center;
-justify-content:center;
-}
-
-/* =====================================
-   BOTTOM
-===================================== */
-
-.bottom{
-position:absolute;
-
-z-index:100;
-
-left:9px;
-right:9px;
-bottom:8px;
-
-height:69px;
-
-border-radius:24px;
-
-background:
-rgba(9,9,13,.88);
-
-border:1px solid var(--line);
-
-backdrop-filter:blur(25px);
-
-display:flex;
-align-items:center;
-justify-content:space-around;
-}
-
-.nav{
-width:62px;
-height:60px;
-
-background:none;
-
-color:#777781;
-
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-
-gap:4px;
-}
-
-.nav svg{
-width:23px;
-height:23px;
-
-fill:none;
-stroke:currentColor;
-
-stroke-width:1.8;
-
-stroke-linecap:round;
-stroke-linejoin:round;
-}
-
-.nav span{
-font-size:9px;
-font-weight:850;
-}
-
-.nav.active{
-color:#fff;
-}
-
-.nav.active svg{
-stroke:#9a5cff;
-}
-
-.create{
-width:49px;
-height:40px;
-
-border-radius:14px;
-
-background:
-linear-gradient(
-145deg,
-#fff,
-#d9d9de
-);
-
-color:#08080a;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-box-shadow:
-0 5px 20px rgba(255,255,255,.12);
-}
-
-/* =====================================
-   PANELS
-===================================== */
-
-.panel{
-position:absolute;
-inset:0;
-
-z-index:300;
-
-background:
-radial-gradient(
-circle at 85% 0%,
-rgba(116,59,255,.20),
-transparent 33%
-),
-#07070a;
-
-transform:translateX(100%);
-
-transition:
-transform .35s cubic-bezier(.2,.8,.2,1);
-
-overflow-y:auto;
-}
-
-.panel.open{
-transform:translateX(0);
-}
-
-.panel-head{
-position:sticky;
-top:0;
-
-z-index:30;
-
-height:74px;
-
-padding:
-calc(env(safe-area-inset-top) + 5px)
-14px
-0;
-
-display:flex;
-align-items:center;
-
-background:
-rgba(7,7,10,.90);
-
-border-bottom:1px solid var(--line);
-
-backdrop-filter:blur(23px);
-}
-
-.back{
-width:42px;
-height:42px;
-
-border-radius:50%;
-
-background:#17171d;
-
-border:1px solid var(--line);
-
-display:flex;
-align-items:center;
-justify-content:center;
-}
-
-.back svg{
-width:21px;
-height:21px;
-
-fill:none;
-stroke:#fff;
-
-stroke-width:2;
-
-stroke-linecap:round;
-stroke-linejoin:round;
-}
-
-.panel-title{
-flex:1;
-
-text-align:center;
-
-font-size:18px;
-font-weight:900;
-}
-
-/* =====================================
-   MESSAGES
-===================================== */
-
-.chat-users{
-display:flex;
-gap:17px;
-
-padding:17px;
-
-overflow-x:auto;
-
-scrollbar-width:none;
-}
-
-.chat-users::-webkit-scrollbar{
-display:none;
-}
-
-.person{
-min-width:61px;
-text-align:center;
-}
-
-.person-avatar{
-position:relative;
-
-width:57px;
-height:57px;
-
-padding:2px;
-
-margin:auto;
-
-border-radius:50%;
-
-background:
-conic-gradient(
-#ff473e,
-#ff2780,
-#763cff,
-#55c8ff,
-#ff473e
-);
-}
-
-.person-inner{
-width:100%;
-height:100%;
-
-border-radius:50%;
-
-background:#15151c;
-
-border:2px solid #08080b;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-font-size:18px;
-font-weight:900;
+.story b{
+  display:block;
+  margin-top:5px;
+  font-size:9px;
 }
 
 .online{
-position:absolute;
+  position:absolute;
 
-right:0;
-bottom:0;
+  width:12px;
+  height:12px;
 
-width:13px;
-height:13px;
+  right:0;
+  bottom:0;
 
-border-radius:50%;
+  border-radius:50%;
 
-background:#42e58a;
+  background:var(--green);
 
-border:2px solid #08080b;
+  border:
+    2px solid #07070a;
 }
 
-.person-name{
-margin-top:6px;
+/* =========================
+   RIGHT ACTIONS
+========================= */
 
-font-size:10px;
-font-weight:850;
+.actions{
+  position:absolute;
+  z-index:25;
+
+  right:8px;
+  bottom:122px;
+
+  display:flex;
+  flex-direction:column;
+  gap:8px;
 }
+
+.action{
+  width:55px;
+  min-height:57px;
+
+  border-radius:17px;
+
+  background:
+    rgba(8,8,12,.47);
+
+  border:
+    1px solid rgba(255,255,255,.14);
+
+  backdrop-filter:blur(17px);
+
+  display:flex;
+  flex-direction:column;
+
+  align-items:center;
+  justify-content:center;
+
+  gap:3px;
+
+  text-shadow:
+    0 2px 8px #000;
+}
+
+.action svg{
+  width:24px;
+  height:24px;
+
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.action span{
+  font-size:9px;
+  font-weight:900;
+}
+
+.action.liked svg{
+  color:#ff3b83;
+  fill:#ff3b83;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.content{
+  position:absolute;
+
+  z-index:25;
+
+  left:18px;
+  right:73px;
+  bottom:101px;
+}
+
+.creator{
+  display:flex;
+  align-items:center;
+
+  gap:8px;
+
+  margin-bottom:11px;
+}
+
+.avatar{
+  width:45px;
+  height:45px;
+
+  flex:none;
+
+  border-radius:50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #7136ff,
+      #a56cff
+    );
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-weight:950;
+
+  border:
+    2px solid rgba(255,255,255,.22);
+}
+
+.creator-info{
+  min-width:0;
+}
+
+.creator-name{
+  font-size:17px;
+  font-weight:900;
+}
+
+.followers{
+  margin-top:2px;
+
+  color:#d0d0d7;
+
+  font-size:9px;
+}
+
+.follow{
+  padding:8px 13px;
+
+  border-radius:12px;
+
+  background:
+    rgba(255,255,255,.08);
+
+  border:
+    1px solid rgba(255,255,255,.78);
+
+  font-size:10px;
+
+  font-weight:900;
+
+  backdrop-filter:blur(10px);
+}
+
+.caption{
+  font-size:16px;
+
+  font-weight:750;
+
+  line-height:1.42;
+
+  text-shadow:
+    0 2px 8px #000;
+}
+
+.hashtags{
+  margin-top:7px;
+
+  color:#ded3ff;
+
+  font-size:12px;
+
+  font-weight:750;
+}
+
+.audio{
+  display:flex;
+  align-items:center;
+
+  gap:7px;
+
+  margin-top:9px;
+
+  font-size:11px;
+}
+
+.audio-circle{
+  width:23px;
+  height:23px;
+
+  border:1px solid #fff;
+
+  border-radius:50%;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* =========================
+   BOTTOM NAV
+========================= */
+
+.bottom{
+  position:absolute;
+
+  z-index:100;
+
+  left:9px;
+  right:9px;
+
+  bottom:8px;
+
+  height:69px;
+
+  border-radius:24px;
+
+  background:
+    rgba(9,9,13,.91);
+
+  border:
+    1px solid var(--line);
+
+  backdrop-filter:blur(25px);
+
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+}
+
+.nav{
+  width:62px;
+  height:60px;
+
+  background:none;
+
+  color:#777781;
+
+  display:flex;
+  flex-direction:column;
+
+  align-items:center;
+  justify-content:center;
+
+  gap:4px;
+}
+
+.nav svg{
+  width:23px;
+  height:23px;
+
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.nav span{
+  font-size:9px;
+  font-weight:850;
+}
+
+.nav.active{
+  color:#fff;
+}
+
+.nav.active svg{
+  color:#9b5cff;
+}
+
+.create{
+  width:49px;
+  height:40px;
+
+  border-radius:14px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fff,
+      #d9d9de
+    );
+
+  color:#08080a;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.create svg{
+  width:23px;
+  height:23px;
+}
+
+/* =========================
+   PANELS
+========================= */
+
+.panel{
+  position:absolute;
+
+  z-index:300;
+
+  inset:0;
+
+  background:
+    radial-gradient(
+      circle at 85% 0,
+      rgba(116,59,255,.2),
+      transparent 34%
+    ),
+    #07070a;
+
+  transform:
+    translateX(100%);
+
+  transition:
+    transform .34s
+    cubic-bezier(.2,.8,.2,1);
+
+  overflow-y:auto;
+}
+
+.panel.open{
+  transform:
+    translateX(0);
+}
+
+.panel-head{
+  position:sticky;
+
+  z-index:30;
+
+  top:0;
+
+  height:74px;
+
+  padding:
+    calc(env(safe-area-inset-top) + 4px)
+    14px 0;
+
+  display:flex;
+  align-items:center;
+
+  background:
+    rgba(7,7,10,.93);
+
+  border-bottom:
+    1px solid var(--line);
+
+  backdrop-filter:
+    blur(23px);
+}
+
+.back{
+  width:42px;
+  height:42px;
+
+  border-radius:50%;
+
+  background:#17171d;
+
+  border:
+    1px solid var(--line);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.back svg{
+  width:21px;
+  height:21px;
+
+  fill:none;
+  stroke:currentColor;
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.panel-title{
+  flex:1;
+
+  text-align:center;
+
+  font-size:18px;
+
+  font-weight:900;
+}
+
+.spacer{
+  width:42px;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.card{
+  margin:10px 14px;
+
+  padding:13px;
+
+  border-radius:18px;
+
+  background:#111117;
+
+  border:
+    1px solid var(--line);
+
+  display:flex;
+  align-items:center;
+
+  gap:11px;
+}
+
+.card-info{
+  flex:1;
+}
+
+.card-info strong{
+  font-size:14px;
+}
+
+.card-info small{
+  display:block;
+
+  margin-top:4px;
+
+  color:#777781;
+
+  font-size:10px;
+}
+
+/* =========================
+   CHAT LIST
+========================= */
 
 .chat-card{
-margin:9px 14px;
+  margin:9px 14px;
 
-padding:12px;
+  padding:12px;
 
-min-height:73px;
+  border-radius:18px;
 
-border-radius:18px;
+  background:#111117;
 
-background:#111117;
+  border:
+    1px solid var(--line);
 
-border:1px solid var(--line);
+  display:flex;
+  align-items:center;
 
-display:flex;
-align-items:center;
+  gap:11px;
+}
 
-gap:11px;
+.chat-card:active{
+  transform:scale(.99);
 }
 
 .chat-info{
-flex:1;
+  flex:1;
 }
 
 .chat-info strong{
-font-size:14px;
+  font-size:14px;
 }
 
 .chat-info small{
-display:block;
+  display:block;
 
-margin-top:4px;
+  margin-top:4px;
 
-color:#777781;
+  color:#777781;
 
-font-size:10px;
+  font-size:10px;
 }
 
-/* =====================================
+.chat-time{
+  font-size:8px;
+
+  color:#777781;
+}
+
+/* =========================
    CHAT
-===================================== */
+========================= */
 
-.chat-messages{
-height:calc(100dvh - 137px);
+.messages{
+  height:
+    calc(100dvh - 137px);
 
-overflow-y:auto;
+  overflow-y:auto;
 
-padding:17px 14px 85px;
+  padding:
+    16px 14px 80px;
 }
 
-.message-row{
-display:flex;
+.msg{
+  display:flex;
 
-margin-bottom:11px;
+  margin-bottom:10px;
 }
 
-.message-row.me{
-justify-content:flex-end;
+.msg.me{
+  justify-content:flex-end;
 }
 
 .bubble{
-max-width:78%;
+  max-width:78%;
 
-padding:10px 13px;
+  padding:
+    10px 13px;
 
-border-radius:
-17px 17px 17px 5px;
+  border-radius:
+    17px 17px 17px 5px;
 
-background:#17171e;
+  background:#17171e;
 
-border:1px solid var(--line);
+  border:
+    1px solid var(--line);
 
-font-size:13px;
-line-height:1.4;
+  font-size:13px;
+
+  line-height:1.42;
 }
 
-.message-row.me .bubble{
-border-radius:
-17px 17px 5px 17px;
+.msg.me .bubble{
+  border-radius:
+    17px 17px 5px 17px;
 
-background:
-linear-gradient(
-135deg,
-#6132d7,
-#8b4dff
-);
+  background:
+    linear-gradient(
+      135deg,
+      #6132d7,
+      #8b4dff
+    );
 }
 
 .chat-input{
-position:absolute;
+  position:absolute;
 
-left:9px;
-right:9px;
-bottom:8px;
+  z-index:20;
 
-height:60px;
+  left:9px;
+  right:9px;
 
-border-radius:21px;
+  bottom:8px;
 
-background:
-rgba(15,15,20,.95);
+  height:60px;
 
-border:1px solid var(--line);
+  border-radius:21px;
 
-display:flex;
-align-items:center;
+  background:
+    rgba(15,15,20,.97);
 
-padding:7px;
+  border:
+    1px solid var(--line);
 
-gap:7px;
+  display:flex;
+  align-items:center;
 
-backdrop-filter:blur(20px);
+  padding:7px;
+
+  gap:7px;
 }
 
 .chat-input input{
-flex:1;
+  flex:1;
 
-height:43px;
+  height:43px;
 
-background:none;
-border:0;
-outline:0;
+  background:none;
 
-color:#fff;
+  border:0;
 
-padding:0 7px;
+  outline:0;
+
+  color:#fff;
+
+  padding:0 7px;
 }
 
 .send{
-width:43px;
-height:43px;
+  width:43px;
+  height:43px;
 
-border-radius:50%;
+  border-radius:50%;
 
-background:
-linear-gradient(
-135deg,
-#713cff,
-#a76cff
-);
+  background:
+    linear-gradient(
+      135deg,
+      #713cff,
+      #a76cff
+    );
 
-display:flex;
-align-items:center;
-justify-content:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 .send svg{
-width:20px;
-height:20px;
+  width:21px;
+  height:21px;
 
-fill:none;
-stroke:#fff;
-
-stroke-width:2;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
 }
 
-/* =====================================
+/* =========================
    COMMENTS
-===================================== */
+========================= */
 
 .comments{
-position:absolute;
+  position:absolute;
 
-z-index:700;
+  z-index:700;
 
-left:0;
-right:0;
-bottom:0;
+  left:0;
+  right:0;
+  bottom:0;
 
-background:#111116;
+  background:#111116;
 
-border-radius:
-27px 27px 0 0;
+  border-radius:
+    27px 27px 0 0;
 
-transform:translateY(100%);
+  transform:
+    translateY(100%);
 
-transition:
-transform .35s cubic-bezier(.2,.8,.2,1);
+  transition:
+    transform .34s
+    cubic-bezier(.2,.8,.2,1);
 
-box-shadow:
-0 -25px 80px rgba(0,0,0,.65);
+  box-shadow:
+    0 -25px 80px
+    rgba(0,0,0,.65);
 }
 
 .comments.open{
-transform:translateY(0);
+  transform:
+    translateY(0);
 }
 
 .comment-head{
-height:62px;
+  height:62px;
 
-position:relative;
+  position:relative;
 
-display:flex;
-align-items:center;
-justify-content:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-border-bottom:1px solid var(--line);
+  border-bottom:
+    1px solid var(--line);
+
+  font-weight:850;
 }
 
 .comment-back{
-position:absolute;
+  position:absolute;
 
-left:12px;
+  left:12px;
 
-width:42px;
-height:42px;
+  width:42px;
+  height:42px;
 
-border-radius:50%;
+  border-radius:50%;
 
-background:#1a1a20;
+  background:#1a1a20;
 
-border:1px solid var(--line);
+  border:
+    1px solid var(--line);
 
-display:flex;
-align-items:center;
-justify-content:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 .comment-back svg{
-width:21px;
-height:21px;
+  width:21px;
+  height:21px;
 
-fill:none;
-stroke:white;
-
-stroke-width:2;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
 }
 
 .comment-list{
-height:42vh;
+  height:42vh;
 
-overflow-y:auto;
+  overflow-y:auto;
 
-padding:15px;
+  padding:15px;
 }
 
 .comment{
-display:flex;
+  display:flex;
 
-gap:9px;
+  gap:9px;
 
-margin-bottom:17px;
+  margin-bottom:17px;
 }
 
 .comment-avatar{
-width:37px;
-height:37px;
+  width:37px;
+  height:37px;
 
-flex:none;
+  flex:none;
 
-border-radius:50%;
+  border-radius:50%;
 
-background:
-linear-gradient(
-135deg,
-#743cff,
-#a56cff
-);
+  background:
+    linear-gradient(
+      135deg,
+      #743cff,
+      #a56cff
+    );
 
-display:flex;
-align-items:center;
-justify-content:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-font-size:12px;
-font-weight:900;
+  font-size:12px;
+
+  font-weight:900;
 }
 
 .comment-body{
-font-size:12px;
-line-height:1.5;
+  font-size:12px;
+
+  line-height:1.5;
 }
 
 .comment-body small{
-color:#777781;
+  color:#777781;
 }
 
 .comment-input{
-display:flex;
+  display:flex;
 
-gap:7px;
+  gap:7px;
 
-padding:
-9px
-13px
-calc(9px + env(safe-area-inset-bottom));
+  padding:
+    9px 13px
+    calc(9px + env(safe-area-inset-bottom));
 }
 
 .comment-input input{
-flex:1;
+  flex:1;
 
-height:44px;
+  height:44px;
 
-border-radius:22px;
+  border-radius:22px;
 
-background:#1b1b22;
+  background:#1b1b22;
 
-border:1px solid var(--line);
+  border:
+    1px solid var(--line);
 
-outline:0;
+  outline:0;
 
-color:#fff;
+  color:#fff;
 
-padding:0 14px;
+  padding:
+    0 14px;
 }
 
 .comment-send{
-width:44px;
-height:44px;
+  width:44px;
+  height:44px;
 
-border-radius:50%;
+  border-radius:50%;
 
-background:#8146ff;
+  background:#8146ff;
 
-display:flex;
-align-items:center;
-justify-content:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 .comment-send svg{
-width:20px;
-height:20px;
+  width:20px;
+  height:20px;
 
-fill:none;
-stroke:#fff;
-
-stroke-width:2;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
 }
 
-/* =====================================
-   CREATE STUDIO
-===================================== */
-
-.studio{
-padding:14px;
-
-min-height:calc(100dvh - 74px);
-
-display:flex;
-flex-direction:column;
-}
-
-.mode-tabs{
-display:flex;
-
-gap:7px;
-
-margin-bottom:13px;
-}
-
-.mode-tab{
-flex:1;
-
-height:41px;
-
-border-radius:13px;
-
-background:#121218;
-
-border:1px solid var(--line);
-
-font-size:11px;
-font-weight:850;
-
-color:#858590;
-}
-
-.mode-tab.active{
-background:
-linear-gradient(
-135deg,
-#6634dc,
-#914fff
-);
-
-color:#fff;
-
-border-color:transparent;
-}
-
-.editor{
-position:relative;
-
-width:100%;
-
-height:58vh;
-
-min-height:390px;
-
-border-radius:24px;
-
-overflow:hidden;
-
-background:#0e0e13;
-
-border:1px solid var(--line);
-
-box-shadow:
-0 20px 60px rgba(0,0,0,.45);
-}
-
-.editor video,
-.editor img{
-position:absolute;
-
-inset:0;
-
-width:100%;
-height:100%;
-
-object-fit:cover;
-
-display:none;
-
-transition:
-filter .2s,
-transform .2s;
-}
-
-.editor.empty{
-display:flex;
-align-items:center;
-justify-content:center;
-}
-
-.empty-editor{
-text-align:center;
-}
-
-.empty-camera{
-width:65px;
-height:65px;
-
-margin:auto;
-
-border-radius:21px;
-
-background:
-linear-gradient(
-135deg,
-#1c1530,
-#171720
-);
-
-border:1px solid #3a3150;
-
-display:flex;
-align-items:center;
-justify-content:center;
-}
-
-.empty-camera svg{
-width:30px;
-height:30px;
-
-fill:none;
-stroke:#aa70ff;
-
-stroke-width:1.7;
-}
-
-.empty-editor strong{
-display:block;
-
-margin-top:13px;
-
-font-size:15px;
-}
-
-.empty-editor small{
-display:block;
-
-margin-top:5px;
-
-color:#777781;
-
-font-size:10px;
-}
-
-.editor-controls{
-position:absolute;
-
-left:10px;
-bottom:10px;
-
-right:10px;
-
-display:flex;
-
-gap:7px;
-
-z-index:10;
-}
-
-.editor-main-btn{
-flex:1;
-
-height:44px;
-
-border-radius:14px;
-
-background:
-rgba(5,5,8,.74);
-
-border:1px solid rgba(255,255,255,.13);
-
-backdrop-filter:blur(15px);
-
-font-size:11px;
-font-weight:850;
-}
-
-/* SIDE EDIT MENU */
-
-.edit-menu{
-position:absolute;
-
-right:9px;
-top:10px;
-
-z-index:20;
-
-display:flex;
-flex-direction:column;
-
-gap:7px;
-}
-
-.edit-btn{
-width:43px;
-height:43px;
-
-border-radius:14px;
-
-background:
-rgba(7,7,11,.72);
-
-border:1px solid rgba(255,255,255,.14);
-
-backdrop-filter:blur(15px);
-
-display:flex;
-align-items:center;
-justify-content:center;
-}
-
-.edit-btn.active{
-background:
-linear-gradient(
-135deg,
-#6e38e8,
-#914dff
-);
-}
-
-.edit-btn svg{
-width:19px;
-height:19px;
-
-fill:none;
-stroke:white;
-
-stroke-width:1.7;
-
-stroke-linecap:round;
-stroke-linejoin:round;
-}
-
-/* FILTERS */
-
-.filter-panel{
-display:none;
-
-position:absolute;
-
-left:8px;
-right:8px;
-bottom:61px;
-
-z-index:30;
-
-padding:10px;
-
-border-radius:17px;
-
-background:
-rgba(8,8,12,.91);
-
-border:1px solid var(--line);
-
-backdrop-filter:blur(20px);
-}
-
-.filter-panel.show{
-display:block;
-}
-
-.filter-row{
-display:flex;
-
-gap:8px;
-
-overflow-x:auto;
-
-scrollbar-width:none;
-}
-
-.filter-row::-webkit-scrollbar{
-display:none;
-}
-
-.filter{
-min-width:57px;
-
-height:57px;
-
-border-radius:13px;
-
-border:1px solid rgba(255,255,255,.12);
-
-overflow:hidden;
-
-position:relative;
-}
-
-.filter span{
-position:absolute;
-
-left:0;
-right:0;
-bottom:0;
-
-padding:4px;
-
-font-size:7px;
-
-font-weight:850;
-
-text-align:center;
-
-background:rgba(0,0,0,.55);
-}
-
-.f-normal{
-filter:none;
-}
-
-.f-vivid{
-filter:saturate(1.6) contrast(1.12);
-}
-
-.f-cinema{
-filter:contrast(1.3) saturate(.82) brightness(.92);
-}
-
-.f-cool{
-filter:
-hue-rotate(18deg)
-saturate(1.25)
-contrast(1.1);
-}
-
-.f-warm{
-filter:
-sepia(.28)
-saturate(1.45)
-contrast(1.05);
-}
-
-.f-night{
-filter:
-brightness(.68)
-contrast(1.35)
-saturate(1.2);
-}
-
-.f-dream{
-filter:
-brightness(1.08)
-saturate(.75)
-blur(.25px);
-}
-
-/* SLIDERS */
-
-.adjust-panel{
-display:none;
-
-position:absolute;
-
-left:9px;
-right:9px;
-bottom:61px;
-
-z-index:31;
-
-padding:13px;
-
-border-radius:18px;
-
-background:
-rgba(8,8,12,.94);
-
-border:1px solid var(--line);
-
-backdrop-filter:blur(20px);
-}
-
-.adjust-panel.show{
-display:block;
-}
-
-.adjust-line{
-display:flex;
-
-align-items:center;
-
-gap:9px;
-
-margin-bottom:10px;
-}
-
-.adjust-line label{
-width:70px;
-
-font-size:9px;
-font-weight:800;
-}
-
-.adjust-line input{
-flex:1;
-}
-
-.publish-row{
-display:flex;
-
-gap:8px;
-
-margin-top:12px;
-}
-
-.publish{
-flex:1;
-
-height:49px;
-
-border-radius:15px;
-
-background:
-linear-gradient(
-135deg,
-#713cff,
-#a66cff
-);
-
-font-weight:900;
-}
-
-.cancel{
-width:85px;
-
-height:49px;
-
-border-radius:15px;
-
-background:#17171d;
-
-border:1px solid var(--line);
-
-font-size:11px;
-font-weight:850;
-}
-
-/* =====================================
-   EXPLORE
-===================================== */
+/* =========================
+   SEARCH
+========================= */
 
 .search{
-height:50px;
+  height:50px;
 
-margin:14px;
+  margin:14px;
 
-padding:0 14px;
+  padding:0 14px;
 
-border-radius:16px;
+  border-radius:16px;
 
-background:#121218;
+  background:#121218;
 
-border:1px solid var(--line);
+  border:
+    1px solid var(--line);
 
-display:flex;
-align-items:center;
-gap:9px;
+  display:flex;
+  align-items:center;
+
+  gap:9px;
 }
 
 .search svg{
-width:19px;
+  width:19px;
+  height:19px;
 
-fill:none;
-stroke:#858590;
-
-stroke-width:2;
+  color:#777781;
 }
 
 .search input{
-flex:1;
+  flex:1;
 
-background:none;
-border:0;
-outline:0;
+  background:none;
 
-color:#fff;
+  border:0;
+
+  outline:0;
+
+  color:#fff;
 }
 
-.grid{
-display:grid;
-
-grid-template-columns:
-repeat(3,1fr);
-
-gap:3px;
-}
-
-.grid-item{
-aspect-ratio:1;
-
-background:#111;
-
-overflow:hidden;
-}
-
-.grid-item video{
-width:100%;
-height:100%;
-
-object-fit:cover;
-}
-
-/* =====================================
+/* =========================
    PROFILE
-===================================== */
+========================= */
 
 .profile{
-padding:27px 16px;
-}
+  text-align:center;
 
-.profile-center{
-text-align:center;
+  padding:
+    27px 16px;
 }
 
 .big-avatar{
-width:102px;
-height:102px;
+  width:105px;
+  height:105px;
 
-margin:auto;
+  margin:auto;
 
-padding:3px;
+  padding:3px;
 
-border-radius:50%;
+  border-radius:50%;
 
-background:
-conic-gradient(
-#ff3b82,
-#743cff,
-#5fc7ff,
-#ff3b82
-);
+  background:
+    conic-gradient(
+      #ff3b82,
+      #743cff,
+      #55c8ff,
+      #ff3b82
+    );
 }
 
 .big-avatar-inner{
-width:100%;
-height:100%;
+  width:100%;
+  height:100%;
 
-border-radius:50%;
+  border-radius:50%;
 
-background:#15131d;
+  background:#15131d;
 
-display:flex;
-align-items:center;
-justify-content:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-font-size:38px;
-font-weight:950;
-}
+  font-size:39px;
 
-.profile h2{
-margin-top:13px;
-
-font-size:22px;
-}
-
-.username{
-color:#777781;
-
-font-size:11px;
-
-margin-top:3px;
+  font-weight:950;
 }
 
 .stats{
-display:flex;
+  display:flex;
 
-justify-content:center;
+  justify-content:center;
 
-gap:38px;
+  gap:38px;
 
-margin:23px 0;
+  margin:23px 0;
 }
 
 .stat strong{
-display:block;
+  display:block;
 
-font-size:18px;
+  font-size:18px;
 }
 
 .stat span{
-font-size:9px;
+  font-size:9px;
 
-color:#777781;
+  color:#777781;
 }
 
-/* =====================================
-   SETTINGS
-===================================== */
+/* =========================
+   CREATE
+========================= */
 
-.setting{
-display:flex;
-align-items:center;
-
-gap:11px;
-
-margin:10px 14px;
-
-padding:12px;
-
-min-height:69px;
-
-border-radius:17px;
-
-background:#111117;
-
-border:1px solid var(--line);
+.create-wrap{
+  padding:14px;
 }
 
-.setting-icon{
-width:41px;
-height:41px;
+.mode-tabs{
+  display:flex;
 
-border-radius:13px;
+  gap:7px;
 
-background:#1b1628;
-
-display:flex;
-align-items:center;
-justify-content:center;
+  margin-bottom:13px;
 }
 
-.setting-icon svg{
-width:20px;
+.mode{
+  flex:1;
 
-fill:none;
-stroke:#aa70ff;
+  height:42px;
 
-stroke-width:1.7;
+  border-radius:13px;
+
+  background:#121218;
+
+  border:
+    1px solid var(--line);
+
+  font-size:11px;
+
+  font-weight:850;
+
+  color:#858590;
 }
 
-.setting-text{
-flex:1;
+.mode.active{
+  background:
+    linear-gradient(
+      135deg,
+      #6634dc,
+      #914fff
+    );
+
+  color:#fff;
+
+  border-color:
+    transparent;
 }
 
-.setting-text strong{
-font-size:13px;
+.editor{
+  position:relative;
+
+  width:100%;
+
+  height:57vh;
+
+  min-height:390px;
+
+  border-radius:24px;
+
+  overflow:hidden;
+
+  background:#0e0e13;
+
+  border:
+    1px solid var(--line);
 }
 
-.setting-text small{
-display:block;
+.editor img,
+.editor video{
+  position:absolute;
 
-margin-top:4px;
+  inset:0;
 
-color:#777781;
+  width:100%;
+  height:100%;
 
-font-size:9px;
+  object-fit:cover;
+
+  display:none;
 }
 
-/* =====================================
+.empty-editor{
+  position:absolute;
+
+  inset:0;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  flex-direction:column;
+}
+
+.camera-icon{
+  width:67px;
+  height:67px;
+
+  border-radius:21px;
+
+  background:#191525;
+
+  border:
+    1px solid #40315a;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  color:#a76cff;
+}
+
+.camera-icon svg{
+  width:30px;
+  height:30px;
+
+  fill:none;
+
+  stroke:currentColor;
+
+  stroke-width:1.8;
+
+  stroke-linecap:round;
+
+  stroke-linejoin:round;
+}
+
+.empty-editor strong{
+  margin-top:13px;
+
+  font-size:15px;
+}
+
+.empty-editor small{
+  margin-top:5px;
+
+  color:#777781;
+
+  font-size:10px;
+}
+
+.edit-menu{
+  position:absolute;
+
+  z-index:30;
+
+  right:9px;
+
+  top:10px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:7px;
+}
+
+.edit-btn{
+  width:43px;
+  height:43px;
+
+  border-radius:14px;
+
+  background:
+    rgba(7,7,11,.72);
+
+  border:
+    1px solid rgba(255,255,255,.14);
+
+  backdrop-filter:blur(15px);
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+}
+
+.edit-btn svg{
+  width:20px;
+  height:20px;
+
+  fill:none;
+
+  stroke:currentColor;
+
+  stroke-width:1.8;
+
+  stroke-linecap:round;
+
+  stroke-linejoin:round;
+}
+
+.tool-panel{
+  display:none;
+
+  position:absolute;
+
+  z-index:35;
+
+  left:8px;
+  right:8px;
+
+  bottom:61px;
+
+  padding:10px;
+
+  border-radius:17px;
+
+  background:
+    rgba(8,8,12,.95);
+
+  border:
+    1px solid var(--line);
+
+  backdrop-filter:blur(20px);
+}
+
+.tool-panel.show{
+  display:block;
+}
+
+.filter-row{
+  display:flex;
+
+  gap:8px;
+
+  overflow-x:auto;
+
+  scrollbar-width:none;
+}
+
+.filter-row::-webkit-scrollbar{
+  display:none;
+}
+
+.filter{
+  min-width:62px;
+
+  height:58px;
+
+  border-radius:13px;
+
+  border:
+    1px solid rgba(255,255,255,.13);
+
+  background:#1a1a21;
+
+  font-size:8px;
+
+  font-weight:800;
+}
+
+.slider{
+  display:flex;
+
+  align-items:center;
+
+  gap:9px;
+
+  margin:8px 0;
+}
+
+.slider label{
+  width:68px;
+
+  font-size:9px;
+
+  font-weight:800;
+}
+
+.slider input{
+  flex:1;
+}
+
+.editor-actions{
+  position:absolute;
+
+  z-index:25;
+
+  left:9px;
+  right:9px;
+
+  bottom:9px;
+
+  display:flex;
+
+  gap:7px;
+}
+
+.editor-btn{
+  flex:1;
+
+  height:44px;
+
+  border-radius:14px;
+
+  background:
+    rgba(5,5,8,.76);
+
+  border:
+    1px solid rgba(255,255,255,.13);
+
+  backdrop-filter:blur(15px);
+
+  font-size:11px;
+
+  font-weight:850;
+}
+
+.caption-box{
+  width:100%;
+
+  height:80px;
+
+  margin-top:12px;
+
+  padding:13px;
+
+  border-radius:17px;
+
+  background:#111117;
+
+  border:
+    1px solid var(--line);
+
+  outline:0;
+
+  color:#fff;
+
+  resize:none;
+}
+
+.publish-row{
+  display:flex;
+
+  gap:8px;
+
+  margin-top:12px;
+}
+
+.publish{
+  flex:1;
+
+  height:49px;
+
+  border-radius:15px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #713cff,
+      #a66cff
+    );
+
+  font-weight:900;
+}
+
+.cancel{
+  width:85px;
+
+  height:49px;
+
+  border-radius:15px;
+
+  background:#17171d;
+
+  border:
+    1px solid var(--line);
+
+  font-size:11px;
+
+  font-weight:850;
+}
+
+/* =========================
    TOAST
-===================================== */
+========================= */
 
 .toast{
-position:absolute;
+  position:absolute;
 
-z-index:1000;
+  z-index:1000;
 
-left:50%;
-bottom:91px;
+  left:50%;
 
-transform:
-translateX(-50%)
-translateY(15px);
+  bottom:91px;
 
-opacity:0;
+  max-width:88%;
 
-pointer-events:none;
+  transform:
+    translate(-50%,15px);
 
-max-width:88%;
+  opacity:0;
 
-padding:11px 16px;
+  pointer-events:none;
 
-border-radius:14px;
+  padding:
+    11px 16px;
 
-background:#24242d;
+  border-radius:14px;
 
-border:1px solid #42424d;
+  background:#24242d;
 
-font-size:11px;
-font-weight:750;
+  border:
+    1px solid #42424d;
 
-text-align:center;
+  font-size:11px;
 
-transition:.25s;
+  font-weight:750;
+
+  text-align:center;
+
+  transition:.25s;
 }
 
 .toast.show{
-opacity:1;
+  opacity:1;
 
-transform:
-translateX(-50%)
-translateY(0);
+  transform:
+    translate(-50%,0);
 }
-
-/* =====================================
-   DESKTOP
-===================================== */
 
 @media(min-width:700px){
 
 .app{
-width:520px;
+  width:520px;
 
-margin:auto;
+  margin:auto;
 
-border-left:1px solid #15151a;
-border-right:1px solid #15151a;
+  border-left:
+    1px solid #15151a;
+
+  border-right:
+    1px solid #15151a;
 }
 
 }
-
 </style>
 </head>
 
@@ -1824,18 +1632,20 @@ border-right:1px solid #15151a;
 
 <div class="app">
 
+<!-- =====================================================
+     MAIN FEED
+===================================================== -->
 
-<!-- ====================================================
-     FEED
-==================================================== -->
+<main id="feed" class="feed">
 
-<main class="feed">
-
+<!-- =====================================================
+     REEL / POST 1
+===================================================== -->
 
 <section class="reel">
 
 <video
-class="reel-video"
+class="reel-media"
 src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
 muted
 loop
@@ -1844,83 +1654,50 @@ playsinline>
 </video>
 
 
-<!-- TOP -->
+<!-- TOP BAR -->
 
 <header class="topbar">
 
+<!-- LOGO LEFT -->
 
-<!-- CENTERED BRAND
-     YOU BEFORE X-DARK
--->
-
-<div class="brand">
-
-
-<button
-class="you-camera"
-onclick="openStudio()">
-
-<div class="you-camera-inner">
-
-<svg viewBox="0 0 24 24">
-
-<rect
-x="3"
-y="7"
-width="18"
-height="13"
-rx="3"/>
-
-<path
-d="M8 7l1.5-3h5L16 7"/>
-
-<circle
-cx="12"
-cy="13.5"
-r="3.5"/>
-
-</svg>
-
-<div class="camera-dot"></div>
-
-</div>
-
-</button>
+<img
+class="logo"
+src="x-dark-logo.png"
+alt="X DARK The Next Level"
+onclick="openPanel('profile')">
 
 
-<div class="logo">
-
-<span class="xdark">X-</span><span class="dark">DARK</span>
-
-</div>
-
-</div>
-
-
-<!-- RIGHT -->
+<!-- RIGHT ICONS -->
 
 <div class="top-actions">
 
+<!-- MESSAGES -->
 
 <button
-class="top-btn"
+class="icon-btn"
 onclick="openPanel('messages')">
 
 <svg viewBox="0 0 24 24">
 
-<path
-d="M20 11.5a7.5 7.5 0 0 1-8 7.5
-8.5 8.5 0 0 1-3.5-.8L4 20l1.8-3.5
+<path d="
+M20 11.5
+a7.5 7.5 0 0 1-8 7.5
+8.5 8.5 0 0 1-3.5-.8
+L4 20
+l1.8-3.5
 A7.2 7.2 0 0 1 4.5 12
-7.5 7.5 0 0 1 12 4.5a7.5 7.5 0 0 1 8 7z"/>
+a7.5 7.5 0 0 1 8-7.5
+7.5 7.5 0 0 1 7.5 7z"/>
 
 </svg>
 
 </button>
 
 
+<!-- SETTINGS -->
+
 <button
-class="top-btn"
+class="icon-btn"
 onclick="openPanel('settings')">
 
 <svg viewBox="0 0 24 24">
@@ -1930,16 +1707,33 @@ cx="12"
 cy="12"
 r="3"/>
 
-<path
-d="M19 12a7 7 0 0 0-.2-1.7
-l2-1.5-2-3.4-2.4 1
-A7 7 0 0 0 14.8 5L14.5 2h-5
-l-.3 3a7 7 0 0 0-1.6.9l-2.4-1
--2 3.4 2 1.5A7 7 0 0 0 5 12
-l-2 1.5 2 3.4 2.4-1
-a7 7 0 0 0 1.6.9l.3 3h5
-l.3-3a7 7 0 0 0 1.6-.9l2.4 1
-2-3.4-2-1.5A7 7 0 0 0 19 12z"/>
+<path d="
+M19 12
+a7 7 0 0 0-.2-1.7
+l2-1.5
+-2-3.4
+-2.4 1
+A7 7 0 0 0 14.8 5
+L14.5 2
+h-5
+l-.3 3
+a7 7 0 0 0-1.6.9
+l-2.4-1
+-2 3.4
+2 1.5
+A7 7 0 0 0 5 12
+l-2 1.5
+2 3.4
+2.4-1
+a7 7 0 0 0 1.6.9
+l.3 3
+h5
+l.3-3
+a7 7 0 0 0 1.6-.9
+l2.4 1
+2-3.4
+-2-1.5
+A7 7 0 0 0 19 12z"/>
 
 </svg>
 
@@ -1950,26 +1744,114 @@ l.3-3a7 7 0 0 0 1.6-.9l2.4 1
 </header>
 
 
+<!-- STORIES -->
+
+<div class="story-row">
+
+<div class="story">
+
+<div class="story-ring-wrap">
+
+<div class="story-ring">
+
+<div class="story-inner">
++
+</div>
+
+</div>
+
+</div>
+
+<b>You</b>
+
+</div>
+
+
+<div class="story">
+
+<div class="story-ring-wrap">
+
+<div class="story-ring">
+
+<div class="story-inner">
+D
+</div>
+
+</div>
+
+<span class="online"></span>
+
+</div>
+
+<b>Darkwing</b>
+
+</div>
+
+
+<div class="story">
+
+<div class="story-ring-wrap">
+
+<div class="story-ring">
+
+<div class="story-inner">
+N
+</div>
+
+</div>
+
+<span class="online"></span>
+
+</div>
+
+<b>Nova</b>
+
+</div>
+
+
+<div class="story">
+
+<div class="story-ring-wrap">
+
+<div class="story-ring">
+
+<div class="story-inner">
+A
+</div>
+
+</div>
+
+</div>
+
+<b>Alex</b>
+
+</div>
+
+</div>
+
+
 <!-- ACTIONS -->
 
 <div class="actions">
 
-
 <button
-class="action like-button"
+class="action"
 onclick="toggleLike(this)">
 
 <svg viewBox="0 0 24 24">
 
-<path
-d="M20.8 8.6c0 5.5-8.8 10.2-8.8 10.2
+<path d="
+M20.8 8.6
+c0 5.5-8.8 10.2-8.8 10.2
 S3.2 14.1 3.2 8.6
 A4.6 4.6 0 0 1 12 6.3
 a4.6 4.6 0 0 1 8.8 2.3z"/>
 
 </svg>
 
-<span>12.4K</span>
+<span>
+12.4K
+</span>
 
 </button>
 
@@ -1980,15 +1862,21 @@ onclick="openComments()">
 
 <svg viewBox="0 0 24 24">
 
-<path
-d="M20 11.5a7.5 7.5 0 0 1-8 7.5
-8.5 8.5 0 0 1-3.5-.8L4 20l1.8-3.5
+<path d="
+M20 11.5
+a7.5 7.5 0 0 1-8 7.5
+8.5 8.5 0 0 1-3.5-.8
+L4 20
+l1.8-3.5
 A7.2 7.2 0 0 1 4.5 12
-7.5 7.5 0 0 1 12 4.5a7.5 7.5 0 0 1 8 7z"/>
+a7.5 7.5 0 0 1 8-7.5
+7.5 7.5 0 0 1 7.5 7z"/>
 
 </svg>
 
-<span>842</span>
+<span>
+842
+</span>
 
 </button>
 
@@ -2003,13 +1891,19 @@ onclick="sharePost()">
 
 <path d="m7 8 5-5 5 5"/>
 
-<path
-d="M5 13v6a2 2 0 0 0 2 2h10
-a2 2 0 0 0 2-2v-6"/>
+<path d="
+M5 13
+v6
+a2 2 0 0 0 2 2
+h10
+a2 2 0 0 0 2-2
+v-6"/>
 
 </svg>
 
-<span>Share</span>
+<span>
+Share
+</span>
 
 </button>
 
@@ -2020,11 +1914,18 @@ onclick="toggleSave(this)">
 
 <svg viewBox="0 0 24 24">
 
-<path d="M6 3h12v18l-6-4-6 4z"/>
+<path d="
+M6 3
+h12
+v18
+l-6-4
+-6 4z"/>
 
 </svg>
 
-<span>Save</span>
+<span>
+Save
+</span>
 
 </button>
 
@@ -2035,12 +1936,12 @@ onclick="toggleSave(this)">
 
 <div class="content">
 
-
 <div class="creator">
 
 <div class="avatar">
 D
 </div>
+
 
 <div class="creator-info">
 
@@ -2053,6 +1954,7 @@ Darkwing
 </div>
 
 </div>
+
 
 <button
 class="follow"
@@ -2067,7 +1969,8 @@ Follow
 
 <div class="caption">
 
-Welcome to X-DARK 🔥 The new dark social experience.
+Welcome to X-DARK 🔥
+The new dark social experience.
 
 </div>
 
@@ -2094,12 +1997,14 @@ Original sound · Darkwing
 </section>
 
 
-<!-- SECOND -->
+<!-- =====================================================
+     REEL 2
+===================================================== -->
 
 <section class="reel">
 
 <video
-class="reel-video"
+class="reel-media"
 src="https://www.w3schools.com/html/mov_bbb.mp4"
 muted
 loop
@@ -2107,84 +2012,76 @@ playsinline>
 </video>
 
 
-<div class="topbar">
+<header class="topbar">
 
-<div class="brand">
-
-<button
-class="you-camera"
-onclick="openStudio()">
-
-<div class="you-camera-inner">
-
-<svg viewBox="0 0 24 24">
-
-<rect
-x="3"
-y="7"
-width="18"
-height="13"
-rx="3"/>
-
-<path
-d="M8 7l1.5-3h5L16 7"/>
-
-<circle
-cx="12"
-cy="13.5"
-r="3.5"/>
-
-</svg>
-
-</div>
-
-</button>
-
-<div class="logo">
-
-<span class="xdark">X-</span><span class="dark">DARK</span>
-
-</div>
-
-</div>
+<img
+class="logo"
+src="x-dark-logo.png"
+alt="X DARK The Next Level"
+onclick="openPanel('profile')">
 
 
 <div class="top-actions">
 
 <button
-class="top-btn"
+class="icon-btn"
 onclick="openPanel('messages')">
 
 <svg viewBox="0 0 24 24">
 
-<path
-d="M20 11.5a7.5 7.5 0 0 1-8 7.5
-8.5 8.5 0 0 1-3.5-.8L4 20l1.8-3.5
+<path d="
+M20 11.5
+a7.5 7.5 0 0 1-8 7.5
+8.5 8.5 0 0 1-3.5-.8
+L4 20
+l1.8-3.5
 A7.2 7.2 0 0 1 4.5 12
-7.5 7.5 0 0 1 12 4.5a7.5 7.5 0 0 1 8 7z"/>
+a7.5 7.5 0 0 1 8-7.5
+7.5 7.5 0 0 1 7.5 7z"/>
 
 </svg>
 
 </button>
 
+
 <button
-class="top-btn"
+class="icon-btn"
 onclick="openPanel('settings')">
 
 <svg viewBox="0 0 24 24">
 
-<circle cx="12" cy="12" r="3"/>
+<circle
+cx="12"
+cy="12"
+r="3"/>
 
-<path
-d="M19 12a7 7 0 0 0-.2-1.7
-l2-1.5-2-3.4-2.4 1
-A7 7 0 0 0 14.8 5L14.5 2h-5
-l-.3 3a7 7 0 0 0-1.6.9l-2.4-1
--2 3.4 2 1.5A7 7 0 0 0 5 12
-l-2 1.5 2 3.4 2.4-1
-a7 7 0 0 0 1.6.9l.3 3h5
-l.3-3a7 7 0 0 0 1.6-.9l2.4 1
-2-3.4-2-1.5A7 7 0 0 0 19 12z"/>
+<path d="
+M19 12
+a7 7 0 0 0-.2-1.7
+l2-1.5
+-2-3.4
+-2.4 1
+A7 7 0 0 0 14.8 5
+L14.5 2
+h-5
+l-.3 3
+a7 7 0 0 0-1.6.9
+l-2.4-1
+-2 3.4
+2 1.5
+A7 7 0 0 0 5 12
+l-2 1.5
+2 3.4
+2.4-1
+a7 7 0 0 0 1.6.9
+l.3 3
+h5
+l.3-3
+a7 7 0 0 0 1.6-.9
+l2.4 1
+2-3.4
+-2-1.5
+A7 7 0 0 0 19 12z"/>
 
 </svg>
 
@@ -2192,7 +2089,7 @@ l.3-3a7 7 0 0 0 1.6-.9l2.4 1
 
 </div>
 
-</div>
+</header>
 
 
 <div class="actions">
@@ -2203,17 +2100,21 @@ onclick="toggleLike(this)">
 
 <svg viewBox="0 0 24 24">
 
-<path
-d="M20.8 8.6c0 5.5-8.8 10.2-8.8 10.2
+<path d="
+M20.8 8.6
+c0 5.5-8.8 10.2-8.8 10.2
 S3.2 14.1 3.2 8.6
 A4.6 4.6 0 0 1 12 6.3
 a4.6 4.6 0 0 1 8.8 2.3z"/>
 
 </svg>
 
-<span>8.7K</span>
+<span>
+8.7K
+</span>
 
 </button>
+
 
 <button
 class="action"
@@ -2221,17 +2122,24 @@ onclick="openComments()">
 
 <svg viewBox="0 0 24 24">
 
-<path
-d="M20 11.5a7.5 7.5 0 0 1-8 7.5
-8.5 8.5 0 0 1-3.5-.8L4 20l1.8-3.5
+<path d="
+M20 11.5
+a7.5 7.5 0 0 1-8 7.5
+8.5 8.5 0 0 1-3.5-.8
+L4 20
+l1.8-3.5
 A7.2 7.2 0 0 1 4.5 12
-7.5 7.5 0 0 1 12 4.5a7.5 7.5 0 0 1 8 7z"/>
+a7.5 7.5 0 0 1 8-7.5
+7.5 7.5 0 0 1 7.5 7z"/>
 
 </svg>
 
-<span>315</span>
+<span>
+315
+</span>
 
 </button>
+
 
 <button
 class="action"
@@ -2243,13 +2151,19 @@ onclick="sharePost()">
 
 <path d="m7 8 5-5 5 5"/>
 
-<path
-d="M5 13v6a2 2 0 0 0 2 2h10
-a2 2 0 0 0 2-2v-6"/>
+<path d="
+M5 13
+v6
+a2 2 0 0 0 2 2
+h10
+a2 2 0 0 0 2-2
+v-6"/>
 
 </svg>
 
-<span>Share</span>
+<span>
+Share
+</span>
 
 </button>
 
@@ -2264,6 +2178,7 @@ a2 2 0 0 0 2-2v-6"/>
 N
 </div>
 
+
 <div class="creator-info">
 
 <div class="creator-name">
@@ -2276,25 +2191,33 @@ Nova
 
 </div>
 
+
 <button
 class="follow"
 onclick="toggleFollow(this)">
+
 Follow
+
 </button>
 
 </div>
+
 
 <div class="caption">
 Create. Explore. Connect. ✨
 </div>
 
+
 <div class="hashtags">
 #nova #explore #xdark
 </div>
 
+
 <div class="audio">
 
-<div class="audio-circle">♪</div>
+<div class="audio-circle">
+♪
+</div>
 
 Original sound · Nova
 
@@ -2307,11 +2230,12 @@ Original sound · Nova
 </main>
 
 
-<!-- ====================================================
-     BOTTOM NAV
-==================================================== -->
+<!-- =====================================================
+     BOTTOM NAVIGATION
+===================================================== -->
 
 <nav class="bottom">
+
 
 <button
 class="nav active"
@@ -2319,14 +2243,24 @@ onclick="goHome()">
 
 <svg viewBox="0 0 24 24">
 
-<path
-d="m3 10 9-7 9 7v10
-a1 1 0 0 1-1 1h-5v-6H9v6H4
+<path d="
+m3 10
+9-7
+9 7
+v10
+a1 1 0 0 1-1 1
+h-5
+v-6
+H9
+v6
+H4
 a1 1 0 0 1-1-1z"/>
 
 </svg>
 
-<span>Home</span>
+<span>
+Home
+</span>
 
 </button>
 
@@ -2337,13 +2271,20 @@ onclick="openPanel('explore')">
 
 <svg viewBox="0 0 24 24">
 
-<circle cx="11" cy="11" r="7"/>
+<circle
+cx="11"
+cy="11"
+r="7"/>
 
-<path d="m20 20-4-4"/>
+<path d="
+m20 20
+-4-4"/>
 
 </svg>
 
-<span>Explore</span>
+<span>
+Explore
+</span>
 
 </button>
 
@@ -2354,17 +2295,11 @@ onclick="openStudio()">
 
 <div class="create">
 
-<svg
-viewBox="0 0 24 24"
-width="23"
-height="23">
+<svg viewBox="0 0 24 24">
 
-<path
-d="M12 5v14M5 12h14"
-stroke="currentColor"
-fill="none"
-stroke-width="2"
-stroke-linecap="round"/>
+<path d="M12 5v14"/>
+
+<path d="M5 12h14"/>
 
 </svg>
 
@@ -2379,15 +2314,22 @@ onclick="openPanel('activity')">
 
 <svg viewBox="0 0 24 24">
 
-<path
-d="M18 8a6 6 0 0 0-12 0
-c0 7-3 7-3 9h18c0-2-3-2-3-9"/>
+<path d="
+M18 8
+a6 6 0 0 0-12 0
+c0 7-3 7-3 9
+h18
+c0-2-3-2-3-9"/>
 
-<path d="M10 21h4"/>
+<path d="
+M10 21
+h4"/>
 
 </svg>
 
-<span>Activity</span>
+<span>
+Activity
+</span>
 
 </button>
 
@@ -2398,479 +2340,30 @@ onclick="openPanel('profile')">
 
 <svg viewBox="0 0 24 24">
 
-<circle cx="12" cy="8" r="4"/>
+<circle
+cx="12"
+cy="8"
+r="4"/>
 
-<path
-d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/>
+<path d="
+M4 21
+c0-4 3.5-7 8-7
+s8 3 8 7"/>
 
 </svg>
 
-<span>Profile</span>
+<span>
+Profile
+</span>
 
 </button>
 
 </nav>
 
 
-<!-- ====================================================
-     CREATE STUDIO
-==================================================== -->
-
-<section
-id="studio"
-class="panel">
-
-
-<div class="panel-head">
-
-<button
-class="back"
-onclick="closePanels()">
-
-<svg viewBox="0 0 24 24">
-
-<path d="M15 18L9 12L15 6"/>
-
-</svg>
-
-</button>
-
-<div class="panel-title">
-Create
-</div>
-
-<div style="width:42px"></div>
-
-</div>
-
-
-<div class="studio">
-
-
-<div class="mode-tabs">
-
-<button
-class="mode-tab active"
-onclick="setMode(this,'Story')">
-Story
-</button>
-
-<button
-class="mode-tab"
-onclick="setMode(this,'Post')">
-Post
-</button>
-
-<button
-class="mode-tab"
-onclick="setMode(this,'Reel')">
-Reel
-</button>
-
-</div>
-
-
-<div
-id="editor"
-class="editor empty">
-
-
-<div
-id="emptyEditor"
-class="empty-editor">
-
-<div class="empty-camera">
-
-<svg viewBox="0 0 24 24">
-
-<rect
-x="3"
-y="7"
-width="18"
-height="13"
-rx="3"/>
-
-<path
-d="M8 7l1.5-3h5L16 7"/>
-
-<circle
-cx="12"
-cy="13.5"
-r="3.5"/>
-
-</svg>
-
-</div>
-
-<strong>
-Create something
-</strong>
-
-<small>
-Camera ya gallery se media select karo
-</small>
-
-</div>
-
-
-<img
-id="editImage"
-alt="">
-
-
-<video
-id="editVideo"
-controls
-playsinline>
-</video>
-
-
-<!-- SIDE EDIT MENU -->
-
-<div class="edit-menu">
-
-
-<button
-class="edit-btn"
-onclick="toggleFilters()"
-title="Filters">
-
-<svg viewBox="0 0 24 24">
-
-<circle cx="12" cy="12" r="3"/>
-
-<path
-d="M19 5 5 19"/>
-
-<path
-d="M7 5h.01M19 17h.01"/>
-
-</svg>
-
-</button>
-
-
-<button
-class="edit-btn"
-onclick="toggleAdjust()"
-title="Adjust">
-
-<svg viewBox="0 0 24 24">
-
-<path d="M4 6h16M4 12h16M4 18h16"/>
-
-<circle cx="8" cy="6" r="2"/>
-
-<circle cx="15" cy="12" r="2"/>
-
-<circle cx="10" cy="18" r="2"/>
-
-</svg>
-
-</button>
-
-
-<button
-class="edit-btn"
-onclick="rotateMedia()"
-title="Rotate">
-
-<svg viewBox="0 0 24 24">
-
-<path
-d="M20 11a8 8 0 0 0-14-5L3 9"/>
-
-<path d="M3 4v5h5"/>
-
-<path
-d="M4 13a8 8 0 0 0 14 5l3-3"/>
-
-<path d="M21 20v-5h-5"/>
-
-</svg>
-
-</button>
-
-
-<button
-class="edit-btn"
-onclick="resetEditor()"
-title="Reset">
-
-<svg viewBox="0 0 24 24">
-
-<path
-d="M4 12a8 8 0 1 0 2.3-5.7"/>
-
-<path d="M4 5v5h5"/>
-
-</svg>
-
-</button>
-
-</div>
-
-
-<!-- FILTER PANEL -->
-
-<div
-id="filterPanel"
-class="filter-panel">
-
-
-<div class="filter-row">
-
-
-<button
-class="filter f-normal"
-onclick="applyFilter('none')">
-
-<span>
-Original
-</span>
-
-</button>
-
-
-<button
-class="filter f-vivid"
-onclick="applyFilter('saturate(1.6) contrast(1.12)')">
-
-<span>
-Vivid
-</span>
-
-</button>
-
-
-<button
-class="filter f-cinema"
-onclick="applyFilter('contrast(1.3) saturate(.82) brightness(.92)')">
-
-<span>
-Cinema
-</span>
-
-</button>
-
-
-<button
-class="filter f-cool"
-onclick="applyFilter('hue-rotate(18deg) saturate(1.25) contrast(1.1)')">
-
-<span>
-Cool
-</span>
-
-</button>
-
-
-<button
-class="filter f-warm"
-onclick="applyFilter('sepia(.28) saturate(1.45) contrast(1.05)')">
-
-<span>
-Warm
-</span>
-
-</button>
-
-
-<button
-class="filter f-night"
-onclick="applyFilter('brightness(.68) contrast(1.35) saturate(1.2)')">
-
-<span>
-Night
-</span>
-
-</button>
-
-
-<button
-class="filter f-dream"
-onclick="applyFilter('brightness(1.08) saturate(.75) blur(.25px)')">
-
-<span>
-Dream
-</span>
-
-</button>
-
-</div>
-
-</div>
-
-
-<!-- ADJUST -->
-
-<div
-id="adjustPanel"
-class="adjust-panel">
-
-
-<div class="adjust-line">
-
-<label>
-Brightness
-</label>
-
-<input
-id="brightness"
-type="range"
-min="50"
-max="150"
-value="100"
-oninput="adjustMedia()">
-
-</div>
-
-
-<div class="adjust-line">
-
-<label>
-Contrast
-</label>
-
-<input
-id="contrast"
-type="range"
-min="50"
-max="150"
-value="100"
-oninput="adjustMedia()">
-
-</div>
-
-
-<div class="adjust-line">
-
-<label>
-Saturation
-</label>
-
-<input
-id="saturation"
-type="range"
-min="0"
-max="200"
-value="100"
-oninput="adjustMedia()">
-
-</div>
-
-
-<div class="adjust-line">
-
-<label>
-Blur
-</label>
-
-<input
-id="blur"
-type="range"
-min="0"
-max="5"
-value="0"
-step=".1"
-oninput="adjustMedia()">
-
-</div>
-
-</div>
-
-
-<!-- BOTTOM EDIT BUTTONS -->
-
-<div class="editor-controls">
-
-
-<button
-class="editor-main-btn"
-onclick="openCamera()">
-
-Camera
-
-</button>
-
-
-<button
-class="editor-main-btn"
-onclick="openGallery()">
-
-Gallery
-
-</button>
-
-</div>
-
-</div>
-
-
-<input
-id="mediaInput"
-type="file"
-accept="image/*,video/*"
-capture="environment"
-hidden
-onchange="loadMedia(this)">
-
-
-<input
-id="galleryInput"
-type="file"
-accept="image/*,video/*"
-hidden
-onchange="loadMedia(this)">
-
-
-<textarea
-id="studioCaption"
-style="
-width:100%;
-height:82px;
-margin-top:12px;
-padding:13px;
-border-radius:17px;
-background:#111117;
-border:1px solid var(--line);
-outline:0;
-color:white;
-resize:none;
-"
-placeholder="Write something...">
-</textarea>
-
-
-<div class="publish-row">
-
-<button
-class="cancel"
-onclick="closePanels()">
-
-Cancel
-
-</button>
-
-<button
-class="publish"
-onclick="publishMedia()">
-
-Publish
-
-</button>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-<!-- ====================================================
+<!-- =====================================================
      MESSAGES
-==================================================== -->
+===================================================== -->
 
 <section
 id="messages"
@@ -2891,77 +2384,90 @@ onclick="closePanels()">
 
 </button>
 
+
 <div class="panel-title">
 Messages
 </div>
 
-<div style="width:42px"></div>
+
+<div class="spacer">
+</div>
 
 </div>
 
 
-<div class="chat-users">
+<div
+class="story-row"
+style="
+position:relative;
+top:0;
+padding-top:15px;
+padding-bottom:10px;
+">
 
+<div class="story">
 
-<div class="person">
+<div class="story-ring-wrap">
 
-<div class="person-avatar">
+<div class="story-ring">
 
-<div class="person-inner">
+<div class="story-inner">
 D
 </div>
 
-<div class="online"></div>
+</div>
+
+<span class="online"></span>
 
 </div>
 
-<div class="person-name">
+<b>
 Darkwing
-</div>
+</b>
 
 </div>
 
 
-<div class="person">
+<div class="story">
 
-<div class="person-avatar">
+<div class="story-ring-wrap">
 
-<div class="person-inner">
+<div class="story-ring">
+
+<div class="story-inner">
 N
 </div>
 
-<div class="online"></div>
+</div>
+
+<span class="online"></span>
 
 </div>
 
-<div class="person-name">
+<b>
 Nova
-</div>
+</b>
 
 </div>
 
 
-<div class="person">
+<div class="story">
 
-<div
-class="person-avatar"
-style="
-background:
-conic-gradient(
-#763cff,
-#45b9ff,
-#763cff
-)">
+<div class="story-ring-wrap">
 
-<div class="person-inner">
+<div class="story-ring">
+
+<div class="story-inner">
 A
 </div>
 
 </div>
 
-<div class="person-name">
-Alex
 </div>
+
+<b>
+Alex
+</b>
 
 </div>
 
@@ -2970,7 +2476,7 @@ Alex
 
 <div
 class="chat-card"
-onclick="openChat('Darkwing')">
+onclick="openChat('Darkwing','D')">
 
 <div class="avatar">
 D
@@ -2988,12 +2494,16 @@ Welcome to X-DARK 🔥
 
 </div>
 
+<span class="chat-time">
+Now
+</span>
+
 </div>
 
 
 <div
 class="chat-card"
-onclick="openChat('Nova')">
+onclick="openChat('Nova','N')">
 
 <div class="avatar">
 N
@@ -3006,17 +2516,21 @@ Nova
 </strong>
 
 <small>
-Start a conversation
+Let's create something ✨
 </small>
 
 </div>
+
+<span class="chat-time">
+5m
+</span>
 
 </div>
 
 
 <div
 class="chat-card"
-onclick="openChat('Alex')">
+onclick="openChat('Alex','A')">
 
 <div class="avatar">
 A
@@ -3034,22 +2548,25 @@ Hey 👋
 
 </div>
 
+<span class="chat-time">
+1h
+</span>
+
 </div>
 
 </section>
 
 
-<!-- ====================================================
+<!-- =====================================================
      CHAT
-==================================================== -->
+===================================================== -->
 
 <section
-id="chatScreen"
+id="chatPanel"
 class="panel">
 
 
 <div class="panel-head">
-
 
 <button
 class="back"
@@ -3067,7 +2584,10 @@ onclick="closeChat()">
 <div
 id="chatAvatar"
 class="avatar"
-style="width:42px;height:42px">
+style="
+width:42px;
+height:42px;
+">
 
 D
 
@@ -3077,41 +2597,87 @@ D
 <div
 style="
 flex:1;
-margin-left:8px">
+margin-left:8px;
+">
 
-<strong
-id="chatName">
+<strong id="chatName">
 Darkwing
 </strong>
 
 <div
 style="
 font-size:9px;
-color:#43e58a;
-margin-top:3px">
-Online
-</div>
+color:#48e58a;
+margin-top:3px;
+">
+
+● Online
 
 </div>
 
+</div>
 
-<div style="width:42px"></div>
+
+<button
+class="icon-btn"
+onclick="
+toast('Voice call feature ready')
+">
+
+<svg viewBox="0 0 24 24">
+
+<path d="
+M7 4
+h3
+l2 5
+-2 2
+a14 14 0 0 0 3 3
+l2-2
+5 2
+v3
+c0 1-1 2-2 2
+C10 19 5 14 5 7
+c0-2 1-3 2-3z"/>
+
+</svg>
+
+</button>
 
 </div>
 
 
 <div
-id="chatMessages"
-class="chat-messages">
+id="messagesBox"
+class="messages">
 </div>
 
 
 <div class="chat-input">
 
+<button
+class="icon-btn"
+style="
+width:40px;
+height:40px;
+"
+onclick="
+toast('Emoji picker ready')
+">
+
+☺
+
+</button>
+
 
 <input
 id="chatInput"
-placeholder="Message...">
+placeholder="Message..."
+onkeydown="
+if(event.key==='Enter'){
+event.preventDefault();
+sendMessage();
+}
+">
 
 
 <button
@@ -3120,9 +2686,15 @@ onclick="sendMessage()">
 
 <svg viewBox="0 0 24 24">
 
-<path d="m22 2-7 20-4-9-9-4z"/>
+<path d="
+m22 2
+-7 20
+-4-9
+-9-4z"/>
 
-<path d="M22 2 11 13"/>
+<path d="
+M22 2
+11 13"/>
 
 </svg>
 
@@ -3133,9 +2705,9 @@ onclick="sendMessage()">
 </section>
 
 
-<!-- ====================================================
+<!-- =====================================================
      EXPLORE
-==================================================== -->
+===================================================== -->
 
 <section
 id="explore"
@@ -3156,11 +2728,14 @@ onclick="closePanels()">
 
 </button>
 
+
 <div class="panel-title">
 Explore
 </div>
 
-<div style="width:42px"></div>
+
+<div class="spacer">
+</div>
 
 </div>
 
@@ -3169,94 +2744,66 @@ Explore
 
 <svg viewBox="0 0 24 24">
 
-<circle cx="11" cy="11" r="7"/>
+<circle
+cx="11"
+cy="11"
+r="7"/>
 
-<path d="m20 20-4-4"/>
+<path d="
+m20 20
+-4-4"/>
 
 </svg>
 
+
 <input
-placeholder="Search X-DARK">
+id="searchInput"
+placeholder="Search X-DARK"
+oninput="searchExplore()">
 
 </div>
 
 
-<div class="grid">
+<div id="exploreResults">
 
-<div class="grid-item">
+<div class="card">
 
-<video
-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-muted
-loop
-autoplay
-playsinline>
-</video>
+<div class="avatar">
+#
+</div>
+
+<div class="card-info">
+
+<strong>
+#xdark
+</strong>
+
+<small>
+Trending now
+</small>
+
+</div>
 
 </div>
 
 
-<div class="grid-item">
+<div class="card">
 
-<video
-src="https://www.w3schools.com/html/mov_bbb.mp4"
-muted
-loop
-autoplay
-playsinline>
-</video>
-
+<div class="avatar">
+✦
 </div>
 
+<div class="card-info">
 
-<div class="grid-item">
+<strong>
+Discover creators
+</strong>
 
-<video
-src="https://media.w3.org/2010/05/sintel/trailer.mp4"
-muted
-loop
-autoplay
-playsinline>
-</video>
-
-</div>
-
-
-<div class="grid-item">
-
-<video
-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-muted
-loop
-autoplay
-playsinline>
-</video>
+<small>
+Find new people and reels
+</small>
 
 </div>
-
-
-<div class="grid-item">
-
-<video
-src="https://www.w3schools.com/html/mov_bbb.mp4"
-muted
-loop
-autoplay
-playsinline>
-</video>
-
-</div>
-
-
-<div class="grid-item">
-
-<video
-src="https://media.w3.org/2010/05/sintel/trailer.mp4"
-muted
-loop
-autoplay
-playsinline>
-</video>
 
 </div>
 
@@ -3265,9 +2812,9 @@ playsinline>
 </section>
 
 
-<!-- ====================================================
+<!-- =====================================================
      ACTIVITY
-==================================================== -->
+===================================================== -->
 
 <section
 id="activity"
@@ -3288,22 +2835,25 @@ onclick="closePanels()">
 
 </button>
 
+
 <div class="panel-title">
 Activity
 </div>
 
-<div style="width:42px"></div>
+
+<div class="spacer">
+</div>
 
 </div>
 
 
-<div class="setting">
+<div class="card">
 
 <div class="avatar">
 D
 </div>
 
-<div class="setting-text">
+<div class="card-info">
 
 <strong>
 Darkwing liked your Reel
@@ -3318,13 +2868,13 @@ Darkwing liked your Reel
 </div>
 
 
-<div class="setting">
+<div class="card">
 
 <div class="avatar">
 N
 </div>
 
-<div class="setting-text">
+<div class="card-info">
 
 <strong>
 Nova followed you
@@ -3339,13 +2889,13 @@ Nova followed you
 </div>
 
 
-<div class="setting">
+<div class="card">
 
 <div class="avatar">
 A
 </div>
 
-<div class="setting-text">
+<div class="card-info">
 
 <strong>
 Alex commented on your Reel
@@ -3362,9 +2912,9 @@ Alex commented on your Reel
 </section>
 
 
-<!-- ====================================================
+<!-- =====================================================
      PROFILE
-==================================================== -->
+===================================================== -->
 
 <section
 id="profile"
@@ -3385,18 +2935,19 @@ onclick="closePanels()">
 
 </button>
 
+
 <div class="panel-title">
 Profile
 </div>
 
-<div style="width:42px"></div>
+
+<div class="spacer">
+</div>
 
 </div>
 
 
 <div class="profile">
-
-<div class="profile-center">
 
 <div class="big-avatar">
 
@@ -3411,8 +2962,15 @@ A
 Ankaj
 </h2>
 
-<div class="username">
+
+<div
+style="
+color:#777781;
+font-size:11px;
+">
+
 @x_dark_user
+
 </div>
 
 
@@ -3420,37 +2978,63 @@ Ankaj
 
 <div class="stat">
 
-<strong>24</strong>
-<span>Posts</span>
+<strong>
+24
+</strong>
+
+<span>
+Posts
+</span>
 
 </div>
+
 
 <div class="stat">
 
-<strong>12.4K</strong>
-<span>Followers</span>
+<strong>
+12.4K
+</strong>
+
+<span>
+Followers
+</span>
 
 </div>
+
 
 <div class="stat">
 
-<strong>287</strong>
-<span>Following</span>
+<strong>
+287
+</strong>
+
+<span>
+Following
+</span>
 
 </div>
 
 </div>
 
-</div>
+
+<button
+class="follow"
+onclick="
+toast('Profile editing ready')
+">
+
+Edit profile
+
+</button>
 
 </div>
 
 </section>
 
 
-<!-- ====================================================
+<!-- =====================================================
      SETTINGS
-==================================================== -->
+===================================================== -->
 
 <section
 id="settings"
@@ -3471,37 +3055,32 @@ onclick="closePanels()">
 
 </button>
 
+
 <div class="panel-title">
 Settings
 </div>
 
-<div style="width:42px"></div>
+
+<div class="spacer">
+</div>
 
 </div>
 
 
-<div class="setting">
+<div class="card">
 
-<div class="setting-icon">
-
-<svg viewBox="0 0 24 24">
-
-<circle cx="12" cy="12" r="3"/>
-
-<path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
-
-</svg>
-
+<div class="avatar">
+◉
 </div>
 
-<div class="setting-text">
+<div class="card-info">
 
 <strong>
-Appearance
+Premium Dark UI
 </strong>
 
 <small>
-Premium Dark UI
+Glass + neon X-DARK experience
 </small>
 
 </div>
@@ -3509,34 +3088,20 @@ Premium Dark UI
 </div>
 
 
-<div class="setting">
+<div class="card">
 
-<div class="setting-icon">
-
-<svg viewBox="0 0 24 24">
-
-<rect
-x="5"
-y="10"
-width="14"
-height="10"
-rx="2"/>
-
-<path
-d="M8 10V7a4 4 0 0 1 8 0v3"/>
-
-</svg>
-
+<div class="avatar">
+⌁
 </div>
 
-<div class="setting-text">
+<div class="card-info">
 
 <strong>
 Privacy
 </strong>
 
 <small>
-Manage privacy settings
+Manage privacy and account visibility
 </small>
 
 </div>
@@ -3544,23 +3109,13 @@ Manage privacy settings
 </div>
 
 
-<div class="setting">
+<div class="card">
 
-<div class="setting-icon">
-
-<svg viewBox="0 0 24 24">
-
-<path
-d="M18 8a6 6 0 0 0-12 0
-c0 7-3 7-3 9h18c0-2-3-2-3-9"/>
-
-<path d="M10 21h4"/>
-
-</svg>
-
+<div class="avatar">
+♧
 </div>
 
-<div class="setting-text">
+<div class="card-info">
 
 <strong>
 Notifications
@@ -3577,9 +3132,502 @@ Activity and message alerts
 </section>
 
 
-<!-- ====================================================
+<!-- =====================================================
+     CREATE / STUDIO
+===================================================== -->
+
+<section
+id="studio"
+class="panel">
+
+
+<div class="panel-head">
+
+<button
+class="back"
+onclick="closePanels()">
+
+<svg viewBox="0 0 24 24">
+
+<path d="M15 18L9 12L15 6"/>
+
+</svg>
+
+</button>
+
+
+<div class="panel-title">
+Create
+</div>
+
+
+<div class="spacer">
+</div>
+
+</div>
+
+
+<div class="create-wrap">
+
+
+<div class="mode-tabs">
+
+<button
+class="mode active"
+onclick="setMode(this,'Story')">
+
+Story
+
+</button>
+
+
+<button
+class="mode"
+onclick="setMode(this,'Post')">
+
+Post
+
+</button>
+
+
+<button
+class="mode"
+onclick="setMode(this,'Reel')">
+
+Reel
+
+</button>
+
+</div>
+
+
+<div
+id="editor"
+class="editor">
+
+
+<div
+id="emptyEditor"
+class="empty-editor">
+
+<div class="camera-icon">
+
+<svg viewBox="0 0 24 24">
+
+<rect
+x="3"
+y="7"
+width="18"
+height="13"
+rx="3"/>
+
+<path d="
+M8 7
+l1.5-3
+h5
+L16 7"/>
+
+<circle
+cx="12"
+cy="13.5"
+r="3.5"/>
+
+</svg>
+
+</div>
+
+
+<strong>
+Create something
+</strong>
+
+
+<small>
+Camera ya Gallery se media select karo
+</small>
+
+</div>
+
+
+<img
+id="editImage"
+alt="">
+
+
+<video
+id="editVideo"
+controls
+playsinline>
+</video>
+
+
+<!-- EDITING MENU -->
+
+<div class="edit-menu">
+
+
+<button
+class="edit-btn"
+onclick="toggleFilters()">
+
+<svg viewBox="0 0 24 24">
+
+<path d="M4 6h16"/>
+<path d="M4 12h16"/>
+<path d="M4 18h16"/>
+
+<circle
+cx="8"
+cy="6"
+r="2"/>
+
+<circle
+cx="15"
+cy="12"
+r="2"/>
+
+<circle
+cx="10"
+cy="18"
+r="2"/>
+
+</svg>
+
+</button>
+
+
+<button
+class="edit-btn"
+onclick="toggleAdjust()">
+
+<svg viewBox="0 0 24 24">
+
+<circle
+cx="12"
+cy="12"
+r="8"/>
+
+<path d="M12 8v8"/>
+
+<path d="M8 12h8"/>
+
+</svg>
+
+</button>
+
+
+<button
+class="edit-btn"
+onclick="rotateMedia()">
+
+<svg viewBox="0 0 24 24">
+
+<path d="
+M20 11
+a8 8 0 0 0-14-5
+L3 9"/>
+
+<path d="
+M3 4
+v5
+h5"/>
+
+<path d="
+M4 13
+a8 8 0 0 0 14 5
+l3-3"/>
+
+<path d="
+M21 20
+v-5
+h-5"/>
+
+</svg>
+
+</button>
+
+
+<button
+class="edit-btn"
+onclick="resetEditor()">
+
+<svg viewBox="0 0 24 24">
+
+<path d="
+M4 12
+a8 8 0 1 0 2.3-5.7"/>
+
+<path d="
+M4 5
+v5
+h5"/>
+
+</svg>
+
+</button>
+
+</div>
+
+
+<!-- FILTER PANEL -->
+
+<div
+id="filterPanel"
+class="tool-panel">
+
+<div class="filter-row">
+
+
+<button
+class="filter"
+onclick="
+applyFilter('none')
+">
+
+Original
+
+</button>
+
+
+<button
+class="filter"
+onclick="
+applyFilter(
+'saturate(1.6) contrast(1.12)'
+)
+">
+
+Vivid
+
+</button>
+
+
+<button
+class="filter"
+onclick="
+applyFilter(
+'contrast(1.3) saturate(.82) brightness(.92)'
+)
+">
+
+Cinema
+
+</button>
+
+
+<button
+class="filter"
+onclick="
+applyFilter(
+'hue-rotate(18deg) saturate(1.25)'
+)
+">
+
+Cool
+
+</button>
+
+
+<button
+class="filter"
+onclick="
+applyFilter(
+'sepia(.28) saturate(1.45)'
+)
+">
+
+Warm
+
+</button>
+
+
+<button
+class="filter"
+onclick="
+applyFilter(
+'brightness(.68) contrast(1.35)'
+)
+">
+
+Night
+
+</button>
+
+
+<button
+class="filter"
+onclick="
+applyFilter(
+'brightness(1.08) saturate(.75)'
+)
+">
+
+Dream
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ADJUST PANEL -->
+
+<div
+id="adjustPanel"
+class="tool-panel">
+
+
+<div class="slider">
+
+<label>
+Brightness
+</label>
+
+<input
+id="brightness"
+type="range"
+min="50"
+max="150"
+value="100"
+oninput="adjustMedia()">
+
+</div>
+
+
+<div class="slider">
+
+<label>
+Contrast
+</label>
+
+<input
+id="contrast"
+type="range"
+min="50"
+max="150"
+value="100"
+oninput="adjustMedia()">
+
+</div>
+
+
+<div class="slider">
+
+<label>
+Saturation
+</label>
+
+<input
+id="saturation"
+type="range"
+min="0"
+max="200"
+value="100"
+oninput="adjustMedia()">
+
+</div>
+
+
+<div class="slider">
+
+<label>
+Blur
+</label>
+
+<input
+id="blur"
+type="range"
+min="0"
+max="5"
+value="0"
+step=".1"
+oninput="adjustMedia()">
+
+</div>
+
+</div>
+
+
+<!-- CAMERA GALLERY -->
+
+<div class="editor-actions">
+
+<button
+class="editor-btn"
+onclick="openCamera()">
+
+Camera
+
+</button>
+
+
+<button
+class="editor-btn"
+onclick="openGallery()">
+
+Gallery
+
+</button>
+
+</div>
+
+</div>
+
+
+<input
+id="cameraInput"
+type="file"
+accept="image/*,video/*"
+capture="environment"
+hidden
+onchange="loadMedia(this)">
+
+
+<input
+id="galleryInput"
+type="file"
+accept="image/*,video/*"
+hidden
+onchange="loadMedia(this)">
+
+
+<textarea
+id="studioCaption"
+class="caption-box"
+placeholder="Write a caption...">
+</textarea>
+
+
+<div class="publish-row">
+
+<button
+class="cancel"
+onclick="closePanels()">
+
+Cancel
+
+</button>
+
+
+<button
+class="publish"
+onclick="publishMedia()">
+
+Publish
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
      COMMENTS
-==================================================== -->
+===================================================== -->
 
 <div
 id="comments"
@@ -3587,9 +3635,6 @@ class="comments">
 
 
 <div class="comment-head">
-
-
-<!-- BACK ARROW -->
 
 <button
 class="comment-back"
@@ -3603,10 +3648,7 @@ onclick="closeComments()">
 
 </button>
 
-
-<div>
 Comments
-</div>
 
 </div>
 
@@ -3624,7 +3666,9 @@ D
 
 <div class="comment-body">
 
-<b>Darkwing</b>
+<b>
+Darkwing
+</b>
 
 <br>
 
@@ -3649,7 +3693,9 @@ N
 
 <div class="comment-body">
 
-<b>Nova</b>
+<b>
+Nova
+</b>
 
 <br>
 
@@ -3673,7 +3719,12 @@ X-DARK is looking clean!
 <input
 id="commentInput"
 placeholder="Add a comment..."
-onkeydown="commentKey(event)">
+onkeydown="
+if(event.key==='Enter'){
+event.preventDefault();
+addComment();
+}
+">
 
 
 <button
@@ -3682,9 +3733,14 @@ onclick="addComment()">
 
 <svg viewBox="0 0 24 24">
 
-<path d="M12 19V5"/>
+<path d="
+M12 19
+V5"/>
 
-<path d="m6 11 6-6 6 6"/>
+<path d="
+m6 11
+6-6
+6 6"/>
 
 </svg>
 
@@ -3700,14 +3756,153 @@ id="toast"
 class="toast">
 </div>
 
+</div>
 
-<script>
+
+<script type="module">
 
 /* =====================================================
-   PANEL
+   FIREBASE
 ===================================================== */
 
-function openPanel(id){
+import {
+initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+
+
+import {
+getAuth,
+signInAnonymously,
+onAuthStateChanged
+}
+from
+"https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+
+
+import {
+getFirestore,
+collection,
+addDoc,
+query,
+orderBy,
+onSnapshot,
+serverTimestamp
+}
+from
+"https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+
+const firebaseConfig={
+
+apiKey:
+"AIzaC8Hfx0E7OpnfclF7UGYVcmdU38yuxtsBY",
+
+authDomain:
+"darkwing-a717a.firebaseapp.com",
+
+projectId:
+"darkwing-a717a",
+
+storageBucket:
+"darkwing-a717a.firebasestorage.app",
+
+messagingSenderId:
+"352453390196",
+
+appId:
+"1:352453390196:web:7c375a26a823b5633a4621",
+
+measurementId:
+"G-5RVX9NET3W"
+
+};
+
+
+let app;
+
+let auth;
+
+let db;
+
+let currentUser=null;
+
+let currentChat="";
+
+let stopChat=null;
+
+
+try{
+
+app=
+initializeApp(
+firebaseConfig
+);
+
+
+auth=
+getAuth(app);
+
+
+db=
+getFirestore(app);
+
+
+onAuthStateChanged(
+auth,
+user=>{
+
+currentUser=user;
+
+if(user){
+
+toast(
+"X-DARK connected ✓"
+);
+
+}
+
+});
+
+
+signInAnonymously(
+auth
+)
+.catch(
+error=>{
+
+console.error(
+"Firebase Auth:",
+error
+);
+
+toast(
+"Firebase: "+
+(error.code ||
+"authentication error")
+);
+
+});
+
+}
+catch(error){
+
+console.error(error);
+
+toast(
+"Firebase setup error"
+);
+
+}
+
+
+/* =====================================================
+   PANELS
+===================================================== */
+
+window.openPanel=
+function(id){
 
 closePanels();
 
@@ -3715,525 +3910,251 @@ const panel=
 document.getElementById(id);
 
 if(panel){
-panel.classList.add("open");
-}
+
+panel.classList.add(
+"open"
+);
 
 }
 
+};
 
-function closePanels(){
+
+window.closePanels=
+function(){
 
 document
 .querySelectorAll(".panel")
-.forEach(p=>{
-p.classList.remove("open");
-});
-
+.forEach(
+panel=>{
+panel.classList.remove(
+"open"
+);
 }
+);
+
+};
 
 
-/* =====================================================
-   CREATE
-===================================================== */
-
-function openStudio(){
+window.goHome=
+function(){
 
 closePanels();
 
 document
-.getElementById("studio")
-.classList.add("open");
+.getElementById("feed")
+.scrollTo({
 
-}
+top:0,
 
+behavior:"smooth"
 
-function openCamera(){
-
-document
-.getElementById("mediaInput")
-.click();
-
-}
-
-
-function openGallery(){
-
-document
-.getElementById("galleryInput")
-.click();
-
-}
-
-
-let mediaType="";
-
-
-function loadMedia(input){
-
-const file=input.files[0];
-
-if(!file)return;
-
-const editor=
-document.getElementById("editor");
-
-const empty=
-document.getElementById("emptyEditor");
-
-const image=
-document.getElementById("editImage");
-
-const video=
-document.getElementById("editVideo");
-
-const url=
-URL.createObjectURL(file);
-
-editor.classList.remove("empty");
-
-empty.style.display="none";
-
-image.style.display="none";
-
-video.style.display="none";
-
-image.src="";
-video.src="";
-
-if(file.type.startsWith("video/")){
-
-mediaType="video";
-
-video.src=url;
-
-video.style.display="block";
-
-}else{
-
-mediaType="image";
-
-image.src=url;
-
-image.style.display="block";
-
-}
-
-toast("Media loaded — now edit it 🔥");
-
-}
-
-
-/* =====================================================
-   MODE
-===================================================== */
-
-function setMode(button,mode){
-
-document
-.querySelectorAll(".mode-tab")
-.forEach(b=>{
-b.classList.remove("active");
 });
 
-button.classList.add("active");
-
-toast(mode+" mode selected");
-
-}
+};
 
 
-/* =====================================================
-   FILTERS
-===================================================== */
+window.openStudio=
+function(){
 
-function toggleFilters(){
+openPanel(
+"studio"
+);
 
-document
-.getElementById("filterPanel")
-.classList.toggle("show");
-
-document
-.getElementById("adjustPanel")
-.classList.remove("show");
-
-}
-
-
-function applyFilter(filter){
-
-const image=
-document.getElementById("editImage");
-
-const video=
-document.getElementById("editVideo");
-
-if(image.style.display!=="none"){
-
-image.style.filter=filter;
-
-}
-
-if(video.style.display!=="none"){
-
-video.style.filter=filter;
-
-}
-
-toast("Filter applied ✨");
-
-}
+};
 
 
 /* =====================================================
-   ADJUST
+   TOAST
 ===================================================== */
 
-function toggleAdjust(){
+window.toast=
+function(message){
 
-document
-.getElementById("adjustPanel")
-.classList.toggle("show");
+const toastBox=
+document.getElementById(
+"toast"
+);
 
-document
-.getElementById("filterPanel")
-.classList.remove("show");
+toastBox.textContent=
+message;
 
-}
+toastBox.classList.add(
+"show"
+);
 
+clearTimeout(
+window.toastTimer
+);
 
-function adjustMedia(){
+window.toastTimer=
+setTimeout(
+()=>{
 
-const b=
-document.getElementById("brightness").value;
+toastBox.classList.remove(
+"show"
+);
 
-const c=
-document.getElementById("contrast").value;
+},
+2300
+);
 
-const s=
-document.getElementById("saturation").value;
-
-const bl=
-document.getElementById("blur").value;
-
-
-const filter=
-`
-brightness(${b}%)
-contrast(${c}%)
-saturate(${s}%)
-blur(${bl}px)
-`;
-
-
-const image=
-document.getElementById("editImage");
-
-const video=
-document.getElementById("editVideo");
-
-if(image.style.display!=="none"){
-
-image.style.filter=filter;
-
-}
-
-if(video.style.display!=="none"){
-
-video.style.filter=filter;
-
-}
-
-}
+};
 
 
 /* =====================================================
-   ROTATE
+   LIKE
 ===================================================== */
 
-let rotation=0;
+window.toggleLike=
+function(button){
 
-function rotateMedia(){
+button.classList.toggle(
+"liked"
+);
 
-rotation+=90;
+const span=
+button.querySelector(
+"span"
+);
 
-if(rotation>=360){
-rotation=0;
-}
+span.textContent=
+button.classList.contains(
+"liked"
+)
+?"12.5K"
+:"12.4K";
 
-const image=
-document.getElementById("editImage");
-
-const video=
-document.getElementById("editVideo");
-
-if(image.style.display!=="none"){
-
-image.style.transform=
-`rotate(${rotation}deg)`;
-
-}
-
-if(video.style.display!=="none"){
-
-video.style.transform=
-`rotate(${rotation}deg)`;
-
-}
-
-toast("Rotated");
-
-}
+};
 
 
 /* =====================================================
-   RESET
+   SAVE
 ===================================================== */
 
-function resetEditor(){
+window.toggleSave=
+function(button){
 
-rotation=0;
+button.classList.toggle(
+"liked"
+);
 
-document
-.getElementById("brightness")
-.value=100;
+const span=
+button.querySelector(
+"span"
+);
 
-document
-.getElementById("contrast")
-.value=100;
+span.textContent=
+button.classList.contains(
+"liked"
+)
+?"Saved"
+:"Save";
 
-document
-.getElementById("saturation")
-.value=100;
-
-document
-.getElementById("blur")
-.value=0;
-
-
-const image=
-document.getElementById("editImage");
-
-const video=
-document.getElementById("editVideo");
-
-image.style.filter="none";
-video.style.filter="none";
-
-image.style.transform="rotate(0deg)";
-video.style.transform="rotate(0deg)";
-
-toast("Editor reset");
-
-}
+};
 
 
 /* =====================================================
-   PUBLISH
+   FOLLOW
 ===================================================== */
 
-function publishMedia(){
+window.toggleFollow=
+function(button){
 
-const image=
-document.getElementById("editImage");
+button.textContent=
+button.textContent.trim()
+==="Follow"
+?"Following"
+:"Follow";
 
-const video=
-document.getElementById("editVideo");
+};
+
+
+/* =====================================================
+   SHARE
+===================================================== */
+
+window.sharePost=
+async function(){
+
+try{
 
 if(
-image.style.display==="none" &&
-video.style.display==="none"
+navigator.share
 ){
 
-toast("Pehle photo ya video select karo");
+await navigator.share({
 
-return;
+title:
+"X-DARK",
 
-}
+text:
+"The Next Level",
 
-toast("Your "+mediaType+" is ready to publish 🔥");
+url:
+location.href
 
-}
-
-
-/* =====================================================
-   HOME
-===================================================== */
-
-function goHome(){
-
-closePanels();
-
-const feed=
-document.querySelector(".feed");
-
-feed.scrollTo({
-top:0,
-behavior:"smooth"
 });
 
 }
+else{
 
-
-/* =====================================================
-   CHAT
-===================================================== */
-
-function openChat(name){
-
-closePanels();
-
-document
-.getElementById("chatScreen")
-.classList.add("open");
-
-document
-.getElementById("chatName")
-.textContent=name;
-
-document
-.getElementById("chatAvatar")
-.textContent=name[0];
-
-const box=
-document.getElementById("chatMessages");
-
-box.innerHTML="";
-
-addBubble(
-box,
-name,
-"Welcome to X-DARK 🔥",
-false
+await navigator.clipboard
+.writeText(
+location.href
 );
 
-addBubble(
-box,
-"You",
-"Hey "+name+" 👋",
-true
+toast(
+"Link copied"
 );
 
 }
 
-
-function closeChat(){
-
-document
-.getElementById("chatScreen")
-.classList.remove("open");
-
 }
+catch(error){}
 
-
-function addBubble(
-box,
-name,
-text,
-me
-){
-
-const row=
-document.createElement("div");
-
-row.className=
-"message-row"+
-(me?" me":"");
-
-const bubble=
-document.createElement("div");
-
-bubble.className="bubble";
-
-bubble.textContent=text;
-
-row.appendChild(bubble);
-
-box.appendChild(row);
-
-box.scrollTop=
-box.scrollHeight;
-
-}
-
-
-function sendMessage(){
-
-const input=
-document.getElementById("chatInput");
-
-const text=
-input.value.trim();
-
-if(!text)return;
-
-addBubble(
-document.getElementById("chatMessages"),
-"You",
-text,
-true
-);
-
-input.value="";
-
-}
-
-
-document
-.getElementById("chatInput")
-.addEventListener(
-"keydown",
-e=>{
-
-if(e.key==="Enter"){
-
-e.preventDefault();
-
-sendMessage();
-
-}
-
-});
+};
 
 
 /* =====================================================
    COMMENTS
 ===================================================== */
 
-function openComments(){
+window.openComments=
+function(){
 
 document
-.getElementById("comments")
-.classList.add("open");
+.getElementById(
+"comments"
+)
+.classList.add(
+"open"
+);
 
-}
+};
 
 
-function closeComments(){
+window.closeComments=
+function(){
 
 document
-.getElementById("comments")
-.classList.remove("open");
+.getElementById(
+"comments"
+)
+.classList.remove(
+"open"
+);
 
-}
-
-
-function commentKey(e){
-
-if(e.key==="Enter"){
-
-e.preventDefault();
-
-addComment();
-
-}
-
-}
+};
 
 
-function addComment(){
+window.addComment=
+function(){
 
 const input=
-document.getElementById("commentInput");
+document.getElementById(
+"commentInput"
+);
 
 const text=
 input.value.trim();
@@ -4242,9 +4163,13 @@ if(!text)return;
 
 
 const item=
-document.createElement("div");
+document.createElement(
+"div"
+);
 
-item.className="comment";
+item.className=
+"comment";
+
 
 item.innerHTML=`
 
@@ -4254,7 +4179,9 @@ A
 
 <div class="comment-body">
 
-<b>Ankaj</b>
+<b>
+Ankaj
+</b>
 
 <br>
 
@@ -4270,271 +4197,932 @@ now
 
 `;
 
+
 document
-.getElementById("commentList")
-.appendChild(item);
+.getElementById(
+"commentList"
+)
+.appendChild(
+item
+);
+
 
 input.value="";
 
-const list=
-document.getElementById("commentList");
 
-list.scrollTop=
-list.scrollHeight;
+document
+.getElementById(
+"commentList"
+)
+.scrollTop=999999;
 
-}
+};
 
-
-/* =====================================================
-   LIKE
-===================================================== */
-
-function toggleLike(button){
-
-button.classList.toggle("liked");
-
-const span=
-button.querySelector("span");
-
-if(
-button.classList.contains("liked")
-){
-
-span.textContent="12.5K";
-
-}else{
-
-span.textContent="12.4K";
-
-}
-
-}
-
-
-/* =====================================================
-   SAVE
-===================================================== */
-
-function toggleSave(button){
-
-button.classList.toggle("liked");
-
-const span=
-button.querySelector("span");
-
-if(
-button.classList.contains("liked")
-){
-
-span.textContent="Saved";
-
-toast("Saved 🔖");
-
-}else{
-
-span.textContent="Save";
-
-}
-
-}
-
-
-/* =====================================================
-   FOLLOW
-===================================================== */
-
-function toggleFollow(button){
-
-if(
-button.textContent.trim()==="Follow"
-){
-
-button.textContent="Following";
-
-toast("Following");
-
-}else{
-
-button.textContent="Follow";
-
-toast("Unfollowed");
-
-}
-
-}
-
-
-/* =====================================================
-   SHARE
-===================================================== */
-
-async function sharePost(){
-
-try{
-
-if(navigator.share){
-
-await navigator.share({
-
-title:"X-DARK",
-
-text:"Check this on X-DARK",
-
-url:location.href
-
-});
-
-}else{
-
-await navigator.clipboard.writeText(
-location.href
-);
-
-toast("Link copied");
-
-}
-
-}catch(e){
-
-console.log(e);
-
-}
-
-}
-
-
-/* =====================================================
-   TOAST
-===================================================== */
-
-function toast(message){
-
-const box=
-document.getElementById("toast");
-
-box.textContent=message;
-
-box.classList.add("show");
-
-clearTimeout(window.xt);
-
-window.xt=
-setTimeout(()=>{
-
-box.classList.remove("show");
-
-},2200);
-
-}
-
-
-/* =====================================================
-   ESCAPE
-===================================================== */
 
 function escapeHTML(text){
 
-return text
-.replaceAll("&","&amp;")
-.replaceAll("<","&lt;")
-.replaceAll(">","&gt;")
-.replaceAll('"',"&quot;")
-.replaceAll("'","&#039;");
+return text.replace(
+/[&<>"']/g,
+character=>({
+
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#039;"
+
+}[character])
+);
 
 }
 
 
 /* =====================================================
-   VIDEO AUTO PLAY
+   FIREBASE CHAT
+===================================================== */
+
+window.openChat=
+function(name,initial){
+
+currentChat=name;
+
+closePanels();
+
+document
+.getElementById(
+"chatPanel"
+)
+.classList.add(
+"open"
+);
+
+
+document
+.getElementById(
+"chatName"
+)
+.textContent=name;
+
+
+document
+.getElementById(
+"chatAvatar"
+)
+.textContent=initial;
+
+
+document
+.getElementById(
+"messagesBox"
+)
+.innerHTML="";
+
+
+if(currentUser){
+
+listenChat();
+
+}
+else{
+
+addBubble(
+"Welcome to X-DARK 🔥",
+false
+);
+
+}
+
+};
+
+
+function chatId(name){
+
+return name
+.toLowerCase()
+.replace(
+/[^a-z0-9]+/g,
+"_"
+);
+
+};
+
+
+function listenChat(){
+
+if(stopChat){
+
+stopChat();
+
+}
+
+
+const messageQuery=
+query(
+
+collection(
+db,
+"chats",
+chatId(
+currentChat
+),
+"messages"
+),
+
+orderBy(
+"createdAt",
+"asc"
+)
+
+);
+
+
+stopChat=
+onSnapshot(
+
+messageQuery,
+
+snapshot=>{
+
+const box=
+document.getElementById(
+"messagesBox"
+);
+
+box.innerHTML="";
+
+
+snapshot.forEach(
+doc=>{
+
+const message=
+doc.data();
+
+
+addBubble(
+
+message.text,
+
+message.senderId===
+currentUser.uid
+
+);
+
+});
+
+
+box.scrollTop=
+box.scrollHeight;
+
+},
+
+error=>{
+
+console.error(
+error
+);
+
+toast(
+"Chat error: "+
+error.code
+);
+
+}
+
+);
+
+};
+
+
+function addBubble(
+text,
+mine
+){
+
+const row=
+document.createElement(
+"div"
+);
+
+row.className=
+"msg"+
+(mine?" me":"");
+
+
+const bubble=
+document.createElement(
+"div"
+);
+
+bubble.className=
+"bubble";
+
+bubble.textContent=
+text;
+
+
+row.appendChild(
+bubble
+);
+
+
+document
+.getElementById(
+"messagesBox"
+)
+.appendChild(
+row
+);
+
+};
+
+
+window.closeChat=
+function(){
+
+if(stopChat){
+
+stopChat();
+
+stopChat=null;
+
+}
+
+
+document
+.getElementById(
+"chatPanel"
+)
+.classList.remove(
+"open"
+);
+
+};
+
+
+window.sendMessage=
+async function(){
+
+const input=
+document.getElementById(
+"chatInput"
+);
+
+const text=
+input.value.trim();
+
+if(!text)return;
+
+
+if(!currentUser){
+
+toast(
+"Firebase not connected"
+);
+
+return;
+
+}
+
+
+input.value="";
+
+
+try{
+
+await addDoc(
+
+collection(
+db,
+"chats",
+chatId(
+currentChat
+),
+"messages"
+),
+
+{
+
+text:text,
+
+senderId:
+currentUser.uid,
+
+senderName:
+"Ankaj",
+
+type:
+"text",
+
+seenBy:
+[
+currentUser.uid
+],
+
+createdAt:
+serverTimestamp()
+
+}
+
+);
+
+}
+catch(error){
+
+console.error(
+error
+);
+
+toast(
+"Message failed: "+
+error.code
+);
+
+input.value=text;
+
+}
+
+};
+
+
+/* =====================================================
+   EXPLORE
+===================================================== */
+
+window.searchExplore=
+function(){
+
+const value=
+document
+.getElementById(
+"searchInput"
+)
+.value
+.trim();
+
+
+const results=
+document.getElementById(
+"exploreResults"
+);
+
+
+if(!value){
+
+results.innerHTML=`
+
+<div class="card">
+
+<div class="avatar">
+#
+</div>
+
+<div class="card-info">
+
+<strong>
+#xdark
+</strong>
+
+<small>
+Trending now
+</small>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="avatar">
+✦
+</div>
+
+<div class="card-info">
+
+<strong>
+Discover creators
+</strong>
+
+<small>
+Find new people and reels
+</small>
+
+</div>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+results.innerHTML=`
+
+<div class="card">
+
+<div class="avatar">
+⌕
+</div>
+
+<div class="card-info">
+
+<strong>
+${escapeHTML(value)}
+</strong>
+
+<small>
+Search results on X-DARK
+</small>
+
+</div>
+
+</div>
+
+`;
+
+};
+
+
+/* =====================================================
+   CREATE EDITOR
+===================================================== */
+
+let mode="Story";
+
+let rotation=0;
+
+
+window.setMode=
+function(button,newMode){
+
+document
+.querySelectorAll(
+".mode"
+)
+.forEach(
+item=>{
+item.classList.remove(
+"active"
+);
+}
+);
+
+
+button.classList.add(
+"active"
+);
+
+
+mode=newMode;
+
+
+toast(
+newMode+
+" mode selected"
+);
+
+};
+
+
+window.openCamera=
+function(){
+
+document
+.getElementById(
+"cameraInput"
+)
+.click();
+
+};
+
+
+window.openGallery=
+function(){
+
+document
+.getElementById(
+"galleryInput"
+)
+.click();
+
+};
+
+
+window.loadMedia=
+function(input){
+
+const file=
+input.files[0];
+
+if(!file)return;
+
+
+const url=
+URL.createObjectURL(
+file
+);
+
+
+const image=
+document.getElementById(
+"editImage"
+);
+
+
+const video=
+document.getElementById(
+"editVideo"
+);
+
+
+document
+.getElementById(
+"emptyEditor"
+)
+.style.display=
+"none";
+
+
+image.style.display=
+"none";
+
+video.style.display=
+"none";
+
+
+if(
+file.type.startsWith(
+"video/"
+)
+){
+
+video.src=url;
+
+video.style.display=
+"block";
+
+}
+else{
+
+image.src=url;
+
+image.style.display=
+"block";
+
+}
+
+
+toast(
+mode+
+" media loaded ✓"
+);
+
+};
+
+
+/* =====================================================
+   FILTERS
+===================================================== */
+
+window.toggleFilters=
+function(){
+
+document
+.getElementById(
+"filterPanel"
+)
+.classList.toggle(
+"show"
+);
+
+
+document
+.getElementById(
+"adjustPanel"
+)
+.classList.remove(
+"show"
+);
+
+};
+
+
+window.toggleAdjust=
+function(){
+
+document
+.getElementById(
+"adjustPanel"
+)
+.classList.toggle(
+"show"
+);
+
+
+document
+.getElementById(
+"filterPanel"
+)
+.classList.remove(
+"show"
+);
+
+};
+
+
+window.applyFilter=
+function(filter){
+
+document
+.getElementById(
+"editImage"
+)
+.style.filter=
+filter;
+
+
+document
+.getElementById(
+"editVideo"
+)
+.style.filter=
+filter;
+
+
+toast(
+"Filter applied ✨"
+);
+
+};
+
+
+/* =====================================================
+   ADJUSTMENTS
+===================================================== */
+
+window.adjustMedia=
+function(){
+
+const brightness=
+document
+.getElementById(
+"brightness"
+)
+.value;
+
+
+const contrast=
+document
+.getElementById(
+"contrast"
+)
+.value;
+
+
+const saturation=
+document
+.getElementById(
+"saturation"
+)
+.value;
+
+
+const blur=
+document
+.getElementById(
+"blur"
+)
+.value;
+
+
+const filter=`
+
+brightness(${brightness}%)
+contrast(${contrast}%)
+saturate(${saturation}%)
+blur(${blur}px)
+
+`;
+
+
+document
+.getElementById(
+"editImage"
+)
+.style.filter=
+filter;
+
+
+document
+.getElementById(
+"editVideo"
+)
+.style.filter=
+filter;
+
+};
+
+
+/* =====================================================
+   ROTATE
+===================================================== */
+
+window.rotateMedia=
+function(){
+
+rotation=
+(rotation+90)%360;
+
+
+document
+.getElementById(
+"editImage"
+)
+.style.transform=
+`rotate(${rotation}deg)`;
+
+
+document
+.getElementById(
+"editVideo"
+)
+.style.transform=
+`rotate(${rotation}deg)`;
+
+};
+
+
+/* =====================================================
+   RESET EDITOR
+===================================================== */
+
+window.resetEditor=
+function(){
+
+rotation=0;
+
+
+document
+.getElementById(
+"brightness"
+)
+.value=100;
+
+
+document
+.getElementById(
+"contrast"
+)
+.value=100;
+
+
+document
+.getElementById(
+"saturation"
+)
+.value=100;
+
+
+document
+.getElementById(
+"blur"
+)
+.value=0;
+
+
+document
+.getElementById(
+"editImage"
+)
+.style.filter=
+"none";
+
+
+document
+.getElementById(
+"editVideo"
+)
+.style.filter=
+"none";
+
+
+document
+.getElementById(
+"editImage"
+)
+.style.transform=
+"rotate(0deg)";
+
+
+document
+.getElementById(
+"editVideo"
+)
+.style.transform=
+"rotate(0deg)";
+
+
+toast(
+"Editor reset"
+);
+
+};
+
+
+/* =====================================================
+   PUBLISH
+===================================================== */
+
+window.publishMedia=
+function(){
+
+const image=
+document.getElementById(
+"editImage"
+);
+
+
+const video=
+document.getElementById(
+"editVideo"
+);
+
+
+if(
+image.style.display==="none" &&
+video.style.display==="none"
+){
+
+toast(
+"Pehle photo ya video select karo"
+);
+
+return;
+
+}
+
+
+toast(
+"Your "+
+mode.toLowerCase()+
+" is ready to publish 🔥"
+);
+
+};
+
+
+/* =====================================================
+   VIDEO OBSERVER
 ===================================================== */
 
 const observer=
 new IntersectionObserver(
+
 entries=>{
 
-entries.forEach(entry=>{
+entries.forEach(
+entry=>{
 
-const video=
-entry.target;
+if(
+entry.isIntersecting
+){
 
-if(entry.isIntersecting){
+entry.target
+.play()
+.catch(
+()=>{}
+);
 
-video.play().catch(()=>{});
+}
+else{
 
-}else{
-
-video.pause();
+entry.target.pause();
 
 }
 
 });
 
 },
+
 {
 threshold:.65
 }
+
 );
 
 
 document
-.querySelectorAll(".reel-video")
-.forEach(video=>{
-observer.observe(video);
-});
-
-
-/* =====================================================
-   DOUBLE TAP
-===================================================== */
-
-document
-.querySelectorAll(".reel")
-.forEach(reel=>{
-
-let last=0;
-
-reel.addEventListener(
-"click",
-e=>{
-
-if(
-e.target.closest(
-".action,.top-btn,.you-camera,.follow"
+.querySelectorAll(
+".reel-media"
 )
-)return;
-
-const now=Date.now();
-
-if(now-last<300){
-
-const like=
-reel.querySelector(".like-button");
-
-if(like){
-
-if(
-!like.classList.contains("liked")
-){
-
-toggleLike(like);
-
-toast("❤️ Liked");
-
-}
-
-}
-
-}
-
-last=now;
-
-});
-
-});
+.forEach(
+video=>
+observer.observe(video)
+);
 
 </script>
-
-</div>
 
 </body>
 </html>
