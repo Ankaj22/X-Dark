@@ -1,835 +1,657 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta
-name="viewport"
-content="width=device-width,initial-scale=1.0">
-
-<title>Create Post - X-DARK</title>
-
-<style>
-
-*{
-box-sizing:border-box;
-}
-
-body{
-
-margin:0;
-
-background:#08090d;
-
-color:white;
-
-font-family:Arial,sans-serif;
-
-padding-bottom:90px;
-
-}
-
-header{
-
-height:75px;
-
-display:flex;
-
-align-items:center;
-
-justify-content:space-between;
-
-padding:0 22px;
-
-border-bottom:
-1px solid #292b35;
-
-}
-
-.logo{
-
-font-size:26px;
-
-font-weight:900;
-
-}
-
-.container{
-
-max-width:600px;
-
-margin:auto;
-
-padding:25px 18px;
-
-}
-
-h1{
-
-font-size:30px;
-
-margin:
-0 0 25px;
-
-}
-
-.card{
-
-background:#111219;
-
-border:
-1px solid #292b35;
-
-border-radius:20px;
-
-padding:20px;
-
-}
-
-.user{
-
-display:flex;
-
-align-items:center;
-
-gap:12px;
-
-margin-bottom:20px;
-
-}
-
-.avatar{
-
-width:50px;
-
-height:50px;
-
-border-radius:50%;
-
-border:
-2px solid #8c52ff;
-
-}
-
-.handle{
-
-color:#8b8e9a;
-
-margin-top:4px;
-
-font-size:14px;
-
-}
-
-
-/* SELECT */
-
-.select-box{
-
-display:block;
-
-background:#191b23;
-
-border:
-2px dashed #454855;
-
-border-radius:18px;
-
-padding:35px 15px;
-
-text-align:center;
-
-cursor:pointer;
-
-}
-
-.select-icon{
-
-font-size:50px;
-
-}
-
-.select-box h3{
-
-margin:
-10px 0 5px;
-
-}
-
-.select-box p{
-
-margin:0;
-
-color:#898c99;
-
-font-size:13px;
-
-}
-
-#videoInput{
-
-display:none;
-
-}
-
-
-/* PREVIEW */
-
-.preview{
-
-display:none;
-
-margin-top:18px;
-
-border-radius:16px;
-
-overflow:hidden;
-
-background:black;
-
-}
-
-.preview video{
-
-width:100%;
-
-display:block;
-
-max-height:450px;
-
-}
-
-.file-info{
-
-padding:12px;
-
-background:#191b23;
-
-color:#aaa;
-
-font-size:13px;
-
-}
-
-
-/* INPUTS */
-
-textarea,
-.tags{
-
-width:100%;
-
-background:#191b23;
-
-border:
-1px solid #30333e;
-
-border-radius:14px;
-
-color:white;
-
-font-size:16px;
-
-outline:none;
-
-padding:15px;
-
-margin-top:15px;
-
-}
-
-textarea{
-
-height:120px;
-
-resize:none;
-
-}
-
-textarea:focus,
-.tags:focus{
-
-border-color:#8c52ff;
-
-}
-
-
-/* BUTTON */
-
-.buttons{
-
-display:flex;
-
-gap:10px;
-
-margin-top:18px;
-
-}
-
-button{
-
-flex:1;
-
-padding:15px;
-
-border:0;
-
-border-radius:13px;
-
-font-size:16px;
-
-font-weight:bold;
-
-cursor:pointer;
-
-}
-
-.cancel{
-
-background:#272933;
-
-color:white;
-
-}
-
-.upload{
-
-background:white;
-
-color:black;
-
-}
-
-.upload:disabled{
-
-opacity:.4;
-
-}
-
-.status{
-
-text-align:center;
-
-margin-top:15px;
-
-min-height:20px;
-
-color:#aaa;
-
-}
-
-
-/* NAV */
-
-nav{
-
-position:fixed;
-
-bottom:0;
-
-left:0;
-
-right:0;
-
-height:75px;
-
-background:#090a0e;
-
-border-top:
-1px solid #292b35;
-
-display:flex;
-
-justify-content:
-space-around;
-
-align-items:center;
-
-font-size:27px;
-
-}
-
-.plus{
-
-background:white;
-
-color:black;
-
-padding:
-8px 20px;
-
-border-radius:16px;
-
-}
-
-</style>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>X-DARK • Create</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #08090d;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding-bottom: 100px;
+    }
+
+    header {
+      padding: 22px;
+      font-size: 28px;
+      font-weight: 800;
+      border-bottom: 1px solid #292b35;
+    }
+
+    .container {
+      width: min(680px, 92%);
+      margin: 30px auto;
+    }
+
+    .choose {
+      border: 3px dashed #343744;
+      border-radius: 30px;
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+      background: #111218;
+    }
+
+    .choose .emoji {
+      font-size: 55px;
+    }
+
+    .choose h2 {
+      margin: 12px 0 5px;
+      font-size: 26px;
+    }
+
+    .choose p {
+      margin: 0;
+      color: #9295a3;
+      font-size: 18px;
+    }
+
+    #videoInput {
+      display: none;
+    }
+
+    .preview {
+      margin-top: 28px;
+      border-radius: 28px;
+      overflow: hidden;
+      background: #000;
+      border: 1px solid #252732;
+    }
+
+    video {
+      width: 100%;
+      display: block;
+      max-height: 500px;
+      background: black;
+    }
+
+    .fileInfo {
+      padding: 18px;
+      background: #181920;
+      color: #b9bbc5;
+      font-size: 17px;
+      word-break: break-word;
+    }
+
+    textarea,
+    input[type="text"] {
+      width: 100%;
+      background: #171820;
+      border: 2px solid #30323e;
+      border-radius: 22px;
+      color: white;
+      padding: 22px;
+      font-size: 20px;
+      outline: none;
+      margin-top: 24px;
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    textarea:focus,
+    input[type="text"]:focus {
+      border-color: #7047ff;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    button {
+      flex: 1;
+      border: 0;
+      border-radius: 22px;
+      padding: 20px;
+      font-size: 20px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .cancel {
+      background: #292b36;
+      color: white;
+    }
+
+    .post {
+      background: #f1f1f1;
+      color: #050505;
+    }
+
+    .post:disabled {
+      opacity: .55;
+      cursor: not-allowed;
+    }
+
+    .status {
+      text-align: center;
+      margin-top: 25px;
+      font-size: 18px;
+      color: #bfc0c9;
+      min-height: 28px;
+      line-height: 1.5;
+    }
+
+    .progressBox {
+      display: none;
+      margin-top: 18px;
+      background: #1b1c24;
+      border-radius: 15px;
+      overflow: hidden;
+      height: 14px;
+    }
+
+    .progress {
+      width: 0%;
+      height: 100%;
+      background: #7047ff;
+      transition: width .15s;
+    }
+
+    nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 90px;
+      background: #08090d;
+      border-top: 1px solid #292b35;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 10;
+    }
+
+    nav button {
+      background: none;
+      color: white;
+      font-size: 30px;
+      padding: 8px;
+    }
+
+    .plus {
+      background: white !important;
+      color: black !important;
+      width: 80px;
+      height: 65px;
+      border-radius: 25px !important;
+      font-size: 38px !important;
+    }
+  </style>
 </head>
-
 
 <body>
 
-
 <header>
-
-<div class="logo">
-X-DARK
-</div>
-
-<div>
-✦
-</div>
-
+  X-DARK
 </header>
-
 
 <div class="container">
 
+  <label class="choose" for="videoInput">
 
-<h1>
-Create
-</h1>
+    <div class="emoji">🎬</div>
 
+    <h2>Choose Video</h2>
 
-<div class="card">
+    <p>MP4 • MOV • WEBM • MKV</p>
 
+  </label>
 
-<div class="user">
+  <input
+    id="videoInput"
+    type="file"
+    accept="video/mp4,video/quicktime,video/webm,video/x-matroska,.mp4,.mov,.webm,.mkv"
+  >
 
-<img
-class="avatar"
-src="https://i.pravatar.cc/100?img=12">
+  <div id="previewArea"></div>
 
+  <textarea
+    id="caption"
+    placeholder="Write a caption..."
+  ></textarea>
 
-<div>
+  <input
+    id="tags"
+    type="text"
+    placeholder="#xdark #video"
+  >
 
-<strong>
-X-Dark User
-</strong>
+  <div class="buttons">
 
-<div class="handle">
-@Darkwing2
-</div>
+    <button
+      class="cancel"
+      onclick="cancelUpload()"
+    >
+      Cancel
+    </button>
 
-</div>
+    <button
+      id="postButton"
+      class="post"
+      onclick="uploadVideo()"
+      disabled
+    >
+      Post
+    </button>
 
-</div>
+  </div>
 
+  <div class="progressBox" id="progressBox">
+    <div class="progress" id="progress"></div>
+  </div>
 
-<label
-class="select-box"
-for="videoInput">
-
-<div class="select-icon">
-🎬
-</div>
-
-<h3>
-Choose Video
-</h3>
-
-<p>
-MP4 • MOV • WEBM
-</p>
-
-</label>
-
-
-<input
-type="file"
-id="videoInput"
-accept="video/mp4,video/quicktime,video/webm">
-
-
-<div
-class="preview"
-id="preview">
-
-<video
-id="previewVideo"
-controls
-playsinline>
-</video>
-
-<div
-class="file-info"
-id="fileInfo">
-</div>
+  <div
+    class="status"
+    id="status"
+  ></div>
 
 </div>
-
-
-<textarea
-id="caption"
-maxlength="500"
-placeholder="Write a caption...">
-</textarea>
-
-
-<input
-class="tags"
-id="tags"
-type="text"
-placeholder="#xdark #video">
-
-
-<div class="buttons">
-
-
-<button
-class="cancel"
-onclick="
-window.location.href=
-'index.html'
-">
-
-Cancel
-
-</button>
-
-
-<button
-class="upload"
-id="uploadButton"
-disabled>
-
-🚀 Post
-
-</button>
-
-
-</div>
-
-
-<div
-class="status"
-id="status">
-</div>
-
-
-</div>
-
-</div>
-
 
 <nav>
 
-<span
-onclick="
-window.location.href=
-'index.html'
-">
-⌂
-</span>
+  <button onclick="location.href='index.html'">
+    ⌂
+  </button>
 
-<span>
-⌕
-</span>
+  <button>
+    ⌕
+  </button>
 
-<span class="plus">
-+
-</span>
+  <button
+    class="plus"
+    onclick="location.reload()"
+  >
+    +
+  </button>
 
-<span>
-♡
-</span>
+  <button>
+    ♡
+  </button>
 
-<span
-onclick="
-window.location.href=
-'profile.html'
-">
-◉
-</span>
+  <button onclick="location.href='profile.html'">
+    ◉
+  </button>
 
 </nav>
 
-
 <script>
 
+let selectedFile = null;
+let xhr = null;
 
-let selectedVideo = null;
+// ======================================
+// SELECT VIDEO
+// ======================================
 
-let previewURL = null;
+document
+  .getElementById("videoInput")
+  .addEventListener("change", function () {
+
+    const file = this.files[0];
+
+    if (!file) {
+      return;
+    }
+
+    selectedFile = file;
+
+    const url = URL.createObjectURL(file);
+
+    document.getElementById("previewArea").innerHTML = `
+
+      <div class="preview">
+
+        <video
+          src="${url}"
+          controls
+          playsinline
+          preload="metadata"
+        ></video>
+
+        <div class="fileInfo">
+
+          ${escapeHTML(file.name)}
+          •
+          ${formatSize(file.size)}
+
+        </div>
+
+      </div>
+
+    `;
+
+    document.getElementById("postButton").disabled = false;
+
+    document.getElementById("status").textContent =
+      "Video ready to upload 🎬";
+
+  });
 
 
-const input =
-document.getElementById(
-"videoInput"
-);
+// ======================================
+// UPLOAD
+// ======================================
+
+function uploadVideo() {
+
+  if (!selectedFile) {
+
+    alert("Please choose a video first.");
+
+    return;
+  }
+
+  if (xhr) {
+    return;
+  }
+
+  const caption =
+    document.getElementById("caption").value.trim();
+
+  const tags =
+    document.getElementById("tags").value.trim();
+
+  const formData = new FormData();
+
+  formData.append("video", selectedFile);
+  formData.append("caption", caption);
+  formData.append("tags", tags);
+
+  xhr = new XMLHttpRequest();
+
+  xhr.open(
+    "POST",
+    "/api/upload",
+    true
+  );
+
+  xhr.timeout = 10 * 60 * 1000;
+
+  // ==================================
+  // PROGRESS
+  // ==================================
+
+  xhr.upload.addEventListener(
+    "progress",
+    function (event) {
+
+      if (event.lengthComputable) {
+
+        const percent =
+          Math.round(
+            (event.loaded / event.total) * 100
+          );
+
+        document.getElementById("progressBox")
+          .style.display = "block";
+
+        document.getElementById("progress")
+          .style.width = percent + "%";
+
+        document.getElementById("status")
+          .textContent =
+          "Uploading video... " + percent + "%";
+
+        document.getElementById("postButton")
+          .textContent =
+          percent + "%";
+
+      }
+
+    }
+  );
 
 
-const button =
-document.getElementById(
-"uploadButton"
-);
+  // ==================================
+  // SUCCESS
+  // ==================================
+
+  xhr.onload = function () {
+
+    console.log(
+      "SERVER STATUS:",
+      xhr.status
+    );
+
+    console.log(
+      "SERVER RESPONSE:",
+      xhr.responseText
+    );
+
+    if (
+      xhr.status >= 200 &&
+      xhr.status < 300
+    ) {
+
+      let data;
+
+      try {
+
+        data =
+          JSON.parse(xhr.responseText);
+
+      } catch (error) {
+
+        data = null;
+      }
+
+      if (data && data.success) {
+
+        document.getElementById("progress")
+          .style.width = "100%";
+
+        document.getElementById("status")
+          .textContent =
+          "Upload successful 🎉";
+
+        document.getElementById("postButton")
+          .textContent =
+          "Uploaded ✓";
+
+        setTimeout(function () {
+
+          location.href = "index.html";
+
+        }, 700);
+
+      } else {
+
+        showError(
+          data?.message ||
+          "Server returned an invalid response."
+        );
+
+      }
+
+    } else {
+
+      showError(
+        "Server error: HTTP " +
+        xhr.status +
+        " " +
+        xhr.statusText
+      );
+
+    }
+
+    xhr = null;
+  };
 
 
-const status =
-document.getElementById(
-"status"
-);
+  // ==================================
+  // NETWORK ERROR
+  // ==================================
+
+  xhr.onerror = function () {
+
+    showError(
+      "Network error. Server se connection nahi ho raha."
+    );
+
+    xhr = null;
+  };
 
 
-input.addEventListener(
-"change",
-function(){
+  // ==================================
+  // TIMEOUT
+  // ==================================
+
+  xhr.ontimeout = function () {
+
+    showError(
+      "Upload timeout. Server ne time par response nahi diya."
+    );
+
+    xhr = null;
+  };
 
 
-const file =
-input.files[0];
+  // ==================================
+  // ABORT
+  // ==================================
+
+  xhr.onabort = function () {
+
+    document.getElementById("status")
+      .textContent =
+      "Upload cancelled.";
+
+    resetButton();
+
+    xhr = null;
+  };
 
 
-if(!file){
+  // ==================================
+  // SEND
+  // ==================================
 
-return;
+  document.getElementById("postButton")
+    .disabled = true;
+
+  document.getElementById("postButton")
+    .textContent = "Starting...";
+
+  document.getElementById("status")
+    .textContent =
+    "Connecting to X-DARK server...";
+
+  xhr.send(formData);
 
 }
 
 
-if(
-!file.type.startsWith(
-"video/"
-)
-){
+// ======================================
+// ERROR
+// ======================================
 
-status.innerText =
-"Please select a video.";
+function showError(message) {
 
-input.value = "";
+  document.getElementById("status")
+    .textContent =
+    "❌ " + message;
 
-return;
+  document.getElementById("postButton")
+    .textContent =
+    "Try Again";
 
-}
-
-
-selectedVideo =
-file;
-
-
-if(previewURL){
-
-URL.revokeObjectURL(
-previewURL
-);
+  document.getElementById("postButton")
+    .disabled = false;
 
 }
 
 
-previewURL =
-URL.createObjectURL(
-file
-);
+// ======================================
+// CANCEL
+// ======================================
 
+function cancelUpload() {
 
-document.getElementById(
-"previewVideo"
-).src =
-previewURL;
+  if (xhr) {
 
+    xhr.abort();
 
-document.getElementById(
-"fileInfo"
-).innerText =
-file.name +
-" • " +
-formatSize(
-file.size
-);
+    return;
+  }
 
-
-document.getElementById(
-"preview"
-).style.display =
-"block";
-
-
-button.disabled =
-false;
-
-
-status.innerText =
-"Video ready ✓";
-
-
-});
-
-
-function formatSize(bytes){
-
-if(
-bytes <
-1024 * 1024
-){
-
-return (
-bytes / 1024
-).toFixed(1) +
-" KB";
-
+  location.href = "index.html";
 }
 
 
-return (
-bytes /
-1024 /
-1024
-).toFixed(1) +
-" MB";
+// ======================================
+// RESET
+// ======================================
 
+function resetButton() {
+
+  document.getElementById("postButton")
+    .disabled = false;
+
+  document.getElementById("postButton")
+    .textContent = "Post";
 }
 
 
-button.addEventListener(
-"click",
-uploadVideo
-);
+// ======================================
+// FILE SIZE
+// ======================================
 
+function formatSize(bytes) {
 
-async function uploadVideo(){
+  if (bytes < 1024) {
+    return bytes + " B";
+  }
 
+  if (bytes < 1024 * 1024) {
 
-if(!selectedVideo){
+    return (
+      (bytes / 1024).toFixed(1) +
+      " KB"
+    );
 
-status.innerText =
-"Choose a video first.";
+  }
 
-return;
-
+  return (
+    (bytes / (1024 * 1024)).toFixed(1) +
+    " MB"
+  );
 }
 
 
-button.disabled =
-true;
+// ======================================
+// SECURITY
+// ======================================
 
+function escapeHTML(text) {
 
-button.innerText =
-"Uploading...";
-
-
-status.innerText =
-"Uploading video...";
-
-
-const formData =
-new FormData();
-
-
-formData.append(
-"video",
-selectedVideo
-);
-
-
-formData.append(
-
-"caption",
-
-document.getElementById(
-"caption"
-).value.trim()
-
-);
-
-
-formData.append(
-
-"tags",
-
-document.getElementById(
-"tags"
-).value.trim()
-
-);
-
-
-try{
-
-
-const response =
-await fetch(
-
-"/api/upload",
-
-{
-
-method:"POST",
-
-body:formData
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 
 }
-
-);
-
-
-const result =
-await response.json();
-
-
-if(!response.ok){
-
-throw new Error(
-
-result.message ||
-"Upload failed"
-
-);
-
-}
-
-
-status.innerText =
-"Video uploaded successfully 🚀";
-
-
-button.innerText =
-"Uploaded ✓";
-
-
-setTimeout(
-function(){
-
-window.location.href =
-"index.html";
-
-},
-800
-);
-
-
-}
-
-catch(error){
-
-
-console.error(error);
-
-
-status.innerText =
-"Upload failed: " +
-error.message;
-
-
-button.innerText =
-"🚀 Post";
-
-
-button.disabled =
-false;
-
-
-}
-
-
-}
-
 
 </script>
 
-
 </body>
-
 </html>
