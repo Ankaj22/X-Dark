@@ -1,597 +1,301 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>X-DARK Create Post</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>X-DARK Create</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
+*{box-sizing:border-box}
 body{
-  background:#08090d;
-  color:#fff;
-  font-family:Arial,sans-serif;
-  min-height:100vh;
+margin:0;
+background:#08090d;
+color:white;
+font-family:Arial;
+padding-bottom:80px
 }
-
-/* HEADER */
-.header{
-  height:72px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 20px;
-  border-bottom:1px solid #282a34;
+header{
+height:70px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 22px;
+border-bottom:1px solid #292b35
 }
-
-.back{
-  font-size:32px;
-  cursor:pointer;
+.logo{font-size:25px;font-weight:bold}
+main{
+max-width:600px;
+margin:25px auto;
+padding:0 18px
 }
-
-.header h1{
-  font-size:24px;
+.card{
+background:#111219;
+border:1px solid #292b35;
+border-radius:20px;
+padding:18px
 }
-
-/* MAIN */
-.container{
-  padding:25px 20px 100px;
-  max-width:600px;
-  margin:auto;
-}
-
-.title{
-  font-size:28px;
-  font-weight:bold;
-  margin-bottom:25px;
-}
-
-/* USER */
+h1{font-size:28px}
 .user{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-bottom:22px;
+display:flex;
+gap:12px;
+align-items:center;
+margin-bottom:20px
 }
-
 .avatar{
-  width:48px;
-  height:48px;
-  border-radius:50%;
-  border:2px solid #8b52ff;
-  object-fit:cover;
+width:48px;
+height:48px;
+border-radius:50%;
+border:2px solid #8b52ff
 }
-
-.user strong{
-  font-size:17px;
+.handle{color:#888}
+.choose{
+border:2px dashed #454855;
+border-radius:16px;
+padding:35px 10px;
+text-align:center;
+cursor:pointer;
+background:#181a22
 }
-
-.user small{
-  display:block;
-  color:#858895;
-  margin-top:4px;
-}
-
-/* UPLOAD BOX */
-.upload{
-  border:2px dashed #444753;
-  border-radius:18px;
-  min-height:220px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:25px;
-  cursor:pointer;
-  background:#101117;
-}
-
-.upload:hover{
-  border-color:#8b52ff;
-}
-
-.upload-icon{
-  font-size:55px;
-  margin-bottom:12px;
-}
-
-.upload h3{
-  font-size:19px;
-  margin-bottom:8px;
-}
-
-.upload p{
-  color:#858895;
-  font-size:14px;
-}
-
-#fileInput{
-  display:none;
-}
-
-/* PREVIEW */
+.choose div{font-size:45px}
+input[type=file]{display:none}
 .preview{
-  display:none;
-  margin-top:20px;
-  background:#101117;
-  border-radius:18px;
-  overflow:hidden;
-  border:1px solid #292b35;
+display:none;
+margin-top:18px;
+background:#000;
+border-radius:15px;
+overflow:hidden
 }
-
-.preview img,
-.preview video{
-  width:100%;
-  max-height:420px;
-  object-fit:contain;
-  background:#000;
-  display:block;
+video{
+width:100%;
+max-height:420px
 }
-
-.file-info{
-  padding:12px 15px;
-  color:#aaa;
-  font-size:13px;
+textarea,input[type=text]{
+width:100%;
+margin-top:15px;
+padding:14px;
+border-radius:12px;
+border:1px solid #30333e;
+background:#191b23;
+color:white;
+font-size:16px;
+outline:none
 }
-
-/* CAPTION */
-.caption{
-  margin-top:20px;
+textarea{
+height:110px;
+resize:none
 }
-
-.caption textarea{
-  width:100%;
-  height:120px;
-  resize:none;
-  background:#101117;
-  border:1px solid #30323c;
-  border-radius:14px;
-  padding:15px;
-  color:#fff;
-  font-size:16px;
-  outline:none;
-}
-
-.caption textarea:focus{
-  border-color:#8b52ff;
-}
-
-.counter{
-  text-align:right;
-  color:#777b89;
-  font-size:12px;
-  margin-top:5px;
-}
-
-/* BUTTONS */
 .buttons{
-  display:flex;
-  gap:12px;
-  margin-top:22px;
+display:flex;
+gap:10px;
+margin-top:18px
 }
-
-.cancel,
-.post{
-  flex:1;
-  padding:14px;
-  border:none;
-  border-radius:12px;
-  font-size:16px;
-  font-weight:bold;
-  cursor:pointer;
+button{
+flex:1;
+padding:14px;
+border:0;
+border-radius:12px;
+font-weight:bold;
+font-size:16px
 }
-
-.cancel{
-  background:#20222b;
-  color:#fff;
-}
-
-.post{
-  background:#fff;
-  color:#000;
-}
-
-.post:disabled{
-  opacity:.4;
-  cursor:not-allowed;
-}
-
-/* STATUS */
+.cancel{background:#252731;color:white}
+.post{background:white;color:black}
+.post:disabled{opacity:.4}
 .status{
-  text-align:center;
-  margin-top:18px;
-  color:#8b52ff;
-  font-size:14px;
+text-align:center;
+color:#aaa;
+margin-top:15px
 }
-
-/* BOTTOM */
-.bottom{
-  position:fixed;
-  left:0;
-  right:0;
-  bottom:0;
-  height:72px;
-  background:#090a0e;
-  border-top:1px solid #282a34;
-  display:flex;
-  align-items:center;
-  justify-content:space-around;
+nav{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+height:72px;
+background:#090a0e;
+border-top:1px solid #292b35;
+display:flex;
+justify-content:space-around;
+align-items:center;
+font-size:27px
 }
-
-.nav{
-  font-size:27px;
-  color:#858a99;
-  cursor:pointer;
-}
-
-.nav.active{
-  color:#fff;
-}
-
-.add{
-  width:58px;
-  height:48px;
-  border-radius:16px;
-  background:#fff;
-  color:#000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:30px;
+.plus{
+background:white;
+color:black;
+padding:8px 20px;
+border-radius:15px
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-<div class="header">
+<header>
+<div class="logo">X-DARK</div>
+<div>✦</div>
+</header>
 
-  <div class="back" onclick="goHome()">‹</div>
+<main>
 
-  <h1>CREATE POST</h1>
+<h1>Create</h1>
 
-  <div>✦</div>
+<div class="card">
+
+<div class="user">
+<img class="avatar"
+src="https://i.pravatar.cc/100?img=12">
+<div>
+<b>X-Dark User</b>
+<div class="handle">@Darkwing2</div>
+</div>
+</div>
+
+<label class="choose" for="videoInput">
+<div>🎬</div>
+<b>Choose Video</b>
+<p>MP4 • MOV • WEBM</p>
+</label>
+
+<input
+id="videoInput"
+type="file"
+accept="video/mp4,video/quicktime,video/webm">
+
+<div class="preview" id="preview">
+<video id="video"
+controls
+playsinline></video>
+</div>
+
+<textarea
+id="caption"
+placeholder="Write something..."
+maxlength="500"></textarea>
+
+<input
+id="tags"
+type="text"
+placeholder="#india #xdark">
+
+<div class="buttons">
+
+<button
+class="cancel"
+onclick="location.href='index.html'">
+Cancel
+</button>
+
+<button
+class="post"
+id="postBtn"
+onclick="uploadVideo()"
+disabled>
+🚀 Post
+</button>
 
 </div>
 
-
-<div class="container">
-
-  <div class="title">
-    Create a new post 🚀
-  </div>
-
-
-  <!-- USER -->
-  <div class="user">
-
-    <img
-      class="avatar"
-      src="https://i.pravatar.cc/100?img=12"
-    >
-
-    <div>
-      <strong>X-Dark User</strong>
-      <small>@Darkwing2</small>
-    </div>
-
-  </div>
-
-
-  <!-- UPLOAD -->
-  <label class="upload" for="fileInput">
-
-    <div class="upload-icon">
-      ＋
-    </div>
-
-    <h3>
-      Add photo or video
-    </h3>
-
-    <p>
-      MP4, MOV, WEBM, JPG, PNG supported
-    </p>
-
-  </label>
-
-  <input
-    type="file"
-    id="fileInput"
-    accept="image/*,video/*"
-  >
-
-
-  <!-- PREVIEW -->
-  <div class="preview" id="preview">
-
-    <img id="imagePreview">
-
-    <video
-      id="videoPreview"
-      controls
-      playsinline
-    ></video>
-
-    <div class="file-info" id="fileInfo"></div>
-
-  </div>
-
-
-  <!-- CAPTION -->
-  <div class="caption">
-
-    <textarea
-      id="caption"
-      maxlength="500"
-      placeholder="Write a caption..."
-    ></textarea>
-
-    <div class="counter">
-      <span id="count">0</span>/500
-    </div>
-
-  </div>
-
-
-  <!-- BUTTONS -->
-  <div class="buttons">
-
-    <button
-      class="cancel"
-      onclick="goHome()"
-    >
-      Cancel
-    </button>
-
-    <button
-      class="post"
-      id="postButton"
-      onclick="publishPost()"
-      disabled
-    >
-      🚀 Post
-    </button>
-
-  </div>
-
-
-  <div
-    class="status"
-    id="status"
-  ></div>
+<div class="status" id="status"></div>
 
 </div>
+</main>
 
-
-<!-- BOTTOM NAV -->
-<div class="bottom">
-
-  <div
-    class="nav"
-    onclick="goHome()"
-  >
-    ⌂
-  </div>
-
-  <div class="nav">
-    ⌕
-  </div>
-
-  <div class="add">
-    +
-  </div>
-
-  <div class="nav">
-    ♡
-  </div>
-
-  <div
-    class="nav"
-    onclick="goProfile()"
-  >
-    ◉
-  </div>
-
-</div>
-
+<nav>
+<span onclick="location.href='index.html'">⌂</span>
+<span>⌕</span>
+<span class="plus">+</span>
+<span>♡</span>
+<span onclick="location.href='profile.html'">◉</span>
+</nav>
 
 <script>
 
-let selectedFile = null;
-let selectedURL = null;
+let selectedFile=null;
 
+const input=
+document.getElementById("videoInput");
 
-/* HOME */
-function goHome(){
+input.onchange=()=>{
 
-  window.location.href = "index.html";
+const file=input.files[0];
 
-}
+if(!file)return;
 
+selectedFile=file;
 
-/* PROFILE */
-function goProfile(){
+const video=
+document.getElementById("video");
 
-  window.location.href = "profile.html";
+video.src=
+URL.createObjectURL(file);
 
-}
+document.getElementById("preview")
+.style.display="block";
 
+document.getElementById("postBtn")
+.disabled=false;
 
-/* FILE SELECT */
-document
-.getElementById("fileInput")
-.addEventListener("change", function(){
+document.getElementById("status")
+.innerText="Video ready ✓";
 
-  const file = this.files[0];
+};
 
-  if(!file){
-    return;
-  }
+async function uploadVideo(){
 
-  selectedFile = file;
+if(!selectedFile)return;
 
-  selectedURL = URL.createObjectURL(file);
+const btn=
+document.getElementById("postBtn");
 
-  const preview =
-    document.getElementById("preview");
+const status=
+document.getElementById("status");
 
-  const image =
-    document.getElementById("imagePreview");
+btn.disabled=true;
+btn.innerText="Uploading...";
 
-  const video =
-    document.getElementById("videoPreview");
+const data=new FormData();
 
-  const info =
-    document.getElementById("fileInfo");
+data.append("video",selectedFile);
 
+data.append(
+"caption",
+document.getElementById("caption").value
+);
 
-  preview.style.display = "block";
+data.append(
+"tags",
+document.getElementById("tags").value
+);
 
+try{
 
-  if(file.type.startsWith("video/")){
-
-    image.style.display = "none";
-
-    video.style.display = "block";
-
-    video.src = selectedURL;
-
-  }
-
-  else if(file.type.startsWith("image/")){
-
-    video.style.display = "none";
-
-    image.style.display = "block";
-
-    image.src = selectedURL;
-
-  }
-
-
-  info.innerText =
-    file.name +
-    " • " +
-    formatSize(file.size);
-
-
-  document
-  .getElementById("postButton")
-  .disabled = false;
-
+const response=
+await fetch("/api/upload",{
+method:"POST",
+body:data
 });
 
+const result=
+await response.json();
 
-/* FILE SIZE */
-function formatSize(bytes){
+if(!response.ok)
+throw new Error(result.message);
 
-  if(bytes < 1024){
-    return bytes + " B";
-  }
+status.innerText=
+"Uploaded successfully ✓";
 
-  if(bytes < 1024 * 1024){
-    return (bytes / 1024).toFixed(1) + " KB";
-  }
+setTimeout(()=>{
+location.href="index.html";
+},800);
 
-  return (bytes / (1024 * 1024)).toFixed(1) + " MB";
+}catch(error){
+
+status.innerText=
+"Upload failed: "+error.message;
+
+btn.disabled=false;
+btn.innerText="🚀 Post";
 
 }
-
-
-/* CAPTION COUNTER */
-document
-.getElementById("caption")
-.addEventListener("input", function(){
-
-  document
-  .getElementById("count")
-  .innerText = this.value.length;
-
-});
-
-
-/* PUBLISH */
-function publishPost(){
-
-  if(!selectedFile){
-
-    alert("Please select a photo or video first.");
-
-    return;
-
-  }
-
-
-  const caption =
-    document
-    .getElementById("caption")
-    .value
-    .trim();
-
-
-  const post = {
-
-    id: Date.now(),
-
-    type:
-      selectedFile.type.startsWith("video/")
-      ? "video"
-      : "image",
-
-    name: selectedFile.name,
-
-    url: selectedURL,
-
-    caption:
-      caption || "My new X-DARK post 🚀",
-
-    created:
-      new Date().toISOString()
-
-  };
-
-
-  /*
-    IMPORTANT:
-
-    Browser localStorage cannot safely store
-    the actual large video file.
-
-    We save the post information here for now.
-    Later we will connect real cloud storage.
-  */
-
-  localStorage.setItem(
-    "xdark_last_post",
-    JSON.stringify(post)
-  );
-
-
-  document
-  .getElementById("status")
-  .innerText =
-    "Post created successfully! 🚀";
-
-
-  document
-  .getElementById("postButton")
-  .disabled = true;
-
-
-  setTimeout(function(){
-
-    window.location.href =
-      "index.html";
-
-  },1000);
 
 }
 
