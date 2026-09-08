@@ -4,19 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#050507">
+
 <title>X-DARK — The Next Level</title>
 
 <style>
-:root{
-  --bg:#050507;
-  --panel:#0b0b10;
-  --card:#121219;
-  --line:rgba(255,255,255,.13);
-  --muted:#858592;
-  --purple:#7d3cff;
-  --purple2:#a66cff;
-}
-
 *{
   box-sizing:border-box;
   -webkit-tap-highlight-color:transparent;
@@ -29,35 +20,27 @@ html,body{
   overflow:hidden;
   background:#000;
   color:#fff;
-  font-family:-apple-system,BlinkMacSystemFont,
-  "SF Pro Display","Segoe UI",Arial,sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
 }
 
-body{
-  overscroll-behavior:none;
-}
-
-button,input,textarea{
+button,input{
   font:inherit;
 }
 
 button{
-  border:0;
   color:#fff;
-  cursor:pointer;
+  border:0;
 }
 
 .app{
-  position:relative;
   width:100%;
   height:100dvh;
+  position:relative;
   overflow:hidden;
   background:#050507;
 }
 
-/* =========================
-   FEED
-========================= */
+/* FEED */
 
 .feed{
   width:100%;
@@ -91,103 +74,82 @@ button{
 .reel:after{
   content:"";
   position:absolute;
-  z-index:2;
   inset:0;
+  z-index:2;
   pointer-events:none;
-
   background:
-    linear-gradient(
-      180deg,
-      rgba(0,0,0,.72),
-      rgba(0,0,0,.05) 42%,
-      rgba(0,0,0,.20) 65%,
-      rgba(0,0,0,.96)
-    );
+  linear-gradient(
+    180deg,
+    rgba(0,0,0,.72),
+    rgba(0,0,0,.05) 45%,
+    rgba(0,0,0,.18) 65%,
+    rgba(0,0,0,.96)
+  );
 }
 
-/* =========================
-   TOP BAR
-========================= */
+/* TOP */
 
 .topbar{
   position:absolute;
-  z-index:50;
-
+  z-index:20;
   top:0;
   left:0;
   right:0;
-
   height:80px;
-
-  padding:
-    calc(env(safe-area-inset-top) + 6px)
-    12px 0;
-
-  display:flex;
-  justify-content:flex-end;
-  align-items:flex-start;
+  padding:calc(env(safe-area-inset-top) + 8px) 12px 0;
 }
-
-/* ORIGINAL X-DARK LOGO */
 
 .logo{
   position:absolute;
-
   left:15px;
-  top:calc(env(safe-area-inset-top) + 7px);
+  top:calc(env(safe-area-inset-top) + 8px);
 
-  width:48px;
-  height:48px;
+  width:55px;
+  height:55px;
 
   object-fit:cover;
   border-radius:50%;
 
-  border:1px solid rgba(255,255,255,.18);
+  border:1px solid rgba(255,255,255,.2);
 
-  background:#050507;
+  background:#000;
 
   box-shadow:
-    0 0 8px rgba(126,61,255,.65),
-    0 0 20px rgba(126,61,255,.30);
+    0 0 8px rgba(125,60,255,.8),
+    0 0 22px rgba(125,60,255,.45);
 
-  filter:
-    drop-shadow(0 0 7px rgba(126,61,255,.60));
+  filter:drop-shadow(0 0 7px rgba(125,60,255,.7));
 
-  z-index:20;
-
-  transition:transform .2s ease;
+  z-index:30;
 }
 
 .logo:active{
-  transform:scale(.90);
+  transform:scale(.92);
 }
 
 .top-actions{
+  position:absolute;
+  right:12px;
+  top:calc(env(safe-area-inset-top) + 8px);
   display:flex;
-  gap:7px;
+  gap:8px;
 }
 
 .icon-btn{
-  width:43px;
-  height:43px;
-
+  width:45px;
+  height:45px;
   border-radius:50%;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
   background:rgba(5,5,9,.72);
-
-  border:1px solid var(--line);
-
+  border:1px solid rgba(255,255,255,.16);
   backdrop-filter:blur(18px);
 }
 
 .icon-btn svg{
-  width:21px;
-  height:21px;
-
+  width:22px;
+  height:22px;
   fill:none;
   stroke:currentColor;
   stroke-width:1.8;
@@ -195,48 +157,35 @@ button{
   stroke-linejoin:round;
 }
 
-/* =========================
-   RIGHT ACTIONS
-========================= */
+/* RIGHT */
 
 .actions{
   position:absolute;
   z-index:25;
-
   right:8px;
   bottom:122px;
-
   display:flex;
   flex-direction:column;
   gap:8px;
 }
 
 .action{
-  width:55px;
-  min-height:57px;
-
+  width:57px;
+  min-height:58px;
   border-radius:17px;
-
-  background:rgba(8,8,12,.52);
-
+  background:rgba(8,8,12,.55);
   border:1px solid rgba(255,255,255,.14);
-
   backdrop-filter:blur(17px);
-
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-
   gap:3px;
-
-  text-shadow:0 2px 8px #000;
 }
 
 .action svg{
-  width:24px;
-  height:24px;
-
+  width:25px;
+  height:25px;
   fill:none;
   stroke:currentColor;
   stroke-width:1.8;
@@ -257,49 +206,33 @@ button{
   fill:#ff3b83;
 }
 
-/* =========================
-   CONTENT
-========================= */
+/* CONTENT */
 
 .content{
   position:absolute;
-
   z-index:25;
-
   left:18px;
-  right:73px;
-  bottom:101px;
+  right:75px;
+  bottom:100px;
 }
 
 .creator{
   display:flex;
   align-items:center;
   gap:8px;
-
   margin-bottom:11px;
 }
 
 .avatar{
-  width:45px;
-  height:45px;
-
+  width:46px;
+  height:46px;
   flex:none;
-
   border-radius:50%;
-
-  background:
-    linear-gradient(
-      135deg,
-      #7136ff,
-      #a56cff
-    );
-
+  background:linear-gradient(135deg,#7136ff,#a56cff);
   display:flex;
   align-items:center;
   justify-content:center;
-
-  font-weight:950;
-
+  font-weight:900;
   border:2px solid rgba(255,255,255,.22);
 }
 
@@ -320,16 +253,11 @@ button{
 
 .follow{
   padding:8px 13px;
-
   border-radius:12px;
-
   background:rgba(255,255,255,.08);
-
   border:1px solid rgba(255,255,255,.78);
-
   font-size:10px;
   font-weight:900;
-
   backdrop-filter:blur(10px);
 }
 
@@ -337,15 +265,12 @@ button{
   font-size:16px;
   font-weight:750;
   line-height:1.42;
-
   text-shadow:0 2px 8px #000;
 }
 
 .hashtags{
   margin-top:7px;
-
   color:#ded3ff;
-
   font-size:12px;
   font-weight:750;
 }
@@ -354,47 +279,33 @@ button{
   display:flex;
   align-items:center;
   gap:7px;
-
   margin-top:9px;
-
   font-size:11px;
 }
 
 .audio-circle{
   width:23px;
   height:23px;
-
   border:1px solid #fff;
-
   border-radius:50%;
-
   display:flex;
   align-items:center;
   justify-content:center;
 }
 
-/* =========================
-   BOTTOM NAV
-========================= */
+/* BOTTOM */
 
 .bottom{
   position:absolute;
   z-index:100;
-
   left:9px;
   right:9px;
   bottom:8px;
-
   height:69px;
-
   border-radius:24px;
-
   background:rgba(9,9,13,.91);
-
-  border:1px solid var(--line);
-
+  border:1px solid rgba(255,255,255,.13);
   backdrop-filter:blur(25px);
-
   display:flex;
   align-items:center;
   justify-content:space-around;
@@ -403,23 +314,18 @@ button{
 .nav{
   width:62px;
   height:60px;
-
   background:none;
-
   color:#777781;
-
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-
   gap:4px;
 }
 
 .nav svg{
   width:23px;
   height:23px;
-
   fill:none;
   stroke:currentColor;
   stroke-width:1.8;
@@ -441,20 +347,11 @@ button{
 }
 
 .create{
-  width:49px;
-  height:40px;
-
+  width:50px;
+  height:41px;
   border-radius:14px;
-
-  background:
-    linear-gradient(
-      145deg,
-      #fff,
-      #d9d9de
-    );
-
+  background:linear-gradient(145deg,#fff,#d9d9de);
   color:#08080a;
-
   display:flex;
   align-items:center;
   justify-content:center;
@@ -465,14 +362,11 @@ button{
   height:23px;
 }
 
-/* =========================
-   PANELS
-========================= */
+/* PANELS */
 
 .panel{
   position:absolute;
   z-index:300;
-
   inset:0;
 
   background:
@@ -484,10 +378,7 @@ button{
     #07070a;
 
   transform:translateX(100%);
-
-  transition:
-    transform .34s cubic-bezier(.2,.8,.2,1);
-
+  transition:transform .34s cubic-bezier(.2,.8,.2,1);
   overflow-y:auto;
 }
 
@@ -498,35 +389,25 @@ button{
 .panel-head{
   position:sticky;
   z-index:30;
-
   top:0;
-
   height:74px;
 
-  padding:
-    calc(env(safe-area-inset-top) + 4px)
-    14px 0;
+  padding:calc(env(safe-area-inset-top) + 4px) 14px 0;
 
   display:flex;
   align-items:center;
 
   background:rgba(7,7,10,.93);
-
-  border-bottom:1px solid var(--line);
-
+  border-bottom:1px solid rgba(255,255,255,.13);
   backdrop-filter:blur(23px);
 }
 
 .back{
   width:42px;
   height:42px;
-
   border-radius:50%;
-
   background:#17171d;
-
-  border:1px solid var(--line);
-
+  border:1px solid rgba(255,255,255,.13);
   display:flex;
   align-items:center;
   justify-content:center;
@@ -535,19 +416,14 @@ button{
 .back svg{
   width:21px;
   height:21px;
-
   fill:none;
   stroke:currentColor;
   stroke-width:2;
-  stroke-linecap:round;
-  stroke-linejoin:round;
 }
 
 .panel-title{
   flex:1;
-
   text-align:center;
-
   font-size:18px;
   font-weight:900;
 }
@@ -556,191 +432,113 @@ button{
   width:42px;
 }
 
-/* =========================
-   CARDS
-========================= */
+/* CARDS */
 
-.card,
-.chat-card{
+.card{
   margin:10px 14px;
-
   padding:13px;
-
   border-radius:18px;
-
   background:#111117;
-
-  border:1px solid var(--line);
-
+  border:1px solid rgba(255,255,255,.13);
   display:flex;
   align-items:center;
-
   gap:11px;
 }
 
-.card-info,
-.chat-info{
+.card-info{
   flex:1;
 }
 
-.card-info strong,
-.chat-info strong{
+.card-info strong{
   font-size:14px;
 }
 
-.card-info small,
-.chat-info small{
+.card-info small{
   display:block;
-
   margin-top:4px;
-
   color:#777781;
-
   font-size:10px;
 }
 
-.chat-time{
-  font-size:8px;
-  color:#777781;
-}
+/* SEARCH */
 
-/* =========================
-   CHAT
-========================= */
-
-.messages{
-  height:calc(100dvh - 137px);
-
-  overflow-y:auto;
-
-  padding:16px 14px 80px;
-}
-
-.msg{
-  display:flex;
-  margin-bottom:10px;
-}
-
-.msg.me{
-  justify-content:flex-end;
-}
-
-.bubble{
-  max-width:78%;
-
-  padding:10px 13px;
-
-  border-radius:17px 17px 17px 5px;
-
-  background:#17171e;
-
-  border:1px solid var(--line);
-
-  font-size:13px;
-  line-height:1.42;
-}
-
-.msg.me .bubble{
-  border-radius:17px 17px 5px 17px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #6132d7,
-      #8b4dff
-    );
-}
-
-.chat-input{
-  position:absolute;
-  z-index:20;
-
-  left:9px;
-  right:9px;
-  bottom:8px;
-
-  height:60px;
-
-  border-radius:21px;
-
-  background:rgba(15,15,20,.97);
-
-  border:1px solid var(--line);
-
+.search{
+  height:50px;
+  margin:14px;
+  padding:0 14px;
+  border-radius:16px;
+  background:#121218;
+  border:1px solid rgba(255,255,255,.13);
   display:flex;
   align-items:center;
-
-  padding:7px;
-
-  gap:7px;
+  gap:9px;
 }
 
-.chat-input input{
+.search input{
   flex:1;
-
-  height:43px;
-
   background:none;
   border:0;
   outline:0;
-
   color:#fff;
-
-  padding:0 7px;
 }
 
-.send{
-  width:43px;
-  height:43px;
+/* PROFILE */
 
+.profile{
+  text-align:center;
+  padding:27px 16px;
+}
+
+.big-avatar{
+  width:105px;
+  height:105px;
+  margin:auto;
+  padding:3px;
   border-radius:50%;
+  background:conic-gradient(#ff3b82,#743cff,#55c8ff,#ff3b82);
+}
 
-  background:
-    linear-gradient(
-      135deg,
-      #713cff,
-      #a76cff
-    );
-
+.big-avatar-inner{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  background:#15131d;
   display:flex;
   align-items:center;
   justify-content:center;
+  font-size:39px;
+  font-weight:950;
 }
 
-.send svg{
-  width:21px;
-  height:21px;
-
-  fill:none;
-  stroke:currentColor;
-  stroke-width:1.8;
-  stroke-linecap:round;
-  stroke-linejoin:round;
+.stats{
+  display:flex;
+  justify-content:center;
+  gap:38px;
+  margin:23px 0;
 }
 
-/* =========================
-   COMMENTS
-========================= */
+.stat strong{
+  display:block;
+  font-size:18px;
+}
+
+.stat span{
+  font-size:9px;
+  color:#777781;
+}
+
+/* COMMENTS */
 
 .comments{
   position:absolute;
   z-index:700;
-
   left:0;
   right:0;
   bottom:0;
-
   background:#111116;
-
   border-radius:27px 27px 0 0;
-
   transform:translateY(100%);
-
-  transition:
-    transform .34s cubic-bezier(.2,.8,.2,1);
-
-  box-shadow:
-    0 -25px 80px rgba(0,0,0,.65);
+  transition:transform .34s cubic-bezier(.2,.8,.2,1);
 }
 
 .comments.open{
@@ -749,82 +547,43 @@ button{
 
 .comment-head{
   height:62px;
-
-  position:relative;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
-  border-bottom:1px solid var(--line);
-
+  border-bottom:1px solid rgba(255,255,255,.13);
   font-weight:850;
 }
 
 .comment-back{
   position:absolute;
   left:12px;
-
   width:42px;
   height:42px;
-
   border-radius:50%;
-
   background:#1a1a20;
-
-  border:1px solid var(--line);
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.comment-back svg{
-  width:21px;
-  height:21px;
-
-  fill:none;
-  stroke:currentColor;
-  stroke-width:2;
-  stroke-linecap:round;
-  stroke-linejoin:round;
 }
 
 .comment-list{
   height:42vh;
-
   overflow-y:auto;
-
   padding:15px;
 }
 
 .comment{
   display:flex;
-
   gap:9px;
-
   margin-bottom:17px;
 }
 
 .comment-avatar{
   width:37px;
   height:37px;
-
   flex:none;
-
   border-radius:50%;
-
-  background:
-    linear-gradient(
-      135deg,
-      #743cff,
-      #a56cff
-    );
-
+  background:linear-gradient(135deg,#743cff,#a56cff);
   display:flex;
   align-items:center;
   justify-content:center;
-
   font-size:12px;
   font-weight:900;
 }
@@ -840,544 +599,61 @@ button{
 
 .comment-input{
   display:flex;
-
   gap:7px;
-
-  padding:
-    9px 13px
-    calc(9px + env(safe-area-inset-bottom));
+  padding:9px 13px calc(9px + env(safe-area-inset-bottom));
 }
 
 .comment-input input{
   flex:1;
-
   height:44px;
-
   border-radius:22px;
-
   background:#1b1b22;
-
-  border:1px solid var(--line);
-
+  border:1px solid rgba(255,255,255,.13);
   outline:0;
-
   color:#fff;
-
   padding:0 14px;
 }
 
 .comment-send{
   width:44px;
   height:44px;
-
   border-radius:50%;
-
   background:#8146ff;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
 }
 
-.comment-send svg{
-  width:20px;
-  height:20px;
-
-  fill:none;
-  stroke:currentColor;
-  stroke-width:2;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-}
-
-/* =========================
-   SEARCH
-========================= */
-
-.search{
-  height:50px;
-
-  margin:14px;
-
-  padding:0 14px;
-
-  border-radius:16px;
-
-  background:#121218;
-
-  border:1px solid var(--line);
-
-  display:flex;
-  align-items:center;
-
-  gap:9px;
-}
-
-.search svg{
-  width:19px;
-  height:19px;
-  color:#777781;
-}
-
-.search input{
-  flex:1;
-
-  background:none;
-  border:0;
-  outline:0;
-
-  color:#fff;
-}
-
-/* =========================
-   PROFILE
-========================= */
-
-.profile{
-  text-align:center;
-
-  padding:27px 16px;
-}
-
-.big-avatar{
-  width:105px;
-  height:105px;
-
-  margin:auto;
-
-  padding:3px;
-
-  border-radius:50%;
-
-  background:
-    conic-gradient(
-      #ff3b82,
-      #743cff,
-      #55c8ff,
-      #ff3b82
-    );
-}
-
-.big-avatar-inner{
-  width:100%;
-  height:100%;
-
-  border-radius:50%;
-
-  background:#15131d;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  font-size:39px;
-  font-weight:950;
-}
-
-.stats{
-  display:flex;
-  justify-content:center;
-
-  gap:38px;
-
-  margin:23px 0;
-}
-
-.stat strong{
-  display:block;
-  font-size:18px;
-}
-
-.stat span{
-  font-size:9px;
-  color:#777781;
-}
-
-/* =========================
-   CREATE
-========================= */
-
-.create-wrap{
-  padding:14px;
-}
-
-.mode-tabs{
-  display:flex;
-  gap:7px;
-
-  margin-bottom:13px;
-}
-
-.mode{
-  flex:1;
-
-  height:42px;
-
-  border-radius:13px;
-
-  background:#121218;
-
-  border:1px solid var(--line);
-
-  font-size:11px;
-  font-weight:850;
-
-  color:#858590;
-}
-
-.mode.active{
-  background:
-    linear-gradient(
-      135deg,
-      #6634dc,
-      #914fff
-    );
-
-  color:#fff;
-
-  border-color:transparent;
-}
-
-.editor{
-  position:relative;
-
-  width:100%;
-
-  height:57vh;
-  min-height:390px;
-
-  border-radius:24px;
-
-  overflow:hidden;
-
-  background:#0e0e13;
-
-  border:1px solid var(--line);
-}
-
-.editor img,
-.editor video{
-  position:absolute;
-
-  inset:0;
-
-  width:100%;
-  height:100%;
-
-  object-fit:cover;
-
-  display:none;
-}
-
-.empty-editor{
-  position:absolute;
-
-  inset:0;
-
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
-
-  flex-direction:column;
-}
-
-.camera-icon{
-  width:67px;
-  height:67px;
-
-  border-radius:21px;
-
-  background:#191525;
-
-  border:1px solid #40315a;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  color:#a76cff;
-}
-
-.camera-icon svg{
-  width:30px;
-  height:30px;
-
-  fill:none;
-  stroke:currentColor;
-  stroke-width:1.8;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-}
-
-.empty-editor strong{
-  margin-top:13px;
-  font-size:15px;
-}
-
-.empty-editor small{
-  margin-top:5px;
-
-  color:#777781;
-
-  font-size:10px;
-}
-
-.edit-menu{
-  position:absolute;
-
-  z-index:30;
-
-  right:9px;
-  top:10px;
-
-  display:flex;
-  flex-direction:column;
-
-  gap:7px;
-}
-
-.edit-btn{
-  width:43px;
-  height:43px;
-
-  border-radius:14px;
-
-  background:rgba(7,7,11,.72);
-
-  border:1px solid rgba(255,255,255,.14);
-
-  backdrop-filter:blur(15px);
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.edit-btn svg{
-  width:20px;
-  height:20px;
-
-  fill:none;
-  stroke:currentColor;
-  stroke-width:1.8;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-}
-
-.tool-panel{
-  display:none;
-
-  position:absolute;
-
-  z-index:35;
-
-  left:8px;
-  right:8px;
-  bottom:61px;
-
-  padding:10px;
-
-  border-radius:17px;
-
-  background:rgba(8,8,12,.95);
-
-  border:1px solid var(--line);
-
-  backdrop-filter:blur(20px);
-}
-
-.tool-panel.show{
-  display:block;
-}
-
-.filter-row{
-  display:flex;
-  gap:8px;
-
-  overflow-x:auto;
-
-  scrollbar-width:none;
-}
-
-.filter{
-  min-width:62px;
-  height:58px;
-
-  border-radius:13px;
-
-  border:1px solid rgba(255,255,255,.13);
-
-  background:#1a1a21;
-
-  font-size:8px;
-  font-weight:800;
-}
-
-.slider{
-  display:flex;
-  align-items:center;
-
-  gap:9px;
-
-  margin:8px 0;
-}
-
-.slider label{
-  width:68px;
-
-  font-size:9px;
-  font-weight:800;
-}
-
-.slider input{
-  flex:1;
-}
-
-.editor-actions{
-  position:absolute;
-
-  z-index:25;
-
-  left:9px;
-  right:9px;
-  bottom:9px;
-
-  display:flex;
-  gap:7px;
-}
-
-.editor-btn{
-  flex:1;
-
-  height:44px;
-
-  border-radius:14px;
-
-  background:rgba(5,5,8,.76);
-
-  border:1px solid rgba(255,255,255,.13);
-
-  backdrop-filter:blur(15px);
-
-  font-size:11px;
-  font-weight:850;
-}
-
-.caption-box{
-  width:100%;
-
-  height:80px;
-
-  margin-top:12px;
-
-  padding:13px;
-
-  border-radius:17px;
-
-  background:#111117;
-
-  border:1px solid var(--line);
-
-  outline:0;
-
-  color:#fff;
-
-  resize:none;
-}
-
-.publish-row{
-  display:flex;
-
-  gap:8px;
-
-  margin-top:12px;
-}
-
-.publish{
-  flex:1;
-
-  height:49px;
-
-  border-radius:15px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #713cff,
-      #a66cff
-    );
-
-  font-weight:900;
-}
-
-.cancel{
-  width:85px;
-
-  height:49px;
-
-  border-radius:15px;
-
-  background:#17171d;
-
-  border:1px solid var(--line);
-
-  font-size:11px;
-  font-weight:850;
-}
-
-/* =========================
-   TOAST
-========================= */
+/* TOAST */
 
 .toast{
   position:absolute;
-
   z-index:1000;
-
   left:50%;
   bottom:91px;
-
   max-width:88%;
-
   transform:translate(-50%,15px);
-
   opacity:0;
-
   pointer-events:none;
-
   padding:11px 16px;
-
   border-radius:14px;
-
   background:#24242d;
-
   border:1px solid #42424d;
-
   font-size:11px;
   font-weight:750;
-
   text-align:center;
-
   transition:.25s;
 }
 
 .toast.show{
   opacity:1;
-
   transform:translate(-50%,0);
 }
 
 @media(min-width:700px){
-
-.app{
-  width:520px;
-  margin:auto;
-
-  border-left:1px solid #15151a;
-  border-right:1px solid #15151a;
-}
-
+  .app{
+    width:520px;
+    margin:auto;
+    border-left:1px solid #15151a;
+    border-right:1px solid #15151a;
+  }
 }
 </style>
 </head>
@@ -1385,10 +661,6 @@ button{
 <body>
 
 <div class="app">
-
-<!-- =====================================================
-     HOME FEED
-===================================================== -->
 
 <main id="feed" class="feed">
 
@@ -1403,184 +675,51 @@ autoplay
 playsinline>
 </video>
 
-<!-- TOP BAR -->
-
 <header class="topbar">
 
-<!-- ORIGINAL X-DARK LOGO -->
 <img
 class="logo"
 src="/x-dark-logo.png"
-alt="X-DARK — The Next Level"
+alt="X-DARK"
 onclick="openPanel('profile')">
 
 <div class="top-actions">
 
-<!-- MESSAGES -->
-
-<button
-class="icon-btn"
-onclick="openPanel('messages')">
-
-<svg viewBox="0 0 24 24">
-
-<path d="
-M20 11.5
-a7.5 7.5 0 0 1-8 7.5
-8.5 8.5 0 0 1-3.5-.8
-L4 20
-l1.8-3.5
-A7.2 7.2 0 0 1 4.5 12
-a7.5 7.5 0 0 1 8-7.5
-7.5 7.5 0 0 1 7.5 7z"/>
-
-</svg>
-
+<button class="icon-btn" onclick="openPanel('messages')">
+💬
 </button>
 
-<!-- SETTINGS -->
-
-<button
-class="icon-btn"
-onclick="openPanel('settings')">
-
-<svg viewBox="0 0 24 24">
-
-<circle
-cx="12"
-cy="12"
-r="3"/>
-
-<path d="
-M19 12
-a7 7 0 0 0-.2-1.7
-l2-1.5
--2-3.4
--2.4 1
-A7 7 0 0 0 14.8 5
-L14.5 2
-h-5
-l-.3 3
-a7 7 0 0 0-1.6.9
-l-2.4-1
--2 3.4
-2 1.5
-A7 7 0 0 0 5 12
-l-2 1.5
-2 3.4
-2.4-1
-a7 7 0 0 0 1.6.9
-l.3 3
-h5
-l-.3-3
-a7 7 0 0 0-1.6-.9
-l2.4 1
-2-3.4
--2-1.5
-A7 7 0 0 0 19 12z"/>
-
-</svg>
-
+<button class="icon-btn" onclick="openPanel('settings')">
+⚙️
 </button>
 
 </div>
 
 </header>
 
-
-<!-- RIGHT ACTIONS -->
-
 <div class="actions">
 
-<button
-class="action"
-onclick="toggleLike(this)">
-
-<svg viewBox="0 0 24 24">
-
-<path d="
-M20.8 8.6
-c0 5.5-8.8 10.2-8.8 10.2
-S3.2 14.1 3.2 8.6
-A4.6 4.6 0 0 1 12 6.3
-a4.6 4.6 0 0 1 8.8 2.3z"/>
-
-</svg>
-
+<button class="action" onclick="toggleLike(this)">
+<span style="font-size:25px">♡</span>
 <span>12.4K</span>
-
 </button>
 
-
-<button
-class="action"
-onclick="openComments()">
-
-<svg viewBox="0 0 24 24">
-
-<path d="
-M20 11.5
-a7.5 7.5 0 0 1-8 7.5
-8.5 8.5 0 0 1-3.5-.8
-L4 20
-l1.8-3.5
-A7.2 7.2 0 0 1 4.5 12
-a7.5 7.5 0 0 1 8-7.5
-7.5 7.5 0 0 1 7.5 7z"/>
-
-</svg>
-
+<button class="action" onclick="openComments()">
+<span style="font-size:25px">♡</span>
 <span>842</span>
-
 </button>
 
-
-<button
-class="action"
-onclick="sharePost()">
-
-<svg viewBox="0 0 24 24">
-
-<path d="M12 16V3"/>
-<path d="m7 8 5-5 5 5"/>
-<path d="
-M5 13
-v6
-a2 2 0 0 0 2 2
-h10
-a2 2 0 0 0 2-2
-v-6"/>
-
-</svg>
-
+<button class="action" onclick="sharePost()">
+<span style="font-size:25px">↗</span>
 <span>Share</span>
-
 </button>
 
-
-<button
-class="action"
-onclick="toggleSave(this)">
-
-<svg viewBox="0 0 24 24">
-
-<path d="
-M6 3
-h12
-v18
-l-6-4
--6 4z"/>
-
-</svg>
-
+<button class="action" onclick="toggleSave(this)">
+<span style="font-size:25px">♡</span>
 <span>Save</span>
-
 </button>
 
 </div>
-
-
-<!-- CONTENT -->
 
 <div class="content">
 
@@ -1590,24 +729,17 @@ l-6-4
 
 <div class="creator-info">
 
-<div class="creator-name">
-Darkwing
-</div>
+<div class="creator-name">Darkwing</div>
 
-<div class="followers">
-12.4K followers
-</div>
+<div class="followers">12.4K followers</div>
 
 </div>
 
-<button
-class="follow"
-onclick="toggleFollow(this)">
+<button class="follow" onclick="toggleFollow(this)">
 Follow
 </button>
 
 </div>
-
 
 <div class="caption">
 Welcome to X-DARK 🔥 The new dark social experience.
@@ -1618,23 +750,13 @@ Welcome to X-DARK 🔥 The new dark social experience.
 </div>
 
 <div class="audio">
-
-<div class="audio-circle">
-♪
-</div>
-
+<div class="audio-circle">♪</div>
 Original sound · Darkwing
-
 </div>
 
 </div>
 
 </section>
-
-
-<!-- =====================================================
-     SECOND REEL
-===================================================== -->
 
 <section class="reel">
 
@@ -1646,153 +768,46 @@ loop
 playsinline>
 </video>
 
-
 <header class="topbar">
 
 <img
 class="logo"
-src="x-dark-logo.png"
-alt="X-DARK — The Next Level"
+src="/x-dark-logo.png"
+alt="X-DARK"
 onclick="openPanel('profile')">
-
 
 <div class="top-actions">
 
-<button
-class="icon-btn"
-onclick="openPanel('messages')">
-
-<svg viewBox="0 0 24 24">
-
-<path d="
-M20 11.5
-a7.5 7.5 0 0 1-8 7.5
-8.5 8.5 0 0 1-3.5-.8
-L4 20
-l1.8-3.5
-A7.2 7.2 0 0 1 4.5 12
-a7.5 7.5 0 0 1 8-7.5
-7.5 7.5 0 0 1 7.5 7z"/>
-
-</svg>
-
+<button class="icon-btn" onclick="openPanel('messages')">
+💬
 </button>
 
-
-<button
-class="icon-btn"
-onclick="openPanel('settings')">
-
-<svg viewBox="0 0 24 24">
-
-<circle cx="12" cy="12" r="3"/>
-
-<path d="
-M19 12
-a7 7 0 0 0-.2-1.7
-l2-1.5
--2-3.4
--2.4 1
-A7 7 0 0 0 14.8 5
-L14.5 2
-h-5
-l-.3 3
-a7 7 0 0 0-1.6.9
-l-2.4-1
--2 3.4
-2 1.5
-A7 7 0 0 0 5 12
-l-2 1.5
-2 3.4
-2.4-1
-a7 7 0 0 0 1.6.9
-l.3 3
-h5
-l-.3-3
-a7 7 0 0 0-1.6-.9
-l2.4 1
-2-3.4
--2-1.5
-A7 7 0 0 0 19 12z"/>
-
-</svg>
-
+<button class="icon-btn" onclick="openPanel('settings')">
+⚙️
 </button>
 
 </div>
 
 </header>
 
-
 <div class="actions">
 
-<button
-class="action"
-onclick="toggleLike(this)">
-
-<svg viewBox="0 0 24 24">
-
-<path d="
-M20.8 8.6
-c0 5.5-8.8 10.2-8.8 10.2
-S3.2 14.1 3.2 8.6
-A4.6 4.6 0 0 1 12 6.3
-a4.6 4.6 0 0 1 8.8 2.3z"/>
-
-</svg>
-
+<button class="action" onclick="toggleLike(this)">
+<span style="font-size:25px">♡</span>
 <span>8.7K</span>
-
 </button>
 
-
-<button
-class="action"
-onclick="openComments()">
-
-<svg viewBox="0 0 24 24">
-
-<path d="
-M20 11.5
-a7.5 7.5 0 0 1-8 7.5
-8.5 8.5 0 0 1-3.5-.8
-L4 20
-l1.8-3.5
-A7.2 7.2 0 0 1 4.5 12
-a7.5 7.5 0 0 1 8-7.5
-7.5 7.5 0 0 1 7.5 7z"/>
-
-</svg>
-
+<button class="action" onclick="openComments()">
+<span style="font-size:25px">♡</span>
 <span>315</span>
-
 </button>
 
-
-<button
-class="action"
-onclick="sharePost()">
-
-<svg viewBox="0 0 24 24">
-
-<path d="M12 16V3"/>
-<path d="m7 8 5-5 5 5"/>
-<path d="
-M5 13
-v6
-a2 2 0 0 0 2 2
-h10
-a2 2 0 0 0 2-2
-v-6"/>
-
-</svg>
-
+<button class="action" onclick="sharePost()">
+<span style="font-size:25px">↗</span>
 <span>Share</span>
-
 </button>
 
 </div>
-
 
 <div class="content">
 
@@ -1802,19 +817,13 @@ v-6"/>
 
 <div class="creator-info">
 
-<div class="creator-name">
-Nova
-</div>
+<div class="creator-name">Nova</div>
 
-<div class="followers">
-8.7K followers
-</div>
+<div class="followers">8.7K followers</div>
 
 </div>
 
-<button
-class="follow"
-onclick="toggleFollow(this)">
+<button class="follow" onclick="toggleFollow(this)">
 Follow
 </button>
 
@@ -1829,13 +838,8 @@ Create. Explore. Connect. ✨
 </div>
 
 <div class="audio">
-
-<div class="audio-circle">
-♪
-</div>
-
+<div class="audio-circle">♪</div>
 Original sound · Nova
-
 </div>
 
 </div>
@@ -1844,381 +848,85 @@ Original sound · Nova
 
 </main>
 
-
-<!-- =====================================================
-     BOTTOM NAV
-===================================================== -->
-
 <nav class="bottom">
 
-<button
-class="nav active"
-onclick="goHome()">
-
-<svg viewBox="0 0 24 24">
-
-<path d="
-m3 10
-9-7
-9 7
-v10
-a1 1 0 0 1-1 1
-h-5
-v-6
-H9
-v6
-H4
-a1 1 0 0 1-1-1z"/>
-
-</svg>
-
+<button class="nav active" onclick="goHome()">
+<span style="font-size:23px">⌂</span>
 <span>Home</span>
-
 </button>
 
-
-<button
-class="nav"
-onclick="openPanel('explore')">
-
-<svg viewBox="0 0 24 24">
-
-<circle cx="11" cy="11" r="7"/>
-
-<path d="m20 20-4-4"/>
-
-</svg>
-
+<button class="nav" onclick="openPanel('explore')">
+<span style="font-size:23px">⌕</span>
 <span>Explore</span>
-
 </button>
 
-
-<button
-class="nav"
-onclick="openStudio()">
-
+<button class="nav" onclick="toast('Create feature ready')">
 <div class="create">
-
-<svg viewBox="0 0 24 24">
-
-<path d="M12 5v14"/>
-<path d="M5 12h14"/>
-
-</svg>
-
+<span style="font-size:27px">+</span>
 </div>
-
 </button>
 
-
-<button
-class="nav"
-onclick="openPanel('activity')">
-
-<svg viewBox="0 0 24 24">
-
-<path d="
-M18 8
-a6 6 0 0 0-12 0
-c0 7-3 7-3 9
-h18
-c0-2-3-2-3-9"/>
-
-<path d="M10 21h4"/>
-
-</svg>
-
+<button class="nav" onclick="openPanel('activity')">
+<span style="font-size:23px">♧</span>
 <span>Activity</span>
-
 </button>
 
-
-<button
-class="nav"
-onclick="openPanel('profile')">
-
-<svg viewBox="0 0 24 24">
-
-<circle cx="12" cy="8" r="4"/>
-
-<path d="
-M4 21
-c0-4 3.5-7 8-7
-s8 3 8 7"/>
-
-</svg>
-
+<button class="nav" onclick="openPanel('profile')">
+<span style="font-size:23px">♙</span>
 <span>Profile</span>
-
 </button>
 
 </nav>
 
-
-<!-- =====================================================
-     MESSAGES
-===================================================== -->
+<!-- MESSAGES -->
 
 <section id="messages" class="panel">
 
 <div class="panel-head">
 
-<button
-class="back"
-onclick="closePanels()">
+<button class="back" onclick="closePanels()">‹</button>
 
-<svg viewBox="0 0 24 24">
-
-<path d="M15 18L9 12L15 6"/>
-
-</svg>
-
-</button>
-
-<div class="panel-title">
-Messages
-</div>
+<div class="panel-title">Messages</div>
 
 <div class="spacer"></div>
 
 </div>
 
-
-<div
-class="chat-card"
-onclick="openChat('Darkwing','D')">
-
+<div class="card">
 <div class="avatar">D</div>
-
-<div class="chat-info">
-
+<div class="card-info">
 <strong>Darkwing</strong>
-
-<small>
-Welcome to X-DARK 🔥
-</small>
-
+<small>Welcome to X-DARK 🔥</small>
+</div>
 </div>
 
-<span class="chat-time">
-Now
-</span>
-
-</div>
-
-
-<div
-class="chat-card"
-onclick="openChat('Nova','N')">
-
+<div class="card">
 <div class="avatar">N</div>
-
-<div class="chat-info">
-
+<div class="card-info">
 <strong>Nova</strong>
-
-<small>
-Let's create something ✨
-</small>
-
+<small>Let's create something ✨</small>
 </div>
-
-<span class="chat-time">
-5m
-</span>
-
-</div>
-
-
-<div
-class="chat-card"
-onclick="openChat('Alex','A')">
-
-<div class="avatar">A</div>
-
-<div class="chat-info">
-
-<strong>Alex</strong>
-
-<small>
-Hey 👋
-</small>
-
-</div>
-
-<span class="chat-time">
-1h
-</span>
-
 </div>
 
 </section>
 
-
-<!-- =====================================================
-     CHAT
-===================================================== -->
-
-<section id="chatPanel" class="panel">
-
-<div class="panel-head">
-
-<button
-class="back"
-onclick="closeChat()">
-
-<svg viewBox="0 0 24 24">
-
-<path d="M15 18L9 12L15 6"/>
-
-</svg>
-
-</button>
-
-
-<div
-id="chatAvatar"
-class="avatar"
-style="width:42px;height:42px;">
-D
-</div>
-
-
-<div style="flex:1;margin-left:8px;">
-
-<strong id="chatName">
-Darkwing
-</strong>
-
-<div
-style="
-font-size:9px;
-color:#48e58a;
-margin-top:3px;
-">
-
-● Online
-
-</div>
-
-</div>
-
-
-<button
-class="icon-btn"
-onclick="toast('Voice call feature ready')">
-
-<svg viewBox="0 0 24 24">
-
-<path d="
-M7 4
-h3
-l2 5
--2 2
-a14 14 0 0 0 3 3
-l2-2
-5 2
-v3
-c0 1-1 2-2 2
-C10 19 5 14 5 7
-c0-2 1-3 2-3z"/>
-
-</svg>
-
-</button>
-
-</div>
-
-
-<div
-id="messagesBox"
-class="messages">
-</div>
-
-
-<div class="chat-input">
-
-<button
-class="icon-btn"
-style="width:40px;height:40px"
-onclick="toast('Emoji picker ready')">
-☺
-</button>
-
-
-<input
-id="chatInput"
-placeholder="Message..."
-onkeydown="
-if(event.key==='Enter'){
-event.preventDefault();
-sendMessage();
-}">
-
-
-<button
-class="send"
-onclick="sendMessage()">
-
-<svg viewBox="0 0 24 24">
-
-<path d="
-m22 2
--7 20
--4-9
--9-4z"/>
-
-<path d="M22 2L11 13"/>
-
-</svg>
-
-</button>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     EXPLORE
-===================================================== -->
+<!-- EXPLORE -->
 
 <section id="explore" class="panel">
 
 <div class="panel-head">
 
-<button
-class="back"
-onclick="closePanels()">
+<button class="back" onclick="closePanels()">‹</button>
 
-<svg viewBox="0 0 24 24">
-
-<path d="M15 18L9 12L15 6"/>
-
-</svg>
-
-</button>
-
-<div class="panel-title">
-Explore
-</div>
+<div class="panel-title">Explore</div>
 
 <div class="spacer"></div>
 
 </div>
 
-
 <div class="search">
 
-<svg viewBox="0 0 24 24">
-
-<circle cx="11" cy="11" r="7"/>
-
-<path d="m20 20-4-4"/>
-
-</svg>
-
+<span>⌕</span>
 
 <input
 id="searchInput"
@@ -2227,163 +935,73 @@ oninput="searchExplore()">
 
 </div>
 
-
 <div id="exploreResults">
 
 <div class="card">
-
 <div class="avatar">#</div>
-
 <div class="card-info">
-
 <strong>#xdark</strong>
-
-<small>
-Trending now
-</small>
-
+<small>Trending now</small>
 </div>
-
 </div>
-
 
 <div class="card">
-
 <div class="avatar">✦</div>
-
 <div class="card-info">
-
 <strong>Discover creators</strong>
-
-<small>
-Find new people and reels
-</small>
-
+<small>Find new people and reels</small>
 </div>
-
 </div>
 
 </div>
 
 </section>
 
-
-<!-- =====================================================
-     ACTIVITY
-===================================================== -->
+<!-- ACTIVITY -->
 
 <section id="activity" class="panel">
 
 <div class="panel-head">
 
-<button
-class="back"
-onclick="closePanels()">
+<button class="back" onclick="closePanels()">‹</button>
 
-<svg viewBox="0 0 24 24">
-
-<path d="M15 18L9 12L15 6"/>
-
-</svg>
-
-</button>
-
-<div class="panel-title">
-Activity
-</div>
+<div class="panel-title">Activity</div>
 
 <div class="spacer"></div>
 
 </div>
 
-
 <div class="card">
-
 <div class="avatar">D</div>
-
 <div class="card-info">
-
-<strong>
-Darkwing liked your Reel
-</strong>
-
-<small>
-2 minutes ago
-</small>
-
+<strong>Darkwing liked your Reel</strong>
+<small>2 minutes ago</small>
 </div>
-
 </div>
-
 
 <div class="card">
-
 <div class="avatar">N</div>
-
 <div class="card-info">
-
-<strong>
-Nova followed you
-</strong>
-
-<small>
-18 minutes ago
-</small>
-
+<strong>Nova followed you</strong>
+<small>18 minutes ago</small>
 </div>
-
-</div>
-
-
-<div class="card">
-
-<div class="avatar">A</div>
-
-<div class="card-info">
-
-<strong>
-Alex commented on your Reel
-</strong>
-
-<small>
-1 hour ago
-</small>
-
-</div>
-
 </div>
 
 </section>
 
-
-<!-- =====================================================
-     PROFILE
-===================================================== -->
+<!-- PROFILE -->
 
 <section id="profile" class="panel">
 
 <div class="panel-head">
 
-<button
-class="back"
-onclick="closePanels()">
+<button class="back" onclick="closePanels()">‹</button>
 
-<svg viewBox="0 0 24 24">
-
-<path d="M15 18L9 12L15 6"/>
-
-</svg>
-
-</button>
-
-<div class="panel-title">
-Profile
-</div>
+<div class="panel-title">Profile</div>
 
 <div class="spacer"></div>
 
 </div>
-
 
 <div class="profile">
 
@@ -2395,92 +1013,52 @@ A
 
 </div>
 
+<h2>Ankaj</h2>
 
-<h2>
-Ankaj
-</h2>
-
-
-<div
-style="
-color:#777781;
-font-size:11px;
-">
-
+<div style="color:#777781;font-size:11px">
 @x_dark_user
-
 </div>
-
 
 <div class="stats">
 
 <div class="stat">
-
 <strong>24</strong>
 <span>Posts</span>
-
 </div>
 
-
 <div class="stat">
-
 <strong>12.4K</strong>
 <span>Followers</span>
-
 </div>
-
 
 <div class="stat">
-
 <strong>287</strong>
 <span>Following</span>
-
 </div>
 
 </div>
 
-
-<button
-class="follow"
-onclick="toast('Profile editing ready')">
-
+<button class="follow" onclick="toast('Profile editing ready')">
 Edit profile
-
 </button>
 
 </div>
 
 </section>
 
-
-<!-- =====================================================
-     SETTINGS
-===================================================== -->
+<!-- SETTINGS -->
 
 <section id="settings" class="panel">
 
 <div class="panel-head">
 
-<button
-class="back"
-onclick="closePanels()">
+<button class="back" onclick="closePanels()">‹</button>
 
-<svg viewBox="0 0 24 24">
-
-<path d="M15 18L9 12L15 6"/>
-
-</svg>
-
-</button>
-
-<div class="panel-title">
-Settings
-</div>
+<div class="panel-title">Settings</div>
 
 <div class="spacer"></div>
 
 </div>
-
 
 <div class="card">
 
@@ -2488,9 +1066,7 @@ Settings
 
 <div class="card-info">
 
-<strong>
-Premium Dark UI
-</strong>
+<strong>Premium Dark UI</strong>
 
 <small>
 Glass + neon X-DARK experience
@@ -2500,16 +1076,13 @@ Glass + neon X-DARK experience
 
 </div>
 
-
 <div class="card">
 
 <div class="avatar">⌁</div>
 
 <div class="card-info">
 
-<strong>
-Privacy
-</strong>
+<strong>Privacy</strong>
 
 <small>
 Manage privacy and account visibility
@@ -2519,16 +1092,13 @@ Manage privacy and account visibility
 
 </div>
 
-
 <div class="card">
 
 <div class="avatar">♧</div>
 
 <div class="card-info">
 
-<strong>
-Notifications
-</strong>
+<strong>Notifications</strong>
 
 <small>
 Activity and message alerts
@@ -2540,443 +1110,48 @@ Activity and message alerts
 
 </section>
 
-
-<!-- =====================================================
-     CREATE
-===================================================== -->
-
-<section id="studio" class="panel">
-
-<div class="panel-head">
-
-<button
-class="back"
-onclick="closePanels()">
-
-<svg viewBox="0 0 24 24">
-
-<path d="M15 18L9 12L15 6"/>
-
-</svg>
-
-</button>
-
-<div class="panel-title">
-Create
-</div>
-
-<div class="spacer"></div>
-
-</div>
-
-
-<div class="create-wrap">
-
-<div class="mode-tabs">
-
-<button
-class="mode active"
-onclick="setMode(this,'Story')">
-Story
-</button>
-
-<button
-class="mode"
-onclick="setMode(this,'Post')">
-Post
-</button>
-
-<button
-class="mode"
-onclick="setMode(this,'Reel')">
-Reel
-</button>
-
-</div>
-
-
-<div class="editor">
-
-<div
-id="emptyEditor"
-class="empty-editor">
-
-<div class="camera-icon">
-
-<svg viewBox="0 0 24 24">
-
-<rect
-x="3"
-y="7"
-width="18"
-height="13"
-rx="3"/>
-
-<path d="
-M8 7
-l1.5-3
-h5
-L16 7"/>
-
-<circle
-cx="12"
-cy="13.5"
-r="3.5"/>
-
-</svg>
-
-</div>
-
-
-<strong>
-Create something
-</strong>
-
-<small>
-Camera ya Gallery se media select karo
-</small>
-
-</div>
-
-
-<img
-id="editImage"
-alt="">
-
-
-<video
-id="editVideo"
-controls
-playsinline>
-</video>
-
-
-<div class="edit-menu">
-
-<button
-class="edit-btn"
-onclick="toggleFilters()">
-
-<svg viewBox="0 0 24 24">
-
-<path d="M4 6h16"/>
-<path d="M4 12h16"/>
-<path d="M4 18h16"/>
-
-<circle cx="8" cy="6" r="2"/>
-<circle cx="15" cy="12" r="2"/>
-<circle cx="10" cy="18" r="2"/>
-
-</svg>
-
-</button>
-
-
-<button
-class="edit-btn"
-onclick="toggleAdjust()">
-
-<svg viewBox="0 0 24 24">
-
-<circle cx="12" cy="12" r="8"/>
-
-<path d="M12 8v8"/>
-<path d="M8 12h8"/>
-
-</svg>
-
-</button>
-
-
-<button
-class="edit-btn"
-onclick="rotateMedia()">
-
-<svg viewBox="0 0 24 24">
-
-<path d="
-M20 11
-a8 8 0 0 0-14-5
-L3 9"/>
-
-<path d="M3 4v5h5"/>
-
-<path d="
-M4 13
-a8 8 0 0 0 14 5
-l3-3"/>
-
-<path d="M21 20v-5h-5"/>
-
-</svg>
-
-</button>
-
-
-<button
-class="edit-btn"
-onclick="resetEditor()">
-
-<svg viewBox="0 0 24 24">
-
-<path d="
-M4 12
-a8 8 0 1 0 2.3-5.7"/>
-
-<path d="M4 5v5h5"/>
-
-</svg>
-
-</button>
-
-</div>
-
-
-<div
-id="filterPanel"
-class="tool-panel">
-
-<div class="filter-row">
-
-<button
-class="filter"
-onclick="applyFilter('none')">
-Original
-</button>
-
-<button
-class="filter"
-onclick="applyFilter('saturate(1.6) contrast(1.12)')">
-Vivid
-</button>
-
-<button
-class="filter"
-onclick="applyFilter('contrast(1.3) saturate(.82) brightness(.92)')">
-Cinema
-</button>
-
-<button
-class="filter"
-onclick="applyFilter('hue-rotate(18deg) saturate(1.25)')">
-Cool
-</button>
-
-<button
-class="filter"
-onclick="applyFilter('sepia(.28) saturate(1.45)')">
-Warm
-</button>
-
-<button
-class="filter"
-onclick="applyFilter('brightness(.68) contrast(1.35)')">
-Night
-</button>
-
-</div>
-
-</div>
-
-
-<div
-id="adjustPanel"
-class="tool-panel">
-
-<div class="slider">
-
-<label>Brightness</label>
-
-<input
-id="brightness"
-type="range"
-min="50"
-max="150"
-value="100"
-oninput="adjustMedia()">
-
-</div>
-
-
-<div class="slider">
-
-<label>Contrast</label>
-
-<input
-id="contrast"
-type="range"
-min="50"
-max="150"
-value="100"
-oninput="adjustMedia()">
-
-</div>
-
-
-<div class="slider">
-
-<label>Saturation</label>
-
-<input
-id="saturation"
-type="range"
-min="0"
-max="200"
-value="100"
-oninput="adjustMedia()">
-
-</div>
-
-
-<div class="slider">
-
-<label>Blur</label>
-
-<input
-id="blur"
-type="range"
-min="0"
-max="5"
-value="0"
-step=".1"
-oninput="adjustMedia()">
-
-</div>
-
-</div>
-
-
-<div class="editor-actions">
-
-<button
-class="editor-btn"
-onclick="openCamera()">
-Camera
-</button>
-
-<button
-class="editor-btn"
-onclick="openGallery()">
-Gallery
-</button>
-
-</div>
-
-</div>
-
-
-<input
-id="cameraInput"
-type="file"
-accept="image/*,video/*"
-capture="environment"
-hidden
-onchange="loadMedia(this)">
-
-
-<input
-id="galleryInput"
-type="file"
-accept="image/*,video/*"
-hidden
-onchange="loadMedia(this)">
-
-
-<textarea
-id="studioCaption"
-class="caption-box"
-placeholder="Write a caption..."></textarea>
-
-
-<div class="publish-row">
-
-<button
-class="cancel"
-onclick="closePanels()">
-Cancel
-</button>
-
-<button
-class="publish"
-onclick="publishMedia()">
-Publish
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     COMMENTS
-===================================================== -->
+<!-- COMMENTS -->
 
 <div id="comments" class="comments">
 
 <div class="comment-head">
 
-<button
-class="comment-back"
-onclick="closeComments()">
-
-<svg viewBox="0 0 24 24">
-
-<path d="M15 18L9 12L15 6"/>
-
-</svg>
-
+<button class="comment-back" onclick="closeComments()">
+‹
 </button>
 
 Comments
 
 </div>
 
-
-<div
-id="commentList"
-class="comment-list">
+<div id="commentList" class="comment-list">
 
 <div class="comment">
 
-<div class="comment-avatar">
-D
-</div>
+<div class="comment-avatar">D</div>
 
 <div class="comment-body">
 
 <b>Darkwing</b>
-
 <br>
-
 This looks amazing 🔥
-
 <br>
-
 <small>2m</small>
 
 </div>
 
 </div>
 
-
 <div class="comment">
 
-<div class="comment-avatar">
-N
-</div>
+<div class="comment-avatar">N</div>
 
 <div class="comment-body">
 
 <b>Nova</b>
-
 <br>
-
 X-DARK is looking clean!
-
 <br>
-
 <small>5m</small>
 
 </div>
@@ -2984,7 +1159,6 @@ X-DARK is looking clean!
 </div>
 
 </div>
-
 
 <div class="comment-input">
 
@@ -2997,165 +1171,35 @@ event.preventDefault();
 addComment();
 }">
 
-
-<button
-class="comment-send"
-onclick="addComment()">
-
-<svg viewBox="0 0 24 24">
-
-<path d="M12 19V5"/>
-<path d="m6 11 6-6 6 6"/>
-
-</svg>
-
+<button class="comment-send" onclick="addComment()">
+➤
 </button>
 
 </div>
 
 </div>
 
-
 <div id="toast" class="toast"></div>
 
 </div>
 
+<script>
 
-<script type="module">
+/* PANELS */
 
-/* =====================================================
-   FIREBASE
-===================================================== */
-
-import {
-initializeApp
-}
-from
-"https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-
-import {
-getAuth,
-signInAnonymously,
-onAuthStateChanged
-}
-from
-"https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
-
-import {
-getFirestore,
-collection,
-addDoc,
-query,
-orderBy,
-onSnapshot,
-serverTimestamp
-}
-from
-"https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
-
-
-const firebaseConfig={
-
-apiKey:
-"AIzaC8HfxclF7UGYVcmdU38yuxtsBY",
-
-authDomain:
-"darkwing-a717a.firebaseapp.com",
-
-projectId:
-"darkwing-a717a",
-
-storageBucket:
-"darkwing-a717a.firebasestorage.app",
-
-messagingSenderId:
-"352453390196",
-
-appId:
-"1:352453390196:web:7c375a26a823b5633a4621",
-
-measurementId:
-"G-5RVX9NET3W"
-
-};
-
-
-let app;
-let auth;
-let db;
-
-let currentUser=null;
-let currentChat="";
-let stopChat=null;
-
-
-try{
-
-app=initializeApp(firebaseConfig);
-
-auth=getAuth(app);
-
-db=getFirestore(app);
-
-
-onAuthStateChanged(
-auth,
-user=>{
-
-currentUser=user;
-
-console.log(
-"X-DARK Firebase:",
-user ? "connected" : "signed out"
-);
-
-});
-
-
-signInAnonymously(auth)
-.catch(error=>{
-
-console.error(
-"Firebase Auth Error:",
-error
-);
-
-toast(
-"Firebase: "+
-(error.code || "auth error")
-);
-
-});
-
-}
-catch(error){
-
-console.error(error);
-
-toast("Firebase setup error");
-
-}
-
-
-/* =========================
-   PANELS
-========================= */
-
-window.openPanel=function(id){
+function openPanel(id){
 
 closePanels();
 
-const panel=
-document.getElementById(id);
+const panel=document.getElementById(id);
 
 if(panel){
 panel.classList.add("open");
 }
 
-};
+}
 
-
-window.closePanels=function(){
+function closePanels(){
 
 document
 .querySelectorAll(".panel")
@@ -3163,10 +1207,9 @@ document
 panel.classList.remove("open");
 });
 
-};
+}
 
-
-window.goHome=function(){
+function goHome(){
 
 closePanels();
 
@@ -3177,195 +1220,110 @@ top:0,
 behavior:"smooth"
 });
 
-};
+}
 
+/* LIKE */
 
-/* =========================
-   CREATE
-========================= */
-
-window.openStudio=function(){
-
-openPanel("studio");
-
-};
-
-
-/* =========================
-   TOAST
-========================= */
-
-window.toast=function(message){
-
-const box=
-document.getElementById("toast");
-
-box.textContent=message;
-
-box.classList.add("show");
-
-clearTimeout(window.toastTimer);
-
-window.toastTimer=setTimeout(
-()=>{
-box.classList.remove("show");
-},
-2200
-);
-
-};
-
-
-/* =========================
-   LIKE
-========================= */
-
-window.toggleLike=function(button){
+function toggleLike(button){
 
 button.classList.toggle("liked");
 
-const span=
-button.querySelector("span");
+}
 
-span.textContent=
-button.classList.contains("liked")
-?"12.5K"
-:"12.4K";
+/* SAVE */
 
-};
-
-
-/* =========================
-   SAVE
-========================= */
-
-window.toggleSave=function(button){
+function toggleSave(button){
 
 button.classList.toggle("liked");
 
-const span=
-button.querySelector("span");
+const span=button.querySelector("span:last-child");
 
-span.textContent=
-button.classList.contains("liked")
-?"Saved"
-:"Save";
+if(button.classList.contains("liked")){
+span.textContent="Saved";
+}else{
+span.textContent="Save";
+}
 
-};
+}
 
+/* FOLLOW */
 
-/* =========================
-   FOLLOW
-========================= */
+function toggleFollow(button){
 
-window.toggleFollow=function(button){
+if(button.textContent.trim()==="Follow"){
+button.textContent="Following";
+}else{
+button.textContent="Follow";
+}
 
-button.textContent=
-button.textContent.trim()==="Follow"
-?"Following"
-:"Follow";
+}
 
-};
+/* SHARE */
 
-
-/* =========================
-   SHARE
-========================= */
-
-window.sharePost=async function(){
+async function sharePost(){
 
 try{
 
 if(navigator.share){
 
 await navigator.share({
-
 title:"X-DARK",
-
 text:"The Next Level",
-
 url:location.href
-
 });
 
-}
-else{
+}else{
 
-await navigator.clipboard.writeText(
-location.href
-);
+await navigator.clipboard.writeText(location.href);
 
 toast("Link copied");
 
 }
 
+}catch(e){}
+
 }
-catch(error){}
 
-};
+/* COMMENTS */
 
-
-/* =========================
-   COMMENTS
-========================= */
-
-window.openComments=function(){
+function openComments(){
 
 document
 .getElementById("comments")
 .classList.add("open");
 
-};
+}
 
-
-window.closeComments=function(){
+function closeComments(){
 
 document
 .getElementById("comments")
 .classList.remove("open");
 
-};
+}
 
+function addComment(){
 
-window.addComment=function(){
+const input=document.getElementById("commentInput");
 
-const input=
-document.getElementById("commentInput");
-
-const text=
-input.value.trim();
+const text=input.value.trim();
 
 if(!text)return;
 
-
-const item=
-document.createElement("div");
+const item=document.createElement("div");
 
 item.className="comment";
 
-
 item.innerHTML=`
-
-<div class="comment-avatar">
-A
-</div>
-
+<div class="comment-avatar">A</div>
 <div class="comment-body">
-
 <b>Ankaj</b>
-
 <br>
-
 ${escapeHTML(text)}
-
 <br>
-
 <small>now</small>
-
 </div>
-
 `;
-
 
 document
 .getElementById("commentList")
@@ -3373,296 +1331,26 @@ document
 
 input.value="";
 
-
-document
-.getElementById("commentList")
-.scrollTop=999999;
-
-};
-
+}
 
 function escapeHTML(text){
 
 return text.replace(
 /[&<>"']/g,
 character=>({
-
 "&":"&amp;",
 "<":"&lt;",
 ">":"&gt;",
 '"':"&quot;",
 "'":"&#039;"
-
 }[character])
 );
 
 }
 
+/* SEARCH */
 
-/* =========================
-   CHAT
-========================= */
-
-window.openChat=function(
-name,
-initial
-){
-
-currentChat=name;
-
-closePanels();
-
-document
-.getElementById("chatPanel")
-.classList.add("open");
-
-
-document
-.getElementById("chatName")
-.textContent=name;
-
-
-document
-.getElementById("chatAvatar")
-.textContent=initial;
-
-
-document
-.getElementById("messagesBox")
-.innerHTML="";
-
-
-if(currentUser){
-
-listenChat();
-
-}
-else{
-
-addBubble(
-"Welcome to X-DARK 🔥",
-false
-);
-
-}
-
-};
-
-
-function chatId(name){
-
-return name
-.toLowerCase()
-.replace(
-/[^a-z0-9]+/g,
-"_"
-);
-
-};
-
-
-function listenChat(){
-
-if(stopChat){
-stopChat();
-}
-
-
-const messageQuery=
-query(
-
-collection(
-db,
-"chats",
-chatId(currentChat),
-"messages"
-),
-
-orderBy(
-"createdAt",
-"asc"
-)
-
-);
-
-
-stopChat=
-onSnapshot(
-
-messageQuery,
-
-snapshot=>{
-
-const box=
-document.getElementById("messagesBox");
-
-box.innerHTML="";
-
-
-snapshot.forEach(
-doc=>{
-
-const message=
-doc.data();
-
-addBubble(
-message.text,
-message.senderId===
-currentUser.uid
-);
-
-});
-
-
-box.scrollTop=
-box.scrollHeight;
-
-},
-
-error=>{
-
-console.error(error);
-
-toast(
-"Chat error: "+
-error.code
-);
-
-}
-
-);
-
-};
-
-
-function addBubble(
-text,
-mine
-){
-
-const row=
-document.createElement("div");
-
-row.className=
-"msg"+
-(mine?" me":"");
-
-
-const bubble=
-document.createElement("div");
-
-bubble.className="bubble";
-
-bubble.textContent=text;
-
-
-row.appendChild(bubble);
-
-
-document
-.getElementById("messagesBox")
-.appendChild(row);
-
-};
-
-
-window.closeChat=function(){
-
-if(stopChat){
-
-stopChat();
-
-stopChat=null;
-
-}
-
-
-document
-.getElementById("chatPanel")
-.classList.remove("open");
-
-};
-
-
-window.sendMessage=async function(){
-
-const input=
-document.getElementById("chatInput");
-
-const text=
-input.value.trim();
-
-if(!text)return;
-
-
-if(!currentUser){
-
-toast("Firebase not connected");
-
-return;
-
-}
-
-
-input.value="";
-
-
-try{
-
-await addDoc(
-
-collection(
-db,
-"chats",
-chatId(currentChat),
-"messages"
-),
-
-{
-
-text:text,
-
-senderId:
-currentUser.uid,
-
-senderName:
-"Ankaj",
-
-type:"text",
-
-seenBy:[
-currentUser.uid
-],
-
-createdAt:
-serverTimestamp()
-
-}
-
-);
-
-}
-catch(error){
-
-console.error(error);
-
-toast(
-"Message failed: "+
-error.code
-);
-
-input.value=text;
-
-}
-
-};
-
-
-/* =========================
-   EXPLORE
-========================= */
-
-window.searchExplore=function(){
+function searchExplore(){
 
 const value=
 document
@@ -3670,401 +1358,94 @@ document
 .value
 .trim();
 
-
 const results=
 document.getElementById("exploreResults");
-
 
 if(!value){
 
 results.innerHTML=`
-
 <div class="card">
-
 <div class="avatar">#</div>
-
 <div class="card-info">
-
 <strong>#xdark</strong>
-
 <small>Trending now</small>
-
 </div>
-
 </div>
 
 <div class="card">
-
 <div class="avatar">✦</div>
-
 <div class="card-info">
-
 <strong>Discover creators</strong>
-
 <small>Find new people and reels</small>
-
 </div>
-
 </div>
-
 `;
 
 return;
 
 }
-
 
 results.innerHTML=`
-
 <div class="card">
-
 <div class="avatar">⌕</div>
-
 <div class="card-info">
-
-<strong>
-${escapeHTML(value)}
-</strong>
-
-<small>
-Search results on X-DARK
-</small>
-
+<strong>${escapeHTML(value)}</strong>
+<small>Search results on X-DARK</small>
 </div>
-
 </div>
-
 `;
 
-};
-
-
-/* =========================
-   EDITOR
-========================= */
-
-let mode="Story";
-let rotation=0;
-
-
-window.setMode=function(
-button,
-newMode
-){
-
-document
-.querySelectorAll(".mode")
-.forEach(item=>{
-item.classList.remove("active");
-});
-
-
-button.classList.add("active");
-
-mode=newMode;
-
-toast(
-newMode+
-" mode selected"
-);
-
-};
-
-
-window.openCamera=function(){
-
-document
-.getElementById("cameraInput")
-.click();
-
-};
-
-
-window.openGallery=function(){
-
-document
-.getElementById("galleryInput")
-.click();
-
-};
-
-
-window.loadMedia=function(input){
-
-const file=input.files[0];
-
-if(!file)return;
-
-
-const url=
-URL.createObjectURL(file);
-
-
-const image=
-document.getElementById("editImage");
-
-const video=
-document.getElementById("editVideo");
-
-
-document
-.getElementById("emptyEditor")
-.style.display="none";
-
-
-image.style.display="none";
-video.style.display="none";
-
-
-if(
-file.type.startsWith("video/")
-){
-
-video.src=url;
-
-video.style.display="block";
-
 }
-else{
 
-image.src=url;
+/* TOAST */
 
-image.style.display="block";
+function toast(message){
+
+const box=document.getElementById("toast");
+
+box.textContent=message;
+
+box.classList.add("show");
+
+clearTimeout(window.toastTimer);
+
+window.toastTimer=setTimeout(()=>{
+box.classList.remove("show");
+},2200);
 
 }
 
+/* VIDEO */
 
-toast(
-mode+
-" media loaded ✓"
-);
-
-};
-
-
-/* =========================
-   FILTERS
-========================= */
-
-window.toggleFilters=function(){
-
-document
-.getElementById("filterPanel")
-.classList.toggle("show");
-
-document
-.getElementById("adjustPanel")
-.classList.remove("show");
-
-};
-
-
-window.toggleAdjust=function(){
-
-document
-.getElementById("adjustPanel")
-.classList.toggle("show");
-
-document
-.getElementById("filterPanel")
-.classList.remove("show");
-
-};
-
-
-window.applyFilter=function(filter){
-
-document
-.getElementById("editImage")
-.style.filter=filter;
-
-
-document
-.getElementById("editVideo")
-.style.filter=filter;
-
-toast("Filter applied ✨");
-
-};
-
-
-/* =========================
-   ADJUST
-========================= */
-
-window.adjustMedia=function(){
-
-const brightness=
-document.getElementById("brightness").value;
-
-const contrast=
-document.getElementById("contrast").value;
-
-const saturation=
-document.getElementById("saturation").value;
-
-const blur=
-document.getElementById("blur").value;
-
-
-const filter=`
-
-brightness(${brightness}%)
-contrast(${contrast}%)
-saturate(${saturation}%)
-blur(${blur}px)
-
-`;
-
-
-document
-.getElementById("editImage")
-.style.filter=filter;
-
-
-document
-.getElementById("editVideo")
-.style.filter=filter;
-
-};
-
-
-/* =========================
-   ROTATE
-========================= */
-
-window.rotateMedia=function(){
-
-rotation=
-(rotation+90)%360;
-
-
-document
-.getElementById("editImage")
-.style.transform=
-`rotate(${rotation}deg)`;
-
-
-document
-.getElementById("editVideo")
-.style.transform=
-`rotate(${rotation}deg)`;
-
-};
-
-
-/* =========================
-   RESET
-========================= */
-
-window.resetEditor=function(){
-
-rotation=0;
-
-
-document.getElementById("brightness").value=100;
-
-document.getElementById("contrast").value=100;
-
-document.getElementById("saturation").value=100;
-
-document.getElementById("blur").value=0;
-
-
-document.getElementById("editImage").style.filter="none";
-
-document.getElementById("editVideo").style.filter="none";
-
-
-document.getElementById("editImage").style.transform=
-"rotate(0deg)";
-
-document.getElementById("editVideo").style.transform=
-"rotate(0deg)";
-
-
-toast("Editor reset");
-
-};
-
-
-/* =========================
-   PUBLISH
-========================= */
-
-window.publishMedia=function(){
-
-const image=
-document.getElementById("editImage");
-
-const video=
-document.getElementById("editVideo");
-
-
-if(
-image.style.display==="none" &&
-video.style.display==="none"
-){
-
-toast(
-"Pehle photo ya video select karo"
-);
-
-return;
-
-}
-
-
-toast(
-"Your "+
-mode.toLowerCase()+
-" is ready to publish 🔥"
-);
-
-};
-
-
-/* =========================
-   VIDEO
-========================= */
-
-const observer=
-new IntersectionObserver(
-
+const observer=new IntersectionObserver(
 entries=>{
 
 entries.forEach(entry=>{
 
+const video=entry.target;
+
 if(entry.isIntersecting){
 
-entry.target
-.play()
-.catch(()=>{});
+video.play().catch(()=>{});
 
-}
-else{
+}else{
 
-entry.target.pause();
+video.pause();
 
 }
 
 });
 
 },
-
 {
 threshold:.65
 }
-
 );
-
 
 document
 .querySelectorAll(".reel-media")
 .forEach(video=>{
-
 observer.observe(video);
-
 });
 
 </script>
