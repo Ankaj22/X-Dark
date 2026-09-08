@@ -1,170 +1,328 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#050505">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<meta name="theme-color" content="#050507">
+
 <title>X-DARK</title>
 
 <style>
+
+/* =====================================================
+   X-DARK PREMIUM UI
+===================================================== */
+
 :root{
-  --bg:#050505;
-  --panel:#0d0d12;
-  --panel2:#14141b;
-  --line:rgba(255,255,255,.09);
-  --muted:#8b8b98;
-  --white:#fff;
-  --purple:#8b5cf6;
-  --purple2:#b06cff;
+
+  --black:#050507;
+  --black2:#09090c;
+  --glass:rgba(18,18,24,.68);
+  --glass2:rgba(255,255,255,.055);
+
+  --border:rgba(255,255,255,.11);
+
+  --purple:#7c3cff;
+  --purple2:#a56cff;
+
   --pink:#ff3d81;
+
+  --text:#ffffff;
+  --muted:#92929d;
+
 }
 
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
+
   -webkit-tap-highlight-color:transparent;
 }
 
-html,body{
+html,
+body{
+
   width:100%;
   height:100%;
-  background:var(--bg);
+
+  background:#000;
   color:white;
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
+
+  font-family:
+  -apple-system,
+  BlinkMacSystemFont,
+  "SF Pro Display",
+  "Segoe UI",
+  Arial,
+  sans-serif;
+
 }
 
 body{
   overflow:hidden;
 }
 
-button,input,textarea{
+button,
+input,
+textarea{
   font:inherit;
 }
 
 button{
   border:0;
+  cursor:pointer;
   color:white;
 }
 
-svg{
-  display:block;
-}
-
-/* =========================
-APP
-========================= */
+/* =====================================================
+   APP
+===================================================== */
 
 .app{
+
   width:100%;
   height:100dvh;
+
   position:relative;
+
   overflow:hidden;
+
   background:
+
     radial-gradient(
-      circle at 80% -10%,
-      rgba(139,92,246,.18),
-      transparent 34%
+      circle at 80% 0%,
+      rgba(124,60,255,.18),
+      transparent 32%
     ),
-    #050505;
+
+    radial-gradient(
+      circle at 10% 100%,
+      rgba(124,60,255,.08),
+      transparent 30%
+    ),
+
+    #050507;
+
 }
 
-/* =========================
-TOP BAR
-========================= */
+/* =====================================================
+   REELS FEED
+===================================================== */
 
-.topbar{
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  height:76px;
-  z-index:100;
+.feed{
 
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-
-  padding:0 18px;
-
-  background:linear-gradient(
-    to bottom,
-    rgba(5,5,5,.94),
-    rgba(5,5,5,.35),
-    transparent
-  );
-}
-
-.logo{
-  font-size:28px;
-  font-weight:950;
-  letter-spacing:-1.5px;
-}
-
-.logo span{
-  color:var(--purple2);
-}
-
-.top-actions{
-  display:flex;
-  gap:9px;
-}
-
-.circle-btn{
-  width:43px;
-  height:43px;
-  border-radius:50%;
-
-  background:rgba(18,18,23,.72);
-  border:1px solid var(--line);
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  backdrop-filter:blur(20px);
-}
-
-.circle-btn svg{
-  width:21px;
-  height:21px;
-  stroke:white;
-  fill:none;
-  stroke-width:1.9;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-}
-
-/* =========================
-HOME
-========================= */
-
-.home{
+  width:100%;
   height:100%;
+
   overflow-y:auto;
-  padding-bottom:85px;
+
+  scroll-snap-type:y mandatory;
+
   scrollbar-width:none;
+
 }
 
-.home::-webkit-scrollbar{
+.feed::-webkit-scrollbar{
   display:none;
 }
 
-/* =========================
-STORIES
-========================= */
+.reel{
 
-.stories-wrap{
-  padding-top:73px;
-  padding-left:15px;
-  padding-right:15px;
+  width:100%;
+  height:100dvh;
+
+  position:relative;
+
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+
+  overflow:hidden;
+
+  background:#070709;
+
+}
+
+/* =====================================================
+   VIDEO
+===================================================== */
+
+.reel video{
+
+  position:absolute;
+
+  inset:0;
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  background:#080808;
+
+}
+
+/* cinematic overlay */
+
+.reel::before{
+
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  z-index:2;
+
+  pointer-events:none;
+
+  background:
+
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,.68) 0%,
+      rgba(0,0,0,.05) 25%,
+      rgba(0,0,0,.04) 53%,
+      rgba(0,0,0,.76) 100%
+    );
+
+}
+
+/* =====================================================
+   TOP BAR
+===================================================== */
+
+.topbar{
+
+  position:absolute;
+
+  top:0;
+  left:0;
+  right:0;
+
+  height:88px;
+
+  z-index:30;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  padding:
+  env(safe-area-inset-top)
+  18px
+  0;
+
+}
+
+/* logo */
+
+.logo{
+
+  font-size:28px;
+
+  font-weight:950;
+
+  letter-spacing:-1.5px;
+
+  text-shadow:
+  0 4px 25px rgba(0,0,0,.7);
+
+}
+
+.logo .purple{
+  color:var(--purple2);
+}
+
+/* top buttons */
+
+.top-actions{
+
+  display:flex;
+
+  gap:9px;
+
+}
+
+.top-button{
+
+  width:43px;
+  height:43px;
+
+  border-radius:50%;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  background:
+  rgba(15,15,20,.62);
+
+  border:
+  1px solid
+  rgba(255,255,255,.13);
+
+  backdrop-filter:blur(20px);
+
+  box-shadow:
+  0 8px 30px rgba(0,0,0,.25);
+
+}
+
+.top-button svg{
+
+  width:21px;
+  height:21px;
+
+  stroke:white;
+
+  fill:none;
+
+  stroke-width:1.8;
+
+  stroke-linecap:round;
+  stroke-linejoin:round;
+
+}
+
+/* =====================================================
+   STORIES
+===================================================== */
+
+.story-container{
+
+  position:absolute;
+
+  top:88px;
+
+  left:0;
+  right:0;
+
+  z-index:25;
+
+  padding:0 17px;
+
 }
 
 .stories{
+
   display:flex;
+
   gap:13px;
+
   overflow-x:auto;
+
   scrollbar-width:none;
+
 }
 
 .stories::-webkit-scrollbar{
@@ -172,1007 +330,1491 @@ STORIES
 }
 
 .story{
-  min-width:63px;
+
+  width:62px;
+
+  min-width:62px;
+
   text-align:center;
-  color:#b9b9c2;
-  font-size:11px;
-  font-weight:650;
+
+  font-size:10px;
+
+  font-weight:700;
+
+  color:#e4e4e8;
+
 }
 
 .story-ring{
+
   width:61px;
   height:61px;
-  border-radius:50%;
+
   padding:2px;
-  margin:auto;
-  background:linear-gradient(
-    135deg,
-    #ffcf40,
-    #ff387f,
-    #853cff
-  );
+
+  border-radius:50%;
+
+  background:
+
+    conic-gradient(
+      from 0deg,
+      #ffbe38,
+      #ff3f73,
+      #9b4cff,
+      #ffbe38
+    );
+
+  box-shadow:
+  0 4px 20px rgba(0,0,0,.35);
+
 }
 
 .story-inner{
+
   width:100%;
   height:100%;
+
   border-radius:50%;
-  background:#16161c;
-  border:2px solid #08080a;
+
+  border:2px solid #09090b;
+
+  background:#15151a;
 
   display:flex;
+
   align-items:center;
   justify-content:center;
 
   font-size:20px;
+
   font-weight:900;
+
 }
 
 .story-name{
+
   margin-top:6px;
+
   white-space:nowrap;
+
   overflow:hidden;
+
   text-overflow:ellipsis;
+
 }
 
-/* =========================
-SECTION TITLE
-========================= */
+/* =====================================================
+   RIGHT ACTION RAIL
+===================================================== */
 
-.section-head{
+.action-rail{
+
+  position:absolute;
+
+  right:12px;
+
+  bottom:130px;
+
+  z-index:25;
+
   display:flex;
-  justify-content:space-between;
+
+  flex-direction:column;
+
   align-items:center;
 
-  padding:25px 18px 13px;
+  gap:15px;
+
 }
 
-.section-head h2{
-  font-size:22px;
-  letter-spacing:-.5px;
-}
+/* action */
 
-.section-head button{
-  background:none;
-  color:#a77cff;
-  font-size:13px;
-  font-weight:750;
-}
+.action{
 
-/* =========================
-POST CARD
-========================= */
+  width:52px;
 
-.post{
-  margin:0 13px 18px;
-  border-radius:27px;
+  min-height:55px;
 
-  overflow:hidden;
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:3px;
+
+  border-radius:19px;
 
   background:
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,.055),
-      rgba(255,255,255,.015)
-    );
 
-  border:1px solid var(--line);
+    rgba(15,15,19,.38);
 
-  box-shadow:
-    0 20px 70px rgba(0,0,0,.38);
+  border:
+    1px solid
+    rgba(255,255,255,.10);
+
+  backdrop-filter:blur(16px);
+
+  text-shadow:
+    0 2px 6px #000;
+
 }
 
-.post-head{
-  height:66px;
-  display:flex;
-  align-items:center;
-  padding:0 14px;
-  gap:11px;
+.action svg{
+
+  width:25px;
+  height:25px;
+
+  stroke:white;
+
+  fill:none;
+
+  stroke-width:1.8;
+
+  stroke-linecap:round;
+  stroke-linejoin:round;
+
 }
 
-.avatar{
-  width:42px;
-  height:42px;
+.action span{
+
+  font-size:10px;
+
+  font-weight:800;
+
+}
+
+.action.active{
+
+  color:var(--pink);
+
+}
+
+.action.active svg{
+
+  stroke:var(--pink);
+
+  fill:var(--pink);
+
+}
+
+/* music */
+
+.music-disc{
+
+  width:45px;
+  height:45px;
+
   border-radius:50%;
 
+  background:
+
+    conic-gradient(
+      #202027,
+      #888,
+      #202027,
+      #888
+    );
+
+  border:2px solid white;
+
   display:flex;
+
   align-items:center;
   justify-content:center;
 
+  animation:
+  rotateDisc 5s linear infinite;
+
+}
+
+.music-disc svg{
+
+  width:20px;
+  height:20px;
+
+  stroke:white;
+
+  fill:none;
+
+}
+
+@keyframes rotateDisc{
+
+  from{
+    transform:rotate(0deg);
+  }
+
+  to{
+    transform:rotate(360deg);
+  }
+
+}
+
+/* =====================================================
+   CONTENT
+===================================================== */
+
+.content{
+
+  position:absolute;
+
+  left:18px;
+
+  right:82px;
+
+  bottom:103px;
+
+  z-index:20;
+
+}
+
+/* creator */
+
+.creator{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  margin-bottom:15px;
+
+}
+
+.creator-avatar{
+
+  width:47px;
+  height:47px;
+
+  flex:none;
+
+  border-radius:50%;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  font-size:18px;
+
+  font-weight:950;
+
   background:
+
     linear-gradient(
       135deg,
-      #6e39ff,
-      #bb70ff
+      #6330ff,
+      #b86dff
     );
+
+  border:
+    2px solid
+    rgba(255,255,255,.25);
+
+  box-shadow:
+    0 6px 25px rgba(0,0,0,.35);
+
+}
+
+.creator-info{
+
+  min-width:0;
+
+}
+
+.creator-name{
+
+  font-size:17px;
 
   font-weight:900;
+
 }
 
-.post-user{
-  flex:1;
-}
-
-.post-user strong{
-  font-size:14px;
-}
-
-.post-user small{
-  display:block;
-  color:#777783;
-  margin-top:2px;
-  font-size:11px;
-}
-
-.more{
-  width:35px;
-  height:35px;
-  border-radius:50%;
-  background:none;
-  color:#aaa;
-  font-size:20px;
-}
-
-/* MEDIA */
-
-.media{
-  position:relative;
-  width:100%;
-  aspect-ratio:4/5;
-  background:#111;
-  overflow:hidden;
-}
-
-.media video,
-.media img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.media::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-
-  background:
-    linear-gradient(
-      to bottom,
-      transparent 55%,
-      rgba(0,0,0,.42)
-    );
-}
-
-.reel-badge{
-  position:absolute;
-  top:12px;
-  left:12px;
-  z-index:5;
-
-  padding:7px 10px;
-  border-radius:10px;
-
-  background:rgba(0,0,0,.45);
-  backdrop-filter:blur(15px);
+.creator-followers{
 
   font-size:10px;
-  font-weight:800;
+
+  color:#d0d0d5;
+
+  margin-top:2px;
+
 }
 
-/* POST ACTIONS */
+/* follow */
 
-.post-actions{
-  display:flex;
-  align-items:center;
-  gap:15px;
-  padding:14px 14px 5px;
+.follow{
+
+  margin-left:2px;
+
+  padding:8px 13px;
+
+  border-radius:12px;
+
+  background:
+    rgba(255,255,255,.08);
+
+  border:
+    1px solid
+    rgba(255,255,255,.7);
+
+  font-size:11px;
+
+  font-weight:850;
+
+  backdrop-filter:blur(15px);
+
 }
 
-.action-btn{
-  background:none;
-  display:flex;
-  align-items:center;
-  gap:5px;
-  color:#aaa;
-}
-
-.action-btn svg{
-  width:23px;
-  height:23px;
-  stroke:currentColor;
-  fill:none;
-  stroke-width:1.8;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-}
-
-.action-btn.active{
-  color:var(--pink);
-}
-
-.action-btn.active svg{
-  fill:currentColor;
-}
-
-.save-btn{
-  margin-left:auto;
-}
-
-.post-body{
-  padding:7px 15px 17px;
-}
-
-.likes{
-  font-size:13px;
-  font-weight:800;
-  margin-bottom:7px;
-}
+/* caption */
 
 .caption{
-  font-size:14px;
-  line-height:1.45;
-  color:#dedee4;
+
+  font-size:16px;
+
+  line-height:1.42;
+
+  font-weight:600;
+
+  text-shadow:
+    0 2px 7px rgba(0,0,0,.8);
+
 }
 
-.caption b{
-  color:white;
-}
+.hashtags{
 
-.tags{
-  color:#9870e9;
-  margin-top:6px;
+  margin-top:8px;
+
+  color:#e2d9ff;
+
   font-size:13px;
+
+  font-weight:700;
+
 }
 
-/* =========================
-BOTTOM NAV
-========================= */
-
-.bottom{
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:0;
-  z-index:150;
-
-  height:75px;
+.audio{
 
   display:flex;
+
   align-items:center;
+
+  gap:8px;
+
+  margin-top:11px;
+
+  font-size:12px;
+
+  color:#fff;
+
+}
+
+.audio-icon{
+
+  width:22px;
+  height:22px;
+
+  border:1px solid white;
+
+  border-radius:50%;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+}
+
+/* =====================================================
+   BOTTOM DOCK
+===================================================== */
+
+.bottom-dock{
+
+  position:absolute;
+
+  left:10px;
+  right:10px;
+
+  bottom:8px;
+
+  z-index:50;
+
+  height:70px;
+
+  border-radius:24px;
+
+  display:flex;
+
+  align-items:center;
+
   justify-content:space-around;
 
   background:
-    linear-gradient(
-      to top,
-      rgba(5,5,5,.98),
-      rgba(5,5,5,.86)
-    );
 
-  border-top:1px solid var(--line);
+    rgba(12,12,16,.84);
+
+  border:
+
+    1px solid
+    rgba(255,255,255,.10);
 
   backdrop-filter:blur(25px);
 
-  padding-bottom:env(safe-area-inset-bottom);
+  box-shadow:
+
+    0 -10px 45px
+    rgba(0,0,0,.38),
+
+    inset 0 1px 0
+    rgba(255,255,255,.04);
+
+  padding-bottom:
+    env(safe-area-inset-bottom);
+
 }
 
+/* nav button */
+
 .nav-btn{
-  min-width:55px;
+
   background:none;
-  color:#777783;
+
+  min-width:52px;
+
+  height:58px;
 
   display:flex;
+
   flex-direction:column;
+
   align-items:center;
+
+  justify-content:center;
+
   gap:4px;
 
-  font-size:10px;
-  font-weight:700;
+  color:#777781;
+
 }
 
 .nav-btn svg{
+
   width:23px;
   height:23px;
+
   stroke:currentColor;
+
   fill:none;
+
   stroke-width:1.8;
+
   stroke-linecap:round;
   stroke-linejoin:round;
+
+}
+
+.nav-btn span{
+
+  font-size:9px;
+
+  font-weight:750;
+
 }
 
 .nav-btn.active{
+
   color:white;
+
 }
 
 .nav-btn.active svg{
+
   stroke:var(--purple2);
+
 }
 
-.create-button{
-  width:45px;
-  height:32px;
-  border-radius:10px;
+/* create */
 
-  background:
-    linear-gradient(
-      135deg,
-      #fff,
-      #dcdcdc
-    );
+.create{
 
-  color:#000;
+  width:48px;
+  height:38px;
+
+  border-radius:13px;
 
   display:flex;
+
   align-items:center;
   justify-content:center;
 
+  background:
+
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #dcdce2
+    );
+
+  color:#050507;
+
   box-shadow:
-    0 0 25px rgba(139,92,246,.22);
+
+    0 5px 25px
+    rgba(255,255,255,.13);
+
 }
 
-.create-button svg{
-  stroke:#000;
+.create svg{
+
+  stroke:#050507;
+
 }
 
-/* =========================
-FULLSCREEN DRAWER
-========================= */
+/* =====================================================
+   DRAWERS
+===================================================== */
 
 .drawer{
+
   position:absolute;
+
   inset:0;
-  z-index:300;
+
+  z-index:200;
 
   background:
+
     radial-gradient(
       circle at 80% 0%,
-      rgba(139,92,246,.14),
+      rgba(124,60,255,.17),
       transparent 35%
     ),
-    #060608;
 
-  transform:translateX(100%);
-  transition:transform .32s cubic-bezier(.2,.8,.2,1);
+    #07070a;
+
+  transform:
+    translateX(100%);
+
+  transition:
+    transform .35s
+    cubic-bezier(.2,.8,.2,1);
 
   overflow-y:auto;
+
+  padding-bottom:30px;
+
 }
 
 .drawer.open{
-  transform:translateX(0);
+
+  transform:
+    translateX(0);
+
 }
 
 .drawer-header{
+
+  height:76px;
+
   position:sticky;
+
   top:0;
-  z-index:5;
 
-  height:68px;
-
-  display:flex;
-  align-items:center;
-
-  padding:0 15px;
-
-  background:rgba(6,6,8,.86);
-  backdrop-filter:blur(22px);
-
-  border-bottom:1px solid var(--line);
-}
-
-.back-btn{
-  width:40px;
-  height:40px;
-  border-radius:50%;
-
-  background:#14141a;
-  border:1px solid var(--line);
+  z-index:10;
 
   display:flex;
-  align-items:center;
-  justify-content:center;
-}
 
-.back-btn svg{
-  width:21px;
-  stroke:white;
-  fill:none;
-  stroke-width:2;
-}
-
-.drawer-title{
-  flex:1;
-  text-align:center;
-  font-size:19px;
-  font-weight:850;
-}
-
-.header-space{
-  width:40px;
-}
-
-/* =========================
-EXPLORE
-========================= */
-
-.search{
-  margin:16px;
-
-  height:51px;
-
-  display:flex;
-  align-items:center;
-  gap:10px;
-
-  padding:0 15px;
-
-  border-radius:17px;
-
-  background:#121218;
-  border:1px solid var(--line);
-}
-
-.search svg{
-  width:20px;
-  stroke:#858590;
-  fill:none;
-  stroke-width:2;
-}
-
-.search input{
-  flex:1;
-  background:none;
-  border:0;
-  outline:0;
-  color:white;
-}
-
-.explore-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:3px;
-}
-
-.explore-item{
-  aspect-ratio:1;
-  overflow:hidden;
-  background:#111;
-}
-
-.explore-item video{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-/* =========================
-PROFILE
-========================= */
-
-.profile{
-  padding:25px 18px;
-}
-
-.profile-main{
-  text-align:center;
-}
-
-.profile-avatar{
-  width:105px;
-  height:105px;
-  border-radius:50%;
-  padding:3px;
-  margin:auto;
-
-  background:
-    linear-gradient(
-      135deg,
-      #ff3c87,
-      #7a45ff
-    );
-}
-
-.profile-avatar-inner{
-  width:100%;
-  height:100%;
-  border-radius:50%;
-  background:#17131d;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  font-size:42px;
-  font-weight:950;
-}
-
-.profile-main h2{
-  margin-top:14px;
-  font-size:22px;
-}
-
-.profile-main p{
-  color:#777783;
-  font-size:13px;
-  margin-top:4px;
-}
-
-.stats{
-  display:flex;
-  justify-content:center;
-  gap:42px;
-  margin:25px 0;
-}
-
-.stat{
-  text-align:center;
-}
-
-.stat strong{
-  display:block;
-  font-size:18px;
-}
-
-.stat span{
-  color:#777783;
-  font-size:11px;
-}
-
-.profile-actions{
-  display:flex;
-  gap:9px;
-}
-
-.profile-action{
-  flex:1;
-  height:43px;
-  border-radius:13px;
-
-  background:#15151b;
-  border:1px solid var(--line);
-
-  font-size:13px;
-  font-weight:800;
-}
-
-.profile-tabs{
-  display:flex;
-  border-top:1px solid var(--line);
-  margin-top:28px;
-}
-
-.profile-tab{
-  flex:1;
-  height:50px;
-  background:none;
-  color:#777783;
-}
-
-.profile-tab.active{
-  color:white;
-  border-bottom:2px solid var(--purple2);
-}
-
-/* =========================
-SETTINGS
-========================= */
-
-.setting{
-  margin:13px 15px;
-
-  min-height:67px;
-
-  border-radius:17px;
-
-  background:#111117;
-  border:1px solid var(--line);
-
-  display:flex;
   align-items:center;
 
   padding:0 16px;
 
+  background:
+    rgba(7,7,10,.82);
+
+  border-bottom:
+    1px solid var(--border);
+
+  backdrop-filter:blur(22px);
+
+}
+
+.back{
+
+  width:42px;
+  height:42px;
+
+  border-radius:50%;
+
+  background:#15151b;
+
+  border:
+    1px solid var(--border);
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+}
+
+.back svg{
+
+  width:20px;
+  height:20px;
+
+  stroke:white;
+
+  fill:none;
+
+  stroke-width:2;
+
+}
+
+.drawer-title{
+
+  flex:1;
+
+  text-align:center;
+
+  font-size:19px;
+
+  font-weight:900;
+
+}
+
+/* =====================================================
+   EXPLORE
+===================================================== */
+
+.search{
+
+  margin:17px;
+
+  height:53px;
+
+  border-radius:17px;
+
+  background:#121218;
+
+  border:1px solid var(--border);
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  padding:0 15px;
+
+}
+
+.search svg{
+
+  width:20px;
+
+  stroke:#888;
+
+  fill:none;
+
+  stroke-width:2;
+
+}
+
+.search input{
+
+  flex:1;
+
+  border:0;
+
+  outline:0;
+
+  background:none;
+
+  color:white;
+
+}
+
+.explore-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:3px;
+
+}
+
+.explore-item{
+
+  aspect-ratio:1;
+
+  background:#111;
+
+  overflow:hidden;
+
+}
+
+.explore-item video{
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+}
+
+/* =====================================================
+   PROFILE
+===================================================== */
+
+.profile{
+
+  padding:28px 18px;
+
+}
+
+.profile-center{
+
+  text-align:center;
+
+}
+
+.profile-avatar{
+
+  width:108px;
+  height:108px;
+
+  margin:auto;
+
+  padding:3px;
+
+  border-radius:50%;
+
+  background:
+
+    conic-gradient(
+      #ff3d81,
+      #743dff,
+      #b06cff,
+      #ff3d81
+    );
+
+}
+
+.profile-avatar-inner{
+
+  width:100%;
+  height:100%;
+
+  border-radius:50%;
+
+  background:#15131d;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  font-size:43px;
+
+  font-weight:950;
+
+}
+
+.profile-center h2{
+
+  margin-top:14px;
+
+  font-size:23px;
+
+}
+
+.profile-center p{
+
+  margin-top:4px;
+
+  color:#777781;
+
+  font-size:13px;
+
+}
+
+.stats{
+
+  display:flex;
+
+  justify-content:center;
+
+  gap:43px;
+
+  margin:27px 0;
+
+}
+
+.stat{
+
+  text-align:center;
+
+}
+
+.stat strong{
+
+  display:block;
+
+  font-size:19px;
+
+}
+
+.stat span{
+
+  color:#777781;
+
+  font-size:11px;
+
+}
+
+.profile-buttons{
+
+  display:flex;
+
+  gap:9px;
+
+}
+
+.profile-button{
+
+  flex:1;
+
+  height:44px;
+
+  border-radius:14px;
+
+  background:#15151b;
+
+  border:1px solid var(--border);
+
+  font-size:13px;
+
+  font-weight:800;
+
+}
+
+/* =====================================================
+   SETTINGS
+===================================================== */
+
+.setting{
+
+  margin:12px 15px;
+
+  min-height:68px;
+
+  border-radius:18px;
+
+  background:#111117;
+
+  border:1px solid var(--border);
+
+  display:flex;
+
+  align-items:center;
+
   gap:12px;
+
+  padding:0 15px;
+
 }
 
 .setting-icon{
-  width:39px;
-  height:39px;
-  border-radius:12px;
 
-  background:#1a1525;
+  width:40px;
+  height:40px;
+
+  border-radius:13px;
+
+  background:#1b1528;
 
   display:flex;
+
   align-items:center;
   justify-content:center;
+
 }
 
 .setting-icon svg{
+
   width:19px;
-  stroke:#a87cff;
+
+  stroke:#a879ff;
+
   fill:none;
-  stroke-width:2;
+
+  stroke-width:1.8;
+
 }
 
 .setting-text{
+
   flex:1;
+
 }
 
 .setting-text strong{
+
   font-size:14px;
+
 }
 
 .setting-text small{
+
   display:block;
-  color:#777783;
+
   margin-top:3px;
+
+  color:#777781;
+
   font-size:11px;
+
 }
 
-.chevron{
-  color:#666;
-  font-size:20px;
-}
-
-/* =========================
-MESSAGES
-========================= */
+/* =====================================================
+   MESSAGES
+===================================================== */
 
 .message{
-  margin:10px 15px;
+
+  margin:12px 15px;
+
   padding:14px;
 
   border-radius:18px;
 
   background:#111117;
-  border:1px solid var(--line);
+
+  border:1px solid var(--border);
 
   display:flex;
+
   align-items:center;
+
   gap:12px;
+
 }
 
 .message-info{
+
   flex:1;
+
 }
 
 .message-info strong{
+
   font-size:14px;
+
 }
 
 .message-info small{
+
   display:block;
-  color:#777783;
+
+  color:#777781;
+
   margin-top:3px;
+
 }
 
-/* =========================
-CREATE
-========================= */
+/* =====================================================
+   CREATE
+===================================================== */
 
 .create-area{
+
   padding:17px;
+
 }
 
 .upload-box{
-  min-height:190px;
 
-  border:1px dashed #4a4655;
+  min-height:190px;
 
   border-radius:22px;
 
+  border:
+    1px dashed
+    #4b4657;
+
   display:flex;
+
   align-items:center;
   justify-content:center;
 
   text-align:center;
 
   background:
+
     radial-gradient(
       circle,
-      rgba(139,92,246,.09),
+      rgba(124,60,255,.10),
       transparent 65%
     );
+
 }
 
 .upload-box input{
+
   display:none;
+
 }
 
 .upload-label{
+
   cursor:pointer;
+
 }
 
 .upload-icon{
-  width:58px;
-  height:58px;
+
+  width:60px;
+  height:60px;
+
   margin:auto;
 
-  border-radius:18px;
+  border-radius:19px;
 
-  background:#17131f;
+  background:#191420;
 
   display:flex;
+
   align-items:center;
   justify-content:center;
+
 }
 
 .upload-icon svg{
+
   width:27px;
-  stroke:#a97cff;
+
+  stroke:#ae82ff;
+
   fill:none;
+
   stroke-width:1.8;
+
 }
 
 .upload-label strong{
+
   display:block;
+
   margin-top:12px;
+
 }
 
 .upload-label small{
+
   display:block;
-  color:#777783;
+
+  color:#777781;
+
   margin-top:5px;
+
 }
 
 .preview{
+
   display:none;
 
   width:100%;
+
   aspect-ratio:4/5;
 
   border-radius:20px;
+
   overflow:hidden;
 
   background:#111;
+
   margin-bottom:14px;
+
 }
 
 .preview video{
+
   width:100%;
   height:100%;
+
   object-fit:cover;
+
 }
 
-.caption-box{
+.caption-input{
+
   width:100%;
+
   min-height:110px;
 
   margin-top:15px;
 
+  padding:14px;
+
   border-radius:17px;
 
+  border:1px solid var(--border);
+
   background:#111117;
-  border:1px solid var(--line);
 
   color:white;
 
-  padding:14px;
+  outline:none;
 
   resize:none;
-  outline:none;
+
 }
 
 .publish{
+
   width:100%;
-  height:50px;
+
+  height:51px;
 
   margin-top:12px;
 
   border-radius:15px;
 
   background:
+
     linear-gradient(
       135deg,
       #713cff,
-      #a964ff
+      #a76bff
     );
 
   font-weight:900;
 
-  box-shadow:
-    0 10px 30px rgba(126,67,255,.2);
 }
 
-/* =========================
-COMMENTS
-========================= */
+/* =====================================================
+   COMMENTS
+===================================================== */
 
 .comments{
+
   position:absolute;
+
   left:0;
   right:0;
   bottom:0;
 
-  z-index:500;
+  z-index:400;
 
-  background:#101015;
+  background:#111116;
 
-  border-radius:26px 26px 0 0;
+  border-radius:27px 27px 0 0;
 
   transform:translateY(100%);
 
-  transition:.3s;
+  transition:.32s;
 
-  box-shadow:0 -20px 60px rgba(0,0,0,.55);
+  box-shadow:
+    0 -20px 70px
+    rgba(0,0,0,.55);
+
 }
 
 .comments.open{
+
   transform:translateY(0);
+
 }
 
-.comment-head{
-  height:56px;
+.comment-title{
+
+  height:57px;
 
   display:flex;
+
   align-items:center;
   justify-content:center;
 
-  border-bottom:1px solid var(--line);
+  border-bottom:
+    1px solid var(--border);
 
-  font-weight:850;
+  font-weight:900;
+
 }
 
 .comment-list{
+
   height:42vh;
+
   overflow-y:auto;
-  padding:15px;
+
+  padding:16px;
+
 }
 
 .comment{
+
   display:flex;
+
   gap:10px;
-  margin-bottom:17px;
+
+  margin-bottom:18px;
+
 }
 
 .comment-avatar{
-  width:35px;
-  height:35px;
+
+  width:36px;
+  height:36px;
+
   border-radius:50%;
 
-  background:#6736d4;
+  background:
+    linear-gradient(
+      135deg,
+      #6934e7,
+      #a66bff
+    );
 
   display:flex;
+
   align-items:center;
   justify-content:center;
 
   font-size:12px;
+
   font-weight:900;
+
 }
 
 .comment-body{
+
   flex:1;
+
   font-size:13px;
+
   line-height:1.45;
+
 }
 
-.comment-body span{
-  color:#888;
+.comment-body small{
+
+  color:#777781;
+
 }
 
 .comment-input{
+
   padding:10px 14px;
+
   display:flex;
+
   gap:8px;
+
 }
 
 .comment-input input{
-  flex:1;
-  height:43px;
 
-  background:#1b1b22;
-  border:1px solid var(--line);
+  flex:1;
+
+  height:44px;
 
   border-radius:22px;
 
+  background:#1c1c23;
+
+  border:1px solid var(--border);
+
   color:white;
+
   outline:none;
 
   padding:0 15px;
+
 }
 
 .comment-input button{
-  width:43px;
+
+  width:44px;
+
   border-radius:50%;
-  background:#8b5cf6;
+
+  background:#854cff;
+
 }
 
-/* =========================
-TOAST
-========================= */
+/* =====================================================
+   TOAST
+===================================================== */
 
 .toast{
+
   position:absolute;
 
   left:50%;
-  bottom:90px;
 
-  transform:translateX(-50%);
+  bottom:92px;
 
-  z-index:700;
+  transform:
+    translateX(-50%);
 
-  max-width:90%;
+  z-index:600;
 
   padding:13px 18px;
 
-  border-radius:14px;
+  border-radius:15px;
 
-  background:#25252e;
-  border:1px solid #3b3b48;
+  background:#24242d;
+
+  border:1px solid #3c3c49;
+
+  max-width:90%;
+
+  text-align:center;
 
   font-size:13px;
 
   display:none;
+
 }
 
 .toast.show{
+
   display:block;
+
 }
 
-/* =========================
-DESKTOP
-========================= */
+/* =====================================================
+   DESKTOP
+===================================================== */
 
 @media(min-width:700px){
 
   .app{
-    max-width:520px;
+
+    width:520px;
+
     margin:auto;
-    border-left:1px solid #17171b;
-    border-right:1px solid #17171b;
+
+    border-left:
+      1px solid #17171b;
+
+    border-right:
+      1px solid #17171b;
+
+  }
+
+  .bottom-dock{
+
+    left:20px;
+    right:20px;
+
   }
 
 }
+
 </style>
+
 </head>
+
 
 <body>
 
+
 <div class="app">
 
-<!-- ================= TOP ================= -->
+
+<!-- =====================================================
+     FEED
+===================================================== -->
+
+<main class="feed">
+
+
+<!-- =====================================================
+     REEL 1
+===================================================== -->
+
+<section class="reel">
+
+
+<video
+  src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+  muted
+  loop
+  autoplay
+  playsinline>
+</video>
+
+
+<!-- TOP -->
 
 <header class="topbar">
 
   <div class="logo">
-    X-<span>DARK</span>
+    X-<span class="purple">DARK</span>
   </div>
+
 
   <div class="top-actions">
 
-    <button class="circle-btn"
+    <!-- Messages -->
+
+    <button
+      class="top-button"
       onclick="openDrawer('messages')">
 
       <svg viewBox="0 0 24 24">
-        <path d="M20 11.5a7.5 7.5 0 0 1-8 7.5
-        8.5 8.5 0 0 1-3.5-.8L4 20l1.8-3.5
-        A7.2 7.2 0 0 1 4.5 12
-        7.5 7.5 0 0 1 12 4.5a7.5 7.5 0 0 1 8 7z"/>
+
+        <path
+          d="M20 11.5a7.5 7.5 0 0 1-8 7.5
+          8.5 8.5 0 0 1-3.5-.8L4 20l1.8-3.5
+          A7.2 7.2 0 0 1 4.5 12
+          7.5 7.5 0 0 1 12 4.5a7.5 7.5 0 0 1 8 7z"/>
+
       </svg>
 
     </button>
 
-    <button class="circle-btn"
+
+    <!-- Settings -->
+
+    <button
+      class="top-button"
       onclick="openDrawer('settings')">
 
       <svg viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="3"/>
-        <path d="M19.4 15a1.7 1.7 0 0 0
-        .3 1.9l.1.1-1.8 1.8-.1-.1
-        a1.7 1.7 0 0 0-1.9-.3
-        1.7 1.7 0 0 0-1 1.5v.1h-2.6v-.1
-        a1.7 1.7 0 0 0-1-1.5
-        1.7 1.7 0 0 0-1.9.3l-.1.1-1.8-1.8
-        .1-.1A1.7 1.7 0 0 0 8 15
-        a1.7 1.7 0 0 0-1.5-1H6.4v-2.6h.1
-        A1.7 1.7 0 0 0 8 10
-        a1.7 1.7 0 0 0-.3-1.9l-.1-.1
-        1.8-1.8.1.1a1.7 1.7 0 0 0 1.9.3
-        1.7 1.7 0 0 0 1-1.5V5h2.6v.1
-        a1.7 1.7 0 0 0 1 1.5
-        1.7 1.7 0 0 0 1.9-.3l.1-.1
-        1.8 1.8-.1.1a1.7 1.7 0 0 0-.3 1.9
-        1.7 1.7 0 0 0 1.5 1h.1V14h-.1
-        a1.7 1.7 0 0 0-1.5 1z"/>
+
+        <circle
+          cx="12"
+          cy="12"
+          r="3"/>
+
+        <path
+          d="M19.4 15a1.7 1.7 0 0 0
+          .3 1.9l.1.1-1.8 1.8-.1-.1
+          a1.7 1.7 0 0 0-1.9-.3
+          1.7 1.7 0 0 0-1 1.5v.1h-2.6v-.1
+          a1.7 1.7 0 0 0-1-1.5
+          1.7 1.7 0 0 0-1.9.3l-.1.1
+          -1.8-1.8.1-.1A1.7 1.7 0 0 0 8 15
+          a1.7 1.7 0 0 0-1.5-1H6.4v-2.6h.1
+          A1.7 1.7 0 0 0 8 10
+          a1.7 1.7 0 0 0-.3-1.9l-.1-.1
+          1.8-1.8.1.1a1.7 1.7 0 0 0 1.9.3
+          1.7 1.7 0 0 0 1-1.5V5h2.6v.1
+          a1.7 1.7 0 0 0 1 1.5
+          1.7 1.7 0 0 0 1.9-.3l.1-.1
+          1.8 1.8-.1.1a1.7 1.7 0 0 0-.3 1.9
+          1.7 1.7 0 0 0 1.5 1h.1V14h-.1
+          a1.7 1.7 0 0 0-1.5 1z"/>
+
       </svg>
 
     </button>
@@ -1182,1020 +1824,1454 @@ DESKTOP
 </header>
 
 
-<!-- ================= HOME ================= -->
+<!-- STORIES -->
 
-<main class="home">
+<div class="story-container">
 
-  <!-- STORIES -->
+  <div class="stories">
 
-  <div class="stories-wrap">
+    <div class="story">
 
-    <div class="stories">
+      <div class="story-ring">
 
-      <div class="story">
-        <div class="story-ring">
-          <div class="story-inner">+</div>
-        </div>
-        <div class="story-name">Your story</div>
-      </div>
-
-      <div class="story">
-        <div class="story-ring">
-          <div class="story-inner">D</div>
-        </div>
-        <div class="story-name">Darkwing</div>
-      </div>
-
-      <div class="story">
-        <div class="story-ring">
-          <div class="story-inner">N</div>
-        </div>
-        <div class="story-name">Nova</div>
-      </div>
-
-      <div class="story">
-        <div class="story-ring">
-          <div class="story-inner">A</div>
-        </div>
-        <div class="story-name">Alex</div>
-      </div>
-
-      <div class="story">
-        <div class="story-ring">
-          <div class="story-inner">X</div>
-        </div>
-        <div class="story-name">XUser</div>
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- SECTION -->
-
-  <div class="section-head">
-
-    <h2>For you</h2>
-
-    <button onclick="openDrawer('explore')">
-      Explore
-    </button>
-
-  </div>
-
-
-  <!-- POST 1 -->
-
-  <article class="post">
-
-    <div class="post-head">
-
-      <div class="avatar">D</div>
-
-      <div class="post-user">
-        <strong>Darkwing</strong>
-        <small>2 min ago · Original audio</small>
-      </div>
-
-      <button class="more">•••</button>
-
-    </div>
-
-
-    <div class="media">
-
-      <span class="reel-badge">
-        REEL
-      </span>
-
-      <video
-        src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-        muted
-        loop
-        autoplay
-        playsinline>
-      </video>
-
-    </div>
-
-
-    <div class="post-actions">
-
-      <button class="action-btn like"
-        onclick="like(this)">
-
-        <svg viewBox="0 0 24 24">
-          <path d="M20.8 8.6c0 5.5-8.8 10.2-8.8 10.2
-          S3.2 14.1 3.2 8.6
-          A4.6 4.6 0 0 1 12 6.3
-          a4.6 4.6 0 0 1 8.8 2.3z"/>
-        </svg>
-
-        <span>12.4K</span>
-
-      </button>
-
-
-      <button class="action-btn"
-        onclick="openComments()">
-
-        <svg viewBox="0 0 24 24">
-          <path d="M20 11.5a7.5 7.5 0 0 1-8 7.5
-          8.5 8.5 0 0 1-3.5-.8L4 20l1.8-3.5
-          A7.2 7.2 0 0 1 4.5 12
-          7.5 7.5 0 0 1 12 4.5a7.5 7.5 0 0 1 8 7z"/>
-        </svg>
-
-        <span>842</span>
-
-      </button>
-
-
-      <button class="action-btn"
-        onclick="share()">
-
-        <svg viewBox="0 0 24 24">
-          <path d="M12 16V3"/>
-          <path d="m7 8 5-5 5 5"/>
-          <path d="M5 13v6a2 2 0 0 0 2 2h10
-          a2 2 0 0 0 2-2v-6"/>
-        </svg>
-
-      </button>
-
-
-      <button class="action-btn save-btn"
-        onclick="save(this)">
-
-        <svg viewBox="0 0 24 24">
-          <path d="M6 3h12v18l-6-4-6 4z"/>
-        </svg>
-
-      </button>
-
-    </div>
-
-
-    <div class="post-body">
-
-      <div class="likes">
-        Liked by Ankaj and 12,399 others
-      </div>
-
-      <div class="caption">
-        <b>Darkwing</b>
-        Welcome to the new generation of social.
-        Clean. Dark. Private. ⚡
-      </div>
-
-      <div class="tags">
-        #XDARK #Social #Reels #DarkMode
-      </div>
-
-    </div>
-
-  </article>
-
-
-  <!-- POST 2 -->
-
-  <article class="post">
-
-    <div class="post-head">
-
-      <div class="avatar"
-        style="background:linear-gradient(135deg,#ff4c87,#754cff)">
-        N
-      </div>
-
-      <div class="post-user">
-        <strong>Nova</strong>
-        <small>18 min ago</small>
-      </div>
-
-      <button class="more">•••</button>
-
-    </div>
-
-
-    <div class="media">
-
-      <video
-        src="https://www.w3schools.com/html/mov_bbb.mp4"
-        muted
-        loop
-        autoplay
-        playsinline>
-      </video>
-
-    </div>
-
-
-    <div class="post-actions">
-
-      <button class="action-btn like"
-        onclick="like(this)">
-
-        <svg viewBox="0 0 24 24">
-          <path d="M20.8 8.6c0 5.5-8.8 10.2-8.8 10.2
-          S3.2 14.1 3.2 8.6
-          A4.6 4.6 0 0 1 12 6.3
-          a4.6 4.6 0 0 1 8.8 2.3z"/>
-        </svg>
-
-        <span>8.1K</span>
-
-      </button>
-
-      <button class="action-btn"
-        onclick="openComments()">
-
-        <svg viewBox="0 0 24 24">
-          <path d="M20 11.5a7.5 7.5 0 0 1-8 7.5
-          8.5 8.5 0 0 1-3.5-.8L4 20l1.8-3.5
-          A7.2 7.2 0 0 1 4.5 12
-          7.5 7.5 0 0 1 12 4.5a7.5 7.5 0 0 1 8 7z"/>
-        </svg>
-
-        <span>421</span>
-
-      </button>
-
-      <button class="action-btn"
-        onclick="share()">
-
-        <svg viewBox="0 0 24 24">
-          <path d="M12 16V3"/>
-          <path d="m7 8 5-5 5 5"/>
-          <path d="M5 13v6a2 2 0 0 0 2 2h10
-          a2 2 0 0 0 2-2v-6"/>
-        </svg>
-
-      </button>
-
-      <button class="action-btn save-btn"
-        onclick="save(this)">
-
-        <svg viewBox="0 0 24 24">
-          <path d="M6 3h12v18l-6-4-6 4z"/>
-        </svg>
-
-      </button>
-
-    </div>
-
-
-    <div class="post-body">
-
-      <div class="likes">
-        Liked by Nova and 8,100 others
-      </div>
-
-      <div class="caption">
-        <b>Nova</b>
-        Sometimes simple is better. ✨
-      </div>
-
-      <div class="tags">
-        #Nova #Explore #XDARK
-      </div>
-
-    </div>
-
-  </article>
-
-</main>
-
-
-<!-- ================= BOTTOM ================= -->
-
-<nav class="bottom">
-
-  <button class="nav-btn active"
-    onclick="home()">
-
-    <svg viewBox="0 0 24 24">
-      <path d="m3 10 9-7 9 7v10
-      a1 1 0 0 1-1 1h-5v-6H9v6H4
-      a1 1 0 0 1-1-1z"/>
-    </svg>
-
-    Home
-
-  </button>
-
-
-  <button class="nav-btn"
-    onclick="openDrawer('explore')">
-
-    <svg viewBox="0 0 24 24">
-      <circle cx="11" cy="11" r="7"/>
-      <path d="m20 20-4-4"/>
-    </svg>
-
-    Explore
-
-  </button>
-
-
-  <button class="nav-btn"
-    onclick="openDrawer('create')">
-
-    <span class="create-button">
-
-      <svg viewBox="0 0 24 24"
-        width="21"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2">
-        <path d="M12 5v14M5 12h14"/>
-      </svg>
-
-    </span>
-
-  </button>
-
-
-  <button class="nav-btn"
-    onclick="openDrawer('activity')">
-
-    <svg viewBox="0 0 24 24">
-      <path d="M18 8a6 6 0 0 0-12 0
-      c0 7-3 7-3 9h18c0-2-3-2-3-9"/>
-      <path d="M10 21h4"/>
-    </svg>
-
-    Activity
-
-  </button>
-
-
-  <button class="nav-btn"
-    onclick="openDrawer('profile')">
-
-    <svg viewBox="0 0 24 24">
-      <circle cx="12" cy="8" r="4"/>
-      <path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/>
-    </svg>
-
-    Profile
-
-  </button>
-
-</nav>
-
-
-<!-- ================= EXPLORE ================= -->
-
-<section id="explore"
-  class="drawer">
-
-  <div class="drawer-header">
-
-    <button class="back-btn"
-      onclick="closeDrawers()">
-
-      <svg viewBox="0 0 24 24">
-        <path d="m15 18-6-6 6-6"/>
-      </svg>
-
-    </button>
-
-    <div class="drawer-title">
-      Explore
-    </div>
-
-    <div class="header-space"></div>
-
-  </div>
-
-
-  <div class="search">
-
-    <svg viewBox="0 0 24 24">
-      <circle cx="11" cy="11" r="7"/>
-      <path d="m20 20-4-4"/>
-    </svg>
-
-    <input
-      placeholder="Search creators, reels..."
-      oninput="search(this.value)">
-
-  </div>
-
-
-  <div class="explore-grid">
-
-    <div class="explore-item">
-      <video
-        src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-        muted autoplay loop playsinline>
-      </video>
-    </div>
-
-    <div class="explore-item">
-      <video
-        src="https://www.w3schools.com/html/mov_bbb.mp4"
-        muted autoplay loop playsinline>
-      </video>
-    </div>
-
-    <div class="explore-item">
-      <video
-        src="https://media.w3.org/2010/05/sintel/trailer.mp4"
-        muted autoplay loop playsinline>
-      </video>
-    </div>
-
-    <div class="explore-item">
-      <video
-        src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-        muted autoplay loop playsinline>
-      </video>
-    </div>
-
-    <div class="explore-item">
-      <video
-        src="https://www.w3schools.com/html/mov_bbb.mp4"
-        muted autoplay loop playsinline>
-      </video>
-    </div>
-
-    <div class="explore-item">
-      <video
-        src="https://media.w3.org/2010/05/sintel/trailer.mp4"
-        muted autoplay loop playsinline>
-      </video>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ================= CREATE ================= -->
-
-<section id="create"
-  class="drawer">
-
-  <div class="drawer-header">
-
-    <button class="back-btn"
-      onclick="closeDrawers()">
-
-      <svg viewBox="0 0 24 24">
-        <path d="m15 18-6-6 6-6"/>
-      </svg>
-
-    </button>
-
-    <div class="drawer-title">
-      Create
-    </div>
-
-    <div class="header-space"></div>
-
-  </div>
-
-
-  <div class="create-area">
-
-    <div class="preview"
-      id="preview">
-
-      <video
-        id="previewVideo"
-        controls>
-      </video>
-
-    </div>
-
-
-    <div class="upload-box">
-
-      <label
-        class="upload-label"
-        for="videoInput">
-
-        <div class="upload-icon">
-
-          <svg viewBox="0 0 24 24">
-            <path d="M12 16V4"/>
-            <path d="m7 9 5-5 5 5"/>
-            <path d="M5 20h14"/>
-          </svg>
-
+        <div class="story-inner">
+          +
         </div>
 
-        <strong>
-          Upload a Reel
-        </strong>
+      </div>
 
-        <small>
-          MP4, MOV up to 100MB
-        </small>
-
-      </label>
-
-      <input
-        id="videoInput"
-        type="file"
-        accept="video/*"
-        onchange="previewVideo(this)">
+      <div class="story-name">
+        Your story
+      </div>
 
     </div>
 
 
-    <textarea
-      id="captionInput"
-      class="caption-box"
-      placeholder="Write something about your Reel...">
-    </textarea>
+    <div class="story">
 
+      <div class="story-ring">
 
-    <button class="publish"
-      onclick="publish()">
+        <div class="story-inner">
+          D
+        </div>
 
-      Publish Reel
+      </div>
 
-    </button>
+      <div class="story-name">
+        Darkwing
+      </div>
 
-  </div>
-
-</section>
-
-
-<!-- ================= PROFILE ================= -->
-
-<section id="profile"
-  class="drawer">
-
-  <div class="drawer-header">
-
-    <button class="back-btn"
-      onclick="closeDrawers()">
-
-      <svg viewBox="0 0 24 24">
-        <path d="m15 18-6-6 6-6"/>
-      </svg>
-
-    </button>
-
-    <div class="drawer-title">
-      Profile
     </div>
 
-    <div class="header-space"></div>
 
-  </div>
+    <div class="story">
+
+      <div class="story-ring">
+
+        <div class="story-inner">
+          N
+        </div>
+
+      </div>
+
+      <div class="story-name">
+        Nova
+      </div>
+
+    </div>
 
 
-  <div class="profile">
+    <div class="story">
 
-    <div class="profile-main">
+      <div class="story-ring">
 
-      <div class="profile-avatar">
-
-        <div class="profile-avatar-inner">
+        <div class="story-inner">
           A
         </div>
 
       </div>
 
-      <h2>Ankaj</h2>
-
-      <p>
-        @x_dark_user
-      </p>
-
-    </div>
-
-
-    <div class="stats">
-
-      <div class="stat">
-        <strong>24</strong>
-        <span>Posts</span>
-      </div>
-
-      <div class="stat">
-        <strong>12.4K</strong>
-        <span>Followers</span>
-      </div>
-
-      <div class="stat">
-        <strong>287</strong>
-        <span>Following</span>
+      <div class="story-name">
+        Alex
       </div>
 
     </div>
-
-
-    <div class="profile-actions">
-
-      <button class="profile-action"
-        onclick="toast('Edit profile coming soon')">
-        Edit profile
-      </button>
-
-      <button class="profile-action"
-        onclick="openDrawer('settings')">
-        Settings
-      </button>
-
-    </div>
-
-
-    <div class="profile-tabs">
-
-      <button class="profile-tab active">
-        Reels
-      </button>
-
-      <button class="profile-tab">
-        Posts
-      </button>
-
-      <button class="profile-tab">
-        Saved
-      </button>
-
-    </div>
-
-
-    <div class="explore-grid"
-      style="margin-top:2px">
-
-      <div class="explore-item">
-        <video
-          src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-          muted loop autoplay playsinline>
-        </video>
-      </div>
-
-      <div class="explore-item">
-        <video
-          src="https://www.w3schools.com/html/mov_bbb.mp4"
-          muted loop autoplay playsinline>
-        </video>
-      </div>
-
-      <div class="explore-item">
-        <video
-          src="https://media.w3.org/2010/05/sintel/trailer.mp4"
-          muted loop autoplay playsinline>
-        </video>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ================= SETTINGS ================= -->
-
-<section id="settings"
-  class="drawer">
-
-  <div class="drawer-header">
-
-    <button class="back-btn"
-      onclick="closeDrawers()">
-
-      <svg viewBox="0 0 24 24">
-        <path d="m15 18-6-6 6-6"/>
-      </svg>
-
-    </button>
-
-    <div class="drawer-title">
-      Settings
-    </div>
-
-    <div class="header-space"></div>
-
-  </div>
-
-
-  <div class="setting">
-
-    <div class="setting-icon">
-
-      <svg viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="3"/>
-        <path d="M19 12a7 7 0 0 0-.2-1.7l2-1.5-2-3.4-2.4 1
-        A7 7 0 0 0 14.8 5L14.5 2h-5l-.3 3
-        a7 7 0 0 0-1.6.9l-2.4-1-2 3.4
-        2 1.5A7 7 0 0 0 5 12
-        l-2 1.5 2 3.4 2.4-1
-        a7 7 0 0 0 1.6.9l.3 3h5l.3-3
-        a7 7 0 0 0 1.6-.9l2.4 1 2-3.4z"/>
-      </svg>
-
-    </div>
-
-    <div class="setting-text">
-      <strong>Appearance</strong>
-      <small>Dark theme · Purple accent</small>
-    </div>
-
-    <span class="chevron">›</span>
-
-  </div>
-
-
-  <div class="setting"
-    onclick="toast('Privacy settings coming soon')">
-
-    <div class="setting-icon">
-
-      <svg viewBox="0 0 24 24">
-        <rect x="5" y="10" width="14" height="10" rx="2"/>
-        <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
-      </svg>
-
-    </div>
-
-    <div class="setting-text">
-      <strong>Privacy</strong>
-      <small>Control who can see your content</small>
-    </div>
-
-    <span class="chevron">›</span>
-
-  </div>
-
-
-  <div class="setting"
-    onclick="toast('Notifications coming soon')">
-
-    <div class="setting-icon">
-
-      <svg viewBox="0 0 24 24">
-        <path d="M18 8a6 6 0 0 0-12 0
-        c0 7-3 7-3 9h18c0-2-3-2-3-9"/>
-        <path d="M10 21h4"/>
-      </svg>
-
-    </div>
-
-    <div class="setting-text">
-      <strong>Notifications</strong>
-      <small>Manage your activity alerts</small>
-    </div>
-
-    <span class="chevron">›</span>
-
-  </div>
-
-
-  <div class="setting"
-    onclick="toast('Account settings coming soon')">
-
-    <div class="setting-icon">
-
-      <svg viewBox="0 0 24 24">
-        <circle cx="12" cy="8" r="4"/>
-        <path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/>
-      </svg>
-
-    </div>
-
-    <div class="setting-text">
-      <strong>Account</strong>
-      <small>Manage your X-DARK account</small>
-    </div>
-
-    <span class="chevron">›</span>
-
-  </div>
-
-</section>
-
-
-<!-- ================= MESSAGES ================= -->
-
-<section id="messages"
-  class="drawer">
-
-  <div class="drawer-header">
-
-    <button class="back-btn"
-      onclick="closeDrawers()">
-
-      <svg viewBox="0 0 24 24">
-        <path d="m15 18-6-6 6-6"/>
-      </svg>
-
-    </button>
-
-    <div class="drawer-title">
-      Messages
-    </div>
-
-    <div class="header-space"></div>
-
-  </div>
-
-
-  <div class="message">
-
-    <div class="avatar">D</div>
-
-    <div class="message-info">
-      <strong>Darkwing</strong>
-      <small>Welcome to X-DARK</small>
-    </div>
-
-    <span>›</span>
-
-  </div>
-
-
-  <div class="message">
-
-    <div class="avatar"
-      style="background:linear-gradient(135deg,#ff4383,#754cff)">
-      N
-    </div>
-
-    <div class="message-info">
-      <strong>Nova</strong>
-      <small>Start a conversation</small>
-    </div>
-
-    <span>›</span>
-
-  </div>
-
-
-  <div class="message">
-
-    <div class="avatar"
-      style="background:linear-gradient(135deg,#2b9cff,#7a5cff)">
-      A
-    </div>
-
-    <div class="message-info">
-      <strong>Alex</strong>
-      <small>Hey 👋</small>
-    </div>
-
-    <span>›</span>
-
-  </div>
-
-</section>
-
-
-<!-- ================= ACTIVITY ================= -->
-
-<section id="activity"
-  class="drawer">
-
-  <div class="drawer-header">
-
-    <button class="back-btn"
-      onclick="closeDrawers()">
-
-      <svg viewBox="0 0 24 24">
-        <path d="m15 18-6-6 6-6"/>
-      </svg>
-
-    </button>
-
-    <div class="drawer-title">
-      Activity
-    </div>
-
-    <div class="header-space"></div>
-
-  </div>
-
-
-  <div class="setting">
-
-    <div class="avatar">
-      D
-    </div>
-
-    <div class="setting-text">
-      <strong>Darkwing liked your Reel</strong>
-      <small>2 minutes ago</small>
-    </div>
-
-    ❤️
-
-  </div>
-
-
-  <div class="setting">
-
-    <div class="avatar">
-      N
-    </div>
-
-    <div class="setting-text">
-      <strong>Nova started following you</strong>
-      <small>18 minutes ago</small>
-    </div>
-
-    +
-
-  </div>
-
-
-  <div class="setting">
-
-    <div class="avatar">
-      A
-    </div>
-
-    <div class="setting-text">
-      <strong>Alex commented on your post</strong>
-      <small>1 hour ago</small>
-    </div>
-
-    💬
-
-  </div>
-
-</section>
-
-
-<!-- ================= COMMENTS ================= -->
-
-<div id="comments"
-  class="comments">
-
-  <div class="comment-head">
-    Comments
-  </div>
-
-  <div class="comment-list"
-    id="commentList">
-
-    <div class="comment">
-
-      <div class="comment-avatar">D</div>
-
-      <div class="comment-body">
-        <b>Darkwing</b><br>
-        This looks amazing 🔥
-        <br>
-        <span>2m</span>
-      </div>
-
-    </div>
-
-
-    <div class="comment">
-
-      <div class="comment-avatar">N</div>
-
-      <div class="comment-body">
-        <b>Nova</b><br>
-        X-DARK is looking clean!
-        <br>
-        <span>5m</span>
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <div class="comment-input">
-
-    <input
-      id="commentInput"
-      placeholder="Add a comment..."
-      onkeydown="commentKey(event)">
-
-    <button onclick="addComment()">
-      ↑
-    </button>
 
   </div>
 
 </div>
 
 
-<div id="toast"
-  class="toast">
+<!-- RIGHT ACTIONS -->
+
+<div class="action-rail">
+
+
+<button
+  class="action like"
+  onclick="like(this)">
+
+  <svg viewBox="0 0 24 24">
+
+    <path
+      d="M20.8 8.6c0 5.5-8.8 10.2-8.8 10.2
+      S3.2 14.1 3.2 8.6
+      A4.6 4.6 0 0 1 12 6.3
+      a4.6 4.6 0 0 1 8.8 2.3z"/>
+
+  </svg>
+
+  <span>12.4K</span>
+
+</button>
+
+
+<button
+  class="action"
+  onclick="openComments()">
+
+  <svg viewBox="0 0 24 24">
+
+    <path
+      d="M20 11.5a7.5 7.5 0 0 1-8 7.5
+      8.5 8.5 0 0 1-3.5-.8L4 20l1.8-3.5
+      A7.2 7.2 0 0 1 4.5 12
+      7.5 7.5 0 0 1 12 4.5a7.5 7.5 0 0 1 8 7z"/>
+
+  </svg>
+
+  <span>842</span>
+
+</button>
+
+
+<button
+  class="action"
+  onclick="sharePost()">
+
+  <svg viewBox="0 0 24 24">
+
+    <path d="M12 16V3"/>
+
+    <path d="m7 8 5-5 5 5"/>
+
+    <path
+      d="M5 13v6a2 2 0 0 0 2 2h10
+      a2 2 0 0 0 2-2v-6"/>
+
+  </svg>
+
+  <span>Share</span>
+
+</button>
+
+
+<button
+  class="action save"
+  onclick="savePost(this)">
+
+  <svg viewBox="0 0 24 24">
+
+    <path d="M6 3h12v18l-6-4-6 4z"/>
+
+  </svg>
+
+  <span>Save</span>
+
+</button>
+
+
+<div class="music-disc">
+
+  <svg viewBox="0 0 24 24">
+
+    <path
+      d="M9 18V5l10-2v13"/>
+
+    <circle
+      cx="6"
+      cy="18"
+      r="3"/>
+
+    <circle
+      cx="16"
+      cy="16"
+      r="3"/>
+
+  </svg>
+
 </div>
 
+</div>
+
+
+<!-- CONTENT -->
+
+<div class="content">
+
+
+<div class="creator">
+
+  <div class="creator-avatar">
+    D
+  </div>
+
+  <div class="creator-info">
+
+    <div class="creator-name">
+      Darkwing
+    </div>
+
+    <div class="creator-followers">
+      12.4K followers
+    </div>
+
+  </div>
+
+  <button
+    class="follow"
+    onclick="follow(this)">
+
+    Follow
+
+  </button>
+
+</div>
+
+
+<div class="caption">
+
+  Welcome to X-DARK 🔥
+  The new dark social experience.
+
+</div>
+
+
+<div class="hashtags">
+
+  #xdark #reels #viral #dark
+
+</div>
+
+
+<div class="audio">
+
+  <span class="audio-icon">
+    ♪
+  </span>
+
+  Original sound · Darkwing
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+<!-- =====================================================
+     REEL 2
+===================================================== -->
+
+<section class="reel">
+
+<video
+  src="https://www.w3schools.com/html/mov_bbb.mp4"
+  muted
+  loop
+  playsinline>
+</video>
+
+
+<div class="content">
+
+<div class="creator">
+
+<div class="creator-avatar">
+N
+</div>
+
+<div class="creator-info">
+
+<div class="creator-name">
+Nova
+</div>
+
+<div class="creator-followers">
+8.7K followers
+</div>
+
+</div>
+
+<button
+class="follow"
+onclick="follow(this)">
+Follow
+</button>
+
+</div>
+
+<div class="caption">
+
+Create. Explore. Connect. ✨
+
+</div>
+
+<div class="hashtags">
+
+#nova #explore #xdark
+
+</div>
+
+<div class="audio">
+
+<span class="audio-icon">
+♪
+</span>
+
+Original sound · Nova
+
+</div>
+
+</div>
+
+
+<div class="action-rail">
+
+<button
+class="action like"
+onclick="like(this)">
+
+<svg viewBox="0 0 24 24">
+
+<path
+d="M20.8 8.6c0 5.5-8.8 10.2-8.8 10.2
+S3.2 14.1 3.2 8.6
+A4.6 4.6 0 0 1 12 6.3
+a4.6 4.6 0 0 1 8.8 2.3z"/>
+
+</svg>
+
+<span>8.7K</span>
+
+</button>
+
+
+<button
+class="action"
+onclick="openComments()">
+
+<svg viewBox="0 0 24 24">
+
+<path
+d="M20 11.5a7.5 7.5 0 0 1-8 7.5
+8.5 8.5 0 0 1-3.5-.8L4 20l1.8-3.5
+A7.2 7.2 0 0 1 4.5 12
+7.5 7.5 0 0 1 12 4.5a7.5 7.5 0 0 1 8 7z"/>
+
+</svg>
+
+<span>315</span>
+
+</button>
+
+
+<button
+class="action"
+onclick="sharePost()">
+
+<svg viewBox="0 0 24 24">
+
+<path d="M12 16V3"/>
+
+<path d="m7 8 5-5 5 5"/>
+
+<path
+d="M5 13v6a2 2 0 0 0 2 2h10
+a2 2 0 0 0 2-2v-6"/>
+
+</svg>
+
+<span>Share</span>
+
+</button>
+
+
+<button
+class="action save"
+onclick="savePost(this)">
+
+<svg viewBox="0 0 24 24">
+
+<path d="M6 3h12v18l-6-4-6 4z"/>
+
+</svg>
+
+<span>Save</span>
+
+</button>
+
+</div>
+
+</section>
+
+</main>
+
+
+<!-- =====================================================
+     BOTTOM NAV
+===================================================== -->
+
+<nav class="bottom-dock">
+
+
+<button
+class="nav-btn active"
+onclick="goHome()">
+
+<svg viewBox="0 0 24 24">
+
+<path
+d="m3 10 9-7 9 7v10
+a1 1 0 0 1-1 1h-5v-6H9v6H4
+a1 1 0 0 1-1-1z"/>
+
+</svg>
+
+<span>Home</span>
+
+</button>
+
+
+<button
+class="nav-btn"
+onclick="openDrawer('explore')">
+
+<svg viewBox="0 0 24 24">
+
+<circle
+cx="11"
+cy="11"
+r="7"/>
+
+<path
+d="m20 20-4-4"/>
+
+</svg>
+
+<span>Explore</span>
+
+</button>
+
+
+<button
+class="nav-btn"
+onclick="openDrawer('create')">
+
+<div class="create">
+
+<svg
+viewBox="0 0 24 24"
+width="23">
+
+<path
+d="M12 5v14M5 12h14"
+stroke="currentColor"
+fill="none"
+stroke-width="2"
+stroke-linecap="round"/>
+
+</svg>
+
+</div>
+
+</button>
+
+
+<button
+class="nav-btn"
+onclick="openDrawer('activity')">
+
+<svg viewBox="0 0 24 24">
+
+<path
+d="M18 8a6 6 0 0 0-12 0
+c0 7-3 7-3 9h18c0-2-3-2-3-9"/>
+
+<path
+d="M10 21h4"/>
+
+</svg>
+
+<span>Activity</span>
+
+</button>
+
+
+<button
+class="nav-btn"
+onclick="openDrawer('profile')">
+
+<svg viewBox="0 0 24 24">
+
+<circle
+cx="12"
+cy="8"
+r="4"/>
+
+<path
+d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/>
+
+</svg>
+
+<span>Profile</span>
+
+</button>
+
+
+</nav>
+
+
+<!-- =====================================================
+     EXPLORE
+===================================================== -->
+
+<section
+id="explore"
+class="drawer">
+
+
+<div class="drawer-header">
+
+<button
+class="back"
+onclick="closeDrawers()">
+
+<svg viewBox="0 0 24 24">
+
+<path d="m15 18-6-6 6-6"/>
+
+</svg>
+
+</button>
+
+<div class="drawer-title">
+Explore
+</div>
+
+<div style="width:42px"></div>
+
+</div>
+
+
+<div class="search">
+
+<svg viewBox="0 0 24 24">
+
+<circle cx="11" cy="11" r="7"/>
+
+<path d="m20 20-4-4"/>
+
+</svg>
+
+<input
+placeholder="Search X-DARK"
+oninput="search(this.value)">
+
+</div>
+
+
+<div class="explore-grid">
+
+<div class="explore-item">
+
+<video
+src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+muted
+loop
+autoplay
+playsinline>
+</video>
+
+</div>
+
+<div class="explore-item">
+
+<video
+src="https://www.w3schools.com/html/mov_bbb.mp4"
+muted
+loop
+autoplay
+playsinline>
+</video>
+
+</div>
+
+<div class="explore-item">
+
+<video
+src="https://media.w3.org/2010/05/sintel/trailer.mp4"
+muted
+loop
+autoplay
+playsinline>
+</video>
+
+</div>
+
+<div class="explore-item">
+
+<video
+src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+muted
+loop
+autoplay
+playsinline>
+</video>
+
+</div>
+
+<div class="explore-item">
+
+<video
+src="https://www.w3schools.com/html/mov_bbb.mp4"
+muted
+loop
+autoplay
+playsinline>
+</video>
+
+</div>
+
+<div class="explore-item">
+
+<video
+src="https://media.w3.org/2010/05/sintel/trailer.mp4"
+muted
+loop
+autoplay
+playsinline>
+</video>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     CREATE
+===================================================== -->
+
+<section
+id="create"
+class="drawer">
+
+
+<div class="drawer-header">
+
+<button
+class="back"
+onclick="closeDrawers()">
+
+<svg viewBox="0 0 24 24">
+
+<path d="m15 18-6-6 6-6"/>
+
+</svg>
+
+</button>
+
+<div class="drawer-title">
+Create
+</div>
+
+<div style="width:42px"></div>
+
+</div>
+
+
+<div class="create-area">
+
+
+<div
+id="preview"
+class="preview">
+
+<video
+id="previewVideo"
+controls>
+</video>
+
+</div>
+
+
+<div class="upload-box">
+
+<label
+for="videoInput"
+class="upload-label">
+
+
+<div class="upload-icon">
+
+<svg viewBox="0 0 24 24">
+
+<path
+d="M12 16V4"/>
+
+<path
+d="m7 9 5-5 5 5"/>
+
+<path
+d="M5 20h14"/>
+
+</svg>
+
+</div>
+
+
+<strong>
+Upload a Reel
+</strong>
+
+<small>
+MP4 / MOV video
+</small>
+
+
+</label>
+
+
+<input
+id="videoInput"
+type="file"
+accept="video/*"
+onchange="previewVideo(this)">
+
+</div>
+
+
+<textarea
+id="captionInput"
+class="caption-input"
+placeholder="Write a caption...">
+</textarea>
+
+
+<button
+class="publish"
+onclick="publishReel()">
+
+Publish Reel
+
+</button>
+
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     PROFILE
+===================================================== -->
+
+<section
+id="profile"
+class="drawer">
+
+
+<div class="drawer-header">
+
+<button
+class="back"
+onclick="closeDrawers()">
+
+<svg viewBox="0 0 24 24">
+
+<path d="m15 18-6-6 6-6"/>
+
+</svg>
+
+</button>
+
+<div class="drawer-title">
+Profile
+</div>
+
+<div style="width:42px"></div>
+
+</div>
+
+
+<div class="profile">
+
+
+<div class="profile-center">
+
+
+<div class="profile-avatar">
+
+<div class="profile-avatar-inner">
+A
+</div>
+
+</div>
+
+
+<h2>
+Ankaj
+</h2>
+
+
+<p>
+@x_dark_user
+</p>
+
+
+<div class="stats">
+
+<div class="stat">
+<strong>24</strong>
+<span>Posts</span>
+</div>
+
+<div class="stat">
+<strong>12.4K</strong>
+<span>Followers</span>
+</div>
+
+<div class="stat">
+<strong>287</strong>
+<span>Following</span>
+</div>
+
+</div>
+
+
+<div class="profile-buttons">
+
+<button
+class="profile-button"
+onclick="toast('Edit profile coming soon')">
+
+Edit profile
+
+</button>
+
+
+<button
+class="profile-button"
+onclick="openDrawer('settings')">
+
+Settings
+
+</button>
+
+</div>
+
+</div>
+
+
+<div
+style="
+margin-top:28px;
+border-top:1px solid rgba(255,255,255,.09);
+padding-top:20px;
+">
+
+<strong>
+Your Reels
+</strong>
+
+</div>
+
+
+<div
+class="explore-grid"
+style="margin-top:15px">
+
+<div class="explore-item">
+
+<video
+src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+muted
+loop
+autoplay
+playsinline>
+</video>
+
+</div>
+
+<div class="explore-item">
+
+<video
+src="https://www.w3schools.com/html/mov_bbb.mp4"
+muted
+loop
+autoplay
+playsinline>
+</video>
+
+</div>
+
+<div class="explore-item">
+
+<video
+src="https://media.w3.org/2010/05/sintel/trailer.mp4"
+muted
+loop
+autoplay
+playsinline>
+</video>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     SETTINGS
+===================================================== -->
+
+<section
+id="settings"
+class="drawer">
+
+
+<div class="drawer-header">
+
+<button
+class="back"
+onclick="closeDrawers()">
+
+<svg viewBox="0 0 24 24">
+
+<path d="m15 18-6-6 6-6"/>
+
+</svg>
+
+</button>
+
+<div class="drawer-title">
+Settings
+</div>
+
+<div style="width:42px"></div>
+
+</div>
+
+
+<div class="setting">
+
+<div class="setting-icon">
+
+<svg viewBox="0 0 24 24">
+
+<circle
+cx="12"
+cy="12"
+r="3"/>
+
+<path
+d="M19.4 15a1.7 1.7 0 0 0
+.3 1.9l.1.1-1.8 1.8
+-.1-.1a1.7 1.7 0 0 0
+-1.9-.3 1.7 1.7 0 0 0
+-1 1.5v.1h-2.6v-.1
+a1.7 1.7 0 0 0-1-1.5
+1.7 1.7 0 0 0-1.9.3l-.1.1
+-1.8-1.8.1-.1A1.7 1.7 0 0 0
+8 15a1.7 1.7 0 0 0-1.5-1H6.4v-2.6h.1
+A1.7 1.7 0 0 0 8 10
+a1.7 1.7 0 0 0-.3-1.9l-.1-.1
+1.8-1.8.1.1a1.7 1.7 0 0 0
+1.9.3 1.7 1.7 0 0 0
+1-1.5V5h2.6v.1
+a1.7 1.7 0 0 0 1 1.5
+1.7 1.7 0 0 0 1.9-.3l.1-.1
+1.8 1.8-.1.1a1.7 1.7 0 0 0
+-.3 1.9 1.7 1.7 0 0 0
+1.5 1h.1V14h-.1
+a1.7 1.7 0 0 0-1.5 1z"/>
+
+</svg>
+
+</div>
+
+
+<div class="setting-text">
+
+<strong>
+Appearance
+</strong>
+
+<small>
+Dark theme · X-DARK Purple
+</small>
+
+</div>
+
+</div>
+
+
+<div
+class="setting"
+onclick="toast('Privacy settings coming soon')">
+
+<div class="setting-icon">
+
+<svg viewBox="0 0 24 24">
+
+<rect
+x="5"
+y="10"
+width="14"
+height="10"
+rx="2"/>
+
+<path
+d="M8 10V7a4 4 0 0 1 8 0v3"/>
+
+</svg>
+
+</div>
+
+<div class="setting-text">
+
+<strong>
+Privacy
+</strong>
+
+<small>
+Manage your privacy
+</small>
+
+</div>
+
+<span>›</span>
+
+</div>
+
+
+<div
+class="setting"
+onclick="toast('Notification settings coming soon')">
+
+<div class="setting-icon">
+
+<svg viewBox="0 0 24 24">
+
+<path
+d="M18 8a6 6 0 0 0-12 0
+c0 7-3 7-3 9h18c0-2-3-2-3-9"/>
+
+<path d="M10 21h4"/>
+
+</svg>
+
+</div>
+
+<div class="setting-text">
+
+<strong>
+Notifications
+</strong>
+
+<small>
+Manage your alerts
+</small>
+
+</div>
+
+<span>›</span>
+
+</div>
+
+
+<div
+class="setting"
+onclick="toast('Account settings coming soon')">
+
+<div class="setting-icon">
+
+<svg viewBox="0 0 24 24">
+
+<circle
+cx="12"
+cy="8"
+r="4"/>
+
+<path
+d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/>
+
+</svg>
+
+</div>
+
+<div class="setting-text">
+
+<strong>
+Account
+</strong>
+
+<small>
+Manage your account
+</small>
+
+</div>
+
+<span>›</span>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     MESSAGES
+===================================================== -->
+
+<section
+id="messages"
+class="drawer">
+
+
+<div class="drawer-header">
+
+<button
+class="back"
+onclick="closeDrawers()">
+
+<svg viewBox="0 0 24 24">
+
+<path d="m15 18-6-6 6-6"/>
+
+</svg>
+
+</button>
+
+<div class="drawer-title">
+Messages
+</div>
+
+<div style="width:42px"></div>
+
+</div>
+
+
+<div class="message">
+
+<div class="creator-avatar">
+D
+</div>
+
+<div class="message-info">
+
+<strong>
+Darkwing
+</strong>
+
+<small>
+Welcome to X-DARK
+</small>
+
+</div>
+
+<span>
+›
+</span>
+
+</div>
+
+
+<div class="message">
+
+<div
+class="creator-avatar"
+style="
+background:linear-gradient(
+135deg,
+#ff4384,
+#754cff
+)">
+
+N
+
+</div>
+
+<div class="message-info">
+
+<strong>
+Nova
+</strong>
+
+<small>
+Start a conversation
+</small>
+
+</div>
+
+<span>
+›
+</span>
+
+</div>
+
+
+<div class="message">
+
+<div
+class="creator-avatar"
+style="
+background:linear-gradient(
+135deg,
+#299cff,
+#764cff
+)">
+
+A
+
+</div>
+
+<div class="message-info">
+
+<strong>
+Alex
+</strong>
+
+<small>
+Hey 👋
+</small>
+
+</div>
+
+<span>
+›
+</span>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     ACTIVITY
+===================================================== -->
+
+<section
+id="activity"
+class="drawer">
+
+
+<div class="drawer-header">
+
+<button
+class="back"
+onclick="closeDrawers()">
+
+<svg viewBox="0 0 24 24">
+
+<path d="m15 18-6-6 6-6"/>
+
+</svg>
+
+</button>
+
+<div class="drawer-title">
+Activity
+</div>
+
+<div style="width:42px"></div>
+
+</div>
+
+
+<div class="setting">
+
+<div class="creator-avatar">
+D
+</div>
+
+<div class="setting-text">
+
+<strong>
+Darkwing liked your Reel
+</strong>
+
+<small>
+2 minutes ago
+</small>
+
+</div>
+
+❤️
+
+</div>
+
+
+<div class="setting">
+
+<div class="creator-avatar">
+N
+</div>
+
+<div class="setting-text">
+
+<strong>
+Nova started following you
+</strong>
+
+<small>
+18 minutes ago
+</small>
+
+</div>
+
++</div>
+
+
+<div class="setting">
+
+<div class="creator-avatar">
+A
+</div>
+
+<div class="setting-text">
+
+<strong>
+Alex commented on your Reel
+</strong>
+
+<small>
+1 hour ago
+</small>
+
+</div>
+
+💬
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     COMMENTS
+===================================================== -->
+
+<div
+id="comments"
+class="comments">
+
+
+<div class="comment-title">
+Comments
+</div>
+
+
+<div
+id="commentList"
+class="comment-list">
+
+
+<div class="comment">
+
+<div class="comment-avatar">
+D
+</div>
+
+<div class="comment-body">
+
+<b>
+Darkwing
+</b>
+
+<br>
+
+This looks amazing 🔥
+
+<br>
+
+<small>
+2m
+</small>
+
+</div>
+
+</div>
+
+
+<div class="comment">
+
+<div class="comment-avatar">
+N
+</div>
+
+<div class="comment-body">
+
+<b>
+Nova
+</b>
+
+<br>
+
+X-DARK is looking clean!
+
+<br>
+
+<small>
+5m
+</small>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="comment-input">
+
+<input
+id="commentInput"
+placeholder="Add a comment..."
+onkeydown="commentKey(event)">
+
+
+<button
+onclick="addComment()">
+
+↑
+
+</button>
+
+</div>
+
+</div>
+
+
+<div
+id="toast"
+class="toast">
 </div>
 
 
 <script>
 
-/* =========================
-DRAWERS
-========================= */
+/* =====================================================
+   DRAWERS
+===================================================== */
 
 function openDrawer(id){
 
@@ -2205,61 +3281,72 @@ function openDrawer(id){
     document.getElementById(id);
 
   if(drawer){
+
     drawer.classList.add("open");
+
   }
 
 }
+
 
 function closeDrawers(){
 
   document
     .querySelectorAll(".drawer")
-    .forEach(d=>{
-      d.classList.remove("open");
+    .forEach(drawer=>{
+
+      drawer.classList.remove("open");
+
     });
 
 }
 
-function home(){
+
+/* =====================================================
+   HOME
+===================================================== */
+
+function goHome(){
 
   closeDrawers();
 
-  document
-    .querySelectorAll(".nav-btn")
-    .forEach(n=>{
-      n.classList.remove("active");
-    });
+  const feed =
+    document.querySelector(".feed");
 
-  document
-    .querySelector(".nav-btn")
-    .classList.add("active");
+  feed.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 
 }
 
 
-/* =========================
-TOAST
-========================= */
+/* =====================================================
+   TOAST
+===================================================== */
 
-function toast(text){
+function toast(message){
 
-  const t =
+  const box =
     document.getElementById("toast");
 
-  t.textContent=text;
+  box.textContent =
+    message;
 
-  t.classList.add("show");
+  box.classList.add("show");
 
   setTimeout(()=>{
-    t.classList.remove("show");
+
+    box.classList.remove("show");
+
   },2800);
 
 }
 
 
-/* =========================
-LIKE
-========================= */
+/* =====================================================
+   LIKE
+===================================================== */
 
 function like(button){
 
@@ -2268,50 +3355,90 @@ function like(button){
   const span =
     button.querySelector("span");
 
-  if(button.classList.contains("active")){
+  if(
+    button.classList.contains("active")
+  ){
 
-    span.textContent="Liked";
+    span.textContent =
+      "Liked";
 
   }else{
 
-    span.textContent="Like";
+    span.textContent =
+      "Like";
 
   }
 
 }
 
 
-/* =========================
-SAVE
-========================= */
+/* =====================================================
+   SAVE
+===================================================== */
 
-function save(button){
+function savePost(button){
 
   button.classList.toggle("active");
 
   toast(
+
     button.classList.contains("active")
-    ? "Saved"
+    ? "Saved to your collection"
     : "Removed from saved"
+
   );
 
 }
 
 
-/* =========================
-SHARE
-========================= */
+/* =====================================================
+   FOLLOW
+===================================================== */
 
-async function share(){
+function follow(button){
+
+  if(
+    button.textContent.trim()
+    === "Follow"
+  ){
+
+    button.textContent =
+      "Following";
+
+    toast("Following");
+
+  }else{
+
+    button.textContent =
+      "Follow";
+
+    toast("Unfollowed");
+
+  }
+
+}
+
+
+/* =====================================================
+   SHARE
+===================================================== */
+
+async function sharePost(){
 
   try{
 
     if(navigator.share){
 
       await navigator.share({
+
         title:"X-DARK",
-        text:"Check this out on X-DARK",
-        url:location.href
+
+        text:
+          "Check this Reel on X-DARK",
+
+        url:
+          location.href
+
       });
 
     }else{
@@ -2324,14 +3451,14 @@ async function share(){
 
     }
 
-  }catch(e){}
+  }catch(error){}
 
 }
 
 
-/* =========================
-COMMENTS
-========================= */
+/* =====================================================
+   COMMENTS
+===================================================== */
 
 function openComments(){
 
@@ -2341,6 +3468,7 @@ function openComments(){
 
 }
 
+
 function closeComments(){
 
   document
@@ -2349,74 +3477,99 @@ function closeComments(){
 
 }
 
-function commentKey(e){
 
-  if(e.key==="Enter"){
+function commentKey(event){
+
+  if(
+    event.key === "Enter"
+  ){
+
     addComment();
+
   }
 
 }
 
+
 function addComment(){
 
   const input =
-    document.getElementById("commentInput");
+    document.getElementById(
+      "commentInput"
+    );
 
   const text =
     input.value.trim();
 
   if(!text){
+
     return;
+
   }
 
-  const div =
+  const comment =
     document.createElement("div");
 
-  div.className="comment";
+  comment.className =
+    "comment";
 
-  div.innerHTML=`
+  comment.innerHTML = `
 
     <div class="comment-avatar">
       A
     </div>
 
     <div class="comment-body">
-      <b>Ankaj</b><br>
-      ${escapeHTML(text)}
+
+      <b>Ankaj</b>
+
       <br>
-      <span>now</span>
+
+      ${escapeHTML(text)}
+
+      <br>
+
+      <small>
+        now
+      </small>
+
     </div>
 
   `;
 
   document
     .getElementById("commentList")
-    .appendChild(div);
+    .appendChild(comment);
 
   input.value="";
 
-  const list =
-    document.getElementById("commentList");
-
-  list.scrollTop=list.scrollHeight;
-
 }
+
+
+/* =====================================================
+   ESCAPE
+===================================================== */
 
 function escapeHTML(text){
 
   return text
+
     .replaceAll("&","&amp;")
+
     .replaceAll("<","&lt;")
+
     .replaceAll(">","&gt;")
+
     .replaceAll('"',"&quot;")
+
     .replaceAll("'","&#039;");
 
 }
 
 
-/* =========================
-VIDEO PREVIEW
-========================= */
+/* =====================================================
+   VIDEO PREVIEW
+===================================================== */
 
 function previewVideo(input){
 
@@ -2424,57 +3577,73 @@ function previewVideo(input){
     input.files[0];
 
   if(!file){
+
     return;
+
   }
 
   const preview =
-    document.getElementById("preview");
+    document.getElementById(
+      "preview"
+    );
 
   const video =
-    document.getElementById("previewVideo");
+    document.getElementById(
+      "previewVideo"
+    );
 
   video.src =
     URL.createObjectURL(file);
 
-  preview.style.display="block";
+  preview.style.display =
+    "block";
 
 }
 
 
-/* =========================
-PUBLISH
-========================= */
+/* =====================================================
+   PUBLISH
+===================================================== */
 
-function publish(){
+function publishReel(){
 
   const input =
-    document.getElementById("videoInput");
+    document.getElementById(
+      "videoInput"
+    );
 
-  if(!input.files.length){
+  if(
+    !input.files.length
+  ){
 
-    toast("Select a video first");
+    toast(
+      "Please select a video first"
+    );
 
     return;
 
   }
 
   toast(
-    "Reel ready — backend upload next"
+    "Reel selected successfully"
   );
 
 }
 
 
-/* =========================
-SEARCH
-========================= */
+/* =====================================================
+   SEARCH
+===================================================== */
 
 function search(value){
 
-  if(value.trim()){
+  if(
+    value.trim()
+  ){
 
     toast(
-      "Searching for " + value
+      "Searching: " +
+      value
     );
 
   }
@@ -2482,83 +3651,79 @@ function search(value){
 }
 
 
-/* =========================
-AUTO VIDEO
-========================= */
+/* =====================================================
+   REEL AUTOPLAY
+===================================================== */
 
-const videos =
+const reelVideos =
   document.querySelectorAll(
-    ".media video"
+    ".reel video"
   );
 
-const observer =
+
+const videoObserver =
   new IntersectionObserver(
+
     entries=>{
 
       entries.forEach(entry=>{
 
-        if(entry.isIntersecting){
+        const video =
+          entry.target;
 
-          entry.target
+        if(
+          entry.isIntersecting
+        ){
+
+          video
             .play()
             .catch(()=>{});
 
         }else{
 
-          entry.target.pause();
+          video.pause();
 
         }
 
       });
 
     },
+
     {
-      threshold:.55
+      threshold:.65
     }
+
   );
 
-videos.forEach(v=>{
-  observer.observe(v);
+
+reelVideos.forEach(video=>{
+
+  videoObserver.observe(video);
+
 });
 
 
-/* =========================
-DOUBLE TAP
-========================= */
+/* =====================================================
+   TAP VIDEO = PLAY / PAUSE
+===================================================== */
 
 document
-  .querySelectorAll(".media")
-  .forEach(media=>{
+  .querySelectorAll(".reel video")
+  .forEach(video=>{
 
-    let last=0;
-
-    media.addEventListener(
+    video.addEventListener(
       "click",
       ()=>{
 
-        const now=Date.now();
+        if(video.paused){
 
-        if(now-last<320){
+          video.play();
 
-          const likeBtn =
-            media
-              .closest(".post")
-              .querySelector(".like");
+        }else{
 
-          if(
-            likeBtn &&
-            !likeBtn.classList.contains("active")
-          ){
-
-            like(likeBtn);
-
-            toast("❤️ Liked");
-
-          }
+          video.pause();
 
         }
-
-        last=now;
 
       }
     );
@@ -2566,22 +3731,86 @@ document
   });
 
 
-/* =========================
-CLICK OUTSIDE COMMENTS
-========================= */
+/* =====================================================
+   DOUBLE TAP LIKE
+===================================================== */
 
 document
-  .getElementById("comments")
-  .addEventListener(
-    "click",
-    e=>{
+  .querySelectorAll(".reel")
+  .forEach(reel=>{
 
-      if(e.target.id==="comments"){
-        closeComments();
+    let lastTap = 0;
+
+    reel.addEventListener(
+      "click",
+      event=>{
+
+        if(
+          event.target.closest(
+            ".action,.top-button,.follow"
+          )
+        ){
+
+          return;
+
+        }
+
+        const now =
+          Date.now();
+
+        if(
+          now-lastTap < 300
+        ){
+
+          const likeButton =
+            reel.querySelector(
+              ".like"
+            );
+
+          if(
+            likeButton &&
+            !likeButton.classList.contains(
+              "active"
+            )
+          ){
+
+            like(likeButton);
+
+            toast("❤️ Liked");
+
+          }
+
+        }
+
+        lastTap =
+          now;
+
       }
+    );
+
+  });
+
+
+/* =====================================================
+   ESC KEY
+===================================================== */
+
+document.addEventListener(
+  "keydown",
+  event=>{
+
+    if(
+      event.key === "Escape"
+    ){
+
+      closeDrawers();
+
+      closeComments();
 
     }
-  );
+
+  }
+);
 
 </script>
 
