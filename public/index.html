@@ -8,353 +8,516 @@
 
 <style>
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:Arial,Helvetica,sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+html,body{
+    background:#07080c;
+    color:#fff;
+    min-height:100%;
 }
 
 body{
-  background:#08090d;
-  color:#fff;
-  min-height:100vh;
+    padding-bottom:75px;
 }
 
 /* ================= TOP BAR ================= */
 
 .topbar{
-  height:90px;
-  border-bottom:1px solid #292b35;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 22px;
-  position:sticky;
-  top:0;
-  background:#08090d;
-  z-index:20;
+    height:88px;
+    background:#07080c;
+    border-bottom:1px solid #252731;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 22px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
 }
 
 .logo{
-  font-size:31px;
-  font-weight:800;
-  letter-spacing:-1px;
+    font-size:30px;
+    font-weight:800;
+    letter-spacing:-1px;
 }
 
 .top-icons{
-  display:flex;
-  align-items:center;
-  gap:27px;
+    display:flex;
+    align-items:center;
+    gap:25px;
 }
 
-.icon{
-  font-size:29px;
-  cursor:pointer;
-  user-select:none;
+.svg-icon{
+    width:27px;
+    height:27px;
+
+    stroke:#f4f4f7;
+    stroke-width:1.8;
+    fill:none;
+
+    cursor:pointer;
+
+    transition:.2s;
 }
+
+.svg-icon:active{
+    transform:scale(.85);
+}
+
 
 /* ================= STORIES ================= */
 
 .stories{
-  display:flex;
-  gap:25px;
-  padding:18px 15px 20px;
-  overflow-x:auto;
-  border-bottom:1px solid #191b22;
+    display:flex;
+    gap:25px;
+
+    padding:18px 18px 20px;
+
+    overflow-x:auto;
+
+    border-bottom:1px solid #191b22;
 }
 
 .stories::-webkit-scrollbar{
-  display:none;
+    display:none;
 }
 
 .story{
-  min-width:80px;
-  text-align:center;
+    min-width:78px;
+    text-align:center;
 }
 
 .story-ring{
-  width:76px;
-  height:76px;
-  padding:4px;
-  border-radius:50%;
-  background:linear-gradient(135deg,#7d35ff,#b46cff);
-  margin:auto;
+    width:76px;
+    height:76px;
+
+    padding:4px;
+
+    border-radius:50%;
+
+    background:
+    linear-gradient(
+        135deg,
+        #6825ff,
+        #9d4cff,
+        #6825ff
+    );
+
+    margin:auto;
 }
 
 .story-ring img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  border-radius:50%;
-  border:3px solid #08090d;
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    border:3px solid #07080c;
 }
 
 .story-name{
-  margin-top:8px;
-  color:#c7c8d0;
-  font-size:13px;
+    margin-top:8px;
+
+    color:#c9cad1;
+
+    font-size:13px;
+
+    white-space:nowrap;
 }
+
 
 /* ================= FEED ================= */
 
 .feed{
-  max-width:620px;
-  margin:auto;
-  padding-bottom:95px;
+    width:100%;
+    max-width:650px;
+    margin:auto;
+
+    padding-bottom:20px;
 }
 
 .post{
-  border-bottom:1px solid #292b35;
-  padding-bottom:18px;
-  margin-bottom:10px;
+    width:100%;
+
+    border-bottom:1px solid #292b34;
+
+    margin-bottom:8px;
 }
 
-/* POST HEADER */
+
+/* ================= POST HEADER ================= */
 
 .post-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:15px 14px 12px;
+    height:98px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 24px;
 }
 
 .user-info{
-  display:flex;
-  align-items:center;
-  gap:11px;
+    display:flex;
+    align-items:center;
+
+    gap:12px;
 }
 
 .avatar{
-  width:43px;
-  height:43px;
-  border-radius:50%;
-  object-fit:cover;
-  border:2px solid #7d35ff;
+    width:54px;
+    height:54px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:2px solid #7935ff;
+
+    padding:2px;
 }
 
 .username{
-  font-weight:700;
-  font-size:15px;
+    font-size:18px;
+    font-weight:700;
 }
 
 .location{
-  color:#858793;
-  font-size:12px;
-  margin-top:3px;
+    color:#858792;
+    font-size:14px;
+
+    margin-top:4px;
 }
 
 .more{
-  font-size:25px;
-  color:#aaa;
-  cursor:pointer;
+    color:#ddd;
+
+    font-size:22px;
+
+    letter-spacing:3px;
+
+    cursor:pointer;
 }
 
-/* POST IMAGE */
+
+/* ================= POST IMAGE ================= */
 
 .post-image{
-  width:100%;
-  display:block;
-  max-height:720px;
-  object-fit:cover;
+    width:100%;
+
+    display:block;
+
+    max-height:700px;
+
+    object-fit:cover;
 }
 
-/* ================= ACTIONS ================= */
+
+/* ================= ACTION BAR ================= */
 
 .actions{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:12px 14px 7px;
+    height:65px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 25px;
 }
 
 .left-actions{
-  display:flex;
-  gap:20px;
+    display:flex;
+    align-items:center;
+
+    gap:22px;
 }
 
-.action{
-  font-size:27px;
-  cursor:pointer;
-  transition:.2s;
-  user-select:none;
+.post-icon{
+    width:29px;
+    height:29px;
+
+    stroke:#f1f1f4;
+
+    stroke-width:1.7;
+
+    fill:none;
+
+    cursor:pointer;
+
+    transition:.2s;
 }
 
-.action:active{
-  transform:scale(.85);
+.post-icon:active{
+    transform:scale(.82);
 }
 
 .like-btn.liked{
-  color:#ff315b;
+    stroke:#ff3564;
+    fill:#ff3564;
 }
 
 .save-btn.saved{
-  color:#a66cff;
+    stroke:#9d5cff;
 }
 
-/* ================= POST TEXT ================= */
+
+/* ================= POST INFO ================= */
 
 .likes{
-  padding:0 14px;
-  font-weight:bold;
-  font-size:14px;
+    padding:0 25px;
+
+    font-size:15px;
+
+    font-weight:700;
 }
 
 .caption{
-  padding:7px 14px 0;
-  line-height:21px;
-  color:#e3e3e7;
-  font-size:14px;
+    padding:9px 25px 0;
+
+    color:#e4e4e8;
+
+    font-size:15px;
+
+    line-height:22px;
 }
 
 .caption b{
-  color:#fff;
+    color:#fff;
 }
 
 .comments-link{
-  display:block;
-  padding:7px 14px;
-  color:#777a87;
-  font-size:14px;
-  cursor:pointer;
+    display:block;
+
+    padding:9px 25px 15px;
+
+    color:#777b88;
+
+    font-size:14px;
+
+    cursor:pointer;
 }
+
 
 /* ================= COMMENTS ================= */
 
 .comment-area{
-  display:none;
-  padding:5px 14px 0;
-  gap:8px;
+    display:none;
+
+    padding:0 25px 15px;
+
+    gap:8px;
 }
 
 .comment-area.active{
-  display:flex;
+    display:flex;
 }
 
 .comment-input{
-  flex:1;
-  background:#171922;
-  border:1px solid #30323d;
-  color:white;
-  padding:10px 13px;
-  border-radius:20px;
-  outline:none;
+    flex:1;
+
+    height:40px;
+
+    background:#15171e;
+
+    border:1px solid #30323c;
+
+    color:#fff;
+
+    border-radius:20px;
+
+    padding:0 15px;
+
+    outline:none;
 }
 
 .comment-send{
-  border:0;
-  background:#7d35ff;
-  color:white;
-  border-radius:20px;
-  padding:0 15px;
-  cursor:pointer;
+    border:0;
+
+    background:#7130ff;
+
+    color:white;
+
+    border-radius:20px;
+
+    padding:0 16px;
+
+    cursor:pointer;
 }
+
 
 /* ================= BOTTOM NAV ================= */
 
 .bottom-nav{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  height:76px;
+    position:fixed;
 
-  background:#08090d;
-  border-top:1px solid #292b35;
+    bottom:0;
+    left:0;
+    right:0;
 
-  display:flex;
-  align-items:center;
-  justify-content:space-around;
+    height:76px;
 
-  padding:0 18px;
+    background:#07080c;
 
-  z-index:50;
+    border-top:1px solid #292b34;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-around;
+
+    padding:0 18px;
+
+    z-index:200;
 }
 
 .nav-icon{
-  width:45px;
-  height:55px;
+    width:34px;
+    height:34px;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+    stroke:#858894;
 
-  font-size:29px;
-  color:#8d909c;
+    stroke-width:1.7;
 
-  cursor:pointer;
-  user-select:none;
+    fill:none;
+
+    cursor:pointer;
+
+    transition:.2s;
 }
 
 .nav-icon.active{
-  color:#fff;
+    stroke:#fff;
 }
 
-/* ================= CENTER PLUS ================= */
+.nav-icon:active{
+    transform:scale(.82);
+}
+
+
+/* ================= PLUS ================= */
+
+/* IMPORTANT:
+   ONLY PLUS SIGN
+   NO BOX
+   NO CIRCLE
+   NO HIGHLIGHT
+*/
 
 .create-btn{
-  width:62px;
-  height:62px;
+    width:38px;
+    height:38px;
 
-  border-radius:20px;
+    display:flex;
 
-  background:#fff;
-  color:#000;
+    align-items:center;
+    justify-content:center;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+    background:transparent;
 
-  font-size:38px;
-  font-weight:bold;
+    color:#fff;
 
-  cursor:pointer;
-  flex-shrink:0;
+    font-size:38px;
 
-  box-shadow:0 3px 15px rgba(0,0,0,.35);
+    font-weight:300;
+
+    line-height:1;
+
+    cursor:pointer;
+
+    user-select:none;
+
+    transition:.2s;
 }
 
 .create-btn:active{
-  transform:scale(.92);
+    transform:scale(.8);
 }
+
 
 /* ================= TOAST ================= */
 
 .toast{
-  position:fixed;
+    position:fixed;
 
-  left:50%;
-  bottom:100px;
+    left:50%;
+    bottom:95px;
 
-  transform:translateX(-50%);
+    transform:translateX(-50%);
 
-  background:#20222c;
+    background:#191b23;
 
-  padding:12px 20px;
+    border:1px solid #30323d;
 
-  border-radius:25px;
+    color:white;
 
-  display:none;
+    padding:11px 19px;
 
-  z-index:100;
+    border-radius:22px;
 
-  font-size:14px;
+    font-size:14px;
 
-  white-space:nowrap;
+    display:none;
+
+    z-index:500;
+
+    white-space:nowrap;
 }
+
 
 /* ================= DESKTOP ================= */
 
 @media(min-width:700px){
 
-  .topbar{
-    padding-left:calc((100% - 620px)/2);
-    padding-right:calc((100% - 620px)/2);
-  }
+    .topbar{
+        padding-left:calc((100% - 650px)/2);
+        padding-right:calc((100% - 650px)/2);
+    }
 
-  .stories{
-    max-width:620px;
-    margin:auto;
-  }
+    .stories{
+        max-width:650px;
+        margin:auto;
+    }
+
+}
+
+
+/* ================= SMALL PHONE ================= */
+
+@media(max-width:380px){
+
+    .stories{
+        gap:18px;
+    }
+
+    .story-ring{
+        width:70px;
+        height:70px;
+    }
+
+    .post-header{
+        padding:0 18px;
+    }
+
+    .actions{
+        padding:0 18px;
+    }
+
+    .likes,
+    .caption,
+    .comments-link{
+        padding-left:18px;
+        padding-right:18px;
+    }
 
 }
 </style>
@@ -363,111 +526,182 @@ body{
 
 <body>
 
-<!-- ================= TOP BAR ================= -->
+
+<!-- =====================================================
+                     TOP BAR
+===================================================== -->
 
 <header class="topbar">
 
-  <div class="logo">
-    X-DARK
-  </div>
-
-  <div class="top-icons">
-
-    <div
-      class="icon"
-      onclick="showToast('Search coming next 🔍')">
-      ⌕
+    <div class="logo">
+        X-DARK
     </div>
 
-    <div
-      class="icon"
-      onclick="showToast('Likes ❤️')">
-      ♡
-    </div>
 
-    <div
-      class="icon"
-      onclick="showToast('Menu coming next ☰')">
-      ☰
-    </div>
+    <div class="top-icons">
 
-  </div>
+
+        <!-- CHAT -->
+
+        <svg
+            class="svg-icon"
+            onclick="showToast('Chat coming next')"
+            viewBox="0 0 24 24">
+
+            <path
+                d="M20 11.5a8 8 0 0 1-8 8
+                   8.7 8.7 0 0 1-3.4-.7
+                   L4 20l1.2-3.5
+                   A8 8 0 1 1 20 11.5Z"
+            />
+
+            <path
+                d="M8 11.5h.01M12 11.5h.01M16 11.5h.01"
+            />
+
+        </svg>
+
+
+        <!-- HEART -->
+
+        <svg
+            class="svg-icon"
+            onclick="showToast('Activity')"
+            viewBox="0 0 24 24">
+
+            <path
+                d="M20.8 8.7
+                   c0 5.5-8.8 10.3-8.8 10.3
+                   S3.2 14.2 3.2 8.7
+                   A4.7 4.7 0 0 1 12 6.1
+                   a4.7 4.7 0 0 1 8.8 2.6Z"
+            />
+
+        </svg>
+
+
+        <!-- MENU -->
+
+        <svg
+            class="svg-icon"
+            onclick="showToast('Menu')"
+            viewBox="0 0 24 24">
+
+            <path d="M4 7h16"/>
+            <path d="M4 12h16"/>
+            <path d="M4 17h16"/>
+
+        </svg>
+
+    </div>
 
 </header>
 
 
-<!-- ================= STORIES ================= -->
+
+<!-- =====================================================
+                       STORIES
+===================================================== -->
 
 <section class="stories">
 
-  <div class="story">
 
-    <div class="story-ring">
-      <img src="https://i.pravatar.cc/150?img=12">
+    <div class="story">
+
+        <div class="story-ring">
+
+            <img
+                src="https://i.pravatar.cc/150?img=12"
+            >
+
+        </div>
+
+        <div class="story-name">
+            Your Story
+        </div>
+
     </div>
 
-    <div class="story-name">
-      Your Story
+
+
+    <div class="story">
+
+        <div class="story-ring">
+
+            <img
+                src="https://i.pravatar.cc/150?img=47"
+            >
+
+        </div>
+
+        <div class="story-name">
+            @User
+        </div>
+
     </div>
 
-  </div>
 
 
-  <div class="story">
+    <div class="story">
 
-    <div class="story-ring">
-      <img src="https://i.pravatar.cc/150?img=47">
+        <div class="story-ring">
+
+            <img
+                src="https://i.pravatar.cc/150?img=32"
+            >
+
+        </div>
+
+        <div class="story-name">
+            @Darkwing
+        </div>
+
     </div>
 
-    <div class="story-name">
-      @User
+
+
+    <div class="story">
+
+        <div class="story-ring">
+
+            <img
+                src="https://i.pravatar.cc/150?img=44"
+            >
+
+        </div>
+
+        <div class="story-name">
+            @XDark
+        </div>
+
     </div>
 
-  </div>
 
 
-  <div class="story">
+    <div class="story">
 
-    <div class="story-ring">
-      <img src="https://i.pravatar.cc/150?img=32">
+        <div class="story-ring">
+
+            <img
+                src="https://i.pravatar.cc/150?img=15"
+            >
+
+        </div>
+
+        <div class="story-name">
+            @Nova
+        </div>
+
     </div>
 
-    <div class="story-name">
-      @Darkwing
-    </div>
-
-  </div>
-
-
-  <div class="story">
-
-    <div class="story-ring">
-      <img src="https://i.pravatar.cc/150?img=44">
-    </div>
-
-    <div class="story-name">
-      @XDark
-    </div>
-
-  </div>
-
-
-  <div class="story">
-
-    <div class="story-ring">
-      <img src="https://i.pravatar.cc/150?img=15">
-    </div>
-
-    <div class="story-name">
-      @Nova
-    </div>
-
-  </div>
 
 </section>
 
 
-<!-- ================= HOME FEED ================= -->
+
+<!-- =====================================================
+                       HOME FEED
+===================================================== -->
 
 <main class="feed">
 
@@ -476,356 +710,509 @@ body{
 
 <article class="post">
 
-  <div class="post-header">
 
-    <div class="user-info">
+    <div class="post-header">
 
-      <img
-        class="avatar"
-        src="https://i.pravatar.cc/150?img=12"
-      >
 
-      <div>
+        <div class="user-info">
 
-        <div class="username">
-          @Ankaj
+            <img
+                class="avatar"
+                src="https://i.pravatar.cc/150?img=12"
+            >
+
+
+            <div>
+
+                <div class="username">
+                    @Ankaj
+                </div>
+
+                <div class="location">
+                    Maldives
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="location">
-          Maldives
+
+        <div class="more">
+            •••
         </div>
 
-      </div>
+    </div>
+
+
+
+    <img
+        class="post-image"
+        src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=90"
+        alt="Maldives beach"
+    >
+
+
+
+    <div class="actions">
+
+
+        <div class="left-actions">
+
+
+            <!-- LIKE -->
+
+            <svg
+                class="post-icon like-btn"
+                onclick="likePost(this)"
+                viewBox="0 0 24 24">
+
+                <path
+                    d="M20.8 8.7
+                    c0 5.5-8.8 10.3-8.8 10.3
+                    S3.2 14.2 3.2 8.7
+                    A4.7 4.7 0 0 1 12 6.1
+                    a4.7 4.7 0 0 1 8.8 2.6Z"
+                />
+
+            </svg>
+
+
+            <!-- COMMENT -->
+
+            <svg
+                class="post-icon"
+                onclick="toggleComments(this)"
+                viewBox="0 0 24 24">
+
+                <path
+                    d="M20 11.5a8 8 0 0 1-8 8
+                    8.7 8.7 0 0 1-3.4-.7
+                    L4 20l1.2-3.5
+                    A8 8 0 1 1 20 11.5Z"
+                />
+
+            </svg>
+
+
+            <!-- SHARE -->
+
+            <svg
+                class="post-icon"
+                onclick="sharePost()"
+                viewBox="0 0 24 24">
+
+                <path d="M4 12 20 4l-5 16-4-7-7-1Z"/>
+                <path d="M11 13 20 4"/>
+
+            </svg>
+
+
+        </div>
+
+
+        <!-- SAVE -->
+
+        <svg
+            class="post-icon save-btn"
+            onclick="savePost(this)"
+            viewBox="0 0 24 24">
+
+            <path
+                d="M6 4h12v17l-6-4-6 4V4Z"
+            />
+
+        </svg>
+
 
     </div>
 
-    <div class="more">
-      •••
-    </div>
-
-  </div>
 
 
-  <img
-    class="post-image"
-    src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=85"
-    alt="Beach"
-  >
+    <div class="likes">
 
+        <span class="like-count">
+            128
+        </span>
 
-  <div class="actions">
-
-    <div class="left-actions">
-
-      <span
-        class="action like-btn"
-        onclick="likePost(this)">
-        ♡
-      </span>
-
-      <span
-        class="action"
-        onclick="toggleComments(this)">
-        ♡̲
-      </span>
-
-      <span
-        class="action"
-        onclick="sharePost()">
-        ↗
-      </span>
+        likes
 
     </div>
+
+
+
+    <div class="caption">
+
+        <b>@Ankaj</b>
+
+        Enjoying the beautiful Maldives 🌊✨
+
+    </div>
+
 
 
     <span
-      class="action save-btn"
-      onclick="savePost(this)">
-      ♧
+        class="comments-link"
+        onclick="toggleComments(this)">
+
+        View all 24 comments
+
     </span>
 
-  </div>
 
 
-  <div class="likes">
-    <span class="like-count">
-      128
-    </span>
-    likes
-  </div>
+    <div class="comment-area">
 
+        <input
+            class="comment-input"
+            placeholder="Add a comment..."
+        >
 
-  <div class="caption">
-    <b>@Ankaj</b>
-    Enjoying the beautiful Maldives 🌊✨
-  </div>
+        <button
+            class="comment-send"
+            onclick="addComment(this)">
 
+            Post
 
-  <span
-    class="comments-link"
-    onclick="toggleComments(this)">
-    View all 24 comments
-  </span>
+        </button>
 
+    </div>
 
-  <div class="comment-area">
-
-    <input
-      class="comment-input"
-      placeholder="Add a comment..."
-    >
-
-    <button
-      class="comment-send"
-      onclick="addComment(this)">
-      Post
-    </button>
-
-  </div>
 
 </article>
+
 
 
 <!-- ================= POST 2 ================= -->
 
 <article class="post">
 
-  <div class="post-header">
 
-    <div class="user-info">
+    <div class="post-header">
 
-      <img
-        class="avatar"
-        src="https://i.pravatar.cc/150?img=47"
-      >
 
-      <div>
+        <div class="user-info">
 
-        <div class="username">
-          @Darkwing
+            <img
+                class="avatar"
+                src="https://i.pravatar.cc/150?img=32"
+            >
+
+
+            <div>
+
+                <div class="username">
+                    @Darkwing
+                </div>
+
+                <div class="location">
+                    X-DARK
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="location">
-          X-DARK
+
+        <div class="more">
+            •••
         </div>
 
-      </div>
+    </div>
+
+
+
+    <img
+        class="post-image"
+        src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1200&q=90"
+        alt="Night sky"
+    >
+
+
+
+    <div class="actions">
+
+
+        <div class="left-actions">
+
+
+            <svg
+                class="post-icon like-btn"
+                onclick="likePost(this)"
+                viewBox="0 0 24 24">
+
+                <path
+                    d="M20.8 8.7
+                    c0 5.5-8.8 10.3-8.8 10.3
+                    S3.2 14.2 3.2 8.7
+                    A4.7 4.7 0 0 1 12 6.1
+                    a4.7 4.7 0 0 1 8.8 2.6Z"
+                />
+
+            </svg>
+
+
+            <svg
+                class="post-icon"
+                onclick="toggleComments(this)"
+                viewBox="0 0 24 24">
+
+                <path
+                    d="M20 11.5a8 8 0 0 1-8 8
+                    8.7 8.7 0 0 1-3.4-.7
+                    L4 20l1.2-3.5
+                    A8 8 0 1 1 20 11.5Z"
+                />
+
+            </svg>
+
+
+            <svg
+                class="post-icon"
+                onclick="sharePost()"
+                viewBox="0 0 24 24">
+
+                <path d="M4 12 20 4l-5 16-4-7-7-1Z"/>
+                <path d="M11 13 20 4"/>
+
+            </svg>
+
+
+        </div>
+
+
+        <svg
+            class="post-icon save-btn"
+            onclick="savePost(this)"
+            viewBox="0 0 24 24">
+
+            <path
+                d="M6 4h12v17l-6-4-6 4V4Z"
+            />
+
+        </svg>
+
 
     </div>
 
-    <div class="more">
-      •••
-    </div>
-
-  </div>
 
 
-  <img
-    class="post-image"
-    src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1000&q=85"
-    alt="Night sky"
-  >
+    <div class="likes">
 
+        <span class="like-count">
+            864
+        </span>
 
-  <div class="actions">
-
-    <div class="left-actions">
-
-      <span
-        class="action like-btn"
-        onclick="likePost(this)">
-        ♡
-      </span>
-
-      <span
-        class="action"
-        onclick="toggleComments(this)">
-        ♡̲
-      </span>
-
-      <span
-        class="action"
-        onclick="sharePost()">
-        ↗
-      </span>
+        likes
 
     </div>
+
+
+
+    <div class="caption">
+
+        <b>@Darkwing</b>
+
+        Welcome to the dark side. 🖤
+
+    </div>
+
 
 
     <span
-      class="action save-btn"
-      onclick="savePost(this)">
-      ♧
+        class="comments-link"
+        onclick="toggleComments(this)">
+
+        View all 56 comments
+
     </span>
 
-  </div>
 
 
-  <div class="likes">
+    <div class="comment-area">
 
-    <span class="like-count">
-      864
-    </span>
+        <input
+            class="comment-input"
+            placeholder="Add a comment..."
+        >
 
-    likes
+        <button
+            class="comment-send"
+            onclick="addComment(this)">
 
-  </div>
+            Post
 
+        </button>
 
-  <div class="caption">
+    </div>
 
-    <b>@Darkwing</b>
-
-    Welcome to the dark side. 🖤
-
-  </div>
-
-
-  <span
-    class="comments-link"
-    onclick="toggleComments(this)">
-
-    View all 56 comments
-
-  </span>
-
-
-  <div class="comment-area">
-
-    <input
-      class="comment-input"
-      placeholder="Add a comment..."
-    >
-
-    <button
-      class="comment-send"
-      onclick="addComment(this)">
-      Post
-    </button>
-
-  </div>
 
 </article>
+
 
 
 <!-- ================= POST 3 ================= -->
 
 <article class="post">
 
-  <div class="post-header">
 
-    <div class="user-info">
+    <div class="post-header">
 
-      <img
-        class="avatar"
-        src="https://i.pravatar.cc/150?img=32"
-      >
 
-      <div>
+        <div class="user-info">
 
-        <div class="username">
-          @XDark
+            <img
+                class="avatar"
+                src="https://i.pravatar.cc/150?img=44"
+            >
+
+
+            <div>
+
+                <div class="username">
+                    @XDark
+                </div>
+
+                <div class="location">
+                    X-DARK Community
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="location">
-          X-DARK Community
+
+        <div class="more">
+            •••
         </div>
 
-      </div>
+    </div>
+
+
+
+    <img
+        class="post-image"
+        src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=90"
+        alt="Dark mountain"
+    >
+
+
+
+    <div class="actions">
+
+
+        <div class="left-actions">
+
+
+            <svg
+                class="post-icon like-btn"
+                onclick="likePost(this)"
+                viewBox="0 0 24 24">
+
+                <path
+                    d="M20.8 8.7
+                    c0 5.5-8.8 10.3-8.8 10.3
+                    S3.2 14.2 3.2 8.7
+                    A4.7 4.7 0 0 1 12 6.1
+                    a4.7 4.7 0 0 1 8.8 2.6Z"
+                />
+
+            </svg>
+
+
+            <svg
+                class="post-icon"
+                onclick="toggleComments(this)"
+                viewBox="0 0 24 24">
+
+                <path
+                    d="M20 11.5a8 8 0 0 1-8 8
+                    8.7 8.7 0 0 1-3.4-.7
+                    L4 20l1.2-3.5
+                    A8 8 0 1 1 20 11.5Z"
+                />
+
+            </svg>
+
+
+            <svg
+                class="post-icon"
+                onclick="sharePost()"
+                viewBox="0 0 24 24">
+
+                <path d="M4 12 20 4l-5 16-4-7-7-1Z"/>
+                <path d="M11 13 20 4"/>
+
+            </svg>
+
+
+        </div>
+
+
+        <svg
+            class="post-icon save-btn"
+            onclick="savePost(this)"
+            viewBox="0 0 24 24">
+
+            <path
+                d="M6 4h12v17l-6-4-6 4V4Z"
+            />
+
+        </svg>
+
 
     </div>
 
-    <div class="more">
-      •••
-    </div>
-
-  </div>
 
 
-  <img
-    class="post-image"
-    src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1000&q=85"
-    alt="Dark landscape"
-  >
+    <div class="likes">
 
+        <span class="like-count">
+            2431
+        </span>
 
-  <div class="actions">
-
-    <div class="left-actions">
-
-      <span
-        class="action like-btn"
-        onclick="likePost(this)">
-        ♡
-      </span>
-
-      <span
-        class="action"
-        onclick="toggleComments(this)">
-        ♡̲
-      </span>
-
-      <span
-        class="action"
-        onclick="sharePost()">
-        ↗
-      </span>
+        likes
 
     </div>
+
+
+
+    <div class="caption">
+
+        <b>@XDark</b>
+
+        Create. Connect. Explore. Welcome to X-DARK ⚡
+
+    </div>
+
 
 
     <span
-      class="action save-btn"
-      onclick="savePost(this)">
-      ♧
+        class="comments-link"
+        onclick="toggleComments(this)">
+
+        View all 103 comments
+
     </span>
 
-  </div>
 
 
-  <div class="likes">
+    <div class="comment-area">
 
-    <span class="like-count">
-      2431
-    </span>
+        <input
+            class="comment-input"
+            placeholder="Add a comment..."
+        >
 
-    likes
+        <button
+            class="comment-send"
+            onclick="addComment(this)">
 
-  </div>
+            Post
 
+        </button>
 
-  <div class="caption">
+    </div>
 
-    <b>@XDark</b>
-
-    Create. Connect. Explore. Welcome to X-DARK 🔥
-
-  </div>
-
-
-  <span
-    class="comments-link"
-    onclick="toggleComments(this)">
-
-    View all 103 comments
-
-  </span>
-
-
-  <div class="comment-area">
-
-    <input
-      class="comment-input"
-      placeholder="Add a comment..."
-    >
-
-    <button
-      class="comment-send"
-      onclick="addComment(this)">
-      Post
-    </button>
-
-  </div>
 
 </article>
 
@@ -833,73 +1220,120 @@ body{
 </main>
 
 
-<!-- ================= BOTTOM NAVIGATION ================= -->
+
+<!-- =====================================================
+                     BOTTOM NAV
+===================================================== -->
 
 <nav class="bottom-nav">
 
-  <!-- HOME -->
 
-  <div
-    class="nav-icon active"
-    onclick="showToast('Home')">
+    <!-- HOME -->
 
-    ⌂
+    <svg
+        class="nav-icon active"
+        onclick="showToast('Home')"
+        viewBox="0 0 24 24">
 
-  </div>
+        <path
+            d="M3 10.5 12 3l9 7.5"
+        />
 
+        <path
+            d="M5 9.5V21h14V9.5"
+        />
 
-  <!-- SEARCH -->
-
-  <div
-    class="nav-icon"
-    onclick="showToast('Search coming next 🔍')">
-
-    ⌕
-
-  </div>
+    </svg>
 
 
-  <!-- CENTER PLUS -->
 
-  <div
-    class="create-btn"
-    onclick="showToast('Create Post coming next ➕')">
+    <!-- SEARCH -->
 
-    +
+    <svg
+        class="nav-icon"
+        onclick="showToast('Search coming next')"
+        viewBox="0 0 24 24">
 
-  </div>
+        <circle
+            cx="10.8"
+            cy="10.8"
+            r="6.5"
+        />
+
+        <path
+            d="m16 16 5 5"
+        />
+
+    </svg>
 
 
-  <!-- LIKES -->
 
-  <div
-    class="nav-icon"
-    onclick="showToast('Activity ❤️')">
+    <!-- ONLY PLUS -->
 
-    ♡
+    <div
+        class="create-btn"
+        onclick="showToast('Create Post coming next')">
 
-  </div>
+        +
+
+    </div>
 
 
-  <!-- PROFILE -->
 
-  <div
-    class="nav-icon"
-    onclick="showToast('Profile coming next 👤')">
+    <!-- HEART -->
 
-    ◉
+    <svg
+        class="nav-icon"
+        onclick="showToast('Activity')"
+        viewBox="0 0 24 24">
 
-  </div>
+        <path
+            d="M20.8 8.7
+            c0 5.5-8.8 10.3-8.8 10.3
+            S3.2 14.2 3.2 8.7
+            A4.7 4.7 0 0 1 12 6.1
+            a4.7 4.7 0 0 1 8.8 2.6Z"
+        />
+
+    </svg>
+
+
+
+    <!-- PROFILE -->
+
+    <svg
+        class="nav-icon"
+        onclick="showToast('Profile coming next')"
+        viewBox="0 0 24 24">
+
+        <circle
+            cx="12"
+            cy="8"
+            r="3.5"
+        />
+
+        <path
+            d="M4.5 21
+               c.7-4.2
+               3.1-6.5
+               7.5-6.5
+               s6.8 2.3 7.5 6.5"
+        />
+
+    </svg>
+
 
 </nav>
+
 
 
 <!-- ================= TOAST ================= -->
 
 <div
-  class="toast"
-  id="toast">
+    class="toast"
+    id="toast">
 </div>
+
 
 
 <script>
@@ -908,165 +1342,164 @@ body{
 
 function likePost(button){
 
-  const post = button.closest(".post");
+    const post =
+        button.closest(".post");
 
-  const count =
-    post.querySelector(".like-count");
+    const count =
+        post.querySelector(".like-count");
 
-  let number =
-    parseInt(
-      count.textContent.replace(/,/g,"")
-    );
-
-
-  if(button.classList.contains("liked")){
-
-    button.classList.remove("liked");
-
-    button.textContent = "♡";
-
-    number--;
-
-  }
-
-  else{
-
-    button.classList.add("liked");
-
-    button.textContent = "♥";
-
-    number++;
-
-  }
+    let number =
+        parseInt(
+            count.textContent.replace(/,/g,"")
+        );
 
 
-  count.textContent =
-    number.toLocaleString();
+    if(
+        button.classList.contains("liked")
+    ){
+
+        button.classList.remove("liked");
+
+        number--;
+
+    }else{
+
+        button.classList.add("liked");
+
+        number++;
+
+    }
+
+
+    count.textContent =
+        number.toLocaleString();
 
 }
+
 
 
 /* ================= SAVE ================= */
 
 function savePost(button){
 
-  if(button.classList.contains("saved")){
+    if(
+        button.classList.contains("saved")
+    ){
 
-    button.classList.remove("saved");
+        button.classList.remove("saved");
 
-    button.textContent = "♧";
+        showToast("Post unsaved");
 
-    showToast("Removed from saved");
+    }else{
 
-  }
+        button.classList.add("saved");
 
-  else{
+        showToast("Post saved");
 
-    button.classList.add("saved");
-
-    button.textContent = "♣";
-
-    showToast("Post saved 🔖");
-
-  }
+    }
 
 }
+
 
 
 /* ================= COMMENTS ================= */
 
 function toggleComments(element){
 
-  const post =
-    element.closest(".post");
+    const post =
+        element.closest(".post");
 
-  const area =
-    post.querySelector(".comment-area");
+    const area =
+        post.querySelector(".comment-area");
 
-  area.classList.toggle("active");
+    area.classList.toggle("active");
 
 }
+
 
 
 /* ================= ADD COMMENT ================= */
 
 function addComment(button){
 
-  const area =
-    button.closest(".comment-area");
+    const area =
+        button.closest(".comment-area");
 
-  const input =
-    area.querySelector(".comment-input");
+    const input =
+        area.querySelector(".comment-input");
 
-  const text =
-    input.value.trim();
-
-
-  if(!text){
-
-    showToast("Write a comment first");
-
-    return;
-
-  }
+    const text =
+        input.value.trim();
 
 
-  input.value = "";
+    if(!text){
 
-  showToast("Comment posted 💬");
+        showToast("Write a comment first");
+
+        return;
+
+    }
+
+
+    input.value = "";
+
+    showToast("Comment posted");
 
 }
+
 
 
 /* ================= SHARE ================= */
 
 function sharePost(){
 
-  if(navigator.share){
+    if(
+        navigator.share
+    ){
 
-    navigator.share({
+        navigator.share({
 
-      title:"X-DARK",
+            title:"X-DARK",
 
-      text:"Check this post on X-DARK"
+            text:"Check this post on X-DARK"
 
-    });
+        });
 
-  }
+    }else{
 
-  else{
+        showToast("Share link copied");
 
-    showToast("Post link copied 🔗");
-
-  }
+    }
 
 }
+
 
 
 /* ================= TOAST ================= */
 
 function showToast(message){
 
-  const toast =
-    document.getElementById("toast");
+    const toast =
+        document.getElementById("toast");
 
-  toast.textContent =
-    message;
-
-  toast.style.display =
-    "block";
-
-
-  setTimeout(function(){
+    toast.textContent =
+        message;
 
     toast.style.display =
-      "none";
+        "block";
 
-  },2000);
+
+    setTimeout(function(){
+
+        toast.style.display =
+        "none";
+
+    },1800);
 
 }
 
 </script>
+
 
 </body>
 </html>
