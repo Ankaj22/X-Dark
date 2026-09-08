@@ -4,128 +4,357 @@ const path = require("path");
 const fs = require("fs");
 
 const app = express();
+
 const PORT = process.env.PORT || 3000;
 
-const publicDir = path.join(__dirname, "public");
-const uploadDir = path.join(__dirname, "uploads");
 
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir, { recursive: true });
+/* =========================
+   FOLDERS
+========================= */
+
+const publicFolder = path.join(__dirname, "public");
+const uploadFolder = path.join(__dirname, "uploads");
+
+if (!fs.existsSync(uploadFolder)) {
+  fs.mkdirSync(uploadFolder, {
+    recursive: true
+  });
 }
 
+
+/* =========================
+   EXPRESS
+========================= */
+
+app.use(express.json());
+
+app.use(
+  express.urlencoded({
+    extended: true
+  })
+);
+
+
+/* =========================
+   STATIC FILES
+========================= */
+
+app.use(
+  "/uploads",
+  express.static(uploadFolder)
+);
+
+app.use(
+  express.static(publicFolder)
+);
+
+
+/* =========================
+   MULTER STORAGE
+========================= */
+
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, uploadDir);
+
+  destination: function(req, file, cb) {
+
+    cb(null, uploadFolder);
+
   },
 
-  filename: (req, file, cb) => {
-    const ext = path.extname(file.originalname);
+  filename: function(req, file, cb) {
+
+    const extension =
+      path.extname(file.originalname);
+
     const filename =
-      Date.now() + "-" +
-      Math.random().toString(36).substring(2) +
-      ext;
+      Date.now() +
+      "-" +
+      Math.random()
+        .toString(36)
+        .substring(2, 10) +
+      extension;
 
     cb(null, filename);
+
   }
+
 });
 
+
 const upload = multer({
+
   storage: storage,
 
   limits: {
-    fileSize: 500 * 1024 * 1024
+
+    fileSize:
+      300 * 1024 * 1024
+
   },
 
-  fileFilter: (req, file, cb) => {
+  fileFilter: function(req, file, cb) {
 
-    const allowed = [
+    const allowedTypes = [
+
       "video/mp4",
+
       "video/quicktime",
+
       "video/webm"
+
     ];
 
-    if (allowed.includes(file.mimetype)) {
+    if (
+      allowedTypes.includes(
+        file.mimetype
+      )
+    ) {
+
       cb(null, true);
-    } else {
-      cb(new Error("Only MP4, MOV and WEBM videos are allowed."));
+
     }
+
+    else {
+
+      cb(
+        new Error(
+          "Only MP4, MOV and WEBM videos are allowed."
+        )
+      );
+
+    }
+
   }
+
 });
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
-/* Uploaded videos */
-app.use("/uploads", express.static(uploadDir));
+/* =========================
+   POSTS DATABASE TEMP
+========================= */
 
-/* Website files */
-app.use(express.static(publicDir));
-
-/* HOME */
-app.get("/", (req, res) => {
-  res.sendFile(path.join(publicDir, "index.html"));
-});
-
-/* POSTS */
 let posts = [];
 
-app.get("/api/posts", (req, res) => {
-  res.json(posts);
+
+/* =========================
+   HOME
+========================= */
+
+app.get("/", function(req, res) {
+
+  res.sendFile(
+    path.join(
+      publicFolder,
+      "index.html"
+    )
+  );
+
 });
 
-/* VIDEO UPLOAD */
-app.post("/api/upload", upload.single("video"), (req, res) => {
 
-  if (!req.file) {
-    return res.status(400).json({
-      message: "No video selected."
-    });
+/* =========================
+   GET POSTS
+========================= */
+
+app.get(
+  "/api/posts",
+  function(req, res) {
+
+    res.json(posts);
+
   }
+);
 
-  const post = {
-    id: Date.now().toString(),
 
-    username: "X-Dark User",
+/* =========================
+   UPLOAD VIDEO
+========================= */
 
-    handle: "@Darkwing2",
+app.post(
+  "/api/upload",
 
-    caption:
-      req.body.caption ||
-      "My new X-DARK video 🚀",
+  upload.single("video"),
 
-    tags:
-      req.body.tags || "",
+  function(req, res) {
 
-    video:
-      "/uploads/" + req.file.filename,
+    if (!req.file) {
 
-    filename:
-      req.file.originalname,
+      return res
+        .status(400)
+        .json({
 
-    createdAt:
-      new Date().toISOString()
-  };
+          success: false,
 
-  posts.unshift(post);
+          message:
+            "Please select a video."
 
-  res.json({
-    success: true,
-    message: "Video uploaded successfully",
-    post: post
-  });
-});
+        });
 
-/* ERROR */
-app.use((err, req, res, next) => {
+    }
 
-  console.error(err);
 
-  res.status(400).json({
-    message: err.message || "Something went wrong"
-  });
+    const newPost = {
 
-});
+      id:
+        Date.now().toString(),
 
-app.listen(PORT, () => {
-  console.log(`X-DARK running on port ${PORT}`);
-});
+      username:
+        "X-Dark User",
+
+      handle:
+        "@Darkwing2",
+
+      caption:
+        req.body.caption ||
+        "New X-DARK video 🚀",
+
+      tags:
+        req.body.tags || "",
+
+      video:
+        "/uploads/" +
+        req.file.filename,
+
+      createdAt:
+        new Date().toISOString()
+
+    };
+
+
+    posts.unshift(newPost);
+
+
+    res.json({
+
+      success: true,
+
+      message:
+        "Video uploaded successfully.",
+
+      post: newPost
+
+    });
+
+  }
+);
+
+
+/* =========================
+   DELETE POST
+========================= */
+
+app.delete(
+  "/api/posts/:id",
+
+  function(req, res) {
+
+    const postIndex =
+      posts.findIndex(
+        post =>
+          post.id ===
+          req.params.id
+      );
+
+
+    if (postIndex === -1) {
+
+      return res
+        .status(404)
+        .json({
+
+          message:
+            "Post not found."
+
+        });
+
+    }
+
+
+    const post =
+      posts[postIndex];
+
+
+    const filename =
+      path.basename(
+        post.video
+      );
+
+
+    const filePath =
+      path.join(
+        uploadFolder,
+        filename
+      );
+
+
+    if (
+      fs.existsSync(filePath)
+    ) {
+
+      fs.unlinkSync(filePath);
+
+    }
+
+
+    posts.splice(
+      postIndex,
+      1
+    );
+
+
+    res.json({
+
+      success: true
+
+    });
+
+  }
+);
+
+
+/* =========================
+   ERROR HANDLER
+========================= */
+
+app.use(
+  function(
+    error,
+    req,
+    res,
+    next
+  ) {
+
+    console.error(error);
+
+
+    res
+      .status(400)
+      .json({
+
+        success: false,
+
+        message:
+          error.message ||
+          "Something went wrong."
+
+      });
+
+  }
+);
+
+
+/* =========================
+   SERVER START
+========================= */
+
+app.listen(
+  PORT,
+  function() {
+
+    console.log(
+      "X-DARK running on port " +
+      PORT
+    );
+
+  }
+);
