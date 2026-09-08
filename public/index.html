@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
-<meta name="theme-color" content="#050505">
-<title>X-DARK</title>
+<meta name="viewport"
+      content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+
+<title>X-DARK | Social</title>
 
 <style>
 *{
@@ -14,74 +16,96 @@
   -webkit-tap-highlight-color:transparent;
 }
 
-body{
-  background:#050505;
+html,body{
+  width:100%;
+  height:100%;
+  background:#000;
   color:#fff;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
-  min-height:100vh;
-  overflow-x:hidden;
 }
 
-button,input{
+body{
+  overflow:hidden;
+}
+
+button,input,textarea{
   font:inherit;
 }
 
 button{
-  border:0;
   cursor:pointer;
 }
 
+/* =========================
+   APP
+========================= */
+
 .app{
-  min-height:100vh;
-  background:
-    radial-gradient(circle at 85% 5%,rgba(123,63,255,.13),transparent 25%),
-    #050505;
-  padding-bottom:90px;
+  width:100%;
+  height:100vh;
+  background:#000;
+  position:relative;
+  overflow:hidden;
 }
 
-/* TOP */
-.topbar{
-  height:76px;
+/* =========================
+   TOP BAR
+========================= */
+
+.top{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  height:70px;
+  z-index:50;
+
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 20px;
-  border-bottom:1px solid #202027;
-  position:sticky;
-  top:0;
-  z-index:20;
-  background:rgba(5,5,5,.92);
-  backdrop-filter:blur(20px);
+
+  padding:0 17px;
+
+  background:linear-gradient(
+    to bottom,
+    rgba(0,0,0,.75),
+    transparent
+  );
 }
 
 .logo{
-  font-size:30px;
-  font-weight:900;
+  font-size:27px;
+  font-weight:950;
   letter-spacing:-1px;
 }
 
 .logo span{
-  color:#884cff;
+  color:#8b4dff;
 }
 
-.top-actions{
+.top-right{
   display:flex;
-  gap:10px;
+  gap:9px;
 }
 
-.icon-btn{
-  width:44px;
-  height:44px;
-  border-radius:14px;
-  background:#111117;
-  border:1px solid #292933;
-  color:white;
+.top-btn{
+  width:43px;
+  height:43px;
+
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:50%;
+
+  background:rgba(20,20,20,.65);
+  color:#fff;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
+  backdrop-filter:blur(15px);
 }
 
-.icon-btn svg{
+.top-btn svg{
   width:22px;
   height:22px;
   stroke:currentColor;
@@ -91,477 +115,901 @@ button{
   stroke-linejoin:round;
 }
 
-/* PAGES */
-.page{
+/* =========================
+   FEED
+========================= */
+
+.feed{
+  width:100%;
+  height:100vh;
+
+  overflow-y:auto;
+  scroll-snap-type:y mandatory;
+
+  scrollbar-width:none;
+}
+
+.feed::-webkit-scrollbar{
   display:none;
-  padding:28px 18px;
-  max-width:850px;
-  margin:auto;
 }
 
-.page.active{
-  display:block;
+.reel{
+  position:relative;
+
+  width:100%;
+  height:100vh;
+
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+
+  overflow:hidden;
+
+  background:#090909;
 }
 
-.hero{
-  padding:40px 10px 25px;
+.reel video{
+  position:absolute;
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  background:#111;
 }
 
-.hero h1{
-  font-size:42px;
-  line-height:1.05;
-  font-weight:900;
+/* dark gradient */
+
+.reel::after{
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,.55),
+      transparent 25%,
+      transparent 55%,
+      rgba(0,0,0,.8)
+    );
+
+  pointer-events:none;
 }
 
-.hero h1 span{
-  color:#884cff;
+/* =========================
+   REEL INFO
+========================= */
+
+.reel-info{
+  position:absolute;
+
+  left:17px;
+  right:90px;
+  bottom:95px;
+
+  z-index:10;
 }
 
-.hero p{
-  margin-top:12px;
-  color:#92929e;
-  font-size:18px;
-  font-weight:600;
-}
-
-/* CARD */
-.card{
-  background:linear-gradient(145deg,#111117,#0b0b0f);
-  border:1px solid #292933;
-  border-radius:25px;
-  padding:22px;
-  margin-bottom:16px;
-  box-shadow:0 15px 45px rgba(0,0,0,.25);
-}
-
-.user-row{
+.creator{
   display:flex;
   align-items:center;
-  gap:14px;
+  gap:10px;
+
+  margin-bottom:13px;
 }
 
-.avatar{
-  width:58px;
-  height:58px;
+.creator-avatar{
+  width:43px;
+  height:43px;
+
   border-radius:50%;
+
+  background:linear-gradient(
+    135deg,
+    #6f35ff,
+    #bd72ff
+  );
+
   display:flex;
   align-items:center;
   justify-content:center;
-  background:linear-gradient(135deg,#763cff,#a16cff);
-  font-size:25px;
+
   font-weight:900;
 }
 
-.user-name{
-  font-size:21px;
+.creator-name{
+  font-size:17px;
+  font-weight:850;
+}
+
+.follow-mini{
+  padding:6px 12px;
+
+  border:1px solid #fff;
+  border-radius:9px;
+
+  background:rgba(0,0,0,.35);
+  color:#fff;
+
+  font-size:12px;
   font-weight:800;
 }
 
-.status{
-  color:#777783;
-  margin-top:3px;
+.caption{
+  font-size:15px;
+  line-height:1.45;
+
+  margin-bottom:10px;
+}
+
+.tags{
+  color:#ddd;
   font-size:14px;
 }
 
-.post-text{
-  margin-top:22px;
-  color:#d6d6dc;
-  line-height:1.55;
-  font-size:17px;
-}
+/* =========================
+   RIGHT ACTIONS
+========================= */
 
-.action-row{
+.actions{
+  position:absolute;
+
+  right:13px;
+  bottom:88px;
+
+  z-index:15;
+
   display:flex;
-  gap:10px;
-  margin-top:22px;
-}
-
-.primary-btn,
-.secondary-btn{
-  padding:13px 20px;
-  border-radius:15px;
-  color:#fff;
-  font-weight:750;
-}
-
-.primary-btn{
-  background:#171720;
-  border:1px solid #30303a;
-}
-
-.secondary-btn{
-  background:#111117;
-  border:1px solid #292933;
-}
-
-/* SEARCH */
-.search-box{
-  display:flex;
+  flex-direction:column;
   align-items:center;
-  gap:10px;
-  background:#111117;
-  border:1px solid #292933;
-  border-radius:17px;
-  padding:0 15px;
-  height:54px;
-  margin-bottom:20px;
+  gap:19px;
 }
 
-.search-box svg{
-  width:21px;
-  stroke:#888;
-}
+.action{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:4px;
 
-.search-box input{
-  flex:1;
+  color:#fff;
+
   background:none;
   border:0;
-  outline:0;
-  color:#fff;
+
+  font-size:12px;
+  font-weight:750;
+
+  text-shadow:0 2px 5px #000;
 }
 
-/* CREATE */
-textarea{
-  width:100%;
-  min-height:150px;
-  resize:vertical;
-  background:#0b0b10;
-  color:#fff;
-  border:1px solid #292933;
-  border-radius:17px;
-  padding:16px;
-  outline:none;
+.action svg{
+  width:31px;
+  height:31px;
+
+  stroke:#fff;
+  fill:none;
+
+  stroke-width:2;
+
+  stroke-linecap:round;
+  stroke-linejoin:round;
 }
 
-/* ALERTS */
-.alert{
+.action.like.active svg{
+  fill:#ff3158;
+  stroke:#ff3158;
+}
+
+.action.like.active{
+  color:#ff3158;
+}
+
+.action.save.active svg{
+  fill:#fff;
+}
+
+/* =========================
+   MUSIC
+========================= */
+
+.music{
   display:flex;
-  gap:14px;
-  padding:17px;
-  background:#111117;
-  border:1px solid #292933;
-  border-radius:18px;
-  margin-bottom:12px;
+  align-items:center;
+  gap:7px;
+
+  margin-top:12px;
+
+  font-size:13px;
 }
 
-.alert-icon{
-  color:#914fff;
-}
+.music-disc{
+  width:23px;
+  height:23px;
 
-/* PROFILE */
-.profile-head{
-  text-align:center;
-  padding:25px 0;
-}
-
-.big-avatar{
-  width:95px;
-  height:95px;
   border-radius:50%;
-  margin:auto;
+
+  border:2px solid #fff;
+
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:40px;
-  font-weight:900;
-  background:linear-gradient(135deg,#6f35ed,#a36bff);
-  border:3px solid #24202f;
+
+  font-size:10px;
 }
 
-.profile-head h2{
-  margin-top:15px;
-}
+/* =========================
+   BOTTOM NAV
+========================= */
 
-.profile-head p{
-  color:#777783;
-  margin-top:5px;
-}
-
-/* BOTTOM */
-.bottom-nav{
+.nav{
   position:fixed;
+
   bottom:0;
   left:0;
   right:0;
-  height:78px;
-  z-index:50;
+
+  height:72px;
+
+  z-index:60;
+
   display:flex;
   justify-content:space-around;
   align-items:center;
-  background:rgba(7,7,9,.96);
-  border-top:1px solid #202027;
-  backdrop-filter:blur(20px);
+
+  background:linear-gradient(
+    to top,
+    rgba(0,0,0,.95),
+    rgba(0,0,0,.65)
+  );
+
+  backdrop-filter:blur(15px);
+
   padding-bottom:env(safe-area-inset-bottom);
 }
 
 .nav-btn{
-  color:#777783;
+  color:#aaa;
+
+  border:0;
   background:none;
+
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:5px;
-  font-size:11px;
-  font-weight:700;
+  gap:4px;
+
+  font-size:10px;
+  font-weight:750;
 }
 
 .nav-btn svg{
-  width:25px;
-  height:25px;
+  width:24px;
+  height:24px;
+
   stroke:currentColor;
   fill:none;
+
   stroke-width:2;
+
   stroke-linecap:round;
   stroke-linejoin:round;
 }
 
 .nav-btn.active{
-  color:#9255ff;
+  color:#fff;
 }
 
-/* CHAT LIST */
-.chat-item{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  padding:16px 5px;
-  border-bottom:1px solid #1d1d24;
-}
+.create-nav{
+  width:45px;
+  height:31px;
 
-.chat-item:last-child{
-  border-bottom:0;
-}
+  border-radius:10px;
 
-.chat-info{
-  flex:1;
-}
+  background:#fff;
+  color:#000!important;
 
-.chat-info strong{
-  font-size:17px;
-}
-
-.chat-preview{
-  color:#777783;
-  font-size:14px;
-  margin-top:4px;
-}
-
-/* CHAT */
-#chatPage{
-  padding:0;
-  max-width:none;
-  height:calc(100vh - 76px);
-}
-
-.chat-screen{
-  height:100%;
-  display:flex;
-  flex-direction:column;
-}
-
-.chat-header{
-  height:70px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:0 14px;
-  border-bottom:1px solid #202027;
-  background:#08080b;
-}
-
-.chat-user{
-  flex:1;
-}
-
-.chat-user strong{
-  display:block;
-}
-
-.chat-user small{
-  color:#777783;
-}
-
-.chat-actions{
-  display:flex;
-  gap:4px;
-}
-
-.messages{
-  flex:1;
-  overflow-y:auto;
-  padding:20px 15px;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-
-.msg{
-  max-width:78%;
-  padding:11px 14px;
-  border-radius:18px;
-  line-height:1.4;
-  word-break:break-word;
-}
-
-.msg.me{
-  align-self:flex-end;
-  background:#6936c9;
-  border-bottom-right-radius:5px;
-}
-
-.msg.them{
-  align-self:flex-start;
-  background:#181820;
-  border:1px solid #292933;
-  border-bottom-left-radius:5px;
-}
-
-.msg-time{
-  display:block;
-  font-size:10px;
-  opacity:.55;
-  margin-top:4px;
-  text-align:right;
-}
-
-.sticker-msg{
-  font-size:55px;
-  background:transparent!important;
-  border:0!important;
-  padding:4px!important;
-}
-
-.chat-input-area{
-  padding:10px;
-  border-top:1px solid #202027;
-  background:#08080b;
-}
-
-.chat-input{
-  display:flex;
-  align-items:center;
-  gap:7px;
-  background:#121219;
-  border:1px solid #292933;
-  border-radius:18px;
-  padding:6px;
-}
-
-.chat-input input{
-  flex:1;
-  min-width:0;
-  border:0;
-  outline:0;
-  background:none;
-  color:white;
-  padding:10px 5px;
-}
-
-.send-btn{
-  width:42px;
-  height:42px;
-  border-radius:14px;
-  background:#8245f4;
-  color:white;
   display:flex;
   align-items:center;
   justify-content:center;
 }
 
-.send-btn svg{
-  width:20px;
+.create-nav svg{
+  width:22px;
 }
 
-/* PICKERS */
-.picker{
+/* =========================
+   STORIES
+========================= */
+
+.story-bar{
+  position:absolute;
+
+  top:70px;
+  left:0;
+  right:0;
+
+  z-index:30;
+
+  display:flex;
+  gap:14px;
+
+  padding:8px 15px;
+
+  overflow-x:auto;
+
+  scrollbar-width:none;
+}
+
+.story-bar::-webkit-scrollbar{
   display:none;
-  background:#111117;
-  border:1px solid #292933;
-  border-radius:20px;
-  padding:12px;
-  margin-bottom:8px;
 }
 
-.picker.show{
-  display:block;
+.story{
+  flex:none;
+
+  width:58px;
+
+  text-align:center;
+
+  font-size:10px;
+  font-weight:700;
 }
 
-.emoji-grid,
-.sticker-grid{
-  display:grid;
-  grid-template-columns:repeat(7,1fr);
-  gap:7px;
-  max-height:210px;
+.story-ring{
+  width:56px;
+  height:56px;
+
+  border-radius:50%;
+
+  padding:2px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffcc00,
+      #ff0055,
+      #8b3dff
+    );
+}
+
+.story-ring div{
+  width:100%;
+  height:100%;
+
+  border-radius:50%;
+
+  background:#171717;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-weight:900;
+  font-size:19px;
+}
+
+/* =========================
+   PANELS
+========================= */
+
+.panel{
+  position:absolute;
+
+  inset:0;
+
+  z-index:100;
+
+  background:#050505;
+
+  transform:translateY(100%);
+
+  transition:.3s ease;
+
   overflow-y:auto;
+
+  padding-bottom:90px;
 }
 
-.emoji-grid button,
-.sticker-grid button{
-  background:#181820;
+.panel.open{
+  transform:translateY(0);
+}
+
+.panel-header{
+  position:sticky;
+  top:0;
+
+  height:65px;
+
+  display:flex;
+  align-items:center;
+
+  padding:0 17px;
+
+  background:rgba(5,5,5,.94);
+
+  backdrop-filter:blur(18px);
+
+  border-bottom:1px solid #202027;
+
+  z-index:5;
+}
+
+.panel-header h2{
+  flex:1;
+
+  text-align:center;
+
+  font-size:20px;
+}
+
+.back{
+  width:40px;
+  height:40px;
+
+  border-radius:50%;
+
+  border:1px solid #292930;
+
+  background:#111117;
+  color:#fff;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* =========================
+   EXPLORE
+========================= */
+
+.explore-search{
+  margin:15px;
+
+  height:50px;
+
+  background:#15151b;
+
+  border:1px solid #292930;
+
+  border-radius:14px;
+
+  display:flex;
+  align-items:center;
+
+  padding:0 14px;
+
+  gap:9px;
+}
+
+.explore-search input{
+  flex:1;
+
+  background:none;
+  border:0;
+  outline:0;
+
+  color:#fff;
+}
+
+.explore-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2px;
+}
+
+.explore-item{
+  aspect-ratio:1/1;
+
+  background:#151515;
+
+  overflow:hidden;
+
+  position:relative;
+}
+
+.explore-item video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* =========================
+   PROFILE
+========================= */
+
+.profile{
+  padding:28px 18px;
+}
+
+.profile-top{
+  text-align:center;
+}
+
+.profile-avatar{
+  width:100px;
+  height:100px;
+
+  border-radius:50%;
+
+  margin:auto;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:42px;
+  font-weight:950;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6e38ff,
+      #b86aff
+    );
+}
+
+.profile-top h2{
+  margin-top:13px;
+}
+
+.profile-top p{
+  color:#85858e;
+  margin-top:4px;
+}
+
+.stats{
+  display:flex;
+  justify-content:center;
+
+  gap:35px;
+
+  margin:25px 0;
+}
+
+.stat{
+  text-align:center;
+}
+
+.stat strong{
+  display:block;
+  font-size:19px;
+}
+
+.stat span{
+  color:#888;
+  font-size:12px;
+}
+
+.profile-actions{
+  display:flex;
+  gap:10px;
+}
+
+.profile-btn{
+  flex:1;
+
+  height:43px;
+
   border-radius:12px;
-  padding:8px;
+
+  background:#17171d;
+  border:1px solid #303039;
+
+  color:#fff;
+
+  font-weight:800;
 }
 
-.emoji-grid button{
-  font-size:24px;
+/* =========================
+   COMMENTS
+========================= */
+
+.comments{
+  position:fixed;
+
+  left:0;
+  right:0;
+  bottom:0;
+
+  z-index:200;
+
+  background:#111116;
+
+  border-radius:25px 25px 0 0;
+
+  transform:translateY(100%);
+
+  transition:.3s;
+
+  max-height:75vh;
+
+  padding-bottom:10px;
 }
 
-.sticker-grid button{
-  font-size:31px;
+.comments.open{
+  transform:translateY(0);
 }
 
-/* TOAST */
+.comment-head{
+  display:flex;
+  align-items:center;
+
+  justify-content:center;
+
+  height:55px;
+
+  border-bottom:1px solid #292930;
+
+  font-weight:850;
+}
+
+.comment-list{
+  height:45vh;
+
+  overflow-y:auto;
+
+  padding:15px;
+}
+
+.comment{
+  display:flex;
+  gap:10px;
+
+  margin-bottom:17px;
+}
+
+.comment-avatar{
+  width:35px;
+  height:35px;
+
+  border-radius:50%;
+
+  background:#6331ca;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:13px;
+  font-weight:800;
+}
+
+.comment-text{
+  flex:1;
+
+  color:#ddd;
+
+  font-size:14px;
+
+  line-height:1.4;
+}
+
+.comment-text strong{
+  color:#fff;
+}
+
+.comment-input{
+  display:flex;
+  gap:8px;
+
+  padding:10px 14px;
+}
+
+.comment-input input{
+  flex:1;
+
+  background:#202027;
+
+  border:1px solid #303039;
+
+  border-radius:20px;
+
+  padding:11px 15px;
+
+  color:#fff;
+
+  outline:none;
+}
+
+.comment-input button{
+  width:43px;
+
+  border-radius:50%;
+
+  background:#884cff;
+
+  color:#fff;
+}
+
+/* =========================
+   CREATE
+========================= */
+
+.create-box{
+  padding:18px;
+}
+
+.preview{
+  width:100%;
+  aspect-ratio:9/16;
+
+  max-height:55vh;
+
+  background:#111;
+
+  border-radius:18px;
+
+  overflow:hidden;
+
+  display:none;
+
+  margin-bottom:15px;
+}
+
+.preview video,
+.preview img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.upload{
+  border:1px dashed #45454e;
+
+  border-radius:18px;
+
+  min-height:150px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+
+  color:#888;
+
+  padding:20px;
+
+  margin-bottom:15px;
+}
+
+.upload input{
+  display:none;
+}
+
+.upload label{
+  cursor:pointer;
+}
+
+.caption-input{
+  width:100%;
+
+  min-height:100px;
+
+  resize:none;
+
+  background:#111117;
+
+  color:#fff;
+
+  border:1px solid #292930;
+
+  border-radius:15px;
+
+  padding:14px;
+
+  outline:none;
+}
+
+.publish{
+  width:100%;
+
+  height:50px;
+
+  border-radius:15px;
+
+  margin-top:13px;
+
+  background:#884cff;
+
+  color:#fff;
+
+  font-weight:900;
+}
+
+/* =========================
+   SETTINGS
+========================= */
+
+.setting{
+  margin:15px;
+
+  background:#111117;
+
+  border:1px solid #292930;
+
+  border-radius:17px;
+
+  padding:18px;
+
+  display:flex;
+
+  justify-content:space-between;
+  align-items:center;
+}
+
+.setting small{
+  color:#777;
+  display:block;
+  margin-top:4px;
+}
+
+/* =========================
+   TOAST
+========================= */
+
 .toast{
   position:fixed;
+
   left:50%;
-  bottom:95px;
+  bottom:90px;
+
   transform:translateX(-50%);
-  background:#202027;
-  border:1px solid #393944;
-  border-radius:15px;
-  padding:14px 20px;
-  z-index:100;
+
+  z-index:500;
+
+  background:#24242c;
+
+  border:1px solid #3b3b47;
+
+  border-radius:14px;
+
+  padding:13px 19px;
+
+  font-size:14px;
+
   max-width:90%;
+
   text-align:center;
+
   display:none;
-  box-shadow:0 10px 35px rgba(0,0,0,.45);
 }
 
 .toast.show{
   display:block;
 }
 
-/* LOADING */
-.loading{
-  color:#777783;
-  text-align:center;
-  padding:30px;
-}
+/* =========================
+   DESKTOP
+========================= */
 
-/* FIREBASE STATUS */
-.firebase-status{
-  margin:0 10px 20px;
-  padding:12px 15px;
-  border-radius:14px;
-  font-size:13px;
-  color:#aaa;
-  background:#101015;
-  border:1px solid #272730;
-}
+@media(min-width:700px){
 
-.firebase-status.ok{
-  border-color:#245b39;
-  color:#67d892;
-}
+  .feed{
+    max-width:500px;
+    margin:auto;
 
-.firebase-status.error{
-  border-color:#632d38;
-  color:#ff8799;
-}
+    border-left:1px solid #181818;
+    border-right:1px solid #181818;
+  }
 
-@media(max-width:500px){
-  .hero h1{font-size:36px}
-  .page{padding:24px 15px}
+  .top{
+    max-width:500px;
+    margin:auto;
+  }
+
+  .nav{
+    max-width:500px;
+    left:50%;
+    right:auto;
+
+    width:500px;
+
+    transform:translateX(-50%);
+  }
+
 }
 </style>
 </head>
@@ -570,428 +1018,497 @@ textarea{
 
 <div class="app">
 
-<header class="topbar">
-  <div class="logo">X-<span>DARK</span></div>
+<!-- ================= TOP ================= -->
 
-  <div class="top-actions">
+<header class="top">
 
-    <!-- MESSAGES -->
-    <button class="icon-btn" onclick="openMessages()" aria-label="Messages">
+  <div class="logo">
+    X-<span>DARK</span>
+  </div>
+
+  <div class="top-right">
+
+    <!-- Messages -->
+    <button class="top-btn" onclick="openPanel('messages')">
       <svg viewBox="0 0 24 24">
-        <path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.6 8.6 0 0 1-3.5-.8L4 20l1.8-3.5A7.2 7.2 0 0 1 4.5 12 7.5 7.5 0 0 1 12 4.5a7.5 7.5 0 0 1 8 7z"/>
+        <path d="M20 11.5a7.5 7.5 0 0 1-8 7.5
+        8.5 8.5 0 0 1-3.5-.8L4 20l1.8-3.5
+        A7.2 7.2 0 0 1 4.5 12
+        7.5 7.5 0 0 1 12 4.5a7.5 7.5 0 0 1 8 7z"/>
       </svg>
     </button>
 
-    <!-- SETTINGS -->
-    <button class="icon-btn" onclick="showPage('profile')" aria-label="Settings">
+    <!-- Settings -->
+    <button class="top-btn" onclick="openPanel('settings')">
       <svg viewBox="0 0 24 24">
-        <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-        <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-1.8 1.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5v.1h-2.6v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1-1.8-1.8.1-.1A1.7 1.7 0 0 0 8 15a1.7 1.7 0 0 0-1.5-1H6.4v-2.6h.1A1.7 1.7 0 0 0 8 10a1.7 1.7 0 0 0-.3-1.9l-.1-.1 1.8-1.8.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.5V5h2.6v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1 1.8 1.8-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.5 1h.1V14h-.1a1.7 1.7 0 0 0-1.5 1z"/>
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.7 1.7 0 0 0
+        .3 1.9l.1.1-1.8 1.8-.1-.1
+        a1.7 1.7 0 0 0-1.9-.3
+        1.7 1.7 0 0 0-1 1.5v.1h-2.6v-.1
+        a1.7 1.7 0 0 0-1-1.5
+        1.7 1.7 0 0 0-1.9.3l-.1.1-1.8-1.8
+        .1-.1A1.7 1.7 0 0 0 8 15
+        a1.7 1.7 0 0 0-1.5-1H6.4v-2.6h.1
+        A1.7 1.7 0 0 0 8 10
+        a1.7 1.7 0 0 0-.3-1.9l-.1-.1
+        1.8-1.8.1.1a1.7 1.7 0 0 0 1.9.3
+        1.7 1.7 0 0 0 1-1.5V5h2.6v.1
+        a1.7 1.7 0 0 0 1 1.5
+        1.7 1.7 0 0 0 1.9-.3l.1-.1
+        1.8 1.8-.1.1a1.7 1.7 0 0 0-.3 1.9
+        1.7 1.7 0 0 0 1.5 1h.1V14h-.1
+        a1.7 1.7 0 0 0-1.5 1z"/>
       </svg>
     </button>
 
   </div>
+
 </header>
 
-<!-- HOME -->
-<section id="homePage" class="page active">
 
-  <div class="hero">
-    <h1>Welcome to <span>X-DARK</span></h1>
-    <p>Connect. Chat. Share.</p>
-  </div>
+<!-- ================= STORIES ================= -->
 
-  <div id="firebaseStatus" class="firebase-status">
-    Connecting to Firebase...
-  </div>
+<div class="story-bar">
 
-  <div class="card">
-
-    <div class="user-row">
-      <div class="avatar">D</div>
-
-      <div>
-        <div class="user-name">Darkwing</div>
-        <div class="status">Just now</div>
-      </div>
+  <div class="story">
+    <div class="story-ring">
+      <div>+</div>
     </div>
+    You
+  </div>
 
-    <div class="post-text">
-      Welcome to X-DARK. Your private dark social experience.
+  <div class="story">
+    <div class="story-ring">
+      <div>D</div>
     </div>
+    Darkwing
+  </div>
 
-    <div class="action-row">
-      <button class="primary-btn" onclick="openChat('Darkwing')">
-        Chat
-      </button>
-
-      <button class="secondary-btn" onclick="followUser(this)">
-        Follow
-      </button>
+  <div class="story">
+    <div class="story-ring">
+      <div>N</div>
     </div>
-
+    Nova
   </div>
 
-</section>
-
-<!-- SEARCH -->
-<section id="searchPage" class="page">
-
-  <div class="hero">
-    <h1>Search</h1>
-    <p>Find people on X-DARK.</p>
-  </div>
-
-  <div class="search-box">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <circle cx="11" cy="11" r="7"/>
-      <path d="m20 20-4-4"/>
-    </svg>
-
-    <input
-      id="searchInput"
-      placeholder="Search users..."
-      oninput="searchUsers()"
-    >
-  </div>
-
-  <div id="searchResults">
-
-    <div class="card">
-      <div class="user-row">
-        <div class="avatar">D</div>
-        <div>
-          <div class="user-name">Darkwing</div>
-          <div class="status">X-DARK</div>
-        </div>
-      </div>
-
-      <button class="primary-btn" style="margin-top:18px"
-        onclick="openChat('Darkwing')">
-        Message
-      </button>
+  <div class="story">
+    <div class="story-ring">
+      <div>A</div>
     </div>
-
+    Alex
   </div>
 
-</section>
-
-<!-- CREATE -->
-<section id="createPage" class="page">
-
-  <div class="hero">
-    <h1>Create</h1>
-    <p>Share something with X-DARK.</p>
-  </div>
-
-  <div class="card">
-
-    <textarea id="postInput"
-      placeholder="What's happening?"></textarea>
-
-    <button class="primary-btn"
-      style="margin-top:15px"
-      onclick="createPost()">
-      Publish
-    </button>
-
-  </div>
-
-</section>
-
-<!-- ALERTS -->
-<section id="alertsPage" class="page">
-
-  <div class="hero">
-    <h1>Alerts</h1>
-    <p>Your notifications.</p>
-  </div>
-
-  <div class="alert">
-    <div class="alert-icon">✦</div>
-    <div>
-      <strong>Welcome to X-DARK</strong>
-      <p class="status">Your account is ready.</p>
+  <div class="story">
+    <div class="story-ring">
+      <div>X</div>
     </div>
+    XUser
   </div>
-
-  <div class="alert">
-    <div class="alert-icon">●</div>
-    <div>
-      <strong>Firebase</strong>
-      <p class="status">Real-time messaging is available.</p>
-    </div>
-  </div>
-
-</section>
-
-<!-- PROFILE -->
-<section id="profilePage" class="page">
-
-  <div class="profile-head">
-
-    <div class="big-avatar">A</div>
-
-    <h2>Ankaj</h2>
-    <p>@x-dark-user</p>
-
-  </div>
-
-  <div class="card">
-
-    <div class="user-row">
-      <div class="avatar">⚙</div>
-
-      <div>
-        <div class="user-name">Settings</div>
-        <div class="status">X-DARK account settings</div>
-      </div>
-    </div>
-
-  </div>
-
-</section>
-
-<!-- MESSAGES -->
-<section id="messagesPage" class="page">
-
-  <div class="hero">
-    <h1>Messages</h1>
-    <p>Your conversations.</p>
-  </div>
-
-  <div class="card">
-
-    <div class="chat-item" onclick="openChat('Darkwing')">
-
-      <div class="avatar">D</div>
-
-      <div class="chat-info">
-        <strong>Darkwing</strong>
-        <div class="chat-preview">Welcome to X-DARK...</div>
-      </div>
-
-    </div>
-
-    <div class="chat-item" onclick="openChat('User')">
-
-      <div class="avatar">U</div>
-
-      <div class="chat-info">
-        <strong>User</strong>
-        <div class="chat-preview">Start a conversation</div>
-      </div>
-
-    </div>
-
-    <div class="chat-item" onclick="openChat('Nova')">
-
-      <div class="avatar">N</div>
-
-      <div class="chat-info">
-        <strong>Nova</strong>
-        <div class="chat-preview">New conversation</div>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- CHAT -->
-<section id="chatPage" class="page">
-
-  <div class="chat-screen">
-
-    <div class="chat-header">
-
-      <button class="icon-btn" onclick="closeChat()">
-        <svg viewBox="0 0 24 24">
-          <path d="m15 18-6-6 6-6"/>
-        </svg>
-      </button>
-
-      <div class="avatar" style="width:43px;height:43px;font-size:18px">
-        <span id="chatAvatar">D</span>
-      </div>
-
-      <div class="chat-user">
-        <strong id="chatName">Darkwing</strong>
-        <small id="chatStatus">Connecting...</small>
-      </div>
-
-      <div class="chat-actions">
-
-        <button class="icon-btn" onclick="fakeCall()">
-          <svg viewBox="0 0 24 24">
-            <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2.1z"/>
-          </svg>
-        </button>
-
-        <button class="icon-btn" onclick="fakeVideo()">
-          <svg viewBox="0 0 24 24">
-            <rect x="3" y="6" width="13" height="12" rx="2"/>
-            <path d="m16 10 5-3v10l-5-3"/>
-          </svg>
-        </button>
-
-      </div>
-
-    </div>
-
-    <div id="messages" class="messages">
-      <div class="loading">Loading messages...</div>
-    </div>
-
-    <div class="chat-input-area">
-
-      <!-- EMOJI -->
-      <div id="emojiPicker" class="picker">
-
-        <div class="emoji-grid">
-
-          <button onclick="addEmoji('😀')">😀</button>
-          <button onclick="addEmoji('😂')">😂</button>
-          <button onclick="addEmoji('😍')">😍</button>
-          <button onclick="addEmoji('😎')">😎</button>
-          <button onclick="addEmoji('🔥')">🔥</button>
-          <button onclick="addEmoji('❤️')">❤️</button>
-          <button onclick="addEmoji('👍')">👍</button>
-          <button onclick="addEmoji('👎')">👎</button>
-          <button onclick="addEmoji('😢')">😢</button>
-          <button onclick="addEmoji('😡')">😡</button>
-          <button onclick="addEmoji('🤣')">🤣</button>
-          <button onclick="addEmoji('😉')">😉</button>
-          <button onclick="addEmoji('🤔')">🤔</button>
-          <button onclick="addEmoji('😴')">😴</button>
-          <button onclick="addEmoji('🥰')">🥰</button>
-          <button onclick="addEmoji('🤩')">🤩</button>
-          <button onclick="addEmoji('💀')">💀</button>
-          <button onclick="addEmoji('👀')">👀</button>
-          <button onclick="addEmoji('✨')">✨</button>
-          <button onclick="addEmoji('💯')">💯</button>
-
-        </div>
-
-      </div>
-
-      <!-- STICKERS -->
-      <div id="stickerPicker" class="picker">
-
-        <div class="sticker-grid">
-
-          <button onclick="sendSticker('😎','Cool')">😎</button>
-          <button onclick="sendSticker('😂','LOL')">😂</button>
-          <button onclick="sendSticker('🔥','Fire')">🔥</button>
-          <button onclick="sendSticker('❤️','Love')">❤️</button>
-          <button onclick="sendSticker('💀','Skull')">💀</button>
-          <button onclick="sendSticker('👑','King')">👑</button>
-          <button onclick="sendSticker('🤖','Robot')">🤖</button>
-          <button onclick="sendSticker('👽','Alien')">👽</button>
-          <button onclick="sendSticker('😈','Devil')">😈</button>
-          <button onclick="sendSticker('🤯','Mind Blown')">🤯</button>
-          <button onclick="sendSticker('🥶','Cold')">🥶</button>
-          <button onclick="sendSticker('💎','Diamond')">💎</button>
-
-        </div>
-
-      </div>
-
-      <div class="chat-input">
-
-        <!-- EMOJI BUTTON -->
-        <button class="icon-btn"
-          style="width:38px;height:38px"
-          onclick="toggleEmoji()">
-          😊
-        </button>
-
-        <!-- STICKER -->
-        <button class="icon-btn"
-          style="width:38px;height:38px"
-          onclick="toggleSticker()">
-          ✦
-        </button>
-
-        <input
-          id="messageInput"
-          placeholder="Message..."
-          autocomplete="off"
-          onkeydown="messageKey(event)"
-        >
-
-        <button class="send-btn" onclick="sendMessage()">
-
-          <svg viewBox="0 0 24 24">
-            <path d="m22 2-7 20-4-9-9-4z"/>
-            <path d="M22 2 11 13"/>
-          </svg>
-
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
 
 </div>
 
-<!-- BOTTOM NAV -->
-<nav class="bottom-nav">
 
-  <button id="navHome"
-    class="nav-btn active"
-    onclick="showPage('home')">
+<!-- ================= FEED ================= -->
+
+<main class="feed" id="feed">
+
+
+<!-- REEL 1 -->
+
+<section class="reel">
+
+  <video
+    src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+    loop
+    muted
+    playsinline
+    autoplay>
+  </video>
+
+  <div class="reel-info">
+
+    <div class="creator">
+
+      <div class="creator-avatar">
+        D
+      </div>
+
+      <div class="creator-name">
+        Darkwing
+      </div>
+
+      <button class="follow-mini"
+        onclick="follow(this)">
+        Follow
+      </button>
+
+    </div>
+
+    <div class="caption">
+      Welcome to X-DARK 🔥
+      The new dark social experience.
+    </div>
+
+    <div class="tags">
+      #xdark #reels #viral #dark
+    </div>
+
+    <div class="music">
+      <div class="music-disc">♪</div>
+      Original sound • Darkwing
+    </div>
+
+  </div>
+
+
+  <div class="actions">
+
+    <button class="action like"
+      onclick="likePost(this)">
+
+      <svg viewBox="0 0 24 24">
+        <path d="M20.8 8.6c0 5.5-8.8 10.2-8.8 10.2
+        S3.2 14.1 3.2 8.6
+        A4.6 4.6 0 0 1 12 6.3
+        a4.6 4.6 0 0 1 8.8 2.3z"/>
+      </svg>
+
+      <span>12.4K</span>
+    </button>
+
+
+    <button class="action"
+      onclick="openComments()">
+
+      <svg viewBox="0 0 24 24">
+        <path d="M20 11.5a7.5 7.5 0 0 1-8 7.5
+        8.5 8.5 0 0 1-3.5-.8L4 20l1.8-3.5
+        A7.2 7.2 0 0 1 4.5 12
+        7.5 7.5 0 0 1 12 4.5a7.5 7.5 0 0 1 8 7z"/>
+      </svg>
+
+      <span>842</span>
+
+    </button>
+
+
+    <button class="action"
+      onclick="sharePost()">
+
+      <svg viewBox="0 0 24 24">
+        <path d="M12 16V3"/>
+        <path d="m7 8 5-5 5 5"/>
+        <path d="M5 13v6a2 2 0 0 0 2 2h10
+        a2 2 0 0 0 2-2v-6"/>
+      </svg>
+
+      <span>Share</span>
+
+    </button>
+
+
+    <button class="action save"
+      onclick="savePost(this)">
+
+      <svg viewBox="0 0 24 24">
+        <path d="M6 3h12v18l-6-4-6 4z"/>
+      </svg>
+
+      <span>Save</span>
+
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- REEL 2 -->
+
+<section class="reel">
+
+  <video
+    src="https://www.w3schools.com/html/mov_bbb.mp4"
+    loop
+    muted
+    playsinline>
+  </video>
+
+  <div class="reel-info">
+
+    <div class="creator">
+
+      <div class="creator-avatar">
+        N
+      </div>
+
+      <div class="creator-name">
+        Nova
+      </div>
+
+      <button class="follow-mini"
+        onclick="follow(this)">
+        Follow
+      </button>
+
+    </div>
+
+    <div class="caption">
+      Create. Explore. Connect. ✨
+    </div>
+
+    <div class="tags">
+      #nova #xdark #explore
+    </div>
+
+    <div class="music">
+      <div class="music-disc">♪</div>
+      Original sound • Nova
+    </div>
+
+  </div>
+
+
+  <div class="actions">
+
+    <button class="action like"
+      onclick="likePost(this)">
+
+      <svg viewBox="0 0 24 24">
+        <path d="M20.8 8.6c0 5.5-8.8 10.2-8.8 10.2
+        S3.2 14.1 3.2 8.6
+        A4.6 4.6 0 0 1 12 6.3
+        a4.6 4.6 0 0 1 8.8 2.3z"/>
+      </svg>
+
+      <span>8.7K</span>
+    </button>
+
+
+    <button class="action"
+      onclick="openComments()">
+
+      <svg viewBox="0 0 24 24">
+        <path d="M20 11.5a7.5 7.5 0 0 1-8 7.5
+        8.5 8.5 0 0 1-3.5-.8L4 20l1.8-3.5
+        A7.2 7.2 0 0 1 4.5 12
+        7.5 7.5 0 0 1 12 4.5a7.5 7.5 0 0 1 8 7z"/>
+      </svg>
+
+      <span>315</span>
+
+    </button>
+
+
+    <button class="action"
+      onclick="sharePost()">
+
+      <svg viewBox="0 0 24 24">
+        <path d="M12 16V3"/>
+        <path d="m7 8 5-5 5 5"/>
+        <path d="M5 13v6a2 2 0 0 0 2 2h10
+        a2 2 0 0 0 2-2v-6"/>
+      </svg>
+
+      <span>Share</span>
+
+    </button>
+
+
+    <button class="action save"
+      onclick="savePost(this)">
+
+      <svg viewBox="0 0 24 24">
+        <path d="M6 3h12v18l-6-4-6 4z"/>
+      </svg>
+
+      <span>Save</span>
+
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- REEL 3 -->
+
+<section class="reel">
+
+  <video
+    src="https://media.w3.org/2010/05/sintel/trailer.mp4"
+    loop
+    muted
+    playsinline>
+  </video>
+
+  <div class="reel-info">
+
+    <div class="creator">
+
+      <div class="creator-avatar">
+        A
+      </div>
+
+      <div class="creator-name">
+        Alex
+      </div>
+
+      <button class="follow-mini"
+        onclick="follow(this)">
+        Follow
+      </button>
+
+    </div>
+
+    <div class="caption">
+      Welcome to the next generation of social media.
+    </div>
+
+    <div class="tags">
+      #social #video #xdark
+    </div>
+
+    <div class="music">
+      <div class="music-disc">♪</div>
+      Original sound • Alex
+    </div>
+
+  </div>
+
+
+  <div class="actions">
+
+    <button class="action like"
+      onclick="likePost(this)">
+
+      <svg viewBox="0 0 24 24">
+        <path d="M20.8 8.6c0 5.5-8.8 10.2-8.8 10.2
+        S3.2 14.1 3.2 8.6
+        A4.6 4.6 0 0 1 12 6.3
+        a4.6 4.6 0 0 1 8.8 2.3z"/>
+      </svg>
+
+      <span>21K</span>
+    </button>
+
+
+    <button class="action"
+      onclick="openComments()">
+
+      <svg viewBox="0 0 24 24">
+        <path d="M20 11.5a7.5 7.5 0 0 1-8 7.5
+        8.5 8.5 0 0 1-3.5-.8L4 20l1.8-3.5
+        A7.2 7.2 0 0 1 4.5 12
+        7.5 7.5 0 0 1 12 4.5a7.5 7.5 0 0 1 8 7z"/>
+      </svg>
+
+      <span>1.2K</span>
+
+    </button>
+
+
+    <button class="action"
+      onclick="sharePost()">
+
+      <svg viewBox="0 0 24 24">
+        <path d="M12 16V3"/>
+        <path d="m7 8 5-5 5 5"/>
+        <path d="M5 13v6a2 2 0 0 0 2 2h10
+        a2 2 0 0 0 2-2v-6"/>
+      </svg>
+
+      <span>Share</span>
+
+    </button>
+
+
+    <button class="action save"
+      onclick="savePost(this)">
+
+      <svg viewBox="0 0 24 24">
+        <path d="M6 3h12v18l-6-4-6 4z"/>
+      </svg>
+
+      <span>Save</span>
+
+    </button>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- ================= BOTTOM NAV ================= -->
+
+<nav class="nav">
+
+  <button class="nav-btn active"
+    onclick="goHome()">
 
     <svg viewBox="0 0 24 24">
-      <path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>
+      <path d="m3 10 9-7 9 7v10
+      a1 1 0 0 1-1 1h-5v-6H9v6H4
+      a1 1 0 0 1-1-1z"/>
     </svg>
 
     Home
+
   </button>
 
-  <button id="navSearch"
-    class="nav-btn"
-    onclick="showPage('search')">
+
+  <button class="nav-btn"
+    onclick="openPanel('explore')">
 
     <svg viewBox="0 0 24 24">
       <circle cx="11" cy="11" r="7"/>
       <path d="m20 20-4-4"/>
     </svg>
 
-    Search
+    Explore
+
   </button>
 
-  <button id="navCreate"
-    class="nav-btn"
-    onclick="showPage('create')">
 
-    <svg viewBox="0 0 24 24">
-      <path d="M12 5v14M5 12h14"/>
-    </svg>
+  <button class="nav-btn"
+    onclick="openPanel('create')">
+
+    <span class="create-nav">
+
+      <svg viewBox="0 0 24 24">
+        <path d="M12 5v14M5 12h14"
+          stroke="currentColor"
+          fill="none"
+          stroke-width="2"
+          stroke-linecap="round"/>
+      </svg>
+
+    </span>
 
     Create
+
   </button>
 
-  <button id="navAlerts"
-    class="nav-btn"
-    onclick="showPage('alerts')">
+
+  <button class="nav-btn"
+    onclick="openPanel('notifications')">
 
     <svg viewBox="0 0 24 24">
-      <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/>
+      <path d="M18 8a6 6 0 0 0-12 0
+      c0 7-3 7-3 9h18c0-2-3-2-3-9"/>
       <path d="M10 21h4"/>
     </svg>
 
-    Alerts
+    Activity
+
   </button>
 
-  <button id="navProfile"
-    class="nav-btn"
-    onclick="showPage('profile')">
+
+  <button class="nav-btn"
+    onclick="openPanel('profile')">
 
     <svg viewBox="0 0 24 24">
       <circle cx="12" cy="8" r="4"/>
@@ -999,866 +1516,1003 @@ textarea{
     </svg>
 
     Profile
+
   </button>
 
 </nav>
 
-<div id="toast" class="toast"></div>
 
-<script type="module">
+<!-- ================= EXPLORE ================= -->
 
-/* =========================================
-   FIREBASE
-========================================= */
+<section id="explore"
+  class="panel">
 
-import {
-  initializeApp
-} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+  <div class="panel-header">
 
-import {
-  getAuth,
-  signInAnonymously,
-  onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+    <button class="back"
+      onclick="closePanels()">
+      ←
+    </button>
 
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  query,
-  orderBy,
-  onSnapshot,
-  serverTimestamp,
-  updateDoc,
-  doc,
-  arrayUnion,
-  setDoc
-} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+    <h2>Explore</h2>
 
-import {
-  getStorage,
-  ref,
-  uploadBytes,
-  getDownloadURL
-} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-storage.js";
+    <div style="width:40px"></div>
+
+  </div>
+
+  <div class="explore-search">
+
+    <svg width="20" viewBox="0 0 24 24"
+      fill="none" stroke="#888"
+      stroke-width="2">
+      <circle cx="11" cy="11" r="7"/>
+      <path d="m20 20-4-4"/>
+    </svg>
+
+    <input
+      placeholder="Search X-DARK"
+      oninput="searchExplore(this.value)"
+    >
+
+  </div>
 
 
-/* =========================================
-   FIREBASE CONFIG
-========================================= */
+  <div class="explore-grid"
+    id="exploreGrid">
 
-const firebaseConfig = {
-  apiKey: "AIzaC8S8Hfx0E7OpnfclF7UGYVcmdU38yuxtsBY",
-  authDomain: "darkwing-a717a.firebaseapp.com",
-  projectId: "darkwing-a717a",
-  storageBucket: "darkwing-a717a.firebasestorage.app",
-  messagingSenderId: "352453390196",
-  appId: "1:352453390196:web:7c375a26a823b5633a4621",
-  measurementId: "G-5RVX9NET3W"
-};
+    <div class="explore-item">
+      <video
+        src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+        muted loop autoplay playsinline>
+      </video>
+    </div>
+
+    <div class="explore-item">
+      <video
+        src="https://www.w3schools.com/html/mov_bbb.mp4"
+        muted loop autoplay playsinline>
+      </video>
+    </div>
+
+    <div class="explore-item">
+      <video
+        src="https://media.w3.org/2010/05/sintel/trailer.mp4"
+        muted loop autoplay playsinline>
+      </video>
+    </div>
+
+    <div class="explore-item">
+      <video
+        src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+        muted loop autoplay playsinline>
+      </video>
+    </div>
+
+    <div class="explore-item">
+      <video
+        src="https://www.w3schools.com/html/mov_bbb.mp4"
+        muted loop autoplay playsinline>
+      </video>
+    </div>
+
+    <div class="explore-item">
+      <video
+        src="https://media.w3.org/2010/05/sintel/trailer.mp4"
+        muted loop autoplay playsinline>
+      </video>
+    </div>
+
+  </div>
+
+</section>
 
 
-/* =========================================
-   INITIALIZE
-========================================= */
+<!-- ================= CREATE ================= -->
 
-let app;
-let auth;
-let db;
-let storage;
+<section id="create"
+  class="panel">
 
-let currentFirebaseUser = null;
-let currentChat = null;
+  <div class="panel-header">
 
-let stopMessages = null;
-let stopPresence = null;
+    <button class="back"
+      onclick="closePanels()">
+      ←
+    </button>
 
-const statusBox =
-  document.getElementById("firebaseStatus");
+    <h2>Create</h2>
 
+    <div style="width:40px"></div>
 
-function setFirebaseStatus(text,type=""){
-  statusBox.textContent = text;
-  statusBox.className =
-    "firebase-status " + type;
-}
+  </div>
 
 
-function toast(message){
+  <div class="create-box">
 
-  const el = document.getElementById("toast");
+    <div class="preview"
+      id="preview">
 
-  el.textContent = message;
-  el.classList.add("show");
+      <video id="previewVideo"
+        controls></video>
+
+    </div>
+
+
+    <div class="upload">
+
+      <label for="videoInput">
+
+        <div style="font-size:38px">
+          +
+        </div>
+
+        <div>
+          Select a video from your phone
+        </div>
+
+      </label>
+
+      <input
+        id="videoInput"
+        type="file"
+        accept="video/*"
+        onchange="previewVideo(this)"
+      >
+
+    </div>
+
+
+    <textarea
+      id="newCaption"
+      class="caption-input"
+      placeholder="Write a caption... #xdark #reels">
+    </textarea>
+
+
+    <button class="publish"
+      onclick="publishVideo()">
+
+      Publish Reel
+
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= PROFILE ================= -->
+
+<section id="profile"
+  class="panel">
+
+  <div class="panel-header">
+
+    <button class="back"
+      onclick="closePanels()">
+      ←
+    </button>
+
+    <h2>Profile</h2>
+
+    <div style="width:40px"></div>
+
+  </div>
+
+
+  <div class="profile">
+
+    <div class="profile-top">
+
+      <div class="profile-avatar">
+        A
+      </div>
+
+      <h2>Ankaj</h2>
+
+      <p>@x_dark_user</p>
+
+    </div>
+
+
+    <div class="stats">
+
+      <div class="stat">
+        <strong id="postCount">3</strong>
+        <span>Posts</span>
+      </div>
+
+      <div class="stat">
+        <strong>12.4K</strong>
+        <span>Followers</span>
+      </div>
+
+      <div class="stat">
+        <strong>287</strong>
+        <span>Following</span>
+      </div>
+
+    </div>
+
+
+    <div class="profile-actions">
+
+      <button class="profile-btn">
+        Edit profile
+      </button>
+
+      <button class="profile-btn"
+        onclick="openPanel('settings')">
+        Settings
+      </button>
+
+    </div>
+
+
+    <div style="
+      margin-top:25px;
+      border-top:1px solid #222;
+      padding-top:20px;
+    ">
+
+      <h3>My Reels</h3>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= SETTINGS ================= -->
+
+<section id="settings"
+  class="panel">
+
+  <div class="panel-header">
+
+    <button class="back"
+      onclick="closePanels()">
+      ←
+    </button>
+
+    <h2>Settings</h2>
+
+    <div style="width:40px"></div>
+
+  </div>
+
+
+  <div class="setting">
+
+    <div>
+      <strong>Dark Mode</strong>
+      <small>X-DARK black theme</small>
+    </div>
+
+    <strong>ON</strong>
+
+  </div>
+
+
+  <div class="setting"
+    onclick="toast('Privacy settings coming soon')">
+
+    <div>
+      <strong>Privacy</strong>
+      <small>Control your account privacy</small>
+    </div>
+
+    <span>›</span>
+
+  </div>
+
+
+  <div class="setting"
+    onclick="toast('Notifications settings coming soon')">
+
+    <div>
+      <strong>Notifications</strong>
+      <small>Manage your alerts</small>
+    </div>
+
+    <span>›</span>
+
+  </div>
+
+
+  <div class="setting"
+    onclick="toast('Account settings coming soon')">
+
+    <div>
+      <strong>Account</strong>
+      <small>Manage your X-DARK account</small>
+    </div>
+
+    <span>›</span>
+
+  </div>
+
+</section>
+
+
+<!-- ================= MESSAGES ================= -->
+
+<section id="messages"
+  class="panel">
+
+  <div class="panel-header">
+
+    <button class="back"
+      onclick="closePanels()">
+      ←
+    </button>
+
+    <h2>Messages</h2>
+
+    <div style="width:40px"></div>
+
+  </div>
+
+
+  <div style="padding:15px">
+
+    <div class="setting"
+      onclick="openChat('Darkwing')">
+
+      <div style="
+        display:flex;
+        align-items:center;
+        gap:12px;
+      ">
+
+        <div class="creator-avatar">
+          D
+        </div>
+
+        <div>
+          <strong>Darkwing</strong>
+          <small>Welcome to X-DARK</small>
+        </div>
+
+      </div>
+
+      <span>›</span>
+
+    </div>
+
+
+    <div class="setting"
+      onclick="openChat('Nova')">
+
+      <div style="
+        display:flex;
+        align-items:center;
+        gap:12px;
+      ">
+
+        <div class="creator-avatar">
+          N
+        </div>
+
+        <div>
+          <strong>Nova</strong>
+          <small>Start a conversation</small>
+        </div>
+
+      </div>
+
+      <span>›</span>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= NOTIFICATIONS ================= -->
+
+<section id="notifications"
+  class="panel">
+
+  <div class="panel-header">
+
+    <button class="back"
+      onclick="closePanels()">
+      ←
+    </button>
+
+    <h2>Activity</h2>
+
+    <div style="width:40px"></div>
+
+  </div>
+
+
+  <div style="padding:15px">
+
+    <div class="setting">
+
+      <div>
+        <strong>Darkwing liked your Reel</strong>
+        <small>2 minutes ago</small>
+      </div>
+
+      ❤️
+
+    </div>
+
+
+    <div class="setting">
+
+      <div>
+        <strong>Nova started following you</strong>
+        <small>10 minutes ago</small>
+      </div>
+
+      <span>+</span>
+
+    </div>
+
+
+    <div class="setting">
+
+      <div>
+        <strong>Your Reel reached 1K views</strong>
+        <small>1 hour ago</small>
+      </div>
+
+      🔥
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= COMMENTS ================= -->
+
+<div id="comments"
+  class="comments">
+
+  <div class="comment-head">
+    Comments
+  </div>
+
+
+  <div class="comment-list"
+    id="commentList">
+
+    <div class="comment">
+
+      <div class="comment-avatar">
+        D
+      </div>
+
+      <div class="comment-text">
+        <strong>Darkwing</strong><br>
+        This looks amazing 🔥
+      </div>
+
+    </div>
+
+
+    <div class="comment">
+
+      <div class="comment-avatar">
+        N
+      </div>
+
+      <div class="comment-text">
+        <strong>Nova</strong><br>
+        Welcome to X-DARK!
+      </div>
+
+    </div>
+
+
+    <div class="comment">
+
+      <div class="comment-avatar">
+        A
+      </div>
+
+      <div class="comment-text">
+        <strong>Alex</strong><br>
+        Nice reel 👀
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="comment-input">
+
+    <input
+      id="commentInput"
+      placeholder="Add a comment..."
+      onkeydown="commentKey(event)"
+    >
+
+    <button onclick="addComment()">
+      ↑
+    </button>
+
+  </div>
+
+</div>
+
+
+<div id="toast"
+  class="toast">
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   BASIC
+========================= */
+
+function toast(text){
+
+  const t =
+    document.getElementById("toast");
+
+  t.textContent=text;
+
+  t.classList.add("show");
 
   setTimeout(()=>{
-    el.classList.remove("show");
-  },4500);
-}
-
-
-/* =========================================
-   START FIREBASE
-========================================= */
-
-try{
-
-  app = initializeApp(firebaseConfig);
-
-  auth = getAuth(app);
-
-  db = getFirestore(app);
-
-  storage = getStorage(app);
-
-  setFirebaseStatus(
-    "Connecting to Firebase...",
-    ""
-  );
-
-  onAuthStateChanged(auth,(user)=>{
-
-    if(user){
-
-      currentFirebaseUser = user;
-
-      console.log(
-        "Firebase authenticated:",
-        user.uid
-      );
-
-      setFirebaseStatus(
-        "Firebase connected",
-        "ok"
-      );
-
-      if(currentChat){
-
-        listenMessages();
-
-      }
-
-    }else{
-
-      currentFirebaseUser = null;
-
-    }
-
-  });
-
-
-  signInAnonymously(auth)
-    .then((result)=>{
-
-      currentFirebaseUser = result.user;
-
-      console.log(
-        "Anonymous login successful:",
-        result.user.uid
-      );
-
-      setFirebaseStatus(
-        "Firebase connected",
-        "ok"
-      );
-
-      if(currentChat){
-
-        listenMessages();
-
-      }
-
-    })
-    .catch((error)=>{
-
-      console.error(
-        "FIREBASE AUTH ERROR",
-        error
-      );
-
-      const code =
-        error.code || "unknown";
-
-      const message =
-        error.message || "Unknown Firebase error";
-
-      setFirebaseStatus(
-        "Firebase Error: " + code,
-        "error"
-      );
-
-      toast(
-        "Firebase Error: " +
-        code +
-        " — " +
-        message
-      );
-
-    });
-
-}catch(error){
-
-  console.error(
-    "Firebase initialization error:",
-    error
-  );
-
-  setFirebaseStatus(
-    "Firebase Init Error: " +
-    (error.message || error),
-    "error"
-  );
+    t.classList.remove("show");
+  },3000);
 
 }
 
 
-/* =========================================
-   NAVIGATION
-========================================= */
+/* =========================
+   PANELS
+========================= */
 
-window.showPage = function(page){
+function openPanel(id){
 
-  document
-    .querySelectorAll(".page")
-    .forEach(el=>{
-      el.classList.remove("active");
-    });
+  closePanels();
 
-  const target =
-    document.getElementById(page+"Page");
+  const panel =
+    document.getElementById(id);
 
-  if(target){
-    target.classList.add("active");
+  if(panel){
+
+    panel.classList.add("open");
+
   }
 
+}
+
+
+function closePanels(){
+
   document
-    .querySelectorAll(".nav-btn")
-    .forEach(el=>{
-      el.classList.remove("active");
+    .querySelectorAll(".panel")
+    .forEach(p=>{
+      p.classList.remove("open");
     });
-
-  const nav =
-    document.getElementById("nav"+capitalize(page));
-
-  if(nav){
-    nav.classList.add("active");
-  }
-
-};
-
-
-function capitalize(text){
-
-  return text.charAt(0).toUpperCase()
-    + text.slice(1);
 
 }
 
 
-/* =========================================
-   MESSAGES
-========================================= */
+function goHome(){
 
-window.openMessages = function(){
+  closePanels();
 
-  showPage("messages");
-
-};
-
-
-function chatId(name){
-
-  return name
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g,"_");
+  document
+    .getElementById("feed")
+    .scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
 
 }
 
 
-window.openChat = function(name){
+/* =========================
+   LIKE
+========================= */
 
-  currentChat = name;
+function likePost(button){
 
-  document
-    .querySelectorAll(".page")
-    .forEach(el=>{
-      el.classList.remove("active");
-    });
+  button.classList.toggle("active");
 
-  document
-    .getElementById("chatPage")
-    .classList.add("active");
+  const span =
+    button.querySelector("span");
 
-  document.getElementById(
-    "chatName"
-  ).textContent = name;
+  if(button.classList.contains("active")){
 
-  document.getElementById(
-    "chatAvatar"
-  ).textContent =
-    name.charAt(0).toUpperCase();
+    span.dataset.old =
+      span.textContent;
 
-  document.getElementById(
-    "chatStatus"
-  ).textContent =
-    currentFirebaseUser
-      ? "Online"
-      : "Connecting...";
-
-  document.getElementById(
-    "messages"
-  ).innerHTML =
-    '<div class="loading">Loading messages...</div>';
-
-  if(currentFirebaseUser){
-
-    listenMessages();
+    span.textContent="Liked";
 
   }else{
 
-    toast(
-      "Waiting for Firebase authentication..."
-    );
+    span.textContent =
+      span.dataset.old || "Like";
 
   }
-
-};
-
-
-window.closeChat = function(){
-
-  currentChat = null;
-
-  if(stopMessages){
-
-    stopMessages();
-    stopMessages = null;
-
-  }
-
-  if(stopPresence){
-
-    stopPresence();
-    stopPresence = null;
-
-  }
-
-  showPage("messages");
-
-};
-
-
-/* =========================================
-   LISTEN MESSAGES
-========================================= */
-
-function listenMessages(){
-
-  if(!currentFirebaseUser || !currentChat || !db){
-    return;
-  }
-
-  if(stopMessages){
-
-    stopMessages();
-
-    stopMessages = null;
-
-  }
-
-  const messagesRef =
-    collection(
-      db,
-      "chats",
-      chatId(currentChat),
-      "messages"
-    );
-
-  const q =
-    query(
-      messagesRef,
-      orderBy("createdAt","asc")
-    );
-
-  stopMessages =
-    onSnapshot(
-      q,
-      (snapshot)=>{
-
-        const container =
-          document.getElementById("messages");
-
-        container.innerHTML = "";
-
-        if(snapshot.empty){
-
-          container.innerHTML =
-            '<div class="loading">No messages yet. Say hello 👋</div>';
-
-          return;
-
-        }
-
-        snapshot.forEach(messageDoc=>{
-
-          const data =
-            messageDoc.data();
-
-          renderMessage(
-            messageDoc.id,
-            data
-          );
-
-        });
-
-        container.scrollTop =
-          container.scrollHeight;
-
-      },
-      (error)=>{
-
-        console.error(
-          "Message listener error:",
-          error
-        );
-
-        document.getElementById(
-          "messages"
-        ).innerHTML =
-          `<div class="loading">
-            Firebase error:<br>
-            ${escapeHtml(error.code || "unknown")}
-          </div>`;
-
-        toast(
-          "Chat Error: " +
-          (error.code || error.message)
-        );
-
-      }
-    );
 
 }
 
 
-/* =========================================
-   RENDER MESSAGE
-========================================= */
+/* =========================
+   SAVE
+========================= */
 
-function renderMessage(id,data){
+function savePost(button){
 
-  const container =
-    document.getElementById("messages");
+  button.classList.toggle("active");
+
+  if(button.classList.contains("active")){
+
+    toast("Saved to your collection");
+
+  }else{
+
+    toast("Removed from saved");
+
+  }
+
+}
+
+
+/* =========================
+   FOLLOW
+========================= */
+
+function follow(button){
+
+  if(button.textContent==="Follow"){
+
+    button.textContent="Following";
+
+    toast("Following");
+
+  }else{
+
+    button.textContent="Follow";
+
+    toast("Unfollowed");
+
+  }
+
+}
+
+
+/* =========================
+   SHARE
+========================= */
+
+async function sharePost(){
+
+  const data={
+    title:"X-DARK Reel",
+    text:"Check this Reel on X-DARK"
+  };
+
+  try{
+
+    if(navigator.share){
+
+      await navigator.share(data);
+
+    }else{
+
+      await navigator.clipboard.writeText(
+        location.href
+      );
+
+      toast("Link copied");
+
+    }
+
+  }catch(e){}
+
+}
+
+
+/* =========================
+   COMMENTS
+========================= */
+
+function openComments(){
+
+  document
+    .getElementById("comments")
+    .classList.add("open");
+
+}
+
+
+function closeComments(){
+
+  document
+    .getElementById("comments")
+    .classList.remove("open");
+
+}
+
+
+function commentKey(e){
+
+  if(e.key==="Enter"){
+
+    addComment();
+
+  }
+
+}
+
+
+function addComment(){
+
+  const input =
+    document.getElementById("commentInput");
+
+  const text =
+    input.value.trim();
+
+  if(!text){
+
+    return;
+
+  }
+
+  const list =
+    document.getElementById("commentList");
 
   const div =
     document.createElement("div");
 
-  const mine =
-    currentFirebaseUser &&
-    data.senderId ===
-    currentFirebaseUser.uid;
+  div.className="comment";
 
-  if(data.type === "sticker"){
+  div.innerHTML=`
 
-    div.className =
-      "msg sticker-msg " +
-      (mine ? "me" : "them");
+    <div class="comment-avatar">
+      A
+    </div>
 
-    div.innerHTML =
-      escapeHtml(data.sticker || "✨");
+    <div class="comment-text">
+      <strong>Ankaj</strong><br>
+      ${escapeHTML(text)}
+    </div>
 
-    container.appendChild(div);
+  `;
 
-    return;
+  list.appendChild(div);
 
-  }
+  input.value="";
 
-  div.className =
-    "msg " +
-    (mine ? "me" : "them");
-
-  let text =
-    escapeHtml(data.text || "");
-
-  div.innerHTML =
-    text +
-    `<span class="msg-time">
-      ${mine ? "✓✓" : ""}
-    </span>`;
-
-  container.appendChild(div);
+  list.scrollTop =
+    list.scrollHeight;
 
 }
 
 
-/* =========================================
-   SEND MESSAGE
-========================================= */
+/* =========================
+   ESCAPE
+========================= */
 
-window.sendMessage = async function(){
+function escapeHTML(text){
+
+  return text
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+
+/* =========================
+   VIDEO PREVIEW
+========================= */
+
+function previewVideo(input){
+
+  const file =
+    input.files[0];
+
+  if(!file){
+
+    return;
+
+  }
+
+  const preview =
+    document.getElementById("preview");
+
+  const video =
+    document.getElementById("previewVideo");
+
+  video.src =
+    URL.createObjectURL(file);
+
+  preview.style.display="block";
+
+}
+
+
+/* =========================
+   PUBLISH
+========================= */
+
+function publishVideo(){
 
   const input =
-    document.getElementById("messageInput");
+    document.getElementById("videoInput");
 
-  const text =
-    input.value.trim();
+  const caption =
+    document.getElementById("newCaption");
 
-  if(!text){
-    return;
-  }
+  if(!input.files.length){
 
-  if(!currentFirebaseUser){
-
-    toast(
-      "Firebase is not connected yet."
-    );
+    toast("Please select a video first");
 
     return;
 
   }
 
-  if(!currentChat){
+  toast(
+    "Reel ready! Backend upload will be connected next."
+  );
 
-    toast(
-      "Open a chat first."
-    );
+  caption.value="";
 
-    return;
-
-  }
-
-  try{
-
-    await addDoc(
-      collection(
-        db,
-        "chats",
-        chatId(currentChat),
-        "messages"
-      ),
-      {
-        text:text,
-        senderId:
-          currentFirebaseUser.uid,
-        senderName:"Ankaj",
-        type:"text",
-        seenBy:[
-          currentFirebaseUser.uid
-        ],
-        createdAt:
-          serverTimestamp()
-      }
-    );
-
-    input.value = "";
-
-  }catch(error){
-
-    console.error(
-      "Send message error:",
-      error
-    );
-
-    toast(
-      "Send Error: " +
-      (error.code || error.message)
-    );
-
-  }
-
-};
+}
 
 
-/* =========================================
-   ENTER SEND
-========================================= */
-
-window.messageKey = function(event){
-
-  if(event.key === "Enter" && !event.shiftKey){
-
-    event.preventDefault();
-
-    sendMessage();
-
-  }
-
-};
-
-
-/* =========================================
-   EMOJI
-========================================= */
-
-window.toggleEmoji = function(){
-
-  document
-    .getElementById("emojiPicker")
-    .classList.toggle("show");
-
-  document
-    .getElementById("stickerPicker")
-    .classList.remove("show");
-
-};
-
-
-window.addEmoji = function(emoji){
-
-  const input =
-    document.getElementById("messageInput");
-
-  input.value += emoji;
-
-  input.focus();
-
-};
-
-
-/* =========================================
-   STICKERS
-========================================= */
-
-window.toggleSticker = function(){
-
-  document
-    .getElementById("stickerPicker")
-    .classList.toggle("show");
-
-  document
-    .getElementById("emojiPicker")
-    .classList.remove("show");
-
-};
-
-
-window.sendSticker = async function(
-  sticker,
-  name
-){
-
-  if(!currentFirebaseUser){
-
-    toast(
-      "Firebase is not connected."
-    );
-
-    return;
-
-  }
-
-  if(!currentChat){
-
-    return;
-
-  }
-
-  try{
-
-    await addDoc(
-      collection(
-        db,
-        "chats",
-        chatId(currentChat),
-        "messages"
-      ),
-      {
-        type:"sticker",
-        sticker:sticker,
-        stickerName:name,
-        senderId:
-          currentFirebaseUser.uid,
-        senderName:"Ankaj",
-        seenBy:[
-          currentFirebaseUser.uid
-        ],
-        createdAt:
-          serverTimestamp()
-      }
-    );
-
-    document
-      .getElementById("stickerPicker")
-      .classList.remove("show");
-
-  }catch(error){
-
-    console.error(error);
-
-    toast(
-      "Sticker Error: " +
-      (error.code || error.message)
-    );
-
-  }
-
-};
-
-
-/* =========================================
+/* =========================
    SEARCH
-========================================= */
+========================= */
 
-window.searchUsers = function(){
+function searchExplore(value){
 
-  const value =
-    document
-      .getElementById("searchInput")
-      .value
-      .toLowerCase()
-      .trim();
+  value=value.toLowerCase();
 
-  const result =
-    document.getElementById(
-      "searchResults"
+  if(value){
+
+    toast(
+      "Searching X-DARK for: "+value
     );
 
-  if(!value){
-
-    result.innerHTML = `
-      <div class="card">
-        <div class="user-row">
-          <div class="avatar">D</div>
-          <div>
-            <div class="user-name">Darkwing</div>
-            <div class="status">X-DARK</div>
-          </div>
-        </div>
-
-        <button class="primary-btn"
-          style="margin-top:18px"
-          onclick="openChat('Darkwing')">
-          Message
-        </button>
-      </div>
-    `;
-
-    return;
-
   }
-
-  if("darkwing".includes(value)){
-
-    result.innerHTML = `
-      <div class="card">
-
-        <div class="user-row">
-
-          <div class="avatar">D</div>
-
-          <div>
-            <div class="user-name">
-              Darkwing
-            </div>
-
-            <div class="status">
-              X-DARK user
-            </div>
-          </div>
-
-        </div>
-
-        <button
-          class="primary-btn"
-          style="margin-top:18px"
-          onclick="openChat('Darkwing')">
-          Message
-        </button>
-
-      </div>
-    `;
-
-  }else{
-
-    result.innerHTML = `
-      <div class="loading">
-        No users found.
-      </div>
-    `;
-
-  }
-
-};
-
-
-/* =========================================
-   CREATE POST
-========================================= */
-
-window.createPost = function(){
-
-  const input =
-    document.getElementById("postInput");
-
-  const text =
-    input.value.trim();
-
-  if(!text){
-
-    toast("Write something first.");
-
-    return;
-
-  }
-
-  toast("Post created successfully.");
-
-  input.value = "";
-
-};
-
-
-/* =========================================
-   FOLLOW
-========================================= */
-
-window.followUser = function(button){
-
-  button.textContent = "Following";
-
-  button.disabled = true;
-
-  toast("Darkwing followed.");
-
-};
-
-
-/* =========================================
-   CALL / VIDEO
-========================================= */
-
-window.fakeCall = function(){
-
-  toast(
-    "Voice calling will be connected in the next update."
-  );
-
-};
-
-
-window.fakeVideo = function(){
-
-  toast(
-    "Video calling will be connected in the next update."
-  );
-
-};
-
-
-/* =========================================
-   ESCAPE HTML
-========================================= */
-
-function escapeHtml(value){
-
-  return String(value)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
 
 }
+
+
+/* =========================
+   CHAT DEMO
+========================= */
+
+function openChat(name){
+
+  closePanels();
+
+  toast(
+    "Opening chat with "+name
+  );
+
+}
+
+
+/* =========================
+   VIDEO AUTOPLAY
+========================= */
+
+const videos =
+  document.querySelectorAll(".reel video");
+
+
+const observer =
+  new IntersectionObserver(
+    entries=>{
+
+      entries.forEach(entry=>{
+
+        const video =
+          entry.target;
+
+        if(entry.isIntersecting){
+
+          video.play()
+            .catch(()=>{});
+
+        }else{
+
+          video.pause();
+
+        }
+
+      });
+
+    },
+    {
+      threshold:.65
+    }
+  );
+
+
+videos.forEach(video=>{
+
+  observer.observe(video);
+
+});
+
+
+/* =========================
+   DOUBLE TAP LIKE
+========================= */
+
+document
+  .querySelectorAll(".reel")
+  .forEach(reel=>{
+
+    let lastTap=0;
+
+    reel.addEventListener(
+      "dblclick",
+      ()=>{
+
+        const like =
+          reel.querySelector(".like");
+
+        if(like){
+
+          like.classList.add("active");
+
+          toast("❤️ Liked");
+
+        }
+
+      }
+    );
+
+  });
+
+
+/* =========================
+   SWIPE/SCROLL
+========================= */
+
+document
+  .getElementById("feed")
+  .addEventListener(
+    "scroll",
+    ()=>{}
+  );
+
+
+/* =========================
+   ESC KEY
+========================= */
+
+document.addEventListener(
+  "keydown",
+  e=>{
+
+    if(e.key==="Escape"){
+
+      closePanels();
+      closeComments();
+
+    }
+
+  }
+);
 
 </script>
 
