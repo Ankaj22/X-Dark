@@ -1,801 +1,810 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-name="viewport"
-content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>X-DARK</title>
 
 <style>
-
 *{
-box-sizing:border-box;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
-
-margin:0;
-
-background:#08090d;
-
-color:white;
-
-font-family:
-Arial,
-Helvetica,
-sans-serif;
-
-padding-bottom:85px;
-
+  background:#08090d;
+  color:white;
+  min-height:100vh;
 }
 
-header{
-
-height:80px;
-
-display:flex;
-
-align-items:center;
-
-justify-content:space-between;
-
-padding:0 25px;
-
-border-bottom:
-1px solid #292b35;
-
-position:sticky;
-
-top:0;
-
-background:#08090d;
-
-z-index:20;
-
+/* TOP BAR */
+.topbar{
+  height:90px;
+  border-bottom:1px solid #292b35;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 22px;
+  position:sticky;
+  top:0;
+  background:#08090d;
+  z-index:20;
 }
 
 .logo{
-
-font-size:27px;
-
-font-weight:900;
-
+  font-size:31px;
+  font-weight:800;
+  letter-spacing:-1px;
 }
 
 .top-icons{
-
-display:flex;
-
-gap:24px;
-
-font-size:25px;
-
+  display:flex;
+  align-items:center;
+  gap:27px;
 }
 
-.top-icons span{
-
-cursor:pointer;
-
+.icon{
+  font-size:29px;
+  cursor:pointer;
 }
-
 
 /* STORIES */
-
 .stories{
+  display:flex;
+  gap:25px;
+  padding:18px 15px 20px;
+  overflow-x:auto;
+  border-bottom:1px solid #191b22;
+}
 
-display:flex;
-
-gap:18px;
-
-overflow-x:auto;
-
-padding:25px 20px;
-
+.stories::-webkit-scrollbar{
+  display:none;
 }
 
 .story{
-
-min-width:85px;
-
-text-align:center;
-
-color:#ccc;
-
+  min-width:80px;
+  text-align:center;
 }
 
-.story img{
-
-width:75px;
-
-height:75px;
-
-object-fit:cover;
-
-border-radius:50%;
-
-border:
-3px solid #8c52ff;
-
-padding:3px;
-
+.story-ring{
+  width:76px;
+  height:76px;
+  padding:4px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#7d35ff,#b46cff);
+  margin:auto;
 }
 
-.story p{
-
-margin:
-
-7px 0 0;
-
-font-size:13px;
-
+.story-ring img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:50%;
+  border:3px solid #08090d;
 }
 
+.story-name{
+  margin-top:8px;
+  color:#c7c8d0;
+  font-size:13px;
+}
 
 /* FEED */
-
 .feed{
-
-max-width:650px;
-
-margin:auto;
-
-padding:0 15px;
-
+  max-width:620px;
+  margin:auto;
+  padding-bottom:110px;
 }
 
 .post{
-
-background:#111219;
-
-border:
-1px solid #292b35;
-
-border-radius:20px;
-
-overflow:hidden;
-
-margin-bottom:22px;
-
+  border-bottom:1px solid #292b35;
+  padding-bottom:18px;
+  margin-bottom:10px;
 }
 
+/* POST HEADER */
 .post-header{
-
-display:flex;
-
-align-items:center;
-
-padding:15px;
-
-gap:12px;
-
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:15px 14px 12px;
 }
 
-.post-avatar{
-
-width:48px;
-
-height:48px;
-
-border-radius:50%;
-
-object-fit:cover;
-
+.user-info{
+  display:flex;
+  align-items:center;
+  gap:11px;
 }
 
-.post-user{
-
-font-size:17px;
-
-font-weight:bold;
-
+.avatar{
+  width:43px;
+  height:43px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid #7d35ff;
 }
 
-.post-handle{
-
-color:#858895;
-
-font-size:13px;
-
-margin-top:3px;
-
+.username{
+  font-weight:700;
+  font-size:15px;
 }
 
-.post-video{
-
-display:block;
-
-width:100%;
-
-max-height:600px;
-
-background:black;
-
+.location{
+  color:#858793;
+  font-size:12px;
+  margin-top:3px;
 }
 
+.more{
+  font-size:25px;
+  color:#aaa;
+  cursor:pointer;
+}
+
+/* POST IMAGE */
+.post-image{
+  width:100%;
+  display:block;
+  max-height:720px;
+  object-fit:cover;
+}
 
 /* ACTIONS */
-
 .actions{
-
-display:flex;
-
-justify-content:space-between;
-
-padding:15px 18px;
-
-font-size:25px;
-
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:12px 14px 7px;
 }
 
-.actions span{
+.left-actions{
+  display:flex;
+  gap:20px;
+}
 
-cursor:pointer;
+.action{
+  font-size:27px;
+  cursor:pointer;
+  transition:.2s;
+}
 
+.action:active{
+  transform:scale(.85);
+}
+
+.like-btn.liked{
+  color:#ff315b;
+}
+
+.save-btn.saved{
+  color:#a66cff;
+}
+
+/* POST TEXT */
+.likes{
+  padding:0 14px;
+  font-weight:bold;
+  font-size:14px;
 }
 
 .caption{
-
-padding:
-0 18px 18px;
-
-font-size:16px;
-
-line-height:1.5;
-
+  padding:7px 14px 0;
+  line-height:21px;
+  color:#e3e3e7;
+  font-size:14px;
 }
 
-.tags{
-
-color:#9d73ff;
-
-margin-top:6px;
-
+.caption b{
+  color:white;
 }
 
-.empty{
-
-text-align:center;
-
-color:#777b87;
-
-padding:80px 20px;
-
+.comments-link{
+  display:block;
+  padding:7px 14px;
+  color:#777a87;
+  font-size:14px;
+  cursor:pointer;
 }
 
+/* COMMENTS */
+.comment-area{
+  display:none;
+  padding:5px 14px 0;
+}
+
+.comment-area.active{
+  display:flex;
+  gap:8px;
+}
+
+.comment-input{
+  flex:1;
+  background:#171922;
+  border:1px solid #30323d;
+  color:white;
+  padding:10px 13px;
+  border-radius:20px;
+  outline:none;
+}
+
+.comment-send{
+  border:0;
+  background:#7d35ff;
+  color:white;
+  border-radius:20px;
+  padding:0 15px;
+  cursor:pointer;
+}
+
+/* CREATE BUTTON */
+.create-btn{
+  position:fixed;
+  bottom:77px;
+  left:50%;
+  transform:translateX(-50%);
+  width:78px;
+  height:62px;
+  border-radius:25px;
+  background:white;
+  color:black;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:39px;
+  font-weight:bold;
+  box-shadow:0 5px 30px rgba(0,0,0,.5);
+  z-index:30;
+  cursor:pointer;
+}
 
 /* BOTTOM NAV */
-
 .bottom-nav{
-
-position:fixed;
-
-bottom:0;
-
-left:0;
-
-right:0;
-
-height:75px;
-
-background:#090a0e;
-
-border-top:
-1px solid #292b35;
-
-display:flex;
-
-align-items:center;
-
-justify-content:
-space-around;
-
-z-index:50;
-
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:74px;
+  background:#08090d;
+  border-top:1px solid #292b35;
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+  z-index:25;
 }
 
-.nav{
-
-font-size:27px;
-
-color:#858895;
-
-cursor:pointer;
-
+.nav-icon{
+  font-size:27px;
+  color:#8d909c;
+  cursor:pointer;
 }
 
-.home{
-
-color:white;
-
+.nav-icon.active{
+  color:white;
 }
 
-.create{
-
-width:60px;
-
-height:50px;
-
-border-radius:16px;
-
-background:white;
-
-color:black;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-font-size:32px;
-
-font-weight:bold;
-
-cursor:pointer;
-
+/* TOAST */
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:150px;
+  transform:translateX(-50%);
+  background:#20222c;
+  padding:12px 20px;
+  border-radius:25px;
+  display:none;
+  z-index:100;
+  font-size:14px;
 }
 
+/* DESKTOP */
+@media(min-width:700px){
+  .topbar{
+    padding:0 calc((100% - 620px)/2);
+  }
+
+  .stories{
+    max-width:620px;
+    margin:auto;
+  }
+}
 </style>
-
 </head>
-
 
 <body>
 
+<!-- TOP BAR -->
+<header class="topbar">
 
-<header>
+  <div class="logo">X-DARK</div>
 
-<div class="logo">
-X-DARK
-</div>
-
-
-<div class="top-icons">
-
-<span>⌕</span>
-
-<span>♡</span>
-
-<span>☰</span>
-
-</div>
+  <div class="top-icons">
+    <div class="icon" onclick="showToast('Search coming next 🔍')">⌕</div>
+    <div class="icon" onclick="showToast('Your likes ❤️')">♡</div>
+    <div class="icon" onclick="showToast('Menu coming next ☰')">☰</div>
+  </div>
 
 </header>
 
 
+<!-- STORIES -->
 <section class="stories">
 
+  <div class="story">
+    <div class="story-ring">
+      <img src="https://i.pravatar.cc/150?img=12">
+    </div>
+    <div class="story-name">Your Story</div>
+  </div>
 
-<div class="story">
+  <div class="story">
+    <div class="story-ring">
+      <img src="https://i.pravatar.cc/150?img=47">
+    </div>
+    <div class="story-name">@User</div>
+  </div>
 
-<img
-src="https://i.pravatar.cc/150?img=12">
+  <div class="story">
+    <div class="story-ring">
+      <img src="https://i.pravatar.cc/150?img=32">
+    </div>
+    <div class="story-name">@Darkwing</div>
+  </div>
 
-<p>Your Story</p>
+  <div class="story">
+    <div class="story-ring">
+      <img src="https://i.pravatar.cc/150?img=44">
+    </div>
+    <div class="story-name">@XDark</div>
+  </div>
 
-</div>
-
-
-<div class="story">
-
-<img
-src="https://i.pravatar.cc/150?img=32">
-
-<p>@User</p>
-
-</div>
-
-
-<div class="story">
-
-<img
-src="https://i.pravatar.cc/150?img=47">
-
-<p>@Darkwing</p>
-
-</div>
-
-
-<div class="story">
-
-<img
-src="https://i.pravatar.cc/150?img=44">
-
-<p>@XDark</p>
-
-</div>
-
+  <div class="story">
+    <div class="story-ring">
+      <img src="https://i.pravatar.cc/150?img=15">
+    </div>
+    <div class="story-name">@Nova</div>
+  </div>
 
 </section>
 
 
-<main
-class="feed"
-id="feed">
+<!-- HOME FEED -->
+<main class="feed">
 
-<div class="empty">
 
-Loading X-DARK...
+<!-- POST 1 -->
+<article class="post">
 
-</div>
+  <div class="post-header">
+
+    <div class="user-info">
+      <img class="avatar" src="https://i.pravatar.cc/150?img=12">
+
+      <div>
+        <div class="username">@Ankaj</div>
+        <div class="location">Maldives</div>
+      </div>
+    </div>
+
+    <div class="more">•••</div>
+
+  </div>
+
+  <img
+    class="post-image"
+    src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=85"
+    alt="Beach"
+  >
+
+  <div class="actions">
+
+    <div class="left-actions">
+
+      <span
+        class="action like-btn"
+        onclick="likePost(this)"
+      >♡</span>
+
+      <span
+        class="action"
+        onclick="toggleComments(this)"
+      >♡̲</span>
+
+      <span
+        class="action"
+        onclick="sharePost()"
+      >↗</span>
+
+    </div>
+
+    <span
+      class="action save-btn"
+      onclick="savePost(this)"
+    >♧</span>
+
+  </div>
+
+  <div class="likes">
+    <span class="like-count">128</span> likes
+  </div>
+
+  <div class="caption">
+    <b>@Ankaj</b> Enjoying the beautiful Maldives 🌊✨
+  </div>
+
+  <span
+    class="comments-link"
+    onclick="toggleComments(this)"
+  >
+    View all 24 comments
+  </span>
+
+  <div class="comment-area">
+    <input
+      class="comment-input"
+      placeholder="Add a comment..."
+    >
+    <button
+      class="comment-send"
+      onclick="addComment(this)"
+    >
+      Post
+    </button>
+  </div>
+
+</article>
+
+
+<!-- POST 2 -->
+<article class="post">
+
+  <div class="post-header">
+
+    <div class="user-info">
+      <img class="avatar" src="https://i.pravatar.cc/150?img=47">
+
+      <div>
+        <div class="username">@Darkwing</div>
+        <div class="location">X-DARK</div>
+      </div>
+    </div>
+
+    <div class="more">•••</div>
+
+  </div>
+
+  <img
+    class="post-image"
+    src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1000&q=85"
+    alt="Night sky"
+  >
+
+  <div class="actions">
+
+    <div class="left-actions">
+
+      <span
+        class="action like-btn"
+        onclick="likePost(this)"
+      >♡</span>
+
+      <span
+        class="action"
+        onclick="toggleComments(this)"
+      >♡̲</span>
+
+      <span
+        class="action"
+        onclick="sharePost()"
+      >↗</span>
+
+    </div>
+
+    <span
+      class="action save-btn"
+      onclick="savePost(this)"
+    >♧</span>
+
+  </div>
+
+  <div class="likes">
+    <span class="like-count">864</span> likes
+  </div>
+
+  <div class="caption">
+    <b>@Darkwing</b> Welcome to the dark side. 🖤
+  </div>
+
+  <span
+    class="comments-link"
+    onclick="toggleComments(this)"
+  >
+    View all 56 comments
+  </span>
+
+  <div class="comment-area">
+    <input
+      class="comment-input"
+      placeholder="Add a comment..."
+    >
+    <button
+      class="comment-send"
+      onclick="addComment(this)"
+    >
+      Post
+    </button>
+  </div>
+
+</article>
+
+
+<!-- POST 3 -->
+<article class="post">
+
+  <div class="post-header">
+
+    <div class="user-info">
+
+      <img
+        class="avatar"
+        src="https://i.pravatar.cc/150?img=32"
+      >
+
+      <div>
+        <div class="username">@XDark</div>
+        <div class="location">X-DARK Community</div>
+      </div>
+
+    </div>
+
+    <div class="more">•••</div>
+
+  </div>
+
+  <img
+    class="post-image"
+    src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1000&q=85"
+    alt="Dark landscape"
+  >
+
+  <div class="actions">
+
+    <div class="left-actions">
+
+      <span
+        class="action like-btn"
+        onclick="likePost(this)"
+      >♡</span>
+
+      <span
+        class="action"
+        onclick="toggleComments(this)"
+      >♡̲</span>
+
+      <span
+        class="action"
+        onclick="sharePost()"
+      >↗</span>
+
+    </div>
+
+    <span
+      class="action save-btn"
+      onclick="savePost(this)"
+    >♧</span>
+
+  </div>
+
+  <div class="likes">
+    <span class="like-count">2,431</span> likes
+  </div>
+
+  <div class="caption">
+    <b>@XDark</b> Create. Connect. Explore. Welcome to X-DARK 🔥
+  </div>
+
+  <span
+    class="comments-link"
+    onclick="toggleComments(this)"
+  >
+    View all 103 comments
+  </span>
+
+  <div class="comment-area">
+
+    <input
+      class="comment-input"
+      placeholder="Add a comment..."
+    >
+
+    <button
+      class="comment-send"
+      onclick="addComment(this)"
+    >
+      Post
+    </button>
+
+  </div>
+
+</article>
+
 
 </main>
 
 
-<div class="bottom-nav">
-
+<!-- CREATE -->
 <div
-class="nav home">
-⌂
+  class="create-btn"
+  onclick="showToast('Create Post coming next ➕')"
+>
+  +
 </div>
 
 
-<div class="nav">
-⌕
-</div>
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+
+  <div
+    class="nav-icon active"
+    onclick="showToast('Home')"
+  >
+    ⌂
+  </div>
+
+  <div
+    class="nav-icon"
+    onclick="showToast('Search coming next 🔍')"
+  >
+    ⌕
+  </div>
+
+  <div style="width:75px"></div>
+
+  <div
+    class="nav-icon"
+    onclick="showToast('Activity ❤️')"
+  >
+    ♡
+  </div>
+
+  <div
+    class="nav-icon"
+    onclick="showToast('Profile coming next 👤')"
+  >
+    ◉
+  </div>
+
+</nav>
 
 
-<div
-class="create"
-onclick="
-window.location.href=
-'create-post.html'
-">
-+
-</div>
-
-
-<div class="nav">
-♡
-</div>
-
-
-<div
-class="nav"
-onclick="
-window.location.href=
-'profile.html'
-">
-◉
-</div>
-
-</div>
+<div class="toast" id="toast"></div>
 
 
 <script>
 
+/* LIKE */
+function likePost(button){
 
-const feed =
-document.getElementById(
-"feed"
-);
+  const post = button.closest(".post");
+  const count = post.querySelector(".like-count");
+
+  let number = parseInt(
+    count.textContent.replace(",","")
+  );
+
+  if(button.classList.contains("liked")){
+
+    button.classList.remove("liked");
+    button.textContent = "♡";
+    number--;
+
+  }else{
+
+    button.classList.add("liked");
+    button.textContent = "♥";
+    number++;
+
+  }
+
+  count.textContent = number.toLocaleString();
+}
 
 
-async function loadPosts(){
+/* SAVE */
+function savePost(button){
 
-try{
+  if(button.classList.contains("saved")){
 
+    button.classList.remove("saved");
+    button.textContent = "♧";
+    showToast("Removed from saved");
 
-const response =
-await fetch(
-"/api/posts"
-);
+  }else{
 
+    button.classList.add("saved");
+    button.textContent = "♣";
+    showToast("Post saved 🔖");
 
-if(!response.ok){
-
-throw new Error(
-"Unable to load posts"
-);
+  }
 
 }
 
 
-const posts =
-await response.json();
+/* COMMENTS */
+function toggleComments(element){
 
+  const post = element.closest(".post");
+  const area = post.querySelector(".comment-area");
 
-feed.innerHTML = "";
-
-
-if(posts.length === 0){
-
-feed.innerHTML = `
-
-<div class="empty">
-
-No videos yet 🎬
-
-<br><br>
-
-Tap the + button to upload your first X-DARK video.
-
-</div>
-
-`;
-
-return;
+  area.classList.toggle("active");
 
 }
 
 
-posts.forEach(
-function(post){
+/* ADD COMMENT */
+function addComment(button){
 
+  const area = button.closest(".comment-area");
+  const input = area.querySelector(".comment-input");
 
-const article =
-document.createElement(
-"article"
-);
+  const text = input.value.trim();
 
+  if(!text){
 
-article.className =
-"post";
+    showToast("Write a comment first");
+    return;
 
+  }
 
-article.innerHTML = `
+  input.value = "";
 
-<div class="post-header">
-
-<img
-class="post-avatar"
-src="https://i.pravatar.cc/100?img=12">
-
-<div>
-
-<div class="post-user">
-
-${escapeHTML(
-post.username
-)}
-
-</div>
-
-<div class="post-handle">
-
-${escapeHTML(
-post.handle
-)}
-
-</div>
-
-</div>
-
-</div>
-
-
-<video
-class="post-video"
-src="${post.video}"
-controls
-playsinline
-preload="metadata">
-</video>
-
-
-<div class="actions">
-
-<span
-onclick="toggleLike(this)">
-♡
-</span>
-
-<span
-onclick="addComment()">
-💬
-</span>
-
-<span
-onclick="sharePost()">
-↗
-</span>
-
-<span
-onclick="toggleSave(this)">
-🔖
-</span>
-
-</div>
-
-
-<div class="caption">
-
-${escapeHTML(
-post.caption
-)}
-
-
-<div class="tags">
-
-${escapeHTML(
-post.tags || ""
-)}
-
-</div>
-
-</div>
-
-`;
-
-
-feed.appendChild(
-article
-);
-
-
-});
-
-}
-
-catch(error){
-
-console.error(error);
-
-
-feed.innerHTML = `
-
-<div class="empty">
-
-Could not load X-DARK posts.
-
-</div>
-
-`;
-
-}
+  showToast("Comment posted 💬");
 
 }
 
 
-function escapeHTML(value){
+/* SHARE */
+function sharePost(){
 
-return String(
-value || ""
-)
+  if(
+    navigator.share
+  ){
 
-.replaceAll(
-"&",
-"&amp;"
-)
+    navigator.share({
+      title:"X-DARK",
+      text:"Check this post on X-DARK"
+    });
 
-.replaceAll(
-"<",
-"&lt;"
-)
+  }else{
 
-.replaceAll(
-">",
-"&gt;"
-)
+    showToast("Post link copied 🔗");
 
-.replaceAll(
-'"',
-"&quot;"
-)
-
-.replaceAll(
-"'",
-"&#039;"
-);
+  }
 
 }
 
 
-function toggleLike(button){
+/* TOAST */
+function showToast(message){
 
-if(
-button.innerText === "♡"
-){
+  const toast =
+    document.getElementById("toast");
 
-button.innerText =
-"♥";
+  toast.textContent = message;
 
-}
+  toast.style.display = "block";
 
-else{
+  setTimeout(function(){
 
-button.innerText =
-"♡";
+    toast.style.display = "none";
 
-}
+  },2000);
 
 }
-
-
-function toggleSave(button){
-
-if(
-button.innerText === "🔖"
-){
-
-button.innerText =
-"📌";
-
-}
-
-else{
-
-button.innerText =
-"🔖";
-
-}
-
-}
-
-
-function addComment(){
-
-const comment =
-prompt(
-"Write your comment"
-);
-
-
-if(comment){
-
-alert(
-"Comment added ✓"
-);
-
-}
-
-}
-
-
-async function sharePost(){
-
-try{
-
-if(
-navigator.share
-){
-
-await navigator.share({
-
-title:
-"X-DARK",
-
-text:
-"Check out this X-DARK video 🚀",
-
-url:
-window.location.href
-
-});
-
-}
-
-else{
-
-alert(
-"Sharing is not supported on this browser."
-);
-
-}
-
-}
-
-catch(error){
-
-console.log(error);
-
-}
-
-}
-
-
-loadPosts();
-
 
 </script>
 
-
 </body>
-
 </html>
