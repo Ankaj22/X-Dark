@@ -2,20 +2,30 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover">
+
 <meta name="theme-color" content="#050507">
+
 <title>X-DARK</title>
 
 <style>
+
+/* =====================================================
+   X-DARK PREMIUM
+===================================================== */
+
 :root{
   --bg:#050507;
-  --panel:#101016;
-  --panel2:#17171f;
-  --border:rgba(255,255,255,.11);
-  --muted:#92929d;
-  --purple:#7c3cff;
-  --purple2:#a66cff;
+  --panel:rgba(16,16,22,.82);
+  --panel2:#15151c;
+  --line:rgba(255,255,255,.11);
+  --muted:#8d8d99;
+  --white:#fff;
+  --purple:#713cff;
+  --purple2:#a56cff;
   --pink:#ff3d81;
+  --green:#45e38a;
 }
 
 *{
@@ -30,7 +40,12 @@ html,body{
   height:100%;
   background:#000;
   color:#fff;
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
+  font-family:
+  -apple-system,
+  BlinkMacSystemFont,
+  "SF Pro Display",
+  "Segoe UI",
+  Arial,sans-serif;
 }
 
 body{
@@ -47,17 +62,32 @@ button{
   cursor:pointer;
 }
 
-/* ================= APP ================= */
-
-.app{
-  position:relative;
-  width:100%;
-  height:100dvh;
-  overflow:hidden;
-  background:#050507;
+svg{
+  display:block;
 }
 
-/* ================= FEED ================= */
+/* =====================================================
+   APP
+===================================================== */
+
+.app{
+  width:100%;
+  height:100dvh;
+  position:relative;
+  overflow:hidden;
+
+  background:
+    radial-gradient(
+      circle at 80% 0%,
+      rgba(113,60,255,.16),
+      transparent 32%
+    ),
+    #050507;
+}
+
+/* =====================================================
+   FEED
+===================================================== */
 
 .feed{
   width:100%;
@@ -77,8 +107,7 @@ button{
   height:100dvh;
   overflow:hidden;
   scroll-snap-align:start;
-  scroll-snap-stop:always;
-  background:#09090b;
+  background:#08080a;
 }
 
 .reel video{
@@ -96,26 +125,28 @@ button{
   inset:0;
   z-index:2;
   pointer-events:none;
+
   background:
     linear-gradient(
       180deg,
       rgba(0,0,0,.70),
-      transparent 30%,
-      rgba(0,0,0,.04) 55%,
-      rgba(0,0,0,.82) 100%
+      rgba(0,0,0,.04) 35%,
+      rgba(0,0,0,.10) 55%,
+      rgba(0,0,0,.88) 100%
     );
 }
 
-/* ================= TOP ================= */
+/* =====================================================
+   TOP
+===================================================== */
 
 .topbar{
   position:absolute;
   top:0;
   left:0;
   right:0;
+  height:90px;
   z-index:30;
-
-  height:86px;
 
   display:flex;
   align-items:center;
@@ -123,13 +154,20 @@ button{
 
   padding:
     env(safe-area-inset-top)
-    18px 0;
+    18px
+    0;
+}
+
+.brand-row{
+  display:flex;
+  align-items:center;
+  gap:13px;
 }
 
 .logo{
-  font-size:28px;
+  font-size:29px;
   font-weight:950;
-  letter-spacing:-1.5px;
+  letter-spacing:-1.7px;
   text-shadow:0 3px 20px #000;
 }
 
@@ -137,27 +175,68 @@ button{
   color:var(--purple2);
 }
 
+/* YOU ICON NEXT TO X-DARK */
+
+.you-story{
+  width:53px;
+  height:53px;
+  padding:2px;
+  border-radius:50%;
+
+  background:
+    conic-gradient(
+      #ff4d40,
+      #ff2c85,
+      #743dff,
+      #ff4d40
+    );
+
+  box-shadow:
+    0 0 20px rgba(124,60,255,.25);
+
+  cursor:pointer;
+}
+
+.you-inner{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+
+  border:2px solid #08080b;
+
+  background:
+    rgba(15,15,20,.96);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:18px;
+  font-weight:950;
+}
+
 .top-actions{
   display:flex;
   gap:9px;
 }
 
-.top-button{
+.icon-btn{
   width:43px;
   height:43px;
+
   border-radius:50%;
 
   display:flex;
   align-items:center;
   justify-content:center;
 
-  background:rgba(15,15,20,.62);
-  border:1px solid rgba(255,255,255,.13);
+  background:rgba(12,12,17,.62);
+  border:1px solid var(--line);
 
   backdrop-filter:blur(20px);
 }
 
-.top-button svg{
+.icon-btn svg{
   width:21px;
   height:21px;
   stroke:#fff;
@@ -167,103 +246,38 @@ button{
   stroke-linejoin:round;
 }
 
-/* ================= STORIES ================= */
-
-.story-container{
-  position:absolute;
-  top:87px;
-  left:0;
-  right:0;
-  z-index:25;
-  padding:0 17px;
-}
-
-.stories{
-  display:flex;
-  gap:13px;
-  overflow-x:auto;
-  scrollbar-width:none;
-}
-
-.stories::-webkit-scrollbar{
-  display:none;
-}
-
-.story{
-  min-width:62px;
-  width:62px;
-  text-align:center;
-  font-size:10px;
-  font-weight:750;
-  color:#eee;
-}
-
-.story-ring{
-  width:61px;
-  height:61px;
-  padding:2px;
-  border-radius:50%;
-  background:
-    conic-gradient(
-      #ffb52e,
-      #ff3d72,
-      #9c4cff,
-      #ffb52e
-    );
-}
-
-.story-inner{
-  width:100%;
-  height:100%;
-  border-radius:50%;
-  border:2px solid #08080a;
-  background:#15151a;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  font-size:20px;
-  font-weight:900;
-}
-
-.story-name{
-  margin-top:6px;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-
-/* ================= RIGHT ACTIONS ================= */
+/* =====================================================
+   ACTIONS
+===================================================== */
 
 .action-rail{
   position:absolute;
   right:11px;
-  bottom:128px;
+  bottom:127px;
   z-index:25;
 
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:13px;
+  gap:12px;
 }
 
 .action{
-  width:52px;
-  min-height:54px;
+  width:53px;
+  min-height:55px;
 
   border-radius:18px;
-
-  background:rgba(12,12,17,.35);
-  border:1px solid rgba(255,255,255,.11);
-
-  backdrop-filter:blur(15px);
 
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
   gap:3px;
+
+  background:rgba(12,12,17,.40);
+  border:1px solid rgba(255,255,255,.12);
+
+  backdrop-filter:blur(15px);
 
   text-shadow:0 2px 7px #000;
 }
@@ -292,28 +306,9 @@ button{
   fill:var(--pink);
 }
 
-.music-disc{
-  width:43px;
-  height:43px;
-  border-radius:50%;
-
-  border:2px solid #fff;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  background:#17171c;
-}
-
-.music-disc svg{
-  width:19px;
-  height:19px;
-  stroke:#fff;
-  fill:none;
-}
-
-/* ================= CONTENT ================= */
+/* =====================================================
+   CONTENT
+===================================================== */
 
 .content{
   position:absolute;
@@ -330,9 +325,9 @@ button{
   margin-bottom:14px;
 }
 
-.creator-avatar{
-  width:47px;
-  height:47px;
+.avatar{
+  width:48px;
+  height:48px;
   flex:none;
 
   border-radius:50%;
@@ -344,11 +339,11 @@ button{
   background:
     linear-gradient(
       135deg,
-      #6532ff,
-      #b76aff
+      #6632ff,
+      #b66cff
     );
 
-  border:2px solid rgba(255,255,255,.25);
+  border:2px solid rgba(255,255,255,.23);
 
   font-size:18px;
   font-weight:950;
@@ -363,14 +358,16 @@ button{
   font-weight:900;
 }
 
-.creator-followers{
-  color:#d0d0d5;
-  font-size:10px;
+.followers{
   margin-top:2px;
+  color:#d2d2d8;
+  font-size:10px;
 }
 
 .follow{
+  margin-left:3px;
   padding:8px 13px;
+
   border-radius:12px;
 
   background:rgba(255,255,255,.08);
@@ -385,15 +382,15 @@ button{
 .caption{
   font-size:16px;
   line-height:1.42;
-  font-weight:600;
+  font-weight:650;
   text-shadow:0 2px 8px #000;
 }
 
 .hashtags{
   margin-top:8px;
-  color:#e4d9ff;
+  color:#e2d6ff;
   font-size:13px;
-  font-weight:700;
+  font-weight:750;
 }
 
 .audio{
@@ -405,8 +402,9 @@ button{
 }
 
 .audio-icon{
-  width:22px;
-  height:22px;
+  width:23px;
+  height:23px;
+
   border:1px solid #fff;
   border-radius:50%;
 
@@ -415,37 +413,41 @@ button{
   justify-content:center;
 }
 
-/* ================= BOTTOM ================= */
+/* =====================================================
+   BOTTOM NAV
+===================================================== */
 
-.bottom-dock{
+.bottom{
   position:absolute;
   left:10px;
   right:10px;
   bottom:8px;
 
-  z-index:50;
+  z-index:100;
 
   height:70px;
+
+  border-radius:24px;
 
   display:flex;
   align-items:center;
   justify-content:space-around;
 
-  border-radius:24px;
-
-  background:rgba(11,11,15,.86);
+  background:rgba(10,10,14,.88);
 
   border:1px solid rgba(255,255,255,.10);
 
   backdrop-filter:blur(25px);
 
   box-shadow:
-    0 -10px 45px rgba(0,0,0,.38);
+    0 -12px 45px rgba(0,0,0,.42);
 }
 
-.nav-btn{
+.nav{
   min-width:52px;
-  height:58px;
+  height:59px;
+
+  background:none;
 
   display:flex;
   flex-direction:column;
@@ -453,11 +455,10 @@ button{
   justify-content:center;
   gap:4px;
 
-  background:none;
   color:#777781;
 }
 
-.nav-btn svg{
+.nav svg{
   width:23px;
   height:23px;
 
@@ -468,22 +469,23 @@ button{
   stroke-linejoin:round;
 }
 
-.nav-btn span{
+.nav span{
   font-size:9px;
-  font-weight:750;
+  font-weight:800;
 }
 
-.nav-btn.active{
+.nav.active{
   color:#fff;
 }
 
-.nav-btn.active svg{
+.nav.active svg{
   stroke:var(--purple2);
 }
 
-.create-button{
-  width:48px;
-  height:38px;
+.create-btn{
+  width:49px;
+  height:39px;
+
   border-radius:13px;
 
   display:flex;
@@ -491,25 +493,24 @@ button{
   justify-content:center;
 
   background:#fff;
-  color:#000;
+  color:#050507;
 }
 
-/* ================= DRAWER ================= */
+/* =====================================================
+   PANELS
+===================================================== */
 
-.drawer{
+.panel{
   position:absolute;
   inset:0;
-
   z-index:200;
 
   overflow-y:auto;
 
-  padding-bottom:30px;
-
   background:
     radial-gradient(
       circle at 80% 0%,
-      rgba(124,60,255,.17),
+      rgba(113,60,255,.17),
       transparent 35%
     ),
     #07070a;
@@ -521,25 +522,25 @@ button{
     cubic-bezier(.2,.8,.2,1);
 }
 
-.drawer.open{
+.panel.open{
   transform:translateX(0);
 }
 
-.drawer-header{
+.panel-head{
+  height:72px;
+
   position:sticky;
   top:0;
   z-index:10;
-
-  height:70px;
 
   display:flex;
   align-items:center;
 
   padding:0 15px;
 
-  background:rgba(7,7,10,.84);
+  background:rgba(7,7,10,.86);
 
-  border-bottom:1px solid var(--border);
+  border-bottom:1px solid var(--line);
 
   backdrop-filter:blur(22px);
 }
@@ -547,15 +548,16 @@ button{
 .back{
   width:42px;
   height:42px;
+
   border-radius:50%;
-
-  background:#15151b;
-
-  border:1px solid var(--border);
 
   display:flex;
   align-items:center;
   justify-content:center;
+
+  background:#15151b;
+
+  border:1px solid var(--line);
 }
 
 .back svg{
@@ -568,39 +570,126 @@ button{
   stroke-linejoin:round;
 }
 
-.drawer-title{
+.panel-title{
   flex:1;
   text-align:center;
+
   font-size:19px;
   font-weight:900;
 }
 
-/* ================= EXPLORE ================= */
+/* =====================================================
+   CHAT / PEOPLE
+===================================================== */
 
-.search{
-  height:52px;
-  margin:16px;
+.chat-top-users{
+  padding:17px 15px 10px;
+
+  display:flex;
+  gap:18px;
+
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+
+.chat-top-users::-webkit-scrollbar{
+  display:none;
+}
+
+.person{
+  min-width:65px;
+  text-align:center;
+}
+
+.person-avatar{
+  position:relative;
+
+  width:58px;
+  height:58px;
+
+  margin:auto;
+
+  border-radius:50%;
+
+  padding:2px;
+
+  background:
+    conic-gradient(
+      #ff463c,
+      #ff2580,
+      #783dff,
+      #ff463c
+    );
+}
+
+.person-inner{
+  width:100%;
+  height:100%;
+
+  border-radius:50%;
+
+  border:2px solid #08080b;
+
+  background:#17171d;
 
   display:flex;
   align-items:center;
-  gap:10px;
+  justify-content:center;
 
-  padding:0 15px;
+  font-size:19px;
+  font-weight:950;
+}
+
+.online{
+  position:absolute;
+
+  right:0;
+  bottom:2px;
+
+  width:13px;
+  height:13px;
+
+  border-radius:50%;
+
+  background:var(--green);
+
+  border:2px solid #08080b;
+}
+
+.person-name{
+  margin-top:7px;
+
+  font-size:10px;
+  font-weight:800;
+}
+
+.chat-search{
+  margin:8px 15px 14px;
+
+  height:51px;
 
   border-radius:17px;
 
   background:#121218;
-  border:1px solid var(--border);
+
+  border:1px solid var(--line);
+
+  display:flex;
+  align-items:center;
+
+  gap:10px;
+
+  padding:0 15px;
 }
 
-.search svg{
+.chat-search svg{
   width:20px;
   stroke:#888;
   fill:none;
   stroke-width:2;
 }
 
-.search input{
+.chat-search input{
   flex:1;
   background:none;
   border:0;
@@ -608,25 +697,110 @@ button{
   color:#fff;
 }
 
-.explore-grid{
+.chat-card{
+  margin:10px 15px;
+
+  padding:13px;
+
+  min-height:73px;
+
+  border-radius:19px;
+
+  background:#111117;
+
+  border:1px solid var(--line);
+
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.chat-card .avatar{
+  width:49px;
+  height:49px;
+}
+
+.chat-info{
+  flex:1;
+  min-width:0;
+}
+
+.chat-info strong{
+  font-size:14px;
+}
+
+.chat-info small{
+  display:block;
+  color:#777781;
+  margin-top:4px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.chat-time{
+  color:#777781;
+  font-size:9px;
+}
+
+/* =====================================================
+   EXPLORE
+===================================================== */
+
+.search-box{
+  margin:16px;
+
+  height:52px;
+
+  border-radius:17px;
+
+  background:#121218;
+
+  border:1px solid var(--line);
+
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  padding:0 15px;
+}
+
+.search-box svg{
+  width:20px;
+  stroke:#888;
+  fill:none;
+  stroke-width:2;
+}
+
+.search-box input{
+  flex:1;
+  background:none;
+  border:0;
+  outline:0;
+  color:#fff;
+}
+
+.grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:3px;
 }
 
-.explore-item{
+.grid-item{
   aspect-ratio:1;
   overflow:hidden;
   background:#111;
 }
 
-.explore-item video{
+.grid-item video{
   width:100%;
   height:100%;
   object-fit:cover;
 }
 
-/* ================= PROFILE ================= */
+/* =====================================================
+   PROFILE
+===================================================== */
 
 .profile{
   padding:28px 18px;
@@ -636,25 +810,29 @@ button{
   text-align:center;
 }
 
-.profile-avatar{
+.big-avatar{
   width:108px;
   height:108px;
+
   padding:3px;
+
   margin:auto;
+
   border-radius:50%;
 
   background:
     conic-gradient(
       #ff3d81,
-      #733dff,
-      #b06cff,
+      #743dff,
+      #b66cff,
       #ff3d81
     );
 }
 
-.profile-avatar-inner{
+.big-avatar-inner{
   width:100%;
   height:100%;
+
   border-radius:50%;
 
   background:#15131d;
@@ -663,26 +841,26 @@ button{
   align-items:center;
   justify-content:center;
 
-  font-size:43px;
+  font-size:42px;
   font-weight:950;
 }
 
-.profile-center h2{
+.profile h2{
   margin-top:14px;
   font-size:23px;
 }
 
-.profile-center p{
+.username{
+  margin-top:4px;
   color:#777781;
   font-size:13px;
-  margin-top:4px;
 }
 
 .stats{
   display:flex;
   justify-content:center;
   gap:43px;
-  margin:27px 0;
+  margin:26px 0;
 }
 
 .stat{
@@ -699,36 +877,40 @@ button{
   font-size:11px;
 }
 
-.profile-buttons{
+.profile-actions{
   display:flex;
   gap:9px;
 }
 
 .profile-button{
   flex:1;
+
   height:44px;
 
   border-radius:14px;
 
   background:#15151b;
-  border:1px solid var(--border);
+
+  border:1px solid var(--line);
 
   font-size:13px;
   font-weight:800;
 }
 
-/* ================= SETTINGS ================= */
+/* =====================================================
+   SETTINGS
+===================================================== */
 
 .setting{
   margin:12px 15px;
 
-  min-height:68px;
+  min-height:70px;
 
   border-radius:18px;
 
   background:#111117;
 
-  border:1px solid var(--border);
+  border:1px solid var(--line);
 
   display:flex;
   align-items:center;
@@ -743,7 +925,7 @@ button{
 
   border-radius:13px;
 
-  background:#1b1528;
+  background:#1c1628;
 
   display:flex;
   align-items:center;
@@ -751,8 +933,8 @@ button{
 }
 
 .setting-icon svg{
-  width:19px;
-  stroke:#a879ff;
+  width:20px;
+  stroke:#aa7aff;
   fill:none;
   stroke-width:1.8;
 }
@@ -768,52 +950,24 @@ button{
 .setting-text small{
   display:block;
   color:#777781;
+  margin-top:3px;
   font-size:11px;
-  margin-top:3px;
 }
 
-/* ================= MESSAGES ================= */
-
-.message{
-  margin:12px 15px;
-  padding:14px;
-
-  border-radius:18px;
-
-  background:#111117;
-  border:1px solid var(--border);
-
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.message-info{
-  flex:1;
-}
-
-.message-info strong{
-  font-size:14px;
-}
-
-.message-info small{
-  display:block;
-  color:#777781;
-  margin-top:3px;
-}
-
-/* ================= CREATE ================= */
+/* =====================================================
+   CREATE
+===================================================== */
 
 .create-area{
   padding:17px;
 }
 
-.upload-box{
+.upload{
   min-height:190px;
 
   border-radius:22px;
 
-  border:1px dashed #4b4657;
+  border:1px dashed #4c465b;
 
   display:flex;
   align-items:center;
@@ -824,22 +978,19 @@ button{
   background:
     radial-gradient(
       circle,
-      rgba(124,60,255,.10),
+      rgba(113,60,255,.12),
       transparent 65%
     );
 }
 
-.upload-box input{
+.upload input{
   display:none;
 }
 
-.upload-label{
-  cursor:pointer;
-}
-
 .upload-icon{
-  width:60px;
-  height:60px;
+  width:62px;
+  height:62px;
+
   margin:auto;
 
   border-radius:19px;
@@ -852,21 +1003,21 @@ button{
 }
 
 .upload-icon svg{
-  width:27px;
-  stroke:#ae82ff;
+  width:28px;
+  stroke:#ad7cff;
   fill:none;
   stroke-width:1.8;
 }
 
-.upload-label strong{
+.upload strong{
   display:block;
   margin-top:12px;
 }
 
-.upload-label small{
+.upload small{
   display:block;
-  color:#777781;
   margin-top:5px;
+  color:#777781;
 }
 
 .preview{
@@ -878,6 +1029,7 @@ button{
   margin-bottom:14px;
 
   border-radius:20px;
+
   overflow:hidden;
 
   background:#111;
@@ -894,15 +1046,19 @@ button{
   min-height:110px;
 
   margin-top:15px;
+
   padding:14px;
 
   border-radius:17px;
 
   background:#111117;
-  border:1px solid var(--border);
+
+  border:1px solid var(--line);
 
   color:#fff;
+
   outline:none;
+
   resize:none;
 }
 
@@ -918,14 +1074,14 @@ button{
     linear-gradient(
       135deg,
       #713cff,
-      #a76bff
+      #a66cff
     );
 
   font-weight:900;
 }
 
 /* =====================================================
-   COMMENTS — FIXED BACK ARROW
+   COMMENTS
 ===================================================== */
 
 .comments{
@@ -955,28 +1111,20 @@ button{
   transform:translateY(0);
 }
 
-/* HEADER */
-
 .comment-header{
+  position:relative;
 
   height:62px;
-
-  position:relative;
 
   display:flex;
   align-items:center;
   justify-content:center;
 
-  border-bottom:
-    1px solid
-    rgba(255,255,255,.09);
-
+  border-bottom:1px solid rgba(255,255,255,.09);
 }
 
 .comment-back{
-
   position:absolute;
-
   left:13px;
 
   width:42px;
@@ -988,65 +1136,44 @@ button{
   align-items:center;
   justify-content:center;
 
-  background:
-    rgba(255,255,255,.07);
+  background:rgba(255,255,255,.07);
 
-  border:
-    1px solid
-    rgba(255,255,255,.13);
-
+  border:1px solid rgba(255,255,255,.13);
 }
 
 .comment-back svg{
-
   width:22px;
   height:22px;
 
   stroke:#fff;
-
   fill:none;
 
   stroke-width:2;
 
   stroke-linecap:round;
   stroke-linejoin:round;
-
 }
 
 .comment-title{
-
   font-size:17px;
   font-weight:900;
-
 }
 
-/* COMMENTS LIST */
-
 .comment-list{
-
   height:41vh;
-
   overflow-y:auto;
-
   padding:16px;
-
 }
 
 .comment{
-
   display:flex;
-
   gap:10px;
-
   margin-bottom:18px;
-
 }
 
 .comment-avatar{
-
   width:36px;
   height:36px;
-
   flex:none;
 
   border-radius:50%;
@@ -1064,42 +1191,30 @@ button{
 
   font-size:12px;
   font-weight:900;
-
 }
 
 .comment-body{
-
   flex:1;
 
   font-size:13px;
-
   line-height:1.45;
-
 }
 
 .comment-body small{
-
   color:#777781;
-
 }
 
-/* INPUT */
-
 .comment-input{
-
   display:flex;
-
   gap:8px;
 
   padding:
     10px
     14px
     calc(10px + env(safe-area-inset-bottom));
-
 }
 
 .comment-input input{
-
   flex:1;
 
   height:44px;
@@ -1108,20 +1223,16 @@ button{
 
   background:#1c1c23;
 
-  border:
-    1px solid
-    var(--border);
+  border:1px solid var(--line);
 
   color:#fff;
 
   outline:none;
 
   padding:0 15px;
-
 }
 
 .comment-input button{
-
   width:44px;
   height:44px;
 
@@ -1132,13 +1243,13 @@ button{
   display:flex;
   align-items:center;
   justify-content:center;
-
 }
 
-/* ================= TOAST ================= */
+/* =====================================================
+   TOAST
+===================================================== */
 
 .toast{
-
   position:absolute;
 
   left:50%;
@@ -1146,7 +1257,7 @@ button{
 
   transform:translateX(-50%);
 
-  z-index:700;
+  z-index:900;
 
   max-width:90%;
 
@@ -1163,42 +1274,41 @@ button{
   text-align:center;
 
   display:none;
-
 }
 
 .toast.show{
   display:block;
 }
 
-/* ================= DESKTOP ================= */
+/* =====================================================
+   DESKTOP
+===================================================== */
 
 @media(min-width:700px){
 
   .app{
     width:520px;
     margin:auto;
+
     border-left:1px solid #17171b;
     border-right:1px solid #17171b;
   }
 
 }
+
 </style>
 </head>
-
 
 <body>
 
 <div class="app">
 
-
 <!-- =====================================================
-     FEED
+     MAIN FEED
 ===================================================== -->
 
 <main class="feed">
 
-
-<!-- ================= REEL 1 ================= -->
 
 <section class="reel">
 
@@ -1215,15 +1325,33 @@ playsinline>
 
 <header class="topbar">
 
+<div class="brand-row">
+
 <div class="logo">
 X-<span>DARK</span>
+</div>
+
+<!-- ONLY YOU -->
+
+<div
+class="you-story"
+onclick="openDrawer('profile')">
+
+<div class="you-inner">
++
+</div>
+
+</div>
+
 </div>
 
 
 <div class="top-actions">
 
+<!-- CHAT -->
+
 <button
-class="top-button"
+class="icon-btn"
 onclick="openDrawer('messages')">
 
 <svg viewBox="0 0 24 24">
@@ -1239,36 +1367,24 @@ A7.2 7.2 0 0 1 4.5 12
 </button>
 
 
+<!-- SETTINGS -->
+
 <button
-class="top-button"
+class="icon-btn"
 onclick="openDrawer('settings')">
 
 <svg viewBox="0 0 24 24">
 
-<circle
-cx="12"
-cy="12"
-r="3"/>
+<circle cx="12" cy="12" r="3"/>
 
 <path
-d="M19.4 15a1.7 1.7 0 0 0
-.3 1.9l.1.1-1.8 1.8-.1-.1
-a1.7 1.7 0 0 0-1.9-.3
-1.7 1.7 0 0 0-1 1.5v.1
-h-2.6v-.1a1.7 1.7 0 0 0-1-1.5
-1.7 1.7 0 0 0-1.9.3l-.1.1
--1.8-1.8.1-.1A1.7 1.7 0 0 0
-8 15a1.7 1.7 0 0 0-1.5-1H6.4v-2.6h.1
-A1.7 1.7 0 0 0 8 10
-a1.7 1.7 0 0 0-.3-1.9l-.1-.1
-1.8-1.8.1.1a1.7 1.7 0 0 0
-1.9.3 1.7 1.7 0 0 0 1-1.5V5
-h2.6v.1a1.7 1.7 0 0 0
-1 1.5 1.7 1.7 0 0 0
-1.9-.3l.1-.1 1.8 1.8-.1.1
-a1.7 1.7 0 0 0-.3 1.9
-1.7 1.7 0 0 0 1.5 1h.1V14h-.1
-a1.7 1.7 0 0 0-1.5 1z"/>
+d="M19 12a7 7 0 0 0-.2-1.7l2-1.5
+-2-3.4-2.4 1A7 7 0 0 0 14.8 5
+L14.5 2h-5l-.3 3a7 7 0 0 0-1.6.9
+l-2.4-1-2 3.4 2 1.5A7 7 0 0 0 5 12
+l-2 1.5 2 3.4 2.4-1a7 7 0 0 0 1.6.9
+l.3 3h5l.3-3a7 7 0 0 0 1.6-.9l2.4 1
+2-3.4-2-1.5A7 7 0 0 0 19 12z"/>
 
 </svg>
 
@@ -1277,84 +1393,6 @@ a1.7 1.7 0 0 0-1.5 1z"/>
 </div>
 
 </header>
-
-
-<!-- STORIES -->
-
-<div class="story-container">
-
-<div class="stories">
-
-<div class="story">
-
-<div class="story-ring">
-
-<div class="story-inner">
-+
-</div>
-
-</div>
-
-<div class="story-name">
-You
-</div>
-
-</div>
-
-
-<div class="story">
-
-<div class="story-ring">
-
-<div class="story-inner">
-D
-</div>
-
-</div>
-
-<div class="story-name">
-Darkwing
-</div>
-
-</div>
-
-
-<div class="story">
-
-<div class="story-ring">
-
-<div class="story-inner">
-N
-</div>
-
-</div>
-
-<div class="story-name">
-Nova
-</div>
-
-</div>
-
-
-<div class="story">
-
-<div class="story-ring">
-
-<div class="story-inner">
-A
-</div>
-
-</div>
-
-<div class="story-name">
-Alex
-</div>
-
-</div>
-
-</div>
-
-</div>
 
 
 <!-- ACTIONS -->
@@ -1435,31 +1473,16 @@ onclick="savePost(this)">
 
 </button>
 
-
-<div class="music-disc">
-
-<svg viewBox="0 0 24 24">
-
-<path d="M9 18V5l10-2v13"/>
-
-<circle cx="6" cy="18" r="3"/>
-
-<circle cx="16" cy="16" r="3"/>
-
-</svg>
-
-</div>
-
 </div>
 
 
-<!-- CONTENT -->
+<!-- CREATOR -->
 
 <div class="content">
 
 <div class="creator">
 
-<div class="creator-avatar">
+<div class="avatar">
 D
 </div>
 
@@ -1469,7 +1492,7 @@ D
 Darkwing
 </div>
 
-<div class="creator-followers">
+<div class="followers">
 12.4K followers
 </div>
 
@@ -1516,7 +1539,7 @@ Original sound · Darkwing
 </section>
 
 
-<!-- ================= REEL 2 ================= -->
+<!-- SECOND REEL -->
 
 <section class="reel">
 
@@ -1532,7 +1555,7 @@ playsinline>
 
 <div class="creator">
 
-<div class="creator-avatar">
+<div class="avatar">
 N
 </div>
 
@@ -1542,7 +1565,7 @@ N
 Nova
 </div>
 
-<div class="creator-followers">
+<div class="followers">
 8.7K followers
 </div>
 
@@ -1558,13 +1581,18 @@ Follow
 
 </div>
 
+
 <div class="caption">
+
 Create. Explore. Connect. ✨
+
 </div>
+
 
 <div class="hashtags">
 #nova #explore #xdark
 </div>
+
 
 <div class="audio">
 
@@ -1665,11 +1693,11 @@ onclick="savePost(this)">
      BOTTOM NAV
 ===================================================== -->
 
-<nav class="bottom-dock">
+<nav class="bottom">
 
 
 <button
-class="nav-btn active"
+class="nav active"
 onclick="goHome()">
 
 <svg viewBox="0 0 24 24">
@@ -1687,7 +1715,7 @@ a1 1 0 0 1-1-1z"/>
 
 
 <button
-class="nav-btn"
+class="nav"
 onclick="openDrawer('explore')">
 
 <svg viewBox="0 0 24 24">
@@ -1704,10 +1732,10 @@ onclick="openDrawer('explore')">
 
 
 <button
-class="nav-btn"
+class="nav"
 onclick="openDrawer('create')">
 
-<div class="create-button">
+<div class="create-btn">
 
 <svg
 viewBox="0 0 24 24"
@@ -1728,7 +1756,7 @@ stroke-linecap="round"/>
 
 
 <button
-class="nav-btn"
+class="nav"
 onclick="openDrawer('activity')">
 
 <svg viewBox="0 0 24 24">
@@ -1747,7 +1775,7 @@ c0 7-3 7-3 9h18c0-2-3-2-3-9"/>
 
 
 <button
-class="nav-btn"
+class="nav"
 onclick="openDrawer('profile')">
 
 <svg viewBox="0 0 24 24">
@@ -1767,29 +1795,30 @@ d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/>
 
 
 <!-- =====================================================
-     EXPLORE
+     MESSAGES PANEL
 ===================================================== -->
 
 <section
-id="explore"
-class="drawer">
+id="messages"
+class="panel">
 
-<div class="drawer-header">
+
+<div class="panel-head">
 
 <button
 class="back"
-onclick="closeDrawers()">
+onclick="closePanels()">
 
 <svg viewBox="0 0 24 24">
 
-<path d="m15 18-6-6 6-6"/>
+<path d="M15 18L9 12L15 6"/>
 
 </svg>
 
 </button>
 
-<div class="drawer-title">
-Explore
+<div class="panel-title">
+Messages
 </div>
 
 <div style="width:42px"></div>
@@ -1797,7 +1826,69 @@ Explore
 </div>
 
 
-<div class="search">
+<!-- ONLY THESE 3 USERS -->
+
+<div class="chat-top-users">
+
+
+<div class="person">
+
+<div class="person-avatar">
+
+<div class="person-inner">
+D
+</div>
+
+<div class="online"></div>
+
+</div>
+
+<div class="person-name">
+Darkwing
+</div>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-avatar">
+
+<div class="person-inner">
+N
+</div>
+
+<div class="online"></div>
+
+</div>
+
+<div class="person-name">
+Nova
+</div>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-avatar">
+
+<div class="person-inner">
+A
+</div>
+
+</div>
+
+<div class="person-name">
+Alex
+</div>
+
+</div>
+
+</div>
+
+
+<div class="chat-search">
 
 <svg viewBox="0 0 24 24">
 
@@ -1808,71 +1899,384 @@ Explore
 </svg>
 
 <input
-placeholder="Search X-DARK"
-oninput="searchApp(this.value)">
+placeholder="Search messages">
 
 </div>
 
 
-<div class="explore-grid">
+<div
+class="chat-card"
+onclick="openChat('Darkwing')">
 
-<div class="explore-item">
+<div class="avatar">
+D
+</div>
+
+<div class="chat-info">
+
+<strong>
+Darkwing
+</strong>
+
+<small>
+Welcome to X-DARK 🔥
+</small>
+
+</div>
+
+<div class="chat-time">
+Now
+</div>
+
+</div>
+
+
+<div
+class="chat-card"
+onclick="openChat('Nova')">
+
+<div
+class="avatar"
+style="
+background:linear-gradient(
+135deg,#ff3d81,#744cff
+)">
+
+N
+
+</div>
+
+<div class="chat-info">
+
+<strong>
+Nova
+</strong>
+
+<small>
+Start a conversation
+</small>
+
+</div>
+
+<div class="chat-time">
+5m
+</div>
+
+</div>
+
+
+<div
+class="chat-card"
+onclick="openChat('Alex')">
+
+<div
+class="avatar"
+style="
+background:linear-gradient(
+135deg,#269cff,#764cff
+)">
+
+A
+
+</div>
+
+<div class="chat-info">
+
+<strong>
+Alex
+</strong>
+
+<small>
+Hey 👋
+</small>
+
+</div>
+
+<div class="chat-time">
+1h
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     CHAT SCREEN
+===================================================== -->
+
+<section
+id="chatScreen"
+class="panel">
+
+
+<div class="panel-head">
+
+<button
+class="back"
+onclick="closeChat()">
+
+<svg viewBox="0 0 24 24">
+
+<path d="M15 18L9 12L15 6"/>
+
+</svg>
+
+</button>
+
+
+<div
+id="chatAvatar"
+class="avatar"
+style="width:42px;height:42px">
+D
+</div>
+
+
+<div
+style="
+flex:1;
+margin-left:9px;
+text-align:left">
+
+<strong
+id="chatName">
+Darkwing
+</strong>
+
+<div
+id="chatStatus"
+style="
+font-size:10px;
+color:#45e38a;
+margin-top:2px">
+
+Online
+
+</div>
+
+</div>
+
+
+<button
+class="icon-btn"
+onclick="toast('Voice call coming soon')">
+
+<svg viewBox="0 0 24 24">
+
+<path
+d="M22 16.9v3a2 2 0 0 1-2.2 2
+A19.8 19.8 0 0 1 3.1 5.2
+A2 2 0 0 1 5 3h3a2 2 0 0 1 2 1.7
+c.1 1 .4 2 .7 2.8a2 2 0 0 1-.5 2.1
+L9 10.9a16 16 0 0 0 4.1 4.1l1.3-1.3
+a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7
+A2 2 0 0 1 22 16.9z"/>
+
+</svg>
+
+</button>
+
+</div>
+
+
+<div
+id="chatMessages"
+style="
+padding:18px;
+height:calc(100dvh - 132px);
+overflow-y:auto;
+padding-bottom:90px">
+
+<div
+style="
+text-align:center;
+color:#777781;
+font-size:11px;
+margin-top:25px">
+
+Messages will appear here
+
+</div>
+
+</div>
+
+
+<div
+style="
+position:absolute;
+left:10px;
+right:10px;
+bottom:8px;
+z-index:10;
+
+height:61px;
+
+display:flex;
+align-items:center;
+gap:8px;
+
+padding:7px 9px;
+
+border-radius:22px;
+
+background:rgba(15,15,20,.92);
+
+border:1px solid var(--line);
+
+backdrop-filter:blur(20px)">
+
+
+<button
+class="icon-btn"
+style="width:40px;height:40px"
+onclick="toast('Attachment coming soon')">
+
+<svg viewBox="0 0 24 24">
+
+<path
+d="m21.4 11.6-8.8 8.8
+a6 6 0 0 1-8.5-8.5l8.8-8.8
+a4 4 0 0 1 5.7 5.7l-8.8 8.8
+a2 2 0 0 1-2.8-2.8l8.1-8.1"/>
+
+</svg>
+
+</button>
+
+
+<input
+id="chatInput"
+placeholder="Message..."
+style="
+flex:1;
+height:42px;
+background:none;
+border:0;
+outline:0;
+color:white;
+padding:0 5px">
+
+
+<button
+onclick="sendMessage()"
+style="
+width:42px;
+height:42px;
+border-radius:50%;
+background:#8145ff;
+display:flex;
+align-items:center;
+justify-content:center">
+
+<svg
+viewBox="0 0 24 24"
+width="19"
+fill="none"
+stroke="white"
+stroke-width="2">
+
+<path d="m22 2-7 20-4-9-9-4z"/>
+<path d="M22 2 11 13"/>
+
+</svg>
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     EXPLORE
+===================================================== -->
+
+<section
+id="explore"
+class="panel">
+
+
+<div class="panel-head">
+
+<button
+class="back"
+onclick="closePanels()">
+
+<svg viewBox="0 0 24 24">
+
+<path d="M15 18L9 12L15 6"/>
+
+</svg>
+
+</button>
+
+<div class="panel-title">
+Explore
+</div>
+
+<div style="width:42px"></div>
+
+</div>
+
+
+<div class="search-box">
+
+<svg viewBox="0 0 24 24">
+
+<circle cx="11" cy="11" r="7"/>
+
+<path d="m20 20-4-4"/>
+
+</svg>
+
+<input
+placeholder="Search X-DARK">
+
+</div>
+
+
+<div class="grid">
+
+<div class="grid-item">
 <video
 src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-muted
-loop
-autoplay
-playsinline>
+muted loop autoplay playsinline>
 </video>
 </div>
 
-<div class="explore-item">
+<div class="grid-item">
 <video
 src="https://www.w3schools.com/html/mov_bbb.mp4"
-muted
-loop
-autoplay
-playsinline>
+muted loop autoplay playsinline>
 </video>
 </div>
 
-<div class="explore-item">
+<div class="grid-item">
 <video
 src="https://media.w3.org/2010/05/sintel/trailer.mp4"
-muted
-loop
-autoplay
-playsinline>
+muted loop autoplay playsinline>
 </video>
 </div>
 
-<div class="explore-item">
+<div class="grid-item">
 <video
 src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-muted
-loop
-autoplay
-playsinline>
+muted loop autoplay playsinline>
 </video>
 </div>
 
-<div class="explore-item">
+<div class="grid-item">
 <video
 src="https://www.w3schools.com/html/mov_bbb.mp4"
-muted
-loop
-autoplay
-playsinline>
+muted loop autoplay playsinline>
 </video>
 </div>
 
-<div class="explore-item">
+<div class="grid-item">
 <video
 src="https://media.w3.org/2010/05/sintel/trailer.mp4"
-muted
-loop
-autoplay
-playsinline>
+muted loop autoplay playsinline>
 </video>
 </div>
 
@@ -1887,23 +2291,24 @@ playsinline>
 
 <section
 id="create"
-class="drawer">
+class="panel">
 
-<div class="drawer-header">
+
+<div class="panel-head">
 
 <button
 class="back"
-onclick="closeDrawers()">
+onclick="closePanels()">
 
 <svg viewBox="0 0 24 24">
 
-<path d="m15 18-6-6 6-6"/>
+<path d="M15 18L9 12L15 6"/>
 
 </svg>
 
 </button>
 
-<div class="drawer-title">
+<div class="panel-title">
 Create Reel
 </div>
 
@@ -1913,6 +2318,7 @@ Create Reel
 
 
 <div class="create-area">
+
 
 <div
 id="preview"
@@ -1926,11 +2332,12 @@ controls>
 </div>
 
 
-<div class="upload-box">
+<div class="upload">
 
 <label
 for="videoInput"
-class="upload-label">
+style="cursor:pointer">
+
 
 <div class="upload-icon">
 
@@ -1946,8 +2353,9 @@ class="upload-label">
 
 </div>
 
+
 <strong>
-Upload a Reel
+Upload Reel
 </strong>
 
 <small>
@@ -1955,6 +2363,7 @@ MP4 / MOV video
 </small>
 
 </label>
+
 
 <input
 id="videoInput"
@@ -1986,28 +2395,132 @@ Publish Reel
 
 
 <!-- =====================================================
-     PROFILE
+     ACTIVITY
 ===================================================== -->
 
 <section
-id="profile"
-class="drawer">
+id="activity"
+class="panel">
 
-<div class="drawer-header">
+
+<div class="panel-head">
 
 <button
 class="back"
-onclick="closeDrawers()">
+onclick="closePanels()">
 
 <svg viewBox="0 0 24 24">
 
-<path d="m15 18-6-6 6-6"/>
+<path d="M15 18L9 12L15 6"/>
 
 </svg>
 
 </button>
 
-<div class="drawer-title">
+<div class="panel-title">
+Activity
+</div>
+
+<div style="width:42px"></div>
+
+</div>
+
+
+<div class="setting">
+
+<div class="avatar">
+D
+</div>
+
+<div class="setting-text">
+
+<strong>
+Darkwing liked your Reel
+</strong>
+
+<small>
+2 minutes ago
+</small>
+
+</div>
+
+❤️
+
+</div>
+
+
+<div class="setting">
+
+<div class="avatar">
+N
+</div>
+
+<div class="setting-text">
+
+<strong>
+Nova started following you
+</strong>
+
+<small>
+18 minutes ago
+</small>
+
+</div>
+
++
+
+</div>
+
+
+<div class="setting">
+
+<div class="avatar">
+A
+</div>
+
+<div class="setting-text">
+
+<strong>
+Alex commented on your Reel
+</strong>
+
+<small>
+1 hour ago
+</small>
+
+</div>
+
+💬
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     PROFILE
+===================================================== -->
+
+<section
+id="profile"
+class="panel">
+
+
+<div class="panel-head">
+
+<button
+class="back"
+onclick="closePanels()">
+
+<svg viewBox="0 0 24 24">
+
+<path d="M15 18L9 12L15 6"/>
+
+</svg>
+
+</button>
+
+<div class="panel-title">
 Profile
 </div>
 
@@ -2020,21 +2533,23 @@ Profile
 
 <div class="profile-center">
 
-<div class="profile-avatar">
 
-<div class="profile-avatar-inner">
+<div class="big-avatar">
+
+<div class="big-avatar-inner">
 A
 </div>
 
 </div>
 
+
 <h2>
 Ankaj
 </h2>
 
-<p>
+<div class="username">
 @x_dark_user
-</p>
+</div>
 
 
 <div class="stats">
@@ -2057,7 +2572,7 @@ Ankaj
 </div>
 
 
-<div class="profile-buttons">
+<div class="profile-actions">
 
 <button
 class="profile-button"
@@ -2066,7 +2581,6 @@ onclick="toast('Edit profile coming soon')">
 Edit Profile
 
 </button>
-
 
 <button
 class="profile-button"
@@ -2085,9 +2599,8 @@ Settings
 style="
 margin-top:28px;
 padding-top:20px;
-border-top:1px solid rgba(255,255,255,.09);
-font-weight:850;
-">
+border-top:1px solid var(--line);
+font-weight:850">
 
 Your Reels
 
@@ -2095,36 +2608,27 @@ Your Reels
 
 
 <div
-class="explore-grid"
+class="grid"
 style="margin-top:15px">
 
-<div class="explore-item">
+<div class="grid-item">
 <video
 src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-muted
-loop
-autoplay
-playsinline>
+muted loop autoplay playsinline>
 </video>
 </div>
 
-<div class="explore-item">
+<div class="grid-item">
 <video
 src="https://www.w3schools.com/html/mov_bbb.mp4"
-muted
-loop
-autoplay
-playsinline>
+muted loop autoplay playsinline>
 </video>
 </div>
 
-<div class="explore-item">
+<div class="grid-item">
 <video
 src="https://media.w3.org/2010/05/sintel/trailer.mp4"
-muted
-loop
-autoplay
-playsinline>
+muted loop autoplay playsinline>
 </video>
 </div>
 
@@ -2141,23 +2645,24 @@ playsinline>
 
 <section
 id="settings"
-class="drawer">
+class="panel">
 
-<div class="drawer-header">
+
+<div class="panel-head">
 
 <button
 class="back"
-onclick="closeDrawers()">
+onclick="closePanels()">
 
 <svg viewBox="0 0 24 24">
 
-<path d="m15 18-6-6 6-6"/>
+<path d="M15 18L9 12L15 6"/>
 
 </svg>
 
 </button>
 
-<div class="drawer-title">
+<div class="panel-title">
 Settings
 </div>
 
@@ -2166,9 +2671,7 @@ Settings
 </div>
 
 
-<div
-class="setting"
-onclick="toast('Appearance is already Dark')">
+<div class="setting">
 
 <div class="setting-icon">
 
@@ -2176,13 +2679,7 @@ onclick="toast('Appearance is already Dark')">
 
 <circle cx="12" cy="12" r="3"/>
 
-<path
-d="M19 12a7 7 0 0 0-.2-1.7l2-1.5-2-3.4-2.4 1
-A7 7 0 0 0 14.8 5L14.5 2h-5l-.3 3
-a7 7 0 0 0-1.6.9l-2.4-1-2 3.4
-2 1.5A7 7 0 0 0 5 12l-2 1.5 2 3.4
-2.4-1a7 7 0 0 0 1.6.9l.3 3h5l.3-3
-a7 7 0 0 0 1.6-.9l2.4 1 2-3.4z"/>
+<path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
 
 </svg>
 
@@ -2195,7 +2692,7 @@ Appearance
 </strong>
 
 <small>
-Dark theme · Purple accent
+Dark · Purple premium theme
 </small>
 
 </div>
@@ -2205,9 +2702,7 @@ Dark theme · Purple accent
 </div>
 
 
-<div
-class="setting"
-onclick="toast('Privacy settings coming soon')">
+<div class="setting">
 
 <div class="setting-icon">
 
@@ -2238,9 +2733,7 @@ Manage your privacy
 </div>
 
 
-<div
-class="setting"
-onclick="toast('Notification settings coming soon')">
+<div class="setting">
 
 <div class="setting-icon">
 
@@ -2273,9 +2766,7 @@ Manage alerts
 </div>
 
 
-<div
-class="setting"
-onclick="toast('Account settings coming soon')">
+<div class="setting">
 
 <div class="setting-icon">
 
@@ -2296,234 +2787,12 @@ Account
 </strong>
 
 <small>
-Manage your account
+Account preferences
 </small>
 
 </div>
 
 <span>›</span>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     MESSAGES
-===================================================== -->
-
-<section
-id="messages"
-class="drawer">
-
-<div class="drawer-header">
-
-<button
-class="back"
-onclick="closeDrawers()">
-
-<svg viewBox="0 0 24 24">
-
-<path d="m15 18-6-6 6-6"/>
-
-</svg>
-
-</button>
-
-<div class="drawer-title">
-Messages
-</div>
-
-<div style="width:42px"></div>
-
-</div>
-
-
-<div class="message">
-
-<div class="creator-avatar">
-D
-</div>
-
-<div class="message-info">
-
-<strong>
-Darkwing
-</strong>
-
-<small>
-Welcome to X-DARK
-</small>
-
-</div>
-
-<span>›</span>
-
-</div>
-
-
-<div class="message">
-
-<div
-class="creator-avatar"
-style="
-background:linear-gradient(
-135deg,
-#ff4384,
-#754cff
-)">
-
-N
-
-</div>
-
-<div class="message-info">
-
-<strong>
-Nova
-</strong>
-
-<small>
-Start a conversation
-</small>
-
-</div>
-
-<span>›</span>
-
-</div>
-
-
-<div class="message">
-
-<div
-class="creator-avatar"
-style="
-background:linear-gradient(
-135deg,
-#299cff,
-#764cff
-)">
-
-A
-
-</div>
-
-<div class="message-info">
-
-<strong>
-Alex
-</strong>
-
-<small>
-Hey 👋
-</small>
-
-</div>
-
-<span>›</span>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     ACTIVITY
-===================================================== -->
-
-<section
-id="activity"
-class="drawer">
-
-<div class="drawer-header">
-
-<button
-class="back"
-onclick="closeDrawers()">
-
-<svg viewBox="0 0 24 24">
-
-<path d="m15 18-6-6 6-6"/>
-
-</svg>
-
-</button>
-
-<div class="drawer-title">
-Activity
-</div>
-
-<div style="width:42px"></div>
-
-</div>
-
-
-<div class="setting">
-
-<div class="creator-avatar">
-D
-</div>
-
-<div class="setting-text">
-
-<strong>
-Darkwing liked your Reel
-</strong>
-
-<small>
-2 minutes ago
-</small>
-
-</div>
-
-❤️
-
-</div>
-
-
-<div class="setting">
-
-<div class="creator-avatar">
-N
-</div>
-
-<div class="setting-text">
-
-<strong>
-Nova started following you
-</strong>
-
-<small>
-18 minutes ago
-</small>
-
-</div>
-
-+
-
-</div>
-
-
-<div class="setting">
-
-<div class="creator-avatar">
-A
-</div>
-
-<div class="setting-text">
-
-<strong>
-Alex commented on your Reel
-</strong>
-
-<small>
-1 hour ago
-</small>
-
-</div>
-
-💬
 
 </div>
 
@@ -2539,14 +2808,11 @@ id="comments"
 class="comments">
 
 
-<!-- FIXED BACK ARROW -->
-
 <div class="comment-header">
 
 <button
 class="comment-back"
-onclick="closeComments()"
-aria-label="Back">
+onclick="closeComments()">
 
 <svg viewBox="0 0 24 24">
 
@@ -2555,7 +2821,6 @@ aria-label="Back">
 </svg>
 
 </button>
-
 
 <div class="comment-title">
 Comments
@@ -2632,8 +2897,7 @@ id="commentInput"
 placeholder="Add a comment..."
 onkeydown="commentKey(event)">
 
-<button
-onclick="addComment()">
+<button onclick="addComment()">
 
 <svg
 viewBox="0 0 24 24"
@@ -2641,8 +2905,7 @@ width="19"
 height="19"
 fill="none"
 stroke="white"
-stroke-width="2"
-stroke-linecap="round">
+stroke-width="2">
 
 <path d="M12 19V5"/>
 <path d="m6 11 6-6 6 6"/>
@@ -2665,32 +2928,32 @@ class="toast">
 <script>
 
 /* =====================================================
-   DRAWERS
+   PANEL CONTROL
 ===================================================== */
 
 function openDrawer(id){
 
-  closeDrawers();
+  closePanels();
 
-  const drawer =
+  const panel =
     document.getElementById(id);
 
-  if(drawer){
+  if(panel){
 
-    drawer.classList.add("open");
+    panel.classList.add("open");
 
   }
 
 }
 
 
-function closeDrawers(){
+function closePanels(){
 
   document
-    .querySelectorAll(".drawer")
-    .forEach(drawer=>{
+    .querySelectorAll(".panel")
+    .forEach(panel=>{
 
-      drawer.classList.remove("open");
+      panel.classList.remove("open");
 
     });
 
@@ -2703,70 +2966,138 @@ function closeDrawers(){
 
 function goHome(){
 
-  closeDrawers();
+  closePanels();
 
-  const feed =
-    document.querySelector(".feed");
-
-  feed.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+  document
+    .querySelector(".feed")
+    .scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
 
 }
 
 
 /* =====================================================
-   COMMENTS
+   CHAT
 ===================================================== */
 
-function openComments(){
+let currentChat="Darkwing";
+
+
+function openChat(name){
+
+  currentChat=name;
 
   document
-    .getElementById("comments")
-    .classList.add("open");
+    .getElementById("messages")
+    .classList.remove("open");
+
+  const chat =
+    document.getElementById("chatScreen");
+
+  chat.classList.add("open");
+
+  document
+    .getElementById("chatName")
+    .textContent=name;
+
+  const avatar =
+    document.getElementById("chatAvatar");
+
+  avatar.textContent =
+    name.charAt(0);
+
+  loadDemoMessages(name);
 
 }
 
 
-function closeComments(){
+function closeChat(){
 
   document
-    .getElementById("comments")
+    .getElementById("chatScreen")
     .classList.remove("open");
 
 }
 
 
-/* =====================================================
-   COMMENT ENTER
-===================================================== */
+function loadDemoMessages(name){
 
-function commentKey(event){
+  const box =
+    document.getElementById("chatMessages");
 
-  if(
-    event.key === "Enter"
-  ){
+  box.innerHTML=`
 
-    event.preventDefault();
+    <div style="
+      text-align:center;
+      color:#777781;
+      font-size:11px;
+      margin:20px 0 25px">
 
-    addComment();
+      Today
 
-  }
+    </div>
+
+    <div style="
+      display:flex;
+      margin-bottom:12px">
+
+      <div style="
+        max-width:75%;
+        padding:12px 14px;
+        border-radius:18px 18px 18px 5px;
+        background:#17171f;
+        border:1px solid rgba(255,255,255,.08);
+        font-size:13px">
+
+        Welcome to X-DARK 🔥
+
+      </div>
+
+    </div>
+
+    <div style="
+      display:flex;
+      justify-content:flex-end;
+      margin-bottom:12px">
+
+      <div style="
+        max-width:75%;
+        padding:12px 14px;
+        border-radius:18px 18px 5px 18px;
+        background:linear-gradient(135deg,#6334d9,#824cff);
+        font-size:13px">
+
+        Hey ${name} 👋
+
+        <div style="
+          font-size:9px;
+          text-align:right;
+          margin-top:4px;
+          opacity:.75">
+
+          ✓✓ Seen
+
+        </div>
+
+      </div>
+
+    </div>
+
+  `;
 
 }
 
 
 /* =====================================================
-   ADD COMMENT
+   SEND MESSAGE
 ===================================================== */
 
-function addComment(){
+function sendMessage(){
 
   const input =
-    document.getElementById(
-      "commentInput"
-    );
+    document.getElementById("chatInput");
 
   const text =
     input.value.trim();
@@ -2777,57 +3108,49 @@ function addComment(){
 
   }
 
-  const comment =
+  const box =
+    document.getElementById("chatMessages");
+
+  const message =
     document.createElement("div");
 
-  comment.className =
-    "comment";
+  message.style.cssText=`
+    display:flex;
+    justify-content:flex-end;
+    margin-bottom:12px;
+  `;
 
-  comment.innerHTML = `
+  message.innerHTML=`
 
-    <div class="comment-avatar">
-      A
-    </div>
-
-    <div class="comment-body">
-
-      <b>Ankaj</b>
-
-      <br>
+    <div style="
+      max-width:75%;
+      padding:12px 14px;
+      border-radius:18px 18px 5px 18px;
+      background:linear-gradient(135deg,#6334d9,#824cff);
+      font-size:13px">
 
       ${escapeHTML(text)}
 
-      <br>
+      <div style="
+        font-size:9px;
+        text-align:right;
+        margin-top:4px;
+        opacity:.75">
 
-      <small>
-        now
-      </small>
+        ✓✓ Seen
+
+      </div>
 
     </div>
 
   `;
 
-  document
-    .getElementById("commentList")
-    .appendChild(comment);
+  box.appendChild(message);
 
   input.value="";
 
-}
-
-
-/* =====================================================
-   ESCAPE HTML
-===================================================== */
-
-function escapeHTML(text){
-
-  return text
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+  box.scrollTop=
+    box.scrollHeight;
 
 }
 
@@ -2847,13 +3170,11 @@ function like(button){
     button.classList.contains("active")
   ){
 
-    span.textContent =
-      "Liked";
+    span.textContent="Liked";
 
   }else{
 
-    span.textContent =
-      "Like";
+    span.textContent="Like";
 
   }
 
@@ -2869,11 +3190,9 @@ function savePost(button){
   button.classList.toggle("active");
 
   toast(
-
     button.classList.contains("active")
-    ? "Saved"
+    ? "Saved to your collection"
     : "Removed from saved"
-
   );
 
 }
@@ -2886,19 +3205,16 @@ function savePost(button){
 function followUser(button){
 
   if(
-    button.textContent.trim()
-    === "Follow"
+    button.textContent.trim()==="Follow"
   ){
 
-    button.textContent =
-      "Following";
+    button.textContent="Following";
 
     toast("Following");
 
   }else{
 
-    button.textContent =
-      "Follow";
+    button.textContent="Follow";
 
     toast("Unfollowed");
 
@@ -2939,7 +3255,114 @@ async function sharePost(){
 
     }
 
-  }catch(error){}
+  }catch(e){}
+
+}
+
+
+/* =====================================================
+   COMMENTS
+===================================================== */
+
+function openComments(){
+
+  document
+    .getElementById("comments")
+    .classList.add("open");
+
+}
+
+
+function closeComments(){
+
+  document
+    .getElementById("comments")
+    .classList.remove("open");
+
+}
+
+
+function commentKey(event){
+
+  if(
+    event.key==="Enter"
+  ){
+
+    event.preventDefault();
+
+    addComment();
+
+  }
+
+}
+
+
+function addComment(){
+
+  const input =
+    document.getElementById(
+      "commentInput"
+    );
+
+  const text =
+    input.value.trim();
+
+  if(!text){
+
+    return;
+
+  }
+
+  const comment =
+    document.createElement("div");
+
+  comment.className="comment";
+
+  comment.innerHTML=`
+
+    <div class="comment-avatar">
+      A
+    </div>
+
+    <div class="comment-body">
+
+      <b>Ankaj</b>
+
+      <br>
+
+      ${escapeHTML(text)}
+
+      <br>
+
+      <small>
+        now
+      </small>
+
+    </div>
+
+  `;
+
+  document
+    .getElementById("commentList")
+    .appendChild(comment);
+
+  input.value="";
+
+}
+
+
+/* =====================================================
+   ESCAPE
+===================================================== */
+
+function escapeHTML(text){
+
+  return text
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
 
 }
 
@@ -2953,35 +3376,18 @@ function toast(message){
   const box =
     document.getElementById("toast");
 
-  box.textContent =
-    message;
+  box.textContent=message;
 
   box.classList.add("show");
 
-  setTimeout(()=>{
+  clearTimeout(window.toastTimer);
 
-    box.classList.remove("show");
+  window.toastTimer=
+    setTimeout(()=>{
 
-  },2500);
+      box.classList.remove("show");
 
-}
-
-
-/* =====================================================
-   SEARCH
-===================================================== */
-
-function searchApp(value){
-
-  if(
-    value.trim()
-  ){
-
-    toast(
-      "Searching: " + value
-    );
-
-  }
+    },2500);
 
 }
 
@@ -3010,8 +3416,7 @@ function previewVideo(input){
   video.src =
     URL.createObjectURL(file);
 
-  preview.style.display =
-    "block";
+  preview.style.display="block";
 
 }
 
@@ -3025,45 +3430,37 @@ function publishReel(){
   const input =
     document.getElementById("videoInput");
 
-  if(
-    !input.files.length
-  ){
+  if(!input.files.length){
 
-    toast(
-      "Please select a video first"
-    );
+    toast("Select a video first");
 
     return;
 
   }
 
-  toast(
-    "Reel selected successfully"
-  );
+  toast("Reel selected successfully");
 
 }
 
 
 /* =====================================================
-   VIDEO OBSERVER
+   REEL AUTOPLAY
 ===================================================== */
 
-const videos =
+const reelVideos =
   document.querySelectorAll(
     ".reel video"
   );
 
 
-const observer =
+const videoObserver =
   new IntersectionObserver(
 
     entries=>{
 
       entries.forEach(entry=>{
 
-        if(
-          entry.isIntersecting
-        ){
+        if(entry.isIntersecting){
 
           entry.target
             .play()
@@ -3086,9 +3483,9 @@ const observer =
   );
 
 
-videos.forEach(video=>{
+reelVideos.forEach(video=>{
 
-  observer.observe(video);
+  videoObserver.observe(video);
 
 });
 
@@ -3109,7 +3506,7 @@ document
 
         if(
           event.target.closest(
-            ".action,.top-button,.follow"
+            ".action,.icon-btn,.follow"
           )
         ){
 
@@ -3117,24 +3514,21 @@ document
 
         }
 
-        const now =
-          Date.now();
+        const now=Date.now();
 
         if(
-          now-lastTap < 300
+          now-lastTap<300
         ){
 
-          const likeButton =
+          const button =
             reel.querySelector(".like");
 
           if(
-            likeButton &&
-            !likeButton.classList.contains(
-              "active"
-            )
+            button &&
+            !button.classList.contains("active")
           ){
 
-            like(likeButton);
+            like(button);
 
             toast("❤️ Liked");
 
@@ -3142,17 +3536,41 @@ document
 
         }
 
-        lastTap =
-          now;
+        lastTap=now;
 
       }
+
     );
 
   });
 
 
 /* =====================================================
-   ESC CLOSE
+   ENTER TO SEND CHAT
+===================================================== */
+
+document
+  .getElementById("chatInput")
+  .addEventListener(
+    "keydown",
+    event=>{
+
+      if(
+        event.key==="Enter"
+      ){
+
+        event.preventDefault();
+
+        sendMessage();
+
+      }
+
+    }
+  );
+
+
+/* =====================================================
+   ESC
 ===================================================== */
 
 document.addEventListener(
@@ -3160,11 +3578,12 @@ document.addEventListener(
   event=>{
 
     if(
-      event.key === "Escape"
+      event.key==="Escape"
     ){
 
       closeComments();
-      closeDrawers();
+      closeChat();
+      closePanels();
 
     }
 
