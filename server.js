@@ -1,102 +1,153 @@
 const express = require("express");
+const multer = require("multer");
 const path = require("path");
+const fs = require("fs");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-/* Body parser */
-app.use(express.json({ limit: "5mb" }));
-app.use(express.urlencoded({
-  extended: true,
-  limit: "5mb"
-}));
+const uploadDir = path.join(__dirname, "uploads");
 
-/* Security headers */
-app.use((req, res, next) => {
-  res.setHeader("X-Content-Type-Options", "nosniff");
-  res.setHeader("X-Frame-Options", "SAMEORIGIN");
-  res.setHeader(
-    "Referrer-Policy",
-    "strict-origin-when-cross-origin"
-  );
-  next();
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
+}
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, uploadDir);
+  },
+
+  filename: (req, file, cb) => {
+    const ext = path.extname(file.originalname);
+    const name =
+      Date.now() + "-" +
+      Math.random().toString(36).slice(2) +
+      ext;
+
+    cb(null, name);
+  }
 });
 
-/* Static files */
-app.use(express.static(__dirname));
+const upload = multer({
+  storage,
 
-/* API status */
-app.get("/api/status", (req, res) => {
-  res.json({
-    app: "X-Dark",
-    version: "2.0.0",
-    status: "online",
-    serverTime: new Date().toISOString()
-  });
-});
+  limits: {
+    fileSize: 500 * 1024 * 1024
+  },
 
-/* Health check */
-app.get("/health", (req, res) => {
-  res.status(200).json({
-    status: "ok",
-    app: "X-Dark"
-  });
-});
+  fileFilter: (req, file, cb) => {
+    const allowed = [
+      "video/mp4",
+      "video/quicktime",
+      "video/webm"
+    ];
 
-/* App configuration */
-app.get("/api/config", (req, res) => {
-  res.json({
-    appName: "X-Dark",
-    maxVideoSizeMB: 100,
-    features: {
-      feed: true,
-      reels: true,
-      upload: true,
-      likes: true,
-      comments: true,
-      profiles: true,
-      followers: true,
-      following: true,
-      search: true,
-      notifications: true,
-      saved: true,
-      stories: true,
-      messages: true,
-      reports: true,
-      admin: true
+    if (allowed.includes(file.mimetype)) {
+      cb(null, true);
+    } else {
+      cb(new Error("Only MP4, MOV and WEBM videos are allowed."));
     }
+  }
+});
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use("/uploads", express.static(uploadDir));
+
+app.use(express.static(path.join(__dirname, "public")));
+
+let posts = [];
+
+app.get("/api/posts", (req, res) => {
+  res.json(posts);
+});
+
+app.post("/api/upload", upload.single("video"), (req, res) => {
+
+  if (!req.file) {
+    return res.status(400).json({
+      message: "No video selected."
+    });
+  }
+
+  const post = {
+    id: Date.now().toString(),
+
+    username: "X-Dark User",
+
+    handle: "@Darkwing2",
+
+    caption:
+      req.body.caption ||
+      "My new X-DARK video 🚀",
+
+    tags:
+      req.body.tags || "",
+
+    video:
+      "/uploads/" + req.file.filename,
+
+    filename:
+      req.file.originalname,
+
+    createdAt:
+      new Date().toISOString()
+  };
+
+  posts.unshift(post);
+
+  res.json({
+    success: true,
+    message: "Video uploaded successfully.",
+    post
   });
 });
 
-/* API 404 */
-app.use("/api", (req, res) => {
-  res.status(404).json({
-    error: "API endpoint not found"
+app.delete("/api/posts/:id", (req, res) => {
+
+  const index =
+    posts.findIndex(p => p.id === req.params.id);
+
+  if (index === -1) {
+    return res.status(404).json({
+      message: "Post not found."
+    });
+  }
+
+  const post = posts[index];
+
+  const filePath =
+    path.join(
+      uploadDir,
+      path.basename(post.video)
+    );
+
+  if (fs.existsSync(filePath)) {
+    fs.unlinkSync(filePath);
+  }
+
+  posts.splice(index, 1);
+
+  res.json({
+    success: true
   });
 });
 
-/*
-  Express 5 compatible frontend fallback.
-  This catches all non-API routes.
-*/
-app.get("/{*splat}", (req, res) => {
-  res.sendFile(
-    path.join(__dirname, "index.html")
-  );
-});
-
-/* Error handler */
 app.use((err, req, res, next) => {
-  console.error("X-Dark Error:", err);
 
-  res.status(500).json({
-    error: "Internal server error"
+  console.error(err);
+
+  res.status(400).json({
+    message:
+      err.message || "Upload failed."
   });
 });
 
-/* Start */
-app.listen(PORT, "0.0.0.0", () => {
+app.listen(PORT, () => {
+
   console.log(
-    `X-Dark running on port ${PORT}`
+    `X-DARK running on port ${PORT}`
   );
+
 });
