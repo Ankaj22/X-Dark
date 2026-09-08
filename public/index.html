@@ -4,10 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#050507">
-
 <title>X-DARK — The Next Level</title>
 
 <style>
+:root{
+  --bg:#050507;
+  --panel:#0b0b10;
+  --card:#121219;
+  --line:rgba(255,255,255,.13);
+  --muted:#858592;
+  --purple:#7d3cff;
+  --purple2:#a66cff;
+}
+
 *{
   box-sizing:border-box;
   -webkit-tap-highlight-color:transparent;
@@ -20,27 +29,29 @@ html,body{
   overflow:hidden;
   background:#000;
   color:#fff;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,
+  "SF Pro Display","Segoe UI",Arial,sans-serif;
 }
 
-button,input{
+button,input,textarea{
   font:inherit;
 }
 
 button{
-  color:#fff;
   border:0;
+  color:#fff;
+  cursor:pointer;
 }
 
 .app{
+  position:relative;
   width:100%;
   height:100dvh;
-  position:relative;
   overflow:hidden;
   background:#050507;
 }
 
-/* FEED */
+/* ================= FEED ================= */
 
 .feed{
   width:100%;
@@ -74,35 +85,46 @@ button{
 .reel:after{
   content:"";
   position:absolute;
-  inset:0;
   z-index:2;
+  inset:0;
   pointer-events:none;
+
   background:
-  linear-gradient(
-    180deg,
-    rgba(0,0,0,.72),
-    rgba(0,0,0,.05) 45%,
-    rgba(0,0,0,.18) 65%,
-    rgba(0,0,0,.96)
-  );
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,.72),
+      rgba(0,0,0,.05) 42%,
+      rgba(0,0,0,.20) 65%,
+      rgba(0,0,0,.96)
+    );
 }
 
-/* TOP */
+/* ================= TOP BAR ================= */
 
 .topbar{
   position:absolute;
-  z-index:20;
+  z-index:50;
   top:0;
   left:0;
   right:0;
   height:80px;
-  padding:calc(env(safe-area-inset-top) + 8px) 12px 0;
+
+  padding:
+    calc(env(safe-area-inset-top) + 6px)
+    12px 0;
+
+  display:flex;
+  justify-content:flex-end;
+  align-items:flex-start;
 }
+
+/* X-DARK LOGO */
 
 .logo{
   position:absolute;
+
   left:15px;
-  top:calc(env(safe-area-inset-top) + 8px);
+  top:calc(env(safe-area-inset-top) + 7px);
 
   width:55px;
   height:55px;
@@ -110,60 +132,63 @@ button{
   object-fit:cover;
   border-radius:50%;
 
-  border:1px solid rgba(255,255,255,.2);
+  border:1px solid rgba(255,255,255,.18);
 
-  background:#000;
+  background:#050507;
 
   box-shadow:
-    0 0 8px rgba(125,60,255,.8),
-    0 0 22px rgba(125,60,255,.45);
+    0 0 8px rgba(126,61,255,.75),
+    0 0 20px rgba(126,61,255,.40);
 
-  filter:drop-shadow(0 0 7px rgba(125,60,255,.7));
+  filter:
+    drop-shadow(0 0 7px rgba(126,61,255,.65));
 
-  z-index:30;
+  z-index:20;
+
+  transition:transform .2s ease;
 }
 
 .logo:active{
-  transform:scale(.92);
+  transform:scale(.90);
 }
 
 .top-actions{
-  position:absolute;
-  right:12px;
-  top:calc(env(safe-area-inset-top) + 8px);
   display:flex;
-  gap:8px;
+  gap:7px;
 }
 
 .icon-btn{
   width:45px;
   height:45px;
+
   border-radius:50%;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   background:rgba(5,5,9,.72);
-  border:1px solid rgba(255,255,255,.16);
+
+  border:1px solid var(--line);
+
   backdrop-filter:blur(18px);
+
+  font-size:20px;
 }
 
-.icon-btn svg{
-  width:22px;
-  height:22px;
-  fill:none;
-  stroke:currentColor;
-  stroke-width:1.8;
-  stroke-linecap:round;
-  stroke-linejoin:round;
+.icon-btn:active{
+  transform:scale(.93);
 }
 
-/* RIGHT */
+/* ================= RIGHT ACTIONS ================= */
 
 .actions{
   position:absolute;
   z-index:25;
+
   right:8px;
   bottom:122px;
+
   display:flex;
   flex-direction:column;
   gap:8px;
@@ -172,28 +197,31 @@ button{
 .action{
   width:57px;
   min-height:58px;
+
   border-radius:17px;
-  background:rgba(8,8,12,.55);
+
+  background:rgba(8,8,12,.52);
+
   border:1px solid rgba(255,255,255,.14);
+
   backdrop-filter:blur(17px);
+
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
+
   gap:3px;
+
+  text-shadow:0 2px 8px #000;
 }
 
-.action svg{
-  width:25px;
-  height:25px;
-  fill:none;
-  stroke:currentColor;
-  stroke-width:1.8;
-  stroke-linecap:round;
-  stroke-linejoin:round;
+.action-icon{
+  font-size:25px;
+  line-height:24px;
 }
 
-.action span{
+.action span:last-child{
   font-size:9px;
   font-weight:900;
 }
@@ -202,37 +230,47 @@ button{
   color:#ff3b83;
 }
 
-.action.liked svg{
-  fill:#ff3b83;
-}
-
-/* CONTENT */
+/* ================= CONTENT ================= */
 
 .content{
   position:absolute;
+
   z-index:25;
+
   left:18px;
-  right:75px;
-  bottom:100px;
+  right:73px;
+  bottom:101px;
 }
 
 .creator{
   display:flex;
   align-items:center;
   gap:8px;
+
   margin-bottom:11px;
 }
 
 .avatar{
   width:46px;
   height:46px;
+
   flex:none;
+
   border-radius:50%;
-  background:linear-gradient(135deg,#7136ff,#a56cff);
+
+  background:
+    linear-gradient(
+      135deg,
+      #7136ff,
+      #a56cff
+    );
+
   display:flex;
   align-items:center;
   justify-content:center;
-  font-weight:900;
+
+  font-weight:950;
+
   border:2px solid rgba(255,255,255,.22);
 }
 
@@ -253,11 +291,16 @@ button{
 
 .follow{
   padding:8px 13px;
+
   border-radius:12px;
+
   background:rgba(255,255,255,.08);
+
   border:1px solid rgba(255,255,255,.78);
+
   font-size:10px;
   font-weight:900;
+
   backdrop-filter:blur(10px);
 }
 
@@ -265,12 +308,15 @@ button{
   font-size:16px;
   font-weight:750;
   line-height:1.42;
+
   text-shadow:0 2px 8px #000;
 }
 
 .hashtags{
   margin-top:7px;
+
   color:#ded3ff;
+
   font-size:12px;
   font-weight:750;
 }
@@ -279,33 +325,45 @@ button{
   display:flex;
   align-items:center;
   gap:7px;
+
   margin-top:9px;
+
   font-size:11px;
 }
 
 .audio-circle{
   width:23px;
   height:23px;
+
   border:1px solid #fff;
+
   border-radius:50%;
+
   display:flex;
   align-items:center;
   justify-content:center;
 }
 
-/* BOTTOM */
+/* ================= BOTTOM NAV ================= */
 
 .bottom{
   position:absolute;
   z-index:100;
+
   left:9px;
   right:9px;
   bottom:8px;
+
   height:69px;
+
   border-radius:24px;
+
   background:rgba(9,9,13,.91);
-  border:1px solid rgba(255,255,255,.13);
+
+  border:1px solid var(--line);
+
   backdrop-filter:blur(25px);
+
   display:flex;
   align-items:center;
   justify-content:space-around;
@@ -314,26 +372,25 @@ button{
 .nav{
   width:62px;
   height:60px;
+
   background:none;
+
   color:#777781;
+
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
+
   gap:4px;
 }
 
-.nav svg{
-  width:23px;
-  height:23px;
-  fill:none;
-  stroke:currentColor;
-  stroke-width:1.8;
-  stroke-linecap:round;
-  stroke-linejoin:round;
+.nav-icon{
+  font-size:23px;
+  line-height:23px;
 }
 
-.nav span{
+.nav span:last-child{
   font-size:9px;
   font-weight:850;
 }
@@ -342,31 +399,38 @@ button{
   color:#fff;
 }
 
-.nav.active svg{
+.nav.active .nav-icon{
   color:#9b5cff;
 }
 
 .create{
   width:50px;
   height:41px;
+
   border-radius:14px;
-  background:linear-gradient(145deg,#fff,#d9d9de);
+
+  background:
+    linear-gradient(
+      145deg,
+      #fff,
+      #d9d9de
+    );
+
   color:#08080a;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
+  font-size:28px;
 }
 
-.create svg{
-  width:23px;
-  height:23px;
-}
-
-/* PANELS */
+/* ================= PANELS ================= */
 
 .panel{
   position:absolute;
   z-index:300;
+
   inset:0;
 
   background:
@@ -378,7 +442,10 @@ button{
     #07070a;
 
   transform:translateX(100%);
-  transition:transform .34s cubic-bezier(.2,.8,.2,1);
+
+  transition:
+    transform .34s cubic-bezier(.2,.8,.2,1);
+
   overflow-y:auto;
 }
 
@@ -389,41 +456,47 @@ button{
 .panel-head{
   position:sticky;
   z-index:30;
+
   top:0;
+
   height:74px;
 
-  padding:calc(env(safe-area-inset-top) + 4px) 14px 0;
+  padding:
+    calc(env(safe-area-inset-top) + 4px)
+    14px 0;
 
   display:flex;
   align-items:center;
 
   background:rgba(7,7,10,.93);
-  border-bottom:1px solid rgba(255,255,255,.13);
+
+  border-bottom:1px solid var(--line);
+
   backdrop-filter:blur(23px);
 }
 
 .back{
   width:42px;
   height:42px;
+
   border-radius:50%;
+
   background:#17171d;
-  border:1px solid rgba(255,255,255,.13);
+
+  border:1px solid var(--line);
+
   display:flex;
   align-items:center;
   justify-content:center;
-}
 
-.back svg{
-  width:21px;
-  height:21px;
-  fill:none;
-  stroke:currentColor;
-  stroke-width:2;
+  font-size:30px;
 }
 
 .panel-title{
   flex:1;
+
   text-align:center;
+
   font-size:18px;
   font-weight:900;
 }
@@ -432,17 +505,33 @@ button{
   width:42px;
 }
 
-/* CARDS */
+/* ================= PREMIUM CARDS ================= */
 
 .card{
   margin:10px 14px;
+
   padding:13px;
+
   border-radius:18px;
-  background:#111117;
-  border:1px solid rgba(255,255,255,.13);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.055),
+      rgba(255,255,255,.018)
+    );
+
+  border:1px solid var(--line);
+
+  box-shadow:
+    0 8px 30px rgba(0,0,0,.18);
+
   display:flex;
   align-items:center;
+
   gap:11px;
+
+  backdrop-filter:blur(16px);
 }
 
 .card-info{
@@ -455,57 +544,87 @@ button{
 
 .card-info small{
   display:block;
+
   margin-top:4px;
+
   color:#777781;
+
   font-size:10px;
 }
 
-/* SEARCH */
+/* ================= SEARCH ================= */
 
 .search{
   height:50px;
+
   margin:14px;
+
   padding:0 14px;
+
   border-radius:16px;
+
   background:#121218;
-  border:1px solid rgba(255,255,255,.13);
+
+  border:1px solid var(--line);
+
   display:flex;
   align-items:center;
+
   gap:9px;
 }
 
 .search input{
   flex:1;
+
   background:none;
   border:0;
   outline:0;
+
   color:#fff;
 }
 
-/* PROFILE */
+/* ================= PROFILE ================= */
 
 .profile{
   text-align:center;
+
   padding:27px 16px;
 }
 
 .big-avatar{
   width:105px;
   height:105px;
+
   margin:auto;
+
   padding:3px;
+
   border-radius:50%;
-  background:conic-gradient(#ff3b82,#743cff,#55c8ff,#ff3b82);
+
+  background:
+    conic-gradient(
+      #ff3b82,
+      #743cff,
+      #55c8ff,
+      #ff3b82
+    );
+
+  box-shadow:
+    0 0 30px rgba(125,60,255,.35);
 }
 
 .big-avatar-inner{
   width:100%;
   height:100%;
+
   border-radius:50%;
+
   background:#15131d;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   font-size:39px;
   font-weight:950;
 }
@@ -513,7 +632,9 @@ button{
 .stats{
   display:flex;
   justify-content:center;
+
   gap:38px;
+
   margin:23px 0;
 }
 
@@ -527,18 +648,27 @@ button{
   color:#777781;
 }
 
-/* COMMENTS */
+/* ================= COMMENTS ================= */
 
 .comments{
   position:absolute;
   z-index:700;
+
   left:0;
   right:0;
   bottom:0;
+
   background:#111116;
+
   border-radius:27px 27px 0 0;
+
   transform:translateY(100%);
-  transition:transform .34s cubic-bezier(.2,.8,.2,1);
+
+  transition:
+    transform .34s cubic-bezier(.2,.8,.2,1);
+
+  box-shadow:
+    0 -25px 80px rgba(0,0,0,.65);
 }
 
 .comments.open{
@@ -547,43 +677,69 @@ button{
 
 .comment-head{
   height:62px;
+
+  position:relative;
+
   display:flex;
   align-items:center;
   justify-content:center;
-  border-bottom:1px solid rgba(255,255,255,.13);
+
+  border-bottom:1px solid var(--line);
+
   font-weight:850;
 }
 
 .comment-back{
   position:absolute;
   left:12px;
+
   width:42px;
   height:42px;
+
   border-radius:50%;
+
   background:#1a1a20;
+
+  border:1px solid var(--line);
+
+  font-size:28px;
 }
 
 .comment-list{
   height:42vh;
+
   overflow-y:auto;
+
   padding:15px;
 }
 
 .comment{
   display:flex;
+
   gap:9px;
+
   margin-bottom:17px;
 }
 
 .comment-avatar{
   width:37px;
   height:37px;
+
   flex:none;
+
   border-radius:50%;
-  background:linear-gradient(135deg,#743cff,#a56cff);
+
+  background:
+    linear-gradient(
+      135deg,
+      #743cff,
+      #a56cff
+    );
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   font-size:12px;
   font-weight:900;
 }
@@ -599,61 +755,93 @@ button{
 
 .comment-input{
   display:flex;
+
   gap:7px;
-  padding:9px 13px calc(9px + env(safe-area-inset-bottom));
+
+  padding:
+    9px 13px
+    calc(9px + env(safe-area-inset-bottom));
 }
 
 .comment-input input{
   flex:1;
+
   height:44px;
+
   border-radius:22px;
+
   background:#1b1b22;
-  border:1px solid rgba(255,255,255,.13);
+
+  border:1px solid var(--line);
+
   outline:0;
+
   color:#fff;
+
   padding:0 14px;
 }
 
 .comment-send{
   width:44px;
   height:44px;
+
   border-radius:50%;
+
   background:#8146ff;
+
+  font-size:18px;
 }
 
-/* TOAST */
+/* ================= TOAST ================= */
 
 .toast{
   position:absolute;
+
   z-index:1000;
+
   left:50%;
   bottom:91px;
+
   max-width:88%;
+
   transform:translate(-50%,15px);
+
   opacity:0;
+
   pointer-events:none;
+
   padding:11px 16px;
+
   border-radius:14px;
+
   background:#24242d;
+
   border:1px solid #42424d;
+
   font-size:11px;
   font-weight:750;
+
   text-align:center;
+
   transition:.25s;
 }
 
 .toast.show{
   opacity:1;
+
   transform:translate(-50%,0);
 }
 
 @media(min-width:700px){
-  .app{
-    width:520px;
-    margin:auto;
-    border-left:1px solid #15151a;
-    border-right:1px solid #15151a;
-  }
+
+.app{
+  width:520px;
+  margin:auto;
+
+  border-left:1px solid #15151a;
+  border-right:1px solid #15151a;
+}
+
 }
 </style>
 </head>
@@ -661,6 +849,8 @@ button{
 <body>
 
 <div class="app">
+
+<!-- ================= FEED ================= -->
 
 <main id="feed" class="feed">
 
@@ -680,16 +870,20 @@ playsinline>
 <img
 class="logo"
 src="/x-dark-logo.png"
-alt="X-DARK"
+alt="X-DARK — The Next Level"
 onclick="openPanel('profile')">
 
 <div class="top-actions">
 
-<button class="icon-btn" onclick="openPanel('messages')">
+<button
+class="icon-btn"
+onclick="openPanel('messages')">
 💬
 </button>
 
-<button class="icon-btn" onclick="openPanel('settings')">
+<button
+class="icon-btn"
+onclick="openPanel('settings')">
 ⚙️
 </button>
 
@@ -699,24 +893,40 @@ onclick="openPanel('profile')">
 
 <div class="actions">
 
-<button class="action" onclick="toggleLike(this)">
-<span style="font-size:25px">♡</span>
+<button
+class="action"
+onclick="toggleLike(this)">
+
+<span class="action-icon">♡</span>
 <span>12.4K</span>
+
 </button>
 
-<button class="action" onclick="openComments()">
-<span style="font-size:25px">♡</span>
+<button
+class="action"
+onclick="openComments()">
+
+<span class="action-icon">💬</span>
 <span>842</span>
+
 </button>
 
-<button class="action" onclick="sharePost()">
-<span style="font-size:25px">↗</span>
+<button
+class="action"
+onclick="sharePost()">
+
+<span class="action-icon">↗</span>
 <span>Share</span>
+
 </button>
 
-<button class="action" onclick="toggleSave(this)">
-<span style="font-size:25px">♡</span>
+<button
+class="action"
+onclick="toggleSave(this)">
+
+<span class="action-icon">♡</span>
 <span>Save</span>
+
 </button>
 
 </div>
@@ -729,13 +939,19 @@ onclick="openPanel('profile')">
 
 <div class="creator-info">
 
-<div class="creator-name">Darkwing</div>
+<div class="creator-name">
+Darkwing
+</div>
 
-<div class="followers">12.4K followers</div>
+<div class="followers">
+12.4K followers
+</div>
 
 </div>
 
-<button class="follow" onclick="toggleFollow(this)">
+<button
+class="follow"
+onclick="toggleFollow(this)">
 Follow
 </button>
 
@@ -750,13 +966,21 @@ Welcome to X-DARK 🔥 The new dark social experience.
 </div>
 
 <div class="audio">
-<div class="audio-circle">♪</div>
+
+<div class="audio-circle">
+♪
+</div>
+
 Original sound · Darkwing
+
 </div>
 
 </div>
 
 </section>
+
+
+<!-- SECOND REEL -->
 
 <section class="reel">
 
@@ -773,16 +997,20 @@ playsinline>
 <img
 class="logo"
 src="/x-dark-logo.png"
-alt="X-DARK"
+alt="X-DARK — The Next Level"
 onclick="openPanel('profile')">
 
 <div class="top-actions">
 
-<button class="icon-btn" onclick="openPanel('messages')">
+<button
+class="icon-btn"
+onclick="openPanel('messages')">
 💬
 </button>
 
-<button class="icon-btn" onclick="openPanel('settings')">
+<button
+class="icon-btn"
+onclick="openPanel('settings')">
 ⚙️
 </button>
 
@@ -792,19 +1020,31 @@ onclick="openPanel('profile')">
 
 <div class="actions">
 
-<button class="action" onclick="toggleLike(this)">
-<span style="font-size:25px">♡</span>
+<button
+class="action"
+onclick="toggleLike(this)">
+
+<span class="action-icon">♡</span>
 <span>8.7K</span>
+
 </button>
 
-<button class="action" onclick="openComments()">
-<span style="font-size:25px">♡</span>
+<button
+class="action"
+onclick="openComments()">
+
+<span class="action-icon">💬</span>
 <span>315</span>
+
 </button>
 
-<button class="action" onclick="sharePost()">
-<span style="font-size:25px">↗</span>
+<button
+class="action"
+onclick="sharePost()">
+
+<span class="action-icon">↗</span>
 <span>Share</span>
+
 </button>
 
 </div>
@@ -817,13 +1057,19 @@ onclick="openPanel('profile')">
 
 <div class="creator-info">
 
-<div class="creator-name">Nova</div>
+<div class="creator-name">
+Nova
+</div>
 
-<div class="followers">8.7K followers</div>
+<div class="followers">
+8.7K followers
+</div>
 
 </div>
 
-<button class="follow" onclick="toggleFollow(this)">
+<button
+class="follow"
+onclick="toggleFollow(this)">
 Follow
 </button>
 
@@ -838,8 +1084,13 @@ Create. Explore. Connect. ✨
 </div>
 
 <div class="audio">
-<div class="audio-circle">♪</div>
+
+<div class="audio-circle">
+♪
+</div>
+
 Original sound · Nova
+
 </div>
 
 </div>
@@ -848,77 +1099,150 @@ Original sound · Nova
 
 </main>
 
+
+<!-- ================= BOTTOM ================= -->
+
 <nav class="bottom">
 
-<button class="nav active" onclick="goHome()">
-<span style="font-size:23px">⌂</span>
+<button
+class="nav active"
+onclick="goHome()">
+
+<span class="nav-icon">⌂</span>
 <span>Home</span>
+
 </button>
 
-<button class="nav" onclick="openPanel('explore')">
-<span style="font-size:23px">⌕</span>
+<button
+class="nav"
+onclick="openPanel('explore')">
+
+<span class="nav-icon">⌕</span>
 <span>Explore</span>
+
 </button>
 
-<button class="nav" onclick="toast('Create feature ready')">
+<button
+class="nav"
+onclick="toast('Create feature ready 🔥')">
+
 <div class="create">
-<span style="font-size:27px">+</span>
++
 </div>
+
 </button>
 
-<button class="nav" onclick="openPanel('activity')">
-<span style="font-size:23px">♧</span>
+<button
+class="nav"
+onclick="openPanel('activity')">
+
+<span class="nav-icon">♧</span>
 <span>Activity</span>
+
 </button>
 
-<button class="nav" onclick="openPanel('profile')">
-<span style="font-size:23px">♙</span>
+<button
+class="nav"
+onclick="openPanel('profile')">
+
+<span class="nav-icon">♙</span>
 <span>Profile</span>
+
 </button>
 
 </nav>
 
-<!-- MESSAGES -->
 
-<section id="messages" class="panel">
+<!-- ================= MESSAGES ================= -->
+
+<section
+id="messages"
+class="panel">
 
 <div class="panel-head">
 
-<button class="back" onclick="closePanels()">‹</button>
+<button
+class="back"
+onclick="closePanels()">
+‹
+</button>
 
-<div class="panel-title">Messages</div>
+<div class="panel-title">
+Messages
+</div>
 
 <div class="spacer"></div>
 
 </div>
 
 <div class="card">
+
 <div class="avatar">D</div>
+
 <div class="card-info">
+
 <strong>Darkwing</strong>
-<small>Welcome to X-DARK 🔥</small>
+
+<small>
+Welcome to X-DARK 🔥
+</small>
+
 </div>
+
 </div>
 
 <div class="card">
+
 <div class="avatar">N</div>
+
 <div class="card-info">
+
 <strong>Nova</strong>
-<small>Let's create something ✨</small>
+
+<small>
+Let's create something ✨
+</small>
+
 </div>
+
+</div>
+
+<div class="card">
+
+<div class="avatar">A</div>
+
+<div class="card-info">
+
+<strong>Alex</strong>
+
+<small>
+Hey 👋
+</small>
+
+</div>
+
 </div>
 
 </section>
 
-<!-- EXPLORE -->
 
-<section id="explore" class="panel">
+<!-- ================= EXPLORE ================= -->
+
+<section
+id="explore"
+class="panel">
 
 <div class="panel-head">
 
-<button class="back" onclick="closePanels()">‹</button>
+<button
+class="back"
+onclick="closePanels()">
+‹
+</button>
 
-<div class="panel-title">Explore</div>
+<div class="panel-title">
+Explore
+</div>
 
 <div class="spacer"></div>
 
@@ -938,66 +1262,140 @@ oninput="searchExplore()">
 <div id="exploreResults">
 
 <div class="card">
+
 <div class="avatar">#</div>
+
 <div class="card-info">
+
 <strong>#xdark</strong>
-<small>Trending now</small>
+
+<small>
+Trending now
+</small>
+
 </div>
+
 </div>
 
 <div class="card">
+
 <div class="avatar">✦</div>
+
 <div class="card-info">
-<strong>Discover creators</strong>
-<small>Find new people and reels</small>
+
+<strong>
+Discover creators
+</strong>
+
+<small>
+Find new people and reels
+</small>
+
 </div>
+
 </div>
 
 </div>
 
 </section>
 
-<!-- ACTIVITY -->
 
-<section id="activity" class="panel">
+<!-- ================= ACTIVITY ================= -->
+
+<section
+id="activity"
+class="panel">
 
 <div class="panel-head">
 
-<button class="back" onclick="closePanels()">‹</button>
+<button
+class="back"
+onclick="closePanels()">
+‹
+</button>
 
-<div class="panel-title">Activity</div>
+<div class="panel-title">
+Activity
+</div>
 
 <div class="spacer"></div>
 
 </div>
 
 <div class="card">
+
 <div class="avatar">D</div>
+
 <div class="card-info">
-<strong>Darkwing liked your Reel</strong>
-<small>2 minutes ago</small>
+
+<strong>
+Darkwing liked your Reel
+</strong>
+
+<small>
+2 minutes ago
+</small>
+
 </div>
+
 </div>
 
 <div class="card">
+
 <div class="avatar">N</div>
+
 <div class="card-info">
-<strong>Nova followed you</strong>
-<small>18 minutes ago</small>
+
+<strong>
+Nova followed you
+</strong>
+
+<small>
+18 minutes ago
+</small>
+
 </div>
+
+</div>
+
+<div class="card">
+
+<div class="avatar">A</div>
+
+<div class="card-info">
+
+<strong>
+Alex commented on your Reel
+</strong>
+
+<small>
+1 hour ago
+</small>
+
+</div>
+
 </div>
 
 </section>
 
-<!-- PROFILE -->
 
-<section id="profile" class="panel">
+<!-- ================= PROFILE ================= -->
+
+<section
+id="profile"
+class="panel">
 
 <div class="panel-head">
 
-<button class="back" onclick="closePanels()">‹</button>
+<button
+class="back"
+onclick="closePanels()">
+‹
+</button>
 
-<div class="panel-title">Profile</div>
+<div class="panel-title">
+Profile
+</div>
 
 <div class="spacer"></div>
 
@@ -1013,52 +1411,80 @@ A
 
 </div>
 
-<h2>Ankaj</h2>
+<h2>
+Ankaj
+</h2>
 
-<div style="color:#777781;font-size:11px">
+<div
+style="
+color:#777781;
+font-size:11px;
+">
+
 @x_dark_user
+
 </div>
 
 <div class="stats">
 
 <div class="stat">
+
 <strong>24</strong>
 <span>Posts</span>
+
 </div>
 
 <div class="stat">
+
 <strong>12.4K</strong>
 <span>Followers</span>
+
 </div>
 
 <div class="stat">
+
 <strong>287</strong>
 <span>Following</span>
-</div>
 
 </div>
 
-<button class="follow" onclick="toast('Profile editing ready')">
+</div>
+
+<button
+class="follow"
+onclick="toast('Profile editing ready')">
+
 Edit profile
+
 </button>
 
 </div>
 
 </section>
 
-<!-- SETTINGS -->
 
-<section id="settings" class="panel">
+<!-- ================= SETTINGS ================= -->
+
+<section
+id="settings"
+class="panel">
 
 <div class="panel-head">
 
-<button class="back" onclick="closePanels()">‹</button>
+<button
+class="back"
+onclick="closePanels()">
+‹
+</button>
 
-<div class="panel-title">Settings</div>
+<div class="panel-title">
+Settings
+</div>
 
 <div class="spacer"></div>
 
 </div>
+
 
 <div class="card">
 
@@ -1066,15 +1492,18 @@ Edit profile
 
 <div class="card-info">
 
-<strong>Premium Dark UI</strong>
+<strong>
+Premium Dark UI
+</strong>
 
 <small>
-Glass + neon X-DARK experience
+Glass + Neon X-DARK Experience
 </small>
 
 </div>
 
 </div>
+
 
 <div class="card">
 
@@ -1082,7 +1511,9 @@ Glass + neon X-DARK experience
 
 <div class="card-info">
 
-<strong>Privacy</strong>
+<strong>
+Privacy
+</strong>
 
 <small>
 Manage privacy and account visibility
@@ -1092,13 +1523,16 @@ Manage privacy and account visibility
 
 </div>
 
+
 <div class="card">
 
 <div class="avatar">♧</div>
 
 <div class="card-info">
 
-<strong>Notifications</strong>
+<strong>
+Notifications
+</strong>
 
 <small>
 Activity and message alerts
@@ -1108,15 +1542,39 @@ Activity and message alerts
 
 </div>
 
+
+<div class="card">
+
+<div class="avatar">◆</div>
+
+<div class="card-info">
+
+<strong>
+Appearance
+</strong>
+
+<small>
+Premium dark theme enabled
+</small>
+
+</div>
+
+</div>
+
 </section>
 
-<!-- COMMENTS -->
 
-<div id="comments" class="comments">
+<!-- ================= COMMENTS ================= -->
+
+<div
+id="comments"
+class="comments">
 
 <div class="comment-head">
 
-<button class="comment-back" onclick="closeComments()">
+<button
+class="comment-back"
+onclick="closeComments()">
 ‹
 </button>
 
@@ -1124,41 +1582,62 @@ Comments
 
 </div>
 
-<div id="commentList" class="comment-list">
+
+<div
+id="commentList"
+class="comment-list">
 
 <div class="comment">
 
-<div class="comment-avatar">D</div>
+<div class="comment-avatar">
+D
+</div>
 
 <div class="comment-body">
 
 <b>Darkwing</b>
+
 <br>
+
 This looks amazing 🔥
+
 <br>
-<small>2m</small>
+
+<small>
+2m
+</small>
 
 </div>
 
 </div>
+
 
 <div class="comment">
 
-<div class="comment-avatar">N</div>
+<div class="comment-avatar">
+N
+</div>
 
 <div class="comment-body">
 
 <b>Nova</b>
+
 <br>
+
 X-DARK is looking clean!
+
 <br>
-<small>5m</small>
+
+<small>
+5m
+</small>
 
 </div>
 
 </div>
 
 </div>
+
 
 <div class="comment-input">
 
@@ -1171,21 +1650,30 @@ event.preventDefault();
 addComment();
 }">
 
-<button class="comment-send" onclick="addComment()">
+<button
+class="comment-send"
+onclick="addComment()">
+
 ➤
+
 </button>
 
 </div>
 
 </div>
 
-<div id="toast" class="toast"></div>
+
+<div
+id="toast"
+class="toast">
+</div>
 
 </div>
 
+
 <script>
 
-/* PANELS */
+/* ================= PANELS ================= */
 
 function openPanel(id){
 
@@ -1222,43 +1710,81 @@ behavior:"smooth"
 
 }
 
-/* LIKE */
+
+/* ================= LIKE ================= */
 
 function toggleLike(button){
 
 button.classList.toggle("liked");
 
+const number=button.querySelector("span:last-child");
+
+if(button.classList.contains("liked")){
+
+button.querySelector(".action-icon").textContent="♥";
+
+if(number.textContent==="12.4K"){
+number.textContent="12.5K";
 }
 
-/* SAVE */
+}else{
+
+button.querySelector(".action-icon").textContent="♡";
+
+if(number.textContent==="12.5K"){
+number.textContent="12.4K";
+}
+
+}
+
+}
+
+
+/* ================= SAVE ================= */
 
 function toggleSave(button){
 
 button.classList.toggle("liked");
 
-const span=button.querySelector("span:last-child");
+const number=button.querySelector("span:last-child");
 
 if(button.classList.contains("liked")){
-span.textContent="Saved";
+
+button.querySelector(".action-icon").textContent="🔖";
+
+number.textContent="Saved";
+
 }else{
-span.textContent="Save";
-}
+
+button.querySelector(".action-icon").textContent="♡";
+
+number.textContent="Save";
 
 }
 
-/* FOLLOW */
+}
+
+
+/* ================= FOLLOW ================= */
 
 function toggleFollow(button){
 
-if(button.textContent.trim()==="Follow"){
+if(
+button.textContent.trim()==="Follow"
+){
+
 button.textContent="Following";
+
 }else{
+
 button.textContent="Follow";
-}
 
 }
 
-/* SHARE */
+}
+
+
+/* ================= SHARE ================= */
 
 async function sharePost(){
 
@@ -1267,24 +1793,32 @@ try{
 if(navigator.share){
 
 await navigator.share({
+
 title:"X-DARK",
+
 text:"The Next Level",
+
 url:location.href
+
 });
 
 }else{
 
-await navigator.clipboard.writeText(location.href);
+await navigator.clipboard.writeText(
+location.href
+);
 
-toast("Link copied");
-
-}
-
-}catch(e){}
+toast("Link copied ✓");
 
 }
 
-/* COMMENTS */
+}
+catch(error){}
+
+}
+
+
+/* ================= COMMENTS ================= */
 
 function openComments(){
 
@@ -1304,25 +1838,41 @@ document
 
 function addComment(){
 
-const input=document.getElementById("commentInput");
+const input=
+document.getElementById("commentInput");
 
-const text=input.value.trim();
+const text=
+input.value.trim();
 
 if(!text)return;
 
-const item=document.createElement("div");
+const item=
+document.createElement("div");
 
 item.className="comment";
 
 item.innerHTML=`
-<div class="comment-avatar">A</div>
-<div class="comment-body">
-<b>Ankaj</b>
-<br>
-${escapeHTML(text)}
-<br>
-<small>now</small>
+
+<div class="comment-avatar">
+A
 </div>
+
+<div class="comment-body">
+
+<b>Ankaj</b>
+
+<br>
+
+${escapeHTML(text)}
+
+<br>
+
+<small>
+now
+</small>
+
+</div>
+
 `;
 
 document
@@ -1331,24 +1881,32 @@ document
 
 input.value="";
 
+document
+.getElementById("commentList")
+.scrollTop=999999;
+
 }
+
 
 function escapeHTML(text){
 
 return text.replace(
 /[&<>"']/g,
 character=>({
+
 "&":"&amp;",
 "<":"&lt;",
 ">":"&gt;",
 '"':"&quot;",
 "'":"&#039;"
+
 }[character])
 );
 
 }
 
-/* SEARCH */
+
+/* ================= SEARCH ================= */
 
 function searchExplore(){
 
@@ -1364,21 +1922,41 @@ document.getElementById("exploreResults");
 if(!value){
 
 results.innerHTML=`
+
 <div class="card">
+
 <div class="avatar">#</div>
+
 <div class="card-info">
+
 <strong>#xdark</strong>
-<small>Trending now</small>
+
+<small>
+Trending now
+</small>
+
 </div>
+
 </div>
 
 <div class="card">
+
 <div class="avatar">✦</div>
+
 <div class="card-info">
-<strong>Discover creators</strong>
-<small>Find new people and reels</small>
+
+<strong>
+Discover creators
+</strong>
+
+<small>
+Find new people and reels
+</small>
+
 </div>
+
 </div>
+
 `;
 
 return;
@@ -1386,22 +1964,36 @@ return;
 }
 
 results.innerHTML=`
+
 <div class="card">
+
 <div class="avatar">⌕</div>
+
 <div class="card-info">
-<strong>${escapeHTML(value)}</strong>
-<small>Search results on X-DARK</small>
+
+<strong>
+${escapeHTML(value)}
+</strong>
+
+<small>
+Search results on X-DARK
+</small>
+
 </div>
+
 </div>
+
 `;
 
 }
 
-/* TOAST */
+
+/* ================= TOAST ================= */
 
 function toast(message){
 
-const box=document.getElementById("toast");
+const box=
+document.getElementById("toast");
 
 box.textContent=message;
 
@@ -1409,15 +2001,21 @@ box.classList.add("show");
 
 clearTimeout(window.toastTimer);
 
-window.toastTimer=setTimeout(()=>{
+window.toastTimer=setTimeout(
+()=>{
 box.classList.remove("show");
-},2200);
+},
+2200
+);
 
 }
 
-/* VIDEO */
 
-const observer=new IntersectionObserver(
+/* ================= VIDEO AUTO PLAY ================= */
+
+const observer=
+new IntersectionObserver(
+
 entries=>{
 
 entries.forEach(entry=>{
@@ -1440,7 +2038,9 @@ video.pause();
 {
 threshold:.65
 }
+
 );
+
 
 document
 .querySelectorAll(".reel-media")
