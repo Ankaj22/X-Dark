@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>X-DARK</title>
 
 <style>
@@ -21,7 +20,7 @@ html,body{
 }
 
 body{
-    padding-bottom:75px;
+    padding-bottom:78px;
 }
 
 /* ================= TOP BAR ================= */
@@ -63,14 +62,12 @@ body{
     fill:none;
 
     cursor:pointer;
-
     transition:.2s;
 }
 
 .svg-icon:active{
     transform:scale(.85);
 }
-
 
 /* ================= STORIES ================= */
 
@@ -102,11 +99,10 @@ body{
 
     border-radius:50%;
 
-    background:
-    linear-gradient(
+    background:linear-gradient(
         135deg,
         #6825ff,
-        #9d4cff,
+        #a64cff,
         #6825ff
     );
 
@@ -134,14 +130,12 @@ body{
     white-space:nowrap;
 }
 
-
 /* ================= FEED ================= */
 
 .feed{
     width:100%;
     max-width:650px;
     margin:auto;
-
     padding-bottom:20px;
 }
 
@@ -152,7 +146,6 @@ body{
 
     margin-bottom:8px;
 }
-
 
 /* ================= POST HEADER ================= */
 
@@ -169,7 +162,6 @@ body{
 .user-info{
     display:flex;
     align-items:center;
-
     gap:12px;
 }
 
@@ -182,7 +174,6 @@ body{
     object-fit:cover;
 
     border:2px solid #7935ff;
-
     padding:2px;
 }
 
@@ -194,33 +185,24 @@ body{
 .location{
     color:#858792;
     font-size:14px;
-
     margin-top:4px;
 }
 
 .more{
     color:#ddd;
-
     font-size:22px;
-
     letter-spacing:3px;
-
     cursor:pointer;
 }
-
 
 /* ================= POST IMAGE ================= */
 
 .post-image{
     width:100%;
-
     display:block;
-
     max-height:700px;
-
     object-fit:cover;
 }
-
 
 /* ================= ACTION BAR ================= */
 
@@ -237,7 +219,6 @@ body{
 .left-actions{
     display:flex;
     align-items:center;
-
     gap:22px;
 }
 
@@ -246,13 +227,10 @@ body{
     height:29px;
 
     stroke:#f1f1f4;
-
     stroke-width:1.7;
-
     fill:none;
 
     cursor:pointer;
-
     transition:.2s;
 }
 
@@ -269,14 +247,12 @@ body{
     stroke:#9d5cff;
 }
 
-
 /* ================= POST INFO ================= */
 
 .likes{
     padding:0 25px;
 
     font-size:15px;
-
     font-weight:700;
 }
 
@@ -286,7 +262,6 @@ body{
     color:#e4e4e8;
 
     font-size:15px;
-
     line-height:22px;
 }
 
@@ -305,7 +280,6 @@ body{
 
     cursor:pointer;
 }
-
 
 /* ================= COMMENTS ================= */
 
@@ -353,7 +327,6 @@ body{
     cursor:pointer;
 }
 
-
 /* ================= BOTTOM NAV ================= */
 
 .bottom-nav{
@@ -385,9 +358,7 @@ body{
     height:34px;
 
     stroke:#858894;
-
     stroke-width:1.7;
-
     fill:none;
 
     cursor:pointer;
@@ -403,22 +374,13 @@ body{
     transform:scale(.82);
 }
 
-
-/* ================= PLUS ================= */
-
-/* IMPORTANT:
-   ONLY PLUS SIGN
-   NO BOX
-   NO CIRCLE
-   NO HIGHLIGHT
-*/
+/* ================= PLAIN PLUS ================= */
 
 .create-btn{
     width:38px;
     height:38px;
 
     display:flex;
-
     align-items:center;
     justify-content:center;
 
@@ -427,7 +389,6 @@ body{
     color:#fff;
 
     font-size:38px;
-
     font-weight:300;
 
     line-height:1;
@@ -442,7 +403,6 @@ body{
 .create-btn:active{
     transform:scale(.8);
 }
-
 
 /* ================= TOAST ================= */
 
@@ -473,7 +433,6 @@ body{
     white-space:nowrap;
 }
 
-
 /* ================= DESKTOP ================= */
 
 @media(min-width:700px){
@@ -487,9 +446,7 @@ body{
         max-width:650px;
         margin:auto;
     }
-
 }
-
 
 /* ================= SMALL PHONE ================= */
 
@@ -518,18 +475,13 @@ body{
         padding-left:18px;
         padding-right:18px;
     }
-
 }
 </style>
 </head>
 
-
 <body>
 
-
-<!-- =====================================================
-                     TOP BAR
-===================================================== -->
+<!-- ================= TOP BAR ================= -->
 
 <header class="topbar">
 
@@ -537,9 +489,7 @@ body{
         X-DARK
     </div>
 
-
     <div class="top-icons">
-
 
         <!-- CHAT -->
 
@@ -550,14 +500,14 @@ body{
 
             <path
                 d="M20 11.5a8 8 0 0 1-8 8
-                   8.7 8.7 0 0 1-3.4-.7
-                   L4 20l1.2-3.5
-                   A8 8 0 1 1 20 11.5Z"
+                8.7 8.7 0 0 1-3.4-.7
+                L4 20l1.2-3.5
+                A8 8 0 1 1 20 11.5Z"
             />
 
-            <path
-                d="M8 11.5h.01M12 11.5h.01M16 11.5h.01"
-            />
+            <path d="M8 11.5h.01"/>
+            <path d="M12 11.5h.01"/>
+            <path d="M16 11.5h.01"/>
 
         </svg>
 
@@ -571,10 +521,10 @@ body{
 
             <path
                 d="M20.8 8.7
-                   c0 5.5-8.8 10.3-8.8 10.3
-                   S3.2 14.2 3.2 8.7
-                   A4.7 4.7 0 0 1 12 6.1
-                   a4.7 4.7 0 0 1 8.8 2.6Z"
+                c0 5.5-8.8 10.3-8.8 10.3
+                S3.2 14.2 3.2 8.7
+                A4.7 4.7 0 0 1 12 6.1
+                a4.7 4.7 0 0 1 8.8 2.6Z"
             />
 
         </svg>
@@ -598,21 +548,15 @@ body{
 </header>
 
 
-
-<!-- =====================================================
-                       STORIES
-===================================================== -->
+<!-- ================= STORIES ================= -->
 
 <section class="stories">
-
 
     <div class="story">
 
         <div class="story-ring">
 
-            <img
-                src="https://i.pravatar.cc/150?img=12"
-            >
+            <img src="https://i.pravatar.cc/150?img=12">
 
         </div>
 
@@ -623,14 +567,11 @@ body{
     </div>
 
 
-
     <div class="story">
 
         <div class="story-ring">
 
-            <img
-                src="https://i.pravatar.cc/150?img=47"
-            >
+            <img src="https://i.pravatar.cc/150?img=47">
 
         </div>
 
@@ -641,14 +582,11 @@ body{
     </div>
 
 
-
     <div class="story">
 
         <div class="story-ring">
 
-            <img
-                src="https://i.pravatar.cc/150?img=32"
-            >
+            <img src="https://i.pravatar.cc/150?img=32">
 
         </div>
 
@@ -659,14 +597,11 @@ body{
     </div>
 
 
-
     <div class="story">
 
         <div class="story-ring">
 
-            <img
-                src="https://i.pravatar.cc/150?img=44"
-            >
+            <img src="https://i.pravatar.cc/150?img=44">
 
         </div>
 
@@ -677,14 +612,11 @@ body{
     </div>
 
 
-
     <div class="story">
 
         <div class="story-ring">
 
-            <img
-                src="https://i.pravatar.cc/150?img=15"
-            >
+            <img src="https://i.pravatar.cc/150?img=15">
 
         </div>
 
@@ -694,14 +626,10 @@ body{
 
     </div>
 
-
 </section>
 
 
-
-<!-- =====================================================
-                       HOME FEED
-===================================================== -->
+<!-- ================= HOME FEED ================= -->
 
 <main class="feed">
 
@@ -710,9 +638,7 @@ body{
 
 <article class="post">
 
-
     <div class="post-header">
-
 
         <div class="user-info">
 
@@ -720,7 +646,6 @@ body{
                 class="avatar"
                 src="https://i.pravatar.cc/150?img=12"
             >
-
 
             <div>
 
@@ -736,13 +661,11 @@ body{
 
         </div>
 
-
         <div class="more">
             •••
         </div>
 
     </div>
-
 
 
     <img
@@ -752,12 +675,9 @@ body{
     >
 
 
-
     <div class="actions">
 
-
         <div class="left-actions">
-
 
             <!-- LIKE -->
 
@@ -806,7 +726,6 @@ body{
 
             </svg>
 
-
         </div>
 
 
@@ -823,9 +742,7 @@ body{
 
         </svg>
 
-
     </div>
-
 
 
     <div class="likes">
@@ -839,15 +756,12 @@ body{
     </div>
 
 
-
     <div class="caption">
 
         <b>@Ankaj</b>
-
         Enjoying the beautiful Maldives 🌊✨
 
     </div>
-
 
 
     <span
@@ -857,7 +771,6 @@ body{
         View all 24 comments
 
     </span>
-
 
 
     <div class="comment-area">
@@ -877,18 +790,14 @@ body{
 
     </div>
 
-
 </article>
-
 
 
 <!-- ================= POST 2 ================= -->
 
 <article class="post">
 
-
     <div class="post-header">
-
 
         <div class="user-info">
 
@@ -896,7 +805,6 @@ body{
                 class="avatar"
                 src="https://i.pravatar.cc/150?img=32"
             >
-
 
             <div>
 
@@ -912,13 +820,11 @@ body{
 
         </div>
 
-
         <div class="more">
             •••
         </div>
 
     </div>
-
 
 
     <img
@@ -928,12 +834,9 @@ body{
     >
 
 
-
     <div class="actions">
 
-
         <div class="left-actions">
-
 
             <svg
                 class="post-icon like-btn"
@@ -976,7 +879,6 @@ body{
 
             </svg>
 
-
         </div>
 
 
@@ -991,9 +893,7 @@ body{
 
         </svg>
 
-
     </div>
-
 
 
     <div class="likes">
@@ -1007,15 +907,12 @@ body{
     </div>
 
 
-
     <div class="caption">
 
         <b>@Darkwing</b>
-
         Welcome to the dark side. 🖤
 
     </div>
-
 
 
     <span
@@ -1025,7 +922,6 @@ body{
         View all 56 comments
 
     </span>
-
 
 
     <div class="comment-area">
@@ -1045,18 +941,14 @@ body{
 
     </div>
 
-
 </article>
-
 
 
 <!-- ================= POST 3 ================= -->
 
 <article class="post">
 
-
     <div class="post-header">
-
 
         <div class="user-info">
 
@@ -1064,7 +956,6 @@ body{
                 class="avatar"
                 src="https://i.pravatar.cc/150?img=44"
             >
-
 
             <div>
 
@@ -1080,13 +971,11 @@ body{
 
         </div>
 
-
         <div class="more">
             •••
         </div>
 
     </div>
-
 
 
     <img
@@ -1096,12 +985,9 @@ body{
     >
 
 
-
     <div class="actions">
 
-
         <div class="left-actions">
-
 
             <svg
                 class="post-icon like-btn"
@@ -1144,7 +1030,6 @@ body{
 
             </svg>
 
-
         </div>
 
 
@@ -1159,9 +1044,7 @@ body{
 
         </svg>
 
-
     </div>
-
 
 
     <div class="likes">
@@ -1175,15 +1058,12 @@ body{
     </div>
 
 
-
     <div class="caption">
 
         <b>@XDark</b>
-
         Create. Connect. Explore. Welcome to X-DARK ⚡
 
     </div>
-
 
 
     <span
@@ -1193,7 +1073,6 @@ body{
         View all 103 comments
 
     </span>
-
 
 
     <div class="comment-area">
@@ -1213,16 +1092,13 @@ body{
 
     </div>
 
-
 </article>
-
 
 </main>
 
 
-
 <!-- =====================================================
-                     BOTTOM NAV
+                    BOTTOM NAVIGATION
 ===================================================== -->
 
 <nav class="bottom-nav">
@@ -1235,16 +1111,10 @@ body{
         onclick="showToast('Home')"
         viewBox="0 0 24 24">
 
-        <path
-            d="M3 10.5 12 3l9 7.5"
-        />
-
-        <path
-            d="M5 9.5V21h14V9.5"
-        />
+        <path d="M3 10.5 12 3l9 7.5"/>
+        <path d="M5 9.5V21h14V9.5"/>
 
     </svg>
-
 
 
     <!-- SEARCH -->
@@ -1260,15 +1130,12 @@ body{
             r="6.5"
         />
 
-        <path
-            d="m16 16 5 5"
-        />
+        <path d="m16 16 5 5"/>
 
     </svg>
 
 
-
-    <!-- ONLY PLUS -->
+    <!-- PLUS ONLY -->
 
     <div
         class="create-btn"
@@ -1279,24 +1146,24 @@ body{
     </div>
 
 
-
-    <!-- HEART -->
+    <!-- NOTIFICATION -->
 
     <svg
         class="nav-icon"
-        onclick="showToast('Activity')"
+        onclick="showToast('Notifications')"
         viewBox="0 0 24 24">
 
         <path
-            d="M20.8 8.7
-            c0 5.5-8.8 10.3-8.8 10.3
-            S3.2 14.2 3.2 8.7
-            A4.7 4.7 0 0 1 12 6.1
-            a4.7 4.7 0 0 1 8.8 2.6Z"
+            d="M18 9
+            a6 6 0 0 0-12 0
+            c0 7-3 7-3 9
+            h18
+            c0-2-3-2-3-9Z"
         />
 
-    </svg>
+        <path d="M10 21h4"/>
 
+    </svg>
 
 
     <!-- PROFILE -->
@@ -1314,17 +1181,15 @@ body{
 
         <path
             d="M4.5 21
-               c.7-4.2
-               3.1-6.5
-               7.5-6.5
-               s6.8 2.3 7.5 6.5"
+            c.7-4.2
+            3.1-6.5
+            7.5-6.5
+            s6.8 2.3 7.5 6.5"
         />
 
     </svg>
 
-
 </nav>
-
 
 
 <!-- ================= TOAST ================= -->
@@ -1333,7 +1198,6 @@ body{
     class="toast"
     id="toast">
 </div>
-
 
 
 <script>
@@ -1354,9 +1218,7 @@ function likePost(button){
         );
 
 
-    if(
-        button.classList.contains("liked")
-    ){
+    if(button.classList.contains("liked")){
 
         button.classList.remove("liked");
 
@@ -1377,14 +1239,11 @@ function likePost(button){
 }
 
 
-
 /* ================= SAVE ================= */
 
 function savePost(button){
 
-    if(
-        button.classList.contains("saved")
-    ){
+    if(button.classList.contains("saved")){
 
         button.classList.remove("saved");
 
@@ -1401,7 +1260,6 @@ function savePost(button){
 }
 
 
-
 /* ================= COMMENTS ================= */
 
 function toggleComments(element){
@@ -1415,7 +1273,6 @@ function toggleComments(element){
     area.classList.toggle("active");
 
 }
-
 
 
 /* ================= ADD COMMENT ================= */
@@ -1448,21 +1305,15 @@ function addComment(button){
 }
 
 
-
 /* ================= SHARE ================= */
 
 function sharePost(){
 
-    if(
-        navigator.share
-    ){
+    if(navigator.share){
 
         navigator.share({
-
             title:"X-DARK",
-
             text:"Check this post on X-DARK"
-
         });
 
     }else{
@@ -1472,7 +1323,6 @@ function sharePost(){
     }
 
 }
-
 
 
 /* ================= TOAST ================= */
@@ -1499,7 +1349,6 @@ function showToast(message){
 }
 
 </script>
-
 
 </body>
 </html>
