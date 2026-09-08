@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name="theme-color" content="#050507">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="theme-color" content="#050505">
 <title>X-DARK</title>
 
 <style>
@@ -14,667 +14,471 @@
   -webkit-tap-highlight-color:transparent;
 }
 
-:root{
-  --bg:#050507;
-  --panel:#0d0d13;
-  --panel2:#15151d;
-  --line:#272731;
-  --text:#fff;
-  --muted:#92929f;
-  --purple:#8b5cf6;
-  --purple2:#6d28d9;
-  --green:#20e889;
-}
-
 body{
-  background:var(--bg);
-  color:var(--text);
+  background:#050505;
+  color:#fff;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
   min-height:100vh;
   overflow-x:hidden;
 }
 
-button,
-input,
-textarea{
+button,input{
   font:inherit;
 }
 
 button{
   border:0;
+  cursor:pointer;
 }
 
-svg{
+.app{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 85% 5%,rgba(123,63,255,.13),transparent 25%),
+    #050505;
+  padding-bottom:90px;
+}
+
+/* TOP */
+.topbar{
+  height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 20px;
+  border-bottom:1px solid #202027;
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(5,5,5,.92);
+  backdrop-filter:blur(20px);
+}
+
+.logo{
+  font-size:30px;
+  font-weight:900;
+  letter-spacing:-1px;
+}
+
+.logo span{
+  color:#884cff;
+}
+
+.top-actions{
+  display:flex;
+  gap:10px;
+}
+
+.icon-btn{
+  width:44px;
+  height:44px;
+  border-radius:14px;
+  background:#111117;
+  border:1px solid #292933;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.icon-btn svg{
   width:22px;
   height:22px;
-  fill:none;
   stroke:currentColor;
+  fill:none;
   stroke-width:2;
   stroke-linecap:round;
   stroke-linejoin:round;
 }
 
-/* TOP */
-
-.topbar{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  height:64px;
-  z-index:100;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 15px;
-  background:rgba(5,5,7,.96);
-  border-bottom:1px solid var(--line);
-  backdrop-filter:blur(20px);
-}
-
-.logo{
-  font-size:23px;
-  font-weight:900;
-  letter-spacing:2px;
-}
-
-.logo span{
-  color:var(--purple);
-}
-
-.top-actions{
-  display:flex;
-  gap:8px;
-}
-
-.icon-btn{
-  width:43px;
-  height:43px;
-  border-radius:14px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:var(--panel2);
-  color:white;
-  border:1px solid var(--line);
-}
-
-.icon-btn:active{
-  transform:scale(.94);
-}
-
-/* MAIN */
-
-main{
-  padding-top:78px;
-  padding-bottom:82px;
-  min-height:100vh;
-}
-
+/* PAGES */
 .page{
   display:none;
-  width:100%;
-  max-width:720px;
+  padding:28px 18px;
+  max-width:850px;
   margin:auto;
-  padding:15px;
 }
 
 .page.active{
   display:block;
 }
 
-/* TITLES */
-
-.section-title{
-  font-size:27px;
-  font-weight:850;
-  margin:8px 0 18px;
-}
-
-/* HOME */
-
 .hero{
-  padding:18px 3px 24px;
+  padding:40px 10px 25px;
 }
 
 .hero h1{
-  font-size:32px;
-  line-height:1.15;
+  font-size:42px;
+  line-height:1.05;
+  font-weight:900;
 }
 
 .hero h1 span{
-  color:var(--purple);
+  color:#884cff;
 }
 
 .hero p{
-  color:var(--muted);
-  margin-top:8px;
+  margin-top:12px;
+  color:#92929e;
+  font-size:18px;
+  font-weight:600;
 }
 
+/* CARD */
 .card{
-  background:linear-gradient(145deg,#111118,#09090d);
-  border:1px solid var(--line);
-  border-radius:21px;
-  padding:17px;
-  margin-bottom:13px;
+  background:linear-gradient(145deg,#111117,#0b0b0f);
+  border:1px solid #292933;
+  border-radius:25px;
+  padding:22px;
+  margin-bottom:16px;
+  box-shadow:0 15px 45px rgba(0,0,0,.25);
 }
 
-.post-head{
+.user-row{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:14px;
 }
 
 .avatar{
-  width:45px;
-  height:45px;
-  min-width:45px;
+  width:58px;
+  height:58px;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
-  background:linear-gradient(135deg,#8b5cf6,#312e81);
-  font-size:19px;
-  font-weight:850;
+  background:linear-gradient(135deg,#763cff,#a16cff);
+  font-size:25px;
+  font-weight:900;
 }
 
-.post-name{
-  font-weight:750;
+.user-name{
+  font-size:21px;
+  font-weight:800;
 }
 
-.post-time{
-  color:var(--muted);
-  font-size:12px;
+.status{
+  color:#777783;
   margin-top:3px;
+  font-size:14px;
 }
 
 .post-text{
-  margin:16px 0;
-  color:#dedee5;
+  margin-top:22px;
+  color:#d6d6dc;
   line-height:1.55;
+  font-size:17px;
 }
 
-.post-actions{
+.action-row{
   display:flex;
-  gap:8px;
+  gap:10px;
+  margin-top:22px;
 }
 
-.small-btn{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:7px;
-  min-height:39px;
-  padding:0 13px;
-  border-radius:12px;
-  background:#181820;
-  border:1px solid var(--line);
-  color:#eee;
+.primary-btn,
+.secondary-btn{
+  padding:13px 20px;
+  border-radius:15px;
+  color:#fff;
+  font-weight:750;
 }
 
-.small-btn svg{
-  width:17px;
-  height:17px;
+.primary-btn{
+  background:#171720;
+  border:1px solid #30303a;
+}
+
+.secondary-btn{
+  background:#111117;
+  border:1px solid #292933;
 }
 
 /* SEARCH */
-
 .search-box{
-  height:54px;
   display:flex;
   align-items:center;
   gap:10px;
-  padding:0 14px;
-  background:var(--panel2);
-  border:1px solid var(--line);
+  background:#111117;
+  border:1px solid #292933;
   border-radius:17px;
-  margin-bottom:16px;
+  padding:0 15px;
+  height:54px;
+  margin-bottom:20px;
 }
 
 .search-box svg{
-  color:#888894;
+  width:21px;
+  stroke:#888;
 }
 
 .search-box input{
   flex:1;
-  height:100%;
+  background:none;
   border:0;
   outline:0;
-  color:white;
-  background:transparent;
+  color:#fff;
 }
 
-.search-box input::placeholder{
-  color:#777783;
-}
-
-.search-result{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  padding:13px;
-  background:var(--panel);
-  border:1px solid var(--line);
+/* CREATE */
+textarea{
+  width:100%;
+  min-height:150px;
+  resize:vertical;
+  background:#0b0b10;
+  color:#fff;
+  border:1px solid #292933;
   border-radius:17px;
-  margin-bottom:9px;
+  padding:16px;
+  outline:none;
 }
 
-.result-info{
-  flex:1;
-  min-width:0;
-}
-
-.result-info strong{
-  display:block;
-  margin-bottom:4px;
-}
-
-.result-info span{
-  color:var(--muted);
-  font-size:12px;
-}
-
-/* MESSAGES */
-
-.message-item{
+/* ALERTS */
+.alert{
   display:flex;
-  align-items:center;
-  gap:13px;
-  padding:14px;
-  background:var(--panel);
-  border:1px solid var(--line);
+  gap:14px;
+  padding:17px;
+  background:#111117;
+  border:1px solid #292933;
   border-radius:18px;
-  margin-bottom:9px;
-  cursor:pointer;
+  margin-bottom:12px;
 }
 
-.message-item:active{
-  transform:scale(.99);
-}
-
-.message-info{
-  flex:1;
-  min-width:0;
-}
-
-.message-info strong{
-  display:block;
-  margin-bottom:5px;
-}
-
-.message-preview{
-  color:var(--muted);
-  font-size:13px;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-
-.online-dot{
-  width:9px;
-  height:9px;
-  min-width:9px;
-  border-radius:50%;
-  background:var(--green);
-  box-shadow:0 0 9px rgba(32,232,137,.7);
-}
-
-/* NOTIFICATIONS */
-
-.notification{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  padding:14px;
-  background:var(--panel);
-  border:1px solid var(--line);
-  border-radius:17px;
-  margin-bottom:9px;
+.alert-icon{
+  color:#914fff;
 }
 
 /* PROFILE */
-
-.profile-header{
+.profile-head{
   text-align:center;
-  padding:15px 0 25px;
+  padding:25px 0;
 }
 
 .big-avatar{
-  width:92px;
-  height:92px;
+  width:95px;
+  height:95px;
   border-radius:50%;
   margin:auto;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:31px;
+  font-size:40px;
   font-weight:900;
-  background:linear-gradient(135deg,#8b5cf6,#312e81);
-  border:3px solid #20202b;
+  background:linear-gradient(135deg,#6f35ed,#a36bff);
+  border:3px solid #24202f;
 }
 
-.profile-header h2{
-  margin-top:12px;
+.profile-head h2{
+  margin-top:15px;
 }
 
-.profile-header p{
-  color:var(--muted);
-  margin-top:4px;
-}
-
-.stat-row{
-  display:flex;
-  justify-content:space-around;
-  text-align:center;
-}
-
-.stat strong{
-  display:block;
-  font-size:20px;
-}
-
-.stat span{
-  color:var(--muted);
-  font-size:12px;
-}
-
-/* SETTINGS */
-
-.setting{
-  display:flex;
-  align-items:center;
-  gap:13px;
-  padding:16px;
-  background:var(--panel);
-  border:1px solid var(--line);
-  border-radius:17px;
-  margin-bottom:9px;
-}
-
-.setting-main{
-  flex:1;
-}
-
-.setting-main strong{
-  display:block;
-  margin-bottom:4px;
-}
-
-.setting-main span{
-  color:var(--muted);
-  font-size:12px;
-}
-
-.switch{
-  width:46px;
-  height:25px;
-  border-radius:30px;
-  background:#292933;
-  position:relative;
-}
-
-.switch:after{
-  content:"";
-  position:absolute;
-  width:19px;
-  height:19px;
-  top:3px;
-  left:3px;
-  background:white;
-  border-radius:50%;
-  transition:.2s;
-}
-
-.switch.on{
-  background:var(--purple);
-}
-
-.switch.on:after{
-  left:24px;
-}
-
-/* CREATE */
-
-.create-input{
-  width:100%;
-  height:170px;
-  resize:none;
-  padding:15px;
-  border-radius:18px;
-  outline:none;
-  border:1px solid var(--line);
-  background:var(--panel2);
-  color:white;
-  margin-bottom:12px;
-}
-
-.create-input::placeholder{
+.profile-head p{
   color:#777783;
-}
-
-.primary{
-  width:100%;
-  height:51px;
-  border-radius:16px;
-  background:linear-gradient(135deg,var(--purple),var(--purple2));
-  color:white;
-  font-weight:800;
+  margin-top:5px;
 }
 
 /* BOTTOM */
-
 .bottom-nav{
   position:fixed;
+  bottom:0;
   left:0;
   right:0;
-  bottom:0;
-  height:71px;
-  z-index:150;
+  height:78px;
+  z-index:50;
   display:flex;
-  align-items:center;
   justify-content:space-around;
-  background:rgba(8,8,11,.97);
-  border-top:1px solid var(--line);
+  align-items:center;
+  background:rgba(7,7,9,.96);
+  border-top:1px solid #202027;
   backdrop-filter:blur(20px);
+  padding-bottom:env(safe-area-inset-bottom);
 }
 
 .nav-btn{
-  width:57px;
-  height:57px;
+  color:#777783;
+  background:none;
   display:flex;
   flex-direction:column;
   align-items:center;
-  justify-content:center;
-  gap:3px;
-  background:transparent;
-  color:#72727e;
+  gap:5px;
+  font-size:11px;
+  font-weight:700;
 }
 
-.nav-btn span{
-  font-size:10px;
+.nav-btn svg{
+  width:25px;
+  height:25px;
+  stroke:currentColor;
+  fill:none;
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
 }
 
 .nav-btn.active{
-  color:var(--purple);
+  color:#9255ff;
+}
+
+/* CHAT LIST */
+.chat-item{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:16px 5px;
+  border-bottom:1px solid #1d1d24;
+}
+
+.chat-item:last-child{
+  border-bottom:0;
+}
+
+.chat-info{
+  flex:1;
+}
+
+.chat-info strong{
+  font-size:17px;
+}
+
+.chat-preview{
+  color:#777783;
+  font-size:14px;
+  margin-top:4px;
 }
 
 /* CHAT */
-
 #chatPage{
-  position:fixed;
-  inset:0;
-  z-index:500;
-  display:none;
-  flex-direction:column;
-  background:var(--bg);
+  padding:0;
+  max-width:none;
+  height:calc(100vh - 76px);
 }
 
-#chatPage.active{
+.chat-screen{
+  height:100%;
   display:flex;
+  flex-direction:column;
 }
 
 .chat-header{
-  height:65px;
-  min-height:65px;
+  height:70px;
   display:flex;
   align-items:center;
-  gap:9px;
-  padding:0 9px;
-  background:rgba(5,5,7,.98);
-  border-bottom:1px solid var(--line);
+  gap:10px;
+  padding:0 14px;
+  border-bottom:1px solid #202027;
+  background:#08080b;
 }
 
 .chat-user{
   flex:1;
-  min-width:0;
 }
 
 .chat-user strong{
   display:block;
-  font-size:16px;
 }
 
-.status{
-  color:var(--green);
-  font-size:11px;
-  margin-top:3px;
+.chat-user small{
+  color:#777783;
 }
 
 .chat-actions{
   display:flex;
-  gap:3px;
+  gap:4px;
 }
 
-.chat-actions .icon-btn{
-  width:40px;
-  height:40px;
-}
-
-.chat-messages{
+.messages{
   flex:1;
-  min-height:0;
   overflow-y:auto;
-  padding:14px;
+  padding:20px 15px;
   display:flex;
   flex-direction:column;
-  gap:8px;
-}
-
-.empty-chat{
-  margin:auto;
-  text-align:center;
-  color:var(--muted);
-  line-height:1.6;
+  gap:10px;
 }
 
 .msg{
-  max-width:79%;
-  padding:10px 13px;
+  max-width:78%;
+  padding:11px 14px;
   border-radius:18px;
-  line-height:1.45;
+  line-height:1.4;
   word-break:break-word;
 }
 
 .msg.me{
   align-self:flex-end;
-  background:linear-gradient(135deg,#8b5cf6,#6d28d9);
+  background:#6936c9;
   border-bottom-right-radius:5px;
 }
 
-.msg.other{
+.msg.them{
   align-self:flex-start;
-  background:#17171f;
-  border:1px solid var(--line);
+  background:#181820;
+  border:1px solid #292933;
   border-bottom-left-radius:5px;
 }
 
 .msg-time{
-  margin-top:5px;
-  font-size:9px;
-  opacity:.62;
+  display:block;
+  font-size:10px;
+  opacity:.55;
+  margin-top:4px;
   text-align:right;
 }
 
-.seen{
-  margin-left:4px;
-}
-
-.msg img,
-.msg video{
-  display:block;
-  max-width:100%;
-  border-radius:12px;
-}
-
-.msg a{
-  color:white;
-}
-
 .sticker-msg{
+  font-size:55px;
   background:transparent!important;
   border:0!important;
-  font-size:58px;
-  padding:2px;
-}
-
-.typing{
-  height:23px;
-  padding:0 15px;
-  color:var(--muted);
-  font-size:12px;
+  padding:4px!important;
 }
 
 .chat-input-area{
-  flex-shrink:0;
-  padding:9px 9px 10px;
+  padding:10px;
+  border-top:1px solid #202027;
   background:#08080b;
-  border-top:1px solid var(--line);
-}
-
-.chat-input-row{
-  display:flex;
-  align-items:center;
-  gap:6px;
 }
 
 .chat-input{
-  flex:1;
-  min-width:0;
-  height:46px;
-  border:1px solid var(--line);
-  border-radius:16px;
-  background:#15151d;
-  color:white;
-  padding:0 13px;
-  outline:none;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  background:#121219;
+  border:1px solid #292933;
+  border-radius:18px;
+  padding:6px;
 }
 
-.chat-input::placeholder{
-  color:#777783;
+.chat-input input{
+  flex:1;
+  min-width:0;
+  border:0;
+  outline:0;
+  background:none;
+  color:white;
+  padding:10px 5px;
 }
 
 .send-btn{
-  width:46px;
-  height:46px;
-  min-width:46px;
+  width:42px;
+  height:42px;
+  border-radius:14px;
+  background:#8245f4;
+  color:white;
   display:flex;
   align-items:center;
   justify-content:center;
-  border-radius:16px;
-  background:var(--purple);
-  color:white;
+}
+
+.send-btn svg{
+  width:20px;
 }
 
 /* PICKERS */
-
 .picker{
   display:none;
-  max-height:260px;
-  overflow-y:auto;
-  padding:11px;
-  background:#111118;
-  border:1px solid var(--line);
-  border-radius:18px;
+  background:#111117;
+  border:1px solid #292933;
+  border-radius:20px;
+  padding:12px;
   margin-bottom:8px;
 }
 
@@ -682,189 +486,114 @@ main{
   display:block;
 }
 
-.emoji-grid{
-  display:grid;
-  grid-template-columns:repeat(8,1fr);
-  gap:6px;
-}
-
-.emoji{
-  height:38px;
-  border-radius:10px;
-  background:#1b1b24;
-  font-size:21px;
-}
-
+.emoji-grid,
 .sticker-grid{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:9px;
+  grid-template-columns:repeat(7,1fr);
+  gap:7px;
+  max-height:210px;
+  overflow-y:auto;
 }
 
-.sticker{
-  height:72px;
-  border-radius:15px;
-  background:#1b1b24;
-  border:1px solid #2b2b35;
-  font-size:42px;
+.emoji-grid button,
+.sticker-grid button{
+  background:#181820;
+  border-radius:12px;
+  padding:8px;
 }
 
-/* UPLOAD */
+.emoji-grid button{
+  font-size:24px;
+}
 
-.file-preview{
-  color:var(--muted);
-  font-size:11px;
-  padding:4px 3px 0;
+.sticker-grid button{
+  font-size:31px;
 }
 
 /* TOAST */
-
 .toast{
   position:fixed;
   left:50%;
-  bottom:88px;
-  transform:translate(-50%,20px);
-  padding:12px 17px;
-  border-radius:14px;
-  background:#22222c;
-  border:1px solid #383844;
-  color:white;
-  opacity:0;
-  pointer-events:none;
-  transition:.25s;
-  z-index:9999;
-  white-space:nowrap;
+  bottom:95px;
+  transform:translateX(-50%);
+  background:#202027;
+  border:1px solid #393944;
+  border-radius:15px;
+  padding:14px 20px;
+  z-index:100;
+  max-width:90%;
+  text-align:center;
+  display:none;
+  box-shadow:0 10px 35px rgba(0,0,0,.45);
 }
 
 .toast.show{
-  opacity:1;
-  transform:translate(-50%,0);
+  display:block;
 }
 
-/* DESKTOP */
+/* LOADING */
+.loading{
+  color:#777783;
+  text-align:center;
+  padding:30px;
+}
 
-@media(min-width:700px){
+/* FIREBASE STATUS */
+.firebase-status{
+  margin:0 10px 20px;
+  padding:12px 15px;
+  border-radius:14px;
+  font-size:13px;
+  color:#aaa;
+  background:#101015;
+  border:1px solid #272730;
+}
 
-  .chat-messages{
-    padding-left:max(15px,calc((100vw - 720px)/2));
-    padding-right:max(15px,calc((100vw - 720px)/2));
-  }
+.firebase-status.ok{
+  border-color:#245b39;
+  color:#67d892;
+}
 
+.firebase-status.error{
+  border-color:#632d38;
+  color:#ff8799;
+}
+
+@media(max-width:500px){
+  .hero h1{font-size:36px}
+  .page{padding:24px 15px}
 }
 </style>
 </head>
 
 <body>
 
-<!-- SVG SYMBOLS -->
-<svg style="display:none">
-
-<symbol id="home" viewBox="0 0 24 24">
-<path d="M3 10.5 12 3l9 7.5"/>
-<path d="M5 9.5V21h14V9.5"/>
-<path d="M9 21v-7h6v7"/>
-</symbol>
-
-<symbol id="search" viewBox="0 0 24 24">
-<circle cx="11" cy="11" r="7"/>
-<path d="m20 20-4-4"/>
-</symbol>
-
-<symbol id="plus" viewBox="0 0 24 24">
-<path d="M12 5v14"/>
-<path d="M5 12h14"/>
-</symbol>
-
-<symbol id="bell" viewBox="0 0 24 24">
-<path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/>
-<path d="M10 21h4"/>
-</symbol>
-
-<symbol id="user" viewBox="0 0 24 24">
-<circle cx="12" cy="8" r="4"/>
-<path d="M4 21c1.5-5 4.2-7 8-7s6.5 2 8 7"/>
-</symbol>
-
-<symbol id="settings" viewBox="0 0 24 24">
-<circle cx="12" cy="12" r="3"/>
-<path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-1.7 1.7-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V20h-2.4v-.2a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1L8 17l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H6v-2.4h.2a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.9L7.3 8 9 6.3l.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.5V5h2.4v.2a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1L19 8l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0-.1.0"/>
-</symbol>
-
-<symbol id="message" viewBox="0 0 24 24">
-<path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 9.5 9.5 0 0 1-4-.8L4 20l1.8-3.5A7.3 7.3 0 0 1 4 11.5 7.5 7.5 0 0 1 12 4a7.5 7.5 0 0 1 8 7.5Z"/>
-<path d="M8 11h.01M12 11h.01M16 11h.01"/>
-</symbol>
-
-<symbol id="back" viewBox="0 0 24 24">
-<path d="m15 18-6-6 6-6"/>
-</symbol>
-
-<symbol id="phone" viewBox="0 0 24 24">
-<path d="M7 4h3l1.5 4-2 1.5a14 14 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2 2C11 19.5 4.5 13 4.5 6a2 2 0 0 1 2.5-2Z"/>
-</symbol>
-
-<symbol id="video" viewBox="0 0 24 24">
-<rect x="3" y="6" width="13" height="12" rx="2"/>
-<path d="m16 10 5-3v10l-5-3"/>
-</symbol>
-
-<symbol id="more" viewBox="0 0 24 24">
-<circle cx="5" cy="12" r="1"/>
-<circle cx="12" cy="12" r="1"/>
-<circle cx="19" cy="12" r="1"/>
-</symbol>
-
-<symbol id="paperclip" viewBox="0 0 24 24">
-<path d="m20 11-7.5 7.5a5 5 0 0 1-7-7L13 4a3.5 3.5 0 0 1 5 5l-7 7a2 2 0 0 1-3-3l6.5-6.5"/>
-</symbol>
-
-<symbol id="smile" viewBox="0 0 24 24">
-<circle cx="12" cy="12" r="9"/>
-<path d="M8 14s1.5 2 4 2 4-2 4-2"/>
-<path d="M9 9h.01M15 9h.01"/>
-</symbol>
-
-<symbol id="send" viewBox="0 0 24 24">
-<path d="m21 3-7.5 18-3.5-7-7-3.5L21 3Z"/>
-<path d="M10 14 21 3"/>
-</symbol>
-
-</svg>
-
-
-<!-- TOP BAR -->
+<div class="app">
 
 <header class="topbar">
-
-  <div class="logo">
-    X-<span>DARK</span>
-  </div>
+  <div class="logo">X-<span>DARK</span></div>
 
   <div class="top-actions">
 
-    <!-- CHAT -->
-    <button class="icon-btn" onclick="showPage('messages')">
-      <svg>
-        <use href="#message"></use>
+    <!-- MESSAGES -->
+    <button class="icon-btn" onclick="openMessages()" aria-label="Messages">
+      <svg viewBox="0 0 24 24">
+        <path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.6 8.6 0 0 1-3.5-.8L4 20l1.8-3.5A7.2 7.2 0 0 1 4.5 12 7.5 7.5 0 0 1 12 4.5a7.5 7.5 0 0 1 8 7z"/>
       </svg>
     </button>
 
     <!-- SETTINGS -->
-    <button class="icon-btn" onclick="showPage('settings')">
-      <svg>
-        <use href="#settings"></use>
+    <button class="icon-btn" onclick="showPage('profile')" aria-label="Settings">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+        <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-1.8 1.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5v.1h-2.6v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1-1.8-1.8.1-.1A1.7 1.7 0 0 0 8 15a1.7 1.7 0 0 0-1.5-1H6.4v-2.6h.1A1.7 1.7 0 0 0 8 10a1.7 1.7 0 0 0-.3-1.9l-.1-.1 1.8-1.8.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.5V5h2.6v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1 1.8 1.8-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.5 1h.1V14h-.1a1.7 1.7 0 0 0-1.5 1z"/>
       </svg>
     </button>
 
   </div>
-
 </header>
 
-
-<main>
-
 <!-- HOME -->
-
 <section id="homePage" class="page active">
 
   <div class="hero">
@@ -872,286 +601,196 @@ main{
     <p>Connect. Chat. Share.</p>
   </div>
 
+  <div id="firebaseStatus" class="firebase-status">
+    Connecting to Firebase...
+  </div>
+
   <div class="card">
 
-    <div class="post-head">
-
+    <div class="user-row">
       <div class="avatar">D</div>
 
       <div>
-        <div class="post-name">Darkwing</div>
-        <div class="post-time">Just now</div>
+        <div class="user-name">Darkwing</div>
+        <div class="status">Just now</div>
       </div>
-
     </div>
 
     <div class="post-text">
       Welcome to X-DARK. Your private dark social experience.
     </div>
 
-    <div class="post-actions">
-
-      <button class="small-btn" onclick="openChat('Darkwing')">
-        <svg>
-          <use href="#message"></use>
-        </svg>
+    <div class="action-row">
+      <button class="primary-btn" onclick="openChat('Darkwing')">
         Chat
       </button>
 
-      <button class="small-btn">
+      <button class="secondary-btn" onclick="followUser(this)">
         Follow
       </button>
-
     </div>
 
   </div>
 
 </section>
 
-
 <!-- SEARCH -->
-
 <section id="searchPage" class="page">
 
-  <div class="section-title">
-    Search
+  <div class="hero">
+    <h1>Search</h1>
+    <p>Find people on X-DARK.</p>
   </div>
 
   <div class="search-box">
-
-    <svg>
-      <use href="#search"></use>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="11" cy="11" r="7"/>
+      <path d="m20 20-4-4"/>
     </svg>
 
     <input
       id="searchInput"
-      placeholder="Search people..."
+      placeholder="Search users..."
       oninput="searchUsers()"
     >
-
   </div>
 
   <div id="searchResults">
 
-    <div class="search-result">
-
-      <div class="avatar">D</div>
-
-      <div class="result-info">
-        <strong>Darkwing</strong>
-        <span>Official X-DARK</span>
+    <div class="card">
+      <div class="user-row">
+        <div class="avatar">D</div>
+        <div>
+          <div class="user-name">Darkwing</div>
+          <div class="status">X-DARK</div>
+        </div>
       </div>
 
-      <button
-        class="small-btn"
-        onclick="openChat('Darkwing')"
-      >
-        Chat
+      <button class="primary-btn" style="margin-top:18px"
+        onclick="openChat('Darkwing')">
+        Message
       </button>
-
-    </div>
-
-    <div class="search-result">
-
-      <div class="avatar">X</div>
-
-      <div class="result-info">
-        <strong>XDark</strong>
-        <span>X-DARK member</span>
-      </div>
-
-      <button
-        class="small-btn"
-        onclick="openChat('XDark')"
-      >
-        Chat
-      </button>
-
-    </div>
-
-    <div class="search-result">
-
-      <div class="avatar">N</div>
-
-      <div class="result-info">
-        <strong>Nova</strong>
-        <span>Online now</span>
-      </div>
-
-      <button
-        class="small-btn"
-        onclick="openChat('Nova')"
-      >
-        Chat
-      </button>
-
     </div>
 
   </div>
 
 </section>
-
-
-<!-- MESSAGES -->
-
-<section id="messagesPage" class="page">
-
-  <div class="section-title">
-    Messages
-  </div>
-
-  <div
-    class="message-item"
-    onclick="openChat('Darkwing')"
-  >
-
-    <div class="avatar">D</div>
-
-    <div class="message-info">
-      <strong>Darkwing</strong>
-      <div class="message-preview">
-        Start a conversation...
-      </div>
-    </div>
-
-    <div class="online-dot"></div>
-
-  </div>
-
-
-  <div
-    class="message-item"
-    onclick="openChat('XDark')"
-  >
-
-    <div class="avatar">X</div>
-
-    <div class="message-info">
-      <strong>XDark</strong>
-      <div class="message-preview">
-        Tap to open chat
-      </div>
-    </div>
-
-  </div>
-
-
-  <div
-    class="message-item"
-    onclick="openChat('Nova')"
-  >
-
-    <div class="avatar">N</div>
-
-    <div class="message-info">
-      <strong>Nova</strong>
-      <div class="message-preview">
-        Online now
-      </div>
-    </div>
-
-    <div class="online-dot"></div>
-
-  </div>
-
-</section>
-
 
 <!-- CREATE -->
-
 <section id="createPage" class="page">
 
-  <div class="section-title">
-    Create Post
+  <div class="hero">
+    <h1>Create</h1>
+    <p>Share something with X-DARK.</p>
   </div>
 
-  <textarea
-    id="postText"
-    class="create-input"
-    placeholder="What's on your mind?"
-  ></textarea>
+  <div class="card">
 
-  <button
-    class="primary"
-    onclick="createPost()"
-  >
-    Publish Post
-  </button>
+    <textarea id="postInput"
+      placeholder="What's happening?"></textarea>
 
-</section>
-
-
-<!-- NOTIFICATIONS -->
-
-<section id="notificationsPage" class="page">
-
-  <div class="section-title">
-    Notifications
-  </div>
-
-  <div class="notification">
-
-    <div class="avatar">D</div>
-
-    <div class="message-info">
-      <strong>Darkwing</strong>
-      <div class="message-preview">
-        Welcome to X-DARK
-      </div>
-    </div>
-
-  </div>
-
-  <div class="notification">
-
-    <div class="avatar">N</div>
-
-    <div class="message-info">
-      <strong>Nova</strong>
-      <div class="message-preview">
-        is online now
-      </div>
-    </div>
-
-    <div class="online-dot"></div>
+    <button class="primary-btn"
+      style="margin-top:15px"
+      onclick="createPost()">
+      Publish
+    </button>
 
   </div>
 
 </section>
 
+<!-- ALERTS -->
+<section id="alertsPage" class="page">
+
+  <div class="hero">
+    <h1>Alerts</h1>
+    <p>Your notifications.</p>
+  </div>
+
+  <div class="alert">
+    <div class="alert-icon">✦</div>
+    <div>
+      <strong>Welcome to X-DARK</strong>
+      <p class="status">Your account is ready.</p>
+    </div>
+  </div>
+
+  <div class="alert">
+    <div class="alert-icon">●</div>
+    <div>
+      <strong>Firebase</strong>
+      <p class="status">Real-time messaging is available.</p>
+    </div>
+  </div>
+
+</section>
 
 <!-- PROFILE -->
-
 <section id="profilePage" class="page">
 
-  <div class="profile-header">
+  <div class="profile-head">
 
-    <div class="big-avatar">
-      A
-    </div>
+    <div class="big-avatar">A</div>
 
     <h2>Ankaj</h2>
-    <p>@ankaj</p>
+    <p>@x-dark-user</p>
 
   </div>
 
   <div class="card">
 
-    <div class="stat-row">
+    <div class="user-row">
+      <div class="avatar">⚙</div>
 
-      <div class="stat">
-        <strong>0</strong>
-        <span>Posts</span>
+      <div>
+        <div class="user-name">Settings</div>
+        <div class="status">X-DARK account settings</div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- MESSAGES -->
+<section id="messagesPage" class="page">
+
+  <div class="hero">
+    <h1>Messages</h1>
+    <p>Your conversations.</p>
+  </div>
+
+  <div class="card">
+
+    <div class="chat-item" onclick="openChat('Darkwing')">
+
+      <div class="avatar">D</div>
+
+      <div class="chat-info">
+        <strong>Darkwing</strong>
+        <div class="chat-preview">Welcome to X-DARK...</div>
       </div>
 
-      <div class="stat">
-        <strong>0</strong>
-        <span>Followers</span>
+    </div>
+
+    <div class="chat-item" onclick="openChat('User')">
+
+      <div class="avatar">U</div>
+
+      <div class="chat-info">
+        <strong>User</strong>
+        <div class="chat-preview">Start a conversation</div>
       </div>
 
-      <div class="stat">
-        <strong>0</strong>
-        <span>Following</span>
+    </div>
+
+    <div class="chat-item" onclick="openChat('Nova')">
+
+      <div class="avatar">N</div>
+
+      <div class="chat-info">
+        <strong>Nova</strong>
+        <div class="chat-preview">New conversation</div>
       </div>
 
     </div>
@@ -1160,461 +799,227 @@ main{
 
 </section>
 
+<!-- CHAT -->
+<section id="chatPage" class="page">
 
-<!-- SETTINGS -->
+  <div class="chat-screen">
 
-<section id="settingsPage" class="page">
+    <div class="chat-header">
 
-  <div class="section-title">
-    Settings
-  </div>
+      <button class="icon-btn" onclick="closeChat()">
+        <svg viewBox="0 0 24 24">
+          <path d="m15 18-6-6 6-6"/>
+        </svg>
+      </button>
 
-  <div class="setting">
+      <div class="avatar" style="width:43px;height:43px;font-size:18px">
+        <span id="chatAvatar">D</span>
+      </div>
 
-    <svg>
-      <use href="#user"></use>
-    </svg>
+      <div class="chat-user">
+        <strong id="chatName">Darkwing</strong>
+        <small id="chatStatus">Connecting...</small>
+      </div>
 
-    <div class="setting-main">
-      <strong>Account</strong>
-      <span>Manage your profile</span>
+      <div class="chat-actions">
+
+        <button class="icon-btn" onclick="fakeCall()">
+          <svg viewBox="0 0 24 24">
+            <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2.1z"/>
+          </svg>
+        </button>
+
+        <button class="icon-btn" onclick="fakeVideo()">
+          <svg viewBox="0 0 24 24">
+            <rect x="3" y="6" width="13" height="12" rx="2"/>
+            <path d="m16 10 5-3v10l-5-3"/>
+          </svg>
+        </button>
+
+      </div>
+
     </div>
 
-    <svg>
-      <use href="#more"></use>
-    </svg>
-
-  </div>
-
-
-  <div class="setting">
-
-    <svg>
-      <use href="#bell"></use>
-    </svg>
-
-    <div class="setting-main">
-      <strong>Notifications</strong>
-      <span>Manage notifications</span>
+    <div id="messages" class="messages">
+      <div class="loading">Loading messages...</div>
     </div>
 
-    <div
-      class="switch on"
-      onclick="toggleSwitch(this)"
-    ></div>
+    <div class="chat-input-area">
 
-  </div>
+      <!-- EMOJI -->
+      <div id="emojiPicker" class="picker">
 
+        <div class="emoji-grid">
 
-  <div class="setting">
+          <button onclick="addEmoji('😀')">😀</button>
+          <button onclick="addEmoji('😂')">😂</button>
+          <button onclick="addEmoji('😍')">😍</button>
+          <button onclick="addEmoji('😎')">😎</button>
+          <button onclick="addEmoji('🔥')">🔥</button>
+          <button onclick="addEmoji('❤️')">❤️</button>
+          <button onclick="addEmoji('👍')">👍</button>
+          <button onclick="addEmoji('👎')">👎</button>
+          <button onclick="addEmoji('😢')">😢</button>
+          <button onclick="addEmoji('😡')">😡</button>
+          <button onclick="addEmoji('🤣')">🤣</button>
+          <button onclick="addEmoji('😉')">😉</button>
+          <button onclick="addEmoji('🤔')">🤔</button>
+          <button onclick="addEmoji('😴')">😴</button>
+          <button onclick="addEmoji('🥰')">🥰</button>
+          <button onclick="addEmoji('🤩')">🤩</button>
+          <button onclick="addEmoji('💀')">💀</button>
+          <button onclick="addEmoji('👀')">👀</button>
+          <button onclick="addEmoji('✨')">✨</button>
+          <button onclick="addEmoji('💯')">💯</button>
 
-    <svg>
-      <use href="#message"></use>
-    </svg>
+        </div>
 
-    <div class="setting-main">
-      <strong>Messages</strong>
-      <span>Chat settings</span>
+      </div>
+
+      <!-- STICKERS -->
+      <div id="stickerPicker" class="picker">
+
+        <div class="sticker-grid">
+
+          <button onclick="sendSticker('😎','Cool')">😎</button>
+          <button onclick="sendSticker('😂','LOL')">😂</button>
+          <button onclick="sendSticker('🔥','Fire')">🔥</button>
+          <button onclick="sendSticker('❤️','Love')">❤️</button>
+          <button onclick="sendSticker('💀','Skull')">💀</button>
+          <button onclick="sendSticker('👑','King')">👑</button>
+          <button onclick="sendSticker('🤖','Robot')">🤖</button>
+          <button onclick="sendSticker('👽','Alien')">👽</button>
+          <button onclick="sendSticker('😈','Devil')">😈</button>
+          <button onclick="sendSticker('🤯','Mind Blown')">🤯</button>
+          <button onclick="sendSticker('🥶','Cold')">🥶</button>
+          <button onclick="sendSticker('💎','Diamond')">💎</button>
+
+        </div>
+
+      </div>
+
+      <div class="chat-input">
+
+        <!-- EMOJI BUTTON -->
+        <button class="icon-btn"
+          style="width:38px;height:38px"
+          onclick="toggleEmoji()">
+          😊
+        </button>
+
+        <!-- STICKER -->
+        <button class="icon-btn"
+          style="width:38px;height:38px"
+          onclick="toggleSticker()">
+          ✦
+        </button>
+
+        <input
+          id="messageInput"
+          placeholder="Message..."
+          autocomplete="off"
+          onkeydown="messageKey(event)"
+        >
+
+        <button class="send-btn" onclick="sendMessage()">
+
+          <svg viewBox="0 0 24 24">
+            <path d="m22 2-7 20-4-9-9-4z"/>
+            <path d="M22 2 11 13"/>
+          </svg>
+
+        </button>
+
+      </div>
+
     </div>
-
-    <div
-      class="switch on"
-      onclick="toggleSwitch(this)"
-    ></div>
-
-  </div>
-
-
-  <div class="setting">
-
-    <svg>
-      <use href="#settings"></use>
-    </svg>
-
-    <div class="setting-main">
-      <strong>Privacy</strong>
-      <span>Security settings</span>
-    </div>
-
-    <svg>
-      <use href="#more"></use>
-    </svg>
 
   </div>
 
 </section>
 
-</main>
-
+</div>
 
 <!-- BOTTOM NAV -->
-
 <nav class="bottom-nav">
 
-  <button
+  <button id="navHome"
     class="nav-btn active"
-    data-page="home"
-    onclick="showPage('home')"
-  >
-    <svg>
-      <use href="#home"></use>
+    onclick="showPage('home')">
+
+    <svg viewBox="0 0 24 24">
+      <path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>
     </svg>
-    <span>Home</span>
+
+    Home
   </button>
 
-
-  <button
+  <button id="navSearch"
     class="nav-btn"
-    data-page="search"
-    onclick="showPage('search')"
-  >
-    <svg>
-      <use href="#search"></use>
+    onclick="showPage('search')">
+
+    <svg viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="7"/>
+      <path d="m20 20-4-4"/>
     </svg>
-    <span>Search</span>
+
+    Search
   </button>
 
-
-  <button
+  <button id="navCreate"
     class="nav-btn"
-    data-page="create"
-    onclick="showPage('create')"
-  >
-    <svg>
-      <use href="#plus"></use>
+    onclick="showPage('create')">
+
+    <svg viewBox="0 0 24 24">
+      <path d="M12 5v14M5 12h14"/>
     </svg>
-    <span>Create</span>
+
+    Create
   </button>
 
-
-  <button
+  <button id="navAlerts"
     class="nav-btn"
-    data-page="notifications"
-    onclick="showPage('notifications')"
-  >
-    <svg>
-      <use href="#bell"></use>
+    onclick="showPage('alerts')">
+
+    <svg viewBox="0 0 24 24">
+      <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/>
+      <path d="M10 21h4"/>
     </svg>
-    <span>Alerts</span>
+
+    Alerts
   </button>
 
-
-  <button
+  <button id="navProfile"
     class="nav-btn"
-    data-page="profile"
-    onclick="showPage('profile')"
-  >
-    <svg>
-      <use href="#user"></use>
+    onclick="showPage('profile')">
+
+    <svg viewBox="0 0 24 24">
+      <circle cx="12" cy="8" r="4"/>
+      <path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/>
     </svg>
-    <span>Profile</span>
+
+    Profile
   </button>
 
 </nav>
 
-
-<!-- CHAT -->
-
-<section id="chatPage">
-
-  <div class="chat-header">
-
-    <button
-      class="icon-btn"
-      onclick="closeChat()"
-    >
-      <svg>
-        <use href="#back"></use>
-      </svg>
-    </button>
-
-
-    <div
-      class="avatar"
-      id="chatAvatar"
-    >
-      D
-    </div>
-
-
-    <div class="chat-user">
-
-      <strong id="chatName">
-        Darkwing
-      </strong>
-
-      <div
-        id="chatStatus"
-        class="status"
-      >
-        Connecting...
-      </div>
-
-    </div>
-
-
-    <div class="chat-actions">
-
-      <button
-        class="icon-btn"
-        onclick="fakeCall()"
-      >
-        <svg>
-          <use href="#phone"></use>
-        </svg>
-      </button>
-
-      <button
-        class="icon-btn"
-        onclick="fakeVideo()"
-      >
-        <svg>
-          <use href="#video"></use>
-        </svg>
-      </button>
-
-      <button class="icon-btn">
-        <svg>
-          <use href="#more"></use>
-        </svg>
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <div
-    id="chatMessages"
-    class="chat-messages"
-  >
-
-    <div class="empty-chat">
-      Connecting to Firebase...
-    </div>
-
-  </div>
-
-
-  <div
-    id="typingIndicator"
-    class="typing"
-  ></div>
-
-
-  <div class="chat-input-area">
-
-
-    <!-- EMOJI -->
-
-    <div
-      id="emojiPicker"
-      class="picker"
-    >
-
-      <div class="emoji-grid">
-
-        <button class="emoji" onclick="addEmoji('😀')">😀</button>
-        <button class="emoji" onclick="addEmoji('😂')">😂</button>
-        <button class="emoji" onclick="addEmoji('😍')">😍</button>
-        <button class="emoji" onclick="addEmoji('🥰')">🥰</button>
-        <button class="emoji" onclick="addEmoji('😎')">😎</button>
-        <button class="emoji" onclick="addEmoji('🤔')">🤔</button>
-        <button class="emoji" onclick="addEmoji('😭')">😭</button>
-        <button class="emoji" onclick="addEmoji('😡')">😡</button>
-
-        <button class="emoji" onclick="addEmoji('🔥')">🔥</button>
-        <button class="emoji" onclick="addEmoji('❤️')">❤️</button>
-        <button class="emoji" onclick="addEmoji('💜')">💜</button>
-        <button class="emoji" onclick="addEmoji('💯')">💯</button>
-        <button class="emoji" onclick="addEmoji('👍')">👍</button>
-        <button class="emoji" onclick="addEmoji('🙏')">🙏</button>
-        <button class="emoji" onclick="addEmoji('👏')">👏</button>
-        <button class="emoji" onclick="addEmoji('💪')">💪</button>
-
-        <button class="emoji" onclick="addEmoji('🎉')">🎉</button>
-        <button class="emoji" onclick="addEmoji('🚀')">🚀</button>
-        <button class="emoji" onclick="addEmoji('✨')">✨</button>
-        <button class="emoji" onclick="addEmoji('👀')">👀</button>
-        <button class="emoji" onclick="addEmoji('😈')">😈</button>
-        <button class="emoji" onclick="addEmoji('🤝')">🤝</button>
-        <button class="emoji" onclick="addEmoji('⚡')">⚡</button>
-        <button class="emoji" onclick="addEmoji('👑')">👑</button>
-
-      </div>
-
-    </div>
-
-
-    <!-- STICKERS -->
-
-    <div
-      id="stickerPicker"
-      class="picker"
-    >
-
-      <div class="sticker-grid">
-
-        <button
-          class="sticker"
-          onclick="sendSticker('😎','Cool')"
-        >😎</button>
-
-        <button
-          class="sticker"
-          onclick="sendSticker('🔥','Fire')"
-        >🔥</button>
-
-        <button
-          class="sticker"
-          onclick="sendSticker('🚀','Rocket')"
-        >🚀</button>
-
-        <button
-          class="sticker"
-          onclick="sendSticker('💜','Purple')"
-        >💜</button>
-
-        <button
-          class="sticker"
-          onclick="sendSticker('👑','King')"
-        >👑</button>
-
-        <button
-          class="sticker"
-          onclick="sendSticker('🤖','Robot')"
-        >🤖</button>
-
-        <button
-          class="sticker"
-          onclick="sendSticker('💀','Skull')"
-        >💀</button>
-
-        <button
-          class="sticker"
-          onclick="sendSticker('⚡','Power')"
-        >⚡</button>
-
-        <button
-          class="sticker"
-          onclick="sendSticker('👽','Alien')"
-        >👽</button>
-
-        <button
-          class="sticker"
-          onclick="sendSticker('🦾','Cyber')"
-        >🦾</button>
-
-        <button
-          class="sticker"
-          onclick="sendSticker('🌙','Moon')"
-        >🌙</button>
-
-        <button
-          class="sticker"
-          onclick="sendSticker('✨','Magic')"
-        >✨</button>
-
-      </div>
-
-    </div>
-
-
-    <!-- INPUT -->
-
-    <div class="chat-input-row">
-
-      <button
-        class="icon-btn"
-        onclick="chooseFile()"
-      >
-        <svg>
-          <use href="#paperclip"></use>
-        </svg>
-      </button>
-
-
-      <button
-        class="icon-btn"
-        onclick="togglePicker('emoji')"
-      >
-        <svg>
-          <use href="#smile"></use>
-        </svg>
-      </button>
-
-
-      <button
-        class="icon-btn"
-        onclick="togglePicker('sticker')"
-      >
-        ✦
-      </button>
-
-
-      <input
-        id="messageInput"
-        class="chat-input"
-        placeholder="Message..."
-        autocomplete="off"
-        oninput="handleTyping()"
-        onkeydown="handleEnter(event)"
-      >
-
-
-      <button
-        class="send-btn"
-        onclick="sendMessage()"
-      >
-        <svg>
-          <use href="#send"></use>
-        </svg>
-      </button>
-
-    </div>
-
-
-    <input
-      id="fileInput"
-      type="file"
-      hidden
-      accept="image/*,video/*,.pdf,.doc,.docx,.txt,.zip"
-      onchange="handleFile(event)"
-    >
-
-
-    <div
-      id="filePreview"
-      class="file-preview"
-    ></div>
-
-  </div>
-
-</section>
-
-
 <div id="toast" class="toast"></div>
-
 
 <script type="module">
 
-/* =========================================================
-   FIREBASE IMPORTS
-========================================================= */
+/* =========================================
+   FIREBASE
+========================================= */
 
 import {
   initializeApp
-}
-from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-
+} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 
 import {
   getAuth,
   signInAnonymously,
   onAuthStateChanged
-}
-from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
-
+} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 
 import {
   getFirestore,
@@ -1624,256 +1029,242 @@ import {
   orderBy,
   onSnapshot,
   serverTimestamp,
-  doc,
-  setDoc,
   updateDoc,
-  arrayUnion
-}
-from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
-
+  doc,
+  arrayUnion,
+  setDoc
+} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 import {
   getStorage,
   ref,
   uploadBytes,
   getDownloadURL
-}
-from "https://www.gstatic.com/firebasejs/12.2.1/firebase-storage.js";
+} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-storage.js";
 
 
-/* =========================================================
+/* =========================================
    FIREBASE CONFIG
-========================================================= */
+========================================= */
 
 const firebaseConfig = {
-
-  apiKey:
-    "AIzaC8S8Hfx0E7OpnfclF7UGYVcmdU38yuxtsBY",
-
-  authDomain:
-    "darkwing-a717a.firebaseapp.com",
-
-  projectId:
-    "darkwing-a717a",
-
-  storageBucket:
-    "darkwing-a717a.firebasestorage.app",
-
-  messagingSenderId:
-    "352453390196",
-
-  appId:
-    "1:352453390196:web:7c375a26a823b5633a4621",
-
-  measurementId:
-    "G-5RVX9NET3W"
-
+  apiKey: "AIzaC8S8Hfx0E7OpnfclF7UGYVcmdU38yuxtsBY",
+  authDomain: "darkwing-a717a.firebaseapp.com",
+  projectId: "darkwing-a717a",
+  storageBucket: "darkwing-a717a.firebasestorage.app",
+  messagingSenderId: "352453390196",
+  appId: "1:352453390196:web:7c375a26a823b5633a4621",
+  measurementId: "G-5RVX9NET3W"
 };
 
 
-/* =========================================================
+/* =========================================
    INITIALIZE
-========================================================= */
+========================================= */
 
-const app =
-  initializeApp(firebaseConfig);
-
-const auth =
-  getAuth(app);
-
-const db =
-  getFirestore(app);
-
-const storage =
-  getStorage(app);
-
-
-/* =========================================================
-   GLOBAL VARIABLES
-========================================================= */
+let app;
+let auth;
+let db;
+let storage;
 
 let currentFirebaseUser = null;
-
 let currentChat = null;
 
-let unsubscribeMessages = null;
+let stopMessages = null;
+let stopPresence = null;
 
-let unsubscribePresence = null;
-
-let unsubscribeTyping = null;
-
-let typingTimer = null;
-
-const userName = "Ankaj";
+const statusBox =
+  document.getElementById("firebaseStatus");
 
 
-/* =========================================================
-   FIREBASE LOGIN
-========================================================= */
+function setFirebaseStatus(text,type=""){
+  statusBox.textContent = text;
+  statusBox.className =
+    "firebase-status " + type;
+}
 
-signInAnonymously(auth)
 
-.then(() => {
+function toast(message){
 
-  console.log(
-    "Anonymous authentication started"
+  const el = document.getElementById("toast");
+
+  el.textContent = message;
+  el.classList.add("show");
+
+  setTimeout(()=>{
+    el.classList.remove("show");
+  },4500);
+}
+
+
+/* =========================================
+   START FIREBASE
+========================================= */
+
+try{
+
+  app = initializeApp(firebaseConfig);
+
+  auth = getAuth(app);
+
+  db = getFirestore(app);
+
+  storage = getStorage(app);
+
+  setFirebaseStatus(
+    "Connecting to Firebase...",
+    ""
   );
 
-})
-
-.catch(error => {
-
-  console.error(
-    "Anonymous auth error:",
-    error
-  );
-
-  toast(
-    "Firebase authentication failed"
-  );
-
-});
-
-
-/* =========================================================
-   AUTH STATE
-========================================================= */
-
-onAuthStateChanged(
-  auth,
-  user => {
+  onAuthStateChanged(auth,(user)=>{
 
     if(user){
 
       currentFirebaseUser = user;
 
       console.log(
-        "Firebase connected:",
+        "Firebase authenticated:",
         user.uid
       );
 
-      if(currentChat){
+      setFirebaseStatus(
+        "Firebase connected",
+        "ok"
+      );
 
-        document
-          .getElementById("chatStatus")
-          .textContent = "Online";
+      if(currentChat){
 
         listenMessages();
 
-        updatePresence();
-
-        listenPresence();
-
-        listenTyping();
-
       }
 
-    }
-
-    else{
+    }else{
 
       currentFirebaseUser = null;
-
-      if(currentChat){
-
-        document
-          .getElementById("chatStatus")
-          .textContent =
-          "Connecting...";
-
-      }
-
-    }
-
-  }
-);
-
-
-/* =========================================================
-   PAGE NAVIGATION
-========================================================= */
-
-window.showPage = function(page){
-
-  const pages = [
-    "home",
-    "search",
-    "messages",
-    "create",
-    "notifications",
-    "profile",
-    "settings"
-  ];
-
-
-  pages.forEach(name => {
-
-    const element =
-      document.getElementById(
-        name + "Page"
-      );
-
-    if(element){
-
-      element.classList.toggle(
-        "active",
-        name === page
-      );
 
     }
 
   });
 
 
-  document
-    .querySelectorAll(".nav-btn")
-    .forEach(button => {
+  signInAnonymously(auth)
+    .then((result)=>{
 
-      button.classList.toggle(
-        "active",
-        button.dataset.page === page
+      currentFirebaseUser = result.user;
+
+      console.log(
+        "Anonymous login successful:",
+        result.user.uid
+      );
+
+      setFirebaseStatus(
+        "Firebase connected",
+        "ok"
+      );
+
+      if(currentChat){
+
+        listenMessages();
+
+      }
+
+    })
+    .catch((error)=>{
+
+      console.error(
+        "FIREBASE AUTH ERROR",
+        error
+      );
+
+      const code =
+        error.code || "unknown";
+
+      const message =
+        error.message || "Unknown Firebase error";
+
+      setFirebaseStatus(
+        "Firebase Error: " + code,
+        "error"
+      );
+
+      toast(
+        "Firebase Error: " +
+        code +
+        " — " +
+        message
       );
 
     });
 
-};
+}catch(error){
+
+  console.error(
+    "Firebase initialization error:",
+    error
+  );
+
+  setFirebaseStatus(
+    "Firebase Init Error: " +
+    (error.message || error),
+    "error"
+  );
+
+}
 
 
-/* =========================================================
-   SEARCH
-========================================================= */
+/* =========================================
+   NAVIGATION
+========================================= */
 
-window.searchUsers = function(){
-
-  const value =
-    document
-      .getElementById("searchInput")
-      .value
-      .toLowerCase()
-      .trim();
-
+window.showPage = function(page){
 
   document
-    .querySelectorAll(".search-result")
-    .forEach(item => {
-
-      const text =
-        item.innerText.toLowerCase();
-
-      item.style.display =
-        !value ||
-        text.includes(value)
-        ? "flex"
-        : "none";
-
+    .querySelectorAll(".page")
+    .forEach(el=>{
+      el.classList.remove("active");
     });
+
+  const target =
+    document.getElementById(page+"Page");
+
+  if(target){
+    target.classList.add("active");
+  }
+
+  document
+    .querySelectorAll(".nav-btn")
+    .forEach(el=>{
+      el.classList.remove("active");
+    });
+
+  const nav =
+    document.getElementById("nav"+capitalize(page));
+
+  if(nav){
+    nav.classList.add("active");
+  }
 
 };
 
 
-/* =========================================================
-   CHAT ID
-========================================================= */
+function capitalize(text){
+
+  return text.charAt(0).toUpperCase()
+    + text.slice(1);
+
+}
+
+
+/* =========================================
+   MESSAGES
+========================================= */
+
+window.openMessages = function(){
+
+  showPage("messages");
+
+};
+
 
 function chatId(name){
 
@@ -1884,131 +1275,96 @@ function chatId(name){
 }
 
 
-/* =========================================================
-   OPEN CHAT
-========================================================= */
-
 window.openChat = function(name){
 
   currentChat = name;
 
-
   document
-    .getElementById("chatName")
-    .textContent = name;
-
-
-  document
-    .getElementById("chatAvatar")
-    .textContent =
-      name
-        .charAt(0)
-        .toUpperCase();
-
+    .querySelectorAll(".page")
+    .forEach(el=>{
+      el.classList.remove("active");
+    });
 
   document
     .getElementById("chatPage")
     .classList.add("active");
 
+  document.getElementById(
+    "chatName"
+  ).textContent = name;
 
-  document.body.style.overflow =
-    "hidden";
+  document.getElementById(
+    "chatAvatar"
+  ).textContent =
+    name.charAt(0).toUpperCase();
 
-
-  document
-    .getElementById("chatStatus")
-    .textContent =
-      currentFirebaseUser
+  document.getElementById(
+    "chatStatus"
+  ).textContent =
+    currentFirebaseUser
       ? "Online"
       : "Connecting...";
 
-
-  document
-    .getElementById("chatMessages")
-    .innerHTML = `
-      <div class="empty-chat">
-        Loading messages...
-      </div>
-    `;
-
+  document.getElementById(
+    "messages"
+  ).innerHTML =
+    '<div class="loading">Loading messages...</div>';
 
   if(currentFirebaseUser){
 
     listenMessages();
 
-    updatePresence();
+  }else{
 
-    listenPresence();
-
-    listenTyping();
+    toast(
+      "Waiting for Firebase authentication..."
+    );
 
   }
 
 };
 
-
-/* =========================================================
-   CLOSE CHAT
-========================================================= */
 
 window.closeChat = function(){
 
-  document
-    .getElementById("chatPage")
-    .classList.remove("active");
-
-
-  document.body.style.overflow =
-    "";
-
-
-  if(unsubscribeMessages){
-
-    unsubscribeMessages();
-
-    unsubscribeMessages = null;
-
-  }
-
-
-  if(unsubscribePresence){
-
-    unsubscribePresence();
-
-    unsubscribePresence = null;
-
-  }
-
-
-  if(unsubscribeTyping){
-
-    unsubscribeTyping();
-
-    unsubscribeTyping = null;
-
-  }
-
-
   currentChat = null;
+
+  if(stopMessages){
+
+    stopMessages();
+    stopMessages = null;
+
+  }
+
+  if(stopPresence){
+
+    stopPresence();
+    stopPresence = null;
+
+  }
+
+  showPage("messages");
 
 };
 
 
-/* =========================================================
-   LISTEN REAL-TIME MESSAGES
-========================================================= */
+/* =========================================
+   LISTEN MESSAGES
+========================================= */
 
 function listenMessages(){
 
-  if(
-    !currentChat ||
-    !currentFirebaseUser
-  ){
-
+  if(!currentFirebaseUser || !currentChat || !db){
     return;
-
   }
 
+  if(stopMessages){
+
+    stopMessages();
+
+    stopMessages = null;
+
+  }
 
   const messagesRef =
     collection(
@@ -2018,425 +1374,194 @@ function listenMessages(){
       "messages"
     );
 
-
-  const messageQuery =
+  const q =
     query(
       messagesRef,
-      orderBy(
-        "createdAt",
-        "asc"
-      )
+      orderBy("createdAt","asc")
     );
 
-
-  if(unsubscribeMessages){
-
-    unsubscribeMessages();
-
-  }
-
-
-  unsubscribeMessages =
+  stopMessages =
     onSnapshot(
-
-      messageQuery,
-
-      snapshot => {
+      q,
+      (snapshot)=>{
 
         const container =
-          document.getElementById(
-            "chatMessages"
-          );
-
+          document.getElementById("messages");
 
         container.innerHTML = "";
 
-
         if(snapshot.empty){
 
-          container.innerHTML = `
-            <div class="empty-chat">
-              No messages yet.<br>
-              Send the first message.
-            </div>
-          `;
+          container.innerHTML =
+            '<div class="loading">No messages yet. Say hello 👋</div>';
 
           return;
 
         }
 
+        snapshot.forEach(messageDoc=>{
 
-        snapshot.forEach(
-          messageDoc => {
+          const data =
+            messageDoc.data();
 
-            renderMessage(
-              messageDoc.data(),
-              messageDoc.id
-            );
+          renderMessage(
+            messageDoc.id,
+            data
+          );
 
-          }
-        );
-
+        });
 
         container.scrollTop =
           container.scrollHeight;
 
       },
-
-      error => {
+      (error)=>{
 
         console.error(
-          "Firestore error:",
+          "Message listener error:",
           error
         );
 
+        document.getElementById(
+          "messages"
+        ).innerHTML =
+          `<div class="loading">
+            Firebase error:<br>
+            ${escapeHtml(error.code || "unknown")}
+          </div>`;
 
-        document
-          .getElementById(
-            "chatMessages"
-          )
-          .innerHTML = `
-            <div class="empty-chat">
-              Unable to load messages.<br><br>
-              Check Firestore Rules.
-            </div>
-          `;
+        toast(
+          "Chat Error: " +
+          (error.code || error.message)
+        );
 
       }
-
     );
 
 }
 
 
-/* =========================================================
+/* =========================================
    RENDER MESSAGE
-========================================================= */
+========================================= */
 
-function renderMessage(
-  data,
-  id
-){
+function renderMessage(id,data){
 
   const container =
-    document.getElementById(
-      "chatMessages"
-    );
+    document.getElementById("messages");
 
-
-  const isMe =
-    data.senderId ===
-    currentFirebaseUser?.uid;
-
-
-  const message =
+  const div =
     document.createElement("div");
 
-
-  message.className =
-    "msg " +
-    (isMe ? "me" : "other");
-
+  const mine =
+    currentFirebaseUser &&
+    data.senderId ===
+    currentFirebaseUser.uid;
 
   if(data.type === "sticker"){
 
-    message.classList.add(
-      "sticker-msg"
-    );
+    div.className =
+      "msg sticker-msg " +
+      (mine ? "me" : "them");
 
-    message.textContent =
-      data.sticker || "✨";
+    div.innerHTML =
+      escapeHtml(data.sticker || "✨");
 
-  }
-
-
-  else if(data.type === "image"){
-
-    message.innerHTML = `
-
-      <img
-        src="${safeAttr(data.url)}"
-        alt="image"
-      >
-
-      ${messageMeta(data)}
-
-    `;
-
-  }
-
-
-  else if(data.type === "video"){
-
-    message.innerHTML = `
-
-      <video
-        src="${safeAttr(data.url)}"
-        controls
-        playsinline
-      ></video>
-
-      ${messageMeta(data)}
-
-    `;
-
-  }
-
-
-  else if(data.type === "file"){
-
-    message.innerHTML = `
-
-      <a
-        href="${safeAttr(data.url)}"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        📎 ${safeHtml(
-          data.fileName || "File"
-        )}
-      </a>
-
-      ${messageMeta(data)}
-
-    `;
-
-  }
-
-
-  else{
-
-    message.innerHTML = `
-
-      <div>
-        ${safeHtml(data.text || "")}
-      </div>
-
-      ${messageMeta(data)}
-
-    `;
-
-  }
-
-
-  container.appendChild(message);
-
-
-  /* MARK OTHER MESSAGES SEEN */
-
-  if(
-    !isMe &&
-    id &&
-    currentFirebaseUser
-  ){
-
-    markSeen(id);
-
-  }
-
-}
-
-
-/* =========================================================
-   MESSAGE META
-========================================================= */
-
-function messageMeta(data){
-
-  let time = "";
-
-  if(
-    data.createdAt &&
-    data.createdAt.toDate
-  ){
-
-    time =
-      data.createdAt
-        .toDate()
-        .toLocaleTimeString(
-          [],
-          {
-            hour:"2-digit",
-            minute:"2-digit"
-          }
-        );
-
-  }
-
-
-  let ticks = "";
-
-
-  if(
-    data.senderId ===
-    currentFirebaseUser?.uid
-  ){
-
-    ticks =
-      data.seenBy &&
-      data.seenBy.length > 1
-      ? `<span class="seen">✓✓</span>`
-      : `<span class="seen">✓</span>`;
-
-  }
-
-
-  return `
-
-    <div class="msg-time">
-      ${time}${ticks}
-    </div>
-
-  `;
-
-}
-
-
-/* =========================================================
-   MARK SEEN
-========================================================= */
-
-async function markSeen(messageId){
-
-  if(
-    !currentFirebaseUser ||
-    !currentChat
-  ){
+    container.appendChild(div);
 
     return;
 
   }
 
+  div.className =
+    "msg " +
+    (mine ? "me" : "them");
 
-  try{
+  let text =
+    escapeHtml(data.text || "");
 
-    await updateDoc(
+  div.innerHTML =
+    text +
+    `<span class="msg-time">
+      ${mine ? "✓✓" : ""}
+    </span>`;
 
-      doc(
-        db,
-        "chats",
-        chatId(currentChat),
-        "messages",
-        messageId
-      ),
-
-      {
-        seenBy:
-          arrayUnion(
-            currentFirebaseUser.uid
-          )
-      }
-
-    );
-
-  }
-
-  catch(error){
-
-    console.log(
-      "Seen update:",
-      error.message
-    );
-
-  }
+  container.appendChild(div);
 
 }
 
 
-/* =========================================================
+/* =========================================
    SEND MESSAGE
-========================================================= */
+========================================= */
 
-window.sendMessage =
-async function(){
-
-  if(!currentFirebaseUser){
-
-    toast(
-      "Connecting to Firebase..."
-    );
-
-    return;
-
-  }
-
-
-  if(!currentChat){
-
-    return;
-
-  }
-
+window.sendMessage = async function(){
 
   const input =
-    document.getElementById(
-      "messageInput"
-    );
-
+    document.getElementById("messageInput");
 
   const text =
     input.value.trim();
 
-
   if(!text){
+    return;
+  }
+
+  if(!currentFirebaseUser){
+
+    toast(
+      "Firebase is not connected yet."
+    );
 
     return;
 
   }
 
+  if(!currentChat){
 
-  input.value = "";
+    toast(
+      "Open a chat first."
+    );
 
+    return;
+
+  }
 
   try{
 
     await addDoc(
-
       collection(
         db,
         "chats",
         chatId(currentChat),
         "messages"
       ),
-
       {
-
         text:text,
-
         senderId:
           currentFirebaseUser.uid,
-
-        senderName:
-          userName,
-
-        type:
-          "text",
-
+        senderName:"Ankaj",
+        type:"text",
         seenBy:[
           currentFirebaseUser.uid
         ],
-
         createdAt:
           serverTimestamp()
-
       }
-
     );
 
+    input.value = "";
 
-    updateTyping(false);
-
-  }
-
-  catch(error){
+  }catch(error){
 
     console.error(
-      "Send message:",
+      "Send message error:",
       error
     );
 
     toast(
-      "Message failed"
+      "Send Error: " +
+      (error.code || error.message)
     );
 
   }
@@ -2444,17 +1569,13 @@ async function(){
 };
 
 
-/* =========================================================
+/* =========================================
    ENTER SEND
-========================================================= */
+========================================= */
 
-window.handleEnter =
-function(event){
+window.messageKey = function(event){
 
-  if(
-    event.key === "Enter" &&
-    !event.shiftKey
-  ){
+  if(event.key === "Enter" && !event.shiftKey){
 
     event.preventDefault();
 
@@ -2465,102 +1586,27 @@ function(event){
 };
 
 
-/* =========================================================
-   SEND STICKER
-========================================================= */
+/* =========================================
+   EMOJI
+========================================= */
 
-window.sendSticker =
-async function(
-  sticker,
-  name
-){
+window.toggleEmoji = function(){
 
-  if(
-    !currentFirebaseUser ||
-    !currentChat
-  ){
+  document
+    .getElementById("emojiPicker")
+    .classList.toggle("show");
 
-    toast(
-      "Chat is not ready"
-    );
-
-    return;
-
-  }
-
-
-  try{
-
-    await addDoc(
-
-      collection(
-        db,
-        "chats",
-        chatId(currentChat),
-        "messages"
-      ),
-
-      {
-
-        type:"sticker",
-
-        sticker:sticker,
-
-        stickerName:name,
-
-        senderId:
-          currentFirebaseUser.uid,
-
-        senderName:
-          userName,
-
-        seenBy:[
-          currentFirebaseUser.uid
-        ],
-
-        createdAt:
-          serverTimestamp()
-
-      }
-
-    );
-
-
-    document
-      .getElementById(
-        "stickerPicker"
-      )
-      .classList.remove(
-        "show"
-      );
-
-  }
-
-  catch(error){
-
-    console.error(error);
-
-    toast(
-      "Sticker failed"
-    );
-
-  }
+  document
+    .getElementById("stickerPicker")
+    .classList.remove("show");
 
 };
 
 
-/* =========================================================
-   EMOJI
-========================================================= */
-
-window.addEmoji =
-function(emoji){
+window.addEmoji = function(emoji){
 
   const input =
-    document.getElementById(
-      "messageInput"
-    );
-
+    document.getElementById("messageInput");
 
   input.value += emoji;
 
@@ -2569,247 +1615,79 @@ function(emoji){
 };
 
 
-/* =========================================================
-   PICKER
-========================================================= */
+/* =========================================
+   STICKERS
+========================================= */
 
-window.togglePicker =
-function(type){
-
-  const emoji =
-    document.getElementById(
-      "emojiPicker"
-    );
-
-
-  const sticker =
-    document.getElementById(
-      "stickerPicker"
-    );
-
-
-  if(type === "emoji"){
-
-    sticker.classList.remove(
-      "show"
-    );
-
-    emoji.classList.toggle(
-      "show"
-    );
-
-  }
-
-  else{
-
-    emoji.classList.remove(
-      "show"
-    );
-
-    sticker.classList.toggle(
-      "show"
-    );
-
-  }
-
-};
-
-
-/* =========================================================
-   FILE
-========================================================= */
-
-window.chooseFile =
-function(){
+window.toggleSticker = function(){
 
   document
-    .getElementById("fileInput")
-    .click();
+    .getElementById("stickerPicker")
+    .classList.toggle("show");
+
+  document
+    .getElementById("emojiPicker")
+    .classList.remove("show");
 
 };
 
 
-window.handleFile =
-async function(event){
+window.sendSticker = async function(
+  sticker,
+  name
+){
 
-  const file =
-    event.target.files[0];
-
-
-  if(!file){
-
-    return;
-
-  }
-
-
-  if(
-    file.size >
-    25 * 1024 * 1024
-  ){
+  if(!currentFirebaseUser){
 
     toast(
-      "Maximum file size is 25MB"
-    );
-
-    event.target.value = "";
-
-    return;
-
-  }
-
-
-  if(
-    !currentFirebaseUser ||
-    !currentChat
-  ){
-
-    toast(
-      "Chat is not ready"
+      "Firebase is not connected."
     );
 
     return;
 
   }
 
+  if(!currentChat){
 
-  const preview =
-    document.getElementById(
-      "filePreview"
-    );
+    return;
 
-
-  preview.textContent =
-    "Uploading " +
-    file.name +
-    "...";
-
+  }
 
   try{
 
-    const safeName =
-      file.name.replace(
-        /[^a-zA-Z0-9._-]/g,
-        "_"
-      );
-
-
-    const path =
-      "chatUploads/" +
-      chatId(currentChat) +
-      "/" +
-      Date.now() +
-      "_" +
-      safeName;
-
-
-    const storageRef =
-      ref(
-        storage,
-        path
-      );
-
-
-    await uploadBytes(
-      storageRef,
-      file
-    );
-
-
-    const url =
-      await getDownloadURL(
-        storageRef
-      );
-
-
-    let type =
-      "file";
-
-
-    if(
-      file.type.startsWith(
-        "image/"
-      )
-    ){
-
-      type =
-        "image";
-
-    }
-
-
-    else if(
-      file.type.startsWith(
-        "video/"
-      )
-    ){
-
-      type =
-        "video";
-
-    }
-
-
     await addDoc(
-
       collection(
         db,
         "chats",
         chatId(currentChat),
         "messages"
       ),
-
       {
-
-        type:type,
-
-        url:url,
-
-        fileName:
-          file.name,
-
-        fileType:
-          file.type,
-
+        type:"sticker",
+        sticker:sticker,
+        stickerName:name,
         senderId:
           currentFirebaseUser.uid,
-
-        senderName:
-          userName,
-
+        senderName:"Ankaj",
         seenBy:[
           currentFirebaseUser.uid
         ],
-
         createdAt:
           serverTimestamp()
-
       }
-
     );
 
+    document
+      .getElementById("stickerPicker")
+      .classList.remove("show");
 
-    preview.textContent = "";
+  }catch(error){
 
-    event.target.value = "";
+    console.error(error);
 
     toast(
-      "File sent"
-    );
-
-  }
-
-  catch(error){
-
-    console.error(
-      "Upload error:",
-      error
-    );
-
-    preview.textContent = "";
-
-    toast(
-      "Upload failed"
+      "Sticker Error: " +
+      (error.code || error.message)
     );
 
   }
@@ -2817,373 +1695,170 @@ async function(event){
 };
 
 
-/* =========================================================
-   PRESENCE
-========================================================= */
+/* =========================================
+   SEARCH
+========================================= */
 
-async function updatePresence(){
+window.searchUsers = function(){
 
-  if(
-    !currentFirebaseUser ||
-    !currentChat
-  ){
+  const value =
+    document
+      .getElementById("searchInput")
+      .value
+      .toLowerCase()
+      .trim();
+
+  const result =
+    document.getElementById(
+      "searchResults"
+    );
+
+  if(!value){
+
+    result.innerHTML = `
+      <div class="card">
+        <div class="user-row">
+          <div class="avatar">D</div>
+          <div>
+            <div class="user-name">Darkwing</div>
+            <div class="status">X-DARK</div>
+          </div>
+        </div>
+
+        <button class="primary-btn"
+          style="margin-top:18px"
+          onclick="openChat('Darkwing')">
+          Message
+        </button>
+      </div>
+    `;
 
     return;
 
   }
 
+  if("darkwing".includes(value)){
 
-  try{
+    result.innerHTML = `
+      <div class="card">
 
-    await setDoc(
+        <div class="user-row">
 
-      doc(
-        db,
-        "chats",
-        chatId(currentChat),
-        "presence",
-        currentFirebaseUser.uid
-      ),
+          <div class="avatar">D</div>
 
-      {
+          <div>
+            <div class="user-name">
+              Darkwing
+            </div>
 
-        online:true,
+            <div class="status">
+              X-DARK user
+            </div>
+          </div>
 
-        updatedAt:
-          serverTimestamp()
+        </div>
 
-      },
+        <button
+          class="primary-btn"
+          style="margin-top:18px"
+          onclick="openChat('Darkwing')">
+          Message
+        </button>
 
-      {
-        merge:true
-      }
+      </div>
+    `;
 
-    );
+  }else{
 
-  }
-
-  catch(error){
-
-    console.error(
-      "Presence:",
-      error
-    );
-
-  }
-
-}
-
-
-/* =========================================================
-   PRESENCE LISTENER
-========================================================= */
-
-function listenPresence(){
-
-  if(!currentChat){
-
-    return;
+    result.innerHTML = `
+      <div class="loading">
+        No users found.
+      </div>
+    `;
 
   }
-
-
-  document
-    .getElementById(
-      "chatStatus"
-    )
-    .textContent =
-      "Online";
-
-}
-
-
-/* =========================================================
-   TYPING
-========================================================= */
-
-window.handleTyping =
-function(){
-
-  if(
-    !currentFirebaseUser ||
-    !currentChat
-  ){
-
-    return;
-
-  }
-
-
-  updateTyping(true);
-
-
-  clearTimeout(
-    typingTimer
-  );
-
-
-  typingTimer =
-    setTimeout(
-      () => {
-
-        updateTyping(false);
-
-      },
-      1400
-    );
 
 };
 
 
-async function updateTyping(
-  isTyping
-){
-
-  if(
-    !currentFirebaseUser ||
-    !currentChat
-  ){
-
-    return;
-
-  }
-
-
-  try{
-
-    await setDoc(
-
-      doc(
-        db,
-        "chats",
-        chatId(currentChat),
-        "typing",
-        currentFirebaseUser.uid
-      ),
-
-      {
-
-        typing:
-          isTyping,
-
-        updatedAt:
-          serverTimestamp()
-
-      },
-
-      {
-        merge:true
-      }
-
-    );
-
-  }
-
-  catch(error){
-
-    console.log(
-      "Typing:",
-      error.message
-    );
-
-  }
-
-}
-
-
-/* =========================================================
-   TYPING LISTENER
-========================================================= */
-
-function listenTyping(){
-
-  if(!currentChat){
-
-    return;
-
-  }
-
-
-  document
-    .getElementById(
-      "typingIndicator"
-    )
-    .textContent = "";
-
-}
-
-
-/* =========================================================
+/* =========================================
    CREATE POST
-========================================================= */
+========================================= */
 
-window.createPost =
-function(){
+window.createPost = function(){
 
   const input =
-    document.getElementById(
-      "postText"
-    );
-
+    document.getElementById("postInput");
 
   const text =
     input.value.trim();
 
-
   if(!text){
 
-    toast(
-      "Write something first"
-    );
+    toast("Write something first.");
 
     return;
 
   }
 
+  toast("Post created successfully.");
 
   input.value = "";
 
-  toast(
-    "Post published"
-  );
+};
 
-  showPage("home");
+
+/* =========================================
+   FOLLOW
+========================================= */
+
+window.followUser = function(button){
+
+  button.textContent = "Following";
+
+  button.disabled = true;
+
+  toast("Darkwing followed.");
 
 };
 
 
-/* =========================================================
-   SWITCH
-========================================================= */
+/* =========================================
+   CALL / VIDEO
+========================================= */
 
-window.toggleSwitch =
-function(element){
-
-  element.classList.toggle(
-    "on"
-  );
-
-};
-
-
-/* =========================================================
-   CALL
-========================================================= */
-
-window.fakeCall =
-function(){
+window.fakeCall = function(){
 
   toast(
-    "Calling feature coming soon"
+    "Voice calling will be connected in the next update."
   );
 
 };
 
 
-/* =========================================================
-   VIDEO
-========================================================= */
-
-window.fakeVideo =
-function(){
+window.fakeVideo = function(){
 
   toast(
-    "Video calling coming soon"
+    "Video calling will be connected in the next update."
   );
 
 };
 
 
-/* =========================================================
-   TOAST
-========================================================= */
+/* =========================================
+   ESCAPE HTML
+========================================= */
 
-window.toast =
-function(message){
-
-  const element =
-    document.getElementById(
-      "toast"
-    );
-
-
-  element.textContent =
-    message;
-
-
-  element.classList.add(
-    "show"
-  );
-
-
-  setTimeout(
-    () => {
-
-      element.classList.remove(
-        "show"
-      );
-
-    },
-    2200
-  );
-
-};
-
-
-/* =========================================================
-   SECURITY
-========================================================= */
-
-function safeHtml(value){
+function escapeHtml(value){
 
   return String(value)
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
-    .replaceAll(
-      "<",
-      "&lt;"
-    )
-    .replaceAll(
-      ">",
-      "&gt;"
-    )
-    .replaceAll(
-      '"',
-      "&quot;"
-    )
-    .replaceAll(
-      "'",
-      "&#039;"
-    );
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 
 }
-
-
-function safeAttr(value){
-
-  return safeHtml(
-    value
-  );
-
-}
-
-
-/* =========================================================
-   START
-========================================================= */
-
-window.addEventListener(
-  "load",
-  () => {
-
-    showPage(
-      "home"
-    );
-
-  }
-);
 
 </script>
 
