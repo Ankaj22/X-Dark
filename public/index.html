@@ -3,62 +3,62 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport"
-      content="width=device-width,initial-scale=1,viewport-fit=cover">
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
 <meta name="theme-color" content="#050507">
 
 <title>X-DARK</title>
 
 <style>
-
-/* =====================================================
-   X-DARK PREMIUM
-===================================================== */
+/* =========================================================
+   X-DARK PREMIUM UI
+========================================================= */
 
 :root{
   --bg:#050507;
-  --panel:rgba(16,16,22,.82);
-  --panel2:#15151c;
-  --line:rgba(255,255,255,.11);
-  --muted:#8d8d99;
+  --black:#000;
   --white:#fff;
-  --purple:#713cff;
+  --muted:#858592;
+  --purple:#783cff;
   --purple2:#a56cff;
-  --pink:#ff3d81;
-  --green:#45e38a;
+  --pink:#ff3982;
+  --green:#43e58a;
+  --border:rgba(255,255,255,.12);
+  --glass:rgba(13,13,18,.72);
 }
 
 *{
-  box-sizing:border-box;
   margin:0;
   padding:0;
+  box-sizing:border-box;
   -webkit-tap-highlight-color:transparent;
 }
 
-html,body{
+html,
+body{
   width:100%;
   height:100%;
+  overflow:hidden;
   background:#000;
   color:#fff;
   font-family:
-  -apple-system,
-  BlinkMacSystemFont,
-  "SF Pro Display",
-  "Segoe UI",
-  Arial,sans-serif;
+    -apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Display",
+    "Segoe UI",
+    Arial,
+    sans-serif;
 }
 
-body{
-  overflow:hidden;
-}
-
-button,input,textarea{
+button,
+input,
+textarea{
   font:inherit;
 }
 
 button{
-  border:0;
   color:#fff;
+  border:0;
   cursor:pointer;
 }
 
@@ -66,28 +66,21 @@ svg{
   display:block;
 }
 
-/* =====================================================
+/* =========================================================
    APP
-===================================================== */
+========================================================= */
 
 .app{
+  position:relative;
   width:100%;
   height:100dvh;
-  position:relative;
   overflow:hidden;
-
-  background:
-    radial-gradient(
-      circle at 80% 0%,
-      rgba(113,60,255,.16),
-      transparent 32%
-    ),
-    #050507;
+  background:#050507;
 }
 
-/* =====================================================
+/* =========================================================
    FEED
-===================================================== */
+========================================================= */
 
 .feed{
   width:100%;
@@ -107,19 +100,18 @@ svg{
   height:100dvh;
   overflow:hidden;
   scroll-snap-align:start;
-  background:#08080a;
+  background:#09090c;
 }
 
-.reel video{
+.reel-video{
   position:absolute;
   inset:0;
   width:100%;
   height:100%;
   object-fit:cover;
-  background:#080808;
 }
 
-.reel:after{
+.reel::after{
   content:"";
   position:absolute;
   inset:0;
@@ -129,91 +121,112 @@ svg{
   background:
     linear-gradient(
       180deg,
-      rgba(0,0,0,.70),
+      rgba(0,0,0,.72) 0%,
       rgba(0,0,0,.04) 35%,
-      rgba(0,0,0,.10) 55%,
-      rgba(0,0,0,.88) 100%
+      rgba(0,0,0,.08) 58%,
+      rgba(0,0,0,.90) 100%
     );
 }
 
-/* =====================================================
-   TOP
-===================================================== */
+/* =========================================================
+   TOP BAR
+========================================================= */
 
 .topbar{
   position:absolute;
+  z-index:30;
+
   top:0;
   left:0;
   right:0;
-  height:90px;
-  z-index:30;
+
+  height:95px;
+
+  padding:
+    calc(env(safe-area-inset-top) + 8px)
+    16px
+    0;
 
   display:flex;
   align-items:center;
   justify-content:space-between;
-
-  padding:
-    env(safe-area-inset-top)
-    18px
-    0;
 }
+
+/*
+   IMPORTANT:
+   YOU IS BEFORE X-DARK
+*/
 
 .brand-row{
   display:flex;
   align-items:center;
-  gap:13px;
+  gap:11px;
 }
 
-.logo{
-  font-size:29px;
-  font-weight:950;
-  letter-spacing:-1.7px;
-  text-shadow:0 3px 20px #000;
-}
-
-.logo span{
-  color:var(--purple2);
-}
-
-/* YOU ICON NEXT TO X-DARK */
+/* YOU */
 
 .you-story{
-  width:53px;
-  height:53px;
+  width:54px;
+  height:54px;
   padding:2px;
+
+  flex:none;
+
   border-radius:50%;
 
   background:
     conic-gradient(
-      #ff4d40,
-      #ff2c85,
+      #ff493e,
+      #ff2d82,
       #743dff,
-      #ff4d40
+      #ff493e
     );
 
   box-shadow:
-    0 0 20px rgba(124,60,255,.25);
+    0 0 22px rgba(119,60,255,.35);
 
-  cursor:pointer;
+  transition:.2s;
+}
+
+.you-story:active{
+  transform:scale(.92);
 }
 
 .you-inner{
   width:100%;
   height:100%;
+
   border-radius:50%;
 
-  border:2px solid #08080b;
+  background:#101015;
 
-  background:
-    rgba(15,15,20,.96);
+  border:2px solid #050507;
 
   display:flex;
   align-items:center;
   justify-content:center;
 
-  font-size:18px;
+  font-size:23px;
   font-weight:950;
 }
+
+/* LOGO */
+
+.logo{
+  font-size:30px;
+  font-weight:950;
+
+  letter-spacing:-1.8px;
+
+  text-shadow:
+    0 4px 20px rgba(0,0,0,.8);
+}
+
+.logo span{
+  color:#985aff;
+}
+
+/* TOP BUTTONS */
 
 .top-actions{
   display:flex;
@@ -221,72 +234,93 @@ svg{
 }
 
 .icon-btn{
-  width:43px;
-  height:43px;
+  width:44px;
+  height:44px;
 
   border-radius:50%;
+
+  background:
+    rgba(10,10,15,.62);
+
+  border:1px solid var(--border);
 
   display:flex;
   align-items:center;
   justify-content:center;
 
-  background:rgba(12,12,17,.62);
-  border:1px solid var(--line);
+  backdrop-filter:blur(18px);
+}
 
-  backdrop-filter:blur(20px);
+.icon-btn:active{
+  transform:scale(.94);
 }
 
 .icon-btn svg{
-  width:21px;
-  height:21px;
-  stroke:#fff;
+  width:22px;
+  height:22px;
+
   fill:none;
+  stroke:#fff;
+
   stroke-width:1.8;
   stroke-linecap:round;
   stroke-linejoin:round;
 }
 
-/* =====================================================
-   ACTIONS
-===================================================== */
+/* =========================================================
+   RIGHT ACTIONS
+========================================================= */
 
 .action-rail{
   position:absolute;
-  right:11px;
-  bottom:127px;
+
+  right:10px;
+  bottom:122px;
+
   z-index:25;
 
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:12px;
+
+  gap:10px;
 }
 
 .action{
-  width:53px;
-  min-height:55px;
+  width:55px;
+  min-height:58px;
 
   border-radius:18px;
+
+  background:
+    rgba(10,10,14,.42);
+
+  border:1px solid rgba(255,255,255,.12);
+
+  backdrop-filter:blur(16px);
 
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  gap:3px;
 
-  background:rgba(12,12,17,.40);
-  border:1px solid rgba(255,255,255,.12);
+  gap:4px;
 
-  backdrop-filter:blur(15px);
+  text-shadow:
+    0 2px 8px #000;
+}
 
-  text-shadow:0 2px 7px #000;
+.action:active{
+  transform:scale(.94);
 }
 
 .action svg{
-  width:25px;
-  height:25px;
-  stroke:#fff;
+  width:27px;
+  height:27px;
+
   fill:none;
+  stroke:#fff;
+
   stroke-width:1.8;
   stroke-linecap:round;
   stroke-linejoin:round;
@@ -294,56 +328,61 @@ svg{
 
 .action span{
   font-size:10px;
-  font-weight:850;
+  font-weight:900;
 }
 
-.action.active{
-  color:var(--pink);
+.action.liked svg{
+  fill:#ff397f;
+  stroke:#ff397f;
 }
 
-.action.active svg{
-  stroke:var(--pink);
-  fill:var(--pink);
+.action.liked span{
+  color:#ff397f;
 }
 
-/* =====================================================
-   CONTENT
-===================================================== */
+/* =========================================================
+   REEL CONTENT
+========================================================= */
 
 .content{
   position:absolute;
+
   left:18px;
-  right:80px;
-  bottom:105px;
+  right:78px;
+  bottom:103px;
+
   z-index:20;
 }
 
 .creator{
   display:flex;
   align-items:center;
+
   gap:9px;
-  margin-bottom:14px;
+
+  margin-bottom:13px;
 }
 
 .avatar{
-  width:48px;
-  height:48px;
+  width:49px;
+  height:49px;
+
   flex:none;
 
   border-radius:50%;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
   background:
     linear-gradient(
       135deg,
-      #6632ff,
-      #b66cff
+      #6631ff,
+      #a76aff
     );
 
-  border:2px solid rgba(255,255,255,.23);
+  border:2px solid rgba(255,255,255,.25);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
   font-size:18px;
   font-weight:950;
@@ -354,56 +393,70 @@ svg{
 }
 
 .creator-name{
-  font-size:17px;
+  font-size:18px;
   font-weight:900;
 }
 
 .followers{
   margin-top:2px;
-  color:#d2d2d8;
+
+  color:#d0d0d7;
+
   font-size:10px;
 }
 
 .follow{
-  margin-left:3px;
-  padding:8px 13px;
+  margin-left:4px;
 
-  border-radius:12px;
+  padding:9px 14px;
 
-  background:rgba(255,255,255,.08);
+  border-radius:13px;
+
+  background:
+    rgba(255,255,255,.08);
+
   border:1px solid rgba(255,255,255,.75);
 
   font-size:11px;
-  font-weight:850;
+  font-weight:900;
 
-  backdrop-filter:blur(14px);
+  backdrop-filter:blur(12px);
 }
 
 .caption{
   font-size:16px;
   line-height:1.42;
-  font-weight:650;
-  text-shadow:0 2px 8px #000;
+
+  font-weight:700;
+
+  text-shadow:
+    0 2px 8px #000;
 }
 
 .hashtags{
   margin-top:8px;
-  color:#e2d6ff;
+
+  color:#ded1ff;
+
   font-size:13px;
-  font-weight:750;
+  font-weight:800;
 }
 
 .audio{
+  margin-top:10px;
+
   display:flex;
   align-items:center;
+
   gap:8px;
-  margin-top:10px;
+
   font-size:12px;
+  font-weight:650;
 }
 
 .audio-icon{
-  width:23px;
-  height:23px;
+  width:24px;
+  height:24px;
 
   border:1px solid #fff;
   border-radius:50%;
@@ -413,39 +466,41 @@ svg{
   justify-content:center;
 }
 
-/* =====================================================
+/* =========================================================
    BOTTOM NAV
-===================================================== */
+========================================================= */
 
 .bottom{
   position:absolute;
+
+  z-index:100;
+
   left:10px;
   right:10px;
   bottom:8px;
 
-  z-index:100;
+  height:71px;
 
-  height:70px;
+  border-radius:25px;
 
-  border-radius:24px;
+  background:
+    rgba(10,10,14,.88);
 
-  display:flex;
-  align-items:center;
-  justify-content:space-around;
-
-  background:rgba(10,10,14,.88);
-
-  border:1px solid rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.11);
 
   backdrop-filter:blur(25px);
 
   box-shadow:
-    0 -12px 45px rgba(0,0,0,.42);
+    0 -15px 50px rgba(0,0,0,.42);
+
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
 }
 
 .nav{
-  min-width:52px;
-  height:59px;
+  width:62px;
+  height:60px;
 
   background:none;
 
@@ -453,17 +508,19 @@ svg{
   flex-direction:column;
   align-items:center;
   justify-content:center;
+
   gap:4px;
 
   color:#777781;
 }
 
 .nav svg{
-  width:23px;
-  height:23px;
+  width:24px;
+  height:24px;
 
-  stroke:currentColor;
   fill:none;
+  stroke:currentColor;
+
   stroke-width:1.8;
   stroke-linecap:round;
   stroke-linejoin:round;
@@ -471,7 +528,7 @@ svg{
 
 .nav span{
   font-size:9px;
-  font-weight:800;
+  font-weight:850;
 }
 
 .nav.active{
@@ -479,47 +536,47 @@ svg{
 }
 
 .nav.active svg{
-  stroke:var(--purple2);
+  stroke:#9b61ff;
 }
 
 .create-btn{
-  width:49px;
-  height:39px;
+  width:50px;
+  height:40px;
 
-  border-radius:13px;
+  border-radius:14px;
+
+  background:#fff;
+  color:#050507;
 
   display:flex;
   align-items:center;
   justify-content:center;
-
-  background:#fff;
-  color:#050507;
 }
 
-/* =====================================================
-   PANELS
-===================================================== */
+/* =========================================================
+   FULL SCREEN PANELS
+========================================================= */
 
 .panel{
   position:absolute;
   inset:0;
-  z-index:200;
+
+  z-index:300;
 
   overflow-y:auto;
 
   background:
     radial-gradient(
       circle at 80% 0%,
-      rgba(113,60,255,.17),
-      transparent 35%
+      rgba(120,60,255,.18),
+      transparent 34%
     ),
     #07070a;
 
   transform:translateX(100%);
 
   transition:
-    transform .34s
-    cubic-bezier(.2,.8,.2,1);
+    transform .34s cubic-bezier(.2,.8,.2,1);
 }
 
 .panel.open{
@@ -527,44 +584,51 @@ svg{
 }
 
 .panel-head{
-  height:72px;
-
   position:sticky;
   top:0;
-  z-index:10;
+
+  z-index:20;
+
+  height:74px;
+
+  padding:
+    calc(env(safe-area-inset-top) + 5px)
+    14px
+    0;
 
   display:flex;
   align-items:center;
 
-  padding:0 15px;
+  background:
+    rgba(7,7,10,.88);
 
-  background:rgba(7,7,10,.86);
-
-  border-bottom:1px solid var(--line);
+  border-bottom:1px solid var(--border);
 
   backdrop-filter:blur(22px);
 }
 
 .back{
-  width:42px;
-  height:42px;
+  width:43px;
+  height:43px;
 
   border-radius:50%;
+
+  background:#15151b;
+
+  border:1px solid var(--border);
 
   display:flex;
   align-items:center;
   justify-content:center;
-
-  background:#15151b;
-
-  border:1px solid var(--line);
 }
 
 .back svg{
-  width:21px;
-  height:21px;
-  stroke:#fff;
+  width:22px;
+  height:22px;
+
   fill:none;
+  stroke:#fff;
+
   stroke-width:2;
   stroke-linecap:round;
   stroke-linejoin:round;
@@ -572,23 +636,26 @@ svg{
 
 .panel-title{
   flex:1;
+
   text-align:center;
 
   font-size:19px;
-  font-weight:900;
+  font-weight:950;
 }
 
-/* =====================================================
-   CHAT / PEOPLE
-===================================================== */
+/* =========================================================
+   MESSAGES
+========================================================= */
 
 .chat-top-users{
-  padding:17px 15px 10px;
-
   display:flex;
-  gap:18px;
+
+  gap:19px;
+
+  padding:18px 16px 12px;
 
   overflow-x:auto;
+
   scrollbar-width:none;
 }
 
@@ -598,27 +665,28 @@ svg{
 
 .person{
   min-width:65px;
+
   text-align:center;
 }
 
 .person-avatar{
   position:relative;
 
-  width:58px;
-  height:58px;
+  width:60px;
+  height:60px;
+
+  padding:2px;
 
   margin:auto;
 
   border-radius:50%;
 
-  padding:2px;
-
   background:
     conic-gradient(
-      #ff463c,
-      #ff2580,
-      #783dff,
-      #ff463c
+      #ff493d,
+      #ff2780,
+      #773cff,
+      #ff493d
     );
 }
 
@@ -628,9 +696,9 @@ svg{
 
   border-radius:50%;
 
-  border:2px solid #08080b;
+  background:#15151c;
 
-  background:#17171d;
+  border:2px solid #07070a;
 
   display:flex;
   align-items:center;
@@ -644,14 +712,14 @@ svg{
   position:absolute;
 
   right:0;
-  bottom:2px;
+  bottom:1px;
 
-  width:13px;
-  height:13px;
+  width:14px;
+  height:14px;
 
   border-radius:50%;
 
-  background:var(--green);
+  background:#45e58a;
 
   border:2px solid #08080b;
 }
@@ -660,64 +728,69 @@ svg{
   margin-top:7px;
 
   font-size:10px;
-  font-weight:800;
+  font-weight:850;
 }
 
 .chat-search{
-  margin:8px 15px 14px;
-
   height:51px;
+
+  margin:7px 15px 14px;
+
+  padding:0 15px;
 
   border-radius:17px;
 
   background:#121218;
 
-  border:1px solid var(--line);
+  border:1px solid var(--border);
 
   display:flex;
   align-items:center;
 
   gap:10px;
-
-  padding:0 15px;
 }
 
 .chat-search svg{
   width:20px;
-  stroke:#888;
+
   fill:none;
+  stroke:#858590;
+
   stroke-width:2;
 }
 
 .chat-search input{
   flex:1;
-  background:none;
+
   border:0;
   outline:0;
+
+  background:none;
+
   color:#fff;
 }
 
 .chat-card{
-  margin:10px 15px;
+  min-height:76px;
 
-  padding:13px;
+  margin:9px 15px;
 
-  min-height:73px;
+  padding:12px;
 
   border-radius:19px;
 
   background:#111117;
 
-  border:1px solid var(--line);
+  border:1px solid var(--border);
 
   display:flex;
   align-items:center;
+
   gap:12px;
 }
 
-.chat-card .avatar{
-  width:49px;
-  height:49px;
+.chat-card:active{
+  background:#181820;
 }
 
 .chat-info{
@@ -731,8 +804,11 @@ svg{
 
 .chat-info small{
   display:block;
-  color:#777781;
+
   margin-top:4px;
+
+  color:#777781;
+
   white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
@@ -740,70 +816,423 @@ svg{
 
 .chat-time{
   color:#777781;
+
   font-size:9px;
 }
 
-/* =====================================================
+/* =========================================================
+   CHAT SCREEN
+========================================================= */
+
+.chat-messages{
+  height:calc(100dvh - 136px);
+
+  overflow-y:auto;
+
+  padding:18px 15px 90px;
+}
+
+.day{
+  text-align:center;
+
+  color:#777781;
+
+  font-size:10px;
+
+  margin:10px 0 24px;
+}
+
+.message-row{
+  display:flex;
+
+  margin-bottom:12px;
+}
+
+.message-row.me{
+  justify-content:flex-end;
+}
+
+.bubble{
+  max-width:76%;
+
+  padding:11px 14px;
+
+  border-radius:
+    18px
+    18px
+    18px
+    5px;
+
+  background:#17171f;
+
+  border:1px solid rgba(255,255,255,.08);
+
+  font-size:13px;
+  line-height:1.4;
+}
+
+.message-row.me .bubble{
+  border-radius:
+    18px
+    18px
+    5px
+    18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6032d5,
+      #884dff
+    );
+}
+
+.seen{
+  margin-top:4px;
+
+  text-align:right;
+
+  font-size:9px;
+
+  opacity:.7;
+}
+
+.chat-input-bar{
+  position:absolute;
+
+  left:10px;
+  right:10px;
+  bottom:8px;
+
+  height:61px;
+
+  padding:7px 8px;
+
+  border-radius:22px;
+
+  background:
+    rgba(15,15,20,.94);
+
+  border:1px solid var(--border);
+
+  backdrop-filter:blur(20px);
+
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+
+.chat-input-bar input{
+  flex:1;
+
+  height:43px;
+
+  border:0;
+  outline:0;
+
+  color:#fff;
+
+  background:none;
+
+  padding:0 5px;
+}
+
+.send{
+  width:43px;
+  height:43px;
+
+  border-radius:50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #713cff,
+      #a66cff
+    );
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.send svg{
+  width:20px;
+  height:20px;
+
+  fill:none;
+  stroke:#fff;
+
+  stroke-width:2;
+}
+
+/* =========================================================
    EXPLORE
-===================================================== */
+========================================================= */
 
 .search-box{
+  height:52px;
+
   margin:16px;
 
-  height:52px;
+  padding:0 15px;
 
   border-radius:17px;
 
   background:#121218;
 
-  border:1px solid var(--line);
+  border:1px solid var(--border);
 
   display:flex;
   align-items:center;
   gap:10px;
-
-  padding:0 15px;
 }
 
 .search-box svg{
   width:20px;
-  stroke:#888;
+
   fill:none;
+  stroke:#858590;
+
   stroke-width:2;
 }
 
 .search-box input{
   flex:1;
+
   background:none;
+
   border:0;
   outline:0;
+
   color:#fff;
 }
 
 .grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+
+  grid-template-columns:
+    repeat(3,1fr);
+
   gap:3px;
 }
 
 .grid-item{
   aspect-ratio:1;
-  overflow:hidden;
+
   background:#111;
+
+  overflow:hidden;
 }
 
 .grid-item video{
   width:100%;
   height:100%;
+
   object-fit:cover;
 }
 
-/* =====================================================
+/* =========================================================
+   CREATE
+========================================================= */
+
+.create-area{
+  padding:17px;
+}
+
+.upload-box{
+  min-height:190px;
+
+  border-radius:23px;
+
+  border:1px dashed #514b61;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(119,60,255,.13),
+      transparent 65%
+    );
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+}
+
+.upload-box input{
+  display:none;
+}
+
+.upload-icon{
+  width:62px;
+  height:62px;
+
+  margin:auto;
+
+  border-radius:19px;
+
+  background:#191421;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.upload-icon svg{
+  width:29px;
+
+  fill:none;
+  stroke:#a970ff;
+
+  stroke-width:1.8;
+}
+
+.upload-box strong{
+  display:block;
+
+  margin-top:12px;
+}
+
+.upload-box small{
+  display:block;
+
+  margin-top:5px;
+
+  color:#777781;
+}
+
+.preview{
+  display:none;
+
+  width:100%;
+  aspect-ratio:4/5;
+
+  margin-bottom:15px;
+
+  border-radius:21px;
+
+  overflow:hidden;
+
+  background:#111;
+}
+
+.preview video{
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+}
+
+.caption-input{
+  width:100%;
+
+  min-height:110px;
+
+  margin-top:15px;
+
+  padding:14px;
+
+  resize:none;
+
+  border-radius:17px;
+
+  background:#111117;
+
+  border:1px solid var(--border);
+
+  color:#fff;
+
+  outline:0;
+}
+
+.publish{
+  width:100%;
+
+  height:52px;
+
+  margin-top:12px;
+
+  border-radius:15px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #713cff,
+      #a66cff
+    );
+
+  font-weight:900;
+}
+
+/* =========================================================
+   ACTIVITY / SETTINGS
+========================================================= */
+
+.setting{
+  min-height:72px;
+
+  margin:11px 15px;
+
+  padding:12px 14px;
+
+  border-radius:18px;
+
+  background:#111117;
+
+  border:1px solid var(--border);
+
+  display:flex;
+  align-items:center;
+
+  gap:12px;
+}
+
+.setting-icon{
+  width:42px;
+  height:42px;
+
+  border-radius:14px;
+
+  background:#1b1627;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.setting-icon svg{
+  width:21px;
+
+  fill:none;
+  stroke:#aa76ff;
+
+  stroke-width:1.8;
+}
+
+.setting-text{
+  flex:1;
+}
+
+.setting-text strong{
+  font-size:14px;
+}
+
+.setting-text small{
+  display:block;
+
+  margin-top:4px;
+
+  color:#777781;
+
+  font-size:10px;
+}
+
+/* =========================================================
    PROFILE
-===================================================== */
+========================================================= */
 
 .profile{
-  padding:28px 18px;
+  padding:27px 17px;
 }
 
 .profile-center{
@@ -822,10 +1251,10 @@ svg{
 
   background:
     conic-gradient(
-      #ff3d81,
+      #ff3e82,
       #743dff,
-      #b66cff,
-      #ff3d81
+      #aa6cff,
+      #ff3e82
     );
 }
 
@@ -835,7 +1264,7 @@ svg{
 
   border-radius:50%;
 
-  background:#15131d;
+  background:#16131e;
 
   display:flex;
   align-items:center;
@@ -847,20 +1276,26 @@ svg{
 
 .profile h2{
   margin-top:14px;
+
   font-size:23px;
 }
 
 .username{
   margin-top:4px;
+
   color:#777781;
-  font-size:13px;
+
+  font-size:12px;
 }
 
 .stats{
   display:flex;
+
   justify-content:center;
-  gap:43px;
-  margin:26px 0;
+
+  gap:42px;
+
+  margin:25px 0;
 }
 
 .stat{
@@ -869,220 +1304,40 @@ svg{
 
 .stat strong{
   display:block;
+
   font-size:19px;
 }
 
 .stat span{
   color:#777781;
-  font-size:11px;
+
+  font-size:10px;
 }
 
 .profile-actions{
   display:flex;
+
   gap:9px;
 }
 
 .profile-button{
   flex:1;
 
-  height:44px;
+  height:45px;
 
   border-radius:14px;
 
   background:#15151b;
 
-  border:1px solid var(--line);
+  border:1px solid var(--border);
 
-  font-size:13px;
-  font-weight:800;
+  font-size:12px;
+  font-weight:850;
 }
 
-/* =====================================================
-   SETTINGS
-===================================================== */
-
-.setting{
-  margin:12px 15px;
-
-  min-height:70px;
-
-  border-radius:18px;
-
-  background:#111117;
-
-  border:1px solid var(--line);
-
-  display:flex;
-  align-items:center;
-  gap:12px;
-
-  padding:0 15px;
-}
-
-.setting-icon{
-  width:40px;
-  height:40px;
-
-  border-radius:13px;
-
-  background:#1c1628;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.setting-icon svg{
-  width:20px;
-  stroke:#aa7aff;
-  fill:none;
-  stroke-width:1.8;
-}
-
-.setting-text{
-  flex:1;
-}
-
-.setting-text strong{
-  font-size:14px;
-}
-
-.setting-text small{
-  display:block;
-  color:#777781;
-  margin-top:3px;
-  font-size:11px;
-}
-
-/* =====================================================
-   CREATE
-===================================================== */
-
-.create-area{
-  padding:17px;
-}
-
-.upload{
-  min-height:190px;
-
-  border-radius:22px;
-
-  border:1px dashed #4c465b;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  text-align:center;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(113,60,255,.12),
-      transparent 65%
-    );
-}
-
-.upload input{
-  display:none;
-}
-
-.upload-icon{
-  width:62px;
-  height:62px;
-
-  margin:auto;
-
-  border-radius:19px;
-
-  background:#191420;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.upload-icon svg{
-  width:28px;
-  stroke:#ad7cff;
-  fill:none;
-  stroke-width:1.8;
-}
-
-.upload strong{
-  display:block;
-  margin-top:12px;
-}
-
-.upload small{
-  display:block;
-  margin-top:5px;
-  color:#777781;
-}
-
-.preview{
-  display:none;
-
-  width:100%;
-  aspect-ratio:4/5;
-
-  margin-bottom:14px;
-
-  border-radius:20px;
-
-  overflow:hidden;
-
-  background:#111;
-}
-
-.preview video{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.caption-input{
-  width:100%;
-  min-height:110px;
-
-  margin-top:15px;
-
-  padding:14px;
-
-  border-radius:17px;
-
-  background:#111117;
-
-  border:1px solid var(--line);
-
-  color:#fff;
-
-  outline:none;
-
-  resize:none;
-}
-
-.publish{
-  width:100%;
-  height:51px;
-
-  margin-top:12px;
-
-  border-radius:15px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #713cff,
-      #a66cff
-    );
-
-  font-weight:900;
-}
-
-/* =====================================================
+/* =========================================================
    COMMENTS
-===================================================== */
+========================================================= */
 
 .comments{
   position:absolute;
@@ -1091,11 +1346,15 @@ svg{
   right:0;
   bottom:0;
 
-  z-index:500;
+  z-index:600;
 
   background:#111116;
 
-  border-radius:28px 28px 0 0;
+  border-radius:
+    28px
+    28px
+    0
+    0;
 
   transform:translateY(100%);
 
@@ -1104,7 +1363,7 @@ svg{
     cubic-bezier(.2,.8,.2,1);
 
   box-shadow:
-    0 -20px 70px rgba(0,0,0,.65);
+    0 -25px 80px rgba(0,0,0,.65);
 }
 
 .comments.open{
@@ -1114,39 +1373,40 @@ svg{
 .comment-header{
   position:relative;
 
-  height:62px;
+  height:63px;
 
   display:flex;
   align-items:center;
   justify-content:center;
 
-  border-bottom:1px solid rgba(255,255,255,.09);
+  border-bottom:1px solid var(--border);
 }
 
 .comment-back{
   position:absolute;
+
   left:13px;
 
-  width:42px;
-  height:42px;
+  width:43px;
+  height:43px;
 
   border-radius:50%;
+
+  background:#19191f;
+
+  border:1px solid var(--border);
 
   display:flex;
   align-items:center;
   justify-content:center;
-
-  background:rgba(255,255,255,.07);
-
-  border:1px solid rgba(255,255,255,.13);
 }
 
 .comment-back svg{
   width:22px;
   height:22px;
 
-  stroke:#fff;
   fill:none;
+  stroke:#fff;
 
   stroke-width:2;
 
@@ -1156,24 +1416,29 @@ svg{
 
 .comment-title{
   font-size:17px;
-  font-weight:900;
+  font-weight:950;
 }
 
 .comment-list{
   height:41vh;
+
   overflow-y:auto;
+
   padding:16px;
 }
 
 .comment{
   display:flex;
+
   gap:10px;
+
   margin-bottom:18px;
 }
 
 .comment-avatar{
-  width:36px;
-  height:36px;
+  width:37px;
+  height:37px;
+
   flex:none;
 
   border-radius:50%;
@@ -1181,8 +1446,8 @@ svg{
   background:
     linear-gradient(
       135deg,
-      #6934e7,
-      #a66bff
+      #6834e8,
+      #a76aff
     );
 
   display:flex;
@@ -1197,6 +1462,7 @@ svg{
   flex:1;
 
   font-size:13px;
+
   line-height:1.45;
 }
 
@@ -1205,89 +1471,112 @@ svg{
 }
 
 .comment-input{
-  display:flex;
-  gap:8px;
-
   padding:
     10px
     14px
     calc(10px + env(safe-area-inset-bottom));
+
+  display:flex;
+
+  gap:8px;
 }
 
 .comment-input input{
   flex:1;
 
-  height:44px;
+  height:45px;
 
-  border-radius:22px;
+  border-radius:23px;
 
   background:#1c1c23;
 
-  border:1px solid var(--line);
+  border:1px solid var(--border);
 
   color:#fff;
 
-  outline:none;
+  outline:0;
 
   padding:0 15px;
 }
 
-.comment-input button{
-  width:44px;
-  height:44px;
+.comment-send{
+  width:45px;
+  height:45px;
 
   border-radius:50%;
 
-  background:#854cff;
+  background:#8145ff;
 
   display:flex;
   align-items:center;
   justify-content:center;
 }
 
-/* =====================================================
+.comment-send svg{
+  width:20px;
+  height:20px;
+
+  fill:none;
+  stroke:#fff;
+
+  stroke-width:2;
+}
+
+/* =========================================================
    TOAST
-===================================================== */
+========================================================= */
 
 .toast{
   position:absolute;
 
+  z-index:1000;
+
   left:50%;
-  bottom:94px;
+  bottom:92px;
 
-  transform:translateX(-50%);
+  transform:
+    translateX(-50%)
+    translateY(10px);
 
-  z-index:900;
+  opacity:0;
 
-  max-width:90%;
+  pointer-events:none;
 
-  padding:13px 18px;
+  max-width:88%;
+
+  padding:12px 17px;
 
   border-radius:15px;
 
   background:#25252e;
 
-  border:1px solid #3c3c49;
-
-  font-size:13px;
+  border:1px solid #41414d;
 
   text-align:center;
 
-  display:none;
+  font-size:12px;
+  font-weight:700;
+
+  transition:.25s;
 }
 
 .toast.show{
-  display:block;
+  opacity:1;
+
+  transform:
+    translateX(-50%)
+    translateY(0);
 }
 
-/* =====================================================
+/* =========================================================
    DESKTOP
-===================================================== */
+========================================================= */
 
 @media(min-width:700px){
 
   .app{
     width:520px;
+
     margin:auto;
 
     border-left:1px solid #17171b;
@@ -1295,24 +1584,28 @@ svg{
   }
 
 }
-
 </style>
 </head>
+
 
 <body>
 
 <div class="app">
 
-<!-- =====================================================
-     MAIN FEED
-===================================================== -->
+
+<!-- =======================================================
+     FEED
+======================================================= -->
 
 <main class="feed">
 
 
+<!-- ================= REEL 1 ================= -->
+
 <section class="reel">
 
 <video
+class="reel-video"
 src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
 muted
 loop
@@ -1321,21 +1614,21 @@ playsinline>
 </video>
 
 
-<!-- TOP -->
+<!-- TOP BAR -->
 
 <header class="topbar">
 
 <div class="brand-row">
 
-<div class="logo">
-X-<span>DARK</span>
-</div>
 
-<!-- ONLY YOU -->
+<!-- =================================================
+     IMPORTANT:
+     YOU IS BEFORE X-DARK
+================================================== -->
 
 <div
 class="you-story"
-onclick="openDrawer('profile')">
+onclick="openPanel('profile')">
 
 <div class="you-inner">
 +
@@ -1343,16 +1636,25 @@ onclick="openDrawer('profile')">
 
 </div>
 
+
+<!-- X-DARK -->
+
+<div class="logo">
+X-<span>DARK</span>
+</div>
+
+
 </div>
 
 
 <div class="top-actions">
 
-<!-- CHAT -->
+
+<!-- MESSAGES -->
 
 <button
 class="icon-btn"
-onclick="openDrawer('messages')">
+onclick="openPanel('messages')">
 
 <svg viewBox="0 0 24 24">
 
@@ -1371,19 +1673,21 @@ A7.2 7.2 0 0 1 4.5 12
 
 <button
 class="icon-btn"
-onclick="openDrawer('settings')">
+onclick="openPanel('settings')">
 
 <svg viewBox="0 0 24 24">
 
 <circle cx="12" cy="12" r="3"/>
 
 <path
-d="M19 12a7 7 0 0 0-.2-1.7l2-1.5
--2-3.4-2.4 1A7 7 0 0 0 14.8 5
-L14.5 2h-5l-.3 3a7 7 0 0 0-1.6.9
-l-2.4-1-2 3.4 2 1.5A7 7 0 0 0 5 12
-l-2 1.5 2 3.4 2.4-1a7 7 0 0 0 1.6.9
-l.3 3h5l.3-3a7 7 0 0 0 1.6-.9l2.4 1
+d="M19 12a7 7 0 0 0-.2-1.7
+l2-1.5-2-3.4-2.4 1
+A7 7 0 0 0 14.8 5L14.5 2h-5
+l-.3 3a7 7 0 0 0-1.6.9l-2.4-1
+-2 3.4 2 1.5A7 7 0 0 0 5 12
+l-2 1.5 2 3.4 2.4-1
+a7 7 0 0 0 1.6.9l.3 3h5
+l.3-3a7 7 0 0 0 1.6-.9l2.4 1
 2-3.4-2-1.5A7 7 0 0 0 19 12z"/>
 
 </svg>
@@ -1395,14 +1699,14 @@ l.3 3h5l.3-3a7 7 0 0 0 1.6-.9l2.4 1
 </header>
 
 
-<!-- ACTIONS -->
+<!-- RIGHT ACTIONS -->
 
 <div class="action-rail">
 
 
 <button
-class="action like"
-onclick="like(this)">
+class="action like-button"
+onclick="toggleLike(this)">
 
 <svg viewBox="0 0 24 24">
 
@@ -1461,7 +1765,7 @@ a2 2 0 0 0 2-2v-6"/>
 
 <button
 class="action"
-onclick="savePost(this)">
+onclick="toggleSave(this)">
 
 <svg viewBox="0 0 24 24">
 
@@ -1476,15 +1780,18 @@ onclick="savePost(this)">
 </div>
 
 
-<!-- CREATOR -->
+<!-- CONTENT -->
 
 <div class="content">
 
+
 <div class="creator">
+
 
 <div class="avatar">
 D
 </div>
+
 
 <div class="creator-info">
 
@@ -1498,13 +1805,15 @@ Darkwing
 
 </div>
 
+
 <button
 class="follow"
-onclick="followUser(this)">
+onclick="toggleFollow(this)">
 
 Follow
 
 </button>
+
 
 </div>
 
@@ -1539,11 +1848,12 @@ Original sound · Darkwing
 </section>
 
 
-<!-- SECOND REEL -->
+<!-- ================= REEL 2 ================= -->
 
 <section class="reel">
 
 <video
+class="reel-video"
 src="https://www.w3schools.com/html/mov_bbb.mp4"
 muted
 loop
@@ -1551,56 +1861,68 @@ playsinline>
 </video>
 
 
-<div class="content">
+<div class="topbar">
 
-<div class="creator">
+<div class="brand-row">
 
-<div class="avatar">
-N
-</div>
+<div
+class="you-story"
+onclick="openPanel('profile')">
 
-<div class="creator-info">
-
-<div class="creator-name">
-Nova
-</div>
-
-<div class="followers">
-8.7K followers
+<div class="you-inner">
++
 </div>
 
 </div>
+
+<div class="logo">
+X-<span>DARK</span>
+</div>
+
+</div>
+
+
+<div class="top-actions">
 
 <button
-class="follow"
-onclick="followUser(this)">
+class="icon-btn"
+onclick="openPanel('messages')">
 
-Follow
+<svg viewBox="0 0 24 24">
+
+<path
+d="M20 11.5a7.5 7.5 0 0 1-8 7.5
+8.5 8.5 0 0 1-3.5-.8L4 20l1.8-3.5
+A7.2 7.2 0 0 1 4.5 12
+7.5 7.5 0 0 1 12 4.5a7.5 7.5 0 0 1 8 7z"/>
+
+</svg>
 
 </button>
 
-</div>
 
+<button
+class="icon-btn"
+onclick="openPanel('settings')">
 
-<div class="caption">
+<svg viewBox="0 0 24 24">
 
-Create. Explore. Connect. ✨
+<circle cx="12" cy="12" r="3"/>
 
-</div>
+<path
+d="M19 12a7 7 0 0 0-.2-1.7
+l2-1.5-2-3.4-2.4 1
+A7 7 0 0 0 14.8 5L14.5 2h-5
+l-.3 3a7 7 0 0 0-1.6.9l-2.4-1
+-2 3.4 2 1.5A7 7 0 0 0 5 12
+l-2 1.5 2 3.4 2.4-1
+a7 7 0 0 0 1.6.9l.3 3h5
+l.3-3a7 7 0 0 0 1.6-.9l2.4 1
+2-3.4-2-1.5A7 7 0 0 0 19 12z"/>
 
+</svg>
 
-<div class="hashtags">
-#nova #explore #xdark
-</div>
-
-
-<div class="audio">
-
-<span class="audio-icon">
-♪
-</span>
-
-Original sound · Nova
+</button>
 
 </div>
 
@@ -1609,9 +1931,10 @@ Original sound · Nova
 
 <div class="action-rail">
 
+
 <button
-class="action like"
-onclick="like(this)">
+class="action like-button"
+onclick="toggleLike(this)">
 
 <svg viewBox="0 0 24 24">
 
@@ -1670,7 +1993,7 @@ a2 2 0 0 0 2-2v-6"/>
 
 <button
 class="action"
-onclick="savePost(this)">
+onclick="toggleSave(this)">
 
 <svg viewBox="0 0 24 24">
 
@@ -1684,14 +2007,80 @@ onclick="savePost(this)">
 
 </div>
 
+
+<div class="content">
+
+<div class="creator">
+
+<div
+class="avatar"
+style="
+background:
+linear-gradient(
+135deg,
+#ff3b82,
+#733cff
+)">
+
+N
+
+</div>
+
+<div class="creator-info">
+
+<div class="creator-name">
+Nova
+</div>
+
+<div class="followers">
+8.7K followers
+</div>
+
+</div>
+
+<button
+class="follow"
+onclick="toggleFollow(this)">
+
+Follow
+
+</button>
+
+</div>
+
+
+<div class="caption">
+
+Create. Explore. Connect. ✨
+
+</div>
+
+
+<div class="hashtags">
+#nova #explore #xdark
+</div>
+
+
+<div class="audio">
+
+<span class="audio-icon">
+♪
+</span>
+
+Original sound · Nova
+
+</div>
+
+</div>
+
 </section>
 
 </main>
 
 
-<!-- =====================================================
+<!-- =======================================================
      BOTTOM NAV
-===================================================== -->
+======================================================= -->
 
 <nav class="bottom">
 
@@ -1709,14 +2098,16 @@ a1 1 0 0 1-1-1z"/>
 
 </svg>
 
-<span>Home</span>
+<span>
+Home
+</span>
 
 </button>
 
 
 <button
 class="nav"
-onclick="openDrawer('explore')">
+onclick="openPanel('explore')">
 
 <svg viewBox="0 0 24 24">
 
@@ -1726,20 +2117,23 @@ onclick="openDrawer('explore')">
 
 </svg>
 
-<span>Explore</span>
+<span>
+Explore
+</span>
 
 </button>
 
 
 <button
 class="nav"
-onclick="openDrawer('create')">
+onclick="openPanel('create')">
 
 <div class="create-btn">
 
 <svg
 viewBox="0 0 24 24"
-width="23">
+width="24"
+height="24">
 
 <path
 d="M12 5v14M5 12h14"
@@ -1757,7 +2151,7 @@ stroke-linecap="round"/>
 
 <button
 class="nav"
-onclick="openDrawer('activity')">
+onclick="openPanel('activity')">
 
 <svg viewBox="0 0 24 24">
 
@@ -1769,14 +2163,16 @@ c0 7-3 7-3 9h18c0-2-3-2-3-9"/>
 
 </svg>
 
-<span>Activity</span>
+<span>
+Activity
+</span>
 
 </button>
 
 
 <button
 class="nav"
-onclick="openDrawer('profile')">
+onclick="openPanel('profile')">
 
 <svg viewBox="0 0 24 24">
 
@@ -1787,16 +2183,18 @@ d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/>
 
 </svg>
 
-<span>Profile</span>
+<span>
+Profile
+</span>
 
 </button>
 
 </nav>
 
 
-<!-- =====================================================
-     MESSAGES PANEL
-===================================================== -->
+<!-- =======================================================
+     MESSAGES
+======================================================= -->
 
 <section
 id="messages"
@@ -1817,16 +2215,18 @@ onclick="closePanels()">
 
 </button>
 
+
 <div class="panel-title">
 Messages
 </div>
 
-<div style="width:42px"></div>
+
+<div style="width:43px"></div>
 
 </div>
 
 
-<!-- ONLY THESE 3 USERS -->
+<!-- ONLY 3 USERS HERE -->
 
 <div class="chat-top-users">
 
@@ -1871,7 +2271,15 @@ Nova
 
 <div class="person">
 
-<div class="person-avatar">
+<div
+class="person-avatar"
+style="
+background:
+conic-gradient(
+#743dff,
+#35a5ff,
+#743dff
+)">
 
 <div class="person-inner">
 A
@@ -1938,8 +2346,11 @@ onclick="openChat('Nova')">
 <div
 class="avatar"
 style="
-background:linear-gradient(
-135deg,#ff3d81,#744cff
+background:
+linear-gradient(
+135deg,
+#ff3c81,
+#713cff
 )">
 
 N
@@ -1972,8 +2383,11 @@ onclick="openChat('Alex')">
 <div
 class="avatar"
 style="
-background:linear-gradient(
-135deg,#269cff,#764cff
+background:
+linear-gradient(
+135deg,
+#269cff,
+#754cff
 )">
 
 A
@@ -2001,9 +2415,9 @@ Hey 👋
 </section>
 
 
-<!-- =====================================================
-     CHAT SCREEN
-===================================================== -->
+<!-- =======================================================
+     CHAT
+======================================================= -->
 
 <section
 id="chatScreen"
@@ -2011,6 +2425,7 @@ class="panel">
 
 
 <div class="panel-head">
+
 
 <button
 class="back"
@@ -2028,27 +2443,31 @@ onclick="closeChat()">
 <div
 id="chatAvatar"
 class="avatar"
-style="width:42px;height:42px">
+style="
+width:42px;
+height:42px">
+
 D
+
 </div>
 
 
 <div
 style="
 flex:1;
-margin-left:9px;
-text-align:left">
+margin-left:9px">
 
 <strong
 id="chatName">
+
 Darkwing
+
 </strong>
 
 <div
-id="chatStatus"
 style="
 font-size:10px;
-color:#45e38a;
+color:#43e58a;
 margin-top:2px">
 
 Online
@@ -2082,54 +2501,19 @@ A2 2 0 0 1 22 16.9z"/>
 
 <div
 id="chatMessages"
-style="
-padding:18px;
-height:calc(100dvh - 132px);
-overflow-y:auto;
-padding-bottom:90px">
-
-<div
-style="
-text-align:center;
-color:#777781;
-font-size:11px;
-margin-top:25px">
-
-Messages will appear here
-
-</div>
+class="chat-messages">
 
 </div>
 
 
-<div
-style="
-position:absolute;
-left:10px;
-right:10px;
-bottom:8px;
-z-index:10;
-
-height:61px;
-
-display:flex;
-align-items:center;
-gap:8px;
-
-padding:7px 9px;
-
-border-radius:22px;
-
-background:rgba(15,15,20,.92);
-
-border:1px solid var(--line);
-
-backdrop-filter:blur(20px)">
+<div class="chat-input-bar">
 
 
 <button
 class="icon-btn"
-style="width:40px;height:40px"
+style="
+width:40px;
+height:40px"
 onclick="toast('Attachment coming soon')">
 
 <svg viewBox="0 0 24 24">
@@ -2147,36 +2531,17 @@ a2 2 0 0 1-2.8-2.8l8.1-8.1"/>
 
 <input
 id="chatInput"
-placeholder="Message..."
-style="
-flex:1;
-height:42px;
-background:none;
-border:0;
-outline:0;
-color:white;
-padding:0 5px">
+placeholder="Message...">
 
 
 <button
-onclick="sendMessage()"
-style="
-width:42px;
-height:42px;
-border-radius:50%;
-background:#8145ff;
-display:flex;
-align-items:center;
-justify-content:center">
+class="send"
+onclick="sendMessage()">
 
-<svg
-viewBox="0 0 24 24"
-width="19"
-fill="none"
-stroke="white"
-stroke-width="2">
+<svg viewBox="0 0 24 24">
 
 <path d="m22 2-7 20-4-9-9-4z"/>
+
 <path d="M22 2 11 13"/>
 
 </svg>
@@ -2188,9 +2553,9 @@ stroke-width="2">
 </section>
 
 
-<!-- =====================================================
+<!-- =======================================================
      EXPLORE
-===================================================== -->
+======================================================= -->
 
 <section
 id="explore"
@@ -2211,11 +2576,13 @@ onclick="closePanels()">
 
 </button>
 
+
 <div class="panel-title">
 Explore
 </div>
 
-<div style="width:42px"></div>
+
+<div style="width:43px"></div>
 
 </div>
 
@@ -2238,56 +2605,81 @@ placeholder="Search X-DARK">
 
 <div class="grid">
 
-<div class="grid-item">
-<video
-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-muted loop autoplay playsinline>
-</video>
-</div>
-
-<div class="grid-item">
-<video
-src="https://www.w3schools.com/html/mov_bbb.mp4"
-muted loop autoplay playsinline>
-</video>
-</div>
-
-<div class="grid-item">
-<video
-src="https://media.w3.org/2010/05/sintel/trailer.mp4"
-muted loop autoplay playsinline>
-</video>
-</div>
 
 <div class="grid-item">
 <video
 src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-muted loop autoplay playsinline>
+muted
+loop
+autoplay
+playsinline>
 </video>
 </div>
+
 
 <div class="grid-item">
 <video
 src="https://www.w3schools.com/html/mov_bbb.mp4"
-muted loop autoplay playsinline>
+muted
+loop
+autoplay
+playsinline>
 </video>
 </div>
+
 
 <div class="grid-item">
 <video
 src="https://media.w3.org/2010/05/sintel/trailer.mp4"
-muted loop autoplay playsinline>
+muted
+loop
+autoplay
+playsinline>
 </video>
 </div>
+
+
+<div class="grid-item">
+<video
+src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+muted
+loop
+autoplay
+playsinline>
+</video>
+</div>
+
+
+<div class="grid-item">
+<video
+src="https://www.w3schools.com/html/mov_bbb.mp4"
+muted
+loop
+autoplay
+playsinline>
+</video>
+</div>
+
+
+<div class="grid-item">
+<video
+src="https://media.w3.org/2010/05/sintel/trailer.mp4"
+muted
+loop
+autoplay
+playsinline>
+</video>
+</div>
+
 
 </div>
 
 </section>
 
 
-<!-- =====================================================
+<!-- =======================================================
      CREATE
-===================================================== -->
+======================================================= -->
 
 <section
 id="create"
@@ -2308,11 +2700,13 @@ onclick="closePanels()">
 
 </button>
 
+
 <div class="panel-title">
 Create Reel
 </div>
 
-<div style="width:42px"></div>
+
+<div style="width:43px"></div>
 
 </div>
 
@@ -2332,7 +2726,7 @@ controls>
 </div>
 
 
-<div class="upload">
+<div class="upload-box">
 
 <label
 for="videoInput"
@@ -2358,9 +2752,11 @@ style="cursor:pointer">
 Upload Reel
 </strong>
 
+
 <small>
 MP4 / MOV video
 </small>
+
 
 </label>
 
@@ -2394,9 +2790,9 @@ Publish Reel
 </section>
 
 
-<!-- =====================================================
+<!-- =======================================================
      ACTIVITY
-===================================================== -->
+======================================================= -->
 
 <section
 id="activity"
@@ -2417,11 +2813,13 @@ onclick="closePanels()">
 
 </button>
 
+
 <div class="panel-title">
 Activity
 </div>
 
-<div style="width:42px"></div>
+
+<div style="width:43px"></div>
 
 </div>
 
@@ -2444,7 +2842,7 @@ Darkwing liked your Reel
 
 </div>
 
-❤️
+<span>♥</span>
 
 </div>
 
@@ -2467,7 +2865,7 @@ Nova started following you
 
 </div>
 
-+
+<span>＋</span>
 
 </div>
 
@@ -2490,16 +2888,16 @@ Alex commented on your Reel
 
 </div>
 
-💬
+<span>💬</span>
 
 </div>
 
 </section>
 
 
-<!-- =====================================================
+<!-- =======================================================
      PROFILE
-===================================================== -->
+======================================================= -->
 
 <section
 id="profile"
@@ -2520,16 +2918,19 @@ onclick="closePanels()">
 
 </button>
 
+
 <div class="panel-title">
 Profile
 </div>
 
-<div style="width:42px"></div>
+
+<div style="width:43px"></div>
 
 </div>
 
 
 <div class="profile">
+
 
 <div class="profile-center">
 
@@ -2547,6 +2948,7 @@ A
 Ankaj
 </h2>
 
+
 <div class="username">
 @x_dark_user
 </div>
@@ -2554,20 +2956,45 @@ Ankaj
 
 <div class="stats">
 
-<div class="stat">
-<strong>24</strong>
-<span>Posts</span>
-</div>
 
 <div class="stat">
-<strong>12.4K</strong>
-<span>Followers</span>
+
+<strong>
+24
+</strong>
+
+<span>
+Posts
+</span>
+
 </div>
 
+
 <div class="stat">
-<strong>287</strong>
-<span>Following</span>
+
+<strong>
+12.4K
+</strong>
+
+<span>
+Followers
+</span>
+
 </div>
+
+
+<div class="stat">
+
+<strong>
+287
+</strong>
+
+<span>
+Following
+</span>
+
+</div>
+
 
 </div>
 
@@ -2582,15 +3009,17 @@ Edit Profile
 
 </button>
 
+
 <button
 class="profile-button"
-onclick="openDrawer('settings')">
+onclick="openPanel('settings')">
 
 Settings
 
 </button>
 
 </div>
+
 
 </div>
 
@@ -2599,8 +3028,8 @@ Settings
 style="
 margin-top:28px;
 padding-top:20px;
-border-top:1px solid var(--line);
-font-weight:850">
+border-top:1px solid var(--border);
+font-weight:900">
 
 Your Reels
 
@@ -2611,26 +3040,39 @@ Your Reels
 class="grid"
 style="margin-top:15px">
 
+
 <div class="grid-item">
 <video
 src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-muted loop autoplay playsinline>
+muted
+loop
+autoplay
+playsinline>
 </video>
 </div>
+
 
 <div class="grid-item">
 <video
 src="https://www.w3schools.com/html/mov_bbb.mp4"
-muted loop autoplay playsinline>
+muted
+loop
+autoplay
+playsinline>
 </video>
 </div>
+
 
 <div class="grid-item">
 <video
 src="https://media.w3.org/2010/05/sintel/trailer.mp4"
-muted loop autoplay playsinline>
+muted
+loop
+autoplay
+playsinline>
 </video>
 </div>
+
 
 </div>
 
@@ -2639,9 +3081,9 @@ muted loop autoplay playsinline>
 </section>
 
 
-<!-- =====================================================
+<!-- =======================================================
      SETTINGS
-===================================================== -->
+======================================================= -->
 
 <section
 id="settings"
@@ -2662,11 +3104,13 @@ onclick="closePanels()">
 
 </button>
 
+
 <div class="panel-title">
 Settings
 </div>
 
-<div style="width:42px"></div>
+
+<div style="width:43px"></div>
 
 </div>
 
@@ -2685,6 +3129,7 @@ Settings
 
 </div>
 
+
 <div class="setting-text">
 
 <strong>
@@ -2692,7 +3137,7 @@ Appearance
 </strong>
 
 <small>
-Dark · Purple premium theme
+Dark · Premium Purple
 </small>
 
 </div>
@@ -2708,13 +3153,20 @@ Dark · Purple premium theme
 
 <svg viewBox="0 0 24 24">
 
-<rect x="5" y="10" width="14" height="10" rx="2"/>
+<rect
+x="5"
+y="10"
+width="14"
+height="10"
+rx="2"/>
 
-<path d="M8 10V7a4 4 0 0 1 8 0v3"/>
+<path
+d="M8 10V7a4 4 0 0 1 8 0v3"/>
 
 </svg>
 
 </div>
+
 
 <div class="setting-text">
 
@@ -2723,7 +3175,7 @@ Privacy
 </strong>
 
 <small>
-Manage your privacy
+Manage privacy
 </small>
 
 </div>
@@ -2748,6 +3200,7 @@ c0 7-3 7-3 9h18c0-2-3-2-3-9"/>
 </svg>
 
 </div>
+
 
 <div class="setting-text">
 
@@ -2774,11 +3227,13 @@ Manage alerts
 
 <circle cx="12" cy="8" r="4"/>
 
-<path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/>
+<path
+d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/>
 
 </svg>
 
 </div>
+
 
 <div class="setting-text">
 
@@ -2799,9 +3254,9 @@ Account preferences
 </section>
 
 
-<!-- =====================================================
+<!-- =======================================================
      COMMENTS
-===================================================== -->
+======================================================= -->
 
 <div
 id="comments"
@@ -2809,6 +3264,9 @@ class="comments">
 
 
 <div class="comment-header">
+
+
+<!-- BACK ARROW -->
 
 <button
 class="comment-back"
@@ -2821,6 +3279,7 @@ onclick="closeComments()">
 </svg>
 
 </button>
+
 
 <div class="comment-title">
 Comments
@@ -2887,6 +3346,7 @@ X-DARK is looking clean!
 
 </div>
 
+
 </div>
 
 
@@ -2897,17 +3357,15 @@ id="commentInput"
 placeholder="Add a comment..."
 onkeydown="commentKey(event)">
 
-<button onclick="addComment()">
 
-<svg
-viewBox="0 0 24 24"
-width="19"
-height="19"
-fill="none"
-stroke="white"
-stroke-width="2">
+<button
+class="comment-send"
+onclick="addComment()">
+
+<svg viewBox="0 0 24 24">
 
 <path d="M12 19V5"/>
+
 <path d="m6 11 6-6 6 6"/>
 
 </svg>
@@ -2919,6 +3377,8 @@ stroke-width="2">
 </div>
 
 
+<!-- TOAST -->
+
 <div
 id="toast"
 class="toast">
@@ -2927,11 +3387,11 @@ class="toast">
 
 <script>
 
-/* =====================================================
-   PANEL CONTROL
-===================================================== */
+/* =========================================================
+   PANEL SYSTEM
+========================================================= */
 
-function openDrawer(id){
+function openPanel(id){
 
   closePanels();
 
@@ -2939,9 +3399,7 @@ function openDrawer(id){
     document.getElementById(id);
 
   if(panel){
-
     panel.classList.add("open");
-
   }
 
 }
@@ -2952,35 +3410,38 @@ function closePanels(){
   document
     .querySelectorAll(".panel")
     .forEach(panel=>{
-
       panel.classList.remove("open");
-
     });
 
 }
 
 
-/* =====================================================
+/* =========================================================
    HOME
-===================================================== */
+========================================================= */
 
 function goHome(){
 
   closePanels();
 
-  document
-    .querySelector(".feed")
-    .scrollTo({
+  const feed =
+    document.querySelector(".feed");
+
+  if(feed){
+
+    feed.scrollTo({
       top:0,
       behavior:"smooth"
     });
 
+  }
+
 }
 
 
-/* =====================================================
+/* =========================================================
    CHAT
-===================================================== */
+========================================================= */
 
 let currentChat="Darkwing";
 
@@ -2989,12 +3450,13 @@ function openChat(name){
 
   currentChat=name;
 
-  document
-    .getElementById("messages")
-    .classList.remove("open");
+  const messages =
+    document.getElementById("messages");
 
   const chat =
     document.getElementById("chatScreen");
+
+  messages.classList.remove("open");
 
   chat.classList.add("open");
 
@@ -3002,11 +3464,10 @@ function openChat(name){
     .getElementById("chatName")
     .textContent=name;
 
-  const avatar =
-    document.getElementById("chatAvatar");
-
-  avatar.textContent =
-    name.charAt(0);
+  document
+    .getElementById("chatAvatar")
+    .textContent=
+      name.charAt(0);
 
   loadDemoMessages(name);
 
@@ -3027,72 +3488,79 @@ function loadDemoMessages(name){
   const box =
     document.getElementById("chatMessages");
 
-  box.innerHTML=`
+  box.innerHTML="";
 
-    <div style="
-      text-align:center;
-      color:#777781;
-      font-size:11px;
-      margin:20px 0 25px">
 
-      Today
+  const day =
+    document.createElement("div");
 
-    </div>
+  day.className="day";
 
-    <div style="
-      display:flex;
-      margin-bottom:12px">
+  day.textContent="Today";
 
-      <div style="
-        max-width:75%;
-        padding:12px 14px;
-        border-radius:18px 18px 18px 5px;
-        background:#17171f;
-        border:1px solid rgba(255,255,255,.08);
-        font-size:13px">
+  box.appendChild(day);
 
-        Welcome to X-DARK 🔥
 
-      </div>
+  addBubble(
+    box,
+    name,
+    "Welcome to X-DARK 🔥",
+    false
+  );
 
-    </div>
 
-    <div style="
-      display:flex;
-      justify-content:flex-end;
-      margin-bottom:12px">
-
-      <div style="
-        max-width:75%;
-        padding:12px 14px;
-        border-radius:18px 18px 5px 18px;
-        background:linear-gradient(135deg,#6334d9,#824cff);
-        font-size:13px">
-
-        Hey ${name} 👋
-
-        <div style="
-          font-size:9px;
-          text-align:right;
-          margin-top:4px;
-          opacity:.75">
-
-          ✓✓ Seen
-
-        </div>
-
-      </div>
-
-    </div>
-
-  `;
+  addBubble(
+    box,
+    "You",
+    "Hey "+name+" 👋",
+    true
+  );
 
 }
 
 
-/* =====================================================
-   SEND MESSAGE
-===================================================== */
+function addBubble(
+  box,
+  sender,
+  text,
+  me
+){
+
+  const row =
+    document.createElement("div");
+
+  row.className =
+    "message-row" +
+    (me ? " me" : "");
+
+
+  const bubble =
+    document.createElement("div");
+
+  bubble.className="bubble";
+
+  bubble.innerHTML =
+    escapeHTML(text);
+
+
+  if(me){
+
+    bubble.innerHTML +=
+      '<div class="seen">✓✓ Seen</div>';
+
+  }
+
+
+  row.appendChild(bubble);
+
+  box.appendChild(row);
+
+}
+
+
+/* =========================================================
+   SEND CHAT MESSAGE
+========================================================= */
 
 function sendMessage(){
 
@@ -3103,106 +3571,108 @@ function sendMessage(){
     input.value.trim();
 
   if(!text){
-
     return;
-
   }
+
 
   const box =
     document.getElementById("chatMessages");
 
-  const message =
-    document.createElement("div");
+  addBubble(
+    box,
+    "You",
+    text,
+    true
+  );
 
-  message.style.cssText=`
-    display:flex;
-    justify-content:flex-end;
-    margin-bottom:12px;
-  `;
-
-  message.innerHTML=`
-
-    <div style="
-      max-width:75%;
-      padding:12px 14px;
-      border-radius:18px 18px 5px 18px;
-      background:linear-gradient(135deg,#6334d9,#824cff);
-      font-size:13px">
-
-      ${escapeHTML(text)}
-
-      <div style="
-        font-size:9px;
-        text-align:right;
-        margin-top:4px;
-        opacity:.75">
-
-        ✓✓ Seen
-
-      </div>
-
-    </div>
-
-  `;
-
-  box.appendChild(message);
 
   input.value="";
 
-  box.scrollTop=
+  box.scrollTop =
     box.scrollHeight;
 
 }
 
 
-/* =====================================================
+document
+  .getElementById("chatInput")
+  .addEventListener(
+    "keydown",
+    function(e){
+
+      if(e.key==="Enter"){
+
+        e.preventDefault();
+
+        sendMessage();
+
+      }
+
+    }
+  );
+
+
+/* =========================================================
    LIKE
-===================================================== */
+========================================================= */
 
-function like(button){
+function toggleLike(button){
 
-  button.classList.toggle("active");
+  button.classList.toggle("liked");
 
   const span =
     button.querySelector("span");
 
   if(
-    button.classList.contains("active")
+    button.classList.contains("liked")
   ){
 
-    span.textContent="Liked";
+    span.textContent="12.5K";
 
   }else{
 
-    span.textContent="Like";
+    span.textContent="12.4K";
 
   }
 
 }
 
 
-/* =====================================================
+/* =========================================================
    SAVE
-===================================================== */
+========================================================= */
 
-function savePost(button){
+function toggleSave(button){
 
-  button.classList.toggle("active");
+  button.classList.toggle("liked");
 
-  toast(
-    button.classList.contains("active")
-    ? "Saved to your collection"
-    : "Removed from saved"
-  );
+  const span =
+    button.querySelector("span");
+
+  if(
+    button.classList.contains("liked")
+  ){
+
+    span.textContent="Saved";
+
+    toast("Saved to your collection");
+
+  }else{
+
+    span.textContent="Save";
+
+    toast("Removed from saved");
+
+  }
 
 }
 
 
-/* =====================================================
+/* =========================================================
    FOLLOW
-===================================================== */
+========================================================= */
 
-function followUser(button){
+function toggleFollow(button){
 
   if(
     button.textContent.trim()==="Follow"
@@ -3223,9 +3693,9 @@ function followUser(button){
 }
 
 
-/* =====================================================
+/* =========================================================
    SHARE
-===================================================== */
+========================================================= */
 
 async function sharePost(){
 
@@ -3234,15 +3704,9 @@ async function sharePost(){
     if(navigator.share){
 
       await navigator.share({
-
         title:"X-DARK",
-
-        text:
-          "Check this Reel on X-DARK",
-
-        url:
-          location.href
-
+        text:"Check this Reel on X-DARK",
+        url:location.href
       });
 
     }else{
@@ -3255,14 +3719,18 @@ async function sharePost(){
 
     }
 
-  }catch(e){}
+  }catch(error){
+
+    console.log(error);
+
+  }
 
 }
 
 
-/* =====================================================
+/* =========================================================
    COMMENTS
-===================================================== */
+========================================================= */
 
 function openComments(){
 
@@ -3282,13 +3750,11 @@ function closeComments(){
 }
 
 
-function commentKey(event){
+function commentKey(e){
 
-  if(
-    event.key==="Enter"
-  ){
+  if(e.key==="Enter"){
 
-    event.preventDefault();
+    e.preventDefault();
 
     addComment();
 
@@ -3308,15 +3774,15 @@ function addComment(){
     input.value.trim();
 
   if(!text){
-
     return;
-
   }
+
 
   const comment =
     document.createElement("div");
 
   comment.className="comment";
+
 
   comment.innerHTML=`
 
@@ -3342,18 +3808,111 @@ function addComment(){
 
   `;
 
+
   document
     .getElementById("commentList")
     .appendChild(comment);
 
+
   input.value="";
+
+
+  const list =
+    document.getElementById(
+      "commentList"
+    );
+
+  list.scrollTop =
+    list.scrollHeight;
 
 }
 
 
-/* =====================================================
-   ESCAPE
-===================================================== */
+/* =========================================================
+   VIDEO PREVIEW
+========================================================= */
+
+function previewVideo(input){
+
+  const file =
+    input.files[0];
+
+  if(!file){
+    return;
+  }
+
+
+  const preview =
+    document.getElementById("preview");
+
+  const video =
+    document.getElementById(
+      "previewVideo"
+    );
+
+
+  video.src =
+    URL.createObjectURL(file);
+
+  preview.style.display="block";
+
+}
+
+
+function publishReel(){
+
+  const input =
+    document.getElementById(
+      "videoInput"
+    );
+
+  if(!input.files.length){
+
+    toast("Select a video first");
+
+    return;
+
+  }
+
+
+  toast(
+    "Reel selected successfully"
+  );
+
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+function toast(message){
+
+  const box =
+    document.getElementById("toast");
+
+  box.textContent=message;
+
+  box.classList.add("show");
+
+  clearTimeout(
+    window.xDarkToast
+  );
+
+  window.xDarkToast =
+    setTimeout(
+      ()=>{
+        box.classList.remove("show");
+      },
+      2200
+    );
+
+}
+
+
+/* =========================================================
+   HTML ESCAPE
+========================================================= */
 
 function escapeHTML(text){
 
@@ -3367,95 +3926,18 @@ function escapeHTML(text){
 }
 
 
-/* =====================================================
-   TOAST
-===================================================== */
+/* =========================================================
+   REEL VIDEO AUTOPLAY
+========================================================= */
 
-function toast(message){
-
-  const box =
-    document.getElementById("toast");
-
-  box.textContent=message;
-
-  box.classList.add("show");
-
-  clearTimeout(window.toastTimer);
-
-  window.toastTimer=
-    setTimeout(()=>{
-
-      box.classList.remove("show");
-
-    },2500);
-
-}
-
-
-/* =====================================================
-   VIDEO PREVIEW
-===================================================== */
-
-function previewVideo(input){
-
-  const file =
-    input.files[0];
-
-  if(!file){
-
-    return;
-
-  }
-
-  const preview =
-    document.getElementById("preview");
-
-  const video =
-    document.getElementById("previewVideo");
-
-  video.src =
-    URL.createObjectURL(file);
-
-  preview.style.display="block";
-
-}
-
-
-/* =====================================================
-   PUBLISH
-===================================================== */
-
-function publishReel(){
-
-  const input =
-    document.getElementById("videoInput");
-
-  if(!input.files.length){
-
-    toast("Select a video first");
-
-    return;
-
-  }
-
-  toast("Reel selected successfully");
-
-}
-
-
-/* =====================================================
-   REEL AUTOPLAY
-===================================================== */
-
-const reelVideos =
+const videos =
   document.querySelectorAll(
-    ".reel video"
+    ".reel-video"
   );
 
 
-const videoObserver =
+const observer =
   new IntersectionObserver(
-
     entries=>{
 
       entries.forEach(entry=>{
@@ -3475,24 +3957,20 @@ const videoObserver =
       });
 
     },
-
     {
       threshold:.65
     }
-
   );
 
 
-reelVideos.forEach(video=>{
-
-  videoObserver.observe(video);
-
+videos.forEach(video=>{
+  observer.observe(video);
 });
 
 
-/* =====================================================
+/* =========================================================
    DOUBLE TAP LIKE
-===================================================== */
+========================================================= */
 
 document
   .querySelectorAll(".reel")
@@ -3500,35 +3978,42 @@ document
 
     let lastTap=0;
 
+
     reel.addEventListener(
       "click",
-      event=>{
+      function(e){
 
         if(
-          event.target.closest(
-            ".action,.icon-btn,.follow"
+          e.target.closest(
+            ".action,.icon-btn,.follow,.you-story"
           )
         ){
-
           return;
-
         }
 
-        const now=Date.now();
+
+        const now =
+          Date.now();
+
 
         if(
           now-lastTap<300
         ){
 
-          const button =
-            reel.querySelector(".like");
+          const like =
+            reel.querySelector(
+              ".like-button"
+            );
+
 
           if(
-            button &&
-            !button.classList.contains("active")
+            like &&
+            !like.classList.contains(
+              "liked"
+            )
           ){
 
-            like(button);
+            toggleLike(like);
 
             toast("❤️ Liked");
 
@@ -3536,50 +4021,24 @@ document
 
         }
 
+
         lastTap=now;
 
       }
-
     );
 
   });
 
 
-/* =====================================================
-   ENTER TO SEND CHAT
-===================================================== */
-
-document
-  .getElementById("chatInput")
-  .addEventListener(
-    "keydown",
-    event=>{
-
-      if(
-        event.key==="Enter"
-      ){
-
-        event.preventDefault();
-
-        sendMessage();
-
-      }
-
-    }
-  );
-
-
-/* =====================================================
-   ESC
-===================================================== */
+/* =========================================================
+   SWIPE / ESC BACK
+========================================================= */
 
 document.addEventListener(
   "keydown",
-  event=>{
+  function(e){
 
-    if(
-      event.key==="Escape"
-    ){
+    if(e.key==="Escape"){
 
       closeComments();
       closeChat();
