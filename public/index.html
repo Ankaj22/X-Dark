@@ -2,16 +2,17 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#050507">
 <title>X-DARK — The Next Level</title>
 
 <style>
+
 :root{
   --bg:#050507;
   --panel:#0b0b10;
   --card:#121219;
-  --card2:#181820;
   --line:rgba(255,255,255,.13);
   --muted:#858592;
   --purple:#7d3cff;
@@ -24,7 +25,8 @@
   -webkit-tap-highlight-color:transparent;
 }
 
-html,body{
+html,
+body{
   margin:0;
   width:100%;
   height:100%;
@@ -39,7 +41,9 @@ body{
   overscroll-behavior:none;
 }
 
-button,input,textarea{
+button,
+input,
+textarea{
   font:inherit;
 }
 
@@ -56,6 +60,10 @@ button{
   overflow:hidden;
   background:#050507;
 }
+
+/* =========================
+   FEED
+========================= */
 
 .feed{
   width:100%;
@@ -75,7 +83,7 @@ button{
   height:100dvh;
   overflow:hidden;
   scroll-snap-align:start;
-  background:#07070a;
+  background:#08080b;
 }
 
 .reel-media{
@@ -92,12 +100,13 @@ button{
   z-index:2;
   inset:0;
   pointer-events:none;
+
   background:
     linear-gradient(
       180deg,
-      rgba(0,0,0,.78),
-      rgba(0,0,0,.08) 38%,
-      rgba(0,0,0,.18) 60%,
+      rgba(0,0,0,.72),
+      rgba(0,0,0,.04) 40%,
+      rgba(0,0,0,.20) 65%,
       rgba(0,0,0,.96)
     );
 }
@@ -109,50 +118,92 @@ button{
 .topbar{
   position:absolute;
   z-index:50;
+
   top:0;
   left:0;
   right:0;
-  height:82px;
+
+  height:80px;
+
   padding:
-    calc(env(safe-area-inset-top) + 5px)
+    calc(env(safe-area-inset-top) + 6px)
     12px 0;
+
   display:flex;
-  align-items:flex-start;
   justify-content:flex-end;
+  align-items:flex-start;
 }
 
-/* LEFT LOGO */
+/* X-DARK LOGO */
 
 .logo{
   position:absolute;
-  left:16px;
-  right:auto;
-  top:calc(env(safe-area-inset-top) + 7px);
+
+  left:15px;
+  top:calc(env(safe-area-inset-top) + 8px);
 
   width:48px;
   height:48px;
 
   object-fit:cover;
+
   border-radius:50%;
 
-  border:1px solid rgba(255,255,255,.16);
+  background:#09090d;
+
+  border:1px solid rgba(255,255,255,.18);
+
+  box-shadow:
+    0 0 8px rgba(126,61,255,.65),
+    0 0 22px rgba(126,61,255,.28);
 
   filter:
-    drop-shadow(0 0 7px rgba(126,61,255,.62))
-    drop-shadow(0 0 15px rgba(126,61,255,.28));
+    drop-shadow(0 0 6px rgba(126,61,255,.6));
 
   z-index:10;
 
-  transition:
-    transform .2s ease,
-    filter .2s ease;
+  transition:.2s;
 }
 
 .logo:active{
-  transform:scale(.90);
+  transform:scale(.9);
 }
 
-/* RIGHT BUTTONS */
+/* fallback logo */
+
+.logo-fallback{
+  position:absolute;
+
+  left:15px;
+  top:calc(env(safe-area-inset-top) + 8px);
+
+  width:48px;
+  height:48px;
+
+  display:none;
+
+  align-items:center;
+  justify-content:center;
+
+  border-radius:50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #15151d,
+      #07070a
+    );
+
+  border:1px solid #6f43ff;
+
+  box-shadow:
+    0 0 12px rgba(126,61,255,.7);
+
+  font-size:12px;
+  font-weight:1000;
+
+  z-index:9;
+}
 
 .top-actions{
   display:flex;
@@ -162,13 +213,14 @@ button{
 .icon-btn{
   width:43px;
   height:43px;
+
   border-radius:50%;
 
   display:flex;
   align-items:center;
   justify-content:center;
 
-  background:rgba(5,5,9,.68);
+  background:rgba(5,5,9,.72);
 
   border:1px solid var(--line);
 
@@ -178,105 +230,12 @@ button{
 .icon-btn svg{
   width:21px;
   height:21px;
+
   fill:none;
   stroke:currentColor;
   stroke-width:1.8;
   stroke-linecap:round;
   stroke-linejoin:round;
-}
-
-/* =========================
-   STORIES
-========================= */
-
-.story-row{
-  position:absolute;
-  z-index:25;
-
-  top:88px;
-  left:0;
-  right:0;
-
-  display:flex;
-  gap:14px;
-
-  padding:
-    0 18px;
-
-  overflow-x:auto;
-
-  scrollbar-width:none;
-}
-
-.story-row::-webkit-scrollbar{
-  display:none;
-}
-
-.story{
-  min-width:61px;
-  text-align:center;
-}
-
-.story-ring-wrap{
-  position:relative;
-}
-
-.story-ring{
-  width:58px;
-  height:58px;
-  padding:2px;
-
-  border-radius:50%;
-
-  background:
-    conic-gradient(
-      #ff493e,
-      #ff2780,
-      #763cff,
-      #55c8ff,
-      #ff493e
-    );
-}
-
-.story-inner{
-  width:100%;
-  height:100%;
-
-  border-radius:50%;
-
-  background:#15151d;
-
-  border:
-    2px solid #07070a;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  font-weight:900;
-}
-
-.story b{
-  display:block;
-  margin-top:5px;
-  font-size:9px;
-}
-
-.online{
-  position:absolute;
-
-  width:12px;
-  height:12px;
-
-  right:0;
-  bottom:0;
-
-  border-radius:50%;
-
-  background:var(--green);
-
-  border:
-    2px solid #07070a;
 }
 
 /* =========================
@@ -302,7 +261,7 @@ button{
   border-radius:17px;
 
   background:
-    rgba(8,8,12,.47);
+    rgba(8,8,12,.52);
 
   border:
     1px solid rgba(255,255,255,.14);
@@ -311,14 +270,12 @@ button{
 
   display:flex;
   flex-direction:column;
-
   align-items:center;
   justify-content:center;
 
   gap:3px;
 
-  text-shadow:
-    0 2px 8px #000;
+  text-shadow:0 2px 8px #000;
 }
 
 .action svg{
@@ -337,8 +294,11 @@ button{
   font-weight:900;
 }
 
-.action.liked svg{
+.action.liked{
   color:#ff3b83;
+}
+
+.action.liked svg{
   fill:#ff3b83;
 }
 
@@ -359,7 +319,6 @@ button{
 .creator{
   display:flex;
   align-items:center;
-
   gap:8px;
 
   margin-bottom:11px;
@@ -386,8 +345,7 @@ button{
 
   font-weight:950;
 
-  border:
-    2px solid rgba(255,255,255,.22);
+  border:2px solid rgba(255,255,255,.22);
 }
 
 .creator-info{
@@ -401,9 +359,7 @@ button{
 
 .followers{
   margin-top:2px;
-
   color:#d0d0d7;
-
   font-size:9px;
 }
 
@@ -412,14 +368,11 @@ button{
 
   border-radius:12px;
 
-  background:
-    rgba(255,255,255,.08);
+  background:rgba(255,255,255,.08);
 
-  border:
-    1px solid rgba(255,255,255,.78);
+  border:1px solid rgba(255,255,255,.78);
 
   font-size:10px;
-
   font-weight:900;
 
   backdrop-filter:blur(10px);
@@ -427,13 +380,10 @@ button{
 
 .caption{
   font-size:16px;
-
   font-weight:750;
-
   line-height:1.42;
 
-  text-shadow:
-    0 2px 8px #000;
+  text-shadow:0 2px 8px #000;
 }
 
 .hashtags{
@@ -442,14 +392,12 @@ button{
   color:#ded3ff;
 
   font-size:12px;
-
   font-weight:750;
 }
 
 .audio{
   display:flex;
   align-items:center;
-
   gap:7px;
 
   margin-top:9px;
@@ -481,18 +429,15 @@ button{
 
   left:9px;
   right:9px;
-
   bottom:8px;
 
   height:69px;
 
   border-radius:24px;
 
-  background:
-    rgba(9,9,13,.91);
+  background:rgba(9,9,13,.91);
 
-  border:
-    1px solid var(--line);
+  border:1px solid var(--line);
 
   backdrop-filter:blur(25px);
 
@@ -581,29 +526,25 @@ button{
   background:
     radial-gradient(
       circle at 85% 0,
-      rgba(116,59,255,.2),
+      rgba(116,59,255,.20),
       transparent 34%
     ),
     #07070a;
 
-  transform:
-    translateX(100%);
+  transform:translateX(100%);
 
   transition:
-    transform .34s
-    cubic-bezier(.2,.8,.2,1);
+    transform .34s cubic-bezier(.2,.8,.2,1);
 
   overflow-y:auto;
 }
 
 .panel.open{
-  transform:
-    translateX(0);
+  transform:translateX(0);
 }
 
 .panel-head{
   position:sticky;
-
   z-index:30;
 
   top:0;
@@ -617,14 +558,11 @@ button{
   display:flex;
   align-items:center;
 
-  background:
-    rgba(7,7,10,.93);
+  background:rgba(7,7,10,.93);
 
-  border-bottom:
-    1px solid var(--line);
+  border-bottom:1px solid var(--line);
 
-  backdrop-filter:
-    blur(23px);
+  backdrop-filter:blur(23px);
 }
 
 .back{
@@ -635,8 +573,7 @@ button{
 
   background:#17171d;
 
-  border:
-    1px solid var(--line);
+  border:1px solid var(--line);
 
   display:flex;
   align-items:center;
@@ -660,7 +597,6 @@ button{
   text-align:center;
 
   font-size:18px;
-
   font-weight:900;
 }
 
@@ -681,8 +617,7 @@ button{
 
   background:#111117;
 
-  border:
-    1px solid var(--line);
+  border:1px solid var(--line);
 
   display:flex;
   align-items:center;
@@ -721,17 +656,12 @@ button{
 
   background:#111117;
 
-  border:
-    1px solid var(--line);
+  border:1px solid var(--line);
 
   display:flex;
   align-items:center;
 
   gap:11px;
-}
-
-.chat-card:active{
-  transform:scale(.99);
 }
 
 .chat-info{
@@ -754,7 +684,6 @@ button{
 
 .chat-time{
   font-size:8px;
-
   color:#777781;
 }
 
@@ -763,18 +692,15 @@ button{
 ========================= */
 
 .messages{
-  height:
-    calc(100dvh - 137px);
+  height:calc(100dvh - 137px);
 
   overflow-y:auto;
 
-  padding:
-    16px 14px 80px;
+  padding:16px 14px 80px;
 }
 
 .msg{
   display:flex;
-
   margin-bottom:10px;
 }
 
@@ -785,16 +711,14 @@ button{
 .bubble{
   max-width:78%;
 
-  padding:
-    10px 13px;
+  padding:10px 13px;
 
   border-radius:
     17px 17px 17px 5px;
 
   background:#17171e;
 
-  border:
-    1px solid var(--line);
+  border:1px solid var(--line);
 
   font-size:13px;
 
@@ -815,23 +739,19 @@ button{
 
 .chat-input{
   position:absolute;
-
   z-index:20;
 
   left:9px;
   right:9px;
-
   bottom:8px;
 
   height:60px;
 
   border-radius:21px;
 
-  background:
-    rgba(15,15,20,.97);
+  background:rgba(15,15,20,.97);
 
-  border:
-    1px solid var(--line);
+  border:1px solid var(--line);
 
   display:flex;
   align-items:center;
@@ -849,7 +769,6 @@ button{
   background:none;
 
   border:0;
-
   outline:0;
 
   color:#fff;
@@ -892,7 +811,6 @@ button{
 
 .comments{
   position:absolute;
-
   z-index:700;
 
   left:0;
@@ -904,21 +822,17 @@ button{
   border-radius:
     27px 27px 0 0;
 
-  transform:
-    translateY(100%);
+  transform:translateY(100%);
 
   transition:
-    transform .34s
-    cubic-bezier(.2,.8,.2,1);
+    transform .34s cubic-bezier(.2,.8,.2,1);
 
   box-shadow:
-    0 -25px 80px
-    rgba(0,0,0,.65);
+    0 -25px 80px rgba(0,0,0,.65);
 }
 
 .comments.open{
-  transform:
-    translateY(0);
+  transform:translateY(0);
 }
 
 .comment-head{
@@ -930,15 +844,13 @@ button{
   align-items:center;
   justify-content:center;
 
-  border-bottom:
-    1px solid var(--line);
+  border-bottom:1px solid var(--line);
 
   font-weight:850;
 }
 
 .comment-back{
   position:absolute;
-
   left:12px;
 
   width:42px;
@@ -948,8 +860,7 @@ button{
 
   background:#1a1a20;
 
-  border:
-    1px solid var(--line);
+  border:1px solid var(--line);
 
   display:flex;
   align-items:center;
@@ -1003,13 +914,11 @@ button{
   justify-content:center;
 
   font-size:12px;
-
   font-weight:900;
 }
 
 .comment-body{
   font-size:12px;
-
   line-height:1.5;
 }
 
@@ -1036,15 +945,13 @@ button{
 
   background:#1b1b22;
 
-  border:
-    1px solid var(--line);
+  border:1px solid var(--line);
 
   outline:0;
 
   color:#fff;
 
-  padding:
-    0 14px;
+  padding:0 14px;
 }
 
 .comment-send{
@@ -1086,8 +993,7 @@ button{
 
   background:#121218;
 
-  border:
-    1px solid var(--line);
+  border:1px solid var(--line);
 
   display:flex;
   align-items:center;
@@ -1108,7 +1014,6 @@ button{
   background:none;
 
   border:0;
-
   outline:0;
 
   color:#fff;
@@ -1120,9 +1025,7 @@ button{
 
 .profile{
   text-align:center;
-
-  padding:
-    27px 16px;
+  padding:27px 16px;
 }
 
 .big-avatar{
@@ -1157,13 +1060,11 @@ button{
   justify-content:center;
 
   font-size:39px;
-
   font-weight:950;
 }
 
 .stats{
   display:flex;
-
   justify-content:center;
 
   gap:38px;
@@ -1173,13 +1074,11 @@ button{
 
 .stat strong{
   display:block;
-
   font-size:18px;
 }
 
 .stat span{
   font-size:9px;
-
   color:#777781;
 }
 
@@ -1193,9 +1092,7 @@ button{
 
 .mode-tabs{
   display:flex;
-
   gap:7px;
-
   margin-bottom:13px;
 }
 
@@ -1208,11 +1105,9 @@ button{
 
   background:#121218;
 
-  border:
-    1px solid var(--line);
+  border:1px solid var(--line);
 
   font-size:11px;
-
   font-weight:850;
 
   color:#858590;
@@ -1228,8 +1123,7 @@ button{
 
   color:#fff;
 
-  border-color:
-    transparent;
+  border-color:transparent;
 }
 
 .editor{
@@ -1238,7 +1132,6 @@ button{
   width:100%;
 
   height:57vh;
-
   min-height:390px;
 
   border-radius:24px;
@@ -1247,8 +1140,7 @@ button{
 
   background:#0e0e13;
 
-  border:
-    1px solid var(--line);
+  border:1px solid var(--line);
 }
 
 .editor img,
@@ -1273,7 +1165,6 @@ button{
   display:flex;
 
   align-items:center;
-
   justify-content:center;
 
   flex-direction:column;
@@ -1287,13 +1178,11 @@ button{
 
   background:#191525;
 
-  border:
-    1px solid #40315a;
+  border:1px solid #40315a;
 
   display:flex;
 
   align-items:center;
-
   justify-content:center;
 
   color:#a76cff;
@@ -1310,13 +1199,11 @@ button{
   stroke-width:1.8;
 
   stroke-linecap:round;
-
   stroke-linejoin:round;
 }
 
 .empty-editor strong{
   margin-top:13px;
-
   font-size:15px;
 }
 
@@ -1334,11 +1221,9 @@ button{
   z-index:30;
 
   right:9px;
-
   top:10px;
 
   display:flex;
-
   flex-direction:column;
 
   gap:7px;
@@ -1353,15 +1238,12 @@ button{
   background:
     rgba(7,7,11,.72);
 
-  border:
-    1px solid rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.14);
 
   backdrop-filter:blur(15px);
 
   display:flex;
-
   align-items:center;
-
   justify-content:center;
 }
 
@@ -1376,7 +1258,6 @@ button{
   stroke-width:1.8;
 
   stroke-linecap:round;
-
   stroke-linejoin:round;
 }
 
@@ -1399,8 +1280,7 @@ button{
   background:
     rgba(8,8,12,.95);
 
-  border:
-    1px solid var(--line);
+  border:1px solid var(--line);
 
   backdrop-filter:blur(20px);
 }
@@ -1411,7 +1291,6 @@ button{
 
 .filter-row{
   display:flex;
-
   gap:8px;
 
   overflow-x:auto;
@@ -1419,30 +1298,22 @@ button{
   scrollbar-width:none;
 }
 
-.filter-row::-webkit-scrollbar{
-  display:none;
-}
-
 .filter{
   min-width:62px;
-
   height:58px;
 
   border-radius:13px;
 
-  border:
-    1px solid rgba(255,255,255,.13);
+  border:1px solid rgba(255,255,255,.13);
 
   background:#1a1a21;
 
   font-size:8px;
-
   font-weight:800;
 }
 
 .slider{
   display:flex;
-
   align-items:center;
 
   gap:9px;
@@ -1454,7 +1325,6 @@ button{
   width:68px;
 
   font-size:9px;
-
   font-weight:800;
 }
 
@@ -1469,11 +1339,9 @@ button{
 
   left:9px;
   right:9px;
-
   bottom:9px;
 
   display:flex;
-
   gap:7px;
 }
 
@@ -1487,13 +1355,11 @@ button{
   background:
     rgba(5,5,8,.76);
 
-  border:
-    1px solid rgba(255,255,255,.13);
+  border:1px solid rgba(255,255,255,.13);
 
   backdrop-filter:blur(15px);
 
   font-size:11px;
-
   font-weight:850;
 }
 
@@ -1510,8 +1376,7 @@ button{
 
   background:#111117;
 
-  border:
-    1px solid var(--line);
+  border:1px solid var(--line);
 
   outline:0;
 
@@ -1554,11 +1419,9 @@ button{
 
   background:#17171d;
 
-  border:
-    1px solid var(--line);
+  border:1px solid var(--line);
 
   font-size:11px;
-
   font-weight:850;
 }
 
@@ -1584,15 +1447,13 @@ button{
 
   pointer-events:none;
 
-  padding:
-    11px 16px;
+  padding:11px 16px;
 
   border-radius:14px;
 
   background:#24242d;
 
-  border:
-    1px solid #42424d;
+  border:1px solid #42424d;
 
   font-size:11px;
 
@@ -1612,70 +1473,72 @@ button{
 
 @media(min-width:700px){
 
-.app{
-  width:520px;
+  .app{
+    width:520px;
 
-  margin:auto;
+    margin:auto;
 
-  border-left:
-    1px solid #15151a;
-
-  border-right:
-    1px solid #15151a;
-}
+    border-left:1px solid #15151a;
+    border-right:1px solid #15151a;
+  }
 
 }
+
 </style>
 </head>
+
 
 <body>
 
 <div class="app">
 
+
 <!-- =====================================================
-     MAIN FEED
+     HOME FEED
 ===================================================== -->
 
 <main id="feed" class="feed">
 
-<!-- =====================================================
-     REEL / POST 1
-===================================================== -->
+
+<!-- ================= POST 1 ================= -->
 
 <section class="reel">
 
 <video
-class="reel-media"
-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-muted
-loop
-autoplay
-playsinline>
+  class="reel-media"
+  src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+  muted
+  loop
+  autoplay
+  playsinline>
 </video>
 
 
-<!-- TOP BAR -->
+<!-- TOP -->
 
 <header class="topbar">
 
-<!-- LOGO LEFT -->
-
 <img
-class="logo"
-src="x-dark-logo.png"
-alt="X DARK The Next Level"
-onclick="openPanel('profile')">
+  class="logo"
+  src="x-dark-logo.png"
+  alt="X-DARK"
+  onerror="this.style.display='none';document.getElementById('logoFallback').style.display='flex';"
+>
 
+<div
+  id="logoFallback"
+  class="logo-fallback">
+  X
+</div>
 
-<!-- RIGHT ICONS -->
 
 <div class="top-actions">
 
 <!-- MESSAGES -->
 
 <button
-class="icon-btn"
-onclick="openPanel('messages')">
+  class="icon-btn"
+  onclick="openPanel('messages')">
 
 <svg viewBox="0 0 24 24">
 
@@ -1697,15 +1560,15 @@ a7.5 7.5 0 0 1 8-7.5
 <!-- SETTINGS -->
 
 <button
-class="icon-btn"
-onclick="openPanel('settings')">
+  class="icon-btn"
+  onclick="openPanel('settings')">
 
 <svg viewBox="0 0 24 24">
 
 <circle
-cx="12"
-cy="12"
-r="3"/>
+  cx="12"
+  cy="12"
+  r="3"/>
 
 <path d="
 M19 12
@@ -1744,99 +1607,13 @@ A7 7 0 0 0 19 12z"/>
 </header>
 
 
-<!-- STORIES -->
-
-<div class="story-row">
-
-<div class="story">
-
-<div class="story-ring-wrap">
-
-<div class="story-ring">
-
-<div class="story-inner">
-+
-</div>
-
-</div>
-
-</div>
-
-<b>You</b>
-
-</div>
-
-
-<div class="story">
-
-<div class="story-ring-wrap">
-
-<div class="story-ring">
-
-<div class="story-inner">
-D
-</div>
-
-</div>
-
-<span class="online"></span>
-
-</div>
-
-<b>Darkwing</b>
-
-</div>
-
-
-<div class="story">
-
-<div class="story-ring-wrap">
-
-<div class="story-ring">
-
-<div class="story-inner">
-N
-</div>
-
-</div>
-
-<span class="online"></span>
-
-</div>
-
-<b>Nova</b>
-
-</div>
-
-
-<div class="story">
-
-<div class="story-ring-wrap">
-
-<div class="story-ring">
-
-<div class="story-inner">
-A
-</div>
-
-</div>
-
-</div>
-
-<b>Alex</b>
-
-</div>
-
-</div>
-
-
 <!-- ACTIONS -->
 
 <div class="actions">
 
 <button
-class="action"
-onclick="toggleLike(this)">
+  class="action"
+  onclick="toggleLike(this)">
 
 <svg viewBox="0 0 24 24">
 
@@ -1849,16 +1626,14 @@ a4.6 4.6 0 0 1 8.8 2.3z"/>
 
 </svg>
 
-<span>
-12.4K
-</span>
+<span>12.4K</span>
 
 </button>
 
 
 <button
-class="action"
-onclick="openComments()">
+  class="action"
+  onclick="openComments()">
 
 <svg viewBox="0 0 24 24">
 
@@ -1874,16 +1649,14 @@ a7.5 7.5 0 0 1 8-7.5
 
 </svg>
 
-<span>
-842
-</span>
+<span>842</span>
 
 </button>
 
 
 <button
-class="action"
-onclick="sharePost()">
+  class="action"
+  onclick="sharePost()">
 
 <svg viewBox="0 0 24 24">
 
@@ -1901,16 +1674,14 @@ v-6"/>
 
 </svg>
 
-<span>
-Share
-</span>
+<span>Share</span>
 
 </button>
 
 
 <button
-class="action"
-onclick="toggleSave(this)">
+  class="action"
+  onclick="toggleSave(this)">
 
 <svg viewBox="0 0 24 24">
 
@@ -1923,9 +1694,7 @@ l-6-4
 
 </svg>
 
-<span>
-Save
-</span>
+<span>Save</span>
 
 </button>
 
@@ -1938,10 +1707,7 @@ Save
 
 <div class="creator">
 
-<div class="avatar">
-D
-</div>
-
+<div class="avatar">D</div>
 
 <div class="creator-info">
 
@@ -1955,30 +1721,22 @@ Darkwing
 
 </div>
 
-
 <button
-class="follow"
-onclick="toggleFollow(this)">
-
+  class="follow"
+  onclick="toggleFollow(this)">
 Follow
-
 </button>
 
 </div>
 
 
 <div class="caption">
-
-Welcome to X-DARK 🔥
-The new dark social experience.
-
+Welcome to X-DARK 🔥 The new dark social experience.
 </div>
 
 
 <div class="hashtags">
-
 #xdark #reels #viral #dark
-
 </div>
 
 
@@ -1997,35 +1755,40 @@ Original sound · Darkwing
 </section>
 
 
-<!-- =====================================================
-     REEL 2
-===================================================== -->
+<!-- ================= POST 2 ================= -->
 
 <section class="reel">
 
 <video
-class="reel-media"
-src="https://www.w3schools.com/html/mov_bbb.mp4"
-muted
-loop
-playsinline>
+  class="reel-media"
+  src="https://www.w3schools.com/html/mov_bbb.mp4"
+  muted
+  loop
+  playsinline>
 </video>
 
 
 <header class="topbar">
 
 <img
-class="logo"
-src="x-dark-logo.png"
-alt="X DARK The Next Level"
-onclick="openPanel('profile')">
+  class="logo"
+  src="x-dark-logo.png"
+  alt="X-DARK"
+  onerror="this.style.display='none';document.getElementById('logoFallback2').style.display='flex';"
+>
+
+<div
+  id="logoFallback2"
+  class="logo-fallback">
+X
+</div>
 
 
 <div class="top-actions">
 
 <button
-class="icon-btn"
-onclick="openPanel('messages')">
+  class="icon-btn"
+  onclick="openPanel('messages')">
 
 <svg viewBox="0 0 24 24">
 
@@ -2045,15 +1808,12 @@ a7.5 7.5 0 0 1 8-7.5
 
 
 <button
-class="icon-btn"
-onclick="openPanel('settings')">
+  class="icon-btn"
+  onclick="openPanel('settings')">
 
 <svg viewBox="0 0 24 24">
 
-<circle
-cx="12"
-cy="12"
-r="3"/>
+<circle cx="12" cy="12" r="3"/>
 
 <path d="
 M19 12
@@ -2095,8 +1855,8 @@ A7 7 0 0 0 19 12z"/>
 <div class="actions">
 
 <button
-class="action"
-onclick="toggleLike(this)">
+  class="action"
+  onclick="toggleLike(this)">
 
 <svg viewBox="0 0 24 24">
 
@@ -2109,16 +1869,14 @@ a4.6 4.6 0 0 1 8.8 2.3z"/>
 
 </svg>
 
-<span>
-8.7K
-</span>
+<span>8.7K</span>
 
 </button>
 
 
 <button
-class="action"
-onclick="openComments()">
+  class="action"
+  onclick="openComments()">
 
 <svg viewBox="0 0 24 24">
 
@@ -2134,21 +1892,18 @@ a7.5 7.5 0 0 1 8-7.5
 
 </svg>
 
-<span>
-315
-</span>
+<span>315</span>
 
 </button>
 
 
 <button
-class="action"
-onclick="sharePost()">
+  class="action"
+  onclick="sharePost()">
 
 <svg viewBox="0 0 24 24">
 
 <path d="M12 16V3"/>
-
 <path d="m7 8 5-5 5 5"/>
 
 <path d="
@@ -2161,9 +1916,7 @@ v-6"/>
 
 </svg>
 
-<span>
-Share
-</span>
+<span>Share</span>
 
 </button>
 
@@ -2174,10 +1927,7 @@ Share
 
 <div class="creator">
 
-<div class="avatar">
-N
-</div>
-
+<div class="avatar">N</div>
 
 <div class="creator-info">
 
@@ -2191,13 +1941,10 @@ Nova
 
 </div>
 
-
 <button
-class="follow"
-onclick="toggleFollow(this)">
-
+  class="follow"
+  onclick="toggleFollow(this)">
 Follow
-
 </button>
 
 </div>
@@ -2207,11 +1954,9 @@ Follow
 Create. Explore. Connect. ✨
 </div>
 
-
 <div class="hashtags">
 #nova #explore #xdark
 </div>
-
 
 <div class="audio">
 
@@ -2231,15 +1976,14 @@ Original sound · Nova
 
 
 <!-- =====================================================
-     BOTTOM NAVIGATION
+     BOTTOM NAV
 ===================================================== -->
 
 <nav class="bottom">
 
-
 <button
-class="nav active"
-onclick="goHome()">
+  class="nav active"
+  onclick="goHome()">
 
 <svg viewBox="0 0 24 24">
 
@@ -2258,23 +2002,18 @@ a1 1 0 0 1-1-1z"/>
 
 </svg>
 
-<span>
-Home
-</span>
+<span>Home</span>
 
 </button>
 
 
 <button
-class="nav"
-onclick="openPanel('explore')">
+  class="nav"
+  onclick="openPanel('explore')">
 
 <svg viewBox="0 0 24 24">
 
-<circle
-cx="11"
-cy="11"
-r="7"/>
+<circle cx="11" cy="11" r="7"/>
 
 <path d="
 m20 20
@@ -2282,23 +2021,20 @@ m20 20
 
 </svg>
 
-<span>
-Explore
-</span>
+<span>Explore</span>
 
 </button>
 
 
 <button
-class="nav"
-onclick="openStudio()">
+  class="nav"
+  onclick="openStudio()">
 
 <div class="create">
 
 <svg viewBox="0 0 24 24">
 
 <path d="M12 5v14"/>
-
 <path d="M5 12h14"/>
 
 </svg>
@@ -2309,8 +2045,8 @@ onclick="openStudio()">
 
 
 <button
-class="nav"
-onclick="openPanel('activity')">
+  class="nav"
+  onclick="openPanel('activity')">
 
 <svg viewBox="0 0 24 24">
 
@@ -2321,29 +2057,22 @@ c0 7-3 7-3 9
 h18
 c0-2-3-2-3-9"/>
 
-<path d="
-M10 21
-h4"/>
+<path d="M10 21h4"/>
 
 </svg>
 
-<span>
-Activity
-</span>
+<span>Activity</span>
 
 </button>
 
 
 <button
-class="nav"
-onclick="openPanel('profile')">
+  class="nav"
+  onclick="openPanel('profile')">
 
 <svg viewBox="0 0 24 24">
 
-<circle
-cx="12"
-cy="8"
-r="4"/>
+<circle cx="12" cy="8" r="4"/>
 
 <path d="
 M4 21
@@ -2352,9 +2081,7 @@ s8 3 8 7"/>
 
 </svg>
 
-<span>
-Profile
-</span>
+<span>Profile</span>
 
 </button>
 
@@ -2366,15 +2093,14 @@ Profile
 ===================================================== -->
 
 <section
-id="messages"
-class="panel">
-
+  id="messages"
+  class="panel">
 
 <div class="panel-head">
 
 <button
-class="back"
-onclick="closePanels()">
+  class="back"
+  onclick="closePanels()">
 
 <svg viewBox="0 0 24 24">
 
@@ -2384,109 +2110,24 @@ onclick="closePanels()">
 
 </button>
 
-
 <div class="panel-title">
 Messages
 </div>
 
-
-<div class="spacer">
-</div>
+<div class="spacer"></div>
 
 </div>
 
 
 <div
-class="story-row"
-style="
-position:relative;
-top:0;
-padding-top:15px;
-padding-bottom:10px;
-">
+  class="chat-card"
+  onclick="openChat('Darkwing','D')">
 
-<div class="story">
-
-<div class="story-ring-wrap">
-
-<div class="story-ring">
-
-<div class="story-inner">
-D
-</div>
-
-</div>
-
-<span class="online"></span>
-
-</div>
-
-<b>
-Darkwing
-</b>
-
-</div>
-
-
-<div class="story">
-
-<div class="story-ring-wrap">
-
-<div class="story-ring">
-
-<div class="story-inner">
-N
-</div>
-
-</div>
-
-<span class="online"></span>
-
-</div>
-
-<b>
-Nova
-</b>
-
-</div>
-
-
-<div class="story">
-
-<div class="story-ring-wrap">
-
-<div class="story-ring">
-
-<div class="story-inner">
-A
-</div>
-
-</div>
-
-</div>
-
-<b>
-Alex
-</b>
-
-</div>
-
-</div>
-
-
-<div
-class="chat-card"
-onclick="openChat('Darkwing','D')">
-
-<div class="avatar">
-D
-</div>
+<div class="avatar">D</div>
 
 <div class="chat-info">
 
-<strong>
-Darkwing
-</strong>
+<strong>Darkwing</strong>
 
 <small>
 Welcome to X-DARK 🔥
@@ -2502,18 +2143,14 @@ Now
 
 
 <div
-class="chat-card"
-onclick="openChat('Nova','N')">
+  class="chat-card"
+  onclick="openChat('Nova','N')">
 
-<div class="avatar">
-N
-</div>
+<div class="avatar">N</div>
 
 <div class="chat-info">
 
-<strong>
-Nova
-</strong>
+<strong>Nova</strong>
 
 <small>
 Let's create something ✨
@@ -2529,18 +2166,14 @@ Let's create something ✨
 
 
 <div
-class="chat-card"
-onclick="openChat('Alex','A')">
+  class="chat-card"
+  onclick="openChat('Alex','A')">
 
-<div class="avatar">
-A
-</div>
+<div class="avatar">A</div>
 
 <div class="chat-info">
 
-<strong>
-Alex
-</strong>
+<strong>Alex</strong>
 
 <small>
 Hey 👋
@@ -2562,15 +2195,14 @@ Hey 👋
 ===================================================== -->
 
 <section
-id="chatPanel"
-class="panel">
-
+  id="chatPanel"
+  class="panel">
 
 <div class="panel-head">
 
 <button
-class="back"
-onclick="closeChat()">
+  class="back"
+  onclick="closeChat()">
 
 <svg viewBox="0 0 24 24">
 
@@ -2582,34 +2214,25 @@ onclick="closeChat()">
 
 
 <div
-id="chatAvatar"
-class="avatar"
-style="
-width:42px;
-height:42px;
-">
-
+  id="chatAvatar"
+  class="avatar"
+  style="width:42px;height:42px;">
 D
-
 </div>
 
 
-<div
-style="
-flex:1;
-margin-left:8px;
-">
+<div style="flex:1;margin-left:8px;">
 
 <strong id="chatName">
 Darkwing
 </strong>
 
 <div
-style="
-font-size:9px;
-color:#48e58a;
-margin-top:3px;
-">
+  style="
+  font-size:9px;
+  color:#48e58a;
+  margin-top:3px;
+  ">
 
 ● Online
 
@@ -2619,10 +2242,8 @@ margin-top:3px;
 
 
 <button
-class="icon-btn"
-onclick="
-toast('Voice call feature ready')
-">
+  class="icon-btn"
+  onclick="toast('Voice call feature ready')">
 
 <svg viewBox="0 0 24 24">
 
@@ -2647,22 +2268,17 @@ c0-2 1-3 2-3z"/>
 
 
 <div
-id="messagesBox"
-class="messages">
+  id="messagesBox"
+  class="messages">
 </div>
 
 
 <div class="chat-input">
 
 <button
-class="icon-btn"
-style="
-width:40px;
-height:40px;
-"
-onclick="
-toast('Emoji picker ready')
-">
+  class="icon-btn"
+  style="width:40px;height:40px"
+  onclick="toast('Emoji picker ready')">
 
 ☺
 
@@ -2670,19 +2286,18 @@ toast('Emoji picker ready')
 
 
 <input
-id="chatInput"
-placeholder="Message..."
-onkeydown="
-if(event.key==='Enter'){
-event.preventDefault();
-sendMessage();
-}
-">
+  id="chatInput"
+  placeholder="Message..."
+  onkeydown="
+  if(event.key==='Enter'){
+    event.preventDefault();
+    sendMessage();
+  }">
 
 
 <button
-class="send"
-onclick="sendMessage()">
+  class="send"
+  onclick="sendMessage()">
 
 <svg viewBox="0 0 24 24">
 
@@ -2692,9 +2307,7 @@ m22 2
 -4-9
 -9-4z"/>
 
-<path d="
-M22 2
-11 13"/>
+<path d="M22 2L11 13"/>
 
 </svg>
 
@@ -2710,15 +2323,14 @@ M22 2
 ===================================================== -->
 
 <section
-id="explore"
-class="panel">
-
+  id="explore"
+  class="panel">
 
 <div class="panel-head">
 
 <button
-class="back"
-onclick="closePanels()">
+  class="back"
+  onclick="closePanels()">
 
 <svg viewBox="0 0 24 24">
 
@@ -2728,14 +2340,11 @@ onclick="closePanels()">
 
 </button>
 
-
 <div class="panel-title">
 Explore
 </div>
 
-
-<div class="spacer">
-</div>
+<div class="spacer"></div>
 
 </div>
 
@@ -2744,22 +2353,17 @@ Explore
 
 <svg viewBox="0 0 24 24">
 
-<circle
-cx="11"
-cy="11"
-r="7"/>
+<circle cx="11" cy="11" r="7"/>
 
-<path d="
-m20 20
--4-4"/>
+<path d="m20 20-4-4"/>
 
 </svg>
 
 
 <input
-id="searchInput"
-placeholder="Search X-DARK"
-oninput="searchExplore()">
+  id="searchInput"
+  placeholder="Search X-DARK"
+  oninput="searchExplore()">
 
 </div>
 
@@ -2768,15 +2372,11 @@ oninput="searchExplore()">
 
 <div class="card">
 
-<div class="avatar">
-#
-</div>
+<div class="avatar">#</div>
 
 <div class="card-info">
 
-<strong>
-#xdark
-</strong>
+<strong>#xdark</strong>
 
 <small>
 Trending now
@@ -2789,15 +2389,11 @@ Trending now
 
 <div class="card">
 
-<div class="avatar">
-✦
-</div>
+<div class="avatar">✦</div>
 
 <div class="card-info">
 
-<strong>
-Discover creators
-</strong>
+<strong>Discover creators</strong>
 
 <small>
 Find new people and reels
@@ -2817,15 +2413,14 @@ Find new people and reels
 ===================================================== -->
 
 <section
-id="activity"
-class="panel">
-
+  id="activity"
+  class="panel">
 
 <div class="panel-head">
 
 <button
-class="back"
-onclick="closePanels()">
+  class="back"
+  onclick="closePanels()">
 
 <svg viewBox="0 0 24 24">
 
@@ -2835,23 +2430,18 @@ onclick="closePanels()">
 
 </button>
 
-
 <div class="panel-title">
 Activity
 </div>
 
-
-<div class="spacer">
-</div>
+<div class="spacer"></div>
 
 </div>
 
 
 <div class="card">
 
-<div class="avatar">
-D
-</div>
+<div class="avatar">D</div>
 
 <div class="card-info">
 
@@ -2870,9 +2460,7 @@ Darkwing liked your Reel
 
 <div class="card">
 
-<div class="avatar">
-N
-</div>
+<div class="avatar">N</div>
 
 <div class="card-info">
 
@@ -2891,9 +2479,7 @@ Nova followed you
 
 <div class="card">
 
-<div class="avatar">
-A
-</div>
+<div class="avatar">A</div>
 
 <div class="card-info">
 
@@ -2917,15 +2503,14 @@ Alex commented on your Reel
 ===================================================== -->
 
 <section
-id="profile"
-class="panel">
-
+  id="profile"
+  class="panel">
 
 <div class="panel-head">
 
 <button
-class="back"
-onclick="closePanels()">
+  class="back"
+  onclick="closePanels()">
 
 <svg viewBox="0 0 24 24">
 
@@ -2935,14 +2520,11 @@ onclick="closePanels()">
 
 </button>
 
-
 <div class="panel-title">
 Profile
 </div>
 
-
-<div class="spacer">
-</div>
+<div class="spacer"></div>
 
 </div>
 
@@ -2964,10 +2546,10 @@ Ankaj
 
 
 <div
-style="
-color:#777781;
-font-size:11px;
-">
+  style="
+  color:#777781;
+  font-size:11px;
+  ">
 
 @x_dark_user
 
@@ -2978,39 +2560,24 @@ font-size:11px;
 
 <div class="stat">
 
-<strong>
-24
-</strong>
-
-<span>
-Posts
-</span>
+<strong>24</strong>
+<span>Posts</span>
 
 </div>
 
 
 <div class="stat">
 
-<strong>
-12.4K
-</strong>
-
-<span>
-Followers
-</span>
+<strong>12.4K</strong>
+<span>Followers</span>
 
 </div>
 
 
 <div class="stat">
 
-<strong>
-287
-</strong>
-
-<span>
-Following
-</span>
+<strong>287</strong>
+<span>Following</span>
 
 </div>
 
@@ -3018,10 +2585,8 @@ Following
 
 
 <button
-class="follow"
-onclick="
-toast('Profile editing ready')
-">
+  class="follow"
+  onclick="toast('Profile editing ready')">
 
 Edit profile
 
@@ -3037,15 +2602,14 @@ Edit profile
 ===================================================== -->
 
 <section
-id="settings"
-class="panel">
-
+  id="settings"
+  class="panel">
 
 <div class="panel-head">
 
 <button
-class="back"
-onclick="closePanels()">
+  class="back"
+  onclick="closePanels()">
 
 <svg viewBox="0 0 24 24">
 
@@ -3055,29 +2619,22 @@ onclick="closePanels()">
 
 </button>
 
-
 <div class="panel-title">
 Settings
 </div>
 
-
-<div class="spacer">
-</div>
+<div class="spacer"></div>
 
 </div>
 
 
 <div class="card">
 
-<div class="avatar">
-◉
-</div>
+<div class="avatar">◉</div>
 
 <div class="card-info">
 
-<strong>
-Premium Dark UI
-</strong>
+<strong>Premium Dark UI</strong>
 
 <small>
 Glass + neon X-DARK experience
@@ -3090,15 +2647,11 @@ Glass + neon X-DARK experience
 
 <div class="card">
 
-<div class="avatar">
-⌁
-</div>
+<div class="avatar">⌁</div>
 
 <div class="card-info">
 
-<strong>
-Privacy
-</strong>
+<strong>Privacy</strong>
 
 <small>
 Manage privacy and account visibility
@@ -3111,15 +2664,11 @@ Manage privacy and account visibility
 
 <div class="card">
 
-<div class="avatar">
-♧
-</div>
+<div class="avatar">♧</div>
 
 <div class="card-info">
 
-<strong>
-Notifications
-</strong>
+<strong>Notifications</strong>
 
 <small>
 Activity and message alerts
@@ -3133,19 +2682,18 @@ Activity and message alerts
 
 
 <!-- =====================================================
-     CREATE / STUDIO
+     CREATE
 ===================================================== -->
 
 <section
-id="studio"
-class="panel">
-
+  id="studio"
+  class="panel">
 
 <div class="panel-head">
 
 <button
-class="back"
-onclick="closePanels()">
+  class="back"
+  onclick="closePanels()">
 
 <svg viewBox="0 0 24 24">
 
@@ -3155,14 +2703,11 @@ onclick="closePanels()">
 
 </button>
 
-
 <div class="panel-title">
 Create
 </div>
 
-
-<div class="spacer">
-</div>
+<div class="spacer"></div>
 
 </div>
 
@@ -3173,53 +2718,42 @@ Create
 <div class="mode-tabs">
 
 <button
-class="mode active"
-onclick="setMode(this,'Story')">
-
+  class="mode active"
+  onclick="setMode(this,'Story')">
 Story
-
 </button>
 
-
 <button
-class="mode"
-onclick="setMode(this,'Post')">
-
+  class="mode"
+  onclick="setMode(this,'Post')">
 Post
-
 </button>
 
-
 <button
-class="mode"
-onclick="setMode(this,'Reel')">
-
+  class="mode"
+  onclick="setMode(this,'Reel')">
 Reel
-
 </button>
 
 </div>
 
 
-<div
-id="editor"
-class="editor">
-
+<div class="editor">
 
 <div
-id="emptyEditor"
-class="empty-editor">
+  id="emptyEditor"
+  class="empty-editor">
 
 <div class="camera-icon">
 
 <svg viewBox="0 0 24 24">
 
 <rect
-x="3"
-y="7"
-width="18"
-height="13"
-rx="3"/>
+  x="3"
+  y="7"
+  width="18"
+  height="13"
+  rx="3"/>
 
 <path d="
 M8 7
@@ -3228,9 +2762,9 @@ h5
 L16 7"/>
 
 <circle
-cx="12"
-cy="13.5"
-r="3.5"/>
+  cx="12"
+  cy="13.5"
+  r="3.5"/>
 
 </svg>
 
@@ -3241,7 +2775,6 @@ r="3.5"/>
 Create something
 </strong>
 
-
 <small>
 Camera ya Gallery se media select karo
 </small>
@@ -3250,25 +2783,22 @@ Camera ya Gallery se media select karo
 
 
 <img
-id="editImage"
-alt="">
+  id="editImage"
+  alt="">
 
 
 <video
-id="editVideo"
-controls
-playsinline>
+  id="editVideo"
+  controls
+  playsinline>
 </video>
 
 
-<!-- EDITING MENU -->
-
 <div class="edit-menu">
 
-
 <button
-class="edit-btn"
-onclick="toggleFilters()">
+  class="edit-btn"
+  onclick="toggleFilters()">
 
 <svg viewBox="0 0 24 24">
 
@@ -3276,20 +2806,9 @@ onclick="toggleFilters()">
 <path d="M4 12h16"/>
 <path d="M4 18h16"/>
 
-<circle
-cx="8"
-cy="6"
-r="2"/>
-
-<circle
-cx="15"
-cy="12"
-r="2"/>
-
-<circle
-cx="10"
-cy="18"
-r="2"/>
+<circle cx="8" cy="6" r="2"/>
+<circle cx="15" cy="12" r="2"/>
+<circle cx="10" cy="18" r="2"/>
 
 </svg>
 
@@ -3297,18 +2816,14 @@ r="2"/>
 
 
 <button
-class="edit-btn"
-onclick="toggleAdjust()">
+  class="edit-btn"
+  onclick="toggleAdjust()">
 
 <svg viewBox="0 0 24 24">
 
-<circle
-cx="12"
-cy="12"
-r="8"/>
+<circle cx="12" cy="12" r="8"/>
 
 <path d="M12 8v8"/>
-
 <path d="M8 12h8"/>
 
 </svg>
@@ -3317,8 +2832,8 @@ r="8"/>
 
 
 <button
-class="edit-btn"
-onclick="rotateMedia()">
+  class="edit-btn"
+  onclick="rotateMedia()">
 
 <svg viewBox="0 0 24 24">
 
@@ -3327,20 +2842,14 @@ M20 11
 a8 8 0 0 0-14-5
 L3 9"/>
 
-<path d="
-M3 4
-v5
-h5"/>
+<path d="M3 4v5h5"/>
 
 <path d="
 M4 13
 a8 8 0 0 0 14 5
 l3-3"/>
 
-<path d="
-M21 20
-v-5
-h-5"/>
+<path d="M21 20v-5h-5"/>
 
 </svg>
 
@@ -3348,8 +2857,8 @@ h-5"/>
 
 
 <button
-class="edit-btn"
-onclick="resetEditor()">
+  class="edit-btn"
+  onclick="resetEditor()">
 
 <svg viewBox="0 0 24 24">
 
@@ -3357,10 +2866,7 @@ onclick="resetEditor()">
 M4 12
 a8 8 0 1 0 2.3-5.7"/>
 
-<path d="
-M4 5
-v5
-h5"/>
+<path d="M4 5v5h5"/>
 
 </svg>
 
@@ -3369,205 +2875,132 @@ h5"/>
 </div>
 
 
-<!-- FILTER PANEL -->
-
 <div
-id="filterPanel"
-class="tool-panel">
+  id="filterPanel"
+  class="tool-panel">
 
 <div class="filter-row">
 
-
 <button
-class="filter"
-onclick="
-applyFilter('none')
-">
-
+  class="filter"
+  onclick="applyFilter('none')">
 Original
-
 </button>
 
-
 <button
-class="filter"
-onclick="
-applyFilter(
-'saturate(1.6) contrast(1.12)'
-)
-">
-
+  class="filter"
+  onclick="applyFilter('saturate(1.6) contrast(1.12)')">
 Vivid
-
 </button>
 
-
 <button
-class="filter"
-onclick="
-applyFilter(
-'contrast(1.3) saturate(.82) brightness(.92)'
-)
-">
-
+  class="filter"
+  onclick="applyFilter('contrast(1.3) saturate(.82) brightness(.92)')">
 Cinema
-
 </button>
 
-
 <button
-class="filter"
-onclick="
-applyFilter(
-'hue-rotate(18deg) saturate(1.25)'
-)
-">
-
+  class="filter"
+  onclick="applyFilter('hue-rotate(18deg) saturate(1.25)')">
 Cool
-
 </button>
 
-
 <button
-class="filter"
-onclick="
-applyFilter(
-'sepia(.28) saturate(1.45)'
-)
-">
-
+  class="filter"
+  onclick="applyFilter('sepia(.28) saturate(1.45)')">
 Warm
-
 </button>
 
-
 <button
-class="filter"
-onclick="
-applyFilter(
-'brightness(.68) contrast(1.35)'
-)
-">
-
+  class="filter"
+  onclick="applyFilter('brightness(.68) contrast(1.35)')">
 Night
-
-</button>
-
-
-<button
-class="filter"
-onclick="
-applyFilter(
-'brightness(1.08) saturate(.75)'
-)
-">
-
-Dream
-
 </button>
 
 </div>
 
 </div>
 
-
-<!-- ADJUST PANEL -->
 
 <div
-id="adjustPanel"
-class="tool-panel">
-
+  id="adjustPanel"
+  class="tool-panel">
 
 <div class="slider">
 
-<label>
-Brightness
-</label>
+<label>Brightness</label>
 
 <input
-id="brightness"
-type="range"
-min="50"
-max="150"
-value="100"
-oninput="adjustMedia()">
+  id="brightness"
+  type="range"
+  min="50"
+  max="150"
+  value="100"
+  oninput="adjustMedia()">
 
 </div>
 
 
 <div class="slider">
 
-<label>
-Contrast
-</label>
+<label>Contrast</label>
 
 <input
-id="contrast"
-type="range"
-min="50"
-max="150"
-value="100"
-oninput="adjustMedia()">
+  id="contrast"
+  type="range"
+  min="50"
+  max="150"
+  value="100"
+  oninput="adjustMedia()">
 
 </div>
 
 
 <div class="slider">
 
-<label>
-Saturation
-</label>
+<label>Saturation</label>
 
 <input
-id="saturation"
-type="range"
-min="0"
-max="200"
-value="100"
-oninput="adjustMedia()">
+  id="saturation"
+  type="range"
+  min="0"
+  max="200"
+  value="100"
+  oninput="adjustMedia()">
 
 </div>
 
 
 <div class="slider">
 
-<label>
-Blur
-</label>
+<label>Blur</label>
 
 <input
-id="blur"
-type="range"
-min="0"
-max="5"
-value="0"
-step=".1"
-oninput="adjustMedia()">
+  id="blur"
+  type="range"
+  min="0"
+  max="5"
+  value="0"
+  step=".1"
+  oninput="adjustMedia()">
 
 </div>
 
 </div>
 
-
-<!-- CAMERA GALLERY -->
 
 <div class="editor-actions">
 
 <button
-class="editor-btn"
-onclick="openCamera()">
-
+  class="editor-btn"
+  onclick="openCamera()">
 Camera
-
 </button>
-
 
 <button
-class="editor-btn"
-onclick="openGallery()">
-
+  class="editor-btn"
+  onclick="openGallery()">
 Gallery
-
 </button>
 
 </div>
@@ -3576,46 +3009,40 @@ Gallery
 
 
 <input
-id="cameraInput"
-type="file"
-accept="image/*,video/*"
-capture="environment"
-hidden
-onchange="loadMedia(this)">
+  id="cameraInput"
+  type="file"
+  accept="image/*,video/*"
+  capture="environment"
+  hidden
+  onchange="loadMedia(this)">
 
 
 <input
-id="galleryInput"
-type="file"
-accept="image/*,video/*"
-hidden
-onchange="loadMedia(this)">
+  id="galleryInput"
+  type="file"
+  accept="image/*,video/*"
+  hidden
+  onchange="loadMedia(this)">
 
 
 <textarea
-id="studioCaption"
-class="caption-box"
-placeholder="Write a caption...">
-</textarea>
+  id="studioCaption"
+  class="caption-box"
+  placeholder="Write a caption..."></textarea>
 
 
 <div class="publish-row">
 
 <button
-class="cancel"
-onclick="closePanels()">
-
+  class="cancel"
+  onclick="closePanels()">
 Cancel
-
 </button>
 
-
 <button
-class="publish"
-onclick="publishMedia()">
-
+  class="publish"
+  onclick="publishMedia()">
 Publish
-
 </button>
 
 </div>
@@ -3630,15 +3057,14 @@ Publish
 ===================================================== -->
 
 <div
-id="comments"
-class="comments">
-
+  id="comments"
+  class="comments">
 
 <div class="comment-head">
 
 <button
-class="comment-back"
-onclick="closeComments()">
+  class="comment-back"
+  onclick="closeComments()">
 
 <svg viewBox="0 0 24 24">
 
@@ -3654,9 +3080,8 @@ Comments
 
 
 <div
-id="commentList"
-class="comment-list">
-
+  id="commentList"
+  class="comment-list">
 
 <div class="comment">
 
@@ -3666,9 +3091,7 @@ D
 
 <div class="comment-body">
 
-<b>
-Darkwing
-</b>
+<b>Darkwing</b>
 
 <br>
 
@@ -3676,9 +3099,7 @@ This looks amazing 🔥
 
 <br>
 
-<small>
-2m
-</small>
+<small>2m</small>
 
 </div>
 
@@ -3693,9 +3114,7 @@ N
 
 <div class="comment-body">
 
-<b>
-Nova
-</b>
+<b>Nova</b>
 
 <br>
 
@@ -3703,9 +3122,7 @@ X-DARK is looking clean!
 
 <br>
 
-<small>
-5m
-</small>
+<small>5m</small>
 
 </div>
 
@@ -3717,30 +3134,23 @@ X-DARK is looking clean!
 <div class="comment-input">
 
 <input
-id="commentInput"
-placeholder="Add a comment..."
-onkeydown="
-if(event.key==='Enter'){
-event.preventDefault();
-addComment();
-}
-">
+  id="commentInput"
+  placeholder="Add a comment..."
+  onkeydown="
+  if(event.key==='Enter'){
+    event.preventDefault();
+    addComment();
+  }">
 
 
 <button
-class="comment-send"
-onclick="addComment()">
+  class="comment-send"
+  onclick="addComment()">
 
 <svg viewBox="0 0 24 24">
 
-<path d="
-M12 19
-V5"/>
-
-<path d="
-m6 11
-6-6
-6 6"/>
+<path d="M12 19V5"/>
+<path d="m6 11 6-6 6 6"/>
 
 </svg>
 
@@ -3752,52 +3162,56 @@ m6 11
 
 
 <div
-id="toast"
-class="toast">
+  id="toast"
+  class="toast">
 </div>
 
 </div>
 
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
 
 <script type="module">
 
-/* =====================================================
-   FIREBASE
-===================================================== */
-
 import {
-initializeApp
+  initializeApp
 }
 from
 "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 
 
 import {
-getAuth,
-signInAnonymously,
-onAuthStateChanged
+  getAuth,
+  signInAnonymously,
+  onAuthStateChanged
 }
 from
 "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 
 
 import {
-getFirestore,
-collection,
-addDoc,
-query,
-orderBy,
-onSnapshot,
-serverTimestamp
+  getFirestore,
+  collection,
+  addDoc,
+  query,
+  orderBy,
+  onSnapshot,
+  serverTimestamp
 }
 from
 "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 
+/* =========================
+   FIREBASE CONFIG
+========================= */
+
 const firebaseConfig={
 
 apiKey:
-"AIzaC8Hfx0E7OpnfclF7UGYVcmdU38yuxtsBY",
+"AIzaC8Hfxcl0E7OpnfclF7UGYVcmdU38yuxtsBY",
 
 authDomain:
 "darkwing-a717a.firebaseapp.com",
@@ -3821,9 +3235,7 @@ measurementId:
 
 
 let app;
-
 let auth;
-
 let db;
 
 let currentUser=null;
@@ -3833,20 +3245,19 @@ let currentChat="";
 let stopChat=null;
 
 
+/* =========================
+   FIREBASE START
+========================= */
+
 try{
 
-app=
-initializeApp(
+app=initializeApp(
 firebaseConfig
 );
 
+auth=getAuth(app);
 
-auth=
-getAuth(app);
-
-
-db=
-getFirestore(app);
+db=getFirestore(app);
 
 
 onAuthStateChanged(
@@ -3857,8 +3268,9 @@ currentUser=user;
 
 if(user){
 
-toast(
-"X-DARK connected ✓"
+console.log(
+"X-DARK Firebase connected",
+user.uid
 );
 
 }
@@ -3866,11 +3278,8 @@ toast(
 });
 
 
-signInAnonymously(
-auth
-)
-.catch(
-error=>{
+signInAnonymously(auth)
+.catch(error=>{
 
 console.error(
 "Firebase Auth:",
@@ -3879,8 +3288,7 @@ error
 
 toast(
 "Firebase: "+
-(error.code ||
-"authentication error")
+(error.code || "authentication error")
 );
 
 });
@@ -3897,12 +3305,11 @@ toast(
 }
 
 
-/* =====================================================
+/* =========================
    PANELS
-===================================================== */
+========================= */
 
-window.openPanel=
-function(id){
+window.openPanel=function(id){
 
 closePanels();
 
@@ -3911,202 +3318,168 @@ document.getElementById(id);
 
 if(panel){
 
-panel.classList.add(
-"open"
-);
+panel.classList.add("open");
 
 }
 
 };
 
 
-window.closePanels=
-function(){
+window.closePanels=function(){
 
 document
 .querySelectorAll(".panel")
-.forEach(
-panel=>{
-panel.classList.remove(
-"open"
-);
-}
-);
+.forEach(panel=>{
+
+panel.classList.remove("open");
+
+});
 
 };
 
 
-window.goHome=
-function(){
+window.goHome=function(){
 
 closePanels();
 
 document
 .getElementById("feed")
 .scrollTo({
-
 top:0,
-
 behavior:"smooth"
-
 });
 
 };
 
 
-window.openStudio=
-function(){
+/* =========================
+   STUDIO
+========================= */
 
-openPanel(
-"studio"
-);
+window.openStudio=function(){
+
+openPanel("studio");
 
 };
 
 
-/* =====================================================
+/* =========================
    TOAST
-===================================================== */
+========================= */
 
-window.toast=
-function(message){
+window.toast=function(message){
 
-const toastBox=
-document.getElementById(
-"toast"
-);
+const box=
+document.getElementById("toast");
 
-toastBox.textContent=
-message;
+box.textContent=message;
 
-toastBox.classList.add(
-"show"
-);
+box.classList.add("show");
 
 clearTimeout(
 window.toastTimer
 );
 
-window.toastTimer=
-setTimeout(
+window.toastTimer=setTimeout(
 ()=>{
 
-toastBox.classList.remove(
-"show"
-);
+box.classList.remove("show");
 
 },
-2300
+2200
 );
 
 };
 
 
-/* =====================================================
+/* =========================
    LIKE
-===================================================== */
+========================= */
 
-window.toggleLike=
-function(button){
+window.toggleLike=function(button){
 
-button.classList.toggle(
-"liked"
-);
+button.classList.toggle("liked");
 
 const span=
-button.querySelector(
-"span"
-);
+button.querySelector("span");
 
-span.textContent=
-button.classList.contains(
-"liked"
-)
-?"12.5K"
-:"12.4K";
+if(
+button.classList.contains("liked")
+){
+
+span.textContent="12.5K";
+
+}
+else{
+
+span.textContent="12.4K";
+
+}
 
 };
 
 
-/* =====================================================
+/* =========================
    SAVE
-===================================================== */
+========================= */
 
-window.toggleSave=
-function(button){
+window.toggleSave=function(button){
 
-button.classList.toggle(
-"liked"
-);
+button.classList.toggle("liked");
 
 const span=
-button.querySelector(
-"span"
-);
+button.querySelector("span");
 
 span.textContent=
-button.classList.contains(
-"liked"
-)
+button.classList.contains("liked")
 ?"Saved"
 :"Save";
 
 };
 
 
-/* =====================================================
+/* =========================
    FOLLOW
-===================================================== */
+========================= */
 
-window.toggleFollow=
-function(button){
+window.toggleFollow=function(button){
 
 button.textContent=
-button.textContent.trim()
-==="Follow"
+button.textContent.trim()==="Follow"
 ?"Following"
 :"Follow";
 
 };
 
 
-/* =====================================================
+/* =========================
    SHARE
-===================================================== */
+========================= */
 
-window.sharePost=
-async function(){
+window.sharePost=async function(){
 
 try{
 
-if(
-navigator.share
-){
+if(navigator.share){
 
 await navigator.share({
 
-title:
-"X-DARK",
+title:"X-DARK",
 
-text:
-"The Next Level",
+text:"The Next Level",
 
-url:
-location.href
+url:location.href
 
 });
 
 }
 else{
 
-await navigator.clipboard
-.writeText(
+await navigator.clipboard.writeText(
 location.href
 );
 
-toast(
-"Link copied"
-);
+toast("Link copied");
 
 }
 
@@ -4116,40 +3489,29 @@ catch(error){}
 };
 
 
-/* =====================================================
+/* =========================
    COMMENTS
-===================================================== */
+========================= */
 
-window.openComments=
-function(){
+window.openComments=function(){
 
 document
-.getElementById(
-"comments"
-)
-.classList.add(
-"open"
-);
+.getElementById("comments")
+.classList.add("open");
 
 };
 
 
-window.closeComments=
-function(){
+window.closeComments=function(){
 
 document
-.getElementById(
-"comments"
-)
-.classList.remove(
-"open"
-);
+.getElementById("comments")
+.classList.remove("open");
 
 };
 
 
-window.addComment=
-function(){
+window.addComment=function(){
 
 const input=
 document.getElementById(
@@ -4163,12 +3525,9 @@ if(!text)return;
 
 
 const item=
-document.createElement(
-"div"
-);
+document.createElement("div");
 
-item.className=
-"comment";
+item.className="comment";
 
 
 item.innerHTML=`
@@ -4179,9 +3538,7 @@ A
 
 <div class="comment-body">
 
-<b>
-Ankaj
-</b>
+<b>Ankaj</b>
 
 <br>
 
@@ -4189,9 +3546,7 @@ ${escapeHTML(text)}
 
 <br>
 
-<small>
-now
-</small>
+<small>now</small>
 
 </div>
 
@@ -4199,21 +3554,15 @@ now
 
 
 document
-.getElementById(
-"commentList"
-)
-.appendChild(
-item
-);
+.getElementById("commentList")
+.appendChild(item);
 
 
 input.value="";
 
 
 document
-.getElementById(
-"commentList"
-)
+.getElementById("commentList")
 .scrollTop=999999;
 
 };
@@ -4237,44 +3586,36 @@ character=>({
 }
 
 
-/* =====================================================
-   FIREBASE CHAT
-===================================================== */
+/* =========================
+   CHAT
+========================= */
 
-window.openChat=
-function(name,initial){
+window.openChat=function(
+name,
+initial
+){
 
 currentChat=name;
 
 closePanels();
 
 document
-.getElementById(
-"chatPanel"
-)
-.classList.add(
-"open"
-);
+.getElementById("chatPanel")
+.classList.add("open");
 
 
 document
-.getElementById(
-"chatName"
-)
+.getElementById("chatName")
 .textContent=name;
 
 
 document
-.getElementById(
-"chatAvatar"
-)
+.getElementById("chatAvatar")
 .textContent=initial;
 
 
 document
-.getElementById(
-"messagesBox"
-)
+.getElementById("messagesBox")
 .innerHTML="";
 
 
@@ -4322,9 +3663,7 @@ query(
 collection(
 db,
 "chats",
-chatId(
-currentChat
-),
+chatId(currentChat),
 "messages"
 ),
 
@@ -4357,7 +3696,6 @@ doc=>{
 const message=
 doc.data();
 
-
 addBubble(
 
 message.text,
@@ -4377,9 +3715,7 @@ box.scrollHeight;
 
 error=>{
 
-console.error(
-error
-);
+console.error(error);
 
 toast(
 "Chat error: "+
@@ -4399,9 +3735,7 @@ mine
 ){
 
 const row=
-document.createElement(
-"div"
-);
+document.createElement("div");
 
 row.className=
 "msg"+
@@ -4409,35 +3743,24 @@ row.className=
 
 
 const bubble=
-document.createElement(
-"div"
-);
+document.createElement("div");
 
-bubble.className=
-"bubble";
+bubble.className="bubble";
 
-bubble.textContent=
-text;
+bubble.textContent=text;
 
 
-row.appendChild(
-bubble
-);
+row.appendChild(bubble);
 
 
 document
-.getElementById(
-"messagesBox"
-)
-.appendChild(
-row
-);
+.getElementById("messagesBox")
+.appendChild(row);
 
 };
 
 
-window.closeChat=
-function(){
+window.closeChat=function(){
 
 if(stopChat){
 
@@ -4449,18 +3772,13 @@ stopChat=null;
 
 
 document
-.getElementById(
-"chatPanel"
-)
-.classList.remove(
-"open"
-);
+.getElementById("chatPanel")
+.classList.remove("open");
 
 };
 
 
-window.sendMessage=
-async function(){
+window.sendMessage=async function(){
 
 const input=
 document.getElementById(
@@ -4494,9 +3812,7 @@ await addDoc(
 collection(
 db,
 "chats",
-chatId(
-currentChat
-),
+chatId(currentChat),
 "messages"
 ),
 
@@ -4510,11 +3826,9 @@ currentUser.uid,
 senderName:
 "Ankaj",
 
-type:
-"text",
+type:"text",
 
-seenBy:
-[
+seenBy:[
 currentUser.uid
 ],
 
@@ -4528,9 +3842,7 @@ serverTimestamp()
 }
 catch(error){
 
-console.error(
-error
-);
+console.error(error);
 
 toast(
 "Message failed: "+
@@ -4544,18 +3856,15 @@ input.value=text;
 };
 
 
-/* =====================================================
+/* =========================
    EXPLORE
-===================================================== */
+========================= */
 
-window.searchExplore=
-function(){
+window.searchExplore=function(){
 
 const value=
 document
-.getElementById(
-"searchInput"
-)
+.getElementById("searchInput")
 .value
 .trim();
 
@@ -4572,40 +3881,27 @@ results.innerHTML=`
 
 <div class="card">
 
-<div class="avatar">
-#
-</div>
+<div class="avatar">#</div>
 
 <div class="card-info">
 
-<strong>
-#xdark
-</strong>
+<strong>#xdark</strong>
 
-<small>
-Trending now
-</small>
+<small>Trending now</small>
 
 </div>
 
 </div>
-
 
 <div class="card">
 
-<div class="avatar">
-✦
-</div>
+<div class="avatar">✦</div>
 
 <div class="card-info">
 
-<strong>
-Discover creators
-</strong>
+<strong>Discover creators</strong>
 
-<small>
-Find new people and reels
-</small>
+<small>Find new people and reels</small>
 
 </div>
 
@@ -4622,9 +3918,7 @@ results.innerHTML=`
 
 <div class="card">
 
-<div class="avatar">
-⌕
-</div>
+<div class="avatar">⌕</div>
 
 <div class="card-info">
 
@@ -4645,38 +3939,32 @@ Search results on X-DARK
 };
 
 
-/* =====================================================
-   CREATE EDITOR
-===================================================== */
+/* =========================
+   CREATE
+========================= */
 
 let mode="Story";
 
 let rotation=0;
 
 
-window.setMode=
-function(button,newMode){
+window.setMode=function(
+button,
+newMode
+){
 
 document
-.querySelectorAll(
-".mode"
-)
-.forEach(
-item=>{
-item.classList.remove(
-"active"
-);
-}
-);
+.querySelectorAll(".mode")
+.forEach(item=>{
+
+item.classList.remove("active");
+
+});
 
 
-button.classList.add(
-"active"
-);
-
+button.classList.add("active");
 
 mode=newMode;
-
 
 toast(
 newMode+
@@ -4686,50 +3974,39 @@ newMode+
 };
 
 
-window.openCamera=
-function(){
+window.openCamera=function(){
 
 document
-.getElementById(
-"cameraInput"
-)
+.getElementById("cameraInput")
 .click();
 
 };
 
 
-window.openGallery=
-function(){
+window.openGallery=function(){
 
 document
-.getElementById(
-"galleryInput"
-)
+.getElementById("galleryInput")
 .click();
 
 };
 
 
-window.loadMedia=
-function(input){
+window.loadMedia=function(input){
 
-const file=
-input.files[0];
+const file=input.files[0];
 
 if(!file)return;
 
 
 const url=
-URL.createObjectURL(
-file
-);
+URL.createObjectURL(file);
 
 
 const image=
 document.getElementById(
 "editImage"
 );
-
 
 const video=
 document.getElementById(
@@ -4738,38 +4015,29 @@ document.getElementById(
 
 
 document
-.getElementById(
-"emptyEditor"
-)
-.style.display=
-"none";
+.getElementById("emptyEditor")
+.style.display="none";
 
 
-image.style.display=
-"none";
+image.style.display="none";
 
-video.style.display=
-"none";
+video.style.display="none";
 
 
 if(
-file.type.startsWith(
-"video/"
-)
+file.type.startsWith("video/")
 ){
 
 video.src=url;
 
-video.style.display=
-"block";
+video.style.display="block";
 
 }
 else{
 
 image.src=url;
 
-image.style.display=
-"block";
+image.style.display="block";
 
 }
 
@@ -4782,119 +4050,78 @@ mode+
 };
 
 
-/* =====================================================
+/* =========================
    FILTERS
-===================================================== */
+========================= */
 
-window.toggleFilters=
-function(){
-
-document
-.getElementById(
-"filterPanel"
-)
-.classList.toggle(
-"show"
-);
-
+window.toggleFilters=function(){
 
 document
-.getElementById(
-"adjustPanel"
-)
-.classList.remove(
-"show"
-);
+.getElementById("filterPanel")
+.classList.toggle("show");
+
+document
+.getElementById("adjustPanel")
+.classList.remove("show");
 
 };
 
 
-window.toggleAdjust=
-function(){
+window.toggleAdjust=function(){
 
 document
-.getElementById(
-"adjustPanel"
-)
-.classList.toggle(
-"show"
-);
-
+.getElementById("adjustPanel")
+.classList.toggle("show");
 
 document
-.getElementById(
-"filterPanel"
-)
-.classList.remove(
-"show"
-);
+.getElementById("filterPanel")
+.classList.remove("show");
 
 };
 
 
-window.applyFilter=
-function(filter){
+window.applyFilter=function(filter){
 
 document
-.getElementById(
-"editImage"
-)
-.style.filter=
-filter;
+.getElementById("editImage")
+.style.filter=filter;
 
 
 document
-.getElementById(
-"editVideo"
-)
-.style.filter=
-filter;
+.getElementById("editVideo")
+.style.filter=filter;
 
 
-toast(
-"Filter applied ✨"
-);
+toast("Filter applied ✨");
 
 };
 
 
-/* =====================================================
-   ADJUSTMENTS
-===================================================== */
+/* =========================
+   ADJUST
+========================= */
 
-window.adjustMedia=
-function(){
+window.adjustMedia=function(){
 
 const brightness=
-document
-.getElementById(
+document.getElementById(
 "brightness"
-)
-.value;
-
+).value;
 
 const contrast=
-document
-.getElementById(
+document.getElementById(
 "contrast"
-)
-.value;
-
+).value;
 
 const saturation=
-document
-.getElementById(
+document.getElementById(
 "saturation"
-)
-.value;
-
+).value;
 
 const blur=
-document
-.getElementById(
+document.getElementById(
 "blur"
-)
-.value;
+).value;
 
 
 const filter=`
@@ -4908,146 +4135,103 @@ blur(${blur}px)
 
 
 document
-.getElementById(
-"editImage"
-)
-.style.filter=
-filter;
+.getElementById("editImage")
+.style.filter=filter;
 
 
 document
-.getElementById(
-"editVideo"
-)
-.style.filter=
-filter;
+.getElementById("editVideo")
+.style.filter=filter;
 
 };
 
 
-/* =====================================================
+/* =========================
    ROTATE
-===================================================== */
+========================= */
 
-window.rotateMedia=
-function(){
+window.rotateMedia=function(){
 
 rotation=
 (rotation+90)%360;
 
 
 document
-.getElementById(
-"editImage"
-)
+.getElementById("editImage")
 .style.transform=
 `rotate(${rotation}deg)`;
 
 
 document
-.getElementById(
-"editVideo"
-)
+.getElementById("editVideo")
 .style.transform=
 `rotate(${rotation}deg)`;
 
 };
 
 
-/* =====================================================
-   RESET EDITOR
-===================================================== */
+/* =========================
+   RESET
+========================= */
 
-window.resetEditor=
-function(){
+window.resetEditor=function(){
 
 rotation=0;
 
 
 document
-.getElementById(
-"brightness"
-)
+.getElementById("brightness")
 .value=100;
 
-
 document
-.getElementById(
-"contrast"
-)
+.getElementById("contrast")
 .value=100;
 
-
 document
-.getElementById(
-"saturation"
-)
+.getElementById("saturation")
 .value=100;
 
-
 document
-.getElementById(
-"blur"
-)
+.getElementById("blur")
 .value=0;
 
 
 document
-.getElementById(
-"editImage"
-)
-.style.filter=
-"none";
+.getElementById("editImage")
+.style.filter="none";
+
+document
+.getElementById("editVideo")
+.style.filter="none";
 
 
 document
-.getElementById(
-"editVideo"
-)
-.style.filter=
-"none";
-
+.getElementById("editImage")
+.style.transform=
+"rotate(0deg)";
 
 document
-.getElementById(
-"editImage"
-)
+.getElementById("editVideo")
 .style.transform=
 "rotate(0deg)";
 
 
-document
-.getElementById(
-"editVideo"
-)
-.style.transform=
-"rotate(0deg)";
-
-
-toast(
-"Editor reset"
-);
+toast("Editor reset");
 
 };
 
 
-/* =====================================================
+/* =========================
    PUBLISH
-===================================================== */
+========================= */
 
-window.publishMedia=
-function(){
+window.publishMedia=function(){
 
 const image=
-document.getElementById(
-"editImage"
-);
-
+document.getElementById("editImage");
 
 const video=
-document.getElementById(
-"editVideo"
-);
+document.getElementById("editVideo");
 
 
 if(
@@ -5073,27 +4257,22 @@ mode.toLowerCase()+
 };
 
 
-/* =====================================================
-   VIDEO OBSERVER
-===================================================== */
+/* =========================
+   VIDEO AUTOPLAY
+========================= */
 
 const observer=
 new IntersectionObserver(
 
 entries=>{
 
-entries.forEach(
-entry=>{
+entries.forEach(entry=>{
 
-if(
-entry.isIntersecting
-){
+if(entry.isIntersecting){
 
 entry.target
 .play()
-.catch(
-()=>{}
-);
+.catch(()=>{});
 
 }
 else{
@@ -5114,13 +4293,12 @@ threshold:.65
 
 
 document
-.querySelectorAll(
-".reel-media"
-)
-.forEach(
-video=>
-observer.observe(video)
-);
+.querySelectorAll(".reel-media")
+.forEach(video=>{
+
+observer.observe(video);
+
+});
 
 </script>
 
