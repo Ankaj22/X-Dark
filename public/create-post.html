@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+<title>Create Post - X-DARK</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+body{
+
+margin:0;
+
+background:#08090d;
+
+color:white;
+
+font-family:Arial,sans-serif;
+
+padding-bottom:90px;
+
+}
+
+header{
+
+height:75px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:0 22px;
+
+border-bottom:
+1px solid #292b35;
+
+}
+
+.logo{
+
+font-size:26px;
+
+font-weight:900;
+
+}
+
+.container{
+
+max-width:600px;
+
+margin:auto;
+
+padding:25px 18px;
+
+}
+
+h1{
+
+font-size:30px;
+
+margin:
+0 0 25px;
+
+}
+
+.card{
+
+background:#111219;
+
+border:
+1px solid #292b35;
+
+border-radius:20px;
+
+padding:20px;
+
+}
+
+.user{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+margin-bottom:20px;
+
+}
+
+.avatar{
+
+width:50px;
+
+height:50px;
+
+border-radius:50%;
+
+border:
+2px solid #8c52ff;
+
+}
+
+.handle{
+
+color:#8b8e9a;
+
+margin-top:4px;
+
+font-size:14px;
+
+}
+
+
+/* SELECT */
+
+.select-box{
+
+display:block;
+
+background:#191b23;
+
+border:
+2px dashed #454855;
+
+border-radius:18px;
+
+padding:35px 15px;
+
+text-align:center;
+
+cursor:pointer;
+
+}
+
+.select-icon{
+
+font-size:50px;
+
+}
+
+.select-box h3{
+
+margin:
+10px 0 5px;
+
+}
+
+.select-box p{
+
+margin:0;
+
+color:#898c99;
+
+font-size:13px;
+
+}
+
+#videoInput{
+
+display:none;
+
+}
+
+
+/* PREVIEW */
+
+.preview{
+
+display:none;
+
+margin-top:18px;
+
+border-radius:16px;
+
+overflow:hidden;
+
+background:black;
+
+}
+
+.preview video{
+
+width:100%;
+
+display:block;
+
+max-height:450px;
+
+}
+
+.file-info{
+
+padding:12px;
+
+background:#191b23;
+
+color:#aaa;
+
+font-size:13px;
+
+}
+
+
+/* INPUTS */
+
+textarea,
+.tags{
+
+width:100%;
+
+background:#191b23;
+
+border:
+1px solid #30333e;
+
+border-radius:14px;
+
+color:white;
+
+font-size:16px;
+
+outline:none;
+
+padding:15px;
+
+margin-top:15px;
+
+}
+
+textarea{
+
+height:120px;
+
+resize:none;
+
+}
+
+textarea:focus,
+.tags:focus{
+
+border-color:#8c52ff;
+
+}
+
+
+/* BUTTON */
+
+.buttons{
+
+display:flex;
+
+gap:10px;
+
+margin-top:18px;
+
+}
+
+button{
+
+flex:1;
+
+padding:15px;
+
+border:0;
+
+border-radius:13px;
+
+font-size:16px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+}
+
+.cancel{
+
+background:#272933;
+
+color:white;
+
+}
+
+.upload{
+
+background:white;
+
+color:black;
+
+}
+
+.upload:disabled{
+
+opacity:.4;
+
+}
+
+.status{
+
+text-align:center;
+
+margin-top:15px;
+
+min-height:20px;
+
+color:#aaa;
+
+}
+
+
+/* NAV */
+
+nav{
+
+position:fixed;
+
+bottom:0;
+
+left:0;
+
+right:0;
+
+height:75px;
+
+background:#090a0e;
+
+border-top:
+1px solid #292b35;
+
+display:flex;
+
+justify-content:
+space-around;
+
+align-items:center;
+
+font-size:27px;
+
+}
+
+.plus{
+
+background:white;
+
+color:black;
+
+padding:
+8px 20px;
+
+border-radius:16px;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="logo">
+X-DARK
+</div>
+
+<div>
+✦
+</div>
+
+</header>
+
+
+<div class="container">
+
+
+<h1>
+Create
+</h1>
+
+
+<div class="card">
+
+
+<div class="user">
+
+<img
+class="avatar"
+src="https://i.pravatar.cc/100?img=12">
+
+
+<div>
+
+<strong>
+X-Dark User
+</strong>
+
+<div class="handle">
+@Darkwing2
+</div>
+
+</div>
+
+</div>
+
+
+<label
+class="select-box"
+for="videoInput">
+
+<div class="select-icon">
+🎬
+</div>
+
+<h3>
+Choose Video
+</h3>
+
+<p>
+MP4 • MOV • WEBM
+</p>
+
+</label>
+
+
+<input
+type="file"
+id="videoInput"
+accept="video/mp4,video/quicktime,video/webm">
+
+
+<div
+class="preview"
+id="preview">
+
+<video
+id="previewVideo"
+controls
+playsinline>
+</video>
+
+<div
+class="file-info"
+id="fileInfo">
+</div>
+
+</div>
+
+
+<textarea
+id="caption"
+maxlength="500"
+placeholder="Write a caption...">
+</textarea>
+
+
+<input
+class="tags"
+id="tags"
+type="text"
+placeholder="#xdark #video">
+
+
+<div class="buttons">
+
+
+<button
+class="cancel"
+onclick="
+window.location.href=
+'index.html'
+">
+
+Cancel
+
+</button>
+
+
+<button
+class="upload"
+id="uploadButton"
+disabled>
+
+🚀 Post
+
+</button>
+
+
+</div>
+
+
+<div
+class="status"
+id="status">
+</div>
+
+
+</div>
+
+</div>
+
+
+<nav>
+
+<span
+onclick="
+window.location.href=
+'index.html'
+">
+⌂
+</span>
+
+<span>
+⌕
+</span>
+
+<span class="plus">
++
+</span>
+
+<span>
+♡
+</span>
+
+<span
+onclick="
+window.location.href=
+'profile.html'
+">
+◉
+</span>
+
+</nav>
+
+
+<script>
+
+
+let selectedVideo = null;
+
+let previewURL = null;
+
+
+const input =
+document.getElementById(
+"videoInput"
+);
+
+
+const button =
+document.getElementById(
+"uploadButton"
+);
+
+
+const status =
+document.getElementById(
+"status"
+);
+
+
+input.addEventListener(
+"change",
+function(){
+
+
+const file =
+input.files[0];
+
+
+if(!file){
+
+return;
+
+}
+
+
+if(
+!file.type.startsWith(
+"video/"
+)
+){
+
+status.innerText =
+"Please select a video.";
+
+input.value = "";
+
+return;
+
+}
+
+
+selectedVideo =
+file;
+
+
+if(previewURL){
+
+URL.revokeObjectURL(
+previewURL
+);
+
+}
+
+
+previewURL =
+URL.createObjectURL(
+file
+);
+
+
+document.getElementById(
+"previewVideo"
+).src =
+previewURL;
+
+
+document.getElementById(
+"fileInfo"
+).innerText =
+file.name +
+" • " +
+formatSize(
+file.size
+);
+
+
+document.getElementById(
+"preview"
+).style.display =
+"block";
+
+
+button.disabled =
+false;
+
+
+status.innerText =
+"Video ready ✓";
+
+
+});
+
+
+function formatSize(bytes){
+
+if(
+bytes <
+1024 * 1024
+){
+
+return (
+bytes / 1024
+).toFixed(1) +
+" KB";
+
+}
+
+
+return (
+bytes /
+1024 /
+1024
+).toFixed(1) +
+" MB";
+
+}
+
+
+button.addEventListener(
+"click",
+uploadVideo
+);
+
+
+async function uploadVideo(){
+
+
+if(!selectedVideo){
+
+status.innerText =
+"Choose a video first.";
+
+return;
+
+}
+
+
+button.disabled =
+true;
+
+
+button.innerText =
+"Uploading...";
+
+
+status.innerText =
+"Uploading video...";
+
+
+const formData =
+new FormData();
+
+
+formData.append(
+"video",
+selectedVideo
+);
+
+
+formData.append(
+
+"caption",
+
+document.getElementById(
+"caption"
+).value.trim()
+
+);
+
+
+formData.append(
+
+"tags",
+
+document.getElementById(
+"tags"
+).value.trim()
+
+);
+
+
+try{
+
+
+const response =
+await fetch(
+
+"/api/upload",
+
+{
+
+method:"POST",
+
+body:formData
+
+}
+
+);
+
+
+const result =
+await response.json();
+
+
+if(!response.ok){
+
+throw new Error(
+
+result.message ||
+"Upload failed"
+
+);
+
+}
+
+
+status.innerText =
+"Video uploaded successfully 🚀";
+
+
+button.innerText =
+"Uploaded ✓";
+
+
+setTimeout(
+function(){
+
+window.location.href =
+"index.html";
+
+},
+800
+);
+
+
+}
+
+catch(error){
+
+
+console.error(error);
+
+
+status.innerText =
+"Upload failed: " +
+error.message;
+
+
+button.innerText =
+"🚀 Post";
+
+
+button.disabled =
+false;
+
+
+}
+
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
