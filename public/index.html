@@ -22,19 +22,19 @@ body{
 .page{display:none}
 .page.active{display:block}
 
-/* ================= TOP BAR ================= */
+/* TOP */
 
 .topbar{
   height:88px;
-  border-bottom:1px solid #292b34;
   display:flex;
   align-items:center;
   justify-content:space-between;
   padding:0 22px;
+  border-bottom:1px solid #292b34;
+  background:#07080c;
   position:sticky;
   top:0;
   z-index:100;
-  background:#07080c;
 }
 
 .logo{
@@ -48,15 +48,15 @@ body{
 }
 
 .icon{
-  width:28px;
-  height:28px;
+  width:29px;
+  height:29px;
   stroke:#fff;
   stroke-width:1.8;
   fill:none;
   cursor:pointer;
 }
 
-/* ================= STORIES ================= */
+/* STORIES */
 
 .stories{
   display:flex;
@@ -97,7 +97,7 @@ body{
   font-size:13px;
 }
 
-/* ================= FEED ================= */
+/* FEED */
 
 .feed{
   max-width:650px;
@@ -150,8 +150,8 @@ body{
 
 .post-image{
   width:100%;
-  display:block;
   max-height:700px;
+  display:block;
   object-fit:cover;
 }
 
@@ -203,6 +203,7 @@ body{
   padding:8px 22px 14px;
   color:#777b88;
   font-size:14px;
+  cursor:pointer;
 }
 
 .comment-area{
@@ -234,7 +235,7 @@ body{
   padding:0 15px;
 }
 
-/* ================= SEARCH ================= */
+/* SEARCH */
 
 .search-page{
   max-width:650px;
@@ -282,7 +283,7 @@ body{
 .clear-search{
   display:none;
   color:#aaa;
-  font-size:20px;
+  font-size:22px;
   cursor:pointer;
 }
 
@@ -299,10 +300,6 @@ body{
   padding:14px 5px;
   border-bottom:1px solid #1d1f27;
   cursor:pointer;
-}
-
-.search-result:hover{
-  background:#101219;
 }
 
 .search-avatar{
@@ -331,17 +328,17 @@ body{
 
 .result-arrow{
   color:#777b88;
-  font-size:22px;
+  font-size:24px;
 }
 
 .no-results{
+  display:none;
   text-align:center;
   color:#777b88;
   padding:50px 10px;
-  display:none;
 }
 
-/* ================= NOTIFICATIONS ================= */
+/* NOTIFICATIONS */
 
 .notification-page{
   max-width:650px;
@@ -370,12 +367,8 @@ body{
   cursor:pointer;
 }
 
-.notification-list{
-  padding:5px 0;
-}
-
 .notification{
-  min-height:78px;
+  min-height:80px;
   display:flex;
   align-items:center;
   gap:13px;
@@ -396,7 +389,7 @@ body{
   background:#823cff;
   border-radius:50%;
   position:absolute;
-  left:8px;
+  left:10px;
 }
 
 .notification-avatar{
@@ -414,10 +407,6 @@ body{
   font-size:14px;
 }
 
-.notification-content b{
-  font-weight:700;
-}
-
 .notification-time{
   display:block;
   color:#777b88;
@@ -426,20 +415,15 @@ body{
 }
 
 .notification-action{
-  padding:8px 13px;
+  padding:9px 15px;
   border-radius:10px;
-  border:1px solid #353744;
-  background:#171922;
+  border:1px solid #7134ff;
+  background:#7134ff;
   color:#fff;
   font-size:12px;
 }
 
-.notification-action.follow{
-  background:#7134ff;
-  border-color:#7134ff;
-}
-
-/* ================= PROFILE ================= */
+/* PROFILE */
 
 .profile{
   max-width:650px;
@@ -518,7 +502,6 @@ body{
   color:#fff;
   font-size:14px;
   font-weight:700;
-  cursor:pointer;
 }
 
 .profile-tabs{
@@ -567,7 +550,7 @@ body{
   object-fit:cover;
 }
 
-/* ================= MODALS ================= */
+/* MODALS */
 
 .modal{
   position:fixed;
@@ -627,7 +610,6 @@ body{
   justify-content:center;
   flex-direction:column;
   overflow:hidden;
-  cursor:pointer;
 }
 
 .upload-text{
@@ -687,7 +669,6 @@ body{
   margin-top:12px;
   color:#9c65ff;
   font-size:14px;
-  cursor:pointer;
 }
 
 .form-label{
@@ -744,6 +725,8 @@ body{
   stroke:#fff;
 }
 
+/* PLUS — ONLY PLUS */
+
 .create-btn{
   width:38px;
   height:38px;
@@ -757,24 +740,58 @@ body{
   cursor:pointer;
 }
 
-.notification-badge{
-  position:absolute;
-  bottom:47px;
-  margin-left:17px;
-  min-width:17px;
-  height:17px;
-  padding:0 4px;
-  border-radius:20px;
-  background:#7434ff;
-  border:2px solid #07080c;
-  color:#fff;
-  font-size:9px;
+/* ================= BELL + BADGE ================= */
+
+.notification-nav-wrap{
+  position:relative;
+  width:40px;
+  height:40px;
   display:flex;
   align-items:center;
   justify-content:center;
 }
 
-/* ================= TOAST ================= */
+.notification-nav-icon{
+  width:32px;
+  height:32px;
+  stroke:#858894;
+  stroke-width:1.7;
+  fill:none;
+  cursor:pointer;
+}
+
+.notification-nav-icon.active{
+  stroke:#fff;
+}
+
+/* 3 BELL KE SAATH ATTACHED */
+
+.notification-badge{
+  position:absolute;
+  top:-4px;
+  right:-3px;
+
+  min-width:21px;
+  height:21px;
+
+  padding:0 5px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:#7434ff;
+  color:#fff;
+
+  border:2px solid #07080c;
+  border-radius:50%;
+
+  font-size:10px;
+  font-weight:800;
+  line-height:1;
+
+  z-index:20;
+}
 
 .toast{
   position:fixed;
@@ -849,9 +866,7 @@ body{
 </header>
 
 
-<!-- ==================================================
-                         HOME
-================================================== -->
+<!-- ================= HOME ================= -->
 
 <section id="homePage" class="page active">
 
@@ -1024,9 +1039,7 @@ body{
 </section>
 
 
-<!-- ==================================================
-                        SEARCH
-================================================== -->
+<!-- ================= SEARCH ================= -->
 
 <section id="searchPage" class="page">
 
@@ -1213,9 +1226,7 @@ body{
 </section>
 
 
-<!-- ==================================================
-                    NOTIFICATIONS
-================================================== -->
+<!-- ================= NOTIFICATIONS ================= -->
 
 <section id="notificationPage" class="page">
 
@@ -1238,36 +1249,8 @@ body{
     </div>
 
 
-    <div
-      id="notificationList"
-      class="notification-list">
+    <div id="notificationList">
 
-
-      <!-- LIKE -->
-
-      <div
-        class="notification unread"
-        onclick="readNotification(this)">
-
-        <img
-          class="notification-avatar"
-          src="https://i.pravatar.cc/150?img=32">
-
-        <div class="notification-content">
-
-          <b>Darkwing</b>
-          liked your post.
-
-          <span class="notification-time">
-            2 min ago
-          </span>
-
-        </div>
-
-      </div>
-
-
-      <!-- COMMENT -->
 
       <div
         class="notification unread"
@@ -1279,8 +1262,28 @@ body{
 
         <div class="notification-content">
 
-          <b>User</b>
-          commented on your post.
+          <b>Darkwing</b> liked your post.
+
+          <span class="notification-time">
+            2 min ago
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div
+        class="notification unread"
+        onclick="readNotification(this)">
+
+        <img
+          class="notification-avatar"
+          src="https://i.pravatar.cc/150?img=32">
+
+        <div class="notification-content">
+
+          <b>User</b> commented on your post.
 
           <span class="notification-time">
             15 min ago
@@ -1290,8 +1293,6 @@ body{
 
       </div>
 
-
-      <!-- FOLLOW -->
 
       <div
         class="notification unread"
@@ -1303,8 +1304,7 @@ body{
 
         <div class="notification-content">
 
-          <b>XDark</b>
-          started following you.
+          <b>XDark</b> started following you.
 
           <span class="notification-time">
             1 hour ago
@@ -1313,7 +1313,7 @@ body{
         </div>
 
         <button
-          class="notification-action follow"
+          class="notification-action"
           onclick="followBack(event,this)">
 
           Follow
@@ -1322,8 +1322,6 @@ body{
 
       </div>
 
-
-      <!-- LIKE -->
 
       <div
         class="notification"
@@ -1335,8 +1333,7 @@ body{
 
         <div class="notification-content">
 
-          <b>Nova</b>
-          liked your photo.
+          <b>Nova</b> liked your photo.
 
           <span class="notification-time">
             3 hours ago
@@ -1346,8 +1343,6 @@ body{
 
       </div>
 
-
-      <!-- NEW POST -->
 
       <div
         class="notification"
@@ -1359,8 +1354,7 @@ body{
 
         <div class="notification-content">
 
-          <b>Ankaj</b>
-          published a new post.
+          <b>Ankaj</b> published a new post.
 
           <span class="notification-time">
             Yesterday
@@ -1377,9 +1371,7 @@ body{
 </section>
 
 
-<!-- ==================================================
-                        PROFILE
-================================================== -->
+<!-- ================= PROFILE ================= -->
 
 <section id="profilePage" class="page">
 
@@ -1546,13 +1538,9 @@ body{
 </section>
 
 
-<!-- ==================================================
-                     CREATE POST
-================================================== -->
+<!-- ================= CREATE POST ================= -->
 
-<div
-  id="createModal"
-  class="modal">
+<div id="createModal" class="modal">
 
   <div class="modal-box">
 
@@ -1622,13 +1610,9 @@ body{
 </div>
 
 
-<!-- ==================================================
-                     EDIT PROFILE
-================================================== -->
+<!-- ================= EDIT PROFILE ================= -->
 
-<div
-  id="editModal"
-  class="modal">
+<div id="editModal" class="modal">
 
   <div class="modal-box">
 
@@ -1719,9 +1703,7 @@ body{
 </div>
 
 
-<!-- ==================================================
-                     BOTTOM NAV
-================================================== -->
+<!-- ================= BOTTOM NAV ================= -->
 
 <nav class="bottom-nav">
 
@@ -1748,11 +1730,7 @@ body{
     onclick="showPage('search')"
     viewBox="0 0 24 24">
 
-    <circle
-      cx="10.8"
-      cy="10.8"
-      r="6.5"/>
-
+    <circle cx="10.8" cy="10.8" r="6.5"/>
     <path d="m16 16 5 5"/>
 
   </svg>
@@ -1769,14 +1747,13 @@ body{
   </div>
 
 
-  <!-- NOTIFICATION -->
+  <!-- NOTIFICATION WITH ATTACHED 3 -->
 
-  <div
-    style="position:relative;display:flex;align-items:center;">
+  <div class="notification-nav-wrap">
 
     <svg
       id="notificationNav"
-      class="nav-icon"
+      class="notification-nav-icon"
       onclick="showPage('notification')"
       viewBox="0 0 24 24">
 
@@ -1787,6 +1764,7 @@ body{
       <path d="M10 21h4"/>
 
     </svg>
+
 
     <span
       id="notificationBadge"
@@ -1807,10 +1785,7 @@ body{
     onclick="showPage('profile')"
     viewBox="0 0 24 24">
 
-    <circle
-      cx="12"
-      cy="8"
-      r="3.5"/>
+    <circle cx="12" cy="8" r="3.5"/>
 
     <path
       d="M4.5 21c.7-4.2
@@ -1822,86 +1797,89 @@ body{
 </nav>
 
 
-<div
-  id="toast"
-  class="toast">
-</div>
+<div id="toast" class="toast"></div>
 
 
 <script>
 
-/* ==================================================
-                     PAGE SWITCH
-================================================== */
+/* PAGE */
 
 function showPage(page){
 
   document
     .querySelectorAll(".page")
     .forEach(function(p){
-
       p.classList.remove("active");
-
     });
 
 
   document
-    .getElementById(page + "Page")
+    .getElementById(page+"Page")
     .classList.add("active");
 
 
   document
-    .querySelectorAll(".nav-icon")
+    .querySelectorAll(".nav-icon,.notification-nav-icon")
     .forEach(function(icon){
-
       icon.classList.remove("active");
-
     });
 
 
   if(page==="home"){
-
-    document
-      .getElementById("homeNav")
+    document.getElementById("homeNav")
       .classList.add("active");
-
   }
-
 
   if(page==="search"){
-
-    document
-      .getElementById("searchNav")
+    document.getElementById("searchNav")
       .classList.add("active");
-
   }
-
 
   if(page==="notification"){
-
-    document
-      .getElementById("notificationNav")
+    document.getElementById("notificationNav")
       .classList.add("active");
-
   }
-
 
   if(page==="profile"){
-
-    document
-      .getElementById("profileNav")
+    document.getElementById("profileNav")
       .classList.add("active");
-
   }
-
 
   window.scrollTo(0,0);
 }
 
 
-/* ==================================================
-                    NOTIFICATIONS
-================================================== */
+/* NOTIFICATION COUNT */
+
+function updateNotificationCount(){
+
+  const count =
+    document.querySelectorAll(
+      ".notification.unread"
+    ).length;
+
+
+  const badge =
+    document.getElementById(
+      "notificationBadge"
+    );
+
+
+  if(count>0){
+
+    badge.textContent =
+      count>9 ? "9+" : count;
+
+    badge.style.display="flex";
+
+  }else{
+
+    badge.style.display="none";
+
+  }
+
+}
+
 
 function readNotification(element){
 
@@ -1930,54 +1908,26 @@ function markAllRead(){
 }
 
 
-function updateNotificationCount(){
-
-  const count =
-    document
-      .querySelectorAll(".notification.unread")
-      .length;
-
-
-  const badge =
-    document.getElementById("notificationBadge");
-
-
-  if(count>0){
-
-    badge.textContent =
-      count>9 ? "9+" : count;
-
-    badge.style.display="flex";
-
-  }else{
-
-    badge.style.display="none";
-
-  }
-
-}
-
-
 function followBack(event,button){
 
   event.stopPropagation();
 
   button.textContent="Following";
 
-  button.classList.remove("follow");
+  button.style.background="transparent";
 
-  showToast("Following");
+  button.style.borderColor="#353744";
 
   readNotification(
     button.closest(".notification")
   );
 
+  showToast("Following");
+
 }
 
 
-/* ==================================================
-                       SEARCH
-================================================== */
+/* SEARCH */
 
 function searchUsers(){
 
@@ -2003,11 +1953,11 @@ function searchUsers(){
 
 
   clear.style.display =
-    input.length ? "block" : "none";
+    input ? "block" : "none";
 
 
   title.textContent =
-    input.length
+    input
     ? "Search results"
     : "Discover people";
 
@@ -2037,6 +1987,7 @@ function searchUsers(){
     ){
 
       result.style.display="flex";
+
       found++;
 
     }else{
@@ -2067,9 +2018,7 @@ function clearSearch(){
 }
 
 
-/* ==================================================
-                  SEARCH USER PROFILE
-================================================== */
+/* OPEN USER */
 
 function openUser(name,handle,photo){
 
@@ -2077,25 +2026,20 @@ function openUser(name,handle,photo){
     .getElementById("profileName")
     .textContent=name;
 
-
   document
     .getElementById("profileHandle")
     .textContent=handle;
 
-
   document
     .getElementById("profilePhoto")
     .src=photo;
-
 
   showPage("profile");
 
 }
 
 
-/* ==================================================
-                    EDIT PROFILE
-================================================== */
+/* EDIT PROFILE */
 
 function openEditProfile(){
 
@@ -2181,26 +2125,17 @@ function saveProfile(){
       .value.trim();
 
 
-  if(!name){
+  if(!name || !username){
 
-    showToast("Enter your name");
-    return;
+    showToast("Fill profile details");
 
-  }
-
-
-  if(!username){
-
-    showToast("Enter username");
     return;
 
   }
 
 
   if(!username.startsWith("@")){
-
     username="@"+username;
-
   }
 
 
@@ -2217,8 +2152,7 @@ function saveProfile(){
   document
     .getElementById("profileBio")
     .innerHTML =
-    escapeHTML(bio)
-    .replace(/\n/g,"<br>");
+    escapeHTML(bio).replace(/\n/g,"<br>");
 
 
   const photo =
@@ -2235,27 +2169,21 @@ function saveProfile(){
   document
     .querySelectorAll(".profile-avatar")
     .forEach(function(img){
-
       img.src=photo;
-
     });
 
 
   document
     .querySelectorAll(".profile-name-display")
     .forEach(function(el){
-
       el.textContent=username;
-
     });
 
 
   document
     .querySelectorAll(".caption-name")
     .forEach(function(el){
-
       el.textContent=username;
-
     });
 
 
@@ -2266,9 +2194,7 @@ function saveProfile(){
 }
 
 
-/* ==================================================
-                    CREATE POST
-================================================== */
+/* CREATE POST */
 
 function openCreatePost(){
 
@@ -2300,6 +2226,7 @@ function previewMedia(input){
 
   const video =
     document.getElementById("previewVideo");
+
 
   const url =
     URL.createObjectURL(file);
@@ -2334,18 +2261,20 @@ function publishPost(){
 
   const file=input.files[0];
 
+
+  if(!file){
+
+    showToast("Choose photo or video");
+
+    return;
+
+  }
+
+
   const caption =
     document
       .getElementById("captionInput")
       .value.trim();
-
-
-  if(!file){
-
-    showToast("Choose a photo or video");
-    return;
-
-  }
 
 
   const url =
@@ -2366,6 +2295,7 @@ function publishPost(){
 
   const post =
     document.createElement("article");
+
 
   post.className="post";
 
@@ -2444,7 +2374,6 @@ function publishPost(){
 
         </svg>
 
-
         <svg
           class="post-icon"
           onclick="toggleComments(this)"
@@ -2458,19 +2387,17 @@ function publishPost(){
 
         </svg>
 
-
         <svg
           class="post-icon"
           onclick="sharePost()"
           viewBox="0 0 24 24">
 
-          <path d="M4 12 20 4l-5 16-7-1Z"/>
+          <path d="M4 12 20 4 15 20 8 18Z"/>
           <path d="M11 13 20 4"/>
 
         </svg>
 
       </div>
-
 
       <svg
         class="post-icon save-btn"
@@ -2483,37 +2410,22 @@ function publishPost(){
 
     </div>
 
-
     <div class="likes">
-
-      <span class="like-count">
-        0
-      </span>
-
-      likes
-
+      <span class="like-count">0</span> likes
     </div>
 
-
     <div class="caption">
-
       <b class="caption-name">
         ${escapeHTML(username)}
       </b>
-
       ${escapeHTML(caption)}
-
     </div>
-
 
     <span
       class="comments-link"
       onclick="toggleComments(this)">
-
       Add a comment
-
     </span>
-
 
     <div class="comment-area">
 
@@ -2524,13 +2436,10 @@ function publishPost(){
       <button
         class="comment-send"
         onclick="addComment(this)">
-
         Post
-
       </button>
 
     </div>
-
   `;
 
 
@@ -2546,6 +2455,16 @@ function publishPost(){
     .value="";
 
 
+  document
+    .getElementById("previewImage")
+    .style.display="none";
+
+
+  document
+    .getElementById("previewVideo")
+    .style.display="none";
+
+
   closeCreatePost();
 
   showToast("Post published");
@@ -2553,9 +2472,7 @@ function publishPost(){
 }
 
 
-/* ==================================================
-                         LIKE
-================================================== */
+/* LIKE */
 
 function likePost(button){
 
@@ -2567,9 +2484,7 @@ function likePost(button){
 
 
   let number =
-    parseInt(
-      count.textContent.replace(/,/g,"")
-    );
+    parseInt(count.textContent);
 
 
   if(button.classList.contains("liked")){
@@ -2587,15 +2502,12 @@ function likePost(button){
   }
 
 
-  count.textContent =
-    number.toLocaleString();
+  count.textContent=number;
 
 }
 
 
-/* ==================================================
-                         SAVE
-================================================== */
+/* SAVE */
 
 function savePost(button){
 
@@ -2610,19 +2522,16 @@ function savePost(button){
 }
 
 
-/* ==================================================
-                       COMMENTS
-================================================== */
+/* COMMENTS */
 
 function toggleComments(element){
 
   const post =
     element.closest(".post");
 
-  const area =
-    post.querySelector(".comment-area");
-
-  area.classList.toggle("active");
+  post
+    .querySelector(".comment-area")
+    .classList.toggle("active");
 
 }
 
@@ -2639,6 +2548,7 @@ function addComment(button){
   if(!input.value.trim()){
 
     showToast("Write a comment first");
+
     return;
 
   }
@@ -2651,19 +2561,15 @@ function addComment(button){
 }
 
 
-/* ==================================================
-                         SHARE
-================================================== */
+/* SHARE */
 
 function sharePost(){
 
   if(navigator.share){
 
     navigator.share({
-
       title:"X-DARK",
       text:"Check this post on X-DARK"
-
     });
 
   }else{
@@ -2675,9 +2581,7 @@ function sharePost(){
 }
 
 
-/* ==================================================
-                       ESCAPE
-================================================== */
+/* ESCAPE */
 
 function escapeHTML(text){
 
@@ -2691,9 +2595,7 @@ function escapeHTML(text){
 }
 
 
-/* ==================================================
-                         TOAST
-================================================== */
+/* TOAST */
 
 function showToast(message){
 
@@ -2714,7 +2616,7 @@ function showToast(message){
 }
 
 
-/* INITIAL NOTIFICATION COUNT */
+/* START */
 
 updateNotificationCount();
 
